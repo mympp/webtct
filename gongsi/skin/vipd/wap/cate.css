@@ -1,0 +1,32 @@
+.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
+#page-home.version-1 {	background: #8f9398!important;max-width: 640px;margin: auto;}
+#page-home.version-1 .gallery-slider-img{height:160px;}
+.version-1 .nav-box {	background: #9ea2a7;	box-shadow: inset 0 0 0 1px #a8acaf;	border: 1px solid #81868d;	border-radius: 5px;	padding: 10px;	color: #edf0f2;	margin: 10px;	text-shadow: 0 0 2px #81868d;	font-size: 14px;	line-height: 18px;}
+.version-1 .nav-box > a {display: block;margin: -9px;padding: 9px;color: #edf0f2;	border-radius: 5px;}
+#introduction p {	overflow: hidden;	text-overflow: ellipsis;	height: 54px;	margin: 0;}
+#introduction #brand { float: left; margin-right: 10px; }
+.version-1 #home-nav ul{font-size: 0;padding: 0 0 0 10px;}
+.version-1 #home-nav ul li{border-radius: 5px;	float: left;	width: 50%;	list-style: none;	margin-bottom: 10px;}
+.version-1 #home-nav ul li a{	display: block;font-size: 16px;color: #edf0f2;text-align: right;	padding: 40px 10px 10px 10px;	margin: 0 10px 0 0;	background-image: url(../wap/images/navbg.png);	background-position: center top;	background-repeat: no-repeat;	/*background-color: yellow;*/	background-size: 100% 100%;	position: relative;	z-index: 999;	opacity: 1;	visibility: visible;}
+.version-1 #home-nav ul li a:hover,
+.version-1 #home-nav ul li a:focus,
+.version-1 #home-nav ul li a:active,
+.version-1 .nav-box > a:hover,
+.version-1 .nav-box > a:focus,
+.version-1 .nav-box > a:active{background-color: #9b9fa5;	color: #fff;}
+.version-1 #home-nav ul li img{	display: block;	position: absolute;	left: 10px;	top: 5px;}
+.slide {width:100%;height:220px;background:#FAFAFA;overflow:hidden;}
+.slide a img {height: 220px;}
+#logo{z-index: 2;padding: 20px 0 0 20px;position: absolute;}
+#logo p {color:#444;padding: 4px;border-radius: 3px;font-size: 16px;font-weight: bold;margin-bottom: 0;}
+#logo span {color:white;margin-left:5px;}
+#vip{position: absolute;z-index: 2;left: -5px;top:34px;}
+.copyright{padding:8px;text-align:center;font-size:13px;color:#ccc;border-top: 1px solid #D6D6D6;margin-top:20px;line-height: 20px;}
+.copyright a{color:#ccc;}
+.bdsc {width: 160px;margin: auto;}
+#CustomerChatFloat{position: fixed; right: 10px; bottom: 10px; z-index: 99999; height: 40px; width: 35px; min-width: 35px; background-image: url(../wap/images/MobileChatFloat.png); background-size: 35px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;}
+@-webkit-keyframes kirakira {
+  0% {-webkit-transform:scale(0.9); opacity: .5;  }
+  100% {-webkit-transform:scale(1);   opacity: 1;  }
+}
+.android-fixed-fixed,.afix {	position: fixed!important;	opacity: 0!important;	width: 0!important;	height: 0!important;	overflow: hidden!important;}

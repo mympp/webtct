@@ -1,0 +1,1478 @@
+@charset "utf-8";
+/*code by zhangeryi*/
+/*css重置*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, small {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 12px;
+    line-height: 22px;
+    font-family: "Microsoft Yahei", "微软雅黑", "Arial Narrow", "宋体";
+    color: #333333;
+    background: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, small {
+    font-size: 100%;
+    overflow: hidden;
+}
+
+input, select {
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+i {
+    font-style: normal;
+}
+
+img {
+    border: 0;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+.p0 {
+    padding: 0px;
+}
+/*全局公用*/
+.tc {
+    text-align: center;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tr {
+    text-align: right;
+}
+
+.f12 {
+    font-size: 12px;
+}
+
+.f14 {
+    font-size: 14px;
+}
+
+.f16 {
+    font-size: 16px;
+}
+
+.f18 {
+    font-size: 18px;
+}
+
+.divc {
+    margin: 0 auto;
+}
+
+.fb {
+    font-weight: bold;
+}
+
+.dis {
+    display: block;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.cl {
+    clear: both;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+    line-height: 0px;
+}
+
+.ti2 {
+    text-indent: 2em;
+}
+
+.w1000 {
+    width: 1000px;
+}
+
+.w980 {
+    width: 980px;
+}
+
+.ovn {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.r3 {
+    border-radius: 3px;
+}
+
+.r5 {
+    border-radius: 5px;
+}
+
+.pr {
+    position: relative;
+}
+
+.cl10 {
+    height: 15px;
+    font-size: 0;
+    overflow: hidden;
+    clear: both;
+}
+
+.pl10 {
+    padding-left: 10px;
+}
+
+.pt10 {
+    padding-top: 10px;
+}
+
+.pt20 {
+    padding-top: 20px;
+}
+
+.pb10 {
+    padding-bottom: 10px;
+}
+
+.p10 {
+    padding: 10px;
+}
+
+.p0 {
+    padding: 0px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a.more, a.more:link, a.more:visited {
+    font-size: 12px;
+    font-weight: normal;
+    float: right;
+    color: #999;
+}
+
+    a.more:hover, a.more:active {
+        text-decoration: none;
+    }
+
+.red, a.red, a.red:link, a.red:visited {
+    color: #f50;
+}
+/*样式格式化*/
+.btn {
+    border: 0px;
+}
+
+.form-control {
+    border-radius: 4px !important;
+}
+
+.btnr {
+    border-radius: 4px !important;
+}
+
+select.select {
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(../images/xiala.png) right center no-repeat;
+    background-size: 30px 15px;
+}
+
+input.radio {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #f5f5f5;
+    border: 2px solid #dedede;
+    width: 26px;
+    height: 26px;
+    margin: 0px auto;
+}
+
+    input.radio:checked {
+        border-color: #3aaee3;
+        background: url(../images/radio.jpg) center center no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+
+.radiobox {
+    padding: 5px 0px;
+    display: block;
+    overflow: hidden;
+}
+
+    .radiobox .radiotit {
+        font-size: 14px;
+        padding: 5px 0px;
+    }
+
+    .radiobox label {
+        text-align: center;
+        float: left;
+        padding: 0px 5px;
+    }
+
+.input-lg, .form-group-lg .form-control {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 16px;
+    line-height: 1.33;
+    border-radius: 0px;
+}
+
+.choose {
+    padding: 10px;
+    background: #f5f5f5;
+    border: 2px solid #dedede;
+    border-radius: 0px;
+    cursor: pointer;
+    line-height: 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+.choosed {
+    cursor: default;
+    border-color: #3aaee3;
+    background: #f5f5f5;
+}
+
+.choose-sm {
+    padding: 5px 15px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.choose .caret {
+    display: none;
+}
+
+.choosed .caret {
+    display: inline-block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -7px;
+    right: -7px;
+    vertical-align: middle;
+    border-left: 8px solid #3aaee3;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+}
+
+table.table-bordered, table.table-bordered td, table.table-bordered th {
+    border-color: #ddd !important;
+}
+
+    table.table-bordered thead th {
+        background-color: #f5f5f5;
+    }
+
+.form-group label {
+    line-height: 32px;
+    color: #666;
+    margin-bottom: 0px;
+}
+
+.form-group-lg label {
+    line-height: 32px;
+    color: #666;
+    margin-bottom: 0px;
+}
+/*首页*/
+/*轮换*/
+.focus {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+    .focus .hd {
+        width: 100%;
+        height: 11px;
+        position: absolute;
+        z-index: 1;
+        bottom: 10px;
+        text-align: center;
+    }
+
+        .focus .hd ul {
+            display: inline-block;
+            height: 10px;
+            padding: 3px 5px;
+            font-size: 0;
+            vertical-align: top;
+        }
+
+            .focus .hd ul li {
+                display: inline-block;
+                border: 0px solid #999;
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                background-color: rgba(0, 0, 0, 0.3);
+                text-indent: -999px;
+                margin: 0 5px;
+                vertical-align: top;
+                opacity: 0.8;
+            }
+
+                .focus .hd ul li.on {
+                    background: #fff;
+                    opacity: 0.7;
+                }
+
+    .focus .bd {
+        position: relative;
+        z-index: 0;
+    }
+
+        .focus .bd li img {
+            width: 100%;
+        }
+
+        .focus .bd li a { /* 取消链接高亮 */
+        }
+
+/*菜单按钮*/
+.navbtn {
+    margin-top: 20px;
+}
+
+    .navbtn a.anniu {
+        display: block;
+        width: 70px;
+        height: 70px;
+        line-height: 64px;
+        margin: 0px auto;
+        color: #fff;
+        text-align: center;
+    }
+
+        .navbtn a.anniu img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .navbtn a.anniu span {
+            font-size: 40px;
+        }
+
+    .navbtn p.tc {
+        padding: 10px 0px;
+        font-size: 16px;
+        height: 42px;
+    }
+/*顶部面包导航*/
+.bread {
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+}
+
+    .bread .jiantou {
+        background: url(icon_j.png) right center no-repeat;
+        padding-right: 20px;
+        background-size: auto 22px;
+    }
+
+    .bread a.tip, .bread span.tip {
+        color: #fff;
+        font-size: 18px;
+        float: left;
+        padding-left: 5px;
+    }
+
+        .bread a.tip:hover, .bread a.tip:active {
+            text-decoration: none;
+        }
+
+        .bread a.tip i {
+            line-height: 46px;
+        }
+
+    .bread i {
+        font-size: 22px;
+        color: #fff;
+        padding-left: 2px;
+    }
+
+.short-nav {
+    float: right;
+    height: 50px;
+}
+
+    .short-nav a {
+        display: block;
+        text-decoration: none;
+    }
+
+        .short-nav a:hover, .short-nav a:hover:active {
+            text-decoration: none;
+        }
+
+    .short-nav i {
+        font-size: 30px;
+        padding: 0px 10px;
+        width: 52px;
+        height: 50px;
+        display: block;
+    }
+
+    .short-nav .dropdown-menu {
+        margin: 0px 0 0;
+        padding: 0px 0;
+        background-color: #FFFFFF;
+        border: 0px solid #cccccc;
+        min-width: 120px;
+    }
+
+        .short-nav .dropdown-menu li {
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+            .short-nav .dropdown-menu li a {
+                padding: 6px 10px;
+                line-height: 1.42857143;
+                color: #333;
+                font-size: 16px;
+            }
+
+        .short-nav .dropdown-menu > li > a:hover, .short-nav .dropdown-menu > li > a:focus {
+            text-decoration: none;
+            color: #333;
+            background: #000;
+            background-image: none;
+        }
+
+        .short-nav .dropdown-menu > li > a i {
+            font-size: 24px;
+            padding: 0px 5px 0px 0px;
+            display: inline;
+        }
+
+.bread .open {
+    background: #379cee;
+}
+/*筛选*/
+.filter {
+}
+
+    .filter .item {
+        overflow: hidden;
+        text-align: center;
+        font-size: 16px;
+        line-height: 44px;
+        height: 44px;
+        background: #f3f5f7;
+        border-right: 1px solid #d4d9dd;
+        border-bottom: 1px solid #d4d9dd;
+    }
+
+    .filter .brn, .brn {
+        border-right: none;
+    }
+
+    .filter .filterbtn .caret {
+        display: inline-block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: -5px;
+        right: -5px;
+        vertical-align: middle;
+        border-left: 5px solid #3aaee3;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        -moz-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+    }
+
+    .filter .filterarea {
+        z-index: 11;
+        position: fixed;
+        top: 0px;
+        right: -150px;
+        background: #333;
+        width: 150px;
+        opacity: 30;
+        display: none;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 999991;
+    }
+
+        .filter .filterarea li {
+            border-bottom: 1px solid #222;
+            text-align: left;
+        }
+
+            .filter .filterarea li a {
+                padding: 10px 20px;
+                line-height: 1.42857143;
+                color: #fff;
+                font-size: 16px;
+                display: block;
+            }
+
+                .filter .filterarea li a:hover {
+                    text-decoration: none;
+                }
+
+                .filter .filterarea li a:focus {
+                    text-decoration: none;
+                    color: #fff;
+                    background: #000;
+                    background-image: none;
+                }
+
+                .filter .filterarea li a:active {
+                    background: #000;
+                }
+
+.filterbg {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0.7;
+    position: fixed;
+    z-index: 99999;
+    top: 0px;
+    right: 0px;
+    display: none;
+}
+/*会议列表*/
+.huiyilist {
+    width: 100%;
+}
+
+    .huiyilist .itemDate {
+        line-height: 22px;
+        width: 67px;
+        float: left;
+        height: 57px;
+        text-align: center;
+        font-family: Arial;
+        background: #ecf0f9;
+        border-radius: 2px 2px 0px 0px;
+    }
+
+        .huiyilist .itemDate .itemDatexingqi {
+            line-height: 22px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .huiyilist .itemDate .itemDateInfo {
+            overflow: hidden;
+            color: #444;
+            width: 65px;
+            height: 34px;
+            margin: 0 auto;
+            padding-top: 4px;
+            background: #fff;
+            padding-left: 1px;
+        }
+
+            .huiyilist .itemDate .itemDateInfo .year {
+                display: block;
+                height: 12px;
+                font-size: 12px;
+                line-height: 12px;
+                text-align: center;
+            }
+
+            .huiyilist .itemDate .itemDateInfo .Month {
+                display: block;
+                height: 16px;
+                font-size: 16px;
+                line-height: 12px;
+                font-weight: bold;
+            }
+
+            .huiyilist .itemDate .itemDateInfo .date {
+                overflow: hidden;
+                width: 34px;
+                color: #ff7b00;
+                font-size: 30px;
+                font-weight: bold;
+                float: left;
+                line-height: 26px;
+            }
+
+            .huiyilist .itemDate .itemDateInfo .nianyue {
+                overflow: hidden;
+                width: 28px;
+            }
+
+    .huiyilist table {
+        margin-bottom: 50px;
+        border-bottom: 2px solid #ecf0f9;
+    }
+
+        .huiyilist table tbody td.dataarea {
+            padding-right: 0px;
+            width: 74px;
+        }
+
+        .huiyilist table tbody td.huiyi {
+            padding-right: 5px;
+            position: relative;
+        }
+
+            .huiyilist table tbody td.huiyi a {
+                color: #333;
+            }
+
+                .huiyilist table tbody td.huiyi a:hover {
+                    text-decoration: none;
+                }
+
+            .huiyilist table tbody td.huiyi i.icon-yjiantou {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                color: #d4d9dd;
+            }
+
+            .huiyilist table tbody td.huiyi p.t {
+                padding: 3px 0px;
+            }
+
+.table-striped > tbody > tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #f0f0f0;
+}
+/*组委会首页*/
+.zwhtit {
+    height: auto;
+    min-height: 130px;
+    position: relative;
+    padding: 10px;
+}
+
+a.back {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    height: 32px;
+    line-height: 32px;
+    padding-right: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+    a.back:hover {
+        text-decoration: none;
+    }
+
+    a.back i {
+        font-size: 18px;
+    }
+
+div.logo {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    margin-left: -35px;
+    z-index: 10;
+    border-radius: 100%;
+    background: #fff;
+    padding: 3px;
+}
+
+    div.logo img {
+        width: 64px;
+        height: 64px;
+    }
+
+.logobg {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    opacity: 0.5;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -40px;
+    z-index: 9;
+}
+
+.zwhtit .tit {
+    line-height: 20px;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    padding: 90px 0px 0px 0px;
+}
+/*会议详细页面*/
+.content-t {
+    width: 100%;
+    min-height: 120px;
+    background: url(../images/huiyibg.jpg) center center no-repeat;
+    color: #fff;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+    .content-t .tic {
+        position: relative;
+    }
+
+    .content-t .logoc {
+        position: absolute;
+        width: 92px;
+        height: 120px;
+        left: 0px;
+        top: 0px;
+    }
+
+    .content-t div.logo {
+        top: 50%;
+        margin-top: -35px;
+    }
+
+    .content-t .logobg {
+        top: 50%;
+        margin-top: -40px;
+    }
+
+    .content-t .t {
+        font-size: 20px;
+        width: 100%;
+        padding-left: 92px;
+        line-height: 24px;
+    }
+
+.content-c {
+    width: 100%;
+    z-index: 10;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: left;
+}
+
+    .content-c p, .content-c div.loading {
+        padding: 5px 8px; /*border-bottom: 1px dotted #d0d4dd; */
+        clear: both;
+        overflow: hidden;
+        zoom: 1;
+    }
+
+        .content-c p b, .content-c div.loading b {
+            color: #888;
+            display: block;
+            float: left;
+            width: 90px;
+        }
+
+.content-cic {
+    padding: 16px;
+    font-size: 14px;
+    line-height: 24px;
+    word-break: break-word;
+}
+
+    .content-cic b {
+        color: #888;
+        font-size: 16px;
+    }
+
+.content-c .list-group {
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 6px;
+    line-height: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.075);
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+}
+/*个人中心*/
+.user-t {
+    width: 100%;
+    background: url(../images/huiyibg.jpg) center center no-repeat;
+    color: #666;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+    .user-t .tit {
+        padding: 110px 6px 10px 6px;
+        line-height: 28px;
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+        color: #999;
+        vertical-align: middle;
+    }
+
+    .user-t a.back {
+        border-radius: 3px;
+    }
+
+.user-c {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+}
+
+    .user-c a {
+        display: block;
+        color: #fff;
+        font-size: 12px;
+        line-height: 24px;
+        height: 60px;
+        padding-top: 6px;
+    }
+
+        .user-c a:hover, .user-c a:focus {
+            background: #000;
+            opacity: 0.8;
+            text-decoration: none;
+        }
+
+        .user-c a p.fb {
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+.user-cbg {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    background: #000;
+    opacity: 0.3;
+    z-index: 8;
+}
+
+.user-cbr {
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    width: 1px;
+    height: 60px;
+    background: #fff;
+    opacity: 0.2;
+    z-index: 9;
+}
+
+div.loading .progress {
+    border-radius: 4px;
+    margin-bottom: 0px;
+    width: 400px;
+    float: left;
+    margin-top: 10px;
+}
+
+.lgts {
+    line-height: 1.3;
+    margin: 0px auto;
+    margin-bottom: 15px;
+    color: #999;
+    width: 100%;
+    max-width: 300px;
+}
+/*已加入组委会*/
+.list-zuweihui .c {
+    height: auto;
+    overflow: hidden;
+    position: static;
+}
+
+    .list-zuweihui .c ul {
+        position: static;
+        padding: 10px 0px 0px 0px;
+        overflow: hidden;
+        zoom: 1;
+    }
+
+        .list-zuweihui .c ul li {
+            height: auto;
+            padding: 0px 3px;
+            line-height: 20px;
+            border-bottom: none;
+        }
+
+            .list-zuweihui .c ul li a {
+                display: block;
+                cursor: pointer;
+            }
+
+            .list-zuweihui .c ul li .pic {
+                border: 1px solid #e7eaec;
+                height: 104px;
+                line-height: 100px;
+                text-align: center;
+                padding: 1px;
+                vertical-align: middle;
+                background: #fff;
+            }
+
+                .list-zuweihui .c ul li .pic img {
+                    height: 100px;
+                    max-height: 100%;
+                    margin: 0px auto;
+                    vertical-align: middle;
+                }
+
+            .list-zuweihui .c ul li p.fb {
+                height: 24px;
+                overflow: hidden;
+                margin: 5px 0px;
+                line-height: 24px;
+                font-size: 14px;
+                color: #333;
+            }
+
+            .list-zuweihui .c ul li p {
+                font-size: 12px;
+                color: #999;
+            }
+/*底部版权*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+.footer {
+    line-height: 20px;
+    background: #555;
+    color: #999;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0px;
+}
+
+    .footer a {
+        color: #ddd;
+    }
+/*登录*/
+.loginbg {
+    /* background: url(../images/huiyibg.jpg) center center no-repeat;
+    background-size: cover; */
+    background-color: #f0f0f0;
+}
+
+.loginbox input.form-control, .loginbox button.btn {
+    max-width: 300px;
+    margin: 0px auto;
+    display: block;
+    border-radius: 4px;
+    width: 100%;
+}
+/*刮刮卡*/
+
+.p20 {
+    padding: 20px;
+}
+
+.guaw {
+    margin-top: 50%;
+    padding: 0px 20px;
+    position: relative;
+    z-index: 1;
+    zoom: 1;
+    height: 56px;
+}
+
+.guainfo {
+    position: absolute;
+    color: #000;
+    height: 56px;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 56px;
+    z-index: 11;
+    background: #bbb;
+}
+
+.front {
+    position: absolute;
+    z-index: 10;
+    left: 0px;
+    top: 0px;
+    border: 1px solid #6f8986;
+    height: 54px;
+    text-align: center;
+}
+
+.behind {
+    position: absolute;
+    z-index: 9;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #6f8986;
+    overflow: hidden;
+    height: 54px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 54px;
+    color: #f00;
+}
+
+.guarule {
+    border: 1px solid rgba(0,0,0,.5);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+    .guarule .t {
+        text-align: center;
+        font-size: 18px;
+        line-height: 26px;
+        padding-bottom: 5px;
+    }
+
+.hjjl {
+    font-size: 21px;
+    color: #000;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+    .hjjl .c {
+        background: url(../images/hjbg.jpg) center center no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+        text-align: center;
+        height: 150px;
+        padding-top: 30px;
+        line-height: 40px;
+    }
+
+.hjmd {
+    padding: 5px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+    .hjmd .t {
+        color: #fff;
+        background: url(../images/hjmd.png) center center no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+        width: 230px;
+        height: 50px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+    }
+
+.ljsm {
+    text-align: center;
+    background: #f0f0f0;
+    margin: 10px 5px;
+    border-radius: 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.hjmd .c {
+    padding: 5px;
+    padding-bottom: 20px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .hjmd .c li {
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 14px;
+        height: 42px;
+        line-height: 42px;
+        width: 100%;
+        clear: both;
+    }
+
+        .hjmd .c li .dot {
+            color: #f1a919;
+            font-weight: normal;
+            font-size: 10px;
+        }
+
+        .hjmd .c li span {
+            padding: 0px 5px;
+        }
+/*刮刮卡登陆注册tab*/
+.tabBox .hd {
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+    .tabBox .hd ul {
+        position: absolute;
+        height: 50px;
+        top: 0;
+        overflow: hidden;
+        width: 100%;
+    }
+
+        .tabBox .hd ul li {
+            float: left;
+            padding: 0 10px;
+            color: #666;
+            width: 50%;
+            text-align: center;
+            border-top: 2px solid #fff;
+        }
+
+        .tabBox .hd ul .on {
+            border: 1px solid #ddd;
+            border-bottom-color: #fff;
+            background: #f3f4f8;
+            color: #0095d8;
+            border-top: 2px solid #0095d8;
+        }
+
+            .tabBox .hd ul .on a {
+                display: block; /* 修复Android 4.0.x 默认浏览器当前样色无效果bug */
+            }
+
+.tabBox .bd ul {
+    padding: 10px 0 10px 10px;
+}
+
+.tabBox .bd li {
+    height: 33px;
+    line-height: 33px;
+}
+
+    .tabBox .bd li a {
+        color: #666;
+    }
+
+    .tabBox .bd li a {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+/* 去掉链接触摸高亮 */
+.loginbox .hqyzm {
+    margin: 0px auto;
+    margin-bottom: 15px;
+    width: 280px;
+    position: relative;
+}
+
+    .loginbox .hqyzm .form-control {
+    }
+
+    .loginbox .hqyzm .btn-default {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: auto;
+        background: #ccc;
+        padding: 12px 16px;
+        border-radius: 0px 4px 4px 0px;
+        font-size: 16px;
+    }
+/*日程*/
+.huiyilist table tbody td.huiyi {
+    padding-right: 30px;
+}
+
+.huiyilist table tbody td.session {
+    background: #f5f5f5;
+    line-height: 18px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding-right: 10px;
+}
+
+    .huiyilist table tbody td.session a {
+        color: #000;
+    }
+
+.huiyilist table tbody td.huiyi i.icon-yjiantou {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    color: #d4d9dd;
+}
+
+.prg-search {
+    margin-bottom: 0px;
+    padding: 10px;
+    position: relative;
+    background: #f3f5f7;
+    border-bottom: 1px solid #d4d9dd;
+}
+
+    .prg-search .form-control {
+        padding-right: 70px;
+    }
+
+    .prg-search .sbtn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        border: 0px;
+        display: block;
+        width: 70px;
+        height: 46px;
+        line-height: 40px;
+        text-align: center;
+        background: #555;
+        color: #fff;
+        font-size: 24px;
+        border-radius: 0px 4px 4px 0px;
+    }
+/*讲者列表*/
+.qhui {
+    color: #999;
+}
+
+.form-control {
+    border-radius: 2px !important;
+}
+
+.speaker {
+    background: #f3f5f7;
+    line-height: 28px;
+    padding: 0px 10px;
+    border-bottom: 1px solid #ededed;
+}
+
+.speaker-t {
+    border-top: 1px solid #ededed;
+}
+
+    .speaker-t a {
+        font-size: 16px;
+        color: #333;
+        display: block;
+    }
+
+    .speaker-t .name {
+        padding: 10px 0px;
+        border-bottom: 1px solid #ededed;
+    }
+
+        .speaker-t .name a {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0px 5px;
+        }
+
+.nowzm {
+    position: fixed;
+    background: #f0f0f0;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.8;
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    line-height: 32px;
+    left: 0px;
+    top: 0px;
+    display: none;
+    font-weight: bold;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+
+.speaker-tit {
+    position: fixed;
+    right: 0px;
+    top: 32px;
+    width: 30px;
+    height: 100%;
+    background: #f0f0f0;
+    color: #333;
+    opacity: 0.8;
+    display: none;
+}
+
+    .speaker-tit .tc {
+        line-height: 3.6vh;
+        height: 3.6vh;
+    }
+
+        .speaker-tit .tc a {
+            color: #333;
+        }
+/*图片弹框放大样式*/
+.imgzoom_pack {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.9);
+    display: none;
+    z-index: 99999;
+}
+
+    .imgzoom_pack .imgzoom_x {
+        color: #666;
+        height: 40px;
+        width: 40px;
+        line-height: 36px;
+        background: #f0f0f0;
+        text-align: center;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 10;
+        cursor: pointer;
+        border-radius: 0px 0px 0px 100px;
+        font-size: 26px;
+        text-indent: 10px;
+        overflow: hidden;
+    }
+
+    .imgzoom_pack .imgzoom_img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
+
+        .imgzoom_pack .imgzoom_img img {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+        }
+/*支付确认*/
+.wraperh {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.bb1 {
+    border-bottom: 1px solid #ededed;
+}
+
+.bt1 {
+    border-top: 1px solid #ededed;
+}
+
+.lh2 {
+    line-height: 2;
+}
+
+.f20 {
+    font-size: 20px;
+}
+
+.f22 {
+    font-size: 22px;
+}
+
+.f24 {
+    font-size: 24px;
+}
+
+.f26 {
+    font-size: 26px;
+}
+
+.f28 {
+    font-size: 28px;
+}
+
+.f30 {
+    font-size: 30px;
+}
+
+.f32 {
+    font-size: 32px;
+}
+
+.f36 {
+    font-size: 36px;
+}
+
+.bgbai {
+    background: #fff;
+}
+
+.hui {
+    color: #666;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+    padding: 13px 16px;
+}

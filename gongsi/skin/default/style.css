@@ -1,0 +1,44 @@
+
+
+/*
+	[Destoon B2B System] Copyright (c) 2008-2013 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+/* global */
+body {margin:0px;font-size:12px;color:#000000}
+.homebg{;background:#FFFFFF url('bg.jpg') repeat-x center 0;}
+/* common */
+.m {width:960px;margin:auto;}
+.banner img{height:309px;}
+.top {height:25px;line-height:25px;padding:0 10px 0 10px;color:#aaa}
+#top a {text-decoration:none;color:#aaa}
+.head {height:115px;overflow:hidden;}
+#menust{padding:4px;;margin-top:4px;font-size:14px;}
+.head div {float:left;}
+.head .logo {padding:15px 10px 0 0px;height:90px;overflow:hidden;}
+.head h1 {font-size:34px;margin:22px 0 5px 10px;color:#3599a2;font-family:'微软雅黑';}
+.head h4 {font-size:15px;margin:0 0 0 10px;color:#666;}
+
+#menu a {text-decoration:none;}
+.menu {height:34px;overflow:hidden;padding:0 0 0 20px;font-size:14px;margin-bottom:10px;}
+.menu_li {float:left;white-space:nowrap;line-height:34px;padding:0 20px 0 20px;}
+.menu_li span {color:#3f3f3f;}
+.menu_on {float:left;white-space:nowrap;line-height:34px;padding:0 20px 0 20px;background:url('menu_on.gif') no-repeat center bottom;}
+.menu_on span {color:#3599a2;font-weight:bold;}
+
+.banner{ margin-top:3px;}
+
+.side_head {border:#3da0aa 1px solid;border-bottom:none;background:#3da0aa;}
+.side_head div {padding:0 10px 0 10px;font-size:14px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.side_body {border:#3da0aa 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+.side_body li {background:url('../../image/ico_arrow.gif') no-repeat 5px 7px;padding:0 0 0 20px;height:26px;line-height:26px;overflow:hidden;}
+
+.main_head {border:#3da0aa 1px solid;border-bottom:none;background:#3da0aa;}
+.main_head div {padding:0 10px 0 10px;font-size:14px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.main_body {border:#3da0aa 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+.pos {padding:10px 15px 10px 20px;background:url('../../image/homepage.gif') no-repeat center left;}
+.side_head strong,.main_head strong{color:#FFFFFF}
+.sign {z-index:1000;position:absolute;width:180px;height:50px;background:url('../../image/vip_bg.gif') no-repeat;margin:40px 0 0 780px;}
+.sign div {padding:23px 0 0 73px;}
+.sign strong {font-size:18px;color:red;}
+.sign span {font-size:18px;color:red;font-weight:bold;padding:0 0 0 60px;}

@@ -1,0 +1,45 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+/* global */
+body {margin:0px;font-size:12px;color:#000000}
+.homebg{;background:#1a1a1a url(bg.jpg) center top no-repeat ;}
+/* common */
+.m {width:972px;margin:auto;padding-left:10px;padding-right:10px;}
+.top {height:28px;line-height:28px;color:#ddd;padding:0px 10px 0px 0px;}
+#top a {color:#ddd;text-decoration:none;}
+#menust{padding:2px;font-size:14px;margin-top:5px;}
+.banner img{height:319px;}
+.head {height:106px;overflow:hidden;}
+.head div {float:left;}
+.head .logo {padding:15px 10px 0 20px;height:90px;overflow:hidden;}
+.head h1 {font-size:36px;margin:22px 0 5px 10px;color:#fff;font-family: "微软雅黑", "宋体";}
+.head h4 {font-size:14px;margin:0 0 0 10px;color:#eee;}
+.pos { padding:3px 25px;  margin-top:10px; margin-bottom:5px;color:#Fff; }
+.pos a{color:#Fff; }
+#menu a {text-decoration:none;}
+.menu {height:37px;overflow:hidden;font-size:12px; padding-left:15px; }
+.menu span {color:#fff;font-size:14px;}
+
+.menu_li {float:left;line-height:37px;padding:0 0px 0 05px;width:112px;text-align:Center}
+.menu_on {float:left;line-height:37px;padding:0 0px 0 05px;width:112px;background:url('menuy.jpg') no-repeat center top;font-weight:bold;text-align:Center}
+
+
+.side_head {height:30px;background:#111;}
+.side_head div {padding:3px 10px 0 10px;font-size:14px;height:30px;line-height:30px;overflow:hidden;}
+.side_head div strong{ color:#fff; }
+.side_body {border:#ddd 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+.side_body li {background:url('../../image/ico_arrow.gif') no-repeat 5px 7px;padding:0 0 0 20px;height:26px;line-height:26px;overflow:hidden;}
+
+.main_head {height:30px;background:#fa7624;}
+.main_head div {padding:3px 10px 0 15px;font-size:14px;height:30px;line-height:30px;overflow:hidden;}
+.main_head div strong{ color:#fff;  }
+.main_body {border:#dcab61 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+
+.foot {text-align:center;padding:15px;line-height:28px;background:#ddd ;}
+
+.sign {z-index:1000;position:absolute;width:180px;height:50px;background:url('../../image/vip_bg.gif') no-repeat;margin:30px 0 0 760px;}
+.sign div {padding:23px 0 0 73px;}
+.sign strong {font-size:18px;color:red;}
+.sign span {font-size:18px;color:red;font-weight:bold;padding:0 0 0 60px;}

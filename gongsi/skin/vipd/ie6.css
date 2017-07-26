@@ -1,0 +1,4 @@
+body {_background-image:#FFF url('bg.gif') no-repeat center 0;_background-attachment:fixed;}
+#toolbar {_position:absolute;_top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);}
+.imall {padding:0 5px 0 5px;}
+.isell {padding:0 5px 4px 5px;}

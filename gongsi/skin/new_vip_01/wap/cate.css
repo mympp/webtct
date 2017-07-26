@@ -1,0 +1,21 @@
+.body{background-image: radial-gradient(ellipse at center, #00D7AD,#073050);color:white;max-width:640px;margin:auto;min-height:100%;position:relative;font-size:12px;}
+.slide {width:100%;height:220px;background:#FAFAFA;overflow:hidden;}
+.slide a img {height: 220px;}
+.ofh {overflow: hidden;}
+.ul_list{overflow: hidden;position:relative;width:88%;margin: auto;}
+.ul_list li{width:50%;float:left;}
+.ul_list ol{position: absolute;padding:0;top: 0;left: 50%;display: block;width: 88px;height: 88px;border-radius: 88px;margin-top: 86px;margin-left: -44px;z-index: 10;background: #fff;border: 1px solid rgb(150, 160, 118);background-position: center center;-webkit-background-size: 100% auto;background-size: 100% auto;}
+.ul_list a{color:white;padding-top:88px;display: block;margin:5px;-webkit-background-size:76% auto;background-size:76% 76%;background-repeat: no-repeat;background-position:15px -3px;border-radius: 5px;overflow: hidden;border-right: 1px solid #686969;border-left: 1px solid #dadada;border-bottom: 1px solid #3f3f40;border-top: 1px solid #d6d7d7;}
+.ul_list a label{background-image: radial-gradient(ellipse at center, #0FCAA9,#005548);margin:0;color: white;display:block;height:30px;line-height:30px;text-align:center;overflow:hidden;padding: 0 5px;-webkit-box-sizing:border-box;text-overflow:ellipsis;/*background-image: -webkit-gradient(linear,left top,left bottom,from(#b8b8b8), to(#959696));*/}
+.home-quick {height:70px;text-align:center;padding:15px 0;margin-bottom: 10px;}
+.home-quick li {width:25%;float:left;}
+.home-quick img {width:46px;margin:0 0 6px 0;}
+.home-quick span {display:block;font-size:12px;color: white;}
+.copyright{padding:8px;text-align:center;font-size:13px;color:white;border-top: 1px solid #D6D6D6;margin-top:20px;line-height: 20px;}
+.copyright a{color:white;}
+.bdsc {width: 160px;margin: auto;}
+#CustomerChatFloat{position: fixed; right: 10px; bottom: 10px; z-index: 99999; height: 40px; width: 35px; min-width: 35px; background-image: url(images/MobileChatFloat.png); background-size: 35px; background-position: 0px 0px; background-repeat: no-repeat no-repeat;}
+#logo{z-index: 2;padding: 20px 0 0 20px;position: absolute;}
+#logo p {color:#444;padding: 4px;border-radius: 3px;font-size: 16px;font-weight: bold;margin-bottom: 0;opacity: 0.8;background-color: rgba(213, 211, 211, 0.5);}
+#logo span {color:white;margin-left:5px;}
+#vip{position: absolute;z-index: 2;left: -5px;top:34px;}
