@@ -1,0 +1,91 @@
+<style type="text/css">
+	#webbodycontent{display:none}
+</style>
+<div class="autoheight clearfix" style="background:white;">
+<div class="webw">
+{template 'lay','tag'}				
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<div class="w500 mid" style="line-height:16px;height:16px;">{template 'baidu', 'chip'}</div>
+<div class="divline"></div>
+<div class="graybg autoheight">
+
+<div class="contentleft autoheight pd10" style="width:670px;"> 
+<h1 class="tc">{$title}</h1>
+<br/>
+<br/>
+<div class="graybg pd5">主题 <a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$catid)}">{strip_tags(cat_pos(get_cat($catid), '/'))}</a></span><span class="ml20">发布于[{timetodate($addtime)}]&nbsp;</span>
+{if $copyfrom}&nbsp;&nbsp;<span class="ml20">来源：{if $fromurl}<a href="{$fromurl}" target="_blank">{/if}{$copyfrom}{if $fromurl}</a>{/if}{else}信息来源：{if $item['groupid']=='1'||$item['groupid']=='8'}<a href="{DT_PATH}">天成医疗网</a>{else}{$username} 发布{/if}{/if}</span>{if $author}<span class="ml20">&nbsp;&nbsp;作者：{$author}{/if}&nbsp;&nbsp;浏览次数：<span id="hits">{$hits}</span>	</span>
+</div>
+<div class="divline"></div>
+		<div class="content">
+		<div class="autoheight"><span>类型:&nbsp;&nbsp;{if $stype=='0'}临床科研咨询及注册需求{else}提供临床科研咨询及注册{/if}</span></div><div class="divline"></div>
+		{if $stype=='0'}
+		{if $needclinic}<div class="autoheight"><span>需要服务:&nbsp;&nbsp;{get_field_value('quote','needclinic',$needclinic)}</span></div><div class="divline"></div>{/if}
+		{if $tag}<div class="autoheight"><span>注册产品名称:&nbsp;&nbsp;{$tag}</span></div><div class="divline"></div>{/if}
+		{if $purpose}<div class="autoheight"><span>产品预期用途:&nbsp;&nbsp;{$purpose}</span></div><div class="divline"></div>{/if}
+		{if $scope}<div class="autoheight"><span>拟生产或经营范围:&nbsp;&nbsp;{$scope}</span></div><div class="divline"></div>{/if}
+		{if $place}<div class="autoheight"><span>办公地址、厂房地址:&nbsp;&nbsp;{$place}</span></div><div class="divline"></div>{/if}
+		{if $hopeplace}<div class="autoheight">希望服务商所在地:&nbsp;&nbsp;{$hopeplace}</div><div class="divline"></div>{/if}
+		{else}
+		{if $companyname}<div class="autoheight">公司名称:&nbsp;&nbsp;{$companyname}</div><div class="divline"></div>{/if}
+		{if $areaid}<div class="autoheight">所在地:&nbsp;&nbsp;{area_pos($areaid,'/',0)}</div><div class="divline"></div>{/if}
+		{if $clinicarea}<div class="autoheight">支持区域:&nbsp;&nbsp;{$clinicarea}</div><div class="divline"></div>{/if}
+		{if $cliniccareer}<div class="autoheight">服务业务:&nbsp;&nbsp;{$cliniccareer}</div><div class="divline"></div>{/if}
+		{if $clinictype}<div class="autoheight">服务类型:&nbsp;&nbsp;{get_field_value('quote','clinictype',$clinictype)}</div><div class="divline"></div>{/if}
+		{if $companydate}<div class="autoheight">成立时间:&nbsp;&nbsp;{$companydate}</div><div class="divline"></div>{/if}
+		{if $clinicspecial}<div class="autoheight">业务经历和特长:<br/>{$clinicspecial}</div><div class="divline"></div>{/if}
+		{if $clinicpower}<div class="autoheight">咨询师力量:<br/>{$clinicpower}</div><div class="divline"></div>{/if}
+		{/if}
+		
+		<div style="min-height:180px;">{if $stype==0}需求简介{else}业务简介{/if}:<br/>
+		{$content}</div>
+		<div class="divline"></div>
+		
+		<div class="divline"></div>
+		<table cellpadding="0" cellspacing="1" width="60%" bgcolor="#ffffff" align="center" class="tc" >	
+<tr style="background:whitesmoke;">
+<td width=30% class="pl10" id="baomin">
+{if $fileurl}<a href="{$fileurl}" class="suby" id="baomin">点击下载</a>{/if}
+{if $level == 2}
+<a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid.'&level='.$level)}" class="suby" id="baomin">投标报名</a>
+{else}
+{if $level == 3}
+<a href="#" class="suby" id="baomin">报名结束</a>
+{else}{if $fileurl}<a href="{$fileurl}" class="suby" id="baomin">点击下载</a>{else}
+<a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}" class="suby" id="baomin">发送咨询</a>{/if}
+{/if}
+{/if}
+</td>
+<td width=30% class="pl10"><a href="javascript:Dd('info_favorite').submit();" class="suba">点这收藏信息</a></td>
+<td width=30% class="pl10"><a href="#commet" class="suba">点这给它评论</a></td>
+</tr>
+</table>
+
+
+		<div class="divline"></div>
+		{if $pages}<div class="divline"></div><div class="pages">{$pages}</div>{/if}
+		</div>
+		</div>
+<div class="listright autoheight " style="margin-top:85px;">
+	{template 'contentright', 'chip'}
+</div>
+<br class="clear">
+
+<div class="divline"></div>
+		<div class="np f14 whitebg contentleft" style="width:1000px;">
+		<ul>
+		<li><strong>下一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$addtime&areaid=$cityid&pagesize=1&order=addtime asc&template=list-np", -1)}--></li>
+		<li><strong>上一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime<$addtime&areaid=$cityid&pagesize=1&order=addtime desc&template=list-np", -1)}--></li>
+		</ul>
+		</div>
+</div>
+<div class="divline"></div>
+<div class="whitebg">
+		<dl class="graybg pd10 contentleft" style="width:670px;">
+
+		<dt class="f18"><a href="{$MOD[linkurl]}{$CAT[linkurl]}" rel="nofollow" class="bcolor">同类资质服务</a></dt>
+		<dd class="related"><!--{tag("moduleid=$moduleid&length=44&catid=$catid&condition=status=3 and itemid!=$itemid&areaid=$cityid&pagesize=10&order=edittime desc&cols=2&template=list-table", -2)}--></dd>
+		</dl>
+</div>
+		<div class="divline"></div>
+<dl style="width:670px;" class="contentleft">{template 'comment', 'chip'}</dl>

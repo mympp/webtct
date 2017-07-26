@@ -1,0 +1,40 @@
+	<form action="{$MOD[linkurl]}search.php">
+	<table cellpadding="3" cellspacing="0" class="f12">
+	
+				<tr>
+				<td width=140><input type="hidden" name="vip" value="{$vip}">
+				<input type="hidden" name="action" value="{$action}">
+				<input type="hidden" name="education" value="{$education}" />
+				<input type="hidden" name="hope" value="{$hope}" />
+				<input type="hidden" name="gender" value="{$gender}" />
+				<input type="hidden" name="experience" value="{$experience}" />
+				<input type="hidden" name="catid" value="{$catid}" />
+				&nbsp;<b>服务类型:</b><select name="type"><option value=0>不限</option>{loop $TYPE $k $v}{if $k>0}<option value="{$k}"{if $type==$k} selected{/if}>{$v}</option>{/if}{/loop}</select></td>
+				<td width=360><input type="checkbox" name="thumb" id="thumb" value="1"{if $thumb} checked{/if}/> 有照片&nbsp;&nbsp;&nbsp;
+				<select name="marriage"><option value="">婚姻</option>{loop $MARRIAGE $k $v} {if $k}<option value="{$k}"{if $marriage==$k} selected{/if}>{$v}</option>{/if}{/loop}</select>
+				</td>
+				<td >
+				<select name="areaid">
+			{php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}	
+			<option value="" {if $areaid==''}selected{/if}>选择地区</option>
+			{loop $mainarea $k $v}
+				<option value="{$v[areaid]}" {if $areaid}{if $areaid==$v[areaid]}selected{/if}{/if}>{$v[areaname]}</option>
+            {/loop}
+			</select>
+</td>
+			<td >
+	<b><select name="resumeorder">
+				<option value="0" {if $resumeorder == 0} selected{/if}>默认排序
+					<option value="1" {if $resumeorder == 1} selected{/if}>学历高到低
+					<option value="2" {if $resumeorder == 2} selected{/if}>学历低到高
+					<option value="3" {if $resumeorder == 3} selected{/if}>浏览多到少
+					<option value="4" {if $resumeorder == 4} selected{/if}>浏览少到多
+					<option value="5" {if $resumeorder == 5} selected{/if}>推荐高到低
+					<option value="6" {if $resumeorder == 6} selected{/if}>推荐低到高
+				</select>
+	</td>
+	<td width=80>
+	<input type="submit" value="立刻筛选" class="submit">
+	</td>
+		  </tr>
+</table></form> 

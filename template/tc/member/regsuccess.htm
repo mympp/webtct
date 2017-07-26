@@ -1,0 +1,56 @@
+{template 'header2017'}
+<script>
+Dd('youcan').innerHTML="<a href=\"{DT_PATH}\" class='wcolor h4'>天成网首页</a>";
+</script>
+</div>
+</div>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}tc.reg.min.css" />
+<div class="autoheight pd10 regbg">
+
+<div class="reg-wrap">
+    <!--注册步骤-->
+    <div class="reg-step">
+        <ul class="clearfix">
+            <li class=""><i>1</i>基本资料</li>
+            <li class=""><i>2</i>信息登记</li>
+            <li class="active"><i>3</i>完成注册</li>
+        </ul>
+    </div>
+    <!--注册步骤 end-->
+
+    <!--注册-->
+    <div class="reg-container clearfix">
+        <div class="reg-success">
+            <div class="reg-success-txt">
+                <i class="icon-success"></i><span>{$username}</span><p>恭喜您！注册并手机验证成功！</p>
+            </div>
+            {if $forward}
+            <div class="reg-success-go">
+                <span class="time" id="countDown" >30</span>秒之后页面将自动跳转到您注册之前的页面，<a href="{$forward}" target="_self">点击手动跳转</a>。
+            </div>
+            {/if}
+            <div class="btn-area">
+                <a href="{DT_PATH}" class="button btn-default">天成医疗网首页</a>
+                <a href="{DT_PATH}member/" class="button btn-primary">进入会员中心</a>
+            </div>
+
+        </div>
+
+    </div>
+    <!--注册 end-->
+</div>
+ {if $forward}
+<script>
+    // 倒计时跳转页面
+    var time = 15;
+    function clock(){
+        time--;
+        document.getElementById("countDown").innerHTML = time;
+        if(time==0){
+            window.location.href="{$forward}";
+        }
+    }
+    setInterval("clock();",1000);
+</script>
+{/if}
+{template 'footer2017'}

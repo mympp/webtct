@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* 技术共享侧导航 */
+.all-sort-list{position:relative;border-top:none;padding:13px 3px 3px 0px;width: 243px;height:260px;margin-bottom:10px;background-color:#f8f8f8;}
+.all-sort-list .item{height:58px;border-top:1px solid #fafafa;}
+.all-sort-list .item.bo{border-top:none;} 
+.all-sort-list .item .type-in{height:28px;line-height:20px;border:1px 0px;font-size:14px;width:226px;overflow:hidden;}
+.all-sort-list .item .type-in i{display:block; width: 6px; height: 10px; background:url(image/fuwu/xiaojiao.png) no-repeat; float:right; margin-top:10px;margin-right:25px;}
+.all-sort-list .type{width: 210px;margin:0 auto;}
+.all-sort-list .hover .type{width:219px;position:relative;z-index:13;background:#FFF;border:1px solid #dddddd;border-right:0px;height:52px;margin-left:5px;margin-top:-7px;padding-left:5px;}
+.all-sort-list .hover .type.bor{border:1px solid #dddddd;}
+.all-sort-list .item span{padding:0px 5px;color:#A40000;font-family:"\5B8B\4F53";} 
+.all-sort-list .item a{color:#333;text-decoration:none;}
+.all-sort-list .item a:hover{font-weight:bold;color:#159ed3;}
+
+
+.all-sort-list .item-list{ display:none;  position:absolute; width:660px; min-height:160px;   _height:200px; background:#FFF; left:229px; border:1px solid #dddddd; top:-1px; z-index:10;margin-top:-7px;}
+.all-sort-list .item-list .close{position:absolute; width:26px; height:26px; color:#FFFFFF; cursor:pointer; top:-1px; right:-26px; font-size:20px; line-height:20px; text-align:center; font-family:"Microsoft Yahei";}
+.item-list .subitem{float:left;width:680px;padding:10px 4px 10px 8px;}
+.item-list .subitem dl{border-top:1px solid #EEE;padding:6px 0px;overflow:hidden;zoom:1;}
+.item-list .subitem .fore1{border-top:none;}
+.item-list .subitem dt{float:left;width:140px;line-height:22px;text-align:right;padding:3px 6px 0px 0px;font-weight:700;color:#E4393C;}
+.item-list .subitem dt a{color:#159ed3;}
+.item-list .subitem dd{float:left;width:515px;padding:3px 0px 0px;overflow:hidden;}
+.item-list .subitem dd em{float:left;height:14px;line-height:14px;padding:0px 8px;margin-top:5px;border-left:1px solid #CCC;width:100px;}
+.item-list .subitem dd em a, .item-list .cat-right dd a{color:#666;text-decoration:none;}
+.item-list .subitem dd em a:hover, .item-list .cat-right dd a:hover{font-weight:normal;text-decoration:underline;}
+.item-list .cat-right{float:right;width:210px;}
+.item-list .cat-right dl{width:194px;padding:6px 8px;}
+.item-list .cat-right dd{padding-top:6px;line-height:22px;overflow:hidden;padding:3px 0px 0px;}
+.item-list .cat-right dt{padding:3px 6px 0px 0px;font-weight:700;color:#E4393C; }
+.item-list .cat-right dd a:hover{color:#666;}
+.webmem {background:url("image/job/member.gif") no-repeat scroll left center;float: left; height: 40px;text-indent: 15px;width: 140px;}
+/*.listyes, .opyes {background: #006ca6 none repeat scroll 0 0;}*/
+.dropdown a:hover, .dropdown a.active {background: #006ca6 none repeat scroll 0 0;}
+.dropdown ul { background: #006ca6 none repeat scroll 0 0;display: none;position: absolute;z-index: 100;}

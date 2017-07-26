@@ -1,0 +1,19 @@
+<div class="footer">
+		<div class="footer_content">
+			<ul>
+				<li><a href="{$COM[linkurl]}">网站首页  |</a><li>
+				{php $i=0;}
+				{loop $MENU $k $v}
+				{if $i<7}
+				<li><a href="introduce.html">&nbsp;{$v[name]}  |</a><li>
+				{/if}
+				{php $i=$i+1;}
+				{/loop}
+				<li><a href="{$MODULE[2][linkurl]}">&nbsp;管理入口 |</a><li>
+				<li><a href="{$MODULE[1][linkurl]}page/getbackcompany.php?userid={$userid}">&nbsp;取回管理权</a><li>
+			</ul><br/>
+			<span>©2015 {if $topmenu}{$topmenu}{else}{$COM[company]}{/if} 版权所有 &nbsp;  技术支持：{$DT[sitename]} &nbsp;   {if $show_stats}访问量：{$COM[hits]}{/if}</span>
+		</div>
+	</div>
+ </body>
+</html>

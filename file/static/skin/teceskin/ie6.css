@@ -1,0 +1,101 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+body {_background-image:url('image/spacer.gif');_background-attachment:fixed;}
+#destoon_toolbar {_position:absolute;_top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);}
+.dropdown li a{float:left;}
+/*.dropdown ul{margin-left:-65px;margin-top:40px;}*/
+.webmenulist{height:40px;}
+.siteinfo{margin-top:0px;}
+.siteinfo h3{display:none}
+.webmem a,.webmem a:link,.webmem a:visited,.webmem a:hover,.webmem a:active{color:#fff}
+.webmem a,.webmem a:link,.webmem a:visited,.webmem a:hover,.webmem a:active{color:#fff;}
+.menuy a,.menuy a:visited{color:#fff;}
+.menun a,.menun a:visited{color:#fff;}
+.menuy li a,.menuy li a:visited{color:#ea512b;}
+.menun li a,.menun li a:visited{color:#ea512b;}
+.whyme dd{overflow:hidden;white-space:normal;width:190px;}
+.leftmenu{margin-top:-2px;}
+#comment_div{display:none}
+.div3s dt a:link,.div3s dt a:visited{color:#fff}
+.meiti{width:205px;overflow:hidden;}
+.onediv {_float:left;}
+.intro ul li{float:left}
+.intro ul li .suba{float:left;width:50px;margin-left:5px;}
+.intro ul li ul li{float:none}
+
+/*job 样式开始*/
+#webmid9 .topbg{_height:130px;}
+#webmid9 .siteinfo{height:40px;padding-top:20px;margin-top:20px;}
+#webmid9 .i-list{width:600px;}
+#webmid9 .thememid{margin-left:55px;}
+#webmid9 .weituo{_height:62px;}
+#webmid9 .weituo li{padding:10px 0px 8px 0px;}
+#webmid9 .weituo li p{margin-left:60px;text-indent:10px;}
+#webmid9 .weituo li p font{font-size:12px;padding-left:10px;}
+#webmid9 .weituo li a:hover p{padding-top:10px;padding-bottom:13px;}
+#webmid9 .weituo li a:hover font{display:block;color:#333;font-size:12px;position:relative;left:20px;}
+#webmid9 .w230{width:230px;}
+#webmid9 .webbg{*background-color:#EFEFEF;}
+#webmid9 .whitebg{margin:0;height:auto !important;*background-color:#FFFFFF !important;}
+#webmid9 .grayb{*background-color:#F5F5F5;}
+.resumedd2 li .suba{float:left;width:50px;}
+#webmid9 .listresume li{_float:left}
+#webmid9 .listresume li ul li {float:none;}
+
+/*供应信息*/
+#webmid2 .thememid{margin-left:55px;}
+#webmid2 .siteinfo,#webmid6 .siteinfo{height:40px;padding-top:20px;margin-top:20px;}
+#webmid5 .siteinfo{height:40px;padding-top:20px;margin-top:50px;}
+#webmid2 #buylist li,#webmid2 #selllist li{float:left}
+#webmid2 .buy,#webmid2 .sell{width:492px;overflow:hidden;}
+#webmid6 .sidelist,#webmid5 .sidelist{height:40px;display:block;}
+#webmid6 .sidelist,#webmid5 .sell{float:right;height:800px;}
+#webmid6 .sidelist,#webmid5 .buy{float:left;_height:800px;}
+#webmid6 .sidelist,#webmid5 .new_area{_width:1000px;float:left;}
+#webmid6 .sidelist,#webmid5 .thumb{float:left;}
+#webmid6 .sidelist,#webmid5 .height_nf{height:70px;}
+#webmid6 .sidelist,#webmid5 .height75{height:75px;}
+#webmid6 .sidelist,#webmid5 .height100{height:100px;}
+#webmid6 .sidelist,#webmid5 .webw{padding:0;clear:both;position:relative;}
+#webmid6 .list0 li{height:60px;overflow:hidden;}
+#webmid5 .introright{height:60px;overflow:hidden}.introright ul{margin:0px;}
+#webmid6 .introright{height:45px;overflow:hidden}.introright ul{margin:0px;}
+
+/*厂家品牌入驻*/
+#webmid13 .brand{margin-left:20px;}
+#webmid13 .brandtj{padding-bottom:5px;}
+
+
+
+
+/*医疗资讯*/
+#webmid21 .tjnews{background:url('http://www.tecenet.com/skin/teceskin/image/toutiaobg.gif') top center no-repeat;margin-left:10px;}
+#webmid21 .search2{margin-top:-55px;}
+#webmid21 .height100{_height:100px;}
+#webmid21 .ul li{float:left}
+#webmid21 .themeleft{width:600px;padding:10px;}
+#webmid21 #tjnews{margin:0px;}
+#webmid21 #newslll{margin-left:-5px;width:615px;margin-right:5px;margin-top:-8px;}
+#webmid21 .h50{line-height:16px;}
+/*产品中心*/
+#webmid16 .brand{margin-left:20px; margin-right:20px;height:200px;}
+#webmid16 .sidelist{height:20px;}
+/*下载中心*/
+#webmid15 .dllist{width:550px;}
+#webmid15 .themeright{background:url('http://www.tecenet.com/skin/teceskin/image/png/list.png') #ffffff left  180px no-repeat;width:238px;}
+#webmid15 #fsearch{height:35px;}
+#webmid15 .autoheight .whitebg .pd10{float:left;}
+#downlll{float:left}
+#webmid15 .listright,#webmid15 .contentright{width:238px;overflow:hidden;}
+#webmid15 .contentleft dt,#webmid15 .contentleft dd,#webmid15 .contentleft table{width:710px;}
+/*淘信息中心*/
+#webmid3 #taoxx{float:left;padding-right:5px;}
+/*团购中心*/
+#webmid17 .list_group{width:965px;}
+#webmid17 .list_group li{margin-left:5px;}
+/*分享中心*/
+#webmid10 .listleft li{float:left}
+
+#destoon_space{display:none}

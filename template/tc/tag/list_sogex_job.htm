@@ -1,0 +1,20 @@
+{loop $tags $jk $jv}
+
+<div class="itemProduct">
+{if $jv['thumb'] != ''}
+	<a href="{so_rewrite('detail.php?itemid='.$jv['itemid'].'&infotype=5')}" title="{$jv['title']}" target="_blank">
+	<div class="itemImg">
+	<img src="{$jv['thumb']}" alt="{$jv['title']}">
+	<span>{$jv['title']}</span>
+	</div>
+	</a>
+{/if}
+	<div class="itemProductR"><a href="{so_rewrite('detail.php?itemid='.$jv['itemid'].'&infotype=5')}" title="{$jv['title']}" target="_blank"> <span>{$jv['hits']}</span>人<br>已关注 </a> </div>
+	<div class="itemProductC row" {if $jv['thumb'] == ''}style="padding-left:30px;"{/if}>
+	<a href="{so_rewrite('detail.php?itemid='.$jv['itemid'].'&infotype=5')}" title="{$jv['web_title']}" target="_blank"><h4 class="text-overflow">{$jv['web_title']}</h4></a>
+	{if $jv['address']}<span>所在地区：{$jv['address']}</span>{/if}
+	{if $jv['major']}<span>专业技能：{$jv['major']}</span>{/if}
+	<span>加入时间：{date('Y-m-d',$jv['addtime'])}</span>
+	</div>
+</div>
+{/loop}

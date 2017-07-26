@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>意见反馈_天成医搜</title>
+    <meta name="keywords" content="意见反馈,天成医搜,天成医疗网"/>
+    <meta name="description" content="天成医疗网天成医搜产品意见反馈"/>
+    <link rel="shortcut icon" href="{SO_SKIN}/images/sogex.ico" />
+    <style>
+        *{margin:0;padding:0}
+        body{background:#fff;}
+		.wrap{max-width:640px;margin:0 auto;background-color:#f9f4f4;color:#333;font-family:Arial,Helvetica,sans-serif}
+        .header{position:relative;height:46px;line-height:46px;background-color:#c72721;color:#fff;text-align:center}
+        .header h1{font-size:20px;font-weight:700}
+        .header a.go-back{position:absolute;left:0;top:0;width:46px;height:46px}
+        .header a.go-back:after{content:'';position:absolute;top:50%;left:20px;width:10px;height:10px;margin-top:-5px;border:#fff solid;border-width:1px 1px 0 0;-webkit-transform:rotate(225deg)}
+        .main{margin:10px; padding-bottom:50px;}
+        .main .form-control{display:block;width:100%;margin:0;padding:0;background:#fff;border:1px solid #fff;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:16px;line-height:1.5;padding:10px;font-family:inherit;-webkit-box-shadow:0 1px 2px rgba(0,0,0,.2);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+        .input-group{margin-top:15px}
+        .input-group .input-group-addon{font-size:12px;color:#888}
+        .input-group .input-group-addon h4{display:inline-block;font-size:14px;color:#4f0300}
+        .input-group .form-control{margin-top:10px}
+        .main textarea.form-control{
+            margin-top: 15px;}
+        .btn-area{margin-top:15px}
+        .btn-area input[type=submit]{background-color:#c72721;color:#fff;border:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
+        .tip{color: #c72721;font-size: 14px;background-color: #fff7dd;padding:10px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius:5px;}
+        .footer{background-color:#fff;padding:10px 5px;font-size:10px;text-align:center;color:#555;border-top:1px solid #ccc}
+    </style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<a href="javascript:history.back();" class="go-back"></a>
+			<h1>意见反馈</h1>
+		</div>
+		<div class="main">
+			<form action="feekback.php" method="post"  onsubmit="return check_book(this)">
+				<!--提示-->
+				<div class="tip" id="tip" style="display: none;">
+					请输入您的信息
+				</div>
+				<!--提示 end-->
+				<!--表单-->
+				<div class="input-group">
+					<span class="input-group-addon"><h4>产品类别</h4></span>
+					<select class="form-control" name="module" >
+						<option value="天成医搜" value="sogex">天成医搜</option>
+					</select>
+				</div>
+				<textarea class="form-control" rows="6" name="content" placeholder="输入您的问题或建议，我们会为您改进！"></textarea>
+				<div class="input-group">
+					<span class="input-group-addon"><h4>您的联系方式：</h4>(留下您的QQ/邮箱/电话任选其一，便于我们给您回复，我们会严格保密)</span>
+					<input class="form-control" type="text" name="contact" placeholder="QQ/邮箱/电话任选其一">
+				</div>
+				<div class="btn-area">
+					<input class="form-control" id="" value="提交" type="submit" name="submit">
+				</div>
+				<!--表单 end-->
+			</form>
+		</div>
+		<div class="footer">
+			<p>版权所有 ©广州天成医疗技术股份有限公司</p>
+			<p>CopyRight ©Guangzhou TianCheng Medical Technology Co.,Ltd.</p>
+			<p>联系电话：020-22017999</p>
+		</div>
+	</div>
+    
+
+    <script>
+        function check_book(frm){
+            var tip_box = document.getElementById("tip");
+            var fk_content = frm.elements['content'].value;
+            var fk_contact = frm.elements['contact'].value;
+            if(fk_content.length == 0){
+                tip_box.removeAttribute("style");
+                tip_box.innerHTML = '请输入您的问题或建议。';
+                return false;
+            }
+            /*if(fk_contact.length == 0){
+                tip_box.removeAttribute("style");
+                tip_box.innerHTML = '请输入您的联系方式。';
+                return false;
+            }*/
+            alert('提交成功');
+            return true;
+        }
+    </script>
+
+<div style="display:none;">{template 'so_analytics','include'}</div>
+</body>
+</html>

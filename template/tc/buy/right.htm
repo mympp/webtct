@@ -1,0 +1,36 @@
+<div class="bid-container-side pull-right">
+            <div class="bid-banner">
+                <a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=6" rel="nofollow"><img src="{DT_SKIN}/image/buy/tc-zhaobiao-ad.png" alt="发布招标信息"></a>
+            </div>
+            <!--最新招标信息-->
+            <div class="bid-new-list bid-card mt30">
+                <div class="bid-new-list-head">最新招标信息</div>
+                <div class="bid-new-list-body">
+                    <ul class="bid-new-list-ul">
+                    {loop getNewBuyMsg() $k $v}
+                    <?php if($k > 4) break; ?> 
+                        <li class="bid-new-list-item">
+                            <p class="bid-new-list-item-title">
+                                <a href="{$MODULE[6]['linkurl']}{$v['linkurl']}" target="_blank" title="{$v['title']}">{$v['title']}</a>
+                            </p>
+                            <p class="bid-new-list-item-info clearfix">
+                                <span class="bid-new-list-item-area pull-left">
+                                    <i class="zb-i zb-i-area"></i>
+                                    <em><a href="{$MODULE[6]['linkurl']}{buy_rewrite(['areaid'=>$v['areaid']])}" title="{area_pos($v['areaid'],'')}医疗器械招标采购">{area_pos($v['areaid'],' ')}</a></em>
+                                </span>
+                                <span class="bid-new-list-item-see pull-left">
+                                    <i class="zb-i zb-i-see"></i>
+                                    <em>{$v['hits']}</em>
+                                </span>
+                                <span class="bid-new-list-item-time pull-right">
+                                    <i class="zb-i zb-i-time"></i>
+                                    <em>{date('Y-m-d',$v['addtime'])}</em>
+                                </span>
+                            </p>
+                        </li>
+                    {/loop}
+                    </ul>
+                </div>
+            </div>
+            <!--最新招标信息 end-->
+        </div>

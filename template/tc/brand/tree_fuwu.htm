@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>厂家列表</title>
+<meta name="keywords" content="{$head_keywords}"/>
+<style type="text/css">
+body{margin:0px;padding:0px;font-size:12px;}a{font-size:12px;color:#555;text-decoration:none;}
+.cs{width:230px;}i{color:#ff3300}
+.pages{padding:10px 0 10px 0;text-align:center;font-size:12px;color:#666666;}
+.pages a:link,.pages a:visited,.pages a:active{color:#004499;background:#FFFFFF;border:#9AAFE5 1px solid;padding:1px;text-decoration:none;}
+.pages a:hover{background:#FFFFFF;border:#2E6AB1 1px solid;color:#FF6600;padding:1px;text-decoration:none;}
+.pages strong{background:#2E6AB1;padding:1px;border:#1D589E 1px solid;color:#FFFFFF;}
+.pages_inp{border:#2E6AB1 1px solid;padding:1px;width:30px;text-align:center;color:#666666;}
+.pages_btn{width:26px;background:#F1F7FC;border:#2E6AB1 1px solid;color:#004499;font-weight:bold;font-size:11px;}
+.pages label{background:#FFFFFF;border:#2E6AB1 1px solid;color:#004499;padding:1px 5px 1px 5px;}
+.pages label em{color:red;font-weight:bold;font-style:normal;}
+.pages label span{font-weight:bold;}
+.pages cite {font-style:normal;}
+.property_h{border-bottom:#FFFFFF 1px solid;text-align:left;background:url('spacer.gif');color:#006699;font-weight:bold;padding-left:15px;}
+.property_l{padding:0 20px 0 20px;color:#006699;}
+</style>
+</head>
+<body>
+{php $tree=$_REQUEST['tree'];}
+{if $tree=='1'}
+{php $kw=$_REQUEST['kw'];$list=$_REQUEST['list'];$areaid=$_REQUEST['areaid'];$tc=$_REQUEST['tc'];$order=$_REQUEST['order'];$day=$_REQUEST['day'];$vip=$_REQUEST['vip'];$stype=$_REQUEST['stype'];$kcatid=$_REQUEST['kcatid'];}
+{if !$stype}
+{php $stype=9;}
+{/if}
+<style type="text/css">
+#catid{height:auto;padding:none;}select{margin:0px;}
+</style>
+<div style="background:#fafafa;" class="autoheight pd10">
+<br>
+<table cellpadding="5" cellspacing="1" bgcolor="#d8dfef" width="850" align="center" style="font-size:12px">
+<tr>
+	<td width=100 align="right"  bgcolor="#f7f9fd">
+  <strong>请选厂家分类</strong>
+	</td>
+	<form method="get" action=""><td bgcolor="#f7f9fd" >
+<input type="hidden" name="tree" value="1">
+<input type="hidden" name="stype" value="{$stype}">
+<input type="hidden" name="areaid" value="{$areaid}">
+<input type="hidden" name="tc" value="{$tc}">
+<input type="hidden" name="areaid" value="{$areaid}">
+
+<input type="hidden" name="list" value="{$list}">
+<input type="hidden" name="order" value="{$orderv}">
+<input type="hidden" name="day" value="{$day}">
+<input type="hidden" name="vip" value="{$vip}">	
+	<select name="id1">
+<option value="0">请选择</option>
+{php $tagss = tag("moduleid=13&table=category&condition=moduleid=13 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+{loop $tagss $i $t}
+<option value="{$t[catid]}" {if $id1==$t[catid]}selected 
+{php $item=$t[item];$scatname=$t[catname];}
+{/if}>{$t[catname]}</option>
+{/loop}
+</select>
+<input type="text" name="kw" value="{$kw}">
+<input type="submit" value="搜索厂商">
+
+
+</td></form>
+</tr>
+<tr>
+	<td bgcolor="#fcfdfe"  align="right"  height=200 width=100 valign="top"><strong>请选择某厂商</strong>
+	</td>
+	<td bgcolor="#fcfdfe" valign="top" align="center">
+
+
+{if $kw}
+{php $tj="and keyword like '%".$kw."%'"}
+{/if}
+<!--{tag("moduleid=13&condition=status=3 ".$tj." &catid=$id1&pagesize=21&page=$page&showcat=1&showpage=1&order=level desc,pnum desc&template=thumb-brand-select_fuwu&checked=$checked&debug=0")}-->
+{if $i>0}
+	<hr color="#c4d1f0" size=0><br><a href="{$MODULE[16][linkurl]}search_fuwu.php?bcatid={$id1}&stype={$stype}&kw={$kw}&list={$list}&catid={$catid}&kcatid={$kcatid}" target="_parent" title="{$t[title]}" style="padding:6px;border:1px #b2b2b2 solid;background:#f3f3f3;;font-size:14px;margin-bottom:10px;">直接打开“<b style="color:#d13c0a">{$scatname}</b>”所有厂家产品数据</a>
+{/if}
+<br>
+	</td>
+</tr>
+</table>
+<br>
+</div>
+{else}
+<table cellpadding="0" cellspacing="0">
+<tr height="30" valign="top">
+	<td><select onchange="location='tree_fuwu.php?id1='+this.value;window.parent.document.getElementById('bcatid').value=catid.value" id="catid">
+<option>请选择</option>
+{php $tagss = tag("moduleid=13&table=category&condition=moduleid=13 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+{loop $tagss $i $t}
+<option value="{$t[catid]}" {if $id1==$t[catid]}selected 
+{php $item=$t[item];}
+{/if}>{$t[catname]}</option>
+{/loop}
+</select></td>
+	<td style="padding-left:5px;">{if $id1>0}
+{if $item>0}
+<select onchange="location='tree_fuwu.php?id1={$id1}&itemid='+this.value;window.parent.document.getElementById('factory').value=itemid.options[itemid.selectedIndex].innerHTML;window.parent.document.getElementById('pbrand').value=itemid.options[itemid.selectedIndex].innerHTML;window.parent.document.getElementById('factoryid').value=itemid.value;" id="itemid">
+<option>请选择厂家</option>
+{php $tagss = tag("moduleid=13&condition=status=3&catid=$id1&pagesize=".$item."&order=level desc,pnum desc&template=null&debug=0&showcat=1")}
+{loop $tagss $i $t}
+<option value="{$t[itemid]}" {if $itemid==$t[itemid]}selected{/if}>{$t[title]}</option>
+{/loop}
+</select>
+<a href="{$MODULE[2][linkurl]}my.php?mid=13" target="_parent" >若无你要的厂家？点击这里添加！</a>
+{else}
+<script type="text/javascript">
+window.parent.document.getElementById('factory').value="";
+window.parent.document.getElementById('factoryid').value="";
+window.parent.document.getElementById('pbrand').value="";
+</script>
+<a href="{$MODULE[2][linkurl]}my.php?mid=13" target="_parent" >该类别没厂家，点击这里添加！</a>
+{/if}
+{/if}</td>
+</tr>
+</table>
+
+{/if}
+</body>
+</html>

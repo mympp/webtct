@@ -1,0 +1,34 @@
+{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=60&order=listorder ASC&template=null&value=$value&checkonclick=$checkonclick")}
+<script type="text/javascript">{if $value}var cates='{$value}';{else}var cates='{$cates}';{/if}</script>
+{if !$checkonclick}
+{php $checkonclick="onclick='caddvalue(this.value)'";}
+{/if}
+															{loop $tagss $i $t}
+															<label id="label{$cats}{$t[catid]}"> <input title="{$t[catname]}" type="checkbox" id="{$cats}{$t[catid]}" name="post[{$cats}id]" 	value="{$t[catid]}"  {$checkonclick}>{$t[catname]}</label>
+																<script type="text/javascript">
+																if(cates.indexOf(',{$t[catid]},')>=0){Dd('{$cats}{$t[catid]}').checked='true';}
+																if('{$t[catid]}'=='{$catid}'){Dd('label{$cats}{$t[catid]}').className='dsn'}
+																</script>
+															{/loop}
+
+
+															<script type="text/javascript">
+															function caddvalue(val)
+															{
+																if(Dd('{$cats}'+val).checked==true)
+																{
+																	if(Dd('to{$cats}').value==''||Dd('to{$cats}').value==0){
+																	Dd('to{$cats}').value=','+val+',';
+																	}
+																	else
+																	{Dd('to{$cats}').value=Dd('to{$cats}').value+val+',';}
+																}
+																else
+																{if(Dd('to{$cats}').value!=''){
+																Dd('to{$cats}').value=Dd('to{$cats}').value.replace(val+',',',');
+																Dd('to{$cats}').value=Dd('to{$cats}').value.replace(',,',',');
+																}
+																
+																}
+															}
+															</script>

@@ -1,0 +1,319 @@
+.tc-gs-i{
+    position: relative;
+    display: inline-block;
+    background-image: url(./image/company/tc-gongsi-icons.png);
+    background-repeat: no-repeat;
+}
+.gs-layout .side{
+    width:280px;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+.cmp-card{
+    margin-bottom:30px;
+    border:1px solid #eaeaea;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.cmp-card:hover{
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, -1px, 0);
+    transform: translate3d(0, -1px, 0);
+    border-color: #ddd;
+}
+.cmp-info{
+    width:677px;
+}
+
+.cmp-logo{
+    padding:10px;
+    border-right:1px solid #eaeaea;
+}
+.cmp-logo img{
+    width:100px;
+    height: 100px;
+}
+.cmp-info .cmp-logo-btn{
+    display: block;
+    height:24px;
+    margin:2px 0 0 -1px;
+    font-size: 12px;
+    text-align: center;
+    line-height:24px;
+    color: #777;
+    border:1px solid #eaeaea;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+.cmp-info .cmp-logo-btn:hover{
+    background-color: #e56639;
+    border-color: #e56639;
+    color: #fff;
+}
+
+.cmp-main{
+    width:521px;
+    padding: 15px 15px 10px 20px;
+}
+.cmp-main i.vip,.cmp-main i.cmp-v{
+    top:1px;
+    width:32px;
+    height:16px;
+    margin-left:5px;
+}
+.cmp-main i.vip{
+    background-position: -100px -100px;
+}
+.cmp-main i.cmp-v{
+    background-position: -100px -120px;
+}
+.cmp-main h2{
+    font-size: 20px;
+    padding-bottom:5px;
+}
+.cmp-main .tags{
+    margin:5px 0;
+}
+.cmp-main .tags>a{
+    display: inline-block;
+    padding:4px 8px;
+    margin-right:3px;
+    font-size: 12px;
+    font-style: normal;
+    border:1px solid #e56639;
+    color: #e56639;
+}
+.cmp-main>p{
+    line-height:30px;
+    color: #666;
+}
+.cmp-main>p>b{
+    font-weight: normal;
+    color: #888;
+}
+.cmp-product{
+    height: 203px;
+    position: relative;
+    padding-top:10px;
+    border-left:1px solid #eaeaea;
+}
+.cmp-product .bd li{
+    width: 200px;
+}
+.cmp-product .bd img{
+    width:200px;
+    height:150px;
+    background: url("http://www.tecenet.com/skin/teceskin/image/lazy-load.gif") no-repeat center center;
+}
+.cmp-product .bd p{
+    margin-top:6px;
+    padding:0 8px;
+    text-align: center;
+    font-size: 13px;
+}
+.cmp-product .hd{
+    text-align: center;
+    margin-top:8px;
+}
+.cmp-product .hd li{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin:0 6px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    text-indent: -9999em;
+    _zoom: 1;
+    background-color: #b0b0b0;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    cursor: pointer;
+}
+.cmp-product .hd li:hover{
+    background: #ff6700;
+}
+.cmp-product .hd li.on{
+    border-color: #ff6700;
+    background-color: #fff;
+}
+.cmp-product .prev,.cmp-product .next{
+    opacity: 0;
+    position: absolute;
+    top:50%;
+    width:20px;
+    height:48px;
+    margin-top:-24px;
+    background-color: #333;
+    background-color: rgba(0,0,0,.6);
+
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+.cmp-product:hover .prev,.cmp-product:hover .next{
+    opacity: 1;
+}
+.cmp-product .prev:hover,.cmp-product .next:hover{
+    background-color: rgba(0,0,0,.8);
+}
+.cmp-product .prev{
+    background-position: -60px -100px;
+    left:0;
+}
+.cmp-product .next{
+    background-position: -80px -100px;
+    right:0;
+}
+.cmp-product .cmp-product-more{
+    display: none;
+    position: absolute;
+    right:-20px;
+    top:-1px;
+    width:20px;
+    height:60px;
+    padding:5px 0 0 0;
+    font-size: 12px;
+    text-align: center;
+    background-color: #aaa;
+    color: #fff;
+}
+.cmp-product .cmp-product-more:hover{
+    background-color: #e56639;
+}
+.cmp-product .cmp-product-more:before{
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left:0;
+    width: 0;
+    height: 0;
+    border:10px solid transparent;
+    border-left-color: #aaa;
+    border-top-color: #aaa;
+}
+.cmp-product .cmp-product-more:hover:before{
+    border-left-color: #e56639;
+    border-top-color: #e56639;
+}
+.cmp-product:hover .cmp-product-more{
+    display: block;
+}
+
+.cmp-list{
+    padding:10px 0;
+    background: #fafafa;
+    border-top:1px solid #eaeaea;
+}
+.cmp-list li{
+    position: relative;
+    float: left;
+    width: 19.5%;
+    font-size: 12px;
+}
+.cmp-list li:before{
+    content: '';
+    position: absolute;
+    left:0;
+    top: 7px;
+    width:1px;
+    height:30px;
+    background-color: #eaeaea;
+}
+
+.cmp-list li:first-child:before{
+    display: none;
+}
+.cmp-list li>p{
+    text-align: center;
+    line-height:1.8;
+    color: #8f6d38;
+    font-size:13px;
+}
+.cmp-list li>p:first-child{
+    font-size:12px;
+    color: #888;
+}
+.cmp-list li>p>a{
+    padding-bottom: 2px;
+    background: linear-gradient(90deg,#aaa 66%, transparent 0) repeat-x;
+    background-size: 0.2em 1px;
+    background-position: 0 18px;
+    color: #8f6d38;
+}
+.cmp-card-nopic .cmp-info{
+    width: 100%;
+}
+.cmp-card-nopic .cmp-main{
+    width:720px;
+}
+
+.side-cmp{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #f1f1f1;
+}
+.side-cmp:first-child{
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+.side-cmp-log{
+    width: 48px;
+    height: 48px;
+    border:1px solid #eaeaea;
+    border-radius:5px;
+}
+.side-cmp-bd{
+    margin-left:60px;
+}
+.side-cmp .title{
+    font-size: 14px;
+    padding:5px 0;
+}
+
+.side-cmp .tags i{
+    display: inline-block;
+    font-size: 12px;
+    font-style: normal;
+    color: #888;
+}
+.news-list li{
+    position: relative;
+    padding: 0 0 0 14px;
+    margin-top:20px;
+}
+.news-list li:first-child{
+    margin-top:0;
+}
+.news-list li:before{
+    content: '';
+    position: absolute;
+    left:2px;
+    top: 6px;
+    width: 4px;
+    height: 4px;
+    background-color: #e56639;
+    border-radius:50%;
+}
+.news-list .title{
+    padding-bottom:5px;
+}
+.news-list li span{
+    font-size: 12px;
+    color: #888;
+}
+.news-list i.tc-gs-i{
+    top:2px;
+    width: 14px;
+    height: 14px;
+    margin-right:4px;
+}
+.news-list i.tc-gs-i.time{
+    background-position: -80px 0;
+}
+.news-list i.tc-gs-i.view{
+    background-position: -100px 0;
+}
+
+

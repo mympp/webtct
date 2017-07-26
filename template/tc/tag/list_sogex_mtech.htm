@@ -1,0 +1,11 @@
+{loop $tags $k $v}
+<a href="{so_rewrite('mdetail.php?itemid='.$v['itemid'].'&infotype=7')}" class="item">
+	<h4>{$v['title']}</h4>
+	<ul class="science-info">
+	<li>应用领域：<span><?php if($v['usearea']){echo $v['usearea'];}else{echo '未填';}?></span></li>
+	<li>所处阶段：<span><?php if($v['stage']){echo $v['stage'];}else{echo '未填';}?></span></li>
+	<li>浏览量：<span>{$v['hits']}</span></li>
+	</ul>
+	<div class="abst">{$v['description']}</div>
+</a>
+{/loop}

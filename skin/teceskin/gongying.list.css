@@ -1,0 +1,333 @@
+.default-layout .main{
+    width: 900px;
+    margin-left:-20px;
+}
+.default-layout .side{
+    width: 280px;
+    padding: 10px;
+    background-color: #F5F5F5;
+}
+/*icons*/
+.transition{
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+.p-i{
+    position: relative;
+    display: inline-block;
+    background-image: url("image/sell/tc-gongying-icons.png");
+    background-repeat: no-repeat;
+}
+.q-a i{
+    width: 20px;
+    height: 20px;
+}
+.q-a i.v-company{
+    background-position: 0 -140px;
+}
+.q-a i.v-tel{
+    background-position: -20px -140px;
+}
+.q-a i.v-email{
+    background-position: -40px -140px;
+}
+.q-a i.v-recommend{
+    background-position: -60px -140px;
+}
+.q-a i.dis.v-company{
+    background-position: 0 -160px;
+}
+.q-a i.dis.v-tel{
+    background-position: -20px -160px;
+}
+.q-a i.dis.v-email{
+    background-position: -40px -160px;
+}
+.q-a i.dis.v-recommend{
+    background-position: -60px -160px;
+}
+
+.gy-card{
+    float: left;
+    position: relative;
+    width:203px;
+    height: 258px;
+    margin: 20px 0 0 20px;
+    border:1px solid #eaeaea;
+}
+.gy-card:hover{
+    border-color: #e56639;
+}
+.gy-card .card-img img{
+    width:203px;
+    height:152px;
+}
+.gy-card .card-name{
+    padding:8px 10px 5px 10px;
+    font-size: 14px;
+}
+.gy-card .card-name a{
+    color: #444;
+}
+.gy-card .card-info{
+    padding:0 10px 5px 10px;
+    line-height:30px;
+}
+.gy-card:hover .card-info .price{
+    display: block;
+    position: absolute;
+    left:0;
+    top:182px;
+    width: 100%;
+    height:36px;
+    background-color: #e56639;
+    line-height:36px;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: .25s;
+    animation-duration: .25s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.gy-card:hover .card-info .price em{
+    color: #fff;
+    margin-left:10px;
+}
+.gy-card:hover .card-info .price span{
+    display: inline-block;
+    color: #fff;
+    margin-left:10px;
+    font-size: 12px;
+}
+.gy-card:hover .mark-num{
+    height: 31px;
+    visibility: hidden;
+}
+.gy-card .card-info .price em{
+    font-size: 16px;
+    color: #c10700;
+    font-style: normal;
+}
+.gy-card .card-info .price span{
+    display: none;
+}
+.gy-card .card-info .mark-num{
+    font-size: 12px;
+    color: #888;
+}
+.gy-card .card-ft{
+    height: 20px;
+    border-top:1px solid #eaeaea;
+    padding:10px;
+    line-height:20px;
+}
+.gy-card .card-ft .local{
+
+    font-size:12px;
+    color: #666;
+}
+/*qiu*/
+.qiu-card{
+    position: relative;
+    float: left;
+    width:388px;
+    margin: 20px 0 0 20px;
+    padding:20px;
+    border:1px solid #eaeaea;
+}
+.qiu-card:hover{
+    border-color: #ccc;
+    box-shadow: 1px 2px 5px rgba(0,0,0,.1);
+    -webkit-transform: translateY(-4px);
+    -moz-transform: translateY(-4px);
+    -ms-transform: translateY(-4px);
+    -o-transform: translateY(-4px);
+    transform: translateY(-4px);
+}
+.qiu-card .card-hd{
+
+}
+.qiu-card .card-hd>*{
+    display: inline-block;
+}
+.qiu-card .card-hd h3{
+    display: block;
+    overflow: hidden;
+    margin-bottom:8px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space:nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.qiu-card .card-hd span{
+    padding:2px 5px;
+    border:1px solid #23b576;
+    font-size: 12px;
+    color: #23b576;
+    margin-right:10px;
+}
+.qiu-card .card-bd{
+
+}
+.qiu-card .card-info{
+    margin-top:10px;
+}
+.qiu-card .card-info li{
+    display: inline-block;
+    width: 190px;
+    overflow: hidden;
+    font-size: 13px;
+    line-height:30px;
+}
+.qiu-card .card-info li > span{
+    color: #888;
+    margin-right:10px;
+}
+.qiu-card .card-info li > em{
+    color: #555;
+    font-style: normal;
+}
+.qiu-card .card-info li > em > a{
+    color: #555;
+}
+.qiu-card .card-info li > em > a:hover{
+    color: #e56639;
+    text-decoration: underline;
+}
+.qiu-card .card-contact{
+    font-size: 12px;
+    color: #888;
+    margin-top:10px;
+}
+.qiu-card .card-contact .btn{
+    display: inline-block;
+    font-size: 14px;
+    padding:8px 10px;
+    border:1px solid #e56639;
+    color: #e56639;
+    text-align: center;
+}
+.qiu-card .card-contact .btn > i{
+    top:2px;
+    width: 14px;
+    height: 14px;
+    margin-right:8px;
+    background-position: -60px -20px;
+}
+.qiu-card .card-contact .btn:hover{
+    border:1px solid #e56639;
+    background-color: #e56639;
+    color: #fff;
+}
+.qiu-card .card-contact .btn:hover > i{
+    background-position: -80px -20px;
+}
+.qiu-card .card-contact > p {
+    margin-top:10px;
+}
+/*side*/
+.side-btn .go-btn{
+    display: block;
+    height: 50px;
+    background-color: #23b576;
+    color: #fff;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+}
+.side-btn .go-btn:hover{
+    background-color: #239d76;
+}
+.side-btn .go-btn:focus{
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+.side .count{
+    border:1px solid #eaeaea;
+}
+.side .count li{
+    height:78px;
+    padding: 1px;
+    background: url("image/sell/tc-gongying-nums-bg.png") no-repeat right -80px #fff;
+}
+.side .count li:first-child{
+    background-position: right 0;
+    border-bottom: 1px solid #eaeaea;
+}
+.side .count li i{
+    margin: 0 3px;
+    font-size: 16px;
+    font-family:Georgia;
+    font-style: normal;
+    color: #c10700;
+}
+.side .count p{
+    margin:12px 15px;
+    font-size: 14px;
+    line-height: 2;
+    color: #666;
+}
+
+.txt-marquee li{
+    height: 36px;
+    line-height: 36px;
+}
+.txt-marquee li .name{
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.txt-marquee li .date{
+    font-size: 12px;
+    color: #888;
+}
+
+/*rank-list*/
+.rank-list{
+    padding:0 15px;
+}
+.rank-item{
+    margin-bottom: 15px;
+    padding-top:15px;
+    border-top:1px dashed #eaeaea;
+}
+.rank-item:first-child{
+    border-top: none;
+}
+.rank-item .num{
+    width:28px;
+    font-size: 24px;
+    line-height:41px;
+    font-family:Georgia,Arial;
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+.rank-item:nth-child(1) .num,.rank-item:nth-child(2) .num,.rank-item:nth-child(3) .num{
+    color: #e56639;
+}
+.rank-item .info{
+    width:210px;
+}
+.rank-item .info>h4{
+    display: block;
+    font-size: 14px;
+}
+.rank-item .info>p{
+    margin-top:5px;
+}
+.rank-item .info>p>span{
+    font-size: 12px;
+    display: inline-block;
+    padding:2px 5px;
+    margin-right: 5px;
+    color: #666;
+    border:1px solid #eaeaea;
+}
+
+

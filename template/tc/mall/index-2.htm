@@ -1,0 +1,225 @@
+{php $headertp=$module;$CSS=array('mall2');$index='yes';$ztitle='国内最大线上医疗产品服务平台：融合在线医疗招标-线下设备采购-在线结算交易一站式服务';}
+{template 'header'}
+<script language="javascript" type="text/javascript" src="{DT_PATH}file/script/MSClass.js"></script>
+<div class="divline"></div>
+		<dl class="mdiv">
+			 <dt style="background:#e8754e;" class="tc pt5 h45"><a href="{$MODULE[6][linkurl]}"><img src="{DT_SKIN}image/mall/title1.png"></a></dt>
+						<dd style="width:695px;height:465px;" class="fl whitebg">
+						<div class="catname">
+								<ul>
+										{php $tagss = tag("moduleid=6&table=category&fields=catid,catname,style,item,child&condition=moduleid=6 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<li><img src="{DT_SKIN}image/+.gif" class="mid"> <a href="{$MODULE[6][linkurl]}{rewrite('list.php?catid='.$t[catid])}">{set_style($t[catname],$t[style])}<span class="f12">({$t[item]})</span></a></li>
+															{/loop}
+								</ul>
+						</div>
+						<div id="fwgy">
+							<ul class="pl5 buyul">
+									{php $buys=tag("moduleid=6&condition=status=3&pagesize=10&order=edittime desc&template=null&debug=0&showcat=1")}
+									 {loop $buys $z $k}
+										<li class="whitebg cut autoheight">
+										{if $k[thumb]}<div class="fl ml5  mr10"><a href="{$k[linkurl]}" target="_blank" title="{$k[alt]}"><img onerror="this.src='{DT_SKIN}image/nopic.gif'" src="{$k[thumb]}" width="90" height="60" class="thumb"/></a></div>{/if}
+										<dl class="autoheight fl " style="width:{if $k[thumb]}555{else}670{/if}px;" >
+										<dt class="mb5">
+										<span class="fr mr10 f12 hcolor">{if $k[status]>3}
+										[过期截止]
+										{else}
+										{if $k[totime]} [ {timetodate($k[totime], 3)} 截止]{else}长期有效{/if}
+										{/if}</span>
+										<span class="lenstr" style="width:{if $k[thumb]}420{else}520{/if}px;" ><a href="{$k[linkurl]}" target="_blank"  title="{$t[alt]}">{$k[title]}</a></span>
+										</dt>
+										<dd>
+												<div class='hcolor f12 lh18'>{if $k[buycode]}采购编号：{$k[buycode]}&nbsp;{/if}{$k[introduce]}</div>
+												<div><span>所在地区 {area_pos($k[areaid], '')}  &nbsp;&nbsp;信息分类 {$k[catname]}</span><span class="ml10">{timetodate($k[edittime],3)}</span><span class="fr mr10">{$k[hits]}人关注</span></div>
+										</dd>
+										</dl>
+										</li>
+										{/loop}		
+							</ul>
+						</div>
+						</dd>
+						<script type="text/javascript">
+						new Marquee("fwgy",0,20,740,425,20,3000,3000,72)
+						</script>
+						<dd style="width:300px;background:#fce8e0;height:465px;" class="fl">
+
+								<div  class="tc f16 b pd5 rcolor">采购产品排行</div>
+											{php $tags = tag("table=mall_order&moduleid=16&condition=status>1&pagesize=11&order=amount desc&template=null&debug=0&showcat=1")}
+											{if $tags}
+													<ul class="ullist2" id="cgzc">
+													{loop $tags $i $t}
+													<li id="cgzcli{$i+1}"><span class="lenstr wcolor {if $i<3}redico{else}grayico{/if}">{$i+1}</span><font class="lenstr"><a href="{$MODULE[16][linkurl]}{rewrite('show.php?itemid='.$t[mallid])}" target="_blank" title="{$t[alt]}">{$t[title]}</a></font></li>
+													{/loop}
+													</ul>
+											{else}
+											没有任何产品采购信息
+											{/if}
+												<script type="text/javascript">
+												var k=$("#cgzc li").length;
+												Dd('cgzcli'+k).style.borderBottom='0px';
+												$("#cgzc>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+												</script>
+						</dd>
+				<div class="divline"></div>
+		</dl>
+
+<dl class="mdiv">
+			 <dt style="background:#028ABC;" class="tc pt5 h45"><a href="{$MODULE[16][linkurl]}index.php?action=mall"><img src="{DT_SKIN}image/mall/title4.png"></a></dt>
+						<dd style="width:694px;height:466px;" class="fl whitebg mall">
+						{php $tagt = tag("moduleid=$moduleid&fields=itemid,linkurl,thumb,groupid,price,qq,vip,username,company,title&condition=status=3 and bcatid=859 and thumb<>''&pagesize=6&order=level desc&template=thumb-mall2&debug=0&nocheck=1&lazy=$lazy&showcat=0")}		
+						</dd>
+			<dd style="width:300px;background:#D6F2FC;height:466px;" class="fl">
+
+							<div  class="tc f16 b pd5 rcolor">最新新增产品</div>
+										{php $tagt = tag("moduleid=16&fields=groupid,price,linkurl,title&condition=status=3 and vip>0 &pagesize=11&order=edittime desc&template=null&debug=0&showcat=1")}
+										{if $tags}
+												<ul class="ullist2" id="cgzc">
+												{loop $tagt $i $t}
+												<li id="cgzcli{$i+1}"><span class="lenstr wcolor {if $i<3}redico{else}grayico{/if}">{$i+1}</span><font class="lenstr"><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{$t[title]}</a></font></li>
+												{/loop}
+												</ul>
+										{else}
+											没有任何产品采购信息
+											{/if}
+											<script type="text/javascript">
+											var k=$("#cgzc li").length;
+											Dd('cgzcli'+k).style.borderBottom='0px';
+											$("#cgzc>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+											</script>
+			</dd>
+
+<div class="divline"></div>
+</dl>
+
+<dl class="mdiv">
+			 <dt style="background:#62acd5;" class="tc pt5 h45"><a href="{$MODULE[4][linkurl]}"><img src="{DT_SKIN}image/mall/title2.png"></a></dt>
+						<dd style="width:694px;height:423px;" class="fl whitebg tjbrand">
+						{php $tagt = tag("moduleid=4&condition=vip>0 and groupid=7&pagesize=12&order=vip desc,pnum desc&template=null&debug=0&showcat=0")}		
+						<ul>
+							{loop $tagt $z $t}															
+							<li class="cut">
+								<a href="{$t[linkurl]}" title="{$t[company]}"><div class="intor"><img src='{$t[thumb]}' alt='{$t[alt]}' onerror="this.src='{DT_SKIN}image/nopic.gif'" width="145" height="110" align="center" class="mid">
+								<div class="lenstr f12">{$t[company]}</div></div></a></li>
+							{/loop}	
+						</ul>
+						</dd>
+						<dd style="width:300px;background:#e2f8fa;height:423px;" class="fl">
+						<div class="com_map">
+						<img src="{DT_SKIN}image/mall/map.jpg" border="0" usemap="#Map" />
+								<map name="Map" id="Map">
+								<area shape="rect" coords="178,237,204,251" href="{$MODULE[4][linkurl]}search-htm-areaid-22.html" target="_blank" title="海南企业">
+								<area shape="rect" coords="195,202,221,216" href="{$MODULE[4][linkurl]}search-htm-areaid-20.html" target="_blank" title="广东企业">
+								<area shape="rect" coords="205,221,231,235" href="{$MODULE[4][linkurl]}search-htm-areaid-34.html" target="_blank" title="澳门企业">
+								<area shape="rect" coords="165,205,191,219" href="{$MODULE[4][linkurl]}search-htm-areaid-21.html" target="_blank" title="广西企业">
+								<area shape="rect" coords="234,214,260,228" href="{$MODULE[4][linkurl]}search-htm-areaid-33.html" target="_blank" title="香港企业">
+								<area shape="rect" coords="126,196,152,210" href="{$MODULE[4][linkurl]}search-htm-areaid-25.html" target="_blank" title="云南企业">
+								<area shape="rect" coords="251,199,277,213" href="{$MODULE[4][linkurl]}search-htm-areaid-32.html" target="_blank" title="台湾企业">
+								<area shape="rect" coords="221,187,247,201" href="{$MODULE[4][linkurl]}search-htm-areaid-14.html" target="_blank" title="福建企业">
+								<area shape="rect" coords="154,182,180,196" href="{$MODULE[4][linkurl]}search-htm-areaid-24.html" target="_blank" title="贵州企业">
+								<area shape="rect" coords="256,170,282,184" href="{$MODULE[4][linkurl]}search-htm-areaid-12.html" target="_blank" title="浙江企业">
+								<area shape="rect" coords="221,171,247,185" href="{$MODULE[4][linkurl]}search-htm-areaid-15.html" target="_blank" title="江西企业">
+								<area shape="rect" coords="191,176,217,190" href="{$MODULE[4][linkurl]}search-htm-areaid-19.html" target="_blank" title="湖南企业">
+								<area shape="rect" coords="162,164,188,178" href="{$MODULE[4][linkurl]}search-htm-areaid-4.html" target="_blank" title="重庆企业">
+								<area shape="rect" coords="249,154,275,168" href="{$MODULE[4][linkurl]}search-htm-areaid-11.html" target="_blank" title="江苏企业">
+								<area shape="rect" coords="220,155,246,169" href="{$MODULE[4][linkurl]}search-htm-areaid-13.html" target="_blank" title="安徽企业">
+								<area shape="rect" coords="191,149,217,163" href="{$MODULE[4][linkurl]}search-htm-areaid-18.html" target="_blank" title="湖北企业">
+								<area shape="rect" coords="127,154,153,168" href="{$MODULE[4][linkurl]}search-htm-areaid-23.html" target="_blank" title="四川企业">
+								<area shape="rect" coords="54,143,80,157" href="{$MODULE[4][linkurl]}search-htm-areaid-26.html" target="_blank" title="西藏企业">
+								<area shape="rect" coords="262,139,288,153" href="{$MODULE[4][linkurl]}search-htm-areaid-2.html" target="_blank" title="上海企业">
+								<area shape="rect" coords="188,132,214,146" href="{$MODULE[4][linkurl]}search-htm-areaid-17.html" target="_blank" title="河南企业">
+								<area shape="rect" coords="144,130,170,144" href="{$MODULE[4][linkurl]}search-htm-areaid-27.html" target="_blank" title="陕西企业">
+								<area shape="rect" coords="148,110,174,124" href="{$MODULE[4][linkurl]}search-htm-areaid-30.html" target="_blank" title="宁夏企业">
+								<area shape="rect" coords="101,108,127,122" href="{$MODULE[4][linkurl]}search-htm-areaid-29.html" target="_blank" title="青海企业">
+								<area shape="rect" coords="105,89,131,103" href="{$MODULE[4][linkurl]}search-htm-areaid-28.html" target="_blank" title="甘肃企业">
+								<area shape="rect" coords="49,77,75,91" href="{$MODULE[4][linkurl]}search-htm-areaid-31.html" target="_blank" title="新疆企业">
+								<area shape="rect" coords="239,120,265,134" href="{$MODULE[4][linkurl]}search-htm-areaid-16.html" target="_blank" title="山东企业">
+								<area shape="rect" coords="202,107,228,121" href="{$MODULE[4][linkurl]}search-htm-areaid-5.html" target="_blank" title="河北企业">
+								<area shape="rect" coords="165,93,191,107" href="{$MODULE[4][linkurl]}search-htm-areaid-6.html" target="_blank" title="山西企业">
+								<area shape="rect" coords="229,90,255,104" href="{$MODULE[4][linkurl]}search-htm-areaid-3.html" target="_blank" title="天津企业">
+								<area shape="rect" coords="194,85,220,99" href="{$MODULE[4][linkurl]}search-htm-areaid-1.html" target="_blank" title="北京企业">
+								<area shape="rect" coords="253,75,279,89" href="{$MODULE[4][linkurl]}search-htm-areaid-8.html" target="_blank" title="辽宁企业">
+								<area shape="rect" coords="196,59,230,74" href="{$MODULE[4][linkurl]}search-htm-areaid-7.html" target="_blank" title="内蒙古企业">
+								<area shape="rect" coords="256,37,290,52" href="{$MODULE[4][linkurl]}search-htm-areaid-10.html" target="_blank" title="黑龙江企业">
+								<area shape="rect" coords="261,57,287,71" href="{$MODULE[4][linkurl]}search-htm-areaid-9.html" target="_blank" title="吉林企业">
+							</map>
+						</div>
+						<div>
+						<div>
+						<form action="{$MODULE[4][linkurl]}search.php" method="get" class="gongsiform" style="margin-top:15px;">
+							<dl class="fl pd5" style="width:280px;line-height:25px;">
+							<dt class="f14 b">经营行业分类</dt>
+									<dd class="pl10">
+									<select name="catid" style="width:260px;padding:5px;">
+										{php $tagss = tag("moduleid=4&table=category&fields=catid,catname,style,item,child&condition=moduleid=4 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+										{loop $tagss $i $t}
+										<option value="{$t[catid]}">{set_style($t[catname],$t[style])} [{$t[item]}]</option>
+										{/loop}
+										</select>
+							</dd>
+									<div class="clear"></div>
+							<dt class="f14 b">运作模式分类</dt>
+									  <dd class="pl10">
+											<label><input type="checkbox" value="1" name="mode1" />生产商</label>
+											<label><input type="checkbox" value="2" name="mode2" />贸易商</label>
+											<label><input type="checkbox" value="3" name="mode3" />服务商</label>
+											<label><input type="checkbox" value="4" name="mode4" />其他机构</label>
+										</dd>
+									<div class="divline"></div>
+												<input type="submit" class="submit" value="立即筛选" />
+							</dl>
+
+											</form>
+
+						</div>
+						</div>
+
+
+
+						</dd>
+<div class="divline"></div>
+</dl>
+
+
+
+
+<dl class='divs whitebg grayb'>
+{php $keshi = $db->count($DT_PRE.'category', "moduleid=12", 60);}
+<dt style="background-image:url('{DT_SKIN}image/mall/fangan.png');"><span style='background:#b83514;' class='fr'><a href="{$MODULE[12][linkurl]}">更多>></a></span><b>医院科室解决方案包</b><br>
+<p>{$keshi}个科室所需医疗器械及耗材打包方案</p>
+</dt>
+<dd class='keshi'>
+<ul class='autoheight'>
+{php $tagt = tag("moduleid=12&table=category&fields=catid,catname,otheritem&condition=moduleid=12 and parentid=0&pagesize=60&order=catid desc&template=null&debug=0&showcat=1")}			
+{loop $tagt $z $t}			
+<li><a href="{$MODULE[12][linkurl]}list.php?catid={$t[catid]}" title="{$t[catname]}" target='_blank' {if $t[otheritem]==0}onmouseover="this.style.color='black';" onclick="return false" disabled{else} {/if}>{$t[catname]}</a></li>
+{/loop}
+</ul>
+</dd>
+</dl>
+<div class="divline"></div>
+<div class='workflow'>
+			<dl><dt>如何加入科室方案包</dt><dd>
+			
+			<ul>
+			<li class="autowidth"><span>1.注册/升级为开店会员</span><font>&nbsp;</font></li>
+			<li class="autowidth"><span>2.发布产品信息</span><font>&nbsp;</font></li>
+			<li class="autowidth"><span>3.选择对应科室名称</span><font>&nbsp;</font></li>
+			<li class="autowidth"><span>4.本站客服审核</span></li></dd>
+			
+			</dl>
+			</div>
+
+<dl class="mdiv">
+			 <dt style="background:#33cc00;" class="tc pt5 h45"><a href="{$MODULE[16][linkurl]}index.php?action=mall"><img src="{DT_SKIN}image/mall/title3.png"></a></dt>
+						<dd style="width:100%;" class="whitebg autoheight">
+								<ul class="mallcat">
+										{php $tagss = tag("moduleid=16&table=category&fields=catid,catname,style,item,child&condition=moduleid=16 and parentid=0&pagesize=60&order=listorder ASC&template=null")}
+											{loop $tagss $i $t}
+											<li class="fl"><a href="{$MODULE[16][linkurl]}{rewrite('list.php?catid='.$t[catid])}" title="{$t[alt]}"><span class="lenstr"> · {set_style($t[catname],$t[style])}<i class="f12">({$t[item]})</i></span></a></li>
+											{/loop}
+											<div class="divline"></div>
+								</ul>
+						</dd>
+<div class="divline"></div>
+</dl>
+{template 'footer'}

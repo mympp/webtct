@@ -1,0 +1,16 @@
+{template 'header'}
+<div class="your"><div><a href="{$MODULE[1][linkurl]}">
+														网站首页&nbsp;</a>&nbsp;&nbsp;〉&nbsp;&nbsp;查看大图</div></div>
+<div class="grayb  autoheight whitebg pd10">
+		<br/><br/><center><img src="{$img}" onerror="alert('图片不存在');try{window.close();}catch(e){Go(DTPath);}" onload="if(this.width>900) this.width=900;" style="border:#eee 1px solid;padding:5px;" ondblclick="window.close();" oncontextmenu="return false;" /></center><br/><br/>
+</div>
+<script type="text/javascript">
+/* onmousewheel="return zoomimg(this);" */
+function zoomimg(o) {
+  var zoom = parseInt(o.style.zoom, 10) || 100;
+  zoom += event.wheelDelta/12;
+  if(zoom > 0) o.style.zoom = zoom+'%';
+  return false;
+}
+</script>
+{template 'footer'}

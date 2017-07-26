@@ -1,0 +1,64 @@
+{
+    "name": "yiisoft/yii2-app-basic",
+    "description": "Yii 2 Basic Project Template",
+    "keywords": [
+        "yii2",
+        "framework",
+        "basic",
+        "project template"
+    ],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.5",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "kartik-v/yii2-helpers": "^1.3",
+        "kartik-v/yii2-dialog": "*",
+        "kartik-v/yii2-slider": "*",
+        "kartik-v/yii2-widget-spinner": "^1.0",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-detail-view": "*",
+        "kartik-v/yii2-editable": "*",
+        "kartik-v/yii2-widgets": "*",
+        "mootensai/yii2-jsblock": "^1.0",
+        "mootensai/yii2-uuid-behavior": "^1.0",
+        "phpoffice/phpexcel": "^1.8",
+        "kdn/yii2-json-editor": "*",
+        "guzzlehttp/guzzle": "*",
+        "beowulfenator/yii2-json-editor": "^1.1",
+        "crazydb/yii2-ueditor": "*",
+        "yiisoft/yii2-imagine": "^2.1",
+        "dmstr/yii2-adminlte-asset": "^2.4"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1",
+        "codeception/specify": "~0.4.3"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "vendor-dir": "vendor",
+        "fxp-asset": {
+            "installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
+        }
+    }
+}

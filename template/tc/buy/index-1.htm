@@ -1,0 +1,152 @@
+{php $sitemenu='buy';$listpage='list';}
+{template 'header'}
+{php $MOD = cache_read('module-6.php');}
+{php $BUYTYPETITLE=$MOD['type'];}
+{php $BUYTYPE = explode('|', trim($MOD['type']));}
+{php $buy = $db->count($DT_PRE.'buy_6', "status=3", 60);}
+<div class="autoheight whitebg pd5">		
+<div class="h390 cut">
+<dl class="themeleft h390 p_st cut fl" id="themeleft">
+<table cellpadding="9" cellspacing="0" border=0 width="100%" align="center" class="addtable">
+<tr >
+	<td onmouseover="this.className='redbg'" onmouseout="this.className=''"><a href="{$MODULE[2][linkurl]}my.php?mid={$moduleid}&action=add" class="addinfo">发布招标采购</a></td>
+	<td onmouseover="this.className='redbg'" onmouseout="this.className=''"><a href="{$MODULE[2][linkurl]}validate.php?action=truename"   class="addinfo">加入认证厂商</a></td>
+</tr>
+</table>
+<div class="divline"></div>
+<div class="pd10">
+
+					<dt>{$MOD[name]}分类</dt>
+					<dd class="catname">
+					<ul>
+					{php $tagss = tag("moduleid=$moduleid&table=category&fields=catid,catname,style,item,child&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<li><a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid].'&typeid=99')}">{set_style($t[catname],$t[style])}<span class="f12">({$t[item]})</span></a></li>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+																	{/if}
+															{/loop}
+					</ul>
+					<div class="divline"></div>
+					</dd>
+					<dt>应标信息公开程度</dt>
+					  <dd  class="catname">
+											<ul>
+												{loop $TYPE $k $v}
+													<li><a href="{$MOD[linkurl]}{rewrite('search.php?typeid='.$k.'')}">{$v}</a></li>
+												{/loop}
+											</ul>
+					<div class="divline"></div>
+
+					  </dd>
+					<dt>招标采购分布所在地</dt>
+					  <dd class="provice"  id="provice" onmouseover="Dd('themeleft').className='themeleft h555 p_ab'"  onmouseout="Dd('themeleft').className='themeleft h390 p_st cut'">
+											<ul >
+													{php $tagt = tag("table=area&condition=parentid=0&pagesize=34&template=null&debug=0")}			
+													{loop $tagt $z $v}			
+													<li><a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'].'')}">{$v[areaname]}</a></li>
+													{/loop}
+											</ul>
+
+					  </dd>
+</div>
+</dl>
+<dl class="themeright h390">
+
+<dd>
+<div class="ad681">{ad(163)}</div>
+<div class="divline"></div>
+<ul>
+{php $tags = tag("moduleid=$moduleid&condition=status=3 and thumb<>''&pagesize=5&order=level desc,edittime desc&template=null")}
+{loop $tags $i $t}
+<li class="ad125" {if $i<1}  style="margin-left:0px;"{/if}><a href="{$t[linkurl]}"><img src="{$t[thumb]}" onmouseover="Dd('p_info{$i}').className='p_info';" onmouseout="Dd('p_info{$i}').className='hd';"width="125" height="125"></a><div id="p_info{$i}" class="hd">{$t[title]}</div></li>
+{/loop}
+
+</ul>
+</dd>
+</dl>
+	</div>
+</div>
+<div class="autoheight whitebg pd5">
+<div class="indexleft autoheight ">
+										<dl class="dllistl autoheight  whitebg">
+										<dt><div class="pd10"><a href="{$MODULE[21][linkurl]}{rewrite('search.php?kw=采购')}" ><font>≡ 最新采购招标新闻</font></a></div></dt>
+										<dd>
+											{php $tags = tag("moduleid=21&condition=status=3 and keyword like '%采购%'&pagesize=10&order=level desc,edittime desc&template=null&debug=0&showcat=1")}
+											{if $tags}
+													<ul class="ullist2" id="cgzc">
+													{loop $tags $i $t}
+													<li id="cgzcli{$i+1}"><span class="lenstr wcolor {if $i<3}redico{else}grayico{/if}">{$i+1}</span><font class="lenstr"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></font></li>
+													{/loop}
+													</ul>
+											{else}
+											没有任何推荐信息
+											{/if}
+												<script type="text/javascript">
+												var k=$("#cgzc li").length;
+												Dd('cgzcli'+k).style.borderBottom='0px';
+												$("#cgzc>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+												</script>
+										</dd>
+										</dl>
+
+<div class="divline"></div>
+										<dl class="dllistl autoheight  whitebg">
+										<dt><div class="pd10"><a href="{$MOD[linkurl]}{rewrite('search.php?catid=0&order=4')}" ><font>≡ 推荐新近采购招标项目</font></a></div></dt>
+										<dd>
+											{php $tags = tag("moduleid=$moduleid&condition=status=3&pagesize=10&order=level desc,edittime desc&template=null&debug=0&showcat=1")}
+											{if $tags}
+													<ul class="ullist2" id="tjcg">
+													{loop $tags $i $t}
+													<li id="tjcgli{$i+1}"><span class="lenstr wcolor {if $i<3}redico{else}grayico{/if}">{$i+1}</span><font class="lenstr"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></font></li>
+													{/loop}
+													</ul>
+											{else}
+											没有任何推荐信息
+											{/if}
+												<script type="text/javascript">
+												var k=$("#tjcg li").length;
+												Dd('tjcgli'+k).style.borderBottom='0px';
+												$("#tjcg>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+												</script>
+										</dd>
+										</dl>
+
+<div class="divline"></div>
+
+										<dl class="dllistl autoheight  whitebg">
+										<dt><div class="pd10"><a href="{$MOD[linkurl]}{rewrite('search.php?catid=0&order=4')}" ><font>≡ 热门应标招标项目</font></a></div></dt>
+										<dd>
+											{php $tags = tag("moduleid=$moduleid&condition=status=3 and selitemid=0&pagesize=10&order=hits desc,supplycount desc&template=null&debug=0&showcat=1")}
+											{if $tags}
+													<ul class="ullist2" id="ybcg">
+													{loop $tags $i $t}
+													<li id="ybcgli{$i+1}"><span class="lenstr wcolor {if $i<3}redico{else}grayico{/if}">{$i+1}</span><font class="lenstr"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></font></li>
+													{/loop}
+													</ul>
+											{else}
+											没有任何推荐信息
+											{/if}
+												<script type="text/javascript">
+												var k=$("#ybcg li").length;
+												Dd('ybcgli'+k).style.borderBottom='0px';
+												$("#ybcg>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+												</script>
+										</dd>
+										</dl>
+
+
+</div>
+<div class="indexright autoheight">
+							{loop $tagss $i $t}
+										<dl class="dllists autoheight  whitebg">
+										<dt class="dts"><div class="pd10"><span class="fr mr10"><a href="{$MOD[linkurl]}{rewrite('list.php?typeid=99&catid='.$t[catid])}" title="最新{$t[catname]}信息">&nbsp;查看更多 ({$t[item]}) 条</a></span><a href="{$MOD[linkurl]}{rewrite('list.php?typeid=99&catid='.$t[catid])}" ><font>≡  最新{$t[catname]}信息</font></a></div></dt>
+										<dd>
+											{php $tags = tag("moduleid=$moduleid&condition=status>2 &catid=".$t[catid]."&pagesize=4&order=level desc,addtime  desc&template=list-buy-index&debug=0&showcat=1&i=$i&stype=$BUYTYPETITLE")}
+
+										</dd>
+										</dl>
+							{/loop}
+<div class="divline"></div>
+</div>
+{template 'footer'}		

@@ -1,0 +1,20 @@
+{loop $tags $tk $tv}
+<div class="itemCol2">
+{if $tv['thumb'] != ''}
+							<a href="{so_rewrite('detail.php?itemid='.$tv['itemid'].'&infotype=7')}" title="{$tv['title']}" target="_blank">
+								<div class="itemImg">
+									<img src="{$tv['thumb']}" alt="">
+								</div>
+							</a>
+{/if}
+							<div class="itemCol2C" {if $tv['thumb'] == ''}style="padding-left:12px;"{/if}>
+								<a href="{so_rewrite('detail.php?itemid='.$tv['itemid'].'&infotype=7')}" title="{$tv['title']}" target="_blank"><h4 class="text-overflow">{$tv[title]}</h4></a>
+								<ul>
+									<li>应用领域：<em>面议</em></li>
+									<li>所处阶段：<em>已量产</em></li>
+									<li>浏览量：<em>{$tv['hits']}</em></li>
+								</ul>
+								<p class="h40">{$tv['description']}</p>
+							</div>
+						</div>
+{/loop}

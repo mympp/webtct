@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>乌鸦喝水_天成医疗网</title>
+    <meta name="description" content="「天成医疗」喊你丢小石头，根本停不下来！" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <style>
+        body, canvas, div {-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;-khtml-user-select: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+        .jd-cc{position: fixed;left: 50%;top:50%;width: 200px;height: 200px;margin-top: 1.5rem;margin-left: -100px;z-index: 99;}
+        .link-area{position: fixed;bottom:0;width:100%;z-index:199;overflow: hidden;}
+        .link-area>a{width:33.333%;background: rgba(0,0,0,.6);border-left:1px solid #fff;float: left;text-align: center;line-height:1rem;box-sizing: border-box;color: #fff;font-size:0.4rem;}
+        .link-area>a:first-child{border-left: none;}
+        #canvasDiv{position: relative;z-index:9;}
+        .wechat-share-guide{position: fixed;width:100%;height:100%;top:0;left:0;z-index:199;background: rgba(0,0,0,0.7);}
+        .wechat-share-guide img{width:95%;margin:2.5%;}
+        .wechat-share-guide .close-btn{display: block;width:80px;height:80px;margin:20px auto 0;background-color: #fff;color: #7faa13;font-size: 30px;text-align: center;line-height:80px;border-radius:50%;text-decoration: none;}
+    </style>
+</head>
+
+<body style="padding:0; margin: 0;">
+
+<div style="align:center;display: none"><img src="http://img.ej120.com/game/wuya/res/share.png" width="10%" /></div>
+
+<div id="loadingImg" style="top:35%;width: 100%;position:absolute;text-align: center; ">
+    <div id="logoImg" >
+        <img src="http://img.ej120.com/game/wuya/res/logo.png?version=3.0" width="60%" />
+    </div>
+    <div style="margin-top:10%">
+        <img src="http://img.ej120.com/game/wuya/res/loading.gif?version=3.0" width="7%" height="7%"  />
+    </div>
+</div>
+
+<div id="canvasDiv">
+    <canvas id="gameCanvas" width="100%" height="100%"></canvas>
+</div>
+
+<div class="wechat-share-guide" style="display: none;">
+    <img src="http://img.ej120.com/game/wuya/res/share-bg.png" alt="">
+    <a href="javascript:;" class="close-btn">×</a>
+</div>
+
+<!-- 站内推广 -->
+<div class="link-area" style="display: none;">
+    <a href="http://wap.tecenet.com/?open=g_wy" target="_blank">医疗器械供求</a>
+    <a href="http://m120.tecenet.com/?open=g_wy" target="_blank">家庭健康指导</a>
+    <a href="http://www.tecenet.com/file/game/huoyanjinjing/?open=g_wy" target="_blank">更多游戏挑战</a>
+</div>
+
+<!-- 京东推广 -->
+<div class="jd-cc" style="display: none;">
+    <script type="text/javascript">
+        var jd_union_unid="1000105161",jd_ad_ids="535:6",jd_union_pid="CKCAuM6uKxDJyfHcAxoAIOqnx9MCKgA=";
+        var jd_width=200;
+        var jd_height=200;
+        var jd_union_euid="";
+        var p="BBIEVBJYHAcTNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgycQctSSdLeGFnCXkFTXFZByFnLRd7cgtZK18QBxIAVh5cFjISBlQaWxQGEgBVK2tKRk9aZVA1FDJNQwhGaxUHGw9dElsWBBUHXRlrFDIiNw%3D%3D";
+    </script>
+    <script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
+</div>
+
+
+<script src="http://img.ej120.com/lib/js/zepto.min.js"></script>
+<script src="http://img.ej120.com/game/wuya/res/sys.js?version=3.3.05"></script>
+<script src="http://img.ej120.com/game/wuya/res/game.v2.js?version=3.3.05"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    autodivheight();
+    function autodivheight(){
+    //var height = window.innerHeight;
+        var winHeight=0;
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        //通过深入Document内部对body进行检测，获取浏览器窗口高度
+        if (document.documentElement && document.documentElement.clientHeight)
+            winHeight = document.documentElement.clientHeight;
+        var currHeight = winHeight;
+        document.getElementById("canvasDiv").style.height = currHeight+"px";
+
+    }
+    window.onresize=autodivheight;
+</script>
+<script>
+    function shareGuide(){
+        $(".wechat-share-guide").show();
+    }
+    $(".wechat-share-guide .close-btn").on('click',function(e){
+        $(".wechat-share-guide").hide();
+    });
+
+    function wechatShare(){
+        var localUrl = encodeURIComponent(window.location.href.split("#")[0]);
+        var gameTicket = Math.random().toString(36).substr(2);
+        $.ajax({
+            url: 'http://www.tecenet.com/api/weixin/jssdk.php?callback=cb&url=' + localUrl,
+            dataType: 'jsonp',
+            error: function () {
+            },
+            success: function (cb) {
+                if (typeof cb.timestamp != 'undefined' && typeof cb.nonceStr != 'undefined' && typeof cb.signature != 'undefined') {
+                    wx.config({
+                        debug: false,
+                        appId: cb.appId,
+                        timestamp: cb.timestamp,
+                        nonceStr: cb.nonceStr,
+                        signature: cb.signature,
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo']
+                    });
+                    wx.ready(function () {
+                        wx.onMenuShareTimeline({
+                            title: $('title').text(),
+                            link: "http://www.tecenet.com/file/game/wuyaheshui/index1.html?gameTicket="+gameTicket+"",
+                            imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png"
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: $('title').text(),
+                            desc: $("[name=description]").attr("content"),
+                            link: "http://www.tecenet.com/file/game/wuyaheshui/index1.html?gameTicket="+gameTicket+"",
+                            imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png",
+                            type: '',
+                            dataUrl: ''
+                        });
+                        wx.onMenuShareQQ({
+                            title: $('title').text(),
+                            desc: $("[name=description]").attr("content"),
+                            link: "http://www.tecenet.com/file/game/wuyaheshui/index1.html?gameTicket="+gameTicket+"",
+                            imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png"
+                        });
+                        wx.onMenuShareWeibo({
+                            title: $('title').text(),
+                            desc: $("[name=description]").attr("content"),
+                            link: "http://www.tecenet.com/file/game/wuyaheshui/index1.html?gameTicket="+gameTicket+"",
+                            imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png"
+                        });
+                    });
+                }
+            }
+        });
+    }
+    wechatShare();
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2b363fb3d03ff9991c4971afddf8731d";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<div style="display:none;">
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</div>
+
+</body>
+</html>

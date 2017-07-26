@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>找资金</title>
+
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <style>
+        .item-parent{
+            position: relative;
+        }
+        .item-parent::after{
+            content: "%";
+            position: absolute;
+            height: 100%;
+            right: 0.5rem;
+            top: 0;
+            font-size: .85rem;
+            line-height: 2.2rem;
+        }
+        .list-block .item-title.label{
+            width:42%;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+			<a href="./calc.html" class="icon icon-left pull-left"></a>
+            <h1 class="title">结算提现</h1>
+        </header>
+        <!--content-->
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">提现金额</div>
+                                <div class="item-input">
+                                    <input id="money" type="number" placeholder="请输入您的提现金额">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">税费</div>
+                                <div class="item-input">
+                                    <select id="percent" onchange="tx();">
+                                        <option value="0.04">4%</option>
+                                        <option value="0.06" selected="">6%</option>
+                                        <option value="0.07">7%</option>
+                                        <option value="0.12">12%</option>
+                                        <option value="0.17">17%</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-parent">
+                            <div class="item-inner">
+                                <div class="item-title label">手续费</div>
+                                <div class="item-input">
+                                    <input id="poundage" type="number" min="0" placeholder="请输入手续费" onchange="tx();">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="result" style="display: none;">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">技术合同金额</div>
+                                <div class="item-input">
+                                    <input type="text" id="result_ht" disabled="disabled" value="" style="color:#c70000">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="result" style="display: none;">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">人工手续费成本</div>
+                                <div class="item-input">
+                                    <input type="text" id="result_cb" disabled="disabled" value="" style="color:#c70000">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="result"  style="display: none;">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">返增值票</div>
+                                <div class="item-input">
+                                    <input type="text" id="result_zzp" disabled="disabled" value="" style="color:#c70000">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-50"><a href="./calc.html" class="button button-big button-fill button-danger">返回</a></div>
+                    <div class="col-50"><a href="javascript:;" onclick="tx()" class="button button-big button-fill button-success">计算</a></div>
+                </div>
+            </div>
+            <script>
+                function tx(){
+                    if( $("#money").val() != ""){
+                        var poundage  =  $("#poundage").val()*0.01 || 0;
+                        var percent  =  Number($("#percent").val());
+                        $(".result").show();
+                        $("#result_ht").val(parseFloat(
+                                $("#money").val() / ( 1 - ( percent + poundage ) )
+                        ).toFixed(2));
+
+                        $("#result_cb").val(parseFloat(
+                                $("#result_ht").val() * poundage
+                        ).toFixed(2));
+
+                        $("#result_zzp").val(parseFloat(
+                                $("#result_ht").val() * percent
+                        ).toFixed(2));
+                    }else{
+                        $.toast("请输入您的提现金额");
+                    }
+                }
+            </script>
+        </div>
+        <!--content end-->
+
+        <!--bar-->
+        <nav class="bar bar-tab">
+            <a class="tab-item external" href="./index.html">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item external" href="./product-lib.html">
+                <span class="icon icon-app"></span>
+                <span class="tab-label">找产品</span>
+            </a>
+            <a class="tab-item external active" href="./calc.html">
+                <span class="icon icon-star"></span>
+                <span class="tab-label">找资金</span>
+            </a>
+            <a class="tab-item external" href="javascript:$.toast('敬请期待');">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">个人中心</span>
+            </a>
+        </nav>
+        <!--bar end-->
+    </div>
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>var Zepto = jQuery</script>
+<script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+
+
+</body>
+</html>

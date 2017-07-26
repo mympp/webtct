@@ -1,0 +1,140 @@
+{template 'header', $template}
+<script type="text/javascript">
+menu(6);
+</script>
+<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> » <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} » {$title}{/if}</div>
+{if $itemid}
+<div class="main_head"><div><strong>{$title}</strong></div></div>
+<div class="main_body">
+	<div class="lh18 px13">{$content}</div>
+</div>
+{else}
+<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="main_body">
+	<div class="lh18 px13">
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+	<tr>
+	<td><img src="{$COM[thumb]}" align="right" style="margin:5px 0 5px 10px;padding:5px;border:#C0C0C0 1px solid;"/>{$content}</td>
+	</tr>
+	</table>
+	</div>
+</div>
+{if $video}
+<div class="main_head"><div><strong>形象视频</strong></div></div>
+<div class="main_body">
+	{load('player.js')}
+	<center><script type="text/javascript">document.write(player('{$video}',480,400,'',0));</script></center>
+</div>
+{/if}
+
+<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
+<div class="main_body">
+	<div class="px13 lh18">
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+{php $c = $db->get_one("select * FROM {$db->pre}friend WHERE username='".$COM[username]."' and userid=".$_userid);}
+	{if $_username&&!$c[itemid]}
+	<tr>
+	<td width="100">合作关系：</td>
+	<td>
+	<a href="{$MODULE[2][linkurl]}friend.php?action=add&username={$COM[username]}" class="sbm" style="text-decoration:none;padding:1px 5px 1px 5px;">点击加他为我的合作伙伴</a>
+	</td>
+	</tr>
+	{/if}
+	<tr>
+	<td width="100">成为商友：</td>
+	<td>
+			<a href="#fra"  onclick="Dd('fra').src='{$MODULE[4][linkurl]}home.php?action=message&job=guestbook&template={$template}&skin={$skin}&username={$username}&sign={crypt_sign($template.$skin.$username)}&title=申请成为您的合作伙伴';" class="sbm" style="text-decoration:none;padding:1px 5px 1px 5px;">申请成为他的合作伙伴</a>
+	</td>
+	</tr>
+	<tr>
+	<td width="100">主体名称：</td>
+	<td>{$COM[company]}</td>
+	</tr>
+	<tr>
+	<td>联系地址：</td>
+	<td>{$COM[address]}</td>
+	</tr>
+	{if $COM[postcode]}
+	<tr>
+	<td>邮政编码：</td>
+	<td>{$COM[postcode]}</td>
+	</tr>
+	{/if}
+	{if $_userid}
+	<tr>
+	<td>服务电话：</td>
+	<td>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</td>
+	</tr>
+	{if $COM[fax]}
+	<tr>
+	<td>服务传真：</td>
+	<td>{if $domain}{$COM[fax]}{else}{anti_spam($COM[fax])}{/if}</td>
+	</tr>
+	{/if}
+	{if $COM[mail]}
+	<tr>
+	<td>电子邮件：</td>
+	<td>{if $domain}{$COM[mail]}{else}{anti_spam($COM[mail])}{/if}</td>
+	</tr>
+	{/if}
+	<tr>
+	<td>相关网址：</td>
+	<td>{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank">{$COM[homepage]}</a><br/>{/if}
+	<a href="{$COM[linkurl]}" target="_blank">{$COM[linkurl]}</a></td>
+	</tr>
+	{if $COM[truename]}
+	<tr>
+	<td>联 系 人：</td>
+	<td>{$COM[truename]} （{if $COM[gender]==1}先生{else}女士{/if}）</td>
+	</tr>
+	{/if}
+	{if $COM[department]}
+	<tr>
+	<td>部门(职位)：</td>
+	<td>{$COM[department]}{if $COM[career]} （{$COM[career]}）{/if}</td>
+	</tr>
+	{/if}
+	{if $COM[mobile]}
+	<tr>
+	<td>手机号码：</td>
+	<td>{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}{if $DT[sms] && $COM[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($COM[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="发送短信" alt=""/></a>{/if}</td>
+	</tr>
+	{/if}
+	<tr>
+	<td>即时通讯：</td>
+	<td>
+	
+	{if $COM[qq] && $DT[im_qq]}
+		{if check_dingzhi_member($COM[username],'qq_kefu')}
+			{php $qq_array=explode(';',$COM[qq]);}
+			{loop $qq_array $k $v}
+				{php $qq_message=explode('|',$v);}
+				{$qq_message[1]}&nbsp;:{im_qq($qq_message[0])}<br/>
+			{/loop}
+		{else}
+			{im_qq($COM[qq])}&nbsp;
+		{/if}
+	{/if}
+	{if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
+	{if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
+	{if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}
+	</td>
+	</tr>
+	<tr>
+	<td>在线状态：</td>
+	<td>{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}
+	{if $COM[username] && $DT[im_web]}{im_web($COM[username])}&nbsp;{/if}
+	</td>
+	</tr>
+	{else}
+	<tr>
+	<td>联系方式：</td>
+	<td bgcolor="#F7F7F7">只有本站会员才能看到联系方式！<br>请 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b" target="_top">注册</a> 或 请留下您的联系方式&nbsp;&nbsp;已经是会员？请 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b" target="_top">登录</a><br>或可咨询本站客服热线：4000521617  &nbsp;&nbsp;&nbsp;在线招商推广热线：4006175399</td>
+	</tr>
+	{/if}
+	</table>
+	</div>
+</div>
+</div>
+{/if}
+{template 'footer', $template}

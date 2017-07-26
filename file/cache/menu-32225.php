@@ -1,0 +1,1 @@
+<?php defined('IN_DESTOON') or exit('Access Denied'); return array (0 => array ('title' => '设备技术服务管理','style' => '','url' => '?moduleid=9',),1 => array ('title' => '会员管理','style' => '','url' => '?moduleid=2',),2 => array ('title' => '供求行情管理','style' => '','url' => '?moduleid=5',),3 => array ('title' => '简历管理','style' => '','url' => '?moduleid=9&file=resume',),); ?>

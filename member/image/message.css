@@ -1,0 +1,27 @@
+
+	[Destoon B2B System] Copyright (c) 2008-2013 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+.message_head {background:#EFF5FB;border-bottom:#AAC1DE 1px solid;padding:10px 30px 10px 30px;line-height:22px;color:#666666;}
+.message_head strong {font-size:14px;color:#000000;}
+.message_head span {color:#798699;padding:0 5px 0 2px;}
+.message_body {background:#FFFFFF;font-size:14px;line-height:200%;padding:10px 30px 10px 30px;}
+.message_body a:link,.message_body a:visited,.message_body a:active {color:#1E5494;text-decoration:underline;}
+.message_body a:hover {color:#FF6600;text-decoration:none;}
+.message_foot {background:#EFF5FB;border-top:#AAC1DE 1px solid;border-bottom:#AAC1DE 1px solid;padding:10px 30px 10px 30px;}
+.addsupply{background:#da1616;font-size:16px;width:200px;text-align:center;padding:10px;}
+.addsupply a:link,.addsupply a:visited,.addsupply a:active{color:#ffffcc;text-decoration:none;}
+
+	dl dd{margin-left:15px;}
+	.supplytable{background:#d2dbe6}
+	.supplytable td{background:#fff;}
+	.supplytable th{background:#e3e9ee;}
+	#product{width:600px;}
+	#product td{background:#f6f6f6}
+	.pd5{padding:5px;}
+	.pnum .inputs{width:30px;text-align:center;padding:5px;border:1px #ccc solid;}
+	.need{background:#d8eacc}
+	.need th{background:#dceeca;border:0px;line-height:24px;}
+	.need td{line-height:24px;}
+.messagebutton{font-size:18px;text-align:center;padding:10px;width:300px;background:#e2711d;margin-bottom:40px;}
+.messagebutton a:link,.messagebutton a:visited,.messagebutton a:active{color:#ffffff;text-decoration:none;}

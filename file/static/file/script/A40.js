@@ -1,0 +1,1 @@
+document.write('<a href="http://zhiling-888.tecenet.com/" target="_blank"><img src="http://www.tecenet.com/file/upload/201405/07/15-32-24-84-1.jpg" width="497" height="201" alt=""/></a>');

@@ -1,0 +1,27 @@
+<div class="graybg pd10">
+{template 'themer', $module}
+</div>
+<div class="divline"></div>
+
+		<div class="divline"></div>
+		<dl>
+		<dt class='f18 color tc graybg pd5'>本站推荐其他团购产品</dt>
+		<dd>
+{php $tags = tag("moduleid=$moduleid&condition=status=3 &pagesize=3&order=itemid desc&template=null&debug=0")}
+<ul class="whitebg mt10 groupd">
+{loop $tags $i $t}
+{php $t[price] = str_replace('.00', '', $t[price]);}
+{php $t[marketprice] = str_replace('.00', '', $t[marketprice]);}
+<li class="grayb whitebg mt10">
+<div><span class="fr mr5"><strong class='ocolor f18'>{$t[orders]}</strong>人已购</span><span class="pl5">原价：<span class="bcolor f16"><del>{$t[marketprice]}元</del></span><span class="ml10">现 <font class='color f16'>{$t[discount]}</font> 折</span></span></div>
+	<div class="mid"><a href="{$t[linkurl]}" target="_blank" id="link_{$t[itemid]}"><img src="{$t[thumb]}" width="238" height="180" alt="{$t[alt]}" class='mid' /></a></div>
+	<div class="list_group_join" ><span class='fr mr10'><a href="{$t[linkurl]}" target="_blank" ><img src="{DT_SKIN}image/shoping.gif"></a></span>只需<strong class='f24'>￥{$t[price]}</strong></div>
+	<div class="list_group_title"><a href="{$t[linkurl]}" target="_blank" class='color ti10'>{$t[title]}</a></div>
+</li>
+{/loop}
+</ul>
+<script type="text/javascript">
+$(".groupd>li").hover(function () {$(this).removeClass("grayb whitebg mt10");$(this).addClass("mt10 yellowb yellowbg"); }, function () {$(this).removeClass("mt10 yellowb yellowbg");$(this).addClass("grayb whitebg mt10"); });
+</script>
+</dd>
+		</dl>

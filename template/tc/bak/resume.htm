@@ -1,0 +1,114 @@
+{if $action != 'ajax'}
+{template 'header', 'mobile'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-back">
+{if $itemid || $catid || $areaid || $kw}
+<a href="{$back_link}" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+{else}
+<a href="channel.php" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>频道</span></a>
+{/if}
+</div>
+<div class="head-bar-title">{$head_name}</div>
+<div class="head-bar-right">
+<a href="javascript:{if $itemid}Dsheet('<a href=&#34;{if $DT_MOB[browser]=='weixin'||$DT_MOB[browser]=='qq'}javascript:share_tips();{else}share.php?moduleid=24&itemid={$itemid}{/if}&#34;  data-transition=&#34;slideup&#34;><span>分享好友</span></a>|<a href=&#34;{mobileurl($moduleid)}&#34; data-direction=&#34;reverse&#34;><span>{$MOD[name]}首页</span></a>|<a href=&#34;channel.php&#34; data-direction=&#34;reverse&#34;><span>频道列表</span></a>', '取消');{else}Dsheet('<a href=&#34;search.php?action=mod{$moduleid}&catid={$catid}&areaid={$areaid}&#34;><span>{$MOD[name]}搜索</span></a>|<a href=&#34;category.php?moduleid={$moduleid}&#34;><span>按分类浏览</span></a>|<a href=&#34;area.php?moduleid={$moduleid}&#34;><span>按地区浏览</span></a>', '取消');{/if}"><img src="static/img/icon-action.png" width="24" height="24"/></a>
+</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+{/if}
+{if $itemid}
+<style>#c_0 li{padding: 6px;border-bottom: solid 1px #EFEFEF;}</style>
+<div class="main">
+	<div class="title"><strong>{$title}</strong></div>
+	<div class="list-tab bd-t" style="padding:10px;">		
+		<ul>			
+			<li class="on" id="t_0" onclick="Mshow(0)"><span>服务详情</span></li>
+			<li id="t_1" onclick="Mshow(1)"><span>点评</span></li>
+			<li id="t_2" onclick="Mshow(2)"><span>联系方式</span></li>
+		</ul>
+	</div>
+	<div id="c_2" style="display:none;"><div class="contact">{template 'chip-contact', 'mobile'}</div></div>
+	<div id="c_1" style="display:none;">
+		<ul>
+			<iframe style="border:0px;width:100%;height:120%;overflow:scroll;overflow-y:hidden;" frameborder="0" src="http://www.tecenet.com/extend/resume_comment.php?mid={$moduleid}&itemid={$itemid}&wap=1&head_link={$head_link}"></iframe>	
+		</ul>
+	</div>
+	<div class="content" id="c_0">		
+		<ul>								
+			<li>姓名： {$truename}</li>
+			{if $vip}<li>{VIP}等级： {$vip}级</li>{/if}
+			<li> 服务分类： {$CATEGORY[$parentid][catname]}</li>
+			<li> 单位/部门：{$school}</li>
+			<li> 所在地区： {area_pos($areaid, '')}</li>
+			<li> 工作性质： {$TYPE[$type]}</li>
+			<li> 合作要求： {$MARRIAGE[$marriage]}</li>
+			<li> 服务费要求： 
+				{if $minsalary && $maxsalary}
+					{$minsalary}-{$maxsalary}{$DT[money_unit]}/月
+				{elseif $minsalary}
+					{$minsalary}{$DT[money_unit]}/月以上
+				{elseif $maxsalary}
+					{$maxsalary}{$DT[money_unit]}/月以内
+				{else}
+					面议
+				{/if}
+			</li>
+			<li>浏&nbsp;&nbsp;览： {$hits} 次</li>	
+			{if $content}
+				<li>服务技能：</li>
+				<li style="line-height:30px;border:none;text-indent:2em;padding:0;font-size:15px;">{$content}</li>
+			{/if}						
+		</ul>  
+	</div>
+</div>
+<!-- -->
+<script>
+	function Mshow(k) {
+	if($('#t_'+k).attr('class') == 'on') return;
+	for(var i = 0; i < 3; i++) {
+		if(i == k) {
+			$('#t_'+i).attr('class', 'on');
+			$('#c_'+i).show();
+		} else {
+			$('#t_'+i).attr('class', '');
+			$('#c_'+i).hide();
+		}
+	}
+}
+</script>
+<!-- -->
+{if $DT_MOB[browser] == 'weixin' ||  $DT_MOB[browser] == 'qq'}{template 'chip-share', 'mobile'}{/if}
+{template 'chip-comment', 'mobile'}
+{else}
+	{if $lists}
+	<!-- searchtool -->
+	{loop $lists $v}
+	<div class="list-img">
+		{if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+		<ul data-href="{$v[linkurl]}">
+			<li{if $v[vip]} class="vip" title="{VIP}:{$v[vip]}"{/if}><a href="{$v[linkurl]}"><strong>{$v[title]}</strong></a></li>
+			<li class="f_orange px12">￥[
+		{if $v[minsalary] && $v[maxsalary]}
+			{$v[minsalary]}-{$v[maxsalary]}{$DT[money_unit]}/月
+		{elseif $v[minsalary]}
+			{$v[minsalary]}{$DT[money_unit]}/月以上
+		{elseif $v[maxsalary]}
+			{$v[maxsalary]}{$DT[money_unit]}/月以内
+		{else}
+			面议
+				{/if}]
+				<span>&nbsp;&nbsp;{$v[introduce]}</span>	
+			</li>
+			<li><span>{area_pos($v[areaid], '')}，{$v[hits]} 人关注，维修 {$v[talent]} 个项目</span><em style="float:right;">{$v[date]}</em></li>
+	</ul>
+	</div>
+	{/loop}
+	{else}
+	{template 'chip-empty', 'mobile'}
+	{/if}
+{/if}
+{if $action != 'ajax'}
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{template 'footer', 'mobile'}
+{/if}

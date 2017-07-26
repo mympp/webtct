@@ -1,0 +1,36 @@
+{php if(strpos($TYPE,"|")!=0)$TYPE=explode('|',$TYPE);}
+{loop $tags $k $t}
+<div class="list" id="item_{$t[itemid]}" onmouseover="this.className='list_on';" onMouseOut="this.className='list';">
+	<table border="0" cellpadding="0" cellspacing="0">
+	<tr align="center">
+		<td width="10">&nbsp; </td>
+		<td width="100"><div><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="80" height="80" alt="{$t[alt]}" onmouseover="img_tip(this, this.src);" class="grayb" onmouseout="img_tip(this, '');"/></a></div></td>
+		<td width="500" align="left" valign="top">
+			<dl>
+			<dt><font>[{$TYPE[$t[typeid]]}]</font>{if $t[vip]}<span><img src="{DT_SKIN}image/vip.gif"/> <img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}<a href="{$t[linkurl]}" target="_blank" >{dsubstr($t[title],40,"..")}</a></dt>
+			<dd>{$t[introduce]}</dd>
+			<dd>
+					<span class="w280 lenstr">类别信息：[{cat_pos(get_cat($t[catid]), '-')}]</span>
+					<span class="w200">更新日期：[{timetodate($t[edittime], $datetype)}] </span>
+			</dd>	
+            <dd>
+					<span class="w280">发布单位：<a href="{userurl($t[username])}" target="_blank">{$t[company]}</a>&nbsp;{if $t[validated]}<font class="ocolor">[已认证]</font>{else}[未认证]{/if}{if !$t[username]} [未注册]{/if}</span>
+					<span class="w200">
+					{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+					{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+					{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+					{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+					{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}&nbsp;{/if}
+					</span>
+			</dd>
+			</dl>	</td>
+		<td width="100"> 
+        [{area_pos($t[areaid], '', 1)}]</td>
+	</tr>
+	</table>
+</div>
+
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}
+
+

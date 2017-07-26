@@ -1,0 +1,12 @@
+.abouttop{background:url('image/abouttop.jpg') top center;width:983px;height:220px;}
+.aboutbody{background:url('image/aboutfoot.jpg') bottom center;background-repeat:no-repeat;_height:440px;height:auto !important; min-height:440px;height:auto;padding-bottom:100px;}
+.aboutcontent{background-position:left center;background-repeat:no-repeat;_height:340px;height:auto !important; min-height:340px;height:auto;line-height:24px;}
+.aboutcontent a{color:#5b5b5b}
+.aboutmenu{margin:0px;width:983px;height:180px;}
+.aboutmenu ul{margin:auto;padding:5px;width:983px;height:50px;margin-top:5px;}
+.aboutmenu ul li{float:left;margin-left:10px;width:120px;text-align:left;text-indent:10px;;;font-size:14px;line-height:30px;height:30px;white-space:nowrap;overflow:hidden;}
+.abouty{background:url('image/yun.gif') left center no-repeat;font-weight:bold}.abouty a{color:#ffffff}
+.aboutn{background:url('image/modi.gif') left center no-repeat;font-weight:bold}.aboutn a{color:#292b2c}
+.titles{width:310px;;float:right;}.titles h1{font-size:24px;margin:0px;padding:0px;line-height:30px;height:30px;color:#B81611}
+.h4{line-height:20px;margin-bottom:5px;padding-top:5px;height:20px;font-size:14px;border-bottom:1px solid #ddd}
+tbody td {line-height:18px;}

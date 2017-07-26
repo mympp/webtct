@@ -1,0 +1,25 @@
+{template 'themer',$module}
+			<dl class="graybg grayb autoheight">
+			<dt class="ocolor f16 tc pt10 b">TA的联系方式</dt>
+			{if $moduleid!=15}
+			<dd class="pd5 autoheight">
+             {template 'contact', 'chip'}
+			</dd>
+			{/if}
+				{if $tag_condition}<!-- 自定义搜索条件 -->
+				{php $tagt = tag($tag_condition);}
+				{else}
+				{php $tagt = tag("moduleid=$moduleid&condition=status>2 and username='$username'&pagesize=14&order=itemid desc&template=null&debug=0")}
+				{/if}
+				{if $tagt}
+					<dt class="bcolor f16 tc pt10 b">TA发布更多{$MOD[name]}信息</dt>
+					<dd>
+					<ul class="ullist">
+							{loop $tagt $z $t}
+							<li><span class="fr w40 lenstr tr">{$t[hits]}°</span><a class="color lenstr" href="{$t[linkurl]}" target='_blank'>· {$t[title]}</a></li>
+							{/loop}
+							{if $z>12}<li><a href="{rewrite('search.php?kw='.$username)}" class="pl10 f14 b bcolor">更多..</a></li>{/if}									
+					</ul>
+					</dd>
+					</dl>
+				{/if}

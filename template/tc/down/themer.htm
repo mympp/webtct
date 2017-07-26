@@ -1,0 +1,47 @@
+<style type="text/css">
+.themeright{width:260px;height:105px;margin-left:0px;}
+.pl10{padding-left:8px;}
+</style>			
+						
+						<div class="themeright  cut">
+									<dl>
+									<dt class="tc pt10 pb10"><div class="divline"></div><a href="{$MODULE[2][linkurl]}my.php?action=add&mid={$moduleid}" target="_blank"><img src="{DT_SKIN}image/down/up3.png"></a></dt>
+										<dd class="tc f14 hcolor" style="line-height:24px;">已有 <font class="f24  ocolor mr5">{php echo $db->count($table, 'status=3', 1800);}</font>个文件共享</dd>				
+									</dl>
+						</div>
+			<div class="divline"></div>
+<dl>
+<dt class="f16  b color ">文件贡献者</dt>
+<dd class="pl10 pt10">
+<table>
+<tr>
+	<td><a href="{$MOD[linkurl]}search.php?kw={$username}">
+	<script type="text/javascript">
+	document.writeln("<img src=\"{useravatar($username, 'large')}\" width=\"60\" height=60 class=\"mid mr10 smallpic grayb\">");
+	</script>
+	</a></td>
+	<td><p class="f14 b color mb10">{$username}</p>
+	<p>已贡献了{php echo $db->count($table, "status=3 and username ='$username'", 1800);}文件</p>
+	<p><img src="{DT_SKIN}image/message_3.gif" class="mid mr5"><a href="{$MODULE[2][linkurl]}message.php?action=send&touser={$username}" target="_blank" title="给TA留言">发站内信给TA </a></p>
+	</td>
+</tr>
+</table>
+
+
+
+<div class="divline"></div></dd>
+<dt class="f16  color b">Ta发布的更多共享</dt>
+<dd>
+{php $tags = tag("moduleid=$moduleid&condition=status=3 and username='$username'&pagesize=8&order=edittime desc&template=list-down2&debug=0")}	
+
+</dd>
+<dt class="f16  color b">本类推荐的共享</dt>
+<dd>
+{php $tags = tag("moduleid=$moduleid&condition=status=3 and catid=$catid &pagesize=8&order=download desc&template=list-down2&debug=0")}	
+</dd>
+</dl>
+
+
+			<div class="divline"></div>
+<div class="grayb whitebg">{ad(137)}</div>
+			<div class="divline"></div>

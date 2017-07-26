@@ -1,0 +1,49 @@
+               <div class="webmenu">
+						{php $menuy=" class='menuy'";}
+						{php $menun=" class='menun'";}
+			   <div class="youcan"><a href="{$MODULE[28][linkurl]}">天成人才网</a> </div>
+						<div  class="webmenulist" id="mini-dropdown-2">
+						<ul class="dropdown" id="nav">
+						<li id="catsl" {$menun}> <a  href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php')}"  class="wcolor f16">招聘职位分类&nbsp;∨</a>
+						{php $tagss = tag("moduleid=$moduleid&table=category&fields=catid,catname,style,item&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+						{if !$listpage}
+						{php $listpage='list';}
+						{/if}
+								<ul>
+								{loop $tagss $i $t}
+								<li><a href="{$MOD[linkurl]}{rewrite($listpage.'.php?catid='.$t[catid])}">  {set_style($t[catname],$t[style])} ({$t[item]})</a></li>
+								{/loop}
+								</ul>
+						</li>
+						<li id="areasl" {$menun}> <a  href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=resume')}"  class="wcolor f16">人才地区分布&nbsp;∨</a>
+									{php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}	
+									<ul style="width:534px;">
+																					<li style="width:100px;float:left;margin-right:0px;"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=resume')}" style="width:90px;font-weight:bold">全部地区</a></li>
+											{loop $mainarea $k $v}
+												<li style="width:100px;float:left;margin-right:0px;"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?areaid='.$v[areaid].'&action=resume')}" style="width:90px;">{$v[areaname]}</a></li>
+											{/loop}
+									</ul>
+						</li>
+						<li id="tjzw"><a href="{$MODULE[$moduleid][linkurl]}search.php?action=job&vip=1" class="{if $vip&&$action=='job'}menuy{else}menun{/if}">推荐职位</a></li>
+						<li id="tjrc"><a href="{$MODULE[$moduleid][linkurl]}search.php?action=resume&vip=1" class="{if $vip&&$action=='resume'}menuy{else}menun{/if}">推荐人才</a></li>
+						<li id="tjgs"><a href="{$MODULE[$moduleid][linkurl]}search.php?action=gs" class="{if $action == 'gs'}menuy{else}menun{/if}">推荐企业</a></li>
+						<li id="hrzx"><a href="{$MODULE[$moduleid][linkurl]}search.php?action=news" class="{if $action == 'news'}menuy{else}menun{/if}">职场资讯</a></li>
+						<li id="fuwu"><a href="{$MODULE[$moduleid][linkurl]}contact.php" class="{if $webpage=='contact'}menuy{else}menu{/if}">人才服务</a></li>
+						</ul>
+						</div>
+				<div class="webmem"><ul id="mstatus"><li><img src="{DT_SKIN}image/loadb.gif" style="padding-top:5px;"></li></ul>
+				<span id="joinusto" class="hd"></span>
+				</div>
+               </div>
+
+<script type="text/javascript">
+$(function(){
+    $('#mini-dropdown-2 .dropdown').miniDropdown({
+      animation: 'slide', 
+      show: 100,
+      hide: 100,
+      delayIn: 100,
+      delayOut: 100
+    });
+});
+</script>

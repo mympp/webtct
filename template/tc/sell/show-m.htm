@@ -1,0 +1,129 @@
+<?php 
+	$imgUrl = $thumb;
+
+    $desc = $content ? $content : $introduce;
+    $desc = strip_tags($desc);
+    $desc = trim(preg_replace("/\&([^;]+);/i", '', $desc));
+    $desc = dsubstr($desc,200,'',0);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>{if $moduleid > 1}{$head_title}{else}天成医疗网_国内专业医疗产业服务平台{/if}</title>
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=0,width=device-width"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="generator" content="天成医疗网-www.tecenet.com"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="{$site_name}"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"/>
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="128x128" href="apple-touch-icon-precomposed.png">
+<meta name="msapplication-TileImage" content="apple-touch-icon-precomposed.png">
+<meta name="msapplication-TileColor" content="#007AFF">
+<link rel="shortcut icon" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="../mobile/static/lib/jquery/jquery.mobile.custom.structure.min.css"/>
+<link rel="stylesheet" type="text/css" href="../mobile/static/style.css"/>
+<script type="text/javascript" src="../mobile/static/lib/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+{if DT_DEBUG}
+if(!('ontouchend' in document) && window.location.href.indexOf('device.php') == -1) //window.location='device.php';
+{/if}
+</script>
+<script type="text/javascript" src="../mobile/static/lib/jquery/jquery.mobile.custom.min.js"></script>
+<script type="text/javascript" src="../mobile/static/js/common.js"></script>
+<script type="text/javascript" src="../mobile/static/js/fix.js"></script>
+</script><script src="../mobile/static/js/jweixin-1.0.0.js"></script>
+<script>
+wx.config({
+    debug: false,
+    appId: "{$wxconfig['appId']}",
+    timestamp: "{$wxconfig['timestamp']}",
+    nonceStr: "{$wxconfig['nonceStr']}",
+    signature: "{$wxconfig['signature']}",
+    jsApiList: [    
+    "checkJsApi",    
+    "onMenuShareTimeline",    
+    "onMenuShareAppMessage",    
+    "onMenuShareQQ",
+    "onMenuShareQZone",
+    "onMenuShareWeibo"
+    ]    
+});    
+wx.ready(function(){
+ wx.onMenuShareTimeline({// 分享到朋友圈
+    title: "{$head_title}", 
+    link: "{$wxconfig['url']}", 
+    imgUrl: "{$imgUrl}", 
+    success: function () {},
+    cancel: function () {}
+});
+
+wx.onMenuShareAppMessage({// 分享给微信好友
+    title: "{$head_title}", 
+    desc: "{$desc}", 
+    link: "{$wxconfig['url']}", 
+    imgUrl: "{$imgUrl}", 
+    type: "", // 分享类型,music、video或link，不填默认为link
+    dataUrl: "", // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () {},
+    cancel: function () {alert("好东西！要分享给好友哟☺");}
+});
+wx.onMenuShareQQ({
+    title: "{$head_title}", 
+    desc: "{$desc}", 
+    link: "{$wxconfig['url']}", 
+    imgUrl: "{$imgUrl}", 
+    success: function () {},
+    cancel: function () {}
+});
+wx.onMenuShareQZone({
+    title: "{$head_title}",
+    desc: "{$desc}",
+    link: "{$wxconfig['url']}",
+    imgUrl: "{$imgUrl}",
+    success: function(){},
+    cancel: function(){}
+});
+wx.onMenuShareQZone({
+    title: "{$head_title}",
+    desc: "{$desc}",
+    link: "{$wxconfig['url']}",
+    imgUrl: "{$imgUrl}",
+    success: function(){},
+    cancel: function(){}
+});
+wx.onMenuShareWeibo({
+    title: "{$head_title}",
+    desc: "{$desc}",
+    link: "{$wxconfig['url']}",
+    imgUrl: "{$imgUrl}",
+    success: function(){},
+    cancel: function(){}
+});
+
+});
+
+</script>
+</head>
+<body>
+<div data-role="page">
+	<div class="ui-toast"></div>
+	<div class="ui-mask"></div>
+	<div class="ui-sheet"></div>
+	{php $COM=userinfo($username);}
+	<div> {$content}</div>
+</div>
+<div style="display:none;">
+	{if $baiduhm == 1}
+	<script type="text/javascript"> var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7366d5ce748c7a306307317faaf241ad' type='text/javascript'%3E%3C/script%3E")) </script>
+	{/if}
+    {template 'analytics','include'}
+</div>
+</body>
+</html>

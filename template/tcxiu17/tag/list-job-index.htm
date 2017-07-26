@@ -1,0 +1,26 @@
+{php $c=1;}
+{loop $tags $k $t}
+{php if($c==5){$c=1;}}
+<li class="cut {if $k>0&&fmod($k,3)==0||$k==1}ml30{else}ml10{/if}" >
+	<table cellpadding="0" cellspacing="0" onmouseover="this.className='gs6'" 
+	{if $c<5&&$c>2}onmouseout="this.className='gs4'"class="gs4"{else}onmouseout="this.className='gs5'"class="gs5"{/if}>
+	<tr align="center">
+		<td align="left">
+<div><span class='fr mr10'>[{$t[hits]}°C]</span><a href="{$t[linkurl]}" target="_blank">{if $t[status]==3}<img src="{DT_SKIN}image/shield.gif" class="mid"/>{else}<img src="{DT_SKIN}image/shield_no.gif" class="mid"/>{/if}&nbsp;{area_pos($t[areaid], '/', 2)}&nbsp;&nbsp;{$t[title]}</a></div>
+					</td>
+	</tr>
+	<tr align="center">
+	  <td align="left"valign="top" height=40 ><div class="ml10 "><span class="lenstr w90 tl">分类:{$t[catname]}</span><span class="ml10 lenstr w90 tc">悬赏:[{if $t[minsalary] && $t[maxsalary]}
+			{$t[minsalary]}-{$t[maxsalary]}{$DT[money_unit]}/次
+		{elseif $t[minsalary]}
+			{$t[minsalary]}{$DT[money_unit]}/次以上
+		{elseif $t[maxsalary]}
+			{$t[maxsalary]}{$DT[money_unit]}/次以内
+		{else}
+			面议
+		{/if}]</span><span class="ml10 lenstr w90 tc">报名:[{$t[apply]}]</span><br>{dsubstr($t[introduce],80,"..")}</div></td>
+  </tr>
+	</table>
+</li>
+{php $c=$c+1;}
+{/loop}		

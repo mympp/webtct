@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>【秀脑力】测试一下健忘指数_天成医疗网</title>
+    <meta name="description" content="「天成」统计：全凭记忆只有3%的人全部做对！" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link href="//cdn.bootcss.com/csshake/1.5.1/csshake-slow.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/xiunaoli.css?ver=03.27.01">
+
+    <script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+<body>
+
+
+<div id="gameIndex" class="index">
+    <a href="http://wap.tecenet.com/" target="_blank" class="tecenet-link"></a>
+    <div class="img-1 animated zoomInDown"></div>
+    <div class="img-2 animated bounceInLeft"></div>
+    <div class="img-3 animated bounceInRight"></div>
+    <div class="img-4 shake shake-slow shake-constant " ></div>
+
+    <a href="./game.html" target="_self" class="btn zoomInUp animated">开始</a>
+</div>
+
+
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    autodivheight();
+    function autodivheight(){
+        var winHeight=0;
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        //通过深入Document内部对body进行检测，获取浏览器窗口高度
+        if (document.documentElement && document.documentElement.clientHeight)
+            winHeight = document.documentElement.clientHeight;
+        var currHeight = winHeight;
+        document.getElementById("gameIndex").style.height = currHeight+"px";
+    }
+    window.onresize=autodivheight;
+</script>
+<script>
+    var localUrl = encodeURIComponent(window.location.href.split("#")[0]);
+    $.ajax({
+        url: 'http://www.tecenet.com/api/weixin/jssdk.php?callback=cb&url=' + localUrl,
+        dataType: 'jsonp',
+        error: function () {
+        },
+        success: function (cb) {
+            if (typeof cb.timestamp != 'undefined' && typeof cb.nonceStr != 'undefined' && typeof cb.signature != 'undefined') {
+                wx.config({
+                    debug: false,
+                    appId: cb.appId,
+                    timestamp: cb.timestamp,
+                    nonceStr: cb.nonceStr,
+                    signature: cb.signature,
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo']
+                });
+                wx.ready(function () {
+                    wx.onMenuShareTimeline({
+                        ttitle: document.title,
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/file/game/xiunaoli/images/wechat-share-icon.png"
+                    });
+                    wx.onMenuShareAppMessage({
+                        title: document.title,
+                        desc: $("[name=description]").attr("content"),
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/file/game/xiunaoli/images/wechat-share-icon.png",
+                        type: '',
+                        dataUrl: ''
+                    });
+                    wx.onMenuShareQQ({
+                        title: document.title,
+                        desc: $("[name=description]").attr("content"),
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/file/game/xiunaoli/images/wechat-share-icon.png"
+                    });
+                    wx.onMenuShareWeibo({
+                        title: document.title,
+                        desc: $("[name=description]").attr("content"),
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/file/game/xiunaoli/images/wechat-share-icon.png"
+                    });
+                });
+            }
+        }
+    });
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2b363fb3d03ff9991c4971afddf8731d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<div style="display:none;">
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</div>
+</body>
+</html>

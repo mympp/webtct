@@ -1,0 +1,9 @@
+#modulebg{background-image:url('image/bg3.gif');background-color:#fff}
+	.webmenu{display:none}
+#webbodycontent{vertical-align:none}
+.tit{font-size:16px;font-weight:normal;}
+.tit a:link{color:#0033cc;text-decoration:underline;}
+.tit dt font{text-decoration:underline;color:red}
+.tit a:visited {color:#660099;}
+.searchlist dd{margin-bottom:20px;}
+.searchlist dt{margin-top:10px;}

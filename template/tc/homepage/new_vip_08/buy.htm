@@ -1,0 +1,61 @@
+{template 'header', $template}
+{if $itemid}
+<div class="product_main">
+		<div class="product_main_title"><div class="product_main_title_content">&rarr;&nbsp;{$title}&nbsp;&larr;</div></div>
+		<div class="product_main_content">
+			<div class="product_main_content_left">
+				<div class="big_img"><img src="{$albums[0]}" width="93%" height="90%"/></div>
+				<div class="u">
+					<ul>
+						{loop $thumbs $k $v}
+						<li><a href="#"><img src="{$v}" width="90%" height="90%"/></a></li>
+						{/loop}	
+					</ul>
+				</div>
+			</div>
+			<div class="product_main_content_right">
+				<table border="0">
+						<tr><td width="100" class="s" style="boeder-top:0px">产&nbsp;&nbsp;&nbsp;品：</td><td>{$title}</td></tr>
+						<tr><td class="s">需求数量：：</td><td><span style="color:#FF0000">&nbsp;{$amount}</span></td></tr>
+						<tr><td class="s">价格要求：</td><td>{$price}</td></tr>
+						<tr><td class="s">规格要求：</td><td>{$standard}</td></tr>
+						<tr><td class="s">包装要求：</td><td>{$pack}</td></tr>
+						<tr><td class="s">所在地：</td><td>{area_pos($areaid, '&nbsp;')}</td></tr>
+						<tr><td class="s">有效期至：</td><td>{if $todate}{$todate}{else}长期有效{/if}{if $expired} <span class="f_red">[已过期]</span>{/if}</td></tr>
+						</table>
+				<table style="margin-top:20px;">
+					<tr><td class="s"></td><td width="150"><a href="#message"><img src="{DT_SKIN}image/btn_price.gif" alt="报价"/></a></td></tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="details_parameter">
+		<div class="product_main_title"><div class="product_main_title_content">&rarr;&nbsp;详细参数&nbsp;&larr;</div></div>
+		<div class="parameter_content">
+			{$content}
+		</div>
+	</div>
+	<div class="details_parameter">
+		<div class="product_main_title"><div class="product_main_title_content">&rarr;&nbsp;报价单&nbsp;&larr;<a name="message"></a></div></div>
+		<div class="parameter_content">
+			<iframe src="{$inquiry_url}" name="fra" id="fra" style="width:98%;height:488px;margin-top:15px;" scrolling="no" frameborder="0"></iframe>
+		</div>
+	</div>
+{else}
+<div class="list_product">
+		<div class="list_title"><div class="title_content">&rarr;&nbsp;采购信息&nbsp;&larr;</div></div>
+		<div class="list_product_content">
+			<div class="list_product_content_con">
+				{loop $lists $k $v}
+				{if $k<15}
+				<div class="img_content" style="margin-left:7px;"><a href="{$v[linkurl]}" title="{$v[title]}"><img src="{imgurl($v[thumb], 1)}" width="250" height="240"/></a><br/><a href="{$v[linkurl]}">{dsubstr($v[title],20,'...')}</a><br/><span>￥{$v[price]}</span>
+				</div>
+				{/if}
+				{/loop}
+			<div class="pages">{$pages}</div>
+			</div>
+		</div>
+		
+</div>
+{/if}
+{template 'footer', $template}

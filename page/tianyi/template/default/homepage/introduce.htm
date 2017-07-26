@@ -1,0 +1,131 @@
+{template 'header', $template}
+<script src="{DT_STATIC}file/script/layer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[4][moduledir]}/skin/company_profile.css"/>
+<div class="c_b"></div>
+<div class="m company_bg">
+	<div class="company_title">
+		<div class="company_words company_left">企业简介</div>
+		<span class="company_letter company_left">COMPANY PROFILES</span>
+		<div class="c_b"></div>
+		<div class="company_line"></div>
+	</div>
+	<div class="company_desc introduce_des">
+		{$content}
+	</div>
+</div>
+
+<div class="m company_bg">
+	<div class="company_title">
+		<div class="company_words company_left">工商注册信息</div>
+		<span class="company_letter company_left">BUSINESS REGISTRATION INFORMATION</span>
+		<div class="c_b"></div>
+		<div class="company_line"></div>
+	</div>
+	<div class="company_desc">
+		<div class="company_data company_left">
+			<div class="data_tr">
+				<div class="data_title company_left">公司名称：</div>
+				<div class="data_left company_left">{$COM['company']}</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">注册资本：</div>
+				<div class="data_left company_left">{$COM['regunit']}{$COM['capital']}万元</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">注册号：</div>
+				<div class="data_left company_left">{$COM['register']}</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">登记机关：</div>
+				<div class="data_left company_left">{$COM['reoffice']}</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">营业期限：</div>
+				<div class="data_left company_left">{$COM['starttime']}  至  {$COM['endtime']}</div>
+			</div>
+		</div>
+		<div class="company_data company_left">
+			<div class="data_tr">
+				<div class="data_title company_left">注册地址：</div>
+				<div class="data_left company_left">{$COM['readdress']}</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">成立日期：</div>
+				<div class="data_left company_left">{$COM['retime']}</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">法定代表人：</div>
+				<div class="data_left company_left">{$COM['legalPerson']}</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">企业类型：</div>
+				<div class="data_left company_left">{$COM['type']}</div>
+			</div>
+			<div class="data_tr">
+				<div class="data_title company_left">年报时间：</div>
+				<div class="data_left company_left">暂无</div>
+			</div>
+		</div>
+		<div class="c_b"></div>
+		<div class="company_data_bottom">
+			<div class="data_title company_left">经营范围：</div>
+			<div class="data_bottom_left company_left">
+				{$COM['business']}
+			</div>
+			<div class="c_b"></div>
+		</div>
+	</div>
+</div>
+
+<div class="m company_bg">
+	<div class="com-honner">
+		<div class="company_title">
+			<div class="company_words company_left">荣誉资质</div>
+			<span class="company_letter company_left">HONORS AND QUALIFICATIONS</span>
+			<div class="c_b"></div>
+			<div class="company_line"></div>
+		</div>
+		<div class="honors-list">
+			<div>
+				<div class="point-left" onclick="javascript:void(0);"></div>
+			</div>
+			<div id="honors-list-img">
+				<ul id="imgs">
+                    {loop $lists $k $v}
+                    <li class="bor-r">
+                        <div class="div-img">
+							<img src="{$v['image']}" data-title="{$v['title']}"/>
+						</div>
+                        <div><span>{$v['title']}</span></div>
+                    </li>
+                    {/loop}
+					<div class="c_b"></div>
+				</ul>
+			</div>
+			<div>
+				<div class="point-right" onclick="javascript:void(0);"></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="c_b"></div>
+<script type="text/javascript" src="{DT_STATIC}{$MODULE[4][moduledir]}/skin/company_img.js"></script>
+<script type="text/javascript">
+
+	$(".div-img").click(function () {
+		layer.use('extend/layer.ext.js', function () {
+			//初始加载即调用，所以需放在ext回调里
+			layer.ext = function () {
+				layer.photosPage({
+					html: '',
+					title: '',
+					id: '', //相册id，可选
+					parent: '#imgs'
+				});
+			};
+		});
+	});
+</script>
+{template 'footer'}

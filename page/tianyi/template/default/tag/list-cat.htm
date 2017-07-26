@@ -1,0 +1,13 @@
+<ul>
+    {loop $tags $i $t}
+    <div class="article_div">
+        <a class="" href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">
+            <div class="article_title">{$t[title]}</div>
+            <div class="article_introduce">{$t[introduce]}</div>
+            <div class="article_bottom"><span id="adddate">{$t[adddate]} &nbsp; &nbsp; &nbsp;浏览次数{$t[hits]}</span></div>
+        </a>
+    </div>
+
+    {/loop}
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

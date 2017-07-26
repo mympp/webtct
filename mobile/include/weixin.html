@@ -1,0 +1,56 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="viewport" content="width=640">
+<script type="text/javascript">
+var ua = navigator.userAgent.toLowerCase();
+if(ua.match(/MicroMessenger/i)!="micromessenger") {
+window.location.href='down.html';
+} 
+</script>
+<title>天成医疗网官方应用</title>
+</head>
+<body style=";margin:auto;margin-top:0px;background:#d6eaf3 url('http://www.tecenet.com/skin/teceskin/image/loading_circle.gif') no-repeat center center;color:#3d5278;font-family: '微软雅黑';">
+<style type="text/css">
+	.cc{padding:0px 5px 0px 5px;color:#e41b4e;font-size:30px;}
+	a{text-decoration:none;color:#e41b4e}
+	.whitebg{background:#fff;}
+</style>
+<div style="margin:auto;margin-top:0px;background:url('image/weixin.jpg') no-repeat top center;height:960px;width:640px;" id="downs">
+<div style="padding-top:585px;">
+<table width=100%>
+<tr>
+	<td style="font-size:16px;text-align:center;line-height:30px; height:30px;">
+		<span class="cc">微信用户注意</span>您的微信不允许打开电脑版或下载客户端！<br>
+		<b style="font-size:18px;">1.</b>请点击右上角"..."按钮<br>
+		<b style="font-size:18px;">2.</b>再点击"在浏览器中打开"<br>
+		祝您使用愉快，O(∩_∩)O哈！<br>
+		<span id="dd" class="cc">9</span>秒后，<span id="hello">自动转入触屏版</span>
+	</td>
+</tr>
+
+</table>
+</div>
+</div>
+<div style="display:none">
+	<script type="text/javascript">
+		function run(){
+		if (document.readyState =='complete') {
+		    var s = document.getElementById("dd");
+		    if(s.innerHTML == 0){
+			document.getElementById('hello').innerHTML='<a href="http://wap.tecenet.com/app.html">若无法跳转，点这直接进入！</a>';
+		       window.location.href='http://wap.tecenet.com/app.html';
+		        return false;
+		    }
+		    s.innerHTML = s.innerHTML * 1 - 1;
+			}
+		}
+		window.setInterval("run();", 1000);
+	</script>
+	<script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</div>
+</body>
+</html>

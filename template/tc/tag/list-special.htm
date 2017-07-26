@@ -1,0 +1,14 @@
+<ul class="{$css}ul" id="artlll">
+				{loop $tags $z $t}
+                 <li class="mt5 fl mr10 w310 ml10"><a href="{$t[linkurl]}"  target="_blank"  title="{$t[alt]}" ><img src='{$t[thumb]}' width="305" height="210" class="grayb"><div class="f16 mt5"><p class=" b">{$t[title]}</p></div></a>
+				 <div>{$t[introduce]}</div>
+				 <div>发布时间：{timetodate($t[edittime],4)}&nbsp;&nbsp;&nbsp;&nbsp;浏览量：{$t[hits]}</div>
+				 </li>
+				{/loop}
+</ul>
+<script type="text/javascript">
+$(".{$css}ul>li").hover(function () {$(this).removeClass("whitebg");$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg");$(this).addClass("whitebg"); });
+</script>
+
+{if $showpage && $pages}<div class="divline"></div>
+<div class="pages">{$pages}</div>{/if}

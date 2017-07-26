@@ -1,0 +1,199 @@
+{php $head_css = [DT_SKIN.'gongsi.css']}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/jquery.pin.js',DT_PATH.'file/script/company.index.js'];}
+{template 'module-header'}
+<!--page-wrap-->
+<div class="page-wrap">
+    <!--layout-->
+    <div class="layout clearfix mgt-20">
+        <!--广告位-->
+        <div class="slide-box pull-left">
+            <div class="bd">
+                <ul>
+                {php $tagt = tag("moduleid=2&table=ad&condition=pid=198 and fromtime<$DT_TIME and totime>$DT_TIME and status=3&pagesize=5&order=listorder asc&template=null")}
+                {loop $tagt $k $t}
+                <li><a href="{$t['url']}" target="_blank"><img src="{$t['image_src']}" title="{$t['title']}" /></a></li>
+                {/loop}
+                </ul>
+            </div>
+            <div class="hd"><ul></ul></div>
+        </div>
+        <!--广告位 end-->
+
+        <!--side-data-->
+        <div class="side-data pull-left">
+            <div class="data-item data-item-1">
+                <i class="tc-gs-i"></i>
+                <div class="data-num">
+                    <p>入驻企业</p>
+					{php $company = $db->count($DT_PRE.'company', "groupid>5 and business<>'' and catids<>''", 60);}
+					{php $num=number_format($company,0,'.',',')}
+                    <p><em>{$num}</em>家</p>
+                </div>
+                <a class="data-button" href="{DT_PATH}member/register.php" target="_self">企业会员</a>
+            </div>
+            <div class="data-item data-item-2">
+                <i class="tc-gs-i"></i>
+                <div class="data-num">
+                    <p>产品信息</p>
+                    {php $mall = $db->count($DT_PRE.'mall', "status=3", 60);}
+					{php $num=number_format($mall,0,'.',',')}
+                    <p><em>{$num}</em>条</p>
+                </div>
+                <a class="data-button" href="{$MODULE[2]['linkurl']}my.php?action=add&mid=16" target="_self">发布产品</a>
+            </div>
+            <div class="data-item data-item-3">
+                <i class="tc-gs-i"></i>
+                <div class="data-num">
+                    <p>VIP 企业</p>
+                    {php $nowtime = time()}
+                    {php $vip_tag=tag("table=company&fields=count(*) vipcount&condition=vip > 0 and totime>$nowtime&template=null")}
+                    <p><em>{number_format($vip_tag[0]['vipcount'])}</em>家</p>
+                </div>
+                <a class="data-button" href="{$MODULE[2]['linkurl']}grade.php" target="_self">升级VIP</a>
+            </div>
+            <div class="data-item data-item-4">
+                <i class="tc-gs-i"></i>
+                <div class="data-num">
+                    <p>认证企业</p>
+                    {php $validated_tag=tag("table=company&fields=count(*) count&condition=validated=1&template=null")}
+                    <p><em>{$validated_tag[0]['count']}</em>条</p>
+                </div>
+                <a class="data-button" href="{$MODULE[2]['linkurl']}validate.php?action=company" target="_self">上传证件</a>
+            </div>
+
+        </div>
+        <!--side-data end-->
+
+    </div>
+    <!--layout end-->
+
+    <!--layout-->
+    <div class="layout container clearfix mgt-20">
+    	
+    
+        <!--main-->
+        <div class="main pull-right">
+			<!--推荐厂商-->
+            <div class="cmp-col">
+                <div class="cmp-col-hd clearfix">
+                    <h2 class="pull-left">推荐厂商</h2>
+                    <a href="{$MOUDLE[4]['linkurl']}{com_rewrite(['vip'=>1,'validated'=>1])}" class="more pull-right">查看全部<i class="tc-gs-i"></i></a>
+                </div>
+                <div class="cmp-col-bd clearfix">
+                {php $tags = tag("moduleid=4&condition=groupid=7 and totime>$nowtime&order=pnum desc&pagesize=10&template=null")}
+                {template 'index-list',$module}
+                </div>
+            </div>
+            <!--推荐厂商 end-->
+            
+            <!--新增厂商-->
+            <div class="cmp-col">
+                <div class="cmp-col-hd clearfix">
+                    <h2 class="pull-left">新增厂商</h2>
+                    <a href="{$MODULE[4]['linkurl']}search.php" class="more pull-right">查看全部<i class="tc-gs-i"></i></a>
+                </div>
+                <div class="cmp-col-bd clearfix">
+                	{php $tags = tag("moduleid=4&condition=closeshop=0 and thumb <> ''&order=userid desc&pagesize=10&template=null")}
+                	{template 'index-list',$module}
+                </div>
+            </div>
+            <!--新增厂商 end-->
+
+            <!--医疗器械/设备-->
+            <div class="cmp-col">
+                <div class="cmp-col-hd clearfix">
+                    <h2 class="pull-left">医疗器械/设备</h2>
+                    <a href="{$MODULE[4]['linkurl']}{com_rewrite(['catid'=>715])}" class="more pull-right">查看全部<i class="tc-gs-i"></i></a>
+                </div>
+                <div class="cmp-col-bd clearfix">
+                	{php $tags = tag("moduleid=4&condition=closeshop=0 and thumb <> '' and catid = ',715,'&order=userid desc&pagesize=10&template=null")}
+                    {template 'index-list',$module}
+                </div>
+            </div>
+            <!--医疗器械/设备 end-->
+            
+             <!--医疗机构-->
+            <div class="cmp-col">
+                <div class="cmp-col-hd clearfix">
+                    <h2 class="pull-left">医疗机构</h2>
+                    <a href="{$MODULE[4]['linkurl']}{com_rewrite(['catid'=>2365])}" class="more pull-right">查看全部<i class="tc-gs-i"></i></a>
+                </div>
+                <div class="cmp-col-bd clearfix">
+                	{php $tags = tag("moduleid=4&condition=closeshop=0 and thumb <> '' and catid like '%2365%' &order=pnum desc&pagesize=10&template=null")}
+                    {template 'index-list',$module}
+                </div>
+            </div>
+            <!--医疗机构 end-->
+
+
+        </div>
+        <!--main end-->
+
+        <!--side-->
+        <div class="side pull-left">
+            <!--快速筛选-->
+                <form action="{$MODULE[4]['linkurl']}search.php" method="get" class="frm-box pull-right pinned">
+                    <div class="frm-box-hd">快速筛选</div>
+                    <div class="frm-box-bd">
+                        <div class="frm-control-group">
+                            <label class="frm-label">经营范围</label>
+                            <div class="frm-controls">
+                                <select class="frm-select" name="catid"  style="width: 248px">
+                                {php $tagss = tag("moduleid=4&table=category&fields=catid,catname,style,item&condition=moduleid=4 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+                                {loop $tagss $k $t}
+                                <option value="{$t['catid']}">{$t['catname']} [{$t['item']}]</option>
+                                {/loop}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="frm-control-group">
+                            <label class="frm-label">地区</label>
+                            <div class="frm-controls">
+                                {php $area_id=0;}
+                                {ajax_area_count('areaid', '请选择',0,'class="frm-select"')}        
+                            </div>
+                        </div>
+
+                        <div class="frm-control-group">
+                            <label class="frm-label">关键字</label>
+                            <div class="frm-controls">
+                                <input type="text" class="frm-input" name="kw" value="" placeholder="请输入厂商相关关键字"  />
+                            </div>
+                        </div>
+
+                        <div class="frm-control-group">
+                            <label class="frm-label">经营模式</label>
+                            <div class="frm-controls clearfix">
+                                {loop $modes $k $t}
+                                <label class="frm-check-label"><input type="radio" value="{$k+1}" name="mode">{$t}</label>
+                                {/loop}
+                            </div>
+                        </div>
+
+                        <input type="submit" class="submit" value="立即筛选">
+                    </div>
+                </form>
+            <!--快速筛选 end-->
+        </div>
+        <!--side end-->
+        
+    </div>
+    <!--layout end-->
+
+    <!--layout-->
+    <div class="layout links-layout">
+        <div class="links-hd">友情链接：</div>
+        <div class="links-bd">
+        	{php $tagt = tag("table=link&condition=status=3 and link_moduleid=4&pagesize=10&order=listorder asc,itemid desc&template=null")}
+        	{loop $tagt $k $t}
+        	<a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a>
+        	{/loop}
+            <a href="{$EXT[link_url]}{rewrite('index.php?action=reg')}" class="apply-to" rel="nofollow">申请加入&gt;&gt;</a>
+        </div>
+    </div>
+    <!--layout end-->
+</div>
+<!--page-wrap end-->
+
+{template 'footer2017'}

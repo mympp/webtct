@@ -1,0 +1,409 @@
+/*icon*/
+.s-i{
+    display: inline-block;
+    position: relative;
+    width:20px;
+    height: 20px;
+    background-image: url("./image/down/tc-gongxiang-icons.png");
+    background-repeat: no-repeat;
+}
+.s-i-rar{
+    background-position: 0 0;
+}
+.s-i-img{
+    background-position: -20px 0;
+}
+.s-i-mov{
+    background-position: -40px 0;
+}
+.s-i-exe{
+    background-position: -60px 0;
+}
+.s-i-pdf{
+    background-position: -80px 0;
+}
+.s-i-doc{
+    background-position: -100px 0;
+}
+.s-i-xls{
+    background-position: -120px 0;
+}
+.s-i-ppt{
+    background-position: -140px 0;
+}
+.s-i-fla{
+    background-position: -160px 0;
+}
+.s-i-chm{
+    background-position: -180px 0;
+}
+.s-i-help{
+    background-position: -200px 0;
+}
+.s-i-oth{
+    background-position: -220px 0;
+}
+.s-i-see{
+    background-position: 0 -100px;
+}
+.s-i-down{
+    background-position: -20px -100px;
+}
+.s-i-download{
+    background-position: -40px -100px;
+}
+.s-i-upload{
+    background-position: -80px -100px;
+}
+.s-i-rec-see{
+    background-position: 0 -120px;
+}
+.s-i-rec-down{
+    background-position: -20px -120px;
+}
+.s-i-gold{
+    background-position: 0 -140px;
+}
+
+/*ami*/
+.ami{
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.mt30{
+    margin-top: 30px;
+}
+.crumb{
+    padding-bottom: 30px;
+}
+
+.shared-wrap{
+    background-color: #faf8f7;
+}
+.shared-header{
+    position: relative;
+    padding: 25px 0;
+    overflow: hidden;
+    background: #fff;
+    border-bottom: 1px solid #f1ebe7;
+    box-shadow: 0 1px 3px 0 rgba(55,18,0,.05);
+}
+
+.shared-header-main{
+    width: 750px;
+    padding-left: 20px;
+}
+.shared-file-title{
+    margin-bottom: 4px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+}
+.shared-file-title .s-i{
+    top:2px;
+    width:20px;
+    height:20px;
+    margin-left:8px;
+}
+
+.shared-file-info{
+    padding-top:8px;
+    color: #aaa;
+}
+.shared-file-info span{
+    margin:0 10px;
+    color: #eaeaea;
+}
+.shared-file-info .shared-file-type{
+    padding:3px 10px;
+    background-color: #e0cdc5;
+    color: #fff;
+    font-size: 12px;
+    line-height:1.2;
+    border-radius:2px;
+}
+.shared-file-info .shared-file-type:hover {
+    background-color: #bfaea8;
+}
+.shared-file-share,.shared-show-data{
+    height:32px;
+    overflow: hidden;
+    margin-top:20px;
+}
+.shared-file-share .bdsharebuttonbox a{
+    float: none;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin:0 15px 0 0;
+    background-image: url("./image/down/tc-gongxiang-icons.png");
+}
+.shared-file-share .bdsharebuttonbox .bds_weixin{
+    background-position: 0 -20px;
+}
+.shared-file-share .bdsharebuttonbox .bds_tsina{
+    background-position: -40px -20px;
+}
+.shared-file-share .bdsharebuttonbox .bds_qzone{
+    background-position: -120px -20px;
+}
+.shared-file-share .bdsharebuttonbox .bds_sqq{
+    background-position: -80px -20px;
+}
+.shared-file-share .bdsharebuttonbox .bds_weixin:hover{
+    background-position: 0 -60px;
+}
+.shared-file-share .bdsharebuttonbox .bds_tsina:hover{
+    background-position: -40px -60px;
+}
+.shared-file-share .bdsharebuttonbox .bds_qzone:hover{
+    background-position: -120px -60px;
+}
+.shared-file-share .bdsharebuttonbox .bds_sqq:hover{
+    background-position: -80px -60px;
+}
+.shared-show-data{
+    line-height:32px;
+    color: #bfaea8;
+}
+.shared-show-data>*{
+    float: left;
+}
+.shared-show-data .s-i{
+    top:4px;
+    margin-right:5px;
+}
+.shared-show-data-line{
+    width: 1px;
+    height:14px;
+    background-color: #eaeaea;
+    margin:8px 20px;
+}
+
+.shared-header-side{
+    width:300px;
+    padding: 15px 20px 0 50px;
+}
+.shared-author-avatar img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    padding:2px;
+    border:1px solid #eaeaea;
+}
+.shared-author-avatar:hover img{
+    border-color: #ccc;
+}
+.shared-author-info{
+    width: 194px;
+    padding:8px 0 0 0;
+}
+.shared-author-name{
+    font-size: 16px;
+    color: #333333;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.shared-author-contribution{
+    margin-top:5px;
+    color: #888;
+    font-size: 14px;
+}
+.shared-author-contribution em{
+    color: #e56639;
+    font-style: normal;
+}
+.shared-author-info .shared-author-btn{
+    display: inline-block;
+    padding:5px 10px;
+    margin-top:5px;
+    font-size: 12px;
+    background-color: #9ED641;
+    color: #fff;
+    border-radius:5px;
+}
+.shared-author-info .shared-author-btn:hover{
+    background-color: #91c63e;
+}
+
+
+
+
+.shared-body-main{
+    width: 820px;
+    padding-bottom: 20px;
+}
+.shared-file-content{
+    padding:20px;
+}
+.shared-file-content img{
+    display: block;
+    max-width:100%;
+    margin:10px auto;
+}
+
+
+
+
+
+.shared-body-side{
+    width:340px;
+}
+.shared-file-btn-area{
+    margin-top:30px;
+}
+.shared-file-btn-area>a{
+    width:126px;
+    display: block;
+    padding:12px 18px 15px 18px;
+    border-radius:3px;
+    border:1px solid transparent;
+    color: #fff;
+}
+.shared-file-btn-area .s-i{
+    width:24px;
+    height:24px;
+    top:4px;
+    margin-right:2px;
+}
+.shared-file-btn-area .shared-download-btn{
+    background-color: #009a61;
+    border-color: #008c58;
+}
+.shared-download-btn:hover{
+    background-color: #00ac6d;
+}
+.shared-file-btn-area .shared-upload-btn{
+    background-color: #e56639;
+    border-color: #cc5429;
+}
+.shared-upload-btn:hover{
+    background-color: #f3693a;
+}
+
+.shared-download-txt,.shared-upload-txt{
+    font-size:20px;
+    font-weight:200;
+}
+.shared-download-msg,.shared-upload-msg{
+    display: block;
+    margin-top:5px;
+    font-size: 12px;
+    color: #fff;
+}
+.shared-download-msg em,.shared-upload-msg em{
+    margin:0 2px;
+    font-style: normal;
+    color: #ffff00;
+}
+
+
+
+.shared-card{
+    margin-top: 30px;
+    background: #fff;
+    border: 1px solid #f1ebe7;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(55,18,0,.05);
+    box-sizing: border-box;
+}
+.shared-card-head{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 50px;
+    padding: 0 24px;
+    border-bottom: 1px solid #f1ebe7;
+    box-sizing: border-box;
+}
+.shared-card-head{
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shared-recommend-list{
+    padding:18px 0;
+    margin:0 20px;
+}
+.shared-recommend-item{
+    display: block;
+    margin-top:15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dotted #eaeaea;
+}
+.shared-recommend-item:first-child{
+    margin-top:0;
+}
+.shared-recommend-item:last-child{
+    padding-bottom:0;
+    border-bottom: none;
+}
+.shared-recommend-item-title{
+    font-size: 14px;
+}
+.shared-recommend-item-info{
+    margin-top: 5px;
+}
+.shared-recommend-item-info span{
+    display: inline-block;
+    min-width:60px;
+    margin-right:10px;
+    font-size: 12px;
+    color: #888;
+}
+.shared-recommend-item-info .s-i{
+    width:16px;
+    height:16px;
+    top:3px;
+    margin-right:3px;
+}
+
+.share-file-msg{
+    margin-top:-1px;
+    position: relative;
+    background-color: #fefcf3;
+}
+.share-file-msg-text{
+    padding: 15px;
+    color: #e56639;
+}
+a.share-file-msg-btn{
+    height:20px;
+    padding: 13px 20px;
+    background-color: #009a61;
+    font-size: 15px;
+    line-height: 20px;
+    color: #fff;
+}
+a.share-file-msg-btn span{
+    font-size: 12px;
+    margin-left:4px;
+}
+a.share-file-msg-btn:hover{
+    background-color: #00ac6d;
+}
+.share-file-msg-condition{
+    line-height:46px;
+    margin-right:10px;
+    color: #888;
+}
+.share-file-msg-condition em{
+    font-style: normal;
+    color: #e56639;
+}
+.share-file-msg-condition .s-i{
+    top:4px;
+    margin-right:5px;
+}

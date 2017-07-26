@@ -1,0 +1,1 @@
+<?php exit;?>1465934334a:1:{i:0;a:5:{s:6:"itemid";s:5:"35925";s:5:"title";s:16:" 供应包装机";s:7:"linkurl";s:15:"show-35925.html";s:5:"thumb";s:22:"http://www.tecenet.com";s:8:"edittime";s:10:"1394604655";}}

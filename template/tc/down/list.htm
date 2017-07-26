@@ -1,0 +1,75 @@
+{php $sitemenu='down';$listpage='list';}
+{if $_REQUEST['downtype']==''}
+{php $downtype='99';}
+{/if}
+{template 'header'}
+{template 'lay','tag'}
+
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<div class="autoheight grayb whitebg">
+<div class="seltype">
+							<div class="fr mr10">排列：<a href="{$MOD[linkurl]}search.php?catid={$t[catid]}&order=0&downtype={$downtype}" {if $_REQUEST['order']==0} class="gcolor"{else} class="hcolor"{/if}><img src="{DT_SKIN}image/down/down{if $_REQUEST['order']==0}y{/if}.png">默认</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$t[catid]}&order=1&downtype={$downtype}" {if $_REQUEST['order']==1} class="gcolor"{else} class="hcolor"{/if}><img src="{DT_SKIN}image/down/down{if $_REQUEST['order']==1}y{/if}.png">相似</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$t[catid]}&order=2&downtype={$downtype}" {if $_REQUEST['order']==2} class="gcolor"{else} class="hcolor"{/if}><img src="{DT_SKIN}image/down/down{if $_REQUEST['order']==2}y{/if}.png">时间</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$t[catid]}&order=3&downtype={$downtype}" {if $_REQUEST['order']==3} class="gcolor"{else} class="hcolor"{/if}><img src="{DT_SKIN}image/down/down{if $_REQUEST['order']==3}y{/if}.png">人气</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$t[catid]}&order=4&downtype={$downtype}" {if $_REQUEST['order']==4} class="gcolor"{else} class="hcolor"{/if}><img src="{DT_SKIN}image/down/down{if $_REQUEST['order']==4}y{/if}.png">下载</a>
+                             </div>					
+						<ul>
+						<li {if $downtype==99}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?downtype=99">所有下载</a></li>
+						<li {if $downtype==0}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?downtype=0">完全共享</a></li>
+						<li {if $downtype==1}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?downtype=1">积分下载</a></li>
+						<li {if $downtype==2}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?downtype=2">金币下载</a></li>
+						</ul>
+
+</div>										
+															<dl class="options">
+															<dt>下载分类：</dt>
+															<dd><a href="{$MOD[linkurl]}search.php?downtype=99"class=" {if !$catid}opyes wcolor{else}color{/if}">全部</a>
+						{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+						{loop $tagss $i $t}<a href="{$MOD[linkurl]}{rewrite($listpage.'.php?downtype=99&catid='.$t[catid])}" class=" {if $catid==$t[catid]}opyes wcolor{else}color{/if}">{set_style($t[catname],$t[style])} <i>({$t[item]})</i></a>{/loop}	
+															</dd>
+															</dl>
+
+															<dl class="options"  style="border:0px;">
+															<dt>共享搜索：</dt>
+															<dd>
+				<form action="{$MODULE[2][linkurl]}{$DT[file_my]}" id="ask_form">
+				<input type="hidden" name="mid" value="{$moduleid}"/>
+				<input type="hidden" name="cid" value="{$catid}"/>
+				<input type="hidden" name="action" value="add"/>
+				<input type="hidden" name="kw" value="" id="ask_kw"/>
+				</form>
+				<form action="{$MOD[linkurl]}search.php">
+														<input type="hidden" name="typeid" value="{$typeid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="order" value="{$order}">
+			                                           	<input type="text" name="kw" id="know_kw" value="请输入关键词"  onfocus="if(this.value=='请输入关键词')this.value='';"/>
+														<input type="radio" name="fields" value="0" id="fd_0" {if $fields==0} checked{/if}/><label for="fd_0"> 智能</label>&nbsp;
+<input type="radio" name="fields" value="1" id="fd_1"  {if $fields==1} checked{/if}/><label for="fd_1"> 标题</label>&nbsp;
+<input type="radio" name="fields" value="3" id="fd_3"  {if $fields==3} checked{/if}/><label for="fd_3"> 简介</label>&nbsp;&nbsp;	
+														<select name="fileext">
+														<option value=""  {if $fileext==''}selected{/if}>所有格式</option>
+														 {php foreach($FILETYPE as $k=>$v){ }
+														  <option value="{$k}" {if $fileext==$k}selected{/if}>{$v}</option>
+														 {php }}
+														</select>
+
+<input type="submit" value="提交搜索" class="know_btn_1 rad" onclick="Dd('know_typeid').value=99;"  onmouseover="if(Dd('know_kw').value=='请输入关键词')Dd('know_kw').value='';"/>
+				<input type="button" value="我要上传" class="know_btn_2 rad" onclick=";Dd('ask_form').submit();"/>		
+
+														</form>
+														</dd>
+															</dl>
+	<div class="divline"></div>
+				<div class="autoheight  pd10">
+							{if $tags}
+	{template 'list-'.$module, 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+
+
+				</div>
+<div class="divline"></div>
+</div>
+{template 'footer'}

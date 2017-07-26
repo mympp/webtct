@@ -1,0 +1,43 @@
+{if $action=='resume'}
+			<dl class="dlhots autoheight graybg grayb">
+			<dt class="color f18 b pt10">推荐技术工程师信息</dt>
+			<dd class="pd5">
+				 <ul class="tjxx">
+					{php $tags = tag("table=resume&fields=itemid,title,catid,areaid&condition=status=3 and validated>0&pagesize=12&order=level desc&template=null&debug=0&showcat=1")}
+					 {loop $tags $k $v}
+					<li id='tjxxli{$k+1}'><i class="fl {if $k<4}rcolor{/if}" {if $k>8} style='font-size:16px;' {/if}>{$k+1}</i><div class="fl"><a href="{$MOD[linkurl]}{rewrite('resume.php?itemid='.$v[itemid])}" target="_blank" class="lenstr w190" title="{$v[alt]}">{$v[alt]}</a>
+					<p><span class="bcolor lenstr mr10">提供 {$CATEGORY[$v[catid]][catname]}</span><span class="mr10  lenstr ">{area_pos($v[areaid], '/', 2)}</span></p></div>
+					</li>
+					{/loop}	
+
+					<script type="text/javascript">
+					var k=$(".tjxx li").length;Dd('tjxxli'+k).style.borderBottom='0px';
+					$(".tjxx>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+					</script>
+				
+			    </ul>
+			</dd>
+			</dl><br class="clear">
+{else}
+			<dl class="dlhots autoheight graybg grayb">
+			<dt class="color f18  b pt10">推荐服务需求信息</dt>
+			<dd class="pd5">
+				 <ul class="tjxx">
+					{php $tags = tag("moduleid=9&fields=linkurl,title,areaid,catid,apply&condition=status=3 and validated>0&pagesize=12&order=level desc&template=null&debug=0&showcat=1")}
+					 {loop $tags $k $v}
+					<li id='tjxxli{$k+1}'><i class="fl {if $k<4}rcolor{/if}" {if $k>8}style='font-size:16px;'{/if}>{$k+1}</i><div class="fl"><a href="{$v[linkurl]}" target="_blank" class="lenstr w190 color" title="{$v[alt]}">{$v[title]}</a>
+					<p><span class="mr10 lenstr w80 bcolor">{area_pos($t[areaid], '/', 2)}</span><span class="lenstr w50 ">{$v[catname]}</span><span class="ml10 lenstr w40">报名 {$v[apply]}</span></p></div>
+					</li>
+					{/loop}	
+
+					<script type="text/javascript">
+					var k=$(".tjxx li").length;Dd('tjxxli'+k).style.borderBottom='0px';
+					$(".tjxx>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+					</script>
+				
+			    </ul>
+			</dd>
+			</dl><br class="clear">
+{/if}
+{template 'themer', $module}
+<div>{ad(173)}</div>

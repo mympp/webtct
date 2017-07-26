@@ -1,0 +1,24 @@
+{php global $PROCESS;}
+<ul class="{$css}ul">
+{loop $tags $z $t}
+					<li id="{$css}list{$z+1}" class="mt10 graybg whiteb">
+					<div class="autoheight pd5">
+					<div class="fl thumb">
+					<script type="text/javascript">
+						document.writeln("<img src=\"{if $t[hidden]}{useravatar($t[itemid], 'large')}{else}{useravatar($t[username], 'large')}{/if}&time={$DT_TIME}\" width=\"34\" height=\"34\">");
+					</script>
+					</div>
+					<div class="fl ml5"><span class="lenstr w600"><a href="{$t[linkurl]}" target="_blank" class="color f16">{$t[title]}</a></span>
+					<div><span class="fr mr10"><a href="{$t[linkurl]}#tzan">{$t[answer]}个回复&nbsp;&nbsp;赞({$t[agree]})个&nbsp;&nbsp;踩({$t[against]})个</a></span><span class="mr10">{if $t[hidden]}{ip2area($t[ip])}游客{else}{$t[username]}{/if}</span><span><a href="{$t[linkurl]}" class="hcolor">阅读全文</a></span><span class="ml10">主题 <a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid])}">{strip_tags(cat_pos(get_cat($t[catid]), '/'))}</a></span><span class="ml10">{$t[answer]}回复</span><span class="ml10">{$t[hits]}人关注</span></div>
+					</div>
+					<br class="clear" />
+                    </div>
+					</li>
+{/loop}	
+</ul>
+<script type="text/javascript">
+$(".{$css}ul>li").hover(function () {$(this).removeClass("graybg whiteb");$(this).addClass("yellowbg yellowb"); }, function () {$(this).removeClass("yellowbg yellowb");$(this).addClass("graybg whiteb"); });
+</script>
+
+{if $showpage && $pages}<div class="divline"></div>
+<div class="pages">{$pages}</div>{/if}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width">
+<title>天成医疗网官方应用</title>
+<link href="tcapp.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="image/touch.css"/>
+<script type="text/javascript" src="image/touch.js"></script>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jquery.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+var iw=document.documentElement.clientWidth;
+var ih=document.documentElement.clientHeight;
+if (ih<300)
+{ih=document.body.clientHeight;
+}
+if(ih<300){ih=600;}
+document.writeln("<iframe src=\"app.html?"+ (new Date()).getTime() +"\" name=\"apps\" width=100% height="+ih+" frameborder=0 style=\"margin:-5px;padding-left:5px;height:100%;width:100%;\" id=\"apps\"><\/iframe>");
+$("#apps").load(function(){
+var mainheight = $(this).contents().find("body").height()+30;
+$(this).height(mainheight);
+}); 
+</script>
+</body>
+</html>

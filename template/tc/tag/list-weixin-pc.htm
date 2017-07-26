@@ -1,0 +1,89 @@
+
+<tr>
+	<td class="touxiang" valign="top" align="center" style="background:#f9f9f9">
+									<div class="touxiang">
+											<a href="javascript:void(0)"
+											{if $username}
+											id="hp{$username}"
+											onclick="showbox('userbox',500,'{$truename}联系信息','index.php?action=showuser&username={$username}');"
+											{else}
+											onclick="alert('很可惜！发布者是游客我们无法提供他的联系资料');"
+											{/if}
+											>
+											  {if $username}
+												<img src="{useravatar($username, 'large')}"  width="68" height="68" id="headpic{$itemid}" />
+												{else}
+												 <img src="	{useravatar($itemid, 'large')}"  width="68" height="68"  id="headpic{$itemid}"/>
+												{/if}
+											</a>
+									<span class="lenstr">{if $truename}{$truename}{elseif $username}{$username}{else}游客{/if}&nbsp;</span>
+								  </div>
+	
+	</td>
+	<td  valign="top" align="left" onmouseover="dakai('tool{$itemid}')"  onmouseout="guanbi('tool{$itemid}')">
+	<div  id="message{$itemid}" >	 
+									<div  id="content{$itemid}" class="message">
+													{if $_userid}
+														{$content}
+													{else}
+														{xcontent($content,'*','1,3,5,7,9,com,net,cn',1)}
+													{/if}
+									 </div>
+									 {if $action == 'show'}
+												{php $hylist = tag("table=taoxinxi&condition=allowitemid=$itemid and status>0&template=null&debug=0&order=addtime asc");$hy=count($hylist);}
+													{if $hylist} 
+													<dl class="hylist">
+													<dt>相关回复信息</dt>
+													{if !$action}
+														{php $s=3;}
+													{else}
+														{php $s=$hy;}
+													{/if}
+													{php $user_follow = false;}
+														{loop $hylist $k $t}
+															{if $k<=$s}<dd id="message{$t[itemid]}" onmouseover="dakai('del{$t[itemid]}')" onmouseout="guanbi('del{$t[itemid]}')"><a href="javascript:void(0);"  title="点击回复 {$k+1}楼 " onclick="Dd('allowitemid').value='{$itemid}';Dd('icontent').focus();Dd('icontent').value='回复 {$k+1}楼 '"><span class="lou">{$k+1}楼</span></a> <img src="{useravatar($t[username], 'small')}" class="mid grayb" height="18" width="18">&nbsp;{if $t[truename]}{$t[truename]}{else}游客{/if}&nbsp;{ip2area($t[ip])}({$t[ip]})&nbsp;({timetodate($t[addtime],5)})
+															{if ($_username==$username||$_groupid==1)&&$_userid}
+															<span class="ml10 lenstr w50"><A href="index.php?action=delete&itemid={$t[itemid]}" target="caozuo" id="del{$t[itemid]}" ><img src="{DT_SKIN}image/del.gif" class="mid"></a></span>
+															{/if}
+															{if $_username == $t['username']}
+															<span class="fr" style="background-color:#ff9900;display:block;padding:2px;color:white;">我的回应</span>
+															{php $user_follow = true;}
+															{/if}
+															<br>
+																				{$t[content]}
+															&nbsp;</dd>
+															{/if}
+															<?php if($_username == $t['username']) $user_follow = true; ?>
+														{/loop}
+														{if $hy>$s}<dd ><a href="index.php?action=show&itemid={$itemid}"><span class="morelist">更多回应内容</span></a></dd>{/if}
+														</dl>
+													{/if}
+										{else}<!-- action-show /else -->
+											{php $allow_username = tag("table=taoxinxi&fields=username&condition=allowitemid=$itemid and status>0&template=null&debug=0&order=itemid desc")}			
+											{loop $allow_username $k $v}
+												{php $allow_username_str .= $v['username'].',';}
+											{/loop}
+											<?php if(strpos($allow_username_str,$_username) !== false) $user_follow = true; ?>
+											{php $allow_username_str = '';}
+										{/if}<!-- action-show /if -->		
+										
+										<div class="wxtool">
+										<ul class="fr hcolor">
+										{if $hy}<li class="fl ml10">回应({$hy})次</li>{/if}
+										{if $areaid}<li class="fl ml10">{area_pos($areaid, '/', 2)}&nbsp;</li>{/if}
+										<li class="fl ml10">{ip2area($ip)}({$ip})</li>
+										<li class="fl ml10">{timetodate($addtime,5)}</li>
+										{if $user_follow === true}<li class="fl m110"><span style="background-color:#ff9900;display:block;padding:2px;color:white;margin-left:8px;">已跟进</span></li>{/if}
+										{php $user_follow = false;}
+										</ul>
+										<ul class="fl tools"  id="tool{$itemid}" style="display:none">
+										{if $action!='show'}<li class="fl ml10"><a href="index.php?action=show&itemid={$itemid}" >详细</a></li>{/if}
+										<li class="fl ml10"><a href="javascript:void(0)" onclick="Dd('allowitemid').value='{$itemid}';Dd('allowtitle').className='tl';Dd('allowtitle').innerText=this.title;Dd('icontent').focus();Dd('icontent').value='';" title="回复{if $truename}{$truename}{else} 游客 {/if}#{$itemid}信息 " >回应</a></li>	<li class="fl ml10">#{$itemid}</li>
+										{if ($_username==$username||$_groupid==1)&&$_userid}<li class="fl ml10"><a href="index.php?action=delete&itemid={$itemid}" target="caozuo">删除</a></li>
+										{if $_admin}<li class="fl ml10"><a href="index.php?action=lockusername&itemid={$itemid}" target="caozuo">封杀会员</a></li>{else}{if $ip!='unknown'}<li class="fl ml10"><a href="index.php?action=lockip&itemid={$itemid}" target="caozuo">封杀IP</a></li>{/if}{/if}{/if}			
+										</ul>
+										{if $action=='show'}<div style="background:#eee;"><span class="fr" style="line-height:14px;">{template 'baidu', 'chip'}</span></div>{/if}
+		</div>
+	</div>
+	</td>
+</tr>

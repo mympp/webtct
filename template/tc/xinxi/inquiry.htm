@@ -1,0 +1,339 @@
+{php $sitemenu='quote';$listpage='list';}
+{template 'header'}				
+</div></div>
+<style type="text/css">
+	#webbodycontent{display:none}
+</style>
+<div class="autoheight" style="background: url('{DT_SKIN}/image/quote/bg.png');">
+<div class="webw">
+{template 'lay','tag'}	
+<div class="autoheight pt5 whitebg">
+				<form method="post" action="{$MOD[linkurl]}inquiry.php" id="dform" onsubmit="return check();">
+				<input type="hidden" name="forward" value="{$forward}"/>
+				<input type="hidden" name="itemids" value="{$itemids}"/>
+{if $stype=='small'}
+<style type="text/css">
+	body{background-color:transparent}
+</style>
+<input type="hidden" name="urls" value="{$MOD[linkurl]}inquiry.php?itemid={$itemids}&stype=small"/>
+<table>
+<tr>
+	<td class="w80 tc f14 b">咨询标题</td>
+	<td><input type="text" name="title" value="{$title}" size="50" id="title" class="pd3"/><span class="rcolor">*</span><span class="ocolor" id="dtitle"></span></td>
+</tr>
+<tr>
+	<td class="w80 tc f14 b">了解范围</td>
+	<td>	{loop $itype $k $v}
+				<label for="type_{$k}"><input type="checkbox" name="type[]" value="{$v}" id="type_{$k}"{if $k<5} checked{/if}/> {$v}</label>
+				{/loop}</td>
+</tr>
+<tr>
+	<td class="w80 tc f14 b">咨询内容</td>
+	<td><textarea rows="5" name="content" id="content" style="padding:2px;width:380px;"></textarea><br/>
+				我希望在 {dcalendar('date', $date)} 日前回复 <span class="ocolor" id="dcontent"></span><span class="rcolor">*</span></td>
+</tr>
+<tr>
+	<td class="w80 tc f14 b">您的最近<br>联系方式</td>
+	<td>			{if $_userid}
+				<table cellpadding="0" cellspacing="1">
+				<tr>
+				<td>姓名：<span class="rcolor">*</span></td>
+				<td><input value="{$truename}" name="truename" id="truename"></td>
+			     </tr>
+				 <tr>
+				<td>公司：</td>
+				<td><input value="{$company}" name="company" id="company"></td>
+				</tr>
+				<tr>
+				<td>邮箱：<span class="rcolor">*</span></td>
+				<td><input value="{$email}" name="email" id="email"></td>
+				</tr>
+				<tr>
+				<td>电话：<span class="rcolor">*</span></td>
+				<td><input value="{$telephone}" name="telephone" id="telephone"></td>
+				</tr>
+				<tr>
+				<td>QQ：</td>
+				<td><input value="{$qq}" name="qq" id="qq"></td>
+				</tr>
+				</table>
+				{else}
+				<table cellpadding="0" cellspacing="1">
+				<tr>
+				<td colspan="2">还不是会员，请 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="rcolor">注册</a> 或 请留下您的联系方式(有 <span class="ocolor">*</span> 的是必填项)：</b>已经是会员？请 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="rcolor ">登录</a></td>
+				</tr>
+				<tr>
+				<td>姓名<span class="rcolor">*</span></td>
+				<td><input type="text" name="truename"  id="truename" size=12/>公司<input type="text" name="company"  size="15" id="company"/><br/><span class="ocolor" id="dtruename"></span></td>
+				</tr>
+				<tr>
+				<td>电话<span class="rcolor">*</span></td>
+				<td><input type="text" name="telephone" size="12" id="telephone"/>邮箱<input type="text" name="email" size="15" id="email"/><br/><span class="ocolor" id="dtelephone"></span></td>
+				</tr>
+				<tr>
+				<td >QQ </td>
+				<td><input type="text" size="15" name="qq" id="qq"/></td>
+				</tr>
+				</table>
+				{/if}
+				</td>
+				{if $need_captcha}
+				<tr>
+				<td  class="w80 tc f14 b"> 验证码<span class="rcolor">*</span></td>
+				<td >{template 'captcha', 'chip'} <span id="dcaptcha" class="ocolor"></span></td>
+				</tr>
+				{/if}
+				{if $need_question}
+				<tr>
+				<td  class="w80 tc f14 b"> 验证问题<span class="rcolor">*</span></td>
+				<td>{template 'question', 'chip'} <span id="danswer" class="ocolor"></span></td>
+				</tr>
+				{/if}
+				<tr>
+				<td style="border-bottom:0px;" colspan=2 class="tc">
+				{if $selfs}
+				<input type="button"  value=" 不能提交！请不要给自己询价！ " />
+				{else}
+				<input type="submit" name="submit" value=" 提交{if $total==1}咨询内容{else}批量询价{/if} " />
+				{/if}
+				{if $MG[inquiry_limit]}
+				&nbsp;&nbsp;&nbsp;今日可询价 <span class="f_b ocolor">{$MG[inquiry_limit]}</span> 次
+				&nbsp;&nbsp;&nbsp;当前已询价 <span class="f_b">{$limit_used}</span> 次
+				&nbsp;&nbsp;&nbsp;还可以询价 <span class="f_b f_blue">{$limit_free}</span> 次
+				{/if}
+				</td>
+				</tr>
+</table>
+
+
+
+{else}
+				<style type="text/css">
+	.table table td{border-bottom:0px;}
+	.tableth{width:170px;}
+</style>
+				<table cellpadding="6" cellspacing="1" width="98%" align="center" class="table">
+				<tr>
+				<td   class='tableth'>{if $level==2}招标{else}资质{/if}服务：</td>
+				<td bgcolor="#FFFFFF">
+				{loop $list $v}
+				<div><a href="{$MOD[linkurl]}{$v[linkurl]}"  class="rcolor f16 b">{$v[title]}</a></div>
+				{/loop}
+				</td>
+				</tr>
+				
+				<tr>
+				<td   class='tableth'><span class="ocolor">*</span> {if $level==2}投标报名{else}询价标题{/if}：</td>
+				<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title" class="pd3"/>&nbsp;&nbsp;<span class="ocolor">建议您修改主题，吸引对方注意,得到优先回复!</span> <br/><span class="ocolor" id="dtitle"></span></td>
+				</tr>
+{if $level != 2}
+				<tr>
+				<td   class='tableth'>我想了解：</td>
+				<td bgcolor="#FFFFFF">
+				
+				<table cellpadding="2" cellspacing="2">
+				{loop $itype $k $v}
+				{if $k%5==0}<tr>{/if}
+				<td><input type="checkbox" name="type[]" value="{$v}" id="type_{$k}"{if $k<5} checked{/if}/><label for="type_{$k}"> {$v}</label></td>
+				{if $k%5==4}</tr>{/if}
+				{/loop}
+				</table>
+
+				</td>
+				</tr>
+
+				<tr>
+				<td   class='tableth'>快捷提问：</td>
+				<td bgcolor="#FFFFFF">
+				<select onchange="if(this.value)Dd('content').value+=this.value+'\n';">
+				<option value="">请选择常用问题</option>
+				{loop $iask $v}
+				<option value="{$v}">{$v}</option>
+				{/loop}
+				</select>
+				<span class="ocolor">(不用打字 “快捷提问”帮您忙！) </span>
+				</td>
+				</tr>
+{/if}
+<style type="text/css">
+	#content{padding:2px;}
+</style>
+				<tr>
+				<td   class='tableth'><span class="ocolor">*</span> {if $level == 2}报名所需信息{else}主要内容{/if}：</td>
+				<td bgcolor="#FFFFFF"><textarea rows="10" cols="80" name="content" id="content" class="pd3"></textarea>{if $level != 2}<br/>
+				我希望在 {dcalendar('date', $date)} 日前回复{/if} <span class="ocolor" id="dcontent"></span>
+				{if $level == 2}
+				<script type="text/javascript">
+				Dd('content').value = "公司成立时间：\n\n咨询师力量（咨询师人数，资历等介绍）:\n\n业务经历及特长:\n\n成功服务案例（服务过哪些厂家）:\n\n";
+				</script>
+				{/if}
+				</td>
+				</tr>
+
+				<tr>
+				<td   class='tableth'>我的联系方式：</td>
+				<td >
+				{if $_userid}
+				<table cellpadding="5" cellspacing="5">
+				<tr>
+				<td>联系人：</td>
+				<td><input value="{$truename}" name="truename" id="truename"></td>
+				<td>公司名：</td>
+				<td><input value="{$company}" name="company" id="company"></td>
+				</tr>
+				<tr>
+				<td>电子邮件：</td>
+				<td><input value="{$email}" name="email" id="email"></td>
+				<td>联系电话：</td>
+				<td><input value="{$telephone}" name="telephone" id="telephone"></td>
+				</tr>
+				<tr>
+				<td>联系QQ：</td>
+				<td><input value="{$qq}" name="qq" id="qq"></td>
+				<td>联系MSN：</td>
+				<td>{$msn}</td>
+				</tr>
+				</table>
+				{else}
+				<table cellpadding="5" cellspacing="5">
+				<tr>
+				<td colspan="2">还不是会员，请 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b">注册</a> 或 请留下您的联系方式(有 <span class="ocolor">*</span> 的是必填项)：</b>已经是会员？请 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b">登录</a></td>
+				</tr>
+				<tr>
+				<td>公司名</td>
+				<td><input type="text" name="company" size="30" id="company"/></td>
+				</tr>
+				<tr>
+				<td>联系人<span class="ocolor">*</span></td>
+				<td><input type="text" name="truename" size="30" id="truename"/><br/><span class="ocolor" id="dtruename"></span></td>
+				</tr>
+				<tr>
+				<td>联系电话<span class="ocolor">*</span></td>
+				<td><input type="text" name="telephone" size="30" id="telephone"/><br/><span class="ocolor" id="dtelephone"></span></td>
+				</tr>
+				<tr>
+				<td>电子邮箱</td>
+				<td><input type="text" name="email" size="30" id="email"/></td>
+				</tr>
+				{if $DT[im_qq]}
+				<tr>
+				<td>QQ </td>
+				<td><input type="text" size="20" name="qq" id="qq"/></td>
+				</tr>
+				{/if}
+				{if $DT[im_ali]}
+				<tr>
+				<td>阿里旺旺 </td>
+				<td><input type="text" size="20" name="ali" id="ali"/></td>
+				</tr>
+				{/if}
+				{if $DT[im_msn]}
+				<tr>
+				<td>MSN </td>
+				<td><input type="text" size="30" name="msn" id="msn"/></td>
+				</tr>
+				{/if}
+				{if $DT[im_skype]}
+				<tr>
+				<td>Skype </td>
+				<td><input type="text" size="20" name="skype" id="skype"/></td>
+				</tr>
+				{/if}
+				</table>
+				{/if}
+				</td>
+				</tr>
+				{if $need_captcha}
+				<tr>
+				<td   class='tableth'> 验证码<span class="ocolor">*</span></td>
+				<td bgcolor="#FFFFFF">{template 'captcha', 'chip'} <span id="dcaptcha" class="ocolor"></span></td>
+				</tr>
+				{/if}
+				{if $need_question}
+				<tr>
+				<td   class='tableth'> 验证问题<span class="ocolor">*</span></td>
+				<td bgcolor="#FFFFFF">{template 'question', 'chip'} <span id="danswer" class="ocolor"></span></td>
+				</tr>
+				{/if}
+				{if $_userid && $DT[sms]}
+				{if $level != 2}
+				<tr>
+				<td   class='tableth'>短信通知：</td>
+				<td bgcolor="#FFFFFF"><input type="checkbox" name="sendsms" value="1"/> 发送短信通知至接收人手机 (<a href="{$MODULE[2][linkurl]}sms.php" target="_blank">我的可用短信 <strong class="f_blue">{$_sms}</strong> 条</a>)</td>
+				</tr>
+				{/if}{/if}
+				<tr>
+				<td > </td>
+				<td bgcolor="#FFFFFF" style="border-bottom:0px;"><input type="submit" name="submit" value=" {if $level ==2 }点击报名{else}发送{if $total==1}询价单{else}批量询价{/if}{/if} " class="pd3 px14 f_b"/>
+
+				{if $MG[inquiry_limit]}
+				&nbsp;&nbsp;&nbsp;今日可{if $level==2}报名{else}询价{/if} <span class="f_b ocolor">{$MG[inquiry_limit]}</span> 次
+				&nbsp;&nbsp;&nbsp;当前已{if $level==2}报名{else}询价{/if} <span class="f_b">{$limit_used}</span> 次
+				&nbsp;&nbsp;&nbsp;还可以{if $level==2}报名{else}询价{/if} <span class="f_b f_blue">{$limit_free}</span> 次
+				{/if}
+				
+				</td>
+				</tr>
+				</table>
+{/if}
+				</form>
+				<script type="text/javascript">
+				function check() {
+					var l;
+					var f;
+					f = 'title';
+					l = Dd(f).value.length;
+					if(l < 5 || l > 50) {
+						Dmsg('标题应为5-50字，当前已输入'+l+'字', f);
+						return false;
+					}
+					f = 'content';
+					l = Dd(f).value.length;
+					if(l < 10 || l > 2000) {
+						Dmsg('内容应为10-2000字，当前已输入'+l+'字', f);
+						return false;
+					}
+					{if !$_userid}
+					f = 'truename';
+					l = Dd(f).value.length;
+					if(l < 2) {
+						Dmsg('请填写联系人', f);
+						return false;
+					}
+					f = 'telephone';
+					l = Dd(f).value.length;
+					if(l < 7) {
+						Dmsg('请填写联系电话', f);
+						return false;
+					}
+					{/if}
+					{if $need_captcha}
+					f = 'captcha';
+					l = Dd(f).value;
+					if(!is_captcha(l)) {
+						Dmsg('请填写正确的验证码', f);
+						return false;
+					}
+					if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+						Dd(f).focus();
+						return false;
+					}
+					{/if}
+					{if $need_question}
+					f = 'answer';
+					l = Dd(f).value.length;
+					if(l < 1) {
+						Dmsg('请填写验证问题', f);
+						return false;
+					}
+					if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+						Dd(f).focus();
+						return false;
+					}
+					{/if}
+				}
+				</script>
+		</div>
+{if !$stype}
+{template 'footer'}
+{/if}

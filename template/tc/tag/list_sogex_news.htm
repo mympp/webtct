@@ -1,0 +1,19 @@
+{loop $tags $ik $iv}
+<div class="itemCol2">
+{if $iv['thumb'] != ''}
+<a href="{so_rewrite('detail.php?itemid='.$iv['itemid'].'&infotype=3')}" title="{$iv['web_title']}" target="_blank" >
+<div class="itemImg">
+<img src="{$iv['thumb']}" alt="{$iv['title']}" onerror="javascript:this.src='{SO_SKIN}/images/nopic.gif';" >
+</div>
+</a>
+{/if}
+<div class="itemCol2C" {if $iv['thumb'] == ''}style="padding-left:16px;"{/if}>
+<h4 class="text-overflow"><a href="{so_rewrite('detail.php?itemid='.$iv['itemid'].'&infotype=3')}" title="{$iv['title']}" target="_blank">{$iv['title']}</a></h4>
+<p class="h40">{$iv[description]}</p>
+<ul>
+<li>来源：{dsubstr($iv['website'],18,'...')}</li>
+
+</ul>
+</div>
+</div>
+{/loop}

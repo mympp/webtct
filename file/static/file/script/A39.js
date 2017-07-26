@@ -1,0 +1,1 @@
+document.write('<a href="http://www.tecenet.com/gongying/show-10244.html" target="_blank"><img src="http://www.tecenet.com/file/upload/201406/12/11-52-11-47-1.jpg" width="497" height="201" alt=""/></a>');

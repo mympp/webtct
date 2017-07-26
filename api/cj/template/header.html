@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>微信公众文章转入天成APP端</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="apple-touch-icon" href="http://www.tecenet.com/api/cj/template/images/mobile-editor-icon.png">
+<script type="text/javascript" charset="utf-8" src="<?echo DT_STATIC;?>file/script/jquery.js"></script>
+<script type="text/javascript" src="<?echo DT_STATIC;?>file/script/config.js"></script>
+<script type="text/javascript" src="<?echo DT_STATIC;?>file/script/page.js"></script>
+<script type="text/javascript" src="<?echo DT_STATIC;?>file/script/common.js"></script>
+<script type="text/javascript" src="<?echo DT_STATIC;?>file/script/jsfunction.js"></script>
+<script type="text/javascript" charset="utf-8" src="caiji.js"></script>
+<script type="text/javascript" charset="utf-8" src="check.js"></script>
+<!--
+<script type="text/javascript">
+	var screenw;
+    screenw=window.screen.width-20;
+	document.write("<style type='text/css'>");
+	document.write(".screenw{width:"+screenw+"px;}");
+	document.write(".screenw img{max-width:"+screenw+"px;}");
+	document.write(".edui-editor-imagescale{max-width:"+screenw+"px;height:auto;}");
+	document.write("</style>");
+</script>-->
+</head>
+<body>
+<table cellspacing="1" cellpadding="3" align="center" width=100% style="background:#c6d0db; width:100%; margin:auto" >
+<tr>
+	<th  bgcolor="#c6d0db" height="30" valign="middle"  align="center"  >信息转入天成移动端
+<?if($action){?>
+<input type="button" value=" 返回 " onclick="history.go(-1)"  style="float:left;" class="sub">
+<?}else{?>
+<input type="button" value=" 手动新增 " onclick="location.href='<?echo $files;?>?action=addnew'"  class="sub f12" style="float:left;">
+<?}?>
+	</th>
+</tr>
+<tr>
+	<td class="whitebg"  align="center" >

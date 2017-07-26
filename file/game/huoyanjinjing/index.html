@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>【火眼金睛】战斗力榜_天成医疗网</title>
+    <meta name="description" content="「天成」有彩蛋：冲关25以上有惊喜传送门！" />
+    <meta name="keywords" content="色弱测试,火眼金睛,战斗力榜,315" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="-1">
+    <meta property="og:url" content="http://www.tecenet.com/file/game/huoyanjinjing/index.html" />
+    <meta property="og:title" content="【火眼金睛】战斗力榜_天成医疗网" />
+    <meta property="og:description" content="「天成」有彩蛋：冲关25以上有惊喜传送门！" />
+    <meta property="og:image" content="http://img.ej120.com/game/hyjj/images/wechat-share-icon.png" />
+
+    <link rel="stylesheet" href="http://img.ej120.com/game/hyjj/css/style.css?ver=2.0.6">
+    <link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+    </script>
+</head>
+<body>
+    <div class="grid" id="gameWrap">
+        <div class="page" id="loading">
+            loading...
+        </div>
+
+        <div class="page hide" id="index">
+            <div class="logo animated fadeInDown"><a href="http://wap.tecenet.com/?open=g_hyjj"><img src="http://img.ej120.com/game/hyjj/images/top-bar.png" alt="about tecenet"></a></div>
+            <div class="banner animated zoomInDown"></div>
+            
+            <div class="btns  animated zoomInUp">
+                <button class="btn game-info" onclick="_hmt.push(['_trackEvent', 'game', 'click', 'gameIntro']);dialogShow()">游戏玩法</button>
+                <button class="btn play-btn">开始游戏</button>
+            </div>
+        </div>
+
+        <div class="page hide" id="room">
+            <header>
+                <span class="lv">得分：<em>1</em></span>
+                <span class="time"></span>
+                <span class="btn btn-pause"></span>
+            </header>
+            <div id="box" class="lv1"></div>
+            <div class="logo"><img src="http://img.ej120.com/game/hyjj/images/top-bar.png" alt="about tecenet"></div>
+        </div>
+
+        <div class="page hide" id="dialog">
+            <div class="inner">
+                <img class="hualala animated animated bounceInDown" src="http://img.ej120.com/game/hyjj/images/hualala.png" alt="ahaha">
+                <div class="content share">
+                    <p>经鉴定，你火眼金睛级别：</p>
+                    <h3></h3>
+                    <div class="btn-wrap">
+                        <a class="btn btn-boyaa" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'game', 'click', 'gameShare']);wechatGuideShow();">告诉全世界</a>
+                        <button class="btn btn-restart">再试一次</button>
+                    </div>
+                </div>
+
+                <div class="content gameover">
+                    <div class="pause-logo animated fadeInDown"><a href="http://wap.tecenet.com/?open=g_hyjj"><img src="http://img.ej120.com/game/hyjj/images/logo.png?v2" alt="tecenet"></a></div>
+
+                    <p class="animated fadeInDown">经鉴定，你火眼金睛级别:</p>
+                    <h3 class="animated fadeInDown"></h3>
+                    <div class="btn-wrap animated fadeInDown">
+                        <button class="btn btn-wechat" onclick="_hmt.push(['_trackEvent', 'game', 'click', 'gameShare']);wechatGuideShow()">告诉全世界</button>
+                        <button class="btn btn-restart" onclick="_hmt.push(['_trackEvent', 'game', 'click', 'gameRestart']);" >再试一次</button>
+                        <div id="msg">
+
+                        </div>
+                    </div>
+                    
+                    <div class="xc-box animated fadeInDown">
+                        <p>医械，维修，招投标，资质，物流，进出口，<br>医学工程，金融，推广，医养，招聘</p>
+                        <div class="links">
+                            <a href="http://wap.tecenet.com/?open=g_hyjj" target="_blank">医疗器械供求</a>
+                            <a href="http://m120.tecenet.com/?open=g_hyjj" target="_blank">家庭健康指导</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content pause">
+                    <div class="pause-logo"><a href="http://wap.tecenet.com/?open=g_hyjj"><img src="http://img.ej120.com/game/hyjj/images/logo.png?v2" alt="tecenet"></a></div>
+                    <h3>
+                        游戏暂停中
+                    </h3>
+                    <div class="btn-wrap">
+                        <button class="btn btn-resume" onclick="_hmt.push(['_trackEvent', 'game', 'click', 'gameResume']);" >继续玩</button>
+                        <a class="btn btn-wechat" onclick="_hmt.push(['_trackEvent', 'game', 'click', 'gameMoreGame']);" href="http://tc08.tecenet.com/game/index.html?open=g_hyjj" target="_blank">更多游戏</a>
+                    </div>
+                    <div class="xc-box">
+                        <p>医械，维修，招投标，资质，物流，进出口，<br>医学工程，金融，推广，医养，招聘</p>
+                        <div class="links">
+                            <a href="http://wap.tecenet.com/?open=g_hyjj" target="_blank">医疗器械供求</a>
+                            <a href="http://m120.tecenet.com/?open=g_hyjj" target="_blank">家庭健康指导</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- dialog -->
+    <div class="dialog-wrap" id="gameIntro" style="display:none;">
+        <div class="dialog animated bounceInDown">
+            <div class="dialog-box">
+                <button class="btn btn-close" onclick="javascript:dialogHide();"></button>
+                <div class="hd">游戏玩法：</div>
+                <div class="bd">
+                    <p>1、开始游戏后，在60秒倒计时内，找出颜色不同的方块，点它进入下一关！</p>
+                    <p>2、如果点了没反应，说明你还没有找对哦（点错不会影响分数，可以大胆猜试！）</p>
+                    <p>3、60秒结束，冲关分数越高，视力越厉害！</p>
+                </div>
+                <div class="hd">冲关惊喜：</div>
+                <div class="bd">
+                    <p>1、冲到lv.25关以上，会有冲关惊喜“传送门”，加油吧！</p>
+                    <p>2、别忘了呼朋唤友！</p>
+                </div>
+                <a href="javascript:;" class="btn btn-ft-close" onclick="javascript:dialogHide();"></a>
+            </div>
+        </div>
+    </div>
+    <!-- dialog  end-->
+
+    <!-- wechat-share-guide -->
+    <div id="wechatGuide" class="wechat-share-guide" style="display: none;">
+        <img src="http://img.ej120.com/game/wuya/res/share-bg.png" alt="wechat share">
+        <a href="javascript:;" onclick="wechatGuideHide()" class="close-btn">×</a>
+    </div>
+    <!-- wechat-share-guide end-->
+
+
+</body>
+
+
+<script>
+    autodivheight();
+    function autodivheight(){
+        var winHeight=0;
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        //通过深入Document内部对body进行检测，获取浏览器窗口高度
+        if (document.documentElement && document.documentElement.clientHeight)
+            winHeight = document.documentElement.clientHeight;
+        var currHeight = winHeight;
+        document.getElementById("gameWrap").style.height = currHeight+"px";
+    }
+    window.onresize=autodivheight;
+    function bdTrackEvent(){
+        _hmt.push(["_trackEvent", "game", "click", "gameToJD"]);
+    }
+    function fb_share() {
+        // console.log(Game.lastLv,Game.lastGameTxt,Game.lastGamePercent);
+        var msg = Game.lastLv > 25 ? '<a href="http://tianchengyybj.jd.com/" target="_blank" onclick="bdTrackEvent()" class="btn btn-jd">恭喜！福利传送门</a>' : '<p>很遗憾！冲过25关才有惊喜</p>';
+        document.getElementById("msg").innerHTML = msg;
+    }
+
+    (function() {
+        var libs = document.createElement('script');
+        libs.type = 'text/javascript';
+        libs.async = true;
+        libs.src = 'http://img.ej120.com/game/hyjj/js/color.min.js?ver=2.0.1';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(libs, s);
+    })();
+
+    function dialogShow(){
+        document.getElementById("gameIntro").style.display = "block"
+    }
+    function dialogHide(){
+        document.getElementById("gameIntro").style.display = "none"
+    }
+    function wechatGuideShow(){
+        document.getElementById("wechatGuide").style.display = "block"
+    }
+    function wechatGuideHide(){
+        document.getElementById("wechatGuide").style.display = "none"
+    }
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2b363fb3d03ff9991c4971afddf8731d";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<div style="display:none;">
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</div>
+
+
+</html>

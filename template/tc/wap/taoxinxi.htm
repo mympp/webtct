@@ -1,0 +1,186 @@
+{if !$title}
+{php $title="24小时医疗相关行业最新需求信息";}
+{/if}
+{if $day}
+{php $title=$day."天内医疗相关行业最新需求信息";}
+{/if}
+{if $kw}
+{php $title=$kw."：".$title;}
+{/if}
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>{$title}</title>
+	<meta name="keywords" content="医疗供求信息平台，医疗信息，医疗器械服务，医疗需求，天成医疗网"/>
+	<meta name="description" content="{$kw}医疗供求信息是天成医疗网与腾讯微信合作的医疗撮合交易服务平台！"/>
+        <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+			<link rel="stylesheet" type="text/css" href="{DT_STATIC}wap/image/taoxinxi.css" />
+					<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+					<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+					<script type="text/javascript" src="{DT_STATIC}file/script/jsfunction.js"></script>
+					<script type="text/javascript" src="{DT_STATIC}wap/image/jquery.classm.js"></script>
+					<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=iblue"></script>
+					<script src="{DT_STATIC}wap/image/jquery.zclip.min.js"></script> 
+					<script type="text/javascript">
+					{if !$content}document.onselectstart=function(e){return false;};{/if}
+					$(function(){$.classM({	});}) 
+				    function searchbox(id,width,title,href){
+										$.dialog({
+										id: id,
+										fixed: true, 
+										title:title,
+										width:width,
+										focus:true,
+										max: false, 
+										min: false,
+										lock: true,
+										content:'url:'+href+''
+										});
+										 }
+
+					</script>
+    </head>
+    <body>
+{if $action=='search'}
+<div class="whitebg pd10 autoheight">
+<form method="get" action="taoxinxi.php" target="_parent" onsubmit="if(Dd('kwtip').value==Dd('kw').value){Dd('kw').value='';}">
+		<table cellpadding="0" cellspacing="0"  align="center">
+		<tr>
+			<td  height="30">&nbsp;</td>
+		</tr>
+		<tr>
+			<td ><div class="h3">简单关键词搜索</div></td>
+		</tr>
+		<tr>
+			<td   valign="top">
+			<input type="hidden" id="kwtip" value="请输入搜索简单关键词，如：CT">
+			<input type="text" name="kw" value="" id="kw" onfocus="if(this.value==Dd('kwtip').value){this.value='';}" >
+			{if $kw}<script type="text/javascript">	
+			Dd('kw').value='{$kw}';
+			</script>
+			{else}<script type="text/javascript">	
+			Dd('kw').value=Dd('kwtip').value;
+			</script>
+			{/if}
+			<input type="submit" value="搜索 " class="sub"><br></td>
+		</tr>
+		<tr>
+			<td ><div class="h3">信息高级筛查</div></td>
+		</tr>
+		<tr>
+			<td  height="50" valign="top">
+					<select name="areaid">
+					{php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}	
+					<option value="" {if $areaid==''}selected{/if}>地区</option>
+					{loop $mainarea $k $v}
+						<option value="{$v[areaid]}" {if $areaid}{if $areaid==$v[areaid]}selected{/if}{/if}>{$v[areaname]}</option>
+					{/loop}
+					</select>
+					&nbsp;&nbsp;
+					<select name='day'>
+					<option value="0"{if $day==0}selected{/if} >发布时间</option>
+					<option value="1"{if $day==1}selected{/if}>1天内</option>
+					<option value="3"{if $day==3}selected{/if}>3天内</option>
+					<option value="7"{if $day==7}selected{/if}>7天内</option>
+					<option value="15"{if $day==15}selected{/if}>15天内</option>
+					<option value="30"{if $day==30}selected{/if}>30天内</option>
+					<option value="90"{if $day==90}selected{/if}>90天内</option>
+					</select>
+					&nbsp;&nbsp;
+					<select name='order'>
+					<option value="0" {if $order==0}selected{/if}>默认顺序</option>
+					<option value="1" {if $order==1}selected{/if}>从老到新</option>
+					<option value="2" {if $order==2}selected{/if}>从冷到热</option>
+					<option value="3" {if $order==3}selected{/if}>从少到多</option>
+					</select>
+		</td>
+		</tr>
+		<tr>
+			<td  align="center"><label><input type="checkbox" name="interest" class="interest" value="1">同时保存为我的默认关注</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value=" 高级搜索 " class="sub"></td>
+		</tr>
+		<tr>
+			<td  height="30">&nbsp;</td>
+		</tr>
+		</table>
+		</form>
+<div class="divline"></div>
+</div>
+					  {php exit;}
+{/if}
+{if $action=='getmessage'}
+						{php $where='left';}
+						{if $allowitemid}
+								{php $where='right';}
+						{/if}
+						{if $_REQUEST['toitemid']}
+								{php $toitemid=$_REQUEST['toitemid'];}
+						{/if}
+                       <div id="from{$where}">
+						{template 'list-weixin','tag'}
+						</div>
+						<script type="text/javascript">
+									parent.Dd('from{$itemid}-to{$toitemid}').innerHTML=Dd('from{$where}').innerHTML;
+									parent.Dd('from{$itemid}-to{$toitemid}').className='';
+									parent.Dd('load-from{$itemid}-to{$toitemid}').src='{DT_PATH}wap/image/spechbubble_2.png';
+						</script>
+					  {php exit;}
+{/if}
+{if $action=='addsave'}
+                       <div id="weixin{$itemid}">
+						{template 'list-weixin','tag'}
+						</div>
+						<script type="text/javascript">
+									parent.Dd('listmessage').innerHTML=parent.Dd('listmessage').innerHTML+Dd('weixin{$itemid}').innerHTML;
+									parent.Dd('message').value='';
+						</script>
+					  {php exit;}
+{/if}
+
+
+<iframe name="getmessage" src='' style="display:none" id="getmessage"></iframe>
+<div class="autoheight lists">
+{if $lists}
+<div id="listmessage">
+{loop $lists $k $v}
+				{template 'list-weixin','tag'}
+{/loop}
+</div>
+{if $pages}<div class="pages" id="pages">{$pages}</div>{/if}
+{else}
+			{if $content}
+				{template 'list-weixin','tag'}
+			{else}
+				<div class="nomessage"><a href="taoxinxi.php">无任何相关数据,点击返回首页</a></div>
+			{/if}
+{/if}
+
+		<div class="divline" id="laster"></div>
+</div>
+<script type="text/javascript">
+function allowmessage(itemid,message){
+Dd('message').value=message;Dd('allowitemid').value=itemid;
+}
+</script>
+
+        <footer class="footer" id="footer">
+		<div class="tosearch"><a href="javascript:void(0)" ><img src="{DT_PATH}wap/image/tosearch.png" onclick="searchbox('searchbox',500,'{$kw}:信息筛选','{DT_PATH}wap/taoxinxi.php?action=search&order={$order}&day={$day}&areaid={$areaid}&kw={$kw}')" ></a></div>
+		<div class="totop"><a href="javascript:void(0)"><img src="{DT_PATH}wap/image/totop.png"  id="totop"></a></div>
+		<div id="addtool">
+		<form method="post" action="taoxinxi.php" target="getmessage">
+		<input type="hidden" name="action" value='addsave'>
+			<button class="fl botton" onclick="alert('手机端图片上传正在研发中')" >上传</button>
+			<input type="hidden" name="post[allowitemid]" id="allowitemid" value="">
+           <textarea class="fl" name="post[content]"  id="message" class="message"></textarea>
+           <input type="submit" value="发布" class="botton">
+		</form>
+		 </div>
+        </footer>
+<script type="text/javascript">
+$('#totop').click(function() {
+	$("html, body").animate({scrollTop:0}, 200);
+});
+if($(document).scrollTop()<10){$("html,body").animate({scrollTop:$("#laster").offset().top},1000);}
+</script>
+    </body>
+</html>		

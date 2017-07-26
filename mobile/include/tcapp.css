@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;padding:0;font-family:"微软雅黑";background-color:#E4EAEA}
+img{border:0px;}
+.clear{clear:both;}
+a{text-decoration:none;}
+#main{margin:0 auto;width:330px;min-height:30px;height:auto;}
+.main-logo{text-align:center;border-bottom:1px dashed #CCCCCC;height:68px;margin:0;padding:0;margin-top:20px;}
+.contenter{padding:0;margin:0; }
+.contenter ul{list-style-type:none;margin:0;padding:0;}
+.contenter ul li{float:left;background-color:#e05b5b; width:105px;height:100px;margin:5px 5px 0px 0px; }
+.contenter ul li img{margin:10px 0 0 20px;}
+.con-tit{margin:0;padding:0;text-align:center;font-size:16px;color:#FFFFFF;font-family:"微软雅黑"; letter-spacing:1px;margin-top:-8px;}
+.footer{margin:10px 0 0 5px;height:60px;}
+.terrace{font-size:22px;color:#686868;margin:0;}
+.site{margin:8px 0 0 0;font-size:14px;color:#999999;}
+.line{border:1px solid #999;margin:30px 0 10px 0;}
+.floatarea{margin-top:-140px;}
+.box{background-image:url(image/box.png);width:178px;height:130px;position:absolute;margin-top:-190px;left:30px;}
+.service-1{margin:15px 0 0px 15px;padding:0;color:#686868;font-size:14px;}
+.service-2{margin:0px 0 5px 15px;padding:0;color:#686868;font-weight:bold;font-size:21px;}.service-2 a{color:#bb4444;text-decoration:none;}
+.user{margin:10px 0 2px 10px;padding:0;list-style-type:none;}
+.user li{float:left;margin-left:5px;}
+.user li a{color:#666666;}
+.user li a:link{text-decoration:none;color:#000000;}
+.user li a:hover{color:#FF0000;}

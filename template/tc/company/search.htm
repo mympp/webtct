@@ -1,0 +1,254 @@
+{php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'gongsi.list.css'];}
+{php $footer_js = [DT_PATH.'file/script/jquery.lazyload.min.js',DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/company.search.js']}
+{php $sitemenu='company';$listpage='search';}
+{template 'module-header'}
+<!--container-->
+<div class="container">
+<!--crumb-->
+    <div class="crumb container">
+        <a href="{DT_PATH}">天成医疗网首页</a><span>&gt;</span>
+        <a href="{$MODULE[4]['linkurl']}">厂商</a>
+        {if $catid}<span>&gt;</span><a href="{$MODULE[4]['linkurl']}{com_rewrite(['catid'=>$catid])}">{$CAT[$catid]}</a>{/if}
+    </div>
+<!--crumb end-->
+
+<!--selector-->
+{php $link_area_title = !empty($areaid) ? $childarea['areaname'] : '全国';}
+{php $link_cat_title = !empty($catid) ? $CAT[$catid] : '医疗器械';}
+{php $link_mode_title = !empty($mode) ? $modes[$mode] : '公司';}
+    <div class="selector">
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>经营范围：</span>
+            </div>
+            <div class="sl-value">
+                <ul class="sl-v-list sl-v-list-row2">
+                	{php $catid_selector = $selector;}
+                	<?php if(isset($catid_selector['catid'])) unset($catid_selector['catid']); ?>
+                	<li {if empty($catid)} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($catid_selector)}" target="_self" title="{$link_area_title}{$link_cat_title}{$link_mode_title}">不限</a></li>
+                	{loop $company_cat $k $t}
+                	{php $catid_selector['catid'] = $t['catid'];}
+                	<li {if $catid == $t['catid']} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($catid_selector)}" target="_self" title="{$link_area_title}{$t['catname']}{$link_mode_title}">{$t['catname']}</a></li>
+                	{/loop}
+                </ul>
+            </div>
+        </div>
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>所在地区：</span>
+            </div>
+            {if $areaid}
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $areaid_selector = $selector;}
+                	{php $area_parentid = $childarea['parentid'] == 0 ? $areaid : $childarea['parentid'];}
+                	{php unset($areaid_selector['areaid']);}
+                    <li><a href="{$MODULE[4]['linkurl']}{com_rewrite($areaid_selector)}" title="全国{$link_cat_title}{$link_mode_title}">不限</a></li>
+                    {php $areaid_selector['areaid'] = $area_parentid;}
+                    <li class="current"><a href="{$MODULE[4]['linkurl']}{com_rewrite($areaid_selector)}" title="{$link_area_title}{$link_cat_title}{$link_mode_title}">{area_pos($area_parentid)}</a>
+                    {php unset($areaid_selector['areaid']);}
+                    <a href="{$MODULE[4]['linkurl']}{com_rewrite($areaid_selector)}" class="clear-option" title="{$link_area_title}{$link_cat_title}{$link_mode_title}">×</a></li>
+                </ul>
+                {php $secondarea = tag("table=area&fields=areaid,areaname&condition=parentid=$area_parentid&pagesize=34&template=null&debug=0")}
+                {if $secondarea}
+                <ul class="sl-v-list sl-v-sub-list">
+                	{php $areaid_selector = $selector;}
+                	{loop $secondarea $sk $sv}
+                	{php $areaid_selector['areaid'] = $sv['areaid'];}
+                    <li {if $areaid == $sv['areaid']} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($areaid_selector)}" title="{$sv['areaname']}{$link_cat_title}{$link_mode_title}">{$sv['areaname']}</a></li>
+                    {/loop}
+                </ul>
+                {/if}
+            </div>
+            {else}
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $areaid_selector = $selector;}
+                	<?php if(isset($areaid_selector['areaid'])) unset($areaid_selector['areaid']); ?>
+                    <li {if $areaid == 0} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($areaid_selector)}" title="{$link_area_title}{$link_cat_title}{$link_mode_title}">不限</a></li>
+                    {php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}
+                    {loop $mainarea $k $t}
+                    {php $areaid_selector['areaid'] = $t['areaid'];}
+                    <li {if $areaid == $t['areaid']} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($areaid_selector)}" title="{$t['areaname']}{$link_cat_title}{$link_mode_title}">{$t['areaname']}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            <a class="sl-value-more" onclick="slValShowMore(this)" href="javascript:;">更多</a>
+            {/if}
+        </div>
+
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>运作模式：</span>
+            </div>
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $mode_selector = $selector;}
+                    {loop $modes $k $t}
+                    <?php $mode_selector['mode'] = $k; ?>
+                    <li {if $mode == $k} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($mode_selector)}" title="{$link_area_title}{$link_cat_title}{$t}" target="_self">{$t}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>运作性质：</span>
+            </div>
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $type_selector = $selector;}
+                	{loop $types $k $t}
+                	<?php $type_selector['type'] = $k; ?>
+                	<li {if $k == $type} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($type_selector)}" title="{$link_area_title}{$link_cat_title}{$t}" target="_self">{$t}</a></li>
+                	{/loop}
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>精准搜索：</span>
+            </div>
+            <div class="sl-value">
+                <form class="search-frm" action="search.php" method="get">
+                	{if $catid}<input type="hidden" name="catid" value="{$catid}" />{/if} 
+                	{if $areaid}<input type="hidden" name="areaid" value="{$areaid}" />{/if}
+                	{if $mode}<input type="hidden" name="mode" value="{$mode}" />{/if}
+                	{if $type}<input type="hidden" name="type" value="{$type}" />{/if}
+                    <input type="text" class="s-frm-input" name="kw" value="{$kw}">
+                    <input type="submit" class="tc-list-i s-frm-submit" value="搜索">
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="sort-tags">
+        <ul class="sort-tags-list clearfix">
+        	{php $vip_selector = $selector;}
+        	<?php if(empty($vip)){ $vip_selector['vip'] = 1;}else{ $vip_selector['vip'] = 0;} ?>
+            <li {if !empty($vip)} class="current"{/if}><a href="{$MODULE[4]['linkurl']}{com_rewrite($vip_selector)}"><i class="tc-list-i sort-check"></i>认证推荐厂商</a></li>
+        </ul>
+    </div>
+    <!--selector end-->
+    
+        <!--layout-->
+    <div class="default-layout gs-layout mgt-20">
+
+        <!--main-->
+        <div class="main pull-left">
+        {if $lists}
+        {loop $lists $k $t}
+        	{template 'list-item',$module}
+        {/loop}
+
+            <!--分页-->
+            {pagination($page,$items['c'],$pagesize,$MODULE[4]['linkurl'].'search.php',$selector,'com_rewrite')}
+            <!--分页 end-->
+		{else}
+			{template 'empty-result','chip'}
+                {php $parentid = $area->field('arrchildid')->where(['areaid'=>$childarea['parentid']])->one();}
+           		{php $inCondition['areaid'] = $parentid['arrchildid'];}
+            	{php $expand = $company->where($condition)->where($inCondition,'in')->where($gtCondition,'>')->where($neqCondition,'<>')->likeWhere($likeCondition)->limit(0,8)->select();}
+            	{if $expand}
+                <div class="search-no-result-ft">
+                    猜你喜欢
+                </div>
+                {/if}
+            
+            {if $expand}
+
+            {php $close_mall = true;}
+            {loop $expand $k $t}
+                {template 'list-item',$module}
+            {/loop}
+           
+            {/if}
+		{/if}
+        </div>
+        <!--main end-->
+
+        <!--side-->
+        <div class="side pull-right">
+
+            <!--热门厂商-->
+            <div class="side-box">
+                <div class="side-box-hd">
+                    <span>热门厂商</span>
+                </div>
+                <div class="side-box-bd">
+                {php $hits_company = tag("moduleid=4&condition=closeshop=0 and groupid>5 and groupid<>8&order=hits desc&pagesize=8&template=null")}
+                	{loop $hits_company $k $t}
+                    <div class="side-cmp clearfix">
+                        <a href="{$t['linkurl']}" target="_blank"><img class="side-cmp-log pull-left lazy" src="http://www.tecenet.com/skin/teceskin/image/blank.gif" data-original="{$t['thumb']}" alt="{$t['company']}" onerror="javascript:this.src='{DT_SKIN}image/tip/nopic-sm-1-1.png';"></a>
+                        <div class="side-cmp-bd">
+                            <div class="title text-overflow"><a href="{$t['linkurl']}" target="_blank">{$t['company']}</a></div>
+                            <div class="tags">
+                            {if $t['catid']}
+                        	{php $tcat = explode(',',$t['catid']);}
+                        	{loop $tcat $tk $tt}
+                        	{if !empty($CAT[$tt])}<i>{$CAT[$tt]}</i>{/if}
+                        	{/loop}
+                        	{/if}
+                            </div>
+                        </div>
+                    </div>
+                    {/loop}
+                </div>
+            </div>
+            <!--热门厂商 end-->
+
+            <!--厂商资讯-->
+            <div class="side-box mgt-10">
+                <div class="side-box-hd">
+                    <span>厂商资讯</span>
+                </div>
+                <div class="side-box-bd">
+                    <ul class="news-list">
+                    	{php $nowtime = strtotime(date('Y-m-d',time()));}
+                    	{php $news = tag("table=article_21&condition=catid=841 and addtime>($nowtime-(3600*24*90))&pagesize=8&order=hits desc&template=null&debug=0&showcat=1")}
+                    	{loop $news $k $t}
+                        <li>
+                            <p class="title text-overflow"><a href="{$MODULE[21]['linkurl']}{$t[linkurl]}">{$t['title']}</a> </p>
+                            <span><i class="tc-gs-i time"></i>{date('Y-m-d',$t['addtime'])}</span> <span><i class="tc-gs-i view"></i>{$t['hits']}</span>
+                        </li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+            <!--厂商资讯 end-->
+
+            <!--新增厂商-->
+            <div class="side-box mgt-10">
+                <div class="side-box-hd">
+                    <span>新增厂商</span>
+                </div>
+                <div class="side-box-bd">
+                	{php $news_company = tag("moduleid=$moduleid&condition=groupid>5 and groupid<>8 and closeshop=0&pagesize=12&order=validtime desc&template=null&debug=0&showcat=1")}
+                	{loop $news_company $k $t}
+                    <div class="side-cmp clearfix">
+                        <a href="{$t['linkurl']}" target="_blank"><img class="side-cmp-log pull-left lazy" src="http://www.tecenet.com/skin/teceskin/image/blank.gif" data-original="{$t['thumb']}" alt="{$t['company']}" onerror="javascript:this.src='{DT_SKIN}image/tip/nopic-sm-1-1.png';"></a>
+                        <div class="side-cmp-bd">
+                            <div class="title text-overflow"><a href="{$t['linkurl']}" target="_blank">{$t['company']}</a></div>
+                            <div class="tags">
+                            {if $t['catid']}
+                        	{php $tcat = explode(',',$t['catid']);}
+                        	{loop $tcat $tk $tt}
+                        	{if !empty($CAT[$tt])}<i>{$CAT[$tt]}</i>{/if}
+                        	{/loop}
+                        	{/if}
+                            </div>
+                        </div>
+                    </div>
+                    {/loop}
+                </div>
+            </div>
+            <!--热门厂商 end-->
+        </div>
+        <!--side end-->
+    </div>
+    <!--layout end-->
+</div>
+
+{template 'footer2017'}
+

@@ -1,0 +1,316 @@
+{if $action == 'my'}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$DT[sitename]}</title>
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[2][moduledir]}/image/style.css" />
+<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+</head>
+<body style="background:#EBF0F6;">
+{if $lists}
+<div class="ls">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th width="26"></th>
+<th>公司</th>
+<th>姓名</th>
+<th>{if $from=='sms'}手机{else}会员{/if}</th>
+{if $DT[im_web]}<th>在线</th>{/if}
+<th><input type="checkbox" id="c_0" onclick="_check();"/></th>
+</tr>
+{if $lists}
+{loop $lists $k $v}
+<tr  align="center" title="{$v[note]}">
+<td><img src="{useravatar($v[username], 'small')}" width="20"/></td>
+<td align="left">&nbsp;<a href="{userurl($v[username])}" target="_blank" class="t">{$v[company]}</a></td>
+<td>{$v[truename]}</td>
+<td id="v_{$v[itemid]}">{if $from=='sms'}{$v[mobile]}{else}{$v[username]}{/if}</td>
+{if $DT[im_web]}<td>{im_web($v[username])}</td>{/if}
+<td><input type="checkbox" id="c_{$v[itemid]}" onclick="_send({$v[itemid]});"/></td>
+</tr>
+{/loop}
+{else}
+<tr  align="center" >
+<td colspan=5>..暂无任何数据..
+</td>
+</tr>
+{/if}
+</table>
+</div>
+{if $page}<div class="pages">{$pages}</div>{/if}
+<div style="text-align:center;">
+<input type="button" value=" 确 定 " class="btn" onclick="window.parent.cDialog();"/>&nbsp;&nbsp;
+<input type="button" value=" 关 闭 " class="btn" onclick="window.parent.cDialog();"/>
+</div>
+{/if}
+</body>
+</html>
+{else}
+{template 'header', $module}
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="child.php?action=add"><span>添加账号</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="home"><a href="child.php"><span>我的子账号</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+</tr>
+</table>
+</div>
+{if $action == 'add'||$action == 'edit'}
+<form method="post" action="child.php" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}">
+<input type="hidden" name="forward" value="{$forward}"/>
+{if $itemid}<input type="hidden" name="itemid" value="{$itemid}">{/if}
+<table cellpadding="5" cellspacing="1" class="tb">
+<tr>
+<td class="tl">上级账号</td>
+<td class="tr">
+<input type="text" size="20" name="" id="username" value="<?php echo $_username; ?>" readonly="true" disabled="true"/> 
+<!--<select name="post[parentusername]">
+<option value="0" {if $parentusername==0||$parentusername==''}selected{/if}>默认级别</option>
+{php $tags = tag("table=member_child&condition=userid=$_userid&pagesize=20&order=itemid desc&template=null&debug=0&showcat=0")}
+{loop $tags $k $v}
+<option value="{$v[username]}" {if $parentusername==$v[username]}selected{/if}>{$v[username]}</option>
+{/loop}
+</select>-->
+</td>
+</tr>
+<tr>
+<td class="tl">子账号</td>
+<td class="tr"><input type="text" size="20" name="post[username]" id="username" value="{$username}"/> </td>
+</tr>
+{if check_dingzhi_member($_childusername!=''?$_childusername:$_username,'child')}
+<tr>
+	<td class="tl">管理区域</td>
+	<td class="tr">
+		<select name="post[partid]">
+			<option value="0">全国</option>
+			{php $part_tags=tag("table=area_partition&fields=partname,partid&template=null");}
+			{loop $part_tags $k $v}
+				<option value="{$v[partid]}" {if $partid==$v[partid]}selected="selected"{/if}>{$v[partname]}</option>
+			{/loop}
+		</select>
+	</td>
+</tr>
+{/if}
+<tr>
+<td class="tl">真实姓名</td>
+<td class="tr"><input type="text" size="20" name="post[truename]" id="truename" value="{$truename}"/> </td>
+</tr>
+<tr>
+<td class="tl">子账号密码</td>
+<td class="tr"><input type="password" size="20" name="post[password]" id="password" value=""/></td>
+</tr>
+<tr>
+<td class="tl">确定密码</td>
+<td class="tr"><input type="password" size="20" name="cpassword" id="cpassword" value=""  /></td>
+</tr>
+<tr>
+<td class="tl">联系手机</td>
+<td class="tr"><input type="text" size="20" name="post[mobile]" id="mobile" value="{$mobile}"/></td>
+</tr>
+<tr>
+<td class="tl">限制的功能</td>
+<td class="tr">
+<input type="text" size="70" name="post[systems]" id="systems" value="{$systems}" style="display:none"/><br>
+<input type="checkbox" id="mmessage" value="message" onclick="systemt('mmessage');">站内信&nbsp;&nbsp;
+<input type="checkbox" id="medit" value="edit" onclick="systemt('medit');">会员资料
+<input type="checkbox" id="mfriend" value="friend" onclick="systemt('mfriend');">商友管理
+<input type="checkbox" id="mchild" value="child" onclick="systemt('mchild');">子账号管理
+<input type="checkbox" id="mgrade" value="grade" onclick="systemt('mgrade');">会员升级
+<input type="checkbox" id="mcredit" value="credit" onclick="systemt('mcredit');">积分管理
+<input type="checkbox" id="mcharge" value="charge" onclick="systemt('mcharge');">充值管理
+<input type="checkbox" id="mtrade" value="trade" onclick="systemt('mtrade');">订单管理
+<input type="checkbox" id="mrecord" value="record" onclick="systemt('mrecord');">{$DT[money_name]}管理
+<input type="checkbox" id="mcash" value="cash" onclick="systemt('mcash');">提现管理
+<br>
+<font color="#336600" style="font-size:12px;">不打钩默认开放给该账号</font>
+<script type="text/javascript">
+var cc='c:{$systems}';
+if(cc.indexOf(';message;')>0){Dd('mmessage').checked=true;}
+if(cc.indexOf(';edit;')>0){Dd('medit').checked=true;}
+if(cc.indexOf(';grade;')>0){Dd('mgrade').checked=true;}
+if(cc.indexOf(';trade;')>0){Dd('mtrade').checked=true;}
+if(cc.indexOf(';credit;')>0){Dd('mcredit').checked=true;}
+if(cc.indexOf(';record;')>0){Dd('mrecord').checked=true;}
+if(cc.indexOf(';friend;')>0){Dd('mfriend').checked=true;}
+if(cc.indexOf(';charge;')>0){Dd('mcharge').checked=true;}
+if(cc.indexOf(';child;')>0){Dd('mchild').checked=true;}
+if(cc.indexOf(';cash;')>0){Dd('mcash').checked=true;}
+</script>
+</td>
+</tr>
+{if check_dingzhi_member($_childusername!=''?$_childusername:$_username,'child')}
+{template 'dingzhi_child_dingzhi_function','chip'}
+{/if}
+
+<tr>
+<td class="tl">开放的模块</td>
+<td class="tr"><input type="text" size="70" name="post[modules]" id="modules" value="{$modules}" style="display:none"/>
+<script type="text/javascript">var mm='@{$modules}';</script>
+<script>
+function delinput(){
+var div1 = document.getElementById("selects"); 
+var inputs = div1.getElementsByTagName("INPUT"); 
+for(i=0;i<inputs.length;i++) {  
+inputs[i].checked=false;
+} 
+}
+</script>
+<ul id="selects">
+		{loop $MENUMODS2 $k $v}
+			<li style="float:none;width:100%;height:26px;"><div style="float:left;margin-left:10px;width:110px;"><input type="checkbox" id="module{$v}" name="module" value="{$v}" onclick="modulet('module{$v}');">
+			{if $v==-9}技术工程师{elseif $v==-28}求职简历{else}{$MODULE[$v][name]}{/if}</div>
+<div style="float:left;margin-left:10px;width:260px;display:none" id="module{$v}m"><input type="checkbox" id="m{$v}actionsread" name="actionsread" value="read" onclick="actiont('m{$v}actionsread',{$v});">应用
+<input type="checkbox" id="m{$v}actionsadd" name="actionsadd" value="add" onclick="actiont('m{$v}actionsadd',{$v});">添加
+<input type="checkbox" id="m{$v}actionsedit" name="actionsedit" value="edit" onclick="actiont('m{$v}actionsedit',{$v});">修改
+<input type="checkbox" id="m{$v}actionsdel" name="actionsdel" value="delete" onclick="actiont('m{$v}actionsdel',{$v});">删除
+</div>
+			<script type="text/javascript">
+			if(mm.indexOf('{$v}:')>0){Dd('module{$v}').checked=true;Dd('module{$v}m').style.display='';
+			var maction;
+			maction=';'+cutstr('{$modules}','[{$v}:',']');
+				if(maction!='@'){
+					if(maction.indexOf('read,')>0){Dd('m'+{$v}+'actionsread').checked=true;}
+					if(maction.indexOf('add,')>0){Dd('m'+{$v}+'actionsadd').checked=true;}
+					if(maction.indexOf('edit,')>0){Dd('m'+{$v}+'actionsedit').checked=true;}
+					if(maction.indexOf('delete,')>0){Dd('m'+{$v}+'actionsdel').checked=true;}
+				}
+			}
+
+					
+			</script>
+			</li>
+		{/loop}
+</ul>
+
+<input type="button" value="清空所有权限，重新设置" onclick="Dd('modules').value='';delinput();" id="btnSubmit">
+</td>
+
+</tr>
+
+<script type="text/javascript">
+function systemt(id){
+if(Dd('systems').value.indexOf(';')=='-1'){Dd('systems').value=';'+Dd('systems').value;}
+	if(Dd(id).checked==true){
+		Dd('systems').value=Dd('systems').value+Dd(id).value+';';
+	}
+	else
+	{
+		Dd('systems').value=Dd('systems').value.replace(Dd(id).value+';','');
+	}
+
+}
+function actiont(id,mids){
+var ak='';var str=Dd('modules').value;
+		if(Dd('m'+mids+'actionsread').checked==true){ak=ak+'read,'}
+		if(Dd('m'+mids+'actionsadd').checked==true){ak=ak+'add,'}
+		if(Dd('m'+mids+'actionsedit').checked==true){ak=ak+'edit,'}
+		if(Dd('m'+mids+'actionsdel').checked==true){ak=ak+'delete,'}
+		str=cutstr(str,'['+mids+':',']');
+		Dd('modules').value=Dd('modules').value.replace('m:['+mids+':'+str+'];','m:['+mids+':'+ak+'];');
+}
+function modulet(id){
+	if(Dd(id).checked==true){
+		Dd('modules').value=Dd('modules').value+'m:['+Dd(id).value+':];';
+		Dd(id+'m').style.display='';
+	}
+	else
+	{
+		Dd('modules').value=Dd('modules').value.replace('m:['+Dd(id).value+':];','');
+		Dd(id+'m').style.display='none';
+	}
+}
+</script>
+<tr>
+<td class="tl">&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">s('child');m('add');</script>
+{else}
+<table cellpadding="5" cellspacing="1" width="100%" bgcolor="#9CB8CC">
+{if $lists}
+{loop $lists $k $v}
+{if $k%2==0}<tr>{/if}
+<td valign="top"  bgcolor="#FFFFFF" onmouseover="this.style.backgroundColor='#F2F6FB';" onmouseout="this.style.backgroundColor='#FFFFFF';" title="{$v[note]}">
+{if $v}
+<table cellpadding="2" cellspacing="2" width="96%" align="center">
+<tr>
+<td height="40">
+<span class="f_r" title="添加时间 {$v[adddate]}">
+<a href="child.php?action=edit&itemid={$v[itemid]}" class="t">[修改资料]</a>&nbsp;
+<a href="child.php?action=delete&itemid={$v[itemid]}" onclick="return confirm('确定要删除吗？此操作将不可撤销');" class="t">[删除账号]</a>&nbsp;
+</span>
+<p style="font-size:16px;line-height:18px;font-weight:bold">{$v[username]}:{if $v[parentusername]}上级账号：{$v[parentusername]}-{/if}{$v[truename]}&nbsp;&nbsp;(手机：{$v[mobile]})</p>
+</td>
+</tr>
+<tr>
+<td height="20">
+<b>模块操作：</b>
+{loop $MENUMODS2 $k $z}
+{if strpos('m:'.$v[modules],$z)}<span>{if $z==-9}技术工程师{else}{$MODULE[$z][name]}{/if}&nbsp;&nbsp;</span>{/if}
+{/loop}
+
+
+<script type="text/javascript">
+var kk='a:{$v[actions]}';
+if(kk.indexOf('read')>0){Dd('actionsread{k}').style.display='block';}
+if(kk.indexOf('add')>0){Dd('actionsadd{k}').style.display='block';}
+if(kk.indexOf('edit')>0){Dd('actionsedit{k}').style.display='block';}
+if(kk.indexOf('del')>0){Dd('actionsdel{k}').style.display='block';}
+</script>
+</td>
+</tr>
+</table>
+{else}
+&nbsp;
+{/if}
+</td>
+{if $k%2==1}</tr>{/if}
+{/loop}
+{else}
+<tr><td bgcolor="white" align="center">暂无任何数据</td></tr>
+{/if}
+</table>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('child');m('home');</script>
+{/if}
+
+<script type="text/javascript">
+function check() {
+{if $action=='add'}
+	if(Dd('password').value.length > {$MOD[maxpassword]} || Dd('password').value.length < {$MOD[minpassword]}) {
+		alert('密码长度应为{$MOD[minpassword]}-{$MOD[maxpassword]}字符');
+		return false;
+	}
+	if(Dd('password').value != Dd('cpassword').value) {
+		alert('两次输入的密码不一致');
+		return false;
+	}
+ {/if}
+	if(Dd('username').value=='') {
+		alert('账号不能为空');
+		return false;
+	}
+	if(Dd('truename').value=='') {
+		alert('真实姓名不能为空');
+		return false;
+	}
+
+	return true;
+
+
+
+}
+</script>
+
+{template 'footer', $module}
+{/if}

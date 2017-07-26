@@ -1,0 +1,1 @@
+document.writeln("Ìì³ÉÒ½ÁÆÍøwww.tecenet.com");

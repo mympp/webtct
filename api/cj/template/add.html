@@ -1,0 +1,178 @@
+<?if(!$author){$author='天成医疗网';}?>
+<script type="text/javascript" charset="utf-8" src="<?echo DT_STATIC;?>api/keeditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?echo DT_STATIC;?>api/keeditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?echo DT_STATIC;?>api/keeditor/lang/zh-cn/zh-cn.js"></script>
+<form method="post" action="<?echo $files;?>"  onsubmit="return checkSubmit();">
+	<table cellspacing="1" cellpadding="5" align="center" width=100% style="background:#ccc" >
+		<tr>
+			<th  bgcolor="#d0d0d0" height="30" valign="middle"  align="center"  >
+			<input type="hidden" name="action" value="addsave">
+			<input type="hidden" name="thumb" value="<?echo $thumb;?>" id="thumb">
+			<input type="hidden" name="author" value="<?echo $author;?>" id="author">
+			<input type="hidden" name="itemid" value="<?echo $itemid;?>">
+			<input type="hidden" name="fromurl" value="<?echo $url;?>">
+            <?if($isQQ == 1){?>
+                <input id="isQQ" type="hidden" name="isQQ" value="<?echo $isQQ;?>">
+            <?}?>
+
+			<textarea name="title" id="title" style="padding:5px;font-size:14px;height:32px;width:95%" ><?echo $title;?></textarea>
+			</th>
+		</tr>
+		<tr>
+			<th  bgcolor="#e9e9e9" height="30" valign="middle"  align="center"  >
+			<?echo ajax_category_select('catid', '选择分类', $catid, $moduleid);?>  <label style="font-size: 14px; color: #333; border-left: 2px solid #666; margin-left: 20px; padding-left: 20px; font-weight: normal;">同时转发到资讯 <input type="checkbox" name="zixun" value="839" /> </label>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<bottom style="display:block; text-align:center; padding:5px 0; background: #5bc0de; color:#fff; font-size:18px; cursor:pointer; border-radius: 8px;" onclick="removeformat()" >一 键 排 版</bottom>
+			</td>
+		</tr>
+		<tr>
+			<td class="whitebg" height="120" align="center"  id="contents">
+				<div class="screenw">
+					<?if($content == 'iframe'){?>
+						<textarea name="content" style="padding:5px; font-size:14px;height:120px;width:95%" >
+							<iframe src="<?echo $url;?>" frameborder=0 width="100%" height="520" scrolling="no" ></iframe>
+							<script>
+								$("html,body").animate({scrollTop:120},1000);
+							</script>
+						</textarea>
+					<?}else{?>
+						<script name="content" type="text/plain" id="editor" ><?echo $content;?></script>
+					<?}?>
+				</div>
+				<?if(strpos($content,'src')){?>
+					<dl id="thumblist">
+						<dt style='font-size:16px;font-weight:bold'>主题缩略图(获取内容的相关图片)&nbsp;&nbsp;<input type="button" value="获取主题图" onclick="cgimg('thumbb');"></dt>
+						<div id="thumbb">
+							<?
+							preg_match_all('/http:\/\/(.*?)(#"|"|\);)/', $content, $match);
+							$match = array_unique($match[1]);
+							foreach($match as $v){
+							echo "<dd><img src='http://".$v."' onclick=\"Dd('thumb').value=this.src;chimg('thumbb');this.className='redb'\" class='grayb' onerror=\"this.style.display='none'\" onload=\"if(this.src==Dd('thumb').value){this.className='redb'}\"></dd>";
+							}?>
+						</div>
+					</dl>
+				<?}else{?>
+					<dl id="thumblist">
+						<dt style='font-size:16px;font-weight:bold'>主题缩略图(获取内容的相关图片)&nbsp;&nbsp;<input type="button" value="获取主题图" onclick="cgimg('thumbb');"></dt>
+						<div id="thumbb"></div>
+					</dl>
+				<?}?>
+			</td>
+		</tr>
+		<?if ($itemid){?>
+		<tr>
+			<td class="graybg" align="center"  height="30" valign="middle"><input type="button" value="直接删除" onclick="location.href='index.php?action=del&itemid=<?echo $itemid;?>'"></td>
+		</tr>
+		<?}?>
+		<?if(!$note){?>
+		<tr>
+			<td>
+				<div id="note_content" style="display:none;">
+					自定义广告内容：<br>
+					<!-- <input type="hidden" name="action" value="note"> -->
+					<input type="text" name="note" id="note_ct" style="padding:5px;font-size:14px;height:40px;width:97%;" value="<?if(!$note){?>公司名称:
+					业务范围：
+					网址——
+					联系方式:<?}else{echo $note;}?>">
+					<div style="padding:20px;text-align:center;"><a type="submit" class="sub" onclick="setContent(ADstr(12),true);">保存</a></div>
+				</div>
+			</td>
+		</tr>
+		<?}?>
+		<tr>
+			<td class="graybg" align="center"  height="30" valign="middle">
+				<div class="divline"></div>
+				<script type="text/javascript" charset="utf-8" src="adstr.js"></script>
+				<select onchange="setContent(ADstr(this.value),true);" name="foot">	   <option value="-1">--请选择广告--</option>
+					<option value="0">天成医疗网广告</option>
+					<option value="1">产品服务广告</option>
+					<option value="2">技术服务广告</option>
+					<option value="3">科技服务广告</option>
+					<option value="4">天医工程广告</option>
+					<option value="5">金融服务广告</option>
+					<option value="6">医学智能广告</option>
+					<option value="7">进出口广告</option>
+					<option value="8">人力资源广告</option>
+					<option value="9">电子商务广告</option>
+					<option value="10">物流服务广告</option>
+					<option value="13">健康服务部</option>
+					<option value="14">投资服务部</option>
+					<option value="11">自定义广告</option>
+				</select>
+				<div class="divline"></div>
+				<input type="hidden" value="<?echo $note;?>" id="note">
+				<div style="padding:20px;"><input type="submit" name="submit" value=" 确认提交 " class="sub"></div>
+			</td>
+		</tr>
+	</table>
+</form>
+
+
+<script type="text/javascript">
+    //实例化编辑器
+    var myeditor = UE.getEditor('editor', {
+		toolbars:[[
+			'undo', //撤销
+	        'redo', //重做
+	        '|',
+	        'forecolor', //字体颜色
+	        'backcolor', //背景色
+	        'justifyleft', //居左对齐
+	        'justifycenter', //居中对齐
+	        '|',
+	        'removeformat', //清除格式
+	        'pasteplain', //纯文本粘贴模式
+	        '|',
+	        'simpleupload', //多图上传
+	        'insertvideo', //视屏编辑
+	        'fullscreen', //全屏
+	        '|',
+	        'source',
+        ]],
+        initialFrameWidth:'100%',
+		customDomain:true,
+		wordCount:false,	//是否开启字数统计
+		elementPathEnabled:false,	//元素路径
+		serverUrl: '/api/keeditor/php/controller.php'});
+
+    <?if($isQQ == 1){?>
+        myeditor.addListener( "contentChange", function(){
+            $("#isQQ").val("0");
+        });
+    <?}?>
+
+
+</script>
+
+
+<script type="text/javascript">
+	function AddNote(){
+		var note = document.getElementById("note").value;
+		alert(note);
+		$("#note_form").submit(function{
+
+			$.ajax({
+				type: "POST",
+				url: "index.php",
+				data: note,
+				dataType: "json",
+				success: function(){
+					alert(note);
+				},
+				error: function(){
+					alert(note);
+				}
+			});
+		});
+	}
+</script>
+<script type="text/javascript">
+	function removeformat () {
+        myeditor.execCommand( 'selectall' );
+        myeditor.execCommand('removeformat');
+        alert("排版完成");
+    }
+</script>

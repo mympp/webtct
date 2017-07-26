@@ -1,0 +1,12 @@
+<!--page-nav-->
+<div class="page-nav">
+    <div class="w1200 box-center">
+        <ul class="page-nav-main clearfix">
+            <li class="page-sub-nav current"><a href="{$MODULE['6']['linkurl']}" title="">招标采购平台首页</a></li>
+            {loop $CATEGORY $k $v}
+            <li class="page-sub-nav"><a href="{$MODULE[6]['linkurl']}{buy_rewrite(['catid'=>$v['catid']])}" title="{$v['catname']}医疗器械招标采购">{$v['catname']}招标区</a></li>
+            {/loop}
+        </ul>
+    </div>
+</div>
+<!--page-nav end-->

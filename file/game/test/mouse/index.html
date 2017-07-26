@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <title>六一儿童节，陪孩子一起摘蘑菇，赢奖品</title>
+
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <style>
+        #loadingDiv{position:fixed;width:100%;height:100%;left:0;top:0;padding: 0.5rem;box-sizing:border-box;text-align:center;}
+        #loadingDiv img{max-width:100%;margin-bottom:3rem;}
+        #loadingDiv p{font-size:16px;color: #598600;}
+        .pacman{position:relative;display: inline-block;margin: 20px 0 20px -20px;}
+        .pacman>div:nth-child(2){-webkit-animation:pacman-balls 1s 0s infinite linear;animation:pacman-balls 1s 0s infinite linear}
+        .pacman>div:nth-child(3){-webkit-animation:pacman-balls 1s .33s infinite linear;animation:pacman-balls 1s .33s infinite linear}
+        .pacman>div:nth-child(4){-webkit-animation:pacman-balls 1s .66s infinite linear;animation:pacman-balls 1s .66s infinite linear}
+        .pacman>div:nth-child(5){-webkit-animation:pacman-balls 1s .99s infinite linear;animation:pacman-balls 1s .99s infinite linear}
+        .pacman>div:first-of-type{width:0;height:0;border-right:25px solid transparent;border-top:25px solid #ffec4b;border-left:25px solid #ffec4b;border-bottom:25px solid #ffec4b;border-radius:25px;-webkit-animation:rotate_pacman_half_up .5s 0s infinite;animation:rotate_pacman_half_up .5s 0s infinite}
+        .pacman>div:nth-child(2){width:0;height:0;border-right:25px solid transparent;border-top:25px solid #ffec4b;border-left:25px solid #ffec4b;border-bottom:25px solid #ffec4b;border-radius:25px;-webkit-animation:rotate_pacman_half_down .5s 0s infinite;animation:rotate_pacman_half_down .5s 0s infinite;margin-top:-50px}
+        .pacman>div:nth-child(3),.pacman>div:nth-child(4),.pacman>div:nth-child(5),.pacman>div:nth-child(6){background-color:#ffec4b;width:15px;height:15px;border-radius:100%;margin:2px;width:10px;height:10px;position:absolute;-webkit-transform:translate(0,-6.25px);-ms-transform:translate(0,-6.25px);transform:translate(0,-6.25px);top:25px;left:100px}
+        @-webkit-keyframes rotate_pacman_half_up{0%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+            50%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+            100%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+        }
+        @keyframes rotate_pacman_half_up{0%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+            50%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+            100%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+        }
+        @-webkit-keyframes rotate_pacman_half_down{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+            50%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+            100%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+        }
+        @keyframes rotate_pacman_half_down{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+            50%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+            100%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+        }
+        @-webkit-keyframes pacman-balls{75%{opacity:.7}
+            100%{-webkit-transform:translate(-100px,-6.25px);transform:translate(-100px,-6.25px)}
+        }
+        @keyframes pacman-balls{75%{opacity:.7}
+            100%{-webkit-transform:translate(-100px,-6.25px);transform:translate(-100px,-6.25px)}
+        }
+    </style>
+    <script>var _hmt = _hmt || [];</script>
+</head>
+<body>
+
+
+<!--page-groups-->
+<div class="page-groups" style="display:none;">
+    <!--load-->
+    <section class="page-load">
+
+    </section>
+    <!--load end-->
+
+    <!--index-->
+    <section class="page page-index">
+        <a href="http://wap.tecenet.com/?open=g_mogu" class="tecenet-logo"><img src="http://tc08.tecenet.com/game/2048/images/top-bar.png" alt="天成医疗网"></a>
+        <div class="cloud-groups">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+            <div class="cloud cloud-4"></div>
+        </div>
+        <h1 class="page-index-title"><img src="./img/page-index-title.png" alt="摘蘑菇赢大奖"></h1>
+        <div class="page-index-house bounceInUp animated"></div>
+        <div class="page-index-mogu bounceInUp animated"></div>
+
+        <a href="#gameIndexIntro" class="game-btn game-index-intro animated zoomInDown">游戏规则</a>
+        <a href="javascript:;" class="game-btn game-index-start animated zoomInDown">开始游戏</a>
+    </section>
+    <!--index end-->
+
+    <!--game-->
+    <section class="page page-game" style="display: none;">
+        <section class="init-show">
+            <p class="char">游戏加载中</p>
+            <p id="sourInit" class="percent">0%</p>
+        </section>
+
+        <section class="start-box">
+            <div class="start-cover"></div>
+            <div class="game-msg">蘑菇长出来了，快点来摘吧</div>
+            <div class="game-start">
+                <em class="start-icon"></em>开 始 游 戏
+            </div>
+        </section>
+
+        <section class="sky-box">
+            <div class="wood-box">
+                <div class="highscore-box">
+                    <label class="label-tip">最高数量</label>
+                    <div class="frame highscore">
+                        <p class="inside">0</p>
+                        <em class="icon-left"></em>
+                    </div>
+                </div>
+                <div class="score-box">
+                    <!-- <label for="" class="label-tip label-score">score</label> -->
+                    <div class="middle">摘蘑菇</div>
+                </div>
+                <div class="restnum-box">
+                    <label class="label-tip">数量</label>
+                    <div class="frame restnum">
+                        <p class="score wx-score">0</p>
+                        <em class="icon-right"></em>
+                    </div>
+                </div>
+            </div>
+            <div class="time-box">
+                <div class="progress-bar"></div>
+                <div class="time">00:60</div>
+            </div>
+        </section>
+        <section class="line-box part1">
+            <div class="hole-box hole1">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse "></div>
+                </div>
+            </div>
+            <div class="hole-box hole2">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse "></div>
+                </div>
+            </div>
+        </section>
+        <section class="line-box part2">
+            <div class="hole-box hole3">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse "></div>
+                </div>
+            </div>
+            <div class="hole-box hole4">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse "></div>
+                </div>
+            </div>
+        </section>
+        <section class="line-box part3">
+            <div class="hole-box hole5">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse "></div>
+                </div>
+            </div>
+            <div class="hole-box hole6">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse "></div>
+                </div>
+            </div>
+            <div class="hole-box hole7">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse "></div>
+                </div>
+            </div>
+        </section>
+        <section class="line-box part4">
+            <div class="hole-box hole8">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse"></div>
+                </div>
+            </div>
+            <div class="hole-box hole9">
+                <p class="icon-plus"></p>
+                <div class="mouse-box">
+                    <div class="mouse"></div>
+                </div>
+            </div>
+        </section>
+        <section class="line-box control-box">
+            <div class="sound"></div>
+            <audio class="bg-sound" loop="loop">
+                <source src="./sound/Fever.mp3?cachevers=1" type="audio/mpeg"/>您的手机不支持背景音乐噢
+            </audio>
+            <audio class="hit-sound">
+                <source src="./sound/a.mp3?cachevers=1" type="audio/mpeg"/>您的手机不支持背景音乐噢
+            </audio>
+        </section>
+    </section>
+    <!--game end-->
+
+    <!--result-->
+    <section class="page page-result" style="display:none;">
+        <a href="http://wap.tecenet.com/?open=g_mogu" class="tecenet-logo"><img src="http://tc08.tecenet.com/game/2048/images/top-bar.png" alt="天成医疗网"></a>
+        <div class="cloud-groups">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+            <div class="cloud cloud-4"></div>
+        </div>
+        <div class="page-result-txt"></div>
+        <div class="page-result-btn"></div>
+        <div class="page-result-ad"></div>
+    </section>
+    <!--result end-->
+
+    <!--other-->
+    <div class="cover"></div>
+    <p class="attention">注意！大批蘑菇来袭！</p>
+
+    <section class="dialog tc">
+        <div class="title"></div>
+        <em class="close"></em>
+        <p class="cxt"></p>
+        <div class="btn-box"></div>
+    </section>
+    <!--other end-->
+    
+    <!-- 游戏规则 -->
+    <div class="remodal game-remodal" data-remodal-id="gameIndexIntro">
+        <div class="game-remodal-head">
+            <div class="game-remodal-head-title">游戏规则</div>
+            <button class="game-remodal-head-close remodal-close" data-remodal-action="close" ></button>
+        </div>
+        <div class="game-remodal-body" id="scroll1">
+            <div class="game-remodal-main">
+                <div class="game-remodal-intro-hd"><strong>玩法：</strong></div>
+                <ul class="game-remodal-intro-bd">
+                    <li>1. 开始摘蘑菇后，当蘑菇冒出地洞，点击并击中蘑菇，即可获得10个蘑菇；（小心提示：当摘到烂蘑菇时候，会相应减少蘑菇数量的哦）</li>
+                    <li>2. 活动时间为5天，持续至6月2日，摘蘑菇时间为1分钟，排名靠前有奖品哦；（提示：排名会实时更新，你的排名有可能会被别人超越的哦，加油！）</li>
+                    <li>3. 游戏结束后填写姓名（或昵称）和电话号码，以便客服联系。</li>
+                </ul>
+                <div class="game-remodal-intro-hd"><strong>奖品：</strong></div>
+                <ul class="game-remodal-intro-bd">
+                    <li>分数排名越靠前奖品越丰富哦！</li>
+                    <li>1. 前5名送出蘑菇盒子1套（好看、好玩、好吃）；</li>
+                    <li>2. 6-20名送出保福安葡萄干一袋；</li>
+                    <li>3. 21-30名送出“灵灵狗”农药残留体验装1套 ；</li>
+                    <li>4. 所有参与游戏的亲们均可获得由保福安送出的5元现金券。</li>
+                    <li>5. 所有奖品将会在活动结束</li>
+                </ul>
+            </div>
+        </div>
+        <div class="game-remodal-foot">
+            <button data-remodal-action="confirm" class="remodal-confirm">知道了</button>
+        </div>
+    </div>
+    <!-- 游戏规则 end-->
+
+    <!-- 登记信息 -->
+    <div class="remodal game-remodal game-user-info" data-remodal-id="gameUserInfo">
+        <div class="game-remodal-head">
+            <div class="game-remodal-head-title">登记信息</div>
+            <button class="game-remodal-head-close remodal-close" data-remodal-action="close" ></button>
+        </div>
+        <div class="game-remodal-body">
+            <div class="game-user-info-form">
+                <div class="game-user-input-group">
+                    <label>姓名：</label>
+                    <input type="text" id="userName" />
+                </div>
+                <div class="game-user-input-group">
+                    <label>电话：</label>
+                    <input type="tel" id="userTel" />
+                </div>
+                <div class="game-user-msg">
+                    <p>*请仔细填写信息哦~</p>
+                    <p>如果获得奖品，我们将通过以上信息联系你哦！</p>
+                </div>
+            </div>
+        </div>
+        <div class="game-remodal-foot">
+            <button class="remodal-confirm" onclick="formSubmit();">提  交</button>
+        </div>
+    </div>
+    <!-- 登记信息 end-->
+    
+    <!-- 微信分享引导 -->
+    <div class="remodal wechat-share-guide" data-remodal-id="wechatShareGuide">
+        <img src="http://img.ej120.com/game/wuya/res/share-bg.png" alt="">
+        <a href="javascript:;" data-remodal-action="confirm" class="close-btn">×</a>
+    </div>
+    <!-- 微信分享引导 end -->
+
+
+    <!-- 排行版 -->
+    <div class="remodal game-remodal game-remodal-rank" data-remodal-id="gameRank">
+        <div class="game-remodal-head">
+            <div class="game-remodal-head-title">排行版</div>
+            <button class="game-remodal-head-close remodal-close" data-remodal-action="close" ></button>
+        </div>
+        <div class="game-remodal-body" id="scroll2">
+            <div class="game-rank-list">
+                <div class="game-rank-item">
+                    <div class="game-rank-num">1</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">2</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">3</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">4</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">5</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">6</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">7</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">8</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">9</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+                <div class="game-rank-item">
+                    <div class="game-rank-num">10</div>
+                    <div class="game-rank-name">何*城</div>
+                    <div class="game-rank-tel">1591****231</div>
+                    <div class="game-rank-score">31颗</div>
+                </div>
+            </div>
+        </div>
+        <div class="game-remodal-foot">
+            <div class="game-rank-item game-rank-my">
+                <div class="game-rank-num">10</div>
+                <div class="game-rank-name">何*城</div>
+                <div class="game-rank-tel">1591****231</div>
+                <div class="game-rank-score">31颗</div>
+            </div>
+        </div>
+    </div>
+    <!-- 排行版 end-->
+
+
+</div>
+<!--page-groups end-->
+
+
+
+
+<script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="./js/create.online.game.js"></script>
+
+
+
+</body>
+</html>

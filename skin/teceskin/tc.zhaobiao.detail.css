@@ -1,0 +1,249 @@
+/*icon*/
+.zb-i{
+    display: inline-block;
+    position: relative;
+    width:20px;
+    height: 20px;
+    background-image: url("./image/buy/tc-zhaobiao-icons.png");
+    background-repeat: no-repeat;
+}
+.zb-i-type{
+    background-position: 0 0;
+}
+.zb-i-see{
+    background-position: -20px 0;
+}
+.zb-i-time{
+    background-position: -40px 0;
+}
+.zb-i-area{
+    background-position: -60px 0;
+}
+
+
+/*ami*/
+.ami{
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.bid-wrap{
+    background-color: #faf8f7;
+    padding-bottom:30px;
+}
+.bid-container{
+    width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bid-card{
+    background: #fff;
+    border: 1px solid #f1ebe7;
+    box-shadow: 0 1px 3px 0 rgba(55,18,0,.05);
+    border-radius:4px;
+}
+
+.bid-container-main{
+    width:870px;
+}
+.bid-container-side{
+    width:300px;
+}
+.bid-content-head{
+    padding:30px 0 0 0;
+}
+.bid-content-title{
+    font-size:24px;
+    line-height:1.5;
+    padding:0 30px;
+}
+.bid-content-info{
+    margin-top:15px;
+    padding:0 30px;
+    color: #eaeaea;
+}
+.bid-content-info .zb-i,.bid-content-time .zb-i{
+    top:5px;
+    margin-right: 3px;
+}
+.bid-content-info a,.bid-content-info em{
+    color: #777;
+    font-style: normal;
+}
+.bid-content-info a{
+    background: linear-gradient(90deg,#aaa 66%, transparent 0) repeat-x;
+    background-size: 0.2em 1px;
+    background-position: 0 18px;
+}
+.bid-content-info a:hover{
+    color: #e53935;
+}
+
+.bid-content-line{
+    display: inline-block;
+    margin:0 10px;
+}
+.bid-content-time{
+    margin-top: 30px;
+    padding:15px 30px;
+    background-color: #fafafa;
+    border-top: 1px solid #f1ebe7;
+    border-bottom: 1px solid #f1ebe7;
+}
+.bid-content-time em{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    color: #444;
+}
+.bid-content-time span{
+    color: #999;
+    line-height: 30px;
+}
+.bid-content-time-start,.bid-content-time-end{
+    display: inline-block;
+}
+.bid-content-time-start{
+    margin-right:40px;
+}
+.bid-content-time-end{
+    margin-left:40px;
+}
+.bid-fav-from{
+
+}
+.bid-fav-from-btn{
+    margin-top:7px;
+    padding:0 20px;
+    font-size: 14px;
+    line-height:40px;
+    background-color: #e53935;
+    border:none;
+    cursor: pointer;
+    color: #fff;
+    outline:none;
+}
+.bid-fav-from-btn:hover{
+    background-color: #ff4337;
+}
+
+
+
+
+.bid-content-body{
+    padding:40px 30px;
+
+}
+.bid-content-body #content{
+    text-align: justify;
+}
+.bid-content-body #content,.bid-content-body #content *{
+    font-size:16px !important;
+    line-height:32px !important;
+    font-family:"Microsoft YaHei" !important;
+    color: #444 !important;
+}
+
+.bid-banner{
+    width:300px;
+    height:250px;
+    overflow: hidden;
+    border-radius:4px;
+}
+
+.bid-new-list-head{
+    padding:0 20px;
+    height: 56px;
+    line-height: 56px;
+    color: #444444;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom:1px solid #f1ebe7;
+}
+.bid-new-list-body{
+    padding: 20px 0;
+    margin: 0 20px;
+}
+
+
+
+
+.bid-share{
+    position: fixed;
+    bottom:30px;
+    left:50%;
+    width:32px;
+    margin-left:-650px;
+}
+.bid-share .bdsharebuttonbox a{
+    float: none;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin:15px 0 0 0;
+    background-image: url("./image/buy/tc-zhaobiao-icons.png");
+}
+.bid-share .bdsharebuttonbox .bds_weixin{
+    background-position: 0 -20px;
+}
+.bid-share .bdsharebuttonbox .bds_tsina{
+    background-position: -40px -20px;
+}
+.bid-share .bdsharebuttonbox .bds_qzone{
+    background-position: -120px -20px;
+}
+.bid-share .bdsharebuttonbox .bds_sqq{
+    background-position: -80px -20px;
+}
+.bid-share .bdsharebuttonbox .bds_weixin:hover{
+    background-position: 0 -60px;
+}
+.bid-share .bdsharebuttonbox .bds_tsina:hover{
+    background-position: -40px -60px;
+}
+.bid-share .bdsharebuttonbox .bds_qzone:hover{
+    background-position: -120px -60px;
+}
+.bid-share .bdsharebuttonbox .bds_sqq:hover{
+    background-position: -80px -60px;
+}
+
+.bid-new-list-item{
+    padding:15px 0;
+    border-bottom:1px dotted #eaeaea;
+}
+.bid-new-list-item:first-child{
+    padding-top: 0;
+}
+.bid-new-list-item:last-child {
+    padding-bottom:0;
+    border-bottom:none;
+}
+.bid-new-list-item-title{
+    max-height:44px;
+    overflow: hidden;
+    font-size:15px;
+    line-height:1.65;
+}
+.bid-new-list-item-info{
+    font-size: 12px;
+    color: #888;
+}
+.bid-new-list-item-info em{
+    font-style: normal;
+}
+.bid-new-list-item-info .zb-i{
+    top:5px;
+}
+.bid-new-list-item-see{
+    margin-left:20px;
+}
+

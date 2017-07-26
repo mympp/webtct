@@ -1,0 +1,149 @@
+.dl-list{
+    padding:10px;
+}
+.dl-list dl,.dl-list dt,.dl-list dd{
+    display: inline-block;
+    margin: 0;
+}
+.dl-list dl{
+    margin-right: 80px;
+}
+.dl-list dd{
+
+}
+.intro p{
+    font-size: 14px;
+    line-height: 2;
+    margin: 10px 0;
+}
+.nbinfo dd{
+    line-height: 2;
+}
+.ztb{
+    overflow: hidden;
+}
+.ztb .item{
+    width:50%;
+    float: left;
+    padding:10px 0;
+    border-bottom:1px dashed #eaeaea;
+}
+.ztb .item .title,.ztb .item .cont{
+    display: inline-block;
+}
+.ztb .item .title{
+    width: 150px;
+    text-align: right;
+    font-weight:bold;
+}
+.ptip{
+    padding:10px  0;
+}
+.ptip span,#countDown{
+    color: #ef0a0a;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+.table td span{
+    font-size: 24px;
+}
+.blue{
+    color: #0000ff;
+}
+a.action-btn{
+    display: block;
+    height:30px;
+    text-align: center;
+    border:1px solid #e84c3d;
+    color: #e84c3d;
+    text-align: center;
+    line-height:30px;
+    background-color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+    }
+
+    .table-responsive > .table {
+        margin: 0;
+        border: none;
+    }
+
+    .table-responsive > .table > thead > tr > th,
+    .table-responsive > .table > tbody > tr > th,
+    .table-responsive > .table > tfoot > tr > th,
+    .table-responsive > .table > thead > tr > td,
+    .table-responsive > .table > tbody > tr > td,
+    .table-responsive > .table > tfoot > tr > td {
+        white-space: nowrap;
+        font-size:10px;
+        padding:0 5px;
+    }
+    .table-responsive  .table td p,.table-responsive  .table td span{
+        font-size:10px;
+    }
+    .table-responsive .table .wap {
+        display: none;
+    }
+    .table th.nowrap{
+        width:60px;
+    }
+    .table .item-1,.table .item-2{
+        padding:0;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        text-align: left;
+    }
+    .table .item-1{
+        width:70px;
+    }
+    .table .item-2{
+        width: 115px;
+    }
+    .memo {
+        padding: 10px;
+        width: auto;
+    }
+
+    .ztbtitle {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .dl-list dl {
+        display: block;
+        margin: 0;
+        padding: 10px 0;
+        border-top: 1px dashed #eaeaea;
+    }
+
+    .dl-list dl:first-child {
+        border-top: none;
+    }
+    .nbinfo{
+        padding:0;
+        margin:0;
+    }
+    .ztb .item{
+        float: none;
+        width:100%;
+    }
+    .ztb .item .title{
+        width: auto;
+        text-align: left;
+    }
+    .ptip{
+        height: auto;
+        line-height:1.5;
+    }
+}

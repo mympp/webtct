@@ -1,0 +1,8 @@
+{php $c=1;}
+{loop $tags $k $t}
+{php if($c==3){$c=1;}}
+		<table>
+		<tr>{if $t[thumb]!=''}<td width="95" rowspan="2"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{$t[thumb]}" width="80" height="60" alt="{$t[alt]}" class="grayb"/></a></td>{/if}<td><div><u>[{cat_pos(get_cat($t[catid]), '-')}]</u><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}" class="lenstr  btitle">{$t[title]}</a><font>{timetodate($t[addtime], 3)}</font></div></td></tr><tr><td valign="top" >{dsubstr($t[introduce], 150, '...')}<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}" class="color">&nbsp;&nbsp;&nbsp;更多>></a></td></tr>
+		</table>
+{/loop}
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

@@ -1,0 +1,35 @@
+	<div class="contact">
+			<div class="contact_content">
+				<div class="contact_left">
+				公司名称：{$COM[company]}</br>
+				公司电话：{$COM[telephone]}</br>
+				公司网址：{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank">{$COM[homepage]}</a>{/if}<br/>
+				手机号码：{$COM[mobile]}<br/>
+				在线状态：{if online($COM[userid])==1}<label style="color:#FF0000;">当前在线</label>{else}<label style="#fff;">当前离线</label>{/if}
+				</div>
+				<div class="contact_right">
+				公司地址：{$COM[address]}</br>
+				电子邮件：{$COM[mail]}<br/>
+				联 系 人：{$COM[truename]} （{if $COM[gender]==1}先生{else}女士{/if}）<br/>
+				即时通讯：	{if $COM[qq] && $DT[im_qq]}
+					{if check_dingzhi_member($COM[username],'qq_kefu')}
+						{php $qq_array=explode(';',$COM[qq]);}
+						{loop $qq_array $k $v}
+							{php $qq_message=explode('|',$v);}
+							{$qq_message[1]}&nbsp;:{im_qq($qq_message[0])}<br/>
+						{/loop}
+					{else}
+						{im_qq($COM[qq])}&nbsp;
+					{/if}
+				{/if}
+				{if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
+				{if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
+				{if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}
+				</div>
+				<div class="code"><img src="http://www.tecenet.com/api/ewm.php?dz={urlencode(DT_PATH)}mobile/index.php?moduleid=4&us=username={$COM[username]}"/><br/>
+				<span>移动端</span><br/>
+				<label>让&nbsp;世&nbsp;界&nbsp;发&nbsp;现&nbsp;您&nbsp;的&nbsp;精&nbsp;彩</label>
+				</div>
+			</div>
+	</div>
+</div>

@@ -1,0 +1,1 @@
+var DTPath = "http://www.tecenet.com/";var SKPath = "http://www.tecenet.com/skin/teceskin/";var MEPath = "http://www.tecenet.com/member/";var EXPath = "http://www.tecenet.com/extend/";var CKDomain = "";var CKPath = "/";var CKPrex = "DIZ_";

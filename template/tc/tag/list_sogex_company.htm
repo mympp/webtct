@@ -1,0 +1,5 @@
+{loop $tags $ck $cv}
+<li><a href="{so_rewrite('detail.php?itemid='.$cv['itemid'].'&infotype=2')}" target="_blank"><img src="{$cv['thumb']}" alt="{$cv['title']}" onerror="javascript:this.src='{DT_SKIN}image/nopic.gif';"> <h5>{$cv['title']}</h5> </a>
+{if $vip}<a class="vip-icon" href="{DT_PATH}/member/grade.php" target="_blank"></a>{/if}
+</li>
+{/loop}

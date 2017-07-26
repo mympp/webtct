@@ -1,0 +1,6 @@
+{loop $tags $z $t}			
+<li>
+<div class="ddtitle" ><p class="lenstr "><a href="{$t[linkurl]}" title="{$t[catname]}-{$t[alt]}" target='_blank'> · {$t[alt]}</a></p>
+<font>地区:{area_pos($t[areaid], '/', 1)}</font><font>{$t[hits]}人关注</font></div>
+</li>
+{/loop}

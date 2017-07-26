@@ -1,0 +1,97 @@
+{php $search='yes';}
+{php $CSS = array('search');}
+{if strpos($_SERVER["REQUEST_URI"],'search-htm-')}
+{php $kw=$_SERVER["REQUEST_URI"];}
+{php $kw = strstr($kw,"-action",true);}
+{php $kw = strstr($kw,"-kw-");}
+{php $kw=urldecode(str_replace('-kw-','',$kw));}
+{/if}
+{php $kws=str_replace(' ','%',$kw);}
+{php $replacef = explode(' ', $kw);}
+{php $replacet = array_map('highlight', $replacef);}
+{php $pro = $db->count($DT_PRE.'mall', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $peijian = $db->count($DT_PRE.'mall', "status=3 and stype=1 and (keyword like '%$kws%' )", 18000);}
+{php $brand = $db->count($DT_PRE.'brand_13', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $comp = $db->count($DT_PRE.'company', "closeshop=0 and keyword like '%$kws%' ", 18000);}
+{php $sell = $db->count($DT_PRE.'sell_5', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $buy = $db->count($DT_PRE.'buy_6', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $job = $db->count($DT_PRE.'job', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $resume = $db->count($DT_PRE.'resume', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $article = $db->count($DT_PRE.'article_21', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $down = $db->count($DT_PRE.'down_15', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $news = $db->count($DT_PRE.'news', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $know = $db->count($DT_PRE.'know', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $quote = $db->count($DT_PRE.'quote', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $ztitle='天成医疗网_符合关键词：'.$kws.' 的相关信息统计';}
+
+{template 'header', 'mobile'}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}search.css">
+<style type="text/css">
+	dt, dd, dl {margin:0 auto;padding:0 auto;}
+	a {text-decoration: none;}
+	footer a:link, footer a:visited {color: white;}
+	a:link, a:visited {color: #333;}
+	h3 {text-align: center;}	
+</style>
+<div id="head-bar">
+	<div class="head-bar">
+		<div class="head-bar-back">
+			<a onclick="window.history.back()" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+		</div>
+		<div class="head-bar-title">全站搜索</div>
+		<div class="head-bar-right">
+			<a href="channel.php" data-transition="slideup"><span>频道</span></a>
+		</div>
+	</div>
+	<div class="head-bar-fix"></div>
+</div>
+<div style="padding: 8px;">
+	<h3>符合关键词 “{$kw}”的各信息渠道统计</h3>
+	<dl class="searchdl" style="border-color:#88b6e3;background:#88b6e3 url('{DT_SKIN}image/index/fuwu.png') no-repeat 10px center;">
+		<dt style="color:#28679b">设备技术服务网</dt>
+		<dd>
+			<A href="index.php?moduleid=9&kw={encrypt($kw)}" target="_blank"><span style="color:#88b6e3">{$job}</span>个设备服务需求信息</a></br>
+			<A href="index.php?moduleid=9&action=resume&kw={encrypt($kw)}" target="_blank"><span style="color:#88b6e3">{$resume}</span>个技术工程师</a>
+		</dd>
+	</dl>
+
+
+	<dl class="searchdl" style="border-color:#ea6c4d;background:#ea6c4d url('{DT_SKIN}image/index/13.png') no-repeat 10px center;">
+		<dt style="color:#ea6c4d">产品在线销售网</dt>
+		<dd>
+			<A href="{if $kw_letter}{$MODULE[16][linkurl]}{$kw}-{$keyid}/{else}index.php?moduleid=16&kw={encrypt($kw)}{/if}" target="_blank"><span  style="color:#ea6c4d">{$pro}</span>个产品信息</a></br>
+			<A href="index.php?moduleid=16&stype=1&kw={encrypt($kw)}" target="_blank"><span   style="color:#ea6c4d">{$peijian}</span>个配件信息</a>
+		</dd>
+	</dl>
+
+	<dl class="searchdl" style="border-color:#6a6a6a;background:#6a6a6a url('{DT_SKIN}image/index/11.png') no-repeat 10px center;">
+		<dt style="color:#444">厂家品牌信息网</dt>
+		<dd>
+			<A href="index.php?moduleid=13&kw={encrypt($kw)}" target="_blank"><span   style="color:#6a6a6a">{$brand}</span>个厂家品牌</a></br>
+			<A href="index.php?moduleid=4&kw={encrypt($kw)}" target="_blank"><span  style="color:#6a6a6a">{$comp}</span>个宣传网站</a></dd>
+	</dl>
+
+	<dl class="searchdl" style="border-color:#6bac1c;background:#6bac1c url('{DT_SKIN}image/index/7.png') no-repeat 10px center;">
+		<dt style="color:#006600">医疗供求信息网</dt>
+		<dd>
+			<A href="index.php?moduleid=5&kw={encrypt($kw)}" target="_blank"><span style="color:#6bac1c">{$sell}</span>个{$MODULE[5][name]}</a></br>
+			<A href="index.php?moduleid=6&kw={encrypt($kw)}" target="_blank"><span style="color:#6bac1c" >{$buy}</span>个{$MODULE[6][name]}</a></dd>
+	</dl>
+
+	<dl class="searchdl" style="border-color:#568d80;background:#568d80 url('{DT_SKIN}image/index/news.png') no-repeat 10px center;">
+		<dt style="color:#006600">其他频道统计</dt>
+		<dd>
+			<A href="index.php?moduleid=21&kw={encrypt($kw)}" target="_blank">
+				<span  style="color:#568d80">{$article}</span>个{$MODULE[21][name]}
+			</a></br>
+			<A href="index.php?moduleid=29&kw={encrypt($kw)}" target="_blank">
+				<span  style="color:#568d80">{$news}</span>个{$MODULE[29][name]}
+			</a></br>
+			<A href="index.php?moduleid=10&kw={encrypt($kw)}" target="_blank">
+				<span  style="color:#568d80">{$know}</span>个{$MODULE[10][name]}
+			</a></br>
+			<A href="index.php?moduleid=7&kw={encrypt($kw)}" target="_blank"><span style="color:#568d80">{$quote}</span>个{$MODULE[7][name]}</a>
+		</dd>
+	</dl>
+</div>	
+{template 'footer', 'mobile'}

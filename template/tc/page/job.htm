@@ -1,0 +1,177 @@
+{php $ztitle='高企人才招聘专区-精英人才招聘通道开启';}
+{template 'title'}
+<script type="text/javascript" src="{DT_PATH}file/script/admin.js"></script>
+<style type="text/css">
+	#Dtop{background:#cce8f7;padding:10px;}
+</style>
+<body id="webmid{$moduleid}">
+{if $_REQUEST['upload']}
+<div style="padding:20px;">
+<table cellspacing=1 cellpadding=0 border=0 width="800" align="center" bgcolor="#cce2ee" height=250>
+<form method="post" action="{DT_PATH}api/tecenet/message.php" id="dform" onsubmit="return check();">
+<input type="hidden" name="post[action]" value="save">
+<input type="hidden" name="post[touser]" value="tcguangzhoung">
+<input type="hidden" name="post[title]" value="{$_username}的求职简历">
+<input type="hidden" name="post[content]" value="详细内容">
+<tr>
+	<td style="background:#f2f8fb" align="center">如何称呼</td>
+	<td bgcolor="#ffffff"><input type="text" name="post[truename]" id="truename" value="{$_truename}"></td>
+</tr>
+<tr>
+	<td style="background:#f2f8fb" align="center">联系手机</td>
+	<td bgcolor="#ffffff"><input type="text" name="post[mobile]" id="mobile" value="{$_mobile}"></td>
+</tr>
+<tr>
+	<td style="background:#f2f8fb" align="center">联系邮箱</td>
+	<td bgcolor="#ffffff"><input type="text" name="post[email]" id="email" value="{$_email}"></td>
+</tr>
+<tr>
+	<td style="background:#f2f8fb" align="center">上传简历</td>
+	<td bgcolor="#ffffff"><input name="post[files]" type="text" size="60" id="files" value="" />&nbsp;&nbsp;<span onclick="Dfile(21, Dd('files').value, 'files');" class="jt">[上传]</span>&nbsp;&nbsp;</td>
+</tr>
+<tr>
+	<td style="background:#f2f8fb" align="center">验证码</td>
+	<td bgcolor="#ffffff">{template 'captcha', 'chip'} <span id="dcaptcha" class="ocolor"></span><font style="color:#ff3300">*</font></td>
+</tr>
+<tr>
+	<td align="center" colspan=2> <input type="submit" style="padding:10px;background:#ff6600;color:#fff;border:0px;" ID="but" value="确定提交"></td>
+</tr>
+</form>
+</table>
+</div>
+<script type="text/javascript">
+function check() {
+	var l;
+	var f;
+	f = 'truename';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		alert('名字最少2字，当前已输入'+l+'字');
+		return false;
+	}
+	f = 'mobile';
+	l = Dd(f).value.length;
+	if(l < 10) {
+		alert('手机最少10字，当前已输入'+l+'字');
+		return false;
+	}
+	f = 'files';
+	l = Dd(f).value.length;
+	if(l < 10) {
+		alert('请上传简历');
+		return false;
+	}
+	f = 'captcha';
+	l = Dd(f).value.length;
+	if(l < 4) {
+		alert('请填写验证码');
+		return false;
+	}
+	return true;
+}
+</script>
+
+{else}
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+						<div class='topmenubg'>
+						<!--最顶部菜单-->
+						<script type="text/javascript">topmenu(	{if $moduleid>2}{$moduleid}{else}1{/if})</script>
+{if !$teceid}
+<script type="text/javascript">Dd('tece{$moduleid}').className='welcomey';</script>
+{else}
+<script type="text/javascript">Dd('tece{$teceid}').className='welcomey';</script>
+{/if}
+						</div>
+
+<div  class="center aboutusbg" style="background:#D44B39 url({DT_SKIN}image/page/job/job.jpg) center center no-repeat ;height:538px;;">
+	<div  class="webw">
+	<div style="padding-top:425px;padding-left:640px;"><a href="javascript:void(0)" title="发布达安专区招投标信息"><img src="{DT_SKIN}image/blank.gif" width="180" height="50"  id="scwj"></a></div>
+	</div>
+</div>
+<div style="height:20px;"></div>
+<div  class="webw">
+	<div class="tc f16">中山大学达安基因股份有限公司 (002030)<p class="f12 hcolor">DAAN Gene Co., Ltd. of Sun Yat-sen University</p></div>
+</div>
+<div style="background:#fff url({DT_SKIN}image/page/job/liuc.jpg) center bottom no-repeat ;padding-bottom:348px;" class="autoheight">
+		<div  class="webw f16" style="line-height:24px;padding:30px 5px 30px 5px;">
+		<p style="text-indent:20px;">中山大学达安基因股份有限公司， 是中山大学控股企业，公司以分子诊断技术为主导，集临床检验试剂和仪器的研发、生产、销售以及全国连锁医学独立实验室临床检验服务为一体的生物医药高科技企业。</p>
+        <p style="text-indent:20px;">公司前身为中山医科大学科技开发公司， 2001 年3 月,经广州市经济体制改革委员会穗改股字[2001]3 号文批准，中山医科大学达安基因有限公司依法整体变更为中山医科大学达安基因股份有限公司。并于2004 年7 月经中国证监会证监发行字（2004）119号文批准，在深圳交易所中小板挂牌上市，股票代码002030。</p>
+		</div>
+</div>
+<div style="height:20px;"></div>
+<div style="background:#f5f4f9 url({DT_SKIN}image/page/job/jcb.jpg) center top repeat-x ;" class="autoheight">
+<div  class="webw" style="padding-top:20px;">
+<div style="background:#f5f4f9; padding:20px 10px 10px 10px; width:220px;" class="tc f18 center">达安文化与发展<p class="f12 hcolor">David culture and development</p></div></div>
+		<div  class="webw" style="line-height:28px;padding:30px 5px 30px 5px;font-size:15px;">
+		<p style="text-indent:20px;">经过近20年的发展尤其是上市10年的快速发展，目前达安基因已经发展成为包括生物学、遗传学、细胞生物学、生物化学、微生物学、管理学等多项领域的专家及技术人才，拥有包括100余位博士、硕士、留学归国人员在内的2000多人的技术及管理人才队伍，构建了一整套现代企业化的运行模式，先后承担了近百项国家及省、部级重点攻关项目。<font class="rcolor">目前公司已经在全国拥有超过60家的全资、控股和参股子公司，总市值接近100亿元，和全国3000多家医疗机构产生紧密的业务合作关系。</font></p>
+
+      <p style="text-indent:20px;padding-top:20px;"> 从最早的研发、生产、销售的产品型公司，今天的达安基因已经发展成为包括研发、产品和服务，覆盖生产厂家、经销渠道和医疗机构的全产业链公司，着力打造的<font class="rcolor">研发平台、营销平台、电子商务平台、医疗服务平台已经初呈规模</font>，借助产业投资的模式，达安基因行业领导者的战略目标发展迅速。</p>
+
+     <p style="text-indent:20px;padding-top:20px;"> 达安基因高度重视和投资者、员工、合作伙伴的共同成长，“分享成长价值”的核心价值观和企业文化内涵，已经深得所有合作伙伴的认同。达安基因将努力追求和利益相关者的共赢，为中国医疗卫生事业的发展做出自己的贡献。
+	  </p>
+		</div>
+</div>
+<div style="height:20px;" id="about"></div>
+<div>
+<div  class="webw">
+
+
+<div  class="webw" style="padding-top:20px;">
+<div style="background: padding:20px 10px 10px 10px; width:220px;" class="tc f18 center">关于天成人才网<p class="f12 hcolor">About TECENET Human Resources</p></div></div>
+		<div  class="webw" style="line-height:28px;padding:30px 5px 30px 5px;font-size:15px;">
+		<p style="text-indent:20px;"><font class="rcolor">天成人才网</font>依托母公司<font class="rcolor">中山大学达安基因股份有限公司和广州天成医疗技术有限公司</font>的资源、技术、人才优势，专注于医疗行业人力资源开发领域，利用先进的网络信息交流技术，整合专业人力资源渠道，致力于为医疗行业企业提供<font class="rcolor">高效、快捷、专业、低成本</font>的人力资源服务平台。主要为广大医疗机构、生产厂商、经销商提供全面系统的人才招聘 、培训、猎头、人事外包、后勤管理等一站式服务解决方案。</p><div style="height:20px;"></div>
+<p style="text-indent:20px;"><font class="rcolor">我们的服务内容：</font></p>
+<p style="padding-left:20px;padding-top:20px;width:460px; float:left;padding-right:10px;">
+<font class="rcolor">网络招聘 </font><br/>
+依托医疗行业的行业属性，精确细分医疗行业职位，为各类医疗招聘企业提供专业、精准、便捷的网络招聘服务
+<br/><font class="rcolor">猎头</font><br/>
+依托天成医疗人才网强大的线上资源及线下工程师数据库储存资源，为客户提供高级人才寻访和推荐服务。
+<br/><font class="rcolor">培训</font><br/>
+针对医疗行业培训的专业性、技术性需求，我们提供全面的医疗培训服务，帮助医疗设备管理人员、使用人员和维修人员提高理论基础和专业技能水平。
+</p>
+<p style="padding-left:30px;padding-top:20px;width:460px; float:left;">
+<font class="rcolor">人事外包及后勤管理</font><br/>
+针对企业专注于核心价值创造的需求，我们提供全方位一站式的员工管理服务，全面承担员工所有岗位劳动关系管理、技能培训、绩效薪酬等综合性管理服务，帮助企业减少管理成本，摆脱繁琐的事务性工作，更专注于核心价值的创造。
+<br/>
+<font class="rcolor">我们的优势：</font><br/>
+1、	专业：专业的人力资源服务团队，致力为客户和求职候选人提供专业、高效、贴心服务。<br/>
+2、	国内领先的一站式医疗产业服务平台；<br/>
+3、	网络招聘、求职全免费服务。
+
+		</p>
+		</div>
+<div class='divline'></div>
+
+</div>
+<div style="height:20px;"></div><div style="height:20px;"></div>
+<script type="text/javascript">
+  $("#scwj").bind("click",function(){$("html, body").animate({scrollTop:$('#contactus').offset().top}, 200);});
+</script>
+<div  class="center autoheight" style="background:#f5f4f9;padding:40px 10px 40px 10px;"  id="contactus"> 
+<div class="webw autoheight">
+<table  cellspacing=0 cellpadding=0 border=0>
+<tr>
+	<td width="650">
+	<div style="font-size:18px;line-height:30px;">
+联系人：王先生<br>
+咨询电话：020-32052420<br>
+简历投递邮箱：<br>
+job@tecenet.com<br>
+移动电话：13829771115<br>
+ </div>
+</td>
+	<td>
+	<div style="font-size:18px;line-height:30px;">
+<p class="f18 tc">我们随时等着你的加入</p>
+<p class="f14 tc">We are always waiting for you to join</p>
+
+<p class="f14 tc"><a href="{DT_PATH}member/my.php?mid=28&action=add" target="_blank" style="padding:7px;background:#ff9900;font-size:16px;color:#fff;"> 立即免费发布招聘信息</a></p>
+
+ </div>
+	</td>
+</tr>
+</table>
+</div>
+</div>
+{template 'footer'}
+{/if}

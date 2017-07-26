@@ -1,0 +1,90 @@
+/*全局css开始*/
+* { padding:0; margin:0; }
+body { font:normal 12px/180% Arial, Helvetica, sans-serif; color:#333; background:#0d0d0d url(black.jpg) no-repeat center 24px; }
+table, td { border-collapse:collapse; border:0px; border-spacing: 0; line-height:180%; font-size:12px; }
+ul, li, dl, dt, dd { list-style:none; }
+a { color: #333; text-decoration: none; }
+a:hover { color: #FF0000; text-decoration: underline; }
+input { font-size:12px; }
+img { border:0; }
+.a01:link { color: #003399; text-decoration: underline; }
+.a01:visited { color: #003399; text-decoration: underline; }
+.a01:hover { color: #FF0000; text-decoration: underline; }
+.a01:active { color: #FF0000; text-decoration: underline; }
+.a02:link { color: #003399; }
+.a02:visited { color: #003399; }
+.a02:hover { color: #FF0000; text-decoration: underline; }
+.a02:active { color: #FF0000; text-decoration: underline; }
+.clear_all { clear:both; line-height:0; height:0px; }
+.space5 { height:5px; line-height:0; }
+.space10 { height:10px; line-height:0; }
+.font_white { font-size:14px; color:#FFFFFF; font-weight:bold; }
+.font_red { color:#FF0000; }
+.font_gray { color:#666666; }
+.font_orange { color:#FCBE81; }
+.font_bold { font-weight:bold; }
+/*主体css开始*/
+.top { background-image: url(topbg.gif); border-bottom:#CCCCCC solid 1px; height:24px; line-height:24px; }
+.top_content { width:950px; height:24px; margin:0 auto; }
+.top_left { width:300px; float:left; }
+.top_right { width:200px; float:right; text-align:right; }
+.container { width:950px; margin:0 auto; }
+.head { height: 120px; position: relative;}
+.logo { vertical-align: middle; width:170px; float:left; margin-top:30px; }
+.head_center { margin:25px 0 5px 10px; float:left; width:600px; }
+.company_name { color: #ffffff; font-size:28px; padding:10px 0; font-weight:bold; font-family:"楷体_gb2312", "黑体", Tahoma, Arial; }
+.main_product { color:#ffffff; font-weight:bold; }
+.gold_member { left: 780px; top: 0px; width: 157px; position: absolute; background:url(gold_bg.gif) no-repeat; height:59px; }
+.gold_member_content { width:115px; margin:30px 0 0 35px; }
+.gold_member_content li { float:left; text-align:center; }
+.mem_name { color:#990000; font-weight:bold; width:70px; }
+.years_num { color:#FFFFFF; font-weight:bold; width:44px; }
+.nav { padding-left: 20px; width: 930px; height:38px; background: url(black.gif) no-repeat; border-bottom:1px solid #fff; }
+.nav li { font-weight:bold; font-size:14px; float:left; width:101px; height:29px; color:#fff; padding-top:9px; text-align:center; }
+.nav li a:link { color: #ffffff; text-decoration: none }
+.nav li a:visited { color: #ffffff; text-decoration: none }
+.nav li a:hover { text-decoration: underline }
+.nav .hover { color: #000000; height:26px; margin-top:3px; background:url(black.gif) no-repeat 0px -120px; }
+.nav .hover a:link { color: #000000; text-decoration: none }
+.nav .hover a:visited { color: #000000; text-decoration: none }
+.nav .hover a:hover { color: #000000; text-decoration: underline }
+.banner { width: 950px; margin:0 auto; height:110px; text-align:center; background:#fff url(banner.gif) no-repeat 0 bottom; }
+.banner img { vertical-align:middle; position:relative; text-align:center }
+.current_location { height:25px; line-height:25px; padding-left:10px; font-weight:bold; background-color:#fff; color: #666666; margin:7px 0; border: 1px solid #fff; background-color:#fff; }
+#left { width: 200px; float: left }
+#right { width: 738px; float: right; margin-bottom: 7px; }
+#demo { OVERFLOW: hidden }
+#indemo { FLOAT: left; width: 5000px; }
+#demo1, #demo2 { FLOAT: left }
+
+.block { padding-bottom:7px !important; padding-bottom:1px; margin-bottom:7px; border:1px solid #fff; background:#fff;}
+.left_title { font-size: 14px; height: 29px; line-height:29px; font-weight: bold; background:url(black.gif) no-repeat 0px -48px; padding-left: 35px; color:#fff; }
+.right_title { font-size: 14px; height: 29px; line-height:29px; font-weight: bold; background: url(black.gif) no-repeat 0px -87px; padding:0 10px 0 35px; color:#fff; }
+.right_title a { float:right; font-size:12px; font-weight:normal; }
+.product_class li { line-height: 200%; padding-left: 18px; border:1px solid #cccccc; margin-bottom:3px; background: url(icon_arrow.gif) no-repeat 8px 7px; font-weight: bold; width: 158px; }
+.commend p { margin-top: 10px; margin-right: 10px; text-indent: 20px; margin-bottom: 7px; margin-left: 10px; }
+.product_div { text-align:center; margin:10px; }
+.scrollW { width: 700px; margin-left:17px; }
+.notice, .product_class, .friend_links, .commend, .contact { padding:10px; }
+.notice li{ line-height:22px; border-bottom:1px dotted #ccc; background: url(icon_arrow.gif) no-repeat 8px 7px; padding-left:15px;}
+.product_pic { border:#CCCCCC solid 1px; padding:5px; background-color: #FBFBFB }
+.product_pic img { width:100px; height:100px; }
+.text_box a { text-decoration:underline; }
+.text_box span { color:#996666; }
+.company_pic { float:right; border:#CCCCCC solid 1px; width:182px; height:100%; text-align:center; padding:5px; margin:10px 10px 0 20px; }
+.company_pic img { width:180px; height:180px; }
+.pic_name { text-align:center; font-size:12px; }
+.pages { border-top:#CCCCCC solid 1px; margin-top:10px; }
+.news { padding:20px; border-left: 1px solid #ffffff; border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff; }
+.news_name { font-size:14px; border-bottom:#CCCCCC dashed 1px; line-height:200%; }
+.news_date { color:#AAAAAA; float:right; font-size:12px; }
+.honor_content { width:100%; border: #CCCCCC solid 1px; }
+.honor_content td { border: #CCCCCC solid 1px; padding:3px; text-align:center; }
+.honor_title { background-color:#EEEEEE; font-weight:bold; }
+.contact_content { width:100%; }
+.contact_content td { padding:3px; line-height:200%; font-size:14px; }
+.guestbook_content { width:100%; border: #CCCCCC solid 1px; }
+.guestbook_content td { border: #CCCCCC solid 1px; padding:3px; }
+.footer { width:930px; margin:0 auto; padding:45px 20px 10px 0; text-align:right;background:url(footer.jpg) no-repeat center 0; text-align:right; color: #fff;}
+.footer a{color: #fff;}
+.contact li { border-bottom:1px dashed #cccccc; width:150px;height:26px; line-height:26px; padding-left: 18px; background: url(icon_list.gif) no-repeat 5px center; overflow:hidden;}

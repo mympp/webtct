@@ -1,0 +1,100 @@
+.webmenulist{width:750px;}
+.topnews{height:300px;}.w190{width:190px;}
+.w170{width:170px;}.w150{width:150px;}.w550{width:550px;}
+.themeleft{width:200px;float:left;height:350px;background:white;padding:5px 10px 5px 10px;margin-bottom:20px;}
+.tecetitle{font-size:16px;line-height:28px;height:28px;color:#F77602;border-bottom:1px solid #FF9C00;text-indent:5px;margin-bottom:5px;font-weight:normal;}
+.tecememo{line-height:20px;font-size:13px;}.tecememo p{text-indent:20px;margin-top:5px;}
+.tecememo p b{color:#f27302;font-weight:normal;font-size:16px;}
+.tecememo div img{padding:1px;border:1px solid #ddd;}
+.rightmenu{width:225px;float:left;height:370px;margin-left:10px;padding-top:10px;;}
+.youcan{width:114px;}
+#sidebar{width:110px;background:#fff;height:auto;}
+#sidebar h3{text-indent:5px;color:#808080;letter-spacing:1px;width:110px}
+#sidebar h3 span{color:#ea660f;}
+#sidebar h3 font{font-family:"宋体";font-size:12px;padding-left:5px;}
+.sidelist{position:relative;z-index:10;height:40px;width:109px;margin-left:0px;margin-bottom:2px;}
+.i-list h5{line-height:30px;height:30px;border-bottom:1px solid #ffcc00;font-weight:normal;font-size:14px;margin-bottom:5px;margin-top:0px;}
+.sidelist dt{margin:0px;background-color:#f7f7f7;}
+.sidelist span h3{;position:relative;z-index:11;height:40px;line-height:40px;font-size:14px;font-weight:normal;}
+.i-list{display:none;position:absolute;z-index:10;left:109px;top:0px;width:700px;padding:5px;background:#fff;border:1px solid #f77602;}
+.i-list ul li{min-width:100px;_width:100px;width:auto;margin-left:10px;;float:left;list-style:none;line-height:28px;height:28px;}
+.i-list ul li a{color:#000;text-decoration:none;font-size:14px;}
+.i-list ul li a:hover{text-decoration:underline;color:red;}
+.treehover{border:1px solid #f77602;border-right:0;border-left:0px;background-color:#ffffff;margin:0px;}
+.treeout{margin-top:1px;margin-bottom:1px;}
+.h90{height:90px;}
+.leftadd{background-color:#ffefce;height:190px;padding-left:2px;padding-top:2px;}
+.leftadd li{width:105px;text-align:center;background-position: center 10px;background-repeat:no-repeat;}
+.leftadd li p{font-size:12px;}
+.leftadd li font{font-size:12px;font-family:"宋体";color:#FFF}
+
+.thememid{float:left;width:620px;height:280px;margin-left:110px;padding:10px;overflow:hidden;}
+.themeright{width:230px;;float:left;height:280px;padding:4px;background:url('image/png/list.png') no-repeat center 175px;border:1px solid #e0e0e0;background-color:#fff}
+.leftmenu{margin-top:0px;padding:0px 2px 2px 2px;}
+.ico a p{color:#f77602;padding-bottom:5px;padding-top:70px;}.ico a:hover p{color:#fff}
+#slide-banner{width:604px;height:210px;overflow:hidden;background:#fff;padding:3px;}
+#btn-slide{width:605px;height:195px;overflow:hidden;}#btn-slide li{width:605px;float:left;text-align:center;height:195px;overflow:hidden;}
+.weituo{height:62px;margin-top:10px;font-size:16px;color:#fff;}
+.weituo li{text-indent:90px;width:300px;background-color:#fff;background-position: 15px 5px;background-repeat:no-repeat;}
+.weituo li a:link p{padding-top:20px;padding-bottom:20px;}
+.weituo li a:link font{display:none}
+.weituo li a:hover p{padding-top:10px;padding-bottom:13px;}
+.weituo li a:hover font{display:block;color:#333;font-size:12px;}
+.honor dd{line-height:36px;font-size:14px;padding-left:25px;}
+.money{font-size:24px;color:#f77602;line-height:26px;text-align:center}
+.fwxq li{width:690px;}
+.fwxq li div{font-size:16px;}
+.fwxq li .w360{line-height:22px;}
+.fwxqlist {padding-top:10px;}
+.fwxqlist li{width:715px;height:120px;}
+.fwxqlist li div{font-size:16px;}
+.fwxqlist li .w360{line-height:22px;}
+#fwgy{height:355px;width:700px;overflow:hidden}
+.fwgy li{width:340px;height:105px;}
+.fwgy li div{float:left}
+.fwgy li .intro{width:230px;}
+.fwgylist li{width:715px;height:105px;}
+.fwgylist li div{float:left}
+.fwgylist li .intro{width:610px;}
+.listresume{padding:5px;padding-top:0px;}
+.listresume li{border-bottom:1px dashed #ddd;padding-top:15px;padding-bottom:15px;}
+.listresume dd{float:left;overflow:hidden;height:76px;}
+.listresume dt em{font-size:10px}
+.resumedd1{width:440px;}.resumedd2{width:160px;background:#f5f7f8}
+.resumedd2 ul{margin:0px;}
+.resumedd2 li{line-height:24px;padding:0px;font-size:14px;text-align:center;border:0px;}
+.resumedd2 li a{float:left;margin-left:10px;width:60px;font-size:12px;line-height:16px;height:16px;padding:3px;}
+.listresume dd p{font-size:12px;line-height:20px;color:#797979;padding-left:10px;font-family:"宋体";}
+.w610{width:610px;}
+.resumepic{width:86px;height:104px;padding-top:3px;line-height:14px;text-align:center;overflow:hidden}.resumepic img{width:80px;height:80px;}
+.resumetop{background:#FF8800 url('image/resumetop.jpg') top center no-repeat;height:265px;}
+.resumetitle{height:60px;}
+.resumetitle span{background:rgba(255, 255, 255, 0.2) none repeat scroll 0 0 !important;filter:Alpha(opacity=20); 
+background-color:#ffffff;width:70px;height:30px;line-height:30px;color:#fff;margin-top:-45px;text-align:center;}
+.resumetitle span a{position:relative;line-height:30px;font-size:16px;color:#fff}
+.resumetitle h1{font-size:22px;font-weight:normal;line-height:60px;height:60px;margin:0px;color:#222;position:relative;text-indent:10px;}
+.resumetopinfo{height:140px;background:rgba(255, 255, 255, 0.5) none repeat scroll 0 0 !important;filter:Alpha(opacity=50); background:#fff;}
+.resumetopinfo div{position:relative;}
+.resumethumb{height:140px;width:140px;background:#d1d1d1 url('image/png/resumepic.png') center center no-repeat;text-align:center}
+.resumethumb div{padding-top:90px;height:16px;;font-size:12px;color:#fff}
+.resumememo{width:750px;}
+.resumememo dl{padding:10px;margin:0px;height:75px;}
+.resumememo dt{font-size:18px;color:#444;line-height:30px;height:30px;}
+.resumememo font{margin-left:10px;font-size:12px;}
+.resumememo dd{margin-left:10px;line-height:26px;height:26px;float:left;font-size:12px;}
+.resumesel{width:100px;color:#222;}
+.resumeapply{margin-top:15px;width:100px;height:40px;}
+.resumeapply li{float:left;line-height:22px;margin-left:10px;text-align:right;padding-right:10px;}
+.resumeapply li font{font-size:18px;}
+.resumeselt{margin-top:10px;width:100px;}
+.resumeselt li{margin-top:5px;}
+.resumemenu{margin-top:20px;height:33px;}
+.resumemenu ul{width:980px;background:url('image/nuli.gif') right center no-repeat;height:33px;}
+.resumemenu ul li{float:left;margin-right:30px;padding-top:6px;font-size:14px;color:#fff;line-height:24px;}
+.resumemenu a:link{color:#fff}
+.resumemenu a:visited{border-bottom:2px solid #fff;color:#fff}
+.resumemenu a:hover,.resumemenu a:active {border-bottom:2px solid #fff;color:#fff}
+.yellowbg .graybg{background:#ffffff}
+.yellowbg .grayb{border-color:#ffcc66}
+.h1{font-size:24px;line-height:26px;}
+

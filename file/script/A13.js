@@ -1,0 +1,1 @@
+document.write('<a href="http://idc.destoon.com/" target="_blank"><img src="file/image/banner.gif" width="468" height="60" alt="Destoon专用VPS主机"/></a>');

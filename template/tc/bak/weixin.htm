@@ -1,0 +1,87 @@
+{if $action != 'ajax'}
+{template 'header', 'mobile'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-back">
+{if $itemid || $catid || $areaid || $kw}
+<a href="{$back_link}" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>返回</span></a>
+{else}
+<a href="channel.php" data-direction="reverse"><img src="static/img/icon-back.png" width="24" height="24"/><span>频道</span></a>
+{/if}
+</div>
+<div class="head-bar-title">{$head_name}</div>
+<div class="head-bar-right">
+<a href="javascript:{if $itemid}Dsheet('<a href=&#34;{if $DT_MOB[browser]=='weixin'||$DT_MOB[browser]=='qq'}javascript:share_tips();{else}share.php?moduleid={$moduleid}&itemid={$itemid}{/if}&#34;  data-transition=&#34;slideup&#34;><span>分享好友</span></a>|<a href=&#34;{mobileurl($moduleid)}&#34; data-direction=&#34;reverse&#34;><span>{$MOD[name]}首页</span></a>|<a href=&#34;channel.php&#34; data-direction=&#34;reverse&#34;><span>频道列表</span></a>', '取消');{else}Dsheet('<a href=&#34;search.php?action=mod{$moduleid}&catid={$catid}&areaid={$areaid}&#34;><span>{$MOD[name]}搜索</span></a>|<a href=&#34;category.php?moduleid={$moduleid}&#34;><span>按分类浏览</span></a>|<a href=&#34;area.php?moduleid={$moduleid}&#34;><span>按地区浏览</span></a>', '取消');{/if}"><img src="static/img/icon-action.png" width="24" height="24"/></a>
+</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+{/if}
+{if $itemid}
+<div  style="margin:auto;text-align:center;width:94%;top:-500px;position:absolute;z-index:10">
+	<img src="{if $thumb}{$thumb}{else}static/img/images/logo.jpg{/if}"  width="590" height="490"  align="center" onerror="this.src='http://wap.tecenet.com/static/img/images/logo.jpg'">
+</div>
+	<div class="main">
+		<div class="title" style="{if $status==2}color:red;{/if}{if $status==1}text-decoration:line-through;{/if}"><strong>{$title}</strong></div>
+		<div class="info">
+			{$editdate}&nbsp;&nbsp;
+			<span ><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODg2MTExMg==&mid=223574755&idx=1&sn=1fcdce2c9c8e4b7a3eb1a998b2aa8e4f#rd" style="color:#459ae9;">一键关注：天成医疗</a></span>
+			<span style="float:right;">阅读:{$hits}</span>
+			<div style="font-size:16px;text-align:center;padding-top:10px;">
+				{if $_groupid==1||$_groupid==8||get_cookie('pwd')}
+					<span style="padding-right: 10px;"><a href="{DT_PATH}api/cj/index.php?action=addnew&itemid={$itemid}">修改</a></span>
+						{if $status==2}&nbsp;&nbsp;<span style="padding-right: 10px;"><a href="index.php?moduleid={$moduleid}&itemid={$itemid}&status=3">未审</a></span>{/if}
+						{if $status==3}&nbsp;&nbsp;<span style="padding-right: 10px;"><a href="index.php?moduleid={$moduleid}&itemid={$itemid}&status=2">已审</a></span>{/if}
+						&nbsp;&nbsp;<span style="padding-right: 10px;"><a href="index.php?moduleid={$moduleid}&itemid={$itemid}&status=1">拒绝</a></span>
+				{else}
+					{if $status==2}<script>document.write('<div style="position:fixed;z-index:1100;width:100%;height:100%;background:#000;color:#fff;left:0px;top:0px;font-size:20px;padding-top:60px;text-align:center;">{$title}<br>审核中<br><img src="static/img/images/huanghaobin.jpg" style="display:auto;margin:auto"><br>长按二维码<br>通知审核人员审核</div>');
+					document.write('<style>#content{display:none}</style>');
+					</script>
+					{/if}					
+				{/if}
+			</div>	
+		</div>
+		<div class="content">
+			{if $islink}
+				<a href="{$linkurl}" target="_blank">{$linkurl}</a><br/>
+			{else}
+				{if $user_status == 3}					
+					{$content}
+					<div style="height:100px;margin:10px auto;">{ad(219)}</div>
+				{else}
+					{template 'chip-content', 'mobile'}
+				{/if}
+			{/if}
+		</div>
+		{if strpos($content, 'eqxiu.com')}<script>$("html,body").animate({scrollTop:120},1000);</script>{/if}
+	</div>
+	{if $DT_MOB[browser] == 'weixin' ||  $DT_MOB[browser] == 'qq'}{template 'chip-share', 'mobile'}{/if}
+	{template 'chip-comment', 'mobile'}
+{else}
+	{if $lists}
+	<!-- searchtool --><!--  -->
+	{loop $lists $v}
+		<div class="list-img" style="line-height:30px;">
+			{if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+			<ul style="line-height:30px;">
+				<li>
+					<a href="{$v[linkurl]}" rel="external" {if $v[status]==2}style="color:red;"{/if}><strong>{$v[title]}</strong></a>
+				</li>
+				<li><span>{$v[introduce]}</span></li>
+				<li>
+					<span>阅读 {$v[hits]}</span>
+					<em style="float:right;">{$v[date]}</em>
+				</li>
+			</ul>
+		</div>
+
+	{/loop}
+	
+	{else}
+	{template 'chip-empty', 'mobile'}
+	{/if}
+{/if}
+{if $action != 'ajax'}
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{template 'footer', 'mobile'}
+{/if}

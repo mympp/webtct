@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* 禁用iPhone中Safari的字号自动调整 */
+html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+/* 去除iPhone中默认的input样式 */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input{-webkit-appearance:none; resize: none;}
+/* 取消链接高亮  */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article,
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); }
+/* 设置HTML5元素为块 */
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section { display: block;}
+/* 图片自适应 */
+img { max-width: 100%; height: auto; width:auto\9; /* ie8 */ -ms-interpolation-mode:bicubic;/*为了照顾ie图片缩放失真*/}
+/* 初始化 */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article,
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{margin:0; padding:0; border:none;}
+body{font: normal 12px/1.5 Tahoma,"Lucida Grande",Verdana,"Microsoft Yahei",STXihei,hei;word-break: break-all;}
+em,i{font-style:normal;}
+strong{font-weight: normal;}
+.clearfix:after{content:""; display:block; visibility:hidden; height:0; clear:both;}
+.clearfix{zoom:1;}
+a{text-decoration:none; color:#333; font-family:Microsoft YaHei,Tahoma,Arial,sans-serif;}
+a:hover{color:#000; text-decoration:none;}
+ul,ol{list-style:none;}
+h1, h2, h3, h4, h5, h6{ font-size:100%; font-family: Microsoft YaHei;}
+img{border: none; display:block; }
+
+body,html{ width:100%; height:auto; background-color:#fff;color: #666;font-size: 14px;}
+.box{min-width:300px; max-width:640px; margin:0 auto;}
+
+
+/* 头部 */
+.header{width: 100%; height: 50px; background-color: #f9f8f8; border-bottom: 1px solid #eee;}
+.header .title{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height: 50px;text-align: center; vertical-align: middle; position: absolute; top:10px; width: 60%; left:20%; color:#487ccf; font-weight: bold; font-size:18px;}
+/*.header span{width: 20px; height: 50px; box-sizing: border-box;}*/
+.header div a{width: 11px; height: 11px; display:inline-block; float: left; background-size:100% 100%; background:url(../image/sprites.png) no-repeat -274px -145px;}
+.headline{float:right; width: 70px; height: 50px;}
+.login,.meun{ display:inline-block; width: 28px; background:url(img/images/sprites.png) no-repeat; background-size:160px auto;margin-top: 9px;}
+.login{float:left; height: 34px; background-position:4px 3px;}
+.meun{float:right; height: 36px; background-position:-44px 3px;}
+/* 投票说明 */
+.mean{width: 100%; height: 100%; padding:10px; box-sizing: border-box; background-color:#eee;}
+.mean p{width: 100%; margin-top:10px; color:#666;line-height: 22px;text-indent: 2em;}
+.mean span{font-size:15px; font-weight:bold;}
+/* 主题内容 */
+.main{width: 100%; height: 100%;padding:10px; box-sizing: border-box;position: relative;margin-top: 50px;}
+.main ul{width: 100%; padding:10px; box-sizing: border-box;  border: 1px solid #fff;}
+.main ul img{width: 100px; height: 60px; background-size:100% 100%; float:left; margin-right: 10px;}
+.main ul p{width: 100%; line-height:20px; color:#666; text-indent: 1.2em;font: normal 13px/1.5 Tahoma,"Lucida Grande",Verdana,"Microsoft Yahei",STXihei,hei;}
+.main ul li:last-of-type{width: 100%; font-size:15px; color:#222; font-weight:bold; margin-top: 2px;}
+
+.hui{background:#eee;}
+.main .lv{width: 100%; padding:10px; box-sizing: border-box; border: 1px solid #7ebe2c; background: #DAE6CB;}
+
+.dui,.cuo{width: 16px; height: 16px;  display:inline-block; background:url(img/images/tick.jpg) no-repeat;background-size:100% 100%; position: absolute;bottom: 22px; right: 11px;}
+
+.cuo{background:url(img/images/tick1.jpg) no-repeat;background-size:100% 100%;}
+
+/* 按钮 */
+.btn{width: 100%; height:auto; padding:10px; box-sizing: border-box;margin-top: 25px;border-top: 1px solid #ccc;}
+.btn input{width: 80%; height:40px; line-height: 40px; background-color: #ff5000; font-size:16px; color:#fff;margin-left: 10%;border-radius: 8px;}
+/* 列表*/
+.list-img {height:86px;background:#FFFFFF;overflow:hidden;clear:both;border-bottom:#D9D9D9 1px solid;padding:0 10px;}
+.list-img img:first-child {float:left;margin:10px 10px 10px 0;width: 110px;height: 66px;border: 1px solid #eee;}
+.list-img ul {margin:10px 0 0 0;}
+.list-img li {height:23px;line-height:23px;overflow:hidden;}
+.list-img strong {font-size:16px;display:block;width:100%;}
+.list-img em {font-size:12px;color:#666666;font-style:normal;}
+.list-img span {font-size:12px;color:#666666;}
+/*百分比*/
+.ocolor{color: #ff8800;}
+.vote_show_p {height:11px;line-height:11px;background:#D6CECE;font-size:1px;}
+.vote_show_p div {height:11px;line-height:11px;float:left;}
+.vote_show_1 {background:#EA7211 url('img/images/vote_bg.gif') repeat-x 0 0;border-left:#EA7211 1px solid;border-right:#EA7211 1px solid;}
+.vote_show_2 {background:#AABF00 url('img/images/vote_bg.gif') repeat-x 0 -11px;border-left:#AABF00 1px solid;border-right:#AABF00 1px solid;}
+.vote_show_3 {background:#8B2A00 url('img/images/vote_bg.gif') repeat-x 0 -22px;border-left:#8B2A00 1px solid;border-right:#8B2A00 1px solid;}
+.vote_show_4 {background:#BF844A url('img/images/vote_bg.gif') repeat-x 0 -33px;border-left:#BF844A 1px solid;border-right:#BF844A 1px solid;}
+.vote_show_5 {background:#3A8938 url('img/images/vote_bg.gif') repeat-x 0 -44px;border-left:#3A8938 1px solid;border-right:#3A8938 1px solid;}
+.vote_show_6 {background:#486193 url('img/images/vote_bg.gif') repeat-x 0 -55px;border-left:#486193 1px solid;border-right:#486193 1px solid;}
+.vote_show_7 {background:#7DA3AE url('img/images/vote_bg.gif') repeat-x 0 -66px;border-left:#7DA3AE 1px solid;border-right:#7DA3AE 1px solid;}
+.vote_show_8 {background:#AE1486 url('img/images/vote_bg.gif') repeat-x 0 -77px;border-left:#AE1486 1px solid;border-right:#AE1486 1px solid;}
+.vote_show_9 {background:#5AB502 url('img/images/vote_bg.gif') repeat-x 0 -88px;border-left:#5AB502 1px solid;border-right:#5AB502 1px solid;}
+.vote_show_10 {background:#BF2146 url('img/images/vote_bg.gif') repeat-x 0 -99px;border-left:#BF2146 1px solid;border-right:#BF2146 1px solid;}
+.vote_show_11 {background:#095324;border-left:#095324 1px solid;border-right:#095324 1px solid;}
+.vote_show_12 {background:#7D1DB3;border-left:#7D1DB3 1px solid;border-right:#7D1DB3 1px solid;}
+.vote_show_13 {background:#DBDB27;border-left:#DBDB27 1px solid;border-right:#DBDB27 1px solid;}
+.vote_show_14 {background:#2FB3A8;border-left:#2FB3A8 1px solid;border-right:#2FB3A8 1px solid;}
+.vote_show_15 {background:#B686C4;border-left:#B686C4 1px solid;border-right:#B686C4 1px solid;}
+.vote_show_16 {background:#B5E78C;border-left:#B5E78C 1px solid;border-right:#B5E78C 1px solid;}
+.vote_show_17 {background:#212821;border-left:#212821 1px solid;border-right:#212821 1px solid;}
+.vote_show_18 {background:#B676E9;border-left:#B676E9 1px solid;border-right:#B676E9 1px solid;}
+.vote_show_19 {background:#854418;border-left:#854418 1px solid;border-right:#854418 1px solid;}
+.vote_show_20 {background:#8B198B;border-left:#8B198B 1px solid;border-right:#8B198B 1px solid;}
+.vote_show_21 {background:#095324;border-left:#095324 1px solid;border-right:#095324 1px solid;}
+.vote_show_22 {background:#7D1DB3;border-left:#7D1DB3 1px solid;border-right:#7D1DB3 1px solid;}
+.vote_show_23 {background:#DBDB27;border-left:#DBDB27 1px solid;border-right:#DBDB27 1px solid;}
+.vote_show_24 {background:#2FB3A8;border-left:#2FB3A8 1px solid;border-right:#2FB3A8 1px solid;}
+.vote_show_25 {background:#B686C4;border-left:#B686C4 1px solid;border-right:#B686C4 1px solid;}
+.vote_show_26 {background:#B5E78C;border-left:#B5E78C 1px solid;border-right:#B5E78C 1px solid;}
+.vote_show_27 {background:#212821;border-left:#212821 1px solid;border-right:#212821 1px solid;}
+.vote_show_28 {background:#B676E9;border-left:#B676E9 1px solid;border-right:#B676E9 1px solid;}
+.vote_show_29 {background:#854418;border-left:#854418 1px solid;border-right:#854418 1px solid;}
+.vote_show_30 {background:#8B198B;border-left:#8B198B 1px solid;border-right:#8B198B 1px solid;}
+
+
+

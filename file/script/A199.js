@@ -1,0 +1,1 @@
+document.write('http://www.tecenet.com/file/upload/201509/29/10-06-18-46-1.jpg');

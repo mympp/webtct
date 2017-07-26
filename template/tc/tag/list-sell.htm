@@ -1,0 +1,29 @@
+<ul id="{$module}list{$id}" class="selllist">
+{php if(strpos($TYPE,"|")!=0)$TYPE=explode('|',$TYPE);}
+{loop $tags $k $t}
+<li>
+<table  border="0">
+  <tr>
+   {if $t[thumb]} <td width="110" rowspan="3"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img onerror="this.src='{DT_SKIN}image/nopic.gif'" src="{$t[thumb]}" width="100" height="100" class="thumb"/></a></td>{/if}
+    <td width="550" height="30"><a href="{$t[linkurl]}" target="_blank" class="b color f16" title="{$t[alt]}"> ·  {dsubstr($t[alt],86,"..")}</a></td>
+  </tr>
+  <tr>
+    <td  height="20">
+<span class="f14 mr10 b rcolor">{if $t[price]>0}{$t[price]}/{$t[unit]}{else}价格 面议{/if}</span><span class="f14 mr10">{if $t[minamount]}{$t[minamount]}{$t[unit]}起订{else}暂无起订条件{/if}</span>
+<span class="f14 color mr10">关注{$t[hits]}℃</span>
+{if $t[validated]==1}<span class='f14 ocolor' title="本站客服已对其真实性进行验证"><img src="{DT_SKIN}image/shield.gif" class="mid"/>验证</span>{/if}
+{if $t[level]>0}<span class='f14 mr10'>级别<img src="{DT_SKIN}image/vip_{$t[level]}.gif" class="mid" alt="推荐{$t[level]}级"/></span>{/if}</td>
+  </tr>
+  <tr>
+    <td height="50" valign="top">{$TYPE[$t[typeid]]}  {$t[catname]} {if $_userid}{$t[introduce]}{else}{xcontent($t['introduce'],'*','1,3,5,7,9')}{/if}</td>
+  </tr>
+</table>
+</li>
+{/loop}	
+</ul>
+<script type="text/javascript">
+$("#{$module}list{$id}>li").hover(function () {$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg"); });
+</script>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}
+
+

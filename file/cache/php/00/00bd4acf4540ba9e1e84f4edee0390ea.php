@@ -1,0 +1,1 @@
+<?php exit;?>1466432435a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201406/10/16-19-44-80-8.png";s:7:"linkurl";s:26:"http://szchen.tecenet.com/";s:7:"company";s:42:"深圳市盛夏水处理科技有限公司";}}

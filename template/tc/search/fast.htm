@@ -1,0 +1,69 @@
+{php $socss=array('fast.css');$sojs=array('heightlight.js');}
+{template 'header',$module}
+<script type="text/javascript" >
+	$(document).ready(function(){		
+		//显示清除input按钮
+		$("input[id='keyword']").keyup(function(){
+			if($("input[id='keyword']").val() > 0){
+				$(".ipt_del").show();
+			}else{
+				$(".ipt_del").hide();
+			}
+		});
+		//清楚文本框该内容
+		$(".ipt_del").click(function(){
+			$("input[id='keyword']").val("").focus();
+		});		
+		//鼠标移入
+		$(".ipt_del").mouseover(function(){
+			$(this).css('background-position','-22px 0px');
+		});
+		//移除鼠标
+		$(".ipt_del").mouseout(function(){
+			$(this).css('background-position','0px 0px');
+		});		
+
+	//调整高度，使footer置于页面底部
+	if($("#wraper").height()<$(window).height()){
+		$("#empty").height($(window).height()-$("#wraper").height());
+	}
+		
+	});
+</script>
+  <div id="wraper" class="wraper_s">
+	<!--导航-->
+	{template 'menu',$module}
+	{template 'tools',$module}
+	<!--导航-->
+	<!--BEGIN快照信息-->
+	<div id="tc_snap_txt">您查询的关键词是：
+	<span class="highlight"><a style="color:black;background-color:#ffff66;padding:0 3px;font-weight:bold" href="">{$keyword}</a></span>
+	<span style="margin-left:5px">以下是该网页在北京时间 {date('Y-m-d H:i:s',$addtime)} 的快照；</span>
+    </div>
+	<div id="tc_snap_note">医杨和网页 <a href="{$url}">{$url}</a> 的作者无关，不对其内容负责。医杨快照谨为网络故障时之索引，不代表被搜索网站的即时页面。</div>
+	<!--END快照信息-->
+	<!--END工具条tab-->
+	<!--中间主体-->
+	<div id="wraper_wrap" style="padding-top:0px;">	
+		<!--BEGIN抓取的快照-->
+		<div id="content">
+		<h3>{$title}</h3>
+		{$content}
+		</div>
+		<div id="empty"></div>
+		<!--END抓取的快照-->		
+    </div>
+  <!--END中间主体-->
+
+ </div>
+ <!-- JavaScript Includes -->
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".highlight").each(function(){
+        var searchTerm = $(this).text();
+		$('#content').highlight( searchTerm );
+    });
+	
+});
+</script>
+{template 'footer',$module}

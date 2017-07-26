@@ -1,0 +1,22 @@
+
+{loop $tags $sk $sv}
+<?php $idea = $db->get_one("select * from {$db->pre}sogex_ideas where ideaid = ".$sv[tid]); ?>
+<div class="result">
+<h3><a href="link.php?t={$sv['itemid']}&u={urlencode($idea[url])}&kw=" target="_blank">{$idea['default_name']}</a></h3>
+	{if $idea['thumb']}
+	<div class="c-row clearfix">
+	<div class="result_img">
+		<a href="link.php?t={$sv['itemid']}&u={urlencode($idea[url])}&kw=" target="_blank"  ><img class="res-img" width=120 height=90 src="{$idea['thumb']}" onerror="javascript:this.src='{SO_SKIN}images/nopic.gif';this.onerror=''" /></a> 		
+	</div>
+	<div class="result_c">
+	{/if}
+		<p class="res-desc" >{$idea['default_description']}</p>
+		{php $host = parse_url($idea['url']);}
+		<p class="res-linkinfo"><b>{$host['host']}</b>--<a href="http://{$host['host']}" target="_blank">{$sv['company']}</a>--<span class="blue">推广链接</span>&nbsp;&nbsp;</p>		
+	{if $idea['thumb']}
+	</div>			
+	</div>
+	{/if}
+</div>
+{/loop}
+

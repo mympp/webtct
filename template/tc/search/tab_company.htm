@@ -1,0 +1,74 @@
+<div id="con_two_{$v['catid']}" {if $k != '0'}style="display:none;"{/if} data="{$v['catid']}">
+<input type="hidden" id="page{$v['catid']}" value="1" />
+
+<ul class="companyList" id="slide{$v['catid']}">
+<div class="span8">
+<?php 
+$vip_company = $db->query("select linkurl from {$db->pre}view_company_vip");
+$vip_arr = array();
+while($r = $db->fetch_array($vip_company)){
+	$vip_arr[] = $r['linkurl'];
+}
+$count = count($vip_arr);
+if($count > 8){   //vip总数大于8，随机获得8个vip
+	$vip_rand_key = array_rand($vip_arr,8);
+	foreach($vip_rand_key as $v){
+		$vip_rand[] = $vip_arr[$v];
+	}
+	shuffle($vip_rand);
+	$vip_url = implode("','",$vip_rand);
+}else{
+	shuffle($vip_arr);
+	$vip_url = implode("','",$vip_arr);
+}
+$tags = tag("table=view_sogex_company_vip&condition=status = 3 and url in ('$vip_url')&pagesize=8&template=null");
+$vip = 1;
+include template('list_sogex_company','tag');
+?>
+{tag("table=sogex_info_company&condition=status = 3 and thumb <> ''&pagesize=$pagesize&order=itemid desc&template=list_sogex_company")}
+</div>
+</ul>
+
+<div class="span4">
+	<div class="sidebar">
+	 					
+	 <div class="areaInfoData clearfix">
+	<dl>
+		<dt class="bgcolorF8">推荐商家网站:<a class="join-to" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&amp;userId=6452136&amp;s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);">申请加入</a></dt>
+		<dd>
+			<ul class="website-list">
+				<li class="item">
+					<div class="img-area"><img src="http://www.tecenet.com/skin/sogex/images/tecenet-logo-sm.jpg" /></div>
+					<div class="txt-area">
+						<div class="item-title">
+							<a href="{DT_PATH}" class="website" target="_blank">天成医疗网</a>
+							<a href="{DT_PATH}member/grade.php" class="v-icon" target="_blank" title="天成医疗网认证" ><img src="{SO_SKIN}/images/v-icon.png" alt="天成医疗网认证" /></a>
+						</div>
+						<p class="description">天成医疗网-医疗器械网专业医疗器械供求信息与医疗器械供应、采购、招标；医疗器械维修、保养、调试等技术服务；国内、国外进口医疗器械厂家品牌招商推广平台。为医疗器械企业、医院等机构提供全方位技术与产品服务！</p>
+					</div>
+				</li>
+	        </ul>
+		</dd>
+	</dl>
+</div>
+						<div class="areaInfoData clearfix">
+							<dl>
+								<dt class="bgcolorF8">地区:</dt>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=1" target="_blank">北京</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=3" target="_blank">天津</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=5" target="_blank">河北</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=7" target="_blank">内蒙古</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=8" target="_blank">辽宁</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=9" target="_blank">吉林</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=20" target="_blank">广东</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=21" target="_blank">广西</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=2" target="_blank">上海</a></dd>
+								<dd><a href="http://www.tecenet.com/gongsi/search.php?vip=0&mode=0&type=0&areaid=33" target="_blank">香港</a></dd>
+							</dl>
+				
+						</div>
+	</div>
+</div>
+</div>	
+
+

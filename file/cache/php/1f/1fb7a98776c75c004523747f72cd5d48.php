@@ -1,0 +1,1 @@
+<?php exit;?>1499246225a:2:{i:0;a:4:{s:5:"catid";s:4:"1174";s:8:"moduleid";s:2:"16";s:7:"catname";s:24:"耳鼻喉科手术器械";s:7:"linkurl";s:8:"erbihou/";}i:1;a:4:{s:5:"catid";s:4:"1237";s:8:"moduleid";s:2:"16";s:7:"catname";s:18:"耳鼻喉科用剪";s:7:"linkurl";s:5:"1237/";}}

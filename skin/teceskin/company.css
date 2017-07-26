@@ -1,0 +1,44 @@
+.webbg2{background:url('image/company/bg2.gif') #efefef repeat-x top center;}
+.webmenulist{width:695px;}
+.youcan{width:160px;background-color:#1f3152;text-align:center;line-height:40px;}
+.youcan a{color:#ffffff;font-size:16px;}
+.webmem{float:left;width:140px;height:40px;background:url('image/company/member.gif') no-repeat left center;text-indent:15px;font-size:14px;}
+.dropdown ul { position:absolute; display:none;background:#356aa6;z-index:100;}
+.dropdown ul li a {width:145px;line-height:34px;height:34px;color:#295381;}
+.dropdown ul li a:hover {background:#356aa6; color:#fff; }
+.dropdown a:hover, .dropdown a.active {background:#356aa6;}
+.listyes, .opyes{background:#295381}
+.listleft h4,.options dd a:hover{border-color: #295381;}
+.options dt{color:#295381;width:140px;}
+.w190{width:190px;}
+/*webmid4 search*/
+#webmid4 .searchBox,#webmid4 .seasubmit{border-color: #205282;}
+#webmid4 .seasubmit{background-color:#205282;}
+#webmid4  #topkws,#webmid4 #topkeyword{color: #205282;}
+
+.leftmenu{margin-top:0px;padding:0px 2px 2px 2px;}
+.ico a p{color:#f77602;padding-bottom:5px;padding-top:70px;}.ico a:hover p{color:#fff}
+.themeright{width:228px;;float:left;height:280px;padding:4px;background:url('image/png/list.png') no-repeat center 175px;border:1px solid #e0e0e0;background-color:#fff}
+.honor dd{line-height:36px;font-size:14px;padding-left:25px;}
+.money{font-size:24px;color:#f77602;line-height:26px;text-align:center}
+.xdline{background:url('image/indexline.gif') repeat-x left 37px;line-height:40px;height:40px;font-size:20px;font-weight:normal;text-indent:5px;margin-bottom:10px;margin-top:0px;}
+.xdline font{font-size:12px;color:#747474;padding-left:10px;font-family:"宋体";}
+.xdline font span{color:#f0740f;padding:0px 10px 0px 10px;}
+.newscolor a{color:#7e8283}
+.thumbcom{width:86px;height:104px;padding-top:3px;line-height:14px;text-align:center;overflow:hidden}.resumepic img{width:80px;height:80px;}
+.pnum{margin-top:-135px;}
+.brand{float:left;width:120px;margin-top:5px;text-align:center;height:130px;}
+.brand p{line-height:20px;height:20px;width:120px;}
+.brand div img{padding:3px;}
+.brand .pnum{margin:-22px 2px 2px 4px;width:114px;position:absolute;z-index:0;line-height:20px;height:20px;}
+.brand div a:link img,.brand a:visited img, .brand a:active img{border:1px solid #ddd;}
+.brand div a:hover img{border:1px solid #f59d0a;background:#fbda82}
+.brand div a:link .pnum,.brand a:visited .pnum, .brand a:active .pnum{background-color:#fff;color:#5178ae}
+.brand div a:hover .pnum{background-color:#fbda82;color:#ff6600}
+.brand .pnum font{position:relative;font-size:12px;}
+
+/*2015-5-25,chentao,幻灯片变换*/
+#pagination { display:block; list-style:none; position:absolute; left:48%; top:480px; z-index:6; padding:5px 15px 5px 0; margin:0}
+#pagination li { display:block; list-style:none; width:10px; height:10px; float:left; margin-left:15px; border-radius:5px; background:#ddd }
+#pagination li a { display:block; width:100%; height:100%; padding:0; margin:0;  text-indent:-9999px;}
+#pagination li.current { background:#ffcc9d}

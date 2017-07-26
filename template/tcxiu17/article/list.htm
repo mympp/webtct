@@ -1,0 +1,83 @@
+{template 'header'}
+<script type="text/javascript" src="{DT_PATH}file/script/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=blue"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/msclass.js"></script>
+<div class="w240 fl autoheight"><!-- 左边内容开始-->
+			<div class="orange"><div class="h4title">{$MOD[name]}分类</div></div>
+				<div class="grayb nt pb10 gdt pt10">
+			
+{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+{loop $tagss $i $t}
+					<dl class="tree">
+					<dt class="treeno" onclick="{if $t[child]>0}chulai('tree{$t[catid]}'){else}location='{$t[linkurl]}'{/if}" onmouseover="this.className='treeyes'" onmouseout="this.className='treeno'"><a href="{if $t[child]>0}javascript:void(0){else}{$t[linkurl]}{/if}" class="ocolor"><i>[{$t[item]}]</i>{$t[catname]}</a></dt>
+					{if $t[child]>0}
+						<dd id="tree{$t[catid]}">
+							<p><a href="{$t[linkurl]}" class="ocolor">直接打开：{$t[catname]}</a></p>
+							<ul>
+									{php $tagsk = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=".$t[catid]."&pagesize=30&order=listorder ASC&template=null&debug=0")}
+									{loop $tagsk $z $k}
+							<li><a href="{$k[linkurl]}" {if $catid==$k[catid]}class="ocolor"{else}class="color"{/if}>{$k[catname]}</a></li>
+									{/loop}
+							</ul>
+						</dd>
+					{/if}
+					</dl>
+{if $parentid==$t[catid]||$catid==$t[catid]}<script type="text/javascript">chulai('tree{$t[catid]}');</script>{/if}
+		{/loop}	
+
+		</div>
+
+		<div class="divline"></div>	
+		<div class="blue"><div class="h4title">全站最新{$MOD[name]}</div></div>
+				<div class="grayb nt autoheight pt10 list">
+					<ul class="rank_list">
+					<!--{tag("moduleid=$moduleid&condition=status=3 and level>0&catid=$catid&pagesize=10&order=addtime desc&showcat=0&template=list-trade&debug=0")}-->				
+					</ul>
+		</div>
+		<div class="divline"></div>
+		<div class="orange"><div class="h4title">全站{$MOD[name]}排行</div></div>
+				<div class="grayb nt autoheight pt10">
+					<ul class="rank_list">
+					<!--{tag("moduleid=$moduleid&condition=status=3 and level>0&catid=$catid&pagesize=10&order=hits desc&showcat=0&template=list-trade&debug=0")}-->				
+					</ul>
+		</div>
+
+</div>
+
+
+<div class="w730 fl autoheight ml10">
+
+<!-- 右边内容开始sss-->
+{template 'lay','tag'}            				
+		<div class="grayb autoheight nt">
+		<div class="searchs">
+<form action="{$MOD[linkurl]}search.php" id="fsearch">
+			<ul><li><select  name="fields" class="subm" ><option value="0" selected >模糊</option><option value="1"  >标题</option><option value="2"  >全文</option><option value="3"  >简介</option><option value="4"  >作者</option></select>
+            <input type="text" size="30" name="kw" value="{$kw}" class="subm" id="keywords"  onfocus="if(this.value=='输入文章关键词'){this.value=''}"/>
+			<script type="text/javascript">
+			document.getElementById('keywords').value='{if $kw!=''}{$kw}{else}输入文章关键词{/if}';
+			</script><input type="image" src="{DT_SKIN}image/search2.jpg" class="subm mr10"/>
+			热门关键词：<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*30&pagesize=6&order=month_search desc&key=month_search&template=list-search_kw", -2)}-->
+			</li>
+		</ul>
+</form></div>
+		<div class="divline"></div>	
+		<div class="catlist pl10 mb10">
+		{if $tags}
+		{template 'list-news', 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+		</div>
+	</div>
+</div>
+			
+			
+			
+			
+</div>
+{template 'footer'}
+
+
+
+

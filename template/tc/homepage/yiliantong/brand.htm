@@ -1,0 +1,21 @@
+{template 'header', $template}
+<script type="text/javascript">
+menu(3);
+</script>
+<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a></div>
+
+<div class="main_head"><div><strong>在线留言</strong><a name="guestbook"></a></div></div>
+<div class="main_body">
+	<iframe src="{$MODULE[4][linkurl]}home.php?action=message&job=guestbook&template={$template}&skin={$skin}&username={$username}&sign={crypt_sign($template.$skin.$username)}&title=我要发物流请速与我联系" name="fra" id="fra" style="width:98%;height:398px;" scrolling="auto" frameborder="0"></iframe>
+</div>
+
+
+
+<div class="main_head"><div><strong>所在地图</strong><a name="map"></a></div></div>
+<div class="main_body">
+	{php $map_height = 300;}
+	{php @include DT_ROOT.'/api/map/'.$api_map.'/show.inc.php';}
+</div>
+
+
+{template 'footer', $template}

@@ -1,0 +1,211 @@
+{php $sitemenu='mall';$listpage='search';$noleftmenu='yes';}
+<?php $ztitle=$kw.$kcatname.'医疗器械 【公司 厂家 价格 报价 设备 耗材 配件】_'.$DT[sitename];$zkeywords=$kcatname.'医疗器械公司';$zdescription=$kcatname.'医疗器械设备 耗材 公司 配件，天成医疗网 提供更多'.$kcatname.'医疗器械设备公司 厂家 价格 报价 耗材 配件等信息。更多医疗器械、医疗仪器、医疗设备等供应、采购、招标、安装、维护、调试、询价、技术咨询等需求服务，请登录天成医疗网！';?>
+{if $kcatid}
+<?php $kcatname=strip_tags(cat_pos(get_cat($kcatid), '/'));?>
+<?php $ztitle=$kcatname.'医疗器械 【设备 耗材 公司 配件】_'.$DT[sitename];$zkeywords=$kcatname.'医疗器械公司';$zdescription=$kcatname.'医疗器械设备 耗材 公司 配件，天成医疗网 提供更多'.$kcatname.'医疗器械设备 耗材 公司 配件等信息。更多医疗器械、医疗仪器、医疗设备等供应、采购、招标、安装、维护、调试、询价、技术咨询等需求服务，请登录天成医疗网！';?>
+{/if}
+{if $bcatid}
+<?php $bcatname=strip_tags(cat_pos(get_cat($bcatid), '/'));?>
+<?php $ztitle='医疗器械'.$bcatname.'_'.$fname.'【设备 耗材 配件】_'.$DT[sitename];?>
+{/if}
+{template 'header'}
+<style type="text/css">
+	.webmenulist{width:855px;}
+</style>
+{template 'lay','tag'}
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+<script type="text/javascript">
+var sh="{$MOD[linkurl]}search.php?areaid={$areaid}&tc={$tc}&catid={$catid}&thumb={$thumb}&order={$orderv}&stype={$stype}&price={$price}&list={$list}&day={$day}&vip={$vip}&bcatid={$bcatid}&fid={$fid}&kw={urlencode($kw)}";</script>
+<div class="autoheight pt5 whitebg">
+														{php $b=substr_count($CAT[arrparentid],",");$l=explode(',',$CAT[arrparentid]);}	
+														{if $kcatid}
+														{php $d=getsqldata("parentid","{$db->pre}category","catid=$kcatid",1,0);}
+														{php $k=$d[0][parentid];}
+														{/if}
+														<dl class="options">		
+														<dt>医疗器械分类：</dt>
+														<dd><a href="javascript:void(0);" onclick="chulai('malllist');" class="opyes wcolor" id="mallall">全部 > 点击可选其他更多分类</a>
+														<a href="javascript:void(0);" onclick="chulai('mall2list')" class="rcolor" id='malllink'></a>
+														<div class="mt10 hd" id='malllist'>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=50&order=listorder ASC&template=null")}
+														<a {if $catid==0} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid=0&kcatid='.$kcatid)}"><span class='f16 b rcolor'>所有医疗器械</span></a>
+															{loop $tagss $i $t}
+											         	<a  href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&tc=9&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&catid='.$t[catid])}"  {if $catid==$t[catid]} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+															<script type="text/javascript">
+															Dd('mallall').className='color';
+															Dd('malllink').className='opyes wcolor';
+															Dd('malllink').innerHTML='> {$t[catname]}<i>[{$t[item]}]</i>';	
+															</script>
+																	{/if}
+															{/loop}
+														</div>
+														{if $childa!=0}
+														<div class="mt10 pd5 graybg" id='mall2list'>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catida&pagesize=30&order=listorder ASC&template=null")}
+														<a {if $catid==$catida} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catida)}">全部</a>
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="rcolor" style="border-color:#9e1e00;"{else}class="color" style="border-color:#F5F5F5;"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a></li>
+															{/loop}	
+																	{if $t[catid]==$catid||$t[catid]==$l[2]}
+																	{php $childb=$t[child];$parentb=$t[catname];$catidb=$t[catid];}
+																	{/if}
+														</div>
+														{else}
+														<span id='mall2list' class="hd"></span>
+														{/if}
+														</dd>
+														</dl>
+
+
+
+                                                        <dl class="options">		
+														<dt>医院科室分类：</dt>
+														<dd><a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&stype='.$stype.'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&kcatid=0&catid='.$catid)}" class="{if $kcatid==0}opyes wcolor{else}color{/if}">全部</a>
+														{php $tagss = tag("moduleid=12&table=category&condition=moduleid=12 and parentid=0&pagesize=50&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+											         	<a  href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&tc=9&kw='.urlencode($kw).'&stype='.$stype.'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&catid='.$catid.'&kcatid='.$t[catid])}" class="{if $kcatid==$t[catid]}opyes wcolor{else}color{/if}" id="keshi{$t[catid]}">{set_style($t[catname],$t[style])}</a>
+														{if $t[catid]==$kcatid||$t[catid]==$k}
+															{php $kchilda=$t[child];$kparenta=$t[catname];$kcatida=$t[catid];} 
+														{/if}										
+														{/loop}
+														{if $kchilda>100}
+														<div class="mt10 pd5 graybg" id='keshi2list'>
+														{php $tagss = tag("moduleid=12&table=category&condition=moduleid=12 and parentid=$kcatida&pagesize=30&order=listorder ASC&template=null")}
+														<a {if $kcatid==$kcatida} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catid.'&kcatid='.$kcatida)}">全部</a>
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catid.'&kcatid='.$t[catid])}" {if $t[catid]==$kcatid} class="rcolor" style="border-color:#9e1e00;"{else}class="color" style="border-color:#F5F5F5;"{/if}>{set_style($t[catname],$t[style])}</a>				
+															{if $t[parentid]==$kcatida}
+															<script type="text/javascript">
+															Dd('keshi{$t[parentid]}').className='opyes wcolor';
+															</script>
+															{/if}
+															{/loop}	
+
+														</div>
+														{else}
+														<span id='keshi2list' class="hd"></span>
+														{/if}
+														</dd>
+														</dl>
+															
+															<dl class="options">
+															<dt>厂商分类：</dt>
+															<dd><a href="{$MOD[linkurl]}{rewrite('search.php?tc=9&catid='.$catid.'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="{if !$fid&&!$bcatid}opyes wcolor{else}color{/if}">全部</a>
+															{php $tagss = tag("table=category&condition=moduleid=13 and parentid=0&pagesize=5&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															{php $bcatid=strval($bcatid);}
+															<a 
+															{if $t[item]>0}
+															href="javascript:msgbox('pinpai','{$t[catname]}的厂家','{$MODULE[13][linkurl]}tree.php?tree=1&id1={$t[catid]}&stype={$stype}&areaid={$areaid}&tc={$tc}&kw={urlencode($kw)}&list={$list}&order={$orderv}&day={$day}&vip={$vip}&catid={$catid}&kcatid={$kcatid}')" 
+															{else}
+															href="{$MOD[linkurl]}{rewrite('search.php?tc=9&stype='.$stype.'&bcatid='.$t[catid].'&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&kcatid='.$kcatid.'&areaid='.$areaid)}" 
+															{/if}
+															{if $bcatid}
+																{if $t[catid]==$bcatid||strpos($t[arrchildid],$bcatid)} 
+																	class="opyes wcolor"
+																{else}
+																	class="color"
+																{/if}
+															{/if}
+															>
+															{set_style($t[catname],$t[style])}
+															{if $fid>0}&nbsp;〉{$fname}
+															{php $fid=0;}
+															{/if}
+															</a>
+
+															{/loop}
+															</dd>
+															</dl>
+															<dl class="options">
+															<dt>产品属性：</dt>
+															<dd><a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&bcatid='.$bcatid.'&fid='.$fid.'&kcatid='.$kcatid.'&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" {if $stype=='9'}class="opyes wcolor" {else} class="color"{/if}>全部</a>
+															<a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&bcatid='.$bcatid.'&fid='.$fid.'&kcatid='.$kcatid.'&catid='.$catid.'&stype=0&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" {if $stype=='0'}class="opyes wcolor" {else} class="color"{/if}>整机</a>
+															<a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&bcatid='.$bcatid.'&fid='.$fid.'&kcatid='.$kcatid.'&catid='.$catid.'&stype=1&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" {if $stype=='1'}class="opyes wcolor" {else} class="color"{/if}>配件</a>
+															<a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&bcatid='.$bcatid.'&fid='.$fid.'&kcatid='.$kcatid.'&catid='.$catid.'&stype=2&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" {if $stype=='2'}class="opyes wcolor" {else} class="color"{/if}>耗材</a>
+															
+															</dd>
+															</dl>
+													<form action="{$MOD[linkurl]}search.php" id="fsearch">
+														<input type="hidden" name="areaid" value="{$areaid}">
+														<input type="hidden" name="stype" value="{$stype}">
+														<input type="hidden" name="typeid" value="{$typeid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="kcatid" value="{$kcatid}">
+														<input type="hidden" name="vip" value="{$vip}">
+			                                            <input type="hidden" name="thumb" value="{$thumb}">
+                                                        {template 'search', 'chip'}
+														</form>
+
+
+
+														</div>
+
+</div>
+
+<!-- <div class="divline"></div>
+<div align="center">
+<ul>
+<li class="fl w195 h60 pd2">{ad(116)}</li>
+<li class="fl w195 h60 pd2">{ad(117)}</li>
+<li class="fl w195 h60 pd2">{ad(118)}</li>
+<li class="fl w195 h60 pd2">{ad(119)}</li>
+<li class="fl w195 h60 pd2">{ad(120)}</li>
+</ul>
+</div> -->
+<div class="divline"></div>
+<div class="autoheight whitebg pd10">
+			<div class="listleft autoheight">
+		<div class="sell_tip" id="sell_tip" style="display:none;" title="双击关闭" ondblclick="Dh(this.id);">
+			<div>
+				<p>您可以</p>
+				<input type="submit" value="对比选中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>&nbsp;
+				<input type="submit" value="批量购买" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+			</div>
+		</div>
+			{template 'listh4', 'chip'}
+				<div class="tool">
+				 {template 'form', $module}
+				</div>
+
+		<form method="post" name="mallform" id="mallform">
+		{if $page == 1}{ad($moduleid,$catid,$kw,6)}{/if}
+        {if $tags}
+		{if $list==2}
+        {template 'list-mall-nopic','tag'}
+
+
+			{elseif $list==1}
+			{template 'thumb-mall','tag'}
+
+			{else}
+			{template 'list-mall', 'tag'}
+			{/if}
+		<style type="text/css">
+			#malllist{width:720px;}
+			#malllist li{margin-left:12px;margin-right:12px;margin-bottom:25px;margin-top:10px;}
+		</style>
+         <table>
+			<tr height="30">
+			<td>
+				<input type="submit" value="对比选中" onclick="Dd('mallform').action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>&nbsp;
+				<input type="submit" value="批量购买" onclick="Dd('mallform').action='{$MOD[linkurl]}cart.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+			</td>
+			<td align="right"><img src="{DT_SKIN}image/arrow.gif" class="mid" alt=""/> <a href="javascript:window.scrollTo(0,0);">返回顶部</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="{DT_SKIN}image/arrow.gif" alt="" class="mid" /> <a href="{$MOD[linkurl]}search.php">重新搜索</a>&nbsp;</td>
+			</tr>
+		</table>
+        {else}
+		{template 'noresult', 'message'}
+		{/if}
+		</form>
+			</div>
+
+			<div class="listright autoheight">
+					{template 'right', $module}	
+			</div>
+			<br class='clear'>
+</div>
+<div class="divline"></div>	
+{template 'footer'}

@@ -1,0 +1,21 @@
+<ul id="brand_nr">
+    {php $num_a=1; }
+    {loop $tags $k $v}
+    {php $v['image'] = str_replace('.thumb.'.file_ext($v['thumb']), '', $v['thumb']);}
+    <li class="f_l
+                {if $num_a<3}
+                    {if $num_a==2}brand_li_2{/if}
+                    {php $num_a++;}
+                {else}
+                    {php $num_a=1;}
+                {/if}">
+        <div class="brand_img">
+            <img src="{$v['image']}" data-title="{$v['title']}"  data-content="{$v['content']}"/>
+            <div class="brand_title"></div>
+            <span>{$v['title']}</span>
+        </div>
+    </li>
+    {/loop}
+    <div class="c_b"></div>
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

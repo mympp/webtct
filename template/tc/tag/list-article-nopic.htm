@@ -1,0 +1,18 @@
+<ul class="{$css}ul" id="artlll" >
+{loop $tags $z $t}
+					<li id="{$css}list{$z+1}" class=" whitebg"style="padding:5px 0px 5px 0px;;">
+					<dl class="autoheight">
+					<dt class="autoheight mb5" style="padding:2px;">
+					<div class="ml5"><span class="lenstr w600"><a href="{$t[linkurl]}" target="_blank" class="color f18">{$t[title]}</a></span>
+					<div><span>主题 <a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid])}">{cat_pos(get_cat($t[catid]), '-')}</a></span><span class="ml10">{timetodate($t[edittime],4)}</span></div>
+					</dt>
+					</dl>
+					</li>
+{/loop}		
+</ul>
+<script type="text/javascript">
+$(".{$css}ul>li").hover(function () {$(this).removeClass("whitebg");$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg");$(this).addClass("whitebg"); });
+</script>
+
+{if $showpage && $pages}<div class="divline"></div>
+<div class="pages">{$pages}</div>{/if}

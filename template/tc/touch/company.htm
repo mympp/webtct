@@ -1,0 +1,222 @@
+	{template 'header', $TP}
+
+	{if $userid}
+		<link type="text/css" rel="stylesheet" href="media/css/style131018.css" />
+		<script type="text/javascript" src="media/js/jquery-1.5.min.js"></script>
+		<script type="text/javascript" src="media/js/tabbedContent.js"></script>
+		<script type="text/javascript" src="media/js/jquery.mobile-1.0a4.1.min.js"></script>
+
+	{/if}
+
+	<div id="wrapper" class="wrapper " style="display: block;">
+		<!-- 头部 -->
+		<header id="header">
+			<div class="header">
+			{if isset($MODULE[4])}
+				<div id="mod-news" class="module">
+				  	<div class="module-t ">			 	
+				 		<div class="logowrapper" style="height:45px;" link="" id="logolink" issnow="0" data-iarea="132,89">
+							<div data-href="{$back_link}" class="art-back" id="logo"></div>
+						</div>
+						<div data-href="{$head_link}" class="header-title">{$head_name}</div>
+					 	<nav class="head-link">									
+							<a href="?moduleid=2" id="login" class="member-link tips">登录<span class="num-tips" id="num-tips"></span></a>
+							<a href="index.php?moduleid={$moduleid}&amp;action=category" class="channel-link">分类</a>				 
+							<a id="pop-nav"></a>
+						</nav>
+				  	</div>
+
+				  	{if $userid}				
+						<div class="tabbed_content">
+							<h4>
+					 			<div id="text-infonews-edu" style="text-align:center;" class="txt-infonews txt-infonews_v1"><a href="" target="_blank" class="current">福利！有广告位喔...</a></div>
+					 		</h4>
+							<div class="tabs">
+								<div class="moving_bg">&nbsp;</div>
+								<span class="tab_item">供应产品</span>
+								<span class="tab_item">供应信息</span>
+								<span class="tab_item">公司介绍</span>
+								<span class="tab_item">联系我们</span>
+							</div>
+					
+							<div class="slide_content">						
+								<div class="tabslider" >
+									<div>&nbsp;</div>
+									<ul>
+										{if $lists_mall}
+											{loop $lists_mall $v}
+											<li>											
+												<img class="image" src="{if $v[thumb]}{$v[thumb]}{else}image/nopic.png{/if}" alt="{$v[title]}"/>
+												<div style="height: 100px;">
+													<a href="index.php?moduleid=16&amp;itemid={$v[itemid]}">{$v[title]}</a>
+													<span class="company" style="color: #FF0000; font-size:13px; font-weight: bold; text-align:left;">￥{$v[price]}</span>
+													<span style="text-align:left;">浏览 {$v[hits]} 次，{$v[comments]} 人评价</span>
+													<span>
+														{timetodate($v[addtime], 2)}
+													</span>
+												</div>
+											</li>										
+											{/loop}
+											{if $pages_mall}
+										 		<div id="text-infonews-edu" class="pages txt-infonews_v1 news-more more-btn">{$pages_mall}</div>
+										 		{else}
+										 		<div id="text-infonews-edu" class="txt-infonews txt-infonews_v1 news-more more-btn"><a href="" target="_blank" class="current">喔！福利！又有广告位了...</a></div>
+										 	{/if}
+										{else}
+											<div style="text-align:center; height:300px; padding-top:50px; color:gray;"><li>--没有数据----</li></div>
+										{/if}						
+									</ul>					
+									
+									<ul>
+										{if $lists_sell}
+											{loop $lists_sell $v}
+											<li data-href="index.php?moduleid=5&amp;itemid={$v[itemid]}">
+												<img class="image" src="{if $v[thumb]}{$v[thumb]}{else}image/nopic.png{/if}" alt="{$v[title]}"/>
+												<div style="height: 100px;">
+													<a href="index.php?moduleid=5&amp;itemid={$v[itemid]}">{$v[title]}</a>
+													<span style="text-align:left;">浏览 {$v[hits]} 次，{$v[days]} 天内发货</span>
+													<span>{timetodate($v[addtime], 2)}</span>
+												</div>
+											</li>
+											{/loop}	
+											{if $pages_sell}
+										 		<div id="text-infonews-edu" class="pages txt-infonews_v1 news-more more-btn">{$pages_sell}</div>
+										 		{else}
+										 		<div id="text-infonews-edu" class="txt-infonews txt-infonews_v1 news-more more-btn"><a href="" target="_blank" class="current">喔！福利！又有广告位了...</a></div>
+										 	{/if}
+										{else}
+											<div style="text-align:center; height:300px; padding-top:50px; color:gray;"><li>--没有数据----</li></div>
+										{/if}					
+									</ul>           		
+									
+									<ul>
+										{if $thumb}<center><img style="max-width:320px;" width="100%" height="150" src="{$thumb}"/></center>{/if}
+										
+										{if $vip}<li><a>会员等级:{VIP} {$vip}</a></li>{/if}
+										
+										{if $areaid}<li><a>所在地区:{area_pos($areaid, '/')}</a></li>{/if}
+										
+										{if $type}<li><a>公司类型:{$type}{if $mode}({$mode}){/if}</a></li>{/if}
+										
+										{if $regyear}<li><a>成立时间:{$regyear}</a></li>{/if}
+										
+										{if $capital}<li><a>注册资本:{$capital}万{$regunit}</a></li>{/if}
+										
+										{if $business}<li><a>经营范围:{$business}</a></li>{/if}
+										
+										<li style="line-height:30px;">{$content}</li>						
+									</ul>            		
+									
+									<ul>
+										{if $could_contact}
+											{if $truename}
+											  <li><a> 姓名:&nbsp;&nbsp;{$truename}({if $gender==1}先生{else}女士{/if})</a></li>
+											{/if}
+											
+											{if $department}
+												<li><a> 部门:&nbsp;&nbsp;{$department}</a></li>
+											{/if}
+											
+											{if $career}
+												<li><a> 职务:&nbsp;&nbsp;{$career}</a></li>
+											{/if}
+											
+											{if $mobile}
+												<li><a> 手机:&nbsp;&nbsp;{$mobile}</a></li>
+											{/if}
+											
+											{if $telephone}
+												<li><a> 电话:&nbsp;&nbsp;{$telephone}</a></li>
+											{/if}
+											
+											{if $fax}
+												<li><a> 传真:&nbsp;&nbsp;{$fax}</a></li>
+											{/if}
+											
+											{if $address}
+												<li><a> 地址:&nbsp;&nbsp;{$address}</a></li>
+											{/if}
+											
+											{if $postcode}
+												<li><a> 邮编:&nbsp;&nbsp;{$postcode}</a></li>
+											{/if}
+											
+											{if $mail}
+												<li><a> 邮件:&nbsp;&nbsp;{$mail}</a></li>
+											{/if}
+											
+											{if $homepage}
+												<li><a> 网址:&nbsp;&nbsp;{$homepage}</a></li>
+											{/if}
+											
+											{if $qq && $DT[im_qq]}
+												<li><a> QQ:&nbsp;&nbsp;{$qq}</a></li>
+											{/if}
+											
+											{if $ali && $DT[im_ali]}
+												<li><a> 阿里旺旺:&nbsp;&nbsp;{$ali}</a></li>
+											{/if}
+											
+											{if $msn && $DT[im_msn]}
+												<li><a> MSN:&nbsp;&nbsp;{$msn}</a></li>
+											{/if}
+											
+											{if $skype && $DT[im_skype]}
+												<li><a> Skype:&nbsp;&nbsp;{$skype}</a></li>
+											{/if}
+												
+												<li>
+													<a href="index.php?moduleid=2&amp;action=message_send&amp;touser={$username}" class="b">发信:&nbsp;&nbsp;点此发送</a>
+												</li>
+										{else}
+											<li><a>无权查看，请升级</a></li>
+										{/if}					
+									</ul>				
+								</div>
+								<br style="clear:both" />
+							</div>	
+						</div>
+					{else}
+						<div class="module-c">
+				 			<h4>
+					 			<div id="text-infonews-edu" class="txt-infonews txt-infonews_v1"><a href="" target="_blank" class="current">福利！有广告位喔...</a></div>
+					 		</h4>
+
+						 	<div class="list-mod">
+								{loop $lists $t}
+						 		<ul class="cont-list line">
+						 			<img src="{if $t[thumb]}{$t[thumb]}{else}image/nopic.png{/if}" class="img-list" alt="{$t[alt]}" data-href="index.php?moduleid=4&amp;username={$t[username]}" />
+						 			<li style="height: 50px; line-height: 50px;">				 				
+						 				<a href="index.php?moduleid=4&amp;username={$t[username]}" class="">
+						 					<span{if $t[vip]} class="vip" title="{VIP}:{$t[vip]}"{/if}>{$t[company]}</span>					 					
+						 					<span class="cmt-num">{timetodate($t[addtime], 2)}</span>
+						 				</a>					 			
+						 			</li>
+						 			<li class="company"><span style="color: #FF0000; font-size:13px; font-weight: bold;">主营：</span>{$t[business]}</li>
+						 			<li class="company">产品数：{$t[pnum]}&nbsp;&nbsp;地区：{area_pos($t[areaid], '', 2)}</li>
+						 			<li class="company" style="padding-left:2px;">{if $t[mode]}({$t[mode]}){/if}&nbsp;&nbsp;{if $t[validated]}[已核实]{else}[未核实]{/if}</li>		 							 		
+						 		</ul>
+						 		{/loop}
+						 	</div>
+						 	{if $pages}
+						 		<div id="text-infonews-edu" class="pages txt-infonews_v1 news-more more-btn">{$pages}</div>
+						 		{else}
+						 		<div id="text-infonews-edu" class="txt-infonews txt-infonews_v1 news-more more-btn"><a href="" target="_blank" class="current">喔！福利！又有广告位了...</a></div>
+						 	{/if}					 		 		
+					 	</div>
+				 	{/if}	
+				</div>
+			 {/if}
+			</div>		
+		</header>
+			 
+		{template 'chip-search', $TP}
+
+  			
+		<!--页脚-->
+		{template 'footer', $TP}
+
+		{template 'foot', $TP}
+
+	</div>
+	{template 'guide', $TP}

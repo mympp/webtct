@@ -1,0 +1,37 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+/* global */
+body {margin:0px;font-size:12px;color:#000000;background:#EFEFEF url('bg.jpg') top fixed;}
+/* common */
+.m {width:960px;margin:auto;}
+.top {height:26px;line-height:26px;padding:0 10px 0 10px;}
+#top a {text-decoration:none;color:#ffffff;}
+.head {height:115px;overflow:hidden;}
+.head div {float:left;}
+.head .logo {padding:15px 10px 0 0px;height:90px;overflow:hidden;}
+.head h1 {font-size:24px;margin:32px 0 5px 10px;color:#ffffff;font-family:\9ED1\4F53;}
+.head h4 {font-size:15px;margin:0 0 0 10px;color:#ffffff;}
+
+#menu a {text-decoration:none;}
+.menu {background:url('menu_bg.gif');height:30px;overflow:hidden;padding:0 0 0 20px;font-size:14px;font-weight:bold;}
+.menu_li {float:left;line-height:30px;padding:0px 20px 0 20px;}
+.menu_li span {color:#ffffff;}
+.menu_on {float:left;line-height:30px;padding:0px 20px 0 20px;background:url('menu_on.png') no-repeat 8px 0;}
+.menu_on span {color:#ffffff;}
+
+.side_head {color:#FFFFFF;background:url('side_head.gif') no-repeat;}
+.side_head strong{color:#94dceb;padding-left: 10px;}
+.side_head span{margin-right:-6px;}
+.side_head div {padding:0 10px 0 10px;font-size:14px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.side_body {background:#FFFFFF url('txtbg.gif');padding:10px;margin:0 0 10px;border:#7ea5f0 1px solid;}
+.side_body li {background:url('../../image/ico_arrow.gif') no-repeat 5px 7px;padding:0 0 0 20px;height:26px;line-height:26px;overflow:hidden;}
+
+.main_head {color:#FFFFFF;background:url('main_head.gif') no-repeat;}
+.main_head strong{color:#ffffff;padding-left:30px;}
+.main_head div {padding:0 10px 0 10px;font-size:14px;height:28px;line-height:30px;overflow:hidden;letter-spacing:1px;}
+.main_body {background:#FFFFFF;padding:10px;margin:0 0 10px;border:#457ff1 1px solid;}
+
+.pos {color:#333333;}
+#pos a {color:#333333;}

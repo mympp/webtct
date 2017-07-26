@@ -1,0 +1,22 @@
+×Ò³ÄÚÈÝ¿ªÊ?/
+.banner{width:700px;height:228px;}
+.memberinfo{width:270px;height:228px;}
+.login{padding-left:1px;padding-right:1px;height:38px;overflow:hidden;background-color:#FFFFFF}
+.login img{float:left}
+.tongji{height:40px;width:270px;overflow:hidden}
+.tongji dl{ width:270px;line-height:20px;height:20px;color:#34648b;padding:0px;margin:0px;}
+.tongji dl dt{float:left;width:40px;}
+.tongji dl dd{float:left;width:70px;margin-left:5px}
+.xuzhi{background:url('xuzhi.jpg');height:30px;;line-height:30px;color:#808080}
+.xuzhiy{background:url('xuzhiy.jpg');color:#305e7e;font-weight:bold;}
+.xuzhin{}
+.xuzhi ul{width:270px;margin-left:-2px;}
+.xuzhi li{width:88px;text-align:center;border-left:1px solid #DDDDDD;cursor:pointer;float:left}
+.xuzhidiv{background:url('huanhu.jpg') no-repeat bottom right;background-color:#FFFFFF;height:105px;border-top:0px;}
+.xuzhidiv ul{padding-left:7px;padding-top:3px;}
+.xuzhidiv li{background:url('jt2.jpg') no-repeat center left;padding: 0px 5px 0px 10px;line-height:25px;color:#848484}
+.xuzhidiv li a{color:#848484}
+.classbg{background:url('classbg.gif');width:708px;}
+.htree{float:left;width:340px;float:left;margin-left:8px;margin-top:5px;height:70px;}
+.htree dt{text-align:left;font-size:14px;font-weight:bolder;line-height:17px;color:#494949;background:url('class.gif') no-repeat top left;padding-left:15px;}
+.htree dd{width:100px;float:left;margin-left:10px;line-height:17px;color:#5e5e5e}

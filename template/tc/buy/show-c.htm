@@ -1,0 +1,134 @@
+{php $sitemenu='buy';$listpage='list';}
+{template 'header'}
+{php $MOD = cache_read('module-6.php');}
+{php $BUYTYPETITLE=$MOD['type'];}
+{php $BUYTYPE = explode('|', trim($MOD['type']));}
+{php $TYPE = $BUYTYPE;}					
+{template 'lay','tag'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+<style type="text/css">
+	.tableth{color:#444}
+	.supply{line-height:20px;height:20px;font-size:13px;padding-top:10px;}
+	.orangebg{background:#d7282d}
+</style>
+<div class="divline"></div>
+<div class="whitebg autoheight">
+<div class="autoheight pd10 " style="border-bottom:2px solid #767070;border-top:2px solid #d7282d;"> 
+<div>
+<div class='f12 color'><span class="mr10 wcolor f12 orangebg pd5">{$TYPE[$typeid]}</span><span class="ml10">ID:#{$itemid}</span><span class="ml10">发布时间 {str_replace('-','/',$editdate)} </span>{if $buycode}<span class="ml10">采购招标编号：{$buycode}</span>{/if}{if $specialid}<span class="ml10"><a href="{$MODULE[11][linkurl]}show.php?itemid={$specialid}">返回专区</a></span>{/if}</div>
+	<h1 class="h1 tc {if $status==4} d rcolor{/if}">{$title}
+	<font class="f12 ml10">
+		{if $selitemid==''||$selitemid==0}
+			{if $status==4}
+			<font class="rcolor">过期失效</font>
+			{else}
+				{if $totime} [距离截止还有 {secondstodate($totime-$DT_TIME)}]{else}(长期有效){/if}
+			{/if}
+		{else}
+		({fieldstitle(96,'*',$step)})
+		{/if}
+	</font>
+	</h1>
+</div>
+<div class="shield color"><div style="background:#eee;padding:5px;"><span class="fr" style="line-height:14px;">{template 'baidu', 'chip'}</span>{template 'va', 'chip'}</div></div>
+<div class="content" id="content">
+			{if $_userid}
+	            {$content}	
+			{else}
+				{xcontent($content,'*','1,3,5,7,9')}
+			{/if}</div>
+
+</div>
+<div class="divline"></div>
+<div class="contentleft autoheight pd5 "> 
+
+<dl class="dllist">
+<dd>
+{if strpos($albums[0],'opic')<1}
+{template 'pic-show','buy'}
+{else}
+{template 'nopic-show','buy'}
+{/if}
+</dd>
+
+</dl>
+
+<dl class="dllist">
+{php $tagk = tag("table=buy_option_6&condition=parentid=0 and buyitemid=$itemid&pagesize=100&order=listorder ASC&template=null")}
+{if $tagk}
+<dt style="border-bottom:#c0c0c0 2px solid"><font class="f16 color b"><b>{$MOD[name]}详细清单</b></font></dt>
+<dd>
+<div class="divline"></div>
+<div class="divline"></div>
+<div class="divline"></div>
+<style type="text/css">
+	.contentleft dl dd{margin-left:15px;}
+	.supplytable{background:#dbdbdb}
+	.supplytable td{background:#fff;}
+	.supplytable th{background:#e8e8e8;}
+	#product{width:600px;}
+	#product td{background:#f6f6f6}
+	.pd5{padding:5px;}
+	.pnum .inputs{width:30px;text-align:center;padding:5px;border:1px #ccc solid;}
+	.need{background:#d8eacc}
+	.need th{background:#dceeca;border:0px;line-height:24px;}
+	.need td{line-height:24px;}
+</style>
+<table cellpadding="2" cellspacing="1" class="supplytable">
+<tr>
+	<th width="100" height="30" align="center" class="f16">项目编号</th>
+	<th width="570" class="f16">项目信息</th>
+</tr>
+{loop $tagk $s $k}
+<tr>
+	<td width="100" height="30" align="center" ><span class="f16">{$k[listorder]}</span></td>
+	<td width="570" class="pd5">			
+			<table  cellpadding="2" cellspacing="1" class="need" width="100%">
+			<tr>
+				<th colspan=4>{$k[title]}</th>
+			</tr>
+			<tr>
+				<td colspan=4 align="center" style="background:#eef3de">技术参数</td>
+			</tr>
+			<tr>
+				<td width="50" align="center">编号</td>
+				<td>技术要求</td>
+				<td width="90" align="center">响应要求</td>
+			</tr>
+			{php $tags = tag("table=buy_option_6&condition=parentid=".$k[itemid]." and buyitemid=$itemid&pagesize=30&order=listorder ASC&template=null")}
+			{loop $tags $j $t}
+			<tr>
+				<td width="50" align="center">{$t[listorder]}</td>
+				<td>{$t[title]}</td>
+				<td width="120" align="center">{$t[options]}</td>
+			</tr>
+			{/loop}
+			</table>
+
+		</td>
+</tr>
+{/loop}
+
+</table>
+{/if}
+<div class="divline"></div>
+</dd>
+
+<div class="divline"></div>
+{if $CP}{template 'property', 'chip'}{/if}
+{template 'comment', 'chip'}
+<style type="text/css">
+#commet{border-bottom:#c0c0c0 2px solid}
+	#commet  .b{font-weight:bold;color:#333;font-size:16px;}
+</style>
+</dl>
+</div>
+<div class="contentright pd5">
+{template 'contentright', 'chip'}
+</div>
+<br class="clear">
+</div>
+{template 'fav','chip'}
+{template 'footer'}

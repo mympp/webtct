@@ -1,0 +1,410 @@
+{php defined('IN_DESTOON') or exit('Access Denied');}
+{php $sitemenu='quote';$listpage='list';$JS=array('jquery.jslides');$head_title='医疗科技网';$onmenu='quote-index';}
+
+{template 'module-header'}
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css?v20161208"/>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/quote.css?v20161208"/>
+<style>
+.page-header .logo h1{font-weight: normal;}
+#topkeyword{width:310px;height:22px;line-height:22px}
+img{display: inline-block;}
+.tc-footer {margin-top: 20px;}
+.tc-footer .copyright{width: 100%;}
+</style>
+<style>
+	.webmenu{margin-left:-4px;}
+	#title_floor{border-top:1px solid #ccc;border-left:1px solid #ccc;width:994px;height:261px;}
+	#title_floor .small_frame{border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+</style>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+<script language="javascript" type="text/javascript" src="{DT_PATH}file/script/MSClass.js"></script>
+</div>
+</div>
+<div class="divline" style="background:white;"></div>
+<div class="divline"></div>
+<!-- 读取宽屏广告图 开始 -->
+    <div id="full-screen-slider" class="whitebg">
+        <ul id="b_slides"> 
+{php $tagt = tag("moduleid=2&table=ad&condition=pid=200 and fromtime<$DT_TIME and totime>$DT_TIME and status=3&pagesize=5&order=listorder asc&template=null")}
+{loop $tagt $z $t}
+<li style="background: url('{$t['image_src']}') center no-repeat;height:300px;">
+<a href="{$t['image_url']}">
+<div class="shadow"></div>
+<div class="webw"><div class="fabubt"><a href="{$t['image_url']}" target="_blank" title="{$t['introduce']}"><span class="lenstr tc mou_p">{$t['image_alt']}</span></a></div></div>
+</a>
+</li>
+{/loop}
+        </ul>
+    </div>
+<!-- 读取宽屏广告图结束  -->
+<div class="divline"></div>
+<div class="autoheight whitebg" style="margin-top:-17px;">
+<div class="divline"></div>
+<div class="webw" style="padding-left:0px;">
+<div class="rad whitebg">
+<div>
+<div id="title_floor">
+<div class="small_frame fl">
+<br/>
+{php $tag_grade_project=tag("moduleid=7&table=quote&condition=status=3 and catid in (".$project_child_catid['child'].") and stype=1&pagesize=5&order=hits desc&template=null");} 
+        <!--优秀项目推荐-->
+<span>优秀项目推荐</span>
+<br/><br/>
+<ul>
+{loop $tag_grade_project $k $v}
+<li><a href="{$v['linkurl']}" title="{$v[title]}" style="color:#747474;"><?php echo $k+1;?>.{dsubstr($v['title'],28,'...')}</a></li>
+{/loop}
+</ul>
+<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&qixie=0&cooperate=0&stype=1')}"><img src="{DT_SKIN}image/quote/downpointer.jpg" style="margin-top:10px;" /></a>
+</div>
+<div class="small_frame fl">
+<br/>
+{php $tag_hot_keji=tag("moduleid=21&table=article_21&condition=status=3 and catid=$news_keji_catid&pagesize=5&order=addtime desc&template=null")}
+<!-- 科技前沿资讯-->
+<span>科技前沿资讯</span>
+<br/><br/>
+<ul>
+{loop $tag_hot_keji $k $v}
+<li><a href="news-{$v[itemid]}-tech-news.html" title="{$v[title]}" style="color:#747474;"><?php echo $k+1;?>.{dsubstr($v['title'],23,'...')}<p style="float:right;font-size:14px;color:#747474;font-weight:normal;">{$v['hits']}</p></a></li>
+{/loop}
+</ul>
+<a href="{rewrite('news.php?catid='.$news_keji_catid)}"><img src="{DT_SKIN}image/quote/downpointer.jpg" style="margin-top:10px;" /></a>
+</div>
+<div class="small_frame fl">
+<br/>
+{php $tag_new_clinic_need=tag("moduleid=7&table=quote&condition=status=3 and stype=1 and catid in (".$clinic_child_catid['child'].")&pagesize=5&order=hits desc&template=null");}
+<!-- 最新注册临床咨询需求 -->
+<span>最新注册临床咨询需求</span>
+<br/><br/>
+<ul>
+{loop $tag_new_clinic_need $k $v}
+<li><a href="{$v['linkurl']}" title="{$v[title]}" style="color:#747474;"><?php echo $k+1;?>.{dsubstr($v['title'],28,'...')}</a></li>
+{/loop}
+</ul>
+<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$clinic_catid.'&qixie=0&cooperate=0&stype=0')}"><img src="{DT_SKIN}image/quote/downpointer.jpg" style="margin-top:10px;" /></a>
+</div>
+<div class="small_frame fl" style="width:252px">
+<br/>
+<a href="{DT_PATH}member/my.php?mid=7&action=add"><div style="background:url({DT_SKIN}image/quote/red_frame.png);width:192px;height:31px;margin-left:auto;margin-right:auto;line-height:30px;"><span style="color:white;font-size:16px;">发布信息</span></div></a>
+<br/>
+<div class="small_frame_message">
+<p>技术成果信息<span>&nbsp;{number_format($count_project_need['num'])}&nbsp;</span>条</p><br/>
+<p>技术需求信息<span>&nbsp;{number_format($count_project_supply['num'])}&nbsp;</span>条</p><br/>
+<p>注册临床咨询需求<span>&nbsp;{number_format($count_clinic_need['num'])}&nbsp;</span>条</p><br/>
+<p>提供注册临床咨询<span>&nbsp;{number_format($count_clinic_supply['num'])}&nbsp;</span>条</p><br/>
+</div>
+</div>
+</div>
+<div class="divline" style="height:35px;"></div>
+<?php echo ad(201);?>
+<div class="divline" style="height:20px;"></div>
+<div class="big_frame">
+<div class="frame_top">
+<div class="fl top_title">
+<img src="{DT_SKIN}image/quote/1f.png" /><span>政府项目申报通知</span>
+</div>
+<div class="fr top_more no-border-bottom-solid">
+<a href="{rewrite('news.php?catid='.$news_xiangmu_catid)}">更多</a>
+</div>
+</div>
+<div class="frame_content">
+<div class="frame_content_left fl">
+<ul>
+{php $tag_news=tag("moduleid=21&table=article_21&condition=status=3 and catid=$news_xiangmu_catid&pagesize=4&order=addtime desc&template=null")}
+{loop $tag_news $k $v}
+<li {if $k==3}style="border-bottom:0px;"{/if}>
+<div class="content_detail" style="">
+<div style="padding-top:10px;padding-bottom:10px;">
+<b style="font-size:16px;"><a href="news-{$v[itemid]}-tech-news.html" style="">{$v['title']}</a></b>
+</div>
+<span>{dsubstr($v['introduce'],300,'...')}</span><br/>
+<span class="fl">所在地区&nbsp;&nbsp;{area_pos($v['areaid'],'/',0)}&nbsp;&nbsp;&nbsp;&nbsp;
+{php $category=$db->get_one("select catname from {$db->pre}category where catid=".$v[catid]);}
+信息分类&nbsp;&nbsp;{$category[catname]}&nbsp;&nbsp;&nbsp;&nbsp;
+{date('Y-m-d',$v['addtime'])}</span>
+<span class="fr">{$v[hits]}人关注</span><br/>
+</div>
+</li>
+{/loop}
+</ul>
+</div>
+<div class="frame_content_right fr graybg">
+<div class="small_frame" style="height:242px;border:0px;">
+<br/>
+<span class="fl" style="margin-left:12px;font-weight:normal;">注册标准</span>
+<br/><br/>
+{php $tag_keji=tag("moduleid=21&condition=status=3 and catid=$news_hangye_catid&pagesize=5&order=addtime desc&template=null");}
+<ul>
+{loop $tag_keji $k $v}
+<li><a href="news-{$v[itemid]}-tech-news.html" title="{$v[title]}" {if $k<3}style="color:#5384d1;"{/if}><?php echo $k+1;?>&nbsp;{dsubstr($v['title'],'28','...')}</a></li>
+{/loop}
+</ul>
+<a class="fr" style="line-height:25px;font-size:14px;margin-right:12px;color:#888;" href="{rewrite('news.php?catid='.$news_hangye_catid)}">更多..</a>
+</div>
+<div class="small_frame" style="height:242px;border:0px;">
+<br/>
+<span class="fl" style="margin-left:12px;font-weight:normal;">政策资讯</span>
+<br/><br/>
+{php $tag_keji=tag("moduleid=21&condition=status=3 and catid=$news_zhengce_catid&pagesize=5&order=addtime desc&template=null");}
+<ul>
+{loop $tag_keji $k $v}
+<li><a href="news-{$v[itemid]}-tech-news.html" title="{$v[title]}"><?php echo $k+1;?>&nbsp;{dsubstr($v['title'],'28','...')}</a></li>
+{/loop}
+</ul>
+<a class="fr" style="line-height:25px;font-size:14px;margin-right:12px;color:#888;" href="{rewrite('news.php?catid='.$news_zhengce_catid)}">更多..</a>
+</div>
+</div>
+</div>
+</div>
+<div class="divline" style="height:35px;"></div>
+{ad(202)}
+<div class="divline" style="height:20px;"></div>
+<div class="big_frame">
+<div class="frame_top">
+<script>
+$(document).ready(function(){
+$('#xuqiu').mouseover(function(){
+$('#xuqiu').addClass('jishushow');
+$('#xuqiu').css('border-top','2px solid #1e7e6a');
+$('#xuqiu').removeClass('top_more');
+$('#chengguo').addClass('top_more');
+$('#chengguo').removeClass('jishushow');
+$('#chengguo').css('border-left','1px solid #ccc');
+$('#chengguo').css('border-top','1px solid #ccc');
+$('#xuqiu_content').css('display','block');
+$('#chengguo_content').css('display','none');
+$('#project_more').attr('href',"{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&qixie=0&cooperate=0&stype=1')}");
+$('#sline').css('display','none');
+});
+$('#chengguo').mouseover(function(){
+$('#chengguo').addClass('jishushow');
+$('#chengguo').removeClass('top_more');
+$('#chengguo').css('border-top','2px solid #1e7e6a');
+$('#xuqiu').addClass('top_more');
+$('#xuqiu').removeClass('jishushow');
+$('#xuqiu').css('border-top','1px solid #ccc');
+$('#chengguo').css('border-left','1px solid #1e7e6a');
+$('#xuqiu_content').css('display','none');
+$('#chengguo_content').css('display','block');
+$('#project_more').attr('href',"{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&qixie=0&cooperate=0&stype=0')}");
+$('#sline').css('display','block');
+});
+});
+</script>
+<div class="fl top_title">
+<img src="{DT_SKIN}image/quote/2f.png" /><span>技术成果和需求</span>
+</div>
+
+<div class="fr" style="">
+<div class="fr top_more" style="border-left:0px;border-right:1px solid #ccc;border-top:1px solid #ccc;">
+<a id="project_more" href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&qixie=0&cooperate=0&stype=0')}">更多</a>
+</div>
+<div id="xuqiu" class="fr top_more pointer" style="width:110px;border-top:1px solid #ccc;">
+<a>技术需求</a>
+<div id="sline" class="fr sline"></div>
+</div>
+<div id="chengguo" class="fr jishushow pointer" style="width:110px;">
+<a>技术成果</a>
+</div>
+</div>
+</div>
+
+<!-- 技术成果 -->
+<div id="chengguo_content" class="frame_content">
+<div class="frame_content_all">
+{php $tag_news_content=tag("moduleid=7&condition=status=3 and thumb<>'' and stype=1 and catid in (".$project_child_catid['child'].")&pagesize=6&order=addtime desc&template=null");}
+{loop $tag_news_content $k $v}
+{if $k==0}<ul>{/if}
+<li {if $k==4||$k==5}style="border-bottom:0px;"{/if}>
+<br/>
+<div class="content_img fl">
+<img src="<?php echo $v['thumb'];?>" style="width:100%;height:100%;" />
+</div>
+<div class="content_detail fl" style="margin-left:10px;">
+<b><a href="<?php echo $v['linkurl'];?>" title="{$v[title]}" style="color:#747474;"><?php echo dsubstr($v['title'],28,'...');?></a></b><br/>
+<p>器械类别:{if $v[qixie]}{$qixie_arr[$v[qixie]]}{else}{$qixie_arr[0]}{/if}&nbsp;&nbsp;&nbsp;所处阶段:{if $v[level]}{$level_arr[$v[level]]}{else}无{/if}</p>
+<div class="content_introduce"><?php echo dsubstr($v['introduce'],80,'...');?></div>
+</div>
+</li>
+{if ($k+1)%2==0}</ul><ul>{/if}
+{/loop}
+</div>
+</div>
+<!-- 技术需求 -->
+<div id="xuqiu_content" class="frame_content" style="display:none;">
+<div class="frame_content_all">
+{php $tag_news_content=tag("moduleid=7&condition=status=3 and thumb<>'' and stype=0 and catid in (".$project_child_catid['child'].")&pagesize=6&order=addtime desc&template=null");}
+{loop $tag_news_content $k $v}
+{if $k==0}<ul>{/if}
+<li {if $k==4||$k==5}style="border-bottom:0px;"{/if}>
+<br/>
+<div class="content_img fl">
+<img src="<?php echo $v['thumb'];?>" style="width:100%;height:100%;" />
+</div>
+<div class="content_detail fl" style="margin-left:10px;">
+<b><a href="{$v['linkurl']}" title="{$v[title]}" style="color:#747474;">{dsubstr($v['title'],28,'...')}</a></b><br/>
+<p>器械类别:{if $v[qixie]}{$qixie_arr[$v[qixie]]}{else}{$qixie_arr[0]}{/if}&nbsp;&nbsp;&nbsp;所处阶段:{if $v[level]}{$level_arr[$v[level]]}{else}无{/if}</p>
+<div class="content_introduce">{dsubstr($v['introduce'],80,'...')}</div>
+</div>
+</li>
+{if ($k+1)%2==0}</ul><ul>{/if}
+{/loop}
+</div>
+</div>
+</div>
+<div class="divline" style="height:35px;"></div>
+{ad(203)}
+<div class="divline" style="height:20px;"></div>
+<div class="big_frame">
+<div class="frame_top">
+<div class="fl top_title">
+<img src="{DT_SKIN}image/quote/3f.png" /><span>注册临床咨询</span>
+</div>
+<div class="fr top_more no-border-bottom-solid">
+<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$clinic_catid.'&qixie=0&cooperate=0&stype=0')}">更多</a>
+</div>
+</div>
+<div class="frame_content">
+<div class="frame_content_left fl" style="width:320px;">
+{php $tag_clinic_gong=tag("moduleid=7&condition=status=3 and stype=1 and catid in (".$clinic_child_catid['child'].")&pagesize=5&order=addtime desc&template=null");}
+{php $tag_clinic_qiu=tag("moduleid=7&condition=status=3 and stype=0 and catid in (".$clinic_child_catid['child'].")&pagesize=5&order=addtime desc&template=null");}
+<div style="width:285px;height:190px;padding:5px;border:1px solid #ccc;margin-bottom:40px;">
+<img src="{DT_SKIN}image/quote/index_clinic1.jpg" style="width:100%;height:100%;" />
+</div>
+<div style="width:285px;height:190px;padding:5px;border:1px solid #ccc;">
+<img src="{DT_SKIN}image/quote/index_clinic2.jpg" style="width:100%;height:100%;" />
+</div>
+</div>
+<div class="frame_content_right fl" style="width:360px;">
+<div class="small_frame" style="height:242px;border:0px;width:360px;">
+<br/>
+<span class="fl">提供注册临床咨询</span>
+<br/><br/>
+<ul  style="border-top:3px solid #ccc;width:360px;">
+{loop $tag_clinic_gong $k $v}
+<li style="width:360px"><a href="show-{$v[itemid]}.html" title="{$v[title]}"><p class="fl">{dsubstr($v['title'],50,'...')}</p><p style="{if $k==0}color:#efb5b5;{/if} font-size:13px;" class="fr">{date('m/d',$v[addtime])}</p></a></li>
+{/loop}
+</ul>
+<a class="fr" style="line-height:25px;font-size:14px;color:#888;" href="{$MOD[linkurl]}{rewrite('search.php?catid='.$clinic_catid.'&qixie=0&cooperate=0&stype=1')}">更多..</a>
+</div>
+<div class="small_frame" style="height:242px;border:0px;width:360px;">
+<br/>
+<span class="fl">注册临床咨询需求</span>
+<br/><br/>
+<ul  style="border-top:3px solid #ccc;width:360px;">
+{loop $tag_clinic_qiu $k $v}
+<li style="width:360px;"><a href="show-{$v[itemid]}.html" title="{$v[title]}" style="cursor: pointer;"><p class="fl">{dsubstr($v['title'],50,'...')}</p><p style="{if $k==0}color:#efb5b5;{/if} font-size:13px;" class="fr">{date('m/d',$v[addtime])}</p></a></li>
+{/loop}
+</ul>
+<a class="fr" style="line-height:25px;font-size:14px;color:#888;" href="{$MOD[linkurl]}{rewrite('search.php?catid='.$clinic_catid.'&qixie=0&cooperate=0&stype=0')}">更多..</a>
+</div>
+</div>
+<div class="frame_content_right fr graybg">
+<div class="small_frame" style="height:490px;border:0px;">
+<br/>
+<span class="fl" style="margin-left:12px;">技术外包项目</span>
+<div style="height:35px;"></div>
+{php $tag_waibao1=tag("moduleid=7&condition=status=3 and stype=2 and catid in (".$project_child_catid['child'].")&pagesize=12&order=addtime desc&template=null");}
+<ul>
+{loop $tag_waibao1 $k $v}
+<li><a href="show-{$v[itemid]}.html" title="{$v[title]}" style="font-size:12px;cursor:pointer; <?php if( $k<3){ ?>color:#4079cf;<?php } ?> "><p class="fl">{dsubstr($v['title'],28,'...')}</p><p class="fr">{date('m/d',$v[addtime])}</p></a></li>
+{/loop}
+</ul>
+<a class="fr" href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&qixie=0&cooperate=0&stype=2')}" style="line-height:25px;font-size:14px;margin-right:12px;color:#888;">更多..</a>
+</div>
+</div>
+</div>
+</div>
+<div class="divline" style="height:35px;"></div>
+<?php echo ad(204);?>
+<div class="divline" style="height:20px;"></div>
+<div class="big_frame">
+<div class="frame_top">
+<div class="fl top_title">
+<img src="<?php echo DT_SKIN;?>image/quote/4f.png" /><span>项目解决方案</span>
+</div>
+<div class="fr top_more no-border-bottom-solid">
+<a href="solution.php">更多</a>
+</div>
+</div>
+<div class="frame_content">
+<div class="frame_content_all fl" style="width:745px;">
+<br/>
+<ul style="width:750px;">
+<li style="width:300px;padding-top:15px;height:135px;">
+	<div class="content_img fl" style="width:133px;">
+		<img src="{DT_SKIN}image/quote/keyan.jpg" style="width:100%;height:100%;" />
+	</div>
+	<div class="content_detail" style="float:left;margin-left:10px;width:130px;">
+		<a href="solution.php?action=kyxmzh#kyxmzh_div"><p style="font-weight:bold;font-size:14px;">科研项目转化</p></a>
+		<div class="content_introduce" style="margin-top:0px;width:130px;">科技项目转化<br/>专利/技术项目转化<br/>新产品合作开发<br/>产品技术升级<br/>技术难题/项目外包</div>
+	</div>
+</li>
+<li style="width:300px;padding-top:15px;height:135px;">
+	<div class="content_img fl" style="width:133px;">
+		<img src="{DT_SKIN}image/quote/chanpin.jpg" style="width:100%;height:100%;" />
+	</div>
+	<div class="content_detail" style="float:left;margin-left:10px;width:130px;">
+		<a href="solution.php?action=cpzc#cpzc_div"><p style="font-weight:bold;font-size:14px;">开放实验室</p></a>
+		<div class="content_introduce" style="margin-top:5px;width:130px;">实验需求评估<br/>实验方案设计制定<br/>实验技术支持及辅导<br/>实验室及实验设备租赁</div>
+	</div>
+</li>
+</ul>
+<ul style="width:750px;">
+<li style="width:300px;padding-top:15px;height:135px;">
+	<div class="content_img fl" style="width:133px;">
+		<img src="{DT_SKIN}image/quote/zhiliang.jpg" style="width:100%;height:100%;" />
+	</div>
+	<div class="content_detail" style="float:left;margin-left:10px;width:130px;">
+		<a href="solution.php?action=zltxfd#zltxfd_div"><p style="font-weight:bold;font-size:14px;">质量体系辅导</p></a>
+		<div class="content_introduce" style="margin-top:0px;width:130px;">医疗器械生产实施咨询<br/>医疗器械GMP咨询<br/>医疗器械注册质量管理体系核查辅导<br/>......</div>
+	</div>
+</li>
+<li style="width:300px;padding-top:15px;height:135px;">
+	<div class="content_img fl" style="width:133px;">
+		<img src="{DT_SKIN}image/quote/linchuang.jpg" style="width:100%;height:100%;" />
+	</div>
+	<div class="content_detail" style="float:left;margin-left:10px;width:130px;">
+		<a href="solution.php?action=lczx#lczx_div" ><p style="font-weight:bold;font-size:14px;">注册临床咨询</p></a>
+		<div class="content_introduce" style="margin-top:5px;width:130px;">境内器械注册咨询<br/>进出口器械注册咨询<br/>器械临床评价资询<br/>器械临床试验服务</div>
+	</div>
+</li>
+</ul>
+<ul style="width:750px;">
+<li style="width:300px;padding-top:15px;height:135px;border-bottom:0px;">
+	<div class="content_img fl" style="width:133px;">
+		<img src="{DT_SKIN}image/quote/shengchan.jpg" style="width:100%;height:100%;" />
+	</div>
+	<div class="content_detail" style="float:left;margin-left:10px;width:130px;">
+		<a href="solution.php?action=sczyxk#sczyxk_div"><p style="font-weight:bold;font-size:14px;">生产经营许可证</p></a>
+		<div class="content_introduce" style="margin-top:0px;width:130px;">Ⅱ类医疗器械经营许可备案办理咨询<br/>Ⅲ类医疗器械经营许可证办理咨询<br/>......</div>
+	</div>
+</li>
+<li style="width:300px;padding-top:15px;height:135px;border-bottom:0px;">
+	<div class="content_img fl" style="width:133px;">
+		<img src="{DT_SKIN}image/quote/zhengfu.jpg" style="width:100%;height:100%;" />
+	</div>
+	<div class="content_detail" style="float:left;margin-left:10px;width:130px;">
+		<a href="solution.php?action=zfzjxmsb#zfzjxmsb_div" ><p style="font-weight:bold;font-size:14px;">政府资金项目申报</p></a>
+		<div class="content_introduce" style="margin-top:5px;width:130px;">技术合同认定登记<br/>政府扶持资金项目申报<br/>政府科技项目立项咨询<br/>高新技术企业认定辅导</div>
+	</div>
+</li>
+</ul>
+</div>
+<div class="frame_content_right fr graybg" style="margin-left:auto;margin-right:auto;text-align: center;">
+<br/>
+<span style="color:#1e7e6a;font-size:22px;font-weight:bold;">成功案例</span>
+<ul>
+<li style="border:1px solid #ccc ;height:90px;width:225px;margin-top:15px;margin-left:10px;"><img width="225px" height="90px" alt="" src="{DT_SKIN}image/quote/index_anli1.jpg" /></li>
+<li style="border:1px solid #ccc ;height:90px;width:225px;margin-top:15px;margin-left:10px;"><img width="225px" height="90px" alt="" src="{DT_SKIN}image/quote/index_anli2.jpg" /></li>
+<li style="border:1px solid #ccc ;height:90px;width:225px;margin-top:15px;margin-left:10px;"><img width="225px" height="90px" alt="" src="{DT_SKIN}image/quote/index_anli3.jpg" /></li>
+<li style="border:1px solid #ccc ;height:90px;width:225px;margin-top:15px;margin-left:10px;"><img width="225px" height="90px" alt="" src="{DT_SKIN}image/quote/index_anli4.jpg" /></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+</div></div>
+{template 'link2017','chip'}
+{template 'footer2017'}

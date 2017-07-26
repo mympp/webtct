@@ -1,0 +1,31 @@
+<ul class="pl10 cut">
+{loop $tags $z $t}
+					<li class="mt10">
+					<dl class="autoheight">
+					<dt class="graybg infotit mb5 cut" style="padding:2px;height:38px;">
+					{if $headpic}<div class="fl thumb">
+					<script type="text/javascript">
+					document.writeln("<img src=\"{useravatar($t[username], 'large')}&time={$DT_TIME}\" width=\"34\" height=\"34\">");
+					</script></div>{/if}
+					<div class='{if $headpic}fl ml5{/if}'>
+					<p class="lenstr"><a href="{$t[linkurl]}"  title="{$t[alt]}" target="_blank" class="f16">{if $nums}<i class='f12 mr5'>{$z+1}.</i>{/if}{$t[title]}</a></p>
+					<p><span>类别 <a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid])}" class="{if $hot}color{else}ocolor{/if}">{$t[catname]}</a></span><span class="ml10">{timetodate($t[edittime],4)}</span><span class="ml10">{$t[hits]}人关注</span></p>
+					</div>
+					<br class="clear" />
+					</dt>
+					{if $t[thumb]}
+					{php $lenstr='110';}
+					{else}
+					{php $lenstr='140';}
+					{/if}
+					
+					<dd style="width:{if $t[thumb]}240{else}320{/if}px;" class='fl ml5 tl'>
+					<div class='hcolor h50 cut'>{dsubstr($t[introduce],$lenstr,"..")}<span class='ml10'><a href="{$t[linkurl]}" class="bcolor">详情</a></span></div>
+					</dd>{if $t[thumb]}<dd class="fl ml5"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img onerror="this.src='{DT_SKIN}image/nopic.gif'" src="{$t[thumb]}" width="70" height="48" class="thumb"/></a></dd>{/if}
+					<br class="clear"/>
+					</dl>
+					</li>
+{/loop}
+</ul>
+{if $showpage && $pages}<div class="divline"></div>
+<div class="pages">{$pages}</div>{/if}

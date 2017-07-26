@@ -1,0 +1,819 @@
+﻿{template 'header', 'member'}
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+{php if($status==''){$status=$_REQUEST['status'];}}
+{if $_userid}
+<td class="tab" id="add"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=add"><span>创建设备服务供应</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s2"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&status=2"><span>审核中<span class="px10">({$nums[2]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s1"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&status=1"><span>未通过<span class="px10">({$nums[1]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s3"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1"><span>已发布<span class="px10">({$nums[3]})</span></span></a></td>
+<td class="tab" id="apply"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=apply"><span>报名参加的项目总数<span class="px10">({$nums[apply]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="nopay"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=apply&status=3"><span>服务完成要结算<span class="px10">({$nums[status]})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="pay"><a href="{$MODULE[2][linkurl]}record.php?action=&fields=3&kw=%E6%9C%8D%E5%8A%A1&type=1&fromtime=&totime="><span>已经结算服务<span class="px10"></span></span></a></td>
+{/if}
+{if $action=='add'}
+<script type="text/javascript">c(6);s('mid_resume');m('{$action}');</script>
+{elseif $action == 'apply'&&$status!=3}
+<script type="text/javascript">c(6);s('jianli');m('apply');</script>
+{elseif $action == 'apply'&&$status==3}
+<script type="text/javascript">c(6);s('jianli');m('nopay');</script>
+{elseif $action == 'submit'&&$status==3}
+<script type="text/javascript">c(6);s('jianli');m('nopay');</script>
+{else}
+<script type="text/javascript">c(6);s('mid_resume');m('s{$status}');</script>
+{/if}
+</tr>
+</table>
+
+</div>
+{if $action=='add' || $action=='edit'}
+<iframe src="" name="send" id="send" style="display:none;"></iframe>
+<form method="post" action="{$MODULE[2][linkurl]}{$DT[file_my]}" id="dform" target="send" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="mid" value="{$mid}"/><input type="hidden" name="aitemid" value="{$_REQUEST['aitemid']}"/>
+<input type="hidden" name="resume" value="1"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<table cellpadding="6" cellspacing="1" class="tb" onmouseover="if(Dd('thumb').value!=''){Dd('memberhead').src=Dd('thumb').value;Dd('thumb2').value=Dd('thumb').value;}">
+{if $action=='edit'}
+<tr>
+<td >更新信息</td>
+<td class="tr f_blue"><a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=refresh&itemid={$itemid}"><img width="16" height="16" src="image/zoom.gif" title="一键更新" alt=""/>点击立即更新获得排名</a>
+</td>
+</tr>
+{/if}
+{php $tagt =tag("moduleid=2&condition=username='$_username'&areaid=$cityid&showcat=0&pagesize=1&length=20&order=userid desc&template=null&debug=0")}
+{php $headpic=$tagt[0][headpic];}
+{if $action=='edit'}
+<tr>
+<td >供应状态</td>
+<td class="tr f_blue">{if $status == '1'}<span class="f_red">未通过</span>{elseif $status == '2'}<span class="f_red">审核中</span>{elseif $status == 3}通过审核{else}未添加{/if}
+</td>
+</tr>
+{/if}
+{if $status==1 && $action=='edit' && $note}
+<tr>
+<td >未通过原因</td>
+<td class="tr f_blue">{$note}</td>
+</tr>
+{/if}
+<tr>
+<td ><span class="f_red">*</span> 供应标题</td>
+<td class="tr f_gray"><input name="post[title]" type="text" id="title" size="50" value="{if $action=='edit'}{$title}{/if}"/> <span id="dtitle" class="f_red"></span>
+<div class="grayb pd10" style="margin-top:10px;z-index:1000;position:absolute;border:1px solid #ddd;right:100px;width:100px;height:100px;"><img src="{if $thumb!=''}{$thumb}{else}{if $headpic!=''}{$headpic}{else}{DT_SKIN}image/gender{$gender}.jpg{/if}{/if}" ID="memberhead"  width=100 height=100/><br><a href="javascript:void(0);" onclick="Dthumb({$moduleid},{$MOD[thumb_width]},{$MOD[thumb_height]}, Dd('thumb').value, true);" class="t">[上传]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='{DT_SKIN}image/gender{$gender}.jpg';Dd('thumb2').value='{DT_SKIN}image/gender{$gender}.jpg';Dd('memberhead').src='{DT_SKIN}image/gender{$gender}.jpg';" class="t">[删除]</a>
+<input name="post[thumb]" type="hidden" size="60" id="thumb2" value="{if $thumb!=''}{$thumb}{else}{if $headpic!=''}{$headpic}{else}{DT_SKIN}image/gender{$gender}.jpg{/if}{/if}" readonly/>
+<input type="hidden" size="60" id="thumb" value="{if $thumb!=''}{$thumb}{else}{if $headpic!=''}{$headpic}{else}{DT_SKIN}image/gender{$gender}.jpg{/if}{/if}" readonly/>
+
+</div>可填写宣传性标题：专业维修PCR,CT机
+</td>
+</tr>
+<tr>
+<td ><span class="f_red">*</span> 相关类别{load('profile.js')}</td>
+<td class="tr"><div id="cate">{ajax_category_select('', '所有类别',$catid, $moduleid, 'size="1" style="width:160px;margin-bottom:5px;;"')}</div>
+<input type="button" value=" 添加↓ " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'"  onclick="addcate(10);;selcatto('ycatid',0)"/>
+<input type="button" value=" ×删除 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'"  onclick="delcate();"/>
+&nbsp;最多可添加 <strong class="f_red">10</strong> 个类别
+<br/><select name="cates" id="cates" size="2" style="height:100px;width:380px;margin-top:5px;">
+{if !$cates&&$action=='edit'}<option value="{$catid}">{strip_tags(cat_pos(get_cat($catid), '/'))}</option>{/if}
+{php $catez=explode(',',$cates)}
+{loop $catez $c}
+
+{if $c>0}<option value="{$c}">{strip_tags(cat_pos(get_cat($c), '/'))}</option>{/if}
+{/loop}
+</select>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+<br>
+<script type="text/javascript">
+function selcat(ids){
+for(var i = 0; i < Dd('cates').options.length; i++) {if(Dd('cates').options[i].selected) {var catid,catname;catid=Dd('cates').options[i].value;catname=Dd('cates').options[i].innerHTML;Dd(ids).value=catid;
+catname=catname.replace("/所有分类","");
+Dd(ids+'name').value=catname;
+}}}
+function selcatto(ids,id){var catid,catname;
+catid=Dd('cates').options[id].value;catname=Dd('cates').options[id].innerHTML;Dd(ids).value=catid;
+Dd(ids+'name').value=catname;
+}
+</script>
+<input type="button" value="设为主类" class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'"  onclick="selcat('ycatid');"/>请选择一项作为主类↓
+<input type="hidden" name="post[catid]" value="{$catid}" id="ycatid"/><input type="text" name="post_fields[catidname]" value="{if !$catidname}{strip_tags(cat_pos(get_cat($catid), '/'))}{else}{$catidname}{/if}" size=30 id="ycatidname" />
+<input type="hidden" name="post_fields[cates]" value="{if !$cates&&$action=='edit'},{$catid},{else}{$cates}{/if}" id="catid"/>
+<span id="catids" class="f_red"></span><span id="dcatid" class="f_red"></span></td>
+</tr>
+<tr>
+<td ><span class="f_red">*</span> 如何称呼</td>
+<td class="tr"><input name="post[truename]" type="text" id="truename" size="20" value="{$truename}" /><input type="checkbox" name="post_fields[baomi][]" {if $baomi>0||$baomi=='1'} checked {/if}value="1" id="baomi_0"> 保密<br/><span id="dtruename" class="f_red">保密的话名字隐藏。例如刘德华，将会以刘工显示，只有被选定时才显示真名！</span></td>
+</tr>
+
+
+<tr style="display:none">
+<td ><span class="f_red">*</span> 婚姻状况</td>
+<td class="tr">
+{loop $MARRIAGE $k $v}
+{if $k > 0}
+<input type="radio" name="post[marriage]" id="marriage_{$k}" value="{$k}"{if $k == $marriage} checked{/if}/><label for="marriage_{$k}"> {$v}</label> 
+{/if}
+{/loop}
+</td>
+</tr>
+
+<tr style="display:none">
+<td ><span class="f_red">*</span>参加工作</td>
+<td class="tr">
+<input name="post[byear]" type="text" id="byear" size="4" value="{$byear}"/> 年
+
+<script type="text/javascript">
+if(Dd('byear').value=='19'){Dd('byear').value='2005'}
+</script>
+<select name="post[bmonth]">
+{php for($i = 1; $i < 13; $i++) { }
+<option value="{$i}"{if $i == $bmonth} selected{/if}>{$i}</option>
+{php } }
+</select>
+月
+<select name="post[bday]">
+{php for($i = 1; $i < 32; $i++) { }
+<option value="{$i}"{if $i == $bday} selected{/if}>{$i}</option>
+{php } }
+</select>
+日
+
+<span id="dbyear" class="f_red"></span>
+</td>
+</tr>
+
+<tr  style="display:none">
+<td >身高</td>
+<td class="tr"><input name="post[height]" type="text" id="height" size="10" value="{$height}" /> cm <span id="dheight" class="f_red"></span></td>
+</tr>
+
+<tr  style="display:none">
+<td >体重</td>
+<td class="tr"><input name="post[weight]" type="text" id="weight" size="10" value="{$weight}" /> kg <span id="dweight" class="f_red"></span></td>
+</tr>
+
+<tr  style="display:none">
+<td ><span class="f_red">*</span> 队伍形式</td>
+<td class="tr">
+<select name="post[school]"  id="school" onchange="if(this.options[this.options.selectedIndex].value=='团队'){Dd('educationz').style.display='block'}else{Dd('educationz').style.display='none'}">
+	<option value="个体" {if $school=="个体"}selected{/if}>个体</option><option value="团队" {if $school=="团队"}selected{/if}>团队</option>
+	
+</select>
+<span id="dschool" class="f_red"></span>
+</td>
+</tr>
+<tr {if $school=="个体"||$school==""}style="display:none"{/if} id="educationz">
+<td ><span class="f_red">*</span> 人数</td>
+<td class="tr">
+<input type="text" name="post[education]" size=3 id="education" value='{if $school=="个体"}1{else}{$education}{/if}'/>人&nbsp;&nbsp;&nbsp;<span id="ddsz" class="f_red">请填写队伍人数</span>
+</td>
+</tr>
+<tr>
+<td ><span class="f_red">*</span> 性别</td>
+<td class="tr">
+{loop $GENDER $k $v}
+{if $k > 0}
+<input type="radio" name="post[gender]" id="gender_{$k}" value="{$k}"{if $k == $gender} checked{/if}/><label for="gender_{$k}"> {$v}</label> 
+{/if}
+{/loop}
+</td>
+</tr>
+<tr  >
+<td >所学专业</td>
+<td class="tr"><input name="post[major]" type="text" id="major" size="30" value="{$major}"/></td>
+</tr>
+
+<tr  style="display:none">
+<td >专业技能</td>
+<td class="tr"><input name="post[skill]" type="text" size="50" value="{$skill}"/></td>
+</tr>
+
+<tr style="display:none">
+<td >语言水平</td>
+<td class="tr"><input name="post[language]" type="text"  size="50" value="{$language}"/></td>
+</tr>
+
+
+<tr >
+<td ><span class="f_red">*</span> 工作性质</td>
+<td class="tr">
+{loop $TYPE $k $v}
+<input type="radio" name="post[type]" id="type_{$k}" value="{$k}"{if $k == $type} checked{/if}/><label for="type_{$k}"> {$v}</label> 
+{/loop}
+</td>
+</tr>
+
+<tr  >
+<td >一次服务<br>最低出价</td>
+<td class="tr"><input name="post[minsalary]" type="text" id="minsalary" size="6" value="{$minsalary}"/> 至 <input name="post[maxsalary]" type="text" id="maxsalary" size="6" value="{$maxsalary}"/> {$DT[money_unit]}/次 (不填或者填0为面议)</td>
+</tr>
+
+<tr>
+<td ><span class="f_red">*</span> 工作经验</td>
+<td class="tr">
+<input type="text" name="post[experience]" value="{$experience}" size="4" id="experience"/> &nbsp;&nbsp;年 <span id="dexperience" class="f_red"></span></td>
+</tr>
+
+<tr >
+<td ><span class="f_red">*</span> 现居住地<br>主要服务区域</td>
+<td class="tr">{ajax_area_select('post[areaid]', '请选择', $areaid)} <span id="dareaid" class="f_red">也是你主要服务区域</span></td>
+</tr>
+{if $FD}{fields_html('<td >', '<td class="tr">', $item)}{/if}
+
+<tr>
+<td ><span class="f_red">*</span> 自我推荐</td>
+<td class="tr f_gray"><textarea name="post[content]" id="content" class="dsn">{if $content}{$content}{else}{php $content=$_REQUEST['content'];}
+{$content}{/if}</textarea>
+{deditor($moduleid, 'content', $group_editor, '98%', 350)}
+<span id="dcontent" class="f_red"></span>
+</td>
+</tr>
+
+<tr>
+<td ><span class="f_red">*</span> 联系手机</td>
+<td class="tr"><input name="post[mobile]" id="mobile" type="text" size="30" value="{$mobile}"/> <span id="dmobile" class="f_red">只有被选定时方显示</span></td>
+</tr>
+<tr>
+<td ><span class="f_red">*</span> 电子邮件</td>
+<td class="tr"><input name="post[email]" id="email" type="text" size="30" value="{$email}" /> <span id="demail" class="f_red">只有被选定时方显示</span></td>
+</tr>
+<tr>
+<td >联系电话</td>
+<td class="tr"><input name="post[telephone]" id="telephone" type="text" size="30" value="{$telephone}"/> <span id="dtelephone" class="f_red">只有被选定时方显示</span></td>
+</tr>
+<tr>
+<td >联系地址</td>
+<td class="tr"><input name="post[address]" type="text" size="60" value="{$address}"/></td>
+</tr>
+<tr>
+<td >联系MSN</td>
+<td class="tr"><input name="post[msn]" type="text" size="30" value="{$msn}"/></td>
+</tr>
+<tr>
+<td >联系QQ</td>
+<td class="tr"><input name="post[qq]" type="text" size="30" value="{$qq}"/></td>
+</tr>
+
+<tr >
+<td >服务状态</td>
+<td class="tr">
+<select name="post[situation]">
+{loop $SITUATION $k $v}
+<option value="{$k}"{if $k==$situation} selected{/if}>{$v}</option> 
+{/loop}
+</select>
+</td>
+</tr>
+
+<tr>
+<td >公开程度</td>
+<td class="tr">
+<input type="radio" name="post[open]" value="3"{if $open==3} checked{/if}/> 开放
+<input type="radio" name="post[open]" value="2"{if $open==2} checked{/if}/> 仅我可见
+<input type="radio" name="post[open]" value="1"{if $open==1} checked{/if}/> 关闭
+</td>
+</tr>
+
+<tr  style="display:none" >
+<td >服务简历模板</td>
+<td class="tr">{tpl_select('resume', $module, 'post[template]', '默认模板', $template, 'id="template"')}</td>
+</tr>
+{if $fee_add}
+<tr>
+<td >发布此信息需消费</td>
+<td class="tr"><span class="f_b f_red">{$fee_add}</span> {$fee_unit}</td>
+</tr>
+{if $fee_currency == 'money'}
+<tr>
+<td >{$DT[money_name]}余额</td>
+<td class="tr"><span class="f_blue f_b">{$_money}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+</tr>
+{else}
+<tr>
+<td >{$DT[credit_name]}余额</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$fee_unit}</span> <a href="{$MODULE[2][linkurl]}credit.php?action=buy" target="_blank" class="t">[购买]</a></td>
+</tr>
+{/if}
+{/if}
+{if $need_password}
+<tr>
+<td ><span class="f_red">*</span> 支付密码</td>
+<td class="tr">{template 'password', 'chip'} <span id="dpassword" class="f_red"></span></td>
+</tr>
+{/if}
+{if $need_question}
+<tr>
+<td ><span class="f_red">*</span> 验证问题</td>
+<td class="tr">{template 'question', 'chip'} <span id="danswer" class="f_red"></span></td>
+</tr>
+{/if}
+{if $need_captcha}
+<tr>
+<td ><span class="f_red">*</span> 验证码</td>
+<td class="tr">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
+</tr>
+{/if}
+<tr>
+<td >&nbsp;</td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 提 交 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'"  onclick="history.back(-1);"/></td>
+</tr>
+</table>
+</form>
+{load('clear.js')}
+{elseif $action=='submitsave'}
+<script type="text/javascript">
+alert('上传成功，请保持手机正常状态\n我们的客服会与您联系！');
+window.location='{$MODULE[2][linkurl]}{$DT[file_my]}?mid=9&resume=1&action=apply&status=3';
+</script>
+{elseif $action=='submit'}
+<script>
+function GetDateDiff(startDate,endDate) 
+{ 
+var startTime = new Date(Date.parse(startDate.replace(/-/g, "/"))).getTime(); 
+var endTime = new Date(Date.parse(endDate.replace(/-/g, "/"))).getTime(); 
+var dates = Math.abs((startTime - endTime))/(1000*60*60*24)+1; 
+return dates; 
+} 
+</script>
+<form method="post" action="ask.php" id="dform" onsubmit="return check();">
+<style type="text/css">
+.hds{display:none}
+</style>
+<input type="hidden" name="action" value="{if $edit}edit{else}add{/if}"/>
+{if $edit}<input type="hidden" name="itemid" value="{$hyd}"/>{/if}
+<input type="hidden" name="job_username" value="{$lists[0][job_username]}"/>
+<input type="hidden" name="job_truename" value="{$lists[0][truename]}"/>
+<input type="hidden" name="apply_username" value="{$lists[0][apply_username]}"/>
+<input type="hidden" name="apply_truename" value="{$lists[0][resumetruename]}"/>
+<input type="hidden" name="tobe" value="{$lists[0][tobe]}"/>
+<input type="hidden" name="tobe" value="{$lists[0][tobe]}"/>
+<textarea name="content" id="content" style="display:none"></textarea>
+<input value="13"  name="typeid" type="hidden"/><input value="{$lists[0][jobid]}"  name="jobid" type="hidden"/>
+<input type="hidden" size="50" name="title" id="title" value="{$lists[0][title]}服务核验单(No:TC-{$lists[0][jobid]}-{$lists[0][resumeid]})"/>
+<div id="contents" style="clear:both">
+{if $edit}{$content}{else}
+<table width="860" border="1" align="left" cellpadding="3" cellspacing="0" bordercolor="#D1DCF8" bordercolordark="#ffffff" id="hyd" >
+  <tr>
+    <th height="30" colspan="4"  align="center" valign="middle" bgcolor="#EFF3FE" >{$lists[0][title]}服务核验单(No:TC-{$lists[0][jobid]}-{$lists[0][resumeid]})<a href="/job/resume.php?itemid={$lists[0][resumeid]}" class="hds">-<img src="{DT_SKIN}image/know_3.gif"></a></th>
+    </tr>
+
+  <tr>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>客户名称 </td>
+    <td height="30"  align="left" class="tr" valign="middle"><input name="jobusername" id="jobusername" type="text" size="30" value="{$lists[0][truename]}" /><span id="djobusername"></span></td>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>联 系 人 </td>
+    <td height="30"  align="left" class="tr"><input name="jobusername2" id="jobusername2" type="text" size="30" value="{$lists[0][truename]}" /><span id="djobusername2"></span></td>
+  </tr>
+  <tr>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>安装地址 </td>
+    <td height="30"  align="left" class="tr" valign="middle"><input type="text" size="35" name="address" id="daddress" value="{$lists[0][address]}" /><span id="ddaddress"></span></td>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>电话/传真 </td>
+    <td width="338" height="30"  align="left" class="tr"><input name="telephone" id="telephone" type="text" size="30" value="{$lists[0][telephone]}" /><span id="dtelephone"></span></td>
+  </tr>
+  <tr>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>仪器名称 </td>
+    <td height="30"  align="left" class="tr" valign="middle"><input type="text" id="product" size="30" value="{$lists[0][title]}"/><span id="dproduct"></span></td>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>型号/编号 </td>
+    <td width="338" height="30"  align="left" class="tr"><input type="text" size="35" name="xinghao" id="xinghao" value="{$lists[0][xinghao]}" /><span id="dxinghao"></span></td>
+  </tr>
+  <tr>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>生产厂家 </td>
+    <td height="30"  align="left" class="tr" valign="middle"><input type="text" size="35" name="company"  id="company" value="{$lists[0][pinpai]}" /><span id="dcompany"></span></td>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>服务类型 </td>
+    <td width="338" height="30"  align="left" class="tr">
+    <input type="checkbox" name="fwlx" value="不限" {if $lists[0][type]=='0'} checked="checked"{/if}/>不限
+    <input type="checkbox" name="fwlx" value="安装" {if $lists[0][type]=='1'} checked="checked"{/if}/>
+      安装 <input type="checkbox" name="fwlx" value="维修" {if $lists[0][type]=='2'} checked="checked"{/if}/>维修 <input type="checkbox" name="fwlx" value="检测" {if $lists[0][type]=='3'} checked="checked"{/if}/>检测 <input type="checkbox" name="fwlx" value="其他" {if $lists[0][type]=='4'} checked="checked"{/if}/>其它 </td>
+  </tr>
+  <tr>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>服务日期 </td>
+    <td height="30"  align="left" class="tr" valign="middle">{dcalendar('startime', $totime)}<span id="dstartime"></span>
+~ {dcalendar('finshtime', $totime)} <span id="dfinshtime"></span></td>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>服务时间天数 </td>
+    <td width="338" height="30"  align="left" class="tr"><input type="text" size="5" name="date" id="date" value="" onfocus="this.value=GetDateDiff(Dd('finshtime').value,Dd('startime').value)" />  <span id="ddate"></span>  </td>
+  </tr>
+  <tr>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>费用总额 </td>
+    <td height="30"  align="left" class="tr" valign="middle" colspan='3'>￥<input type="text" value="" name="counts" id="counts" onfocus="if(Dd('date').value==''||Dd('date').value=='NaN'){ Dd('date').value=GetDateDiff(Dd('finshtime').value,Dd('startime').value)}"/> <span id="dcounts"></span>  </td>
+  </tr>
+  <tr>
+    <td height="40" align="center" valign="top" bgcolor="#EFF3FE" ><span class="f_red">*</span> 各种费用说明： 
+        &nbsp;</td>
+    <td height="40" colspan="3" valign="top" class="tr"> <textarea name="countstext" id="countstext" cols="98" rows="2"></textarea><span id="dcountstext"></span></td>
+  </tr>
+  <tr align="left" class="tr">
+    <td height="100" align="center" valign="top" bgcolor="#EFF3FE" ><span class="f_red">*</span> 故障描述： 
+        &nbsp;</td>
+    <td height="100" colspan="3" valign="top" class="tr"> <textarea name="jcontent" id='jcontent' cols="98" rows="7">{$lists[0][introduce]}</textarea><span id="djcontent"></span></td>
+  </tr>
+  <tr>
+    <td height="100" align="center" valign="top" bgcolor="#EFF3FE" ><span class="f_red">*</span> 工作情况说明/<br />
+      维修记录/<br />
+      更换配件记录： 
+        &nbsp;</td>
+    <td height="100" colspan="3" valign="top" class="tr"> <textarea name="dcontent" id='dcontent' cols="98" rows="7"></textarea><span id="ddcontent"></span></td>
+  </tr>
+
+  <tr>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>工程师名字 </td>
+    <td height="30"  align="left" class="tr" valign="middle"><input type="text" size="30" name='resumetruename' id='resumetruename' value="{$lists[0][resumetruename]}" /><span id="dresumetruename"></span></td>
+    <td height="30"  align="center" valign="middle" bgcolor="#EFF3FE" ><span class="f_red">*</span>电话/传真 </td>
+    <td width="338" height="30"  align="left" class="tr"><input type="text" size="35" name="telephone2" id="telephone2" value="{$lists[0][resumetelephone]}" /><span id="dtelephone2"></span></td>
+  </tr>
+</table>
+{/if}
+</div>
+<div style="clear:both;height:60px;">
+<table width="860" border="1" align="left" cellpadding="3" cellspacing="0" bordercolor="#D1DCF8" bordercolordark="#ffffff" >
+  <tr>
+    <td height="40" colspan="4" align="center" valign="middle" bgcolor="#EFF3FE" >
+     <input  type="button" onclick="check();" name="submit2"  id="agree" value=" 同 意 "  class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" style="display:block" />
+      <input type="submit" name="submit" id="tijiao" value=" 确 定 提 交 " class="btn2" onmouseover="this.className='btn2y'" onmouseout="this.className='btn2'"  style="display:none"/></td>
+    </tr>
+   </table>
+</div>
+</form>
+<script type="text/javascript">
+function check() {
+	var l;
+	var f;
+	f = 'title';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('请填写简历名称', f);
+		return false;
+	}
+	f = 'jobusername';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'jobusername2';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'daddress';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'telephone';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'product';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'xinghao';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'company';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'startime';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'finshtime';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'date';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'counts';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'countstext';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'jcontent';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'dcontent';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'resumetruename';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+	f = 'telephone2';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('', f);
+		return false;
+	}
+Dd('content').value=Dd('contents').innerHTML;
+Dd('tijiao').style.display='block';Dd('agree').style.display='none';
+}
+</script>
+<script type="text/javascript" src="{DT_PATH}file/script/clear.js"></script>
+{elseif $action=='apply'}
+<div class="tt">
+<form action="{$MODULE[2][linkurl]}{$DT[file_my]}">
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="resume" value="1"/>
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="status" value="{$status}"/>
+&nbsp;{category_select('catid', '设备分类', $catid, $moduleid)}&nbsp;
+<input type="text" size="50" name="kw" value="{$kw}" title="关键词"/>&nbsp;
+<input type="submit" value=" 搜 索 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" />
+<input type="button" value=" 重 置 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'"  onclick="window.location='{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action={$action}';"/>
+</form>
+</div>
+<div class="ls">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>服务需求信息</th>
+<th>我的报名信息</th>
+<th>报名服务时间</th>
+<th>报名状态</th>
+<th>流程进展情况</th>
+<th>核验单信息</th>
+{if $_groupid=='8'}
+<th width="60">管理</th>
+{/if}
+</tr>
+{php $read="yes";}
+{loop $lists $k $v}
+{if $status==3&&$v[status]!=3}
+{php $read="no";}
+{/if}
+{if $read=="yes"}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center" height=40>
+<td align="center">&nbsp;&nbsp;&nbsp;<a href="/job/{$v[linkurl]}" target="_blank" class="t">{$v[title]}</a></td>
+<td align="center">&nbsp;&nbsp;<a href="{rewrite('/job/resume.php?itemid='.$v['resumeid'])}" target="_blank" class="t">{$v[resumetruename]}-{$v[resumetitle]}</a></td>
+<td class="f_gray px11">{timetodate($v[applytime], 5)}</td>
+<td>&nbsp;&nbsp;
+{if $v[status] == 3}
+<span class="f_green f_b">恭喜！你已被选定</span>
+{elseif $v[status] == 2}
+<img src="image/refresh.gif" align="absmiddle" > 已查看
+{elseif $v[status] == 1}
+<span class="f_gray">未查看</span>
+{elseif $v[status] == 0}
+<span class="f_red">已拒绝</span>
+{/if}
+&nbsp;&nbsp;
+</td>
+<td>
+<select>
+<?
+for($i=0;$i<=6;$i++){
+$z=$i+1;
+if($v[step]==$i)
+{echo '<option selected="selected">→.'.$z.$step[$i].'</option>';}
+else{
+if($v[step]>$i){$jcf='√.';}else{$jcf='Θ.';}
+echo '<option>'.$jcf.$z.$step[$i].'</option>';
+}
+}
+?>
+</select>
+</td>
+<td>
+{if $v[step]>0}
+	{if !$v[hyd]}
+		<form action="{$MODULE[2][linkurl]}{$DT[file_my]}">
+		<input type="hidden" name="itemid" value="{$v[applyid]}"/>
+		<input type="hidden" name="jobid" value="{$v[jobid]}"/>
+		<input type="hidden" name="resume" value="{$v[resumeid]}"/>
+		<input type="hidden" name="status" value="3"/>
+		<input type="hidden" name="mid" value="{$mid}"/>
+		<input type="hidden" name="action" value="submit"/>
+		服务完成了？<input type="submit" value="请填写核验单" class="btn2" onmouseover="this.className='btn2y'" onmouseout="this.className='btn2'"/>
+		</form>
+	{else}
+		{if $v[step]=='2'}
+		<form action="{$MODULE[2][linkurl]}{$DT[file_my]}">
+		<input type="hidden" name="itemid" value="{$v[applyid]}"/>
+		<input type="hidden" name="jobid" value="{$v[jobid]}"/>
+		<input type="hidden" name="resume" value="{$v[resumeid]}"/>
+		<input type="hidden" name="status" value="3"/>
+		<input type="hidden" name="hyd" value="{$v[hyd]}"/>
+		<input type="hidden" name="edit" value="yes"/>
+		<input type="hidden" name="mid" value="{$mid}"/>
+		<input type="hidden" name="action" value="submit"/>
+		<input type="submit" value="修改核验单" class="btn2" onmouseover="this.className='btn2y'" onmouseout="this.className='btn2'"/>
+		</form>
+	   {else}
+	<img src="image/opt.gif" align="absmiddle" > <a href="ask.php?action=show&itemid={$v[hyd]}&typeid=13&apply={$nums[apply]}">查看核验单</a>
+	{/if}
+	{/if}
+{else}
+未被选定,不能填写
+{/if}
+</td>
+{if $_groupid=='8'}
+<td>
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=apply_delete&itemid={$v[applyid]}" onclick="return confirm('确定要删除吗？此操作将不可撤销');"><img width="16" height="16" src="image/delete.gif" title="删除" alt=""/></a>
+</td>
+{/if}
+</tr>
+{/if}
+{/loop}
+<tr><td colspan=9 align="center"><div style="padding:5px;height:30px;line-height:30px;width:600px;margin:auto">您报名了({$nums[apply]})条服务需求信息,您可以继续<input type="button" value="去前台找服务需求" class="btn2" onmouseover="this.className='btn2y'" onmouseout="this.className='btn2'"   onclick="window.location='{DT_PATH}job/search-htm-action-job.html'"></div></td></tr>
+</table>
+</div>
+{if $read!="no"}<div class="pages">{$pages}</div>{/if}
+{else}
+<div class="tt">
+<form action="{$MODULE[2][linkurl]}{$DT[file_my]}">
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="resume" value="1"/>
+<input type="hidden" name="status" value="{$status}"/>
+&nbsp;{category_select('catid', '行业分类', $catid, $moduleid)}&nbsp;
+<input type="text" size="50" name="kw" value="{$kw}" title="关键词"/>&nbsp;
+<input type="submit" value=" 搜 索 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" />
+<input type="button" value=" 重 置 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'"  onclick="window.location='{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&status={$status}';"/>
+</form>
+</div>
+<div class="ls">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>头像</th>
+<th>供应服务标题</th>
+<th>主要服务</th>
+<th>主要区域</th>
+<th>更新时间</th>
+<th>报名项目</th>
+<th>状态</th>
+<th>浏览</th>
+<th width="100">管理</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td><a href="javascript:_preview('{$v[thumb]}');"><img src="{$v[thumb]}" width="50" height="50" class="thumb"><br>{$v[truename]}</a></td>
+<td align="left">&nbsp;&nbsp;&nbsp;{if $v[status]==3}<a href="{$v[linkurl]}" target="_blank" class="t">{else}<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=edit&itemid={$v[itemid]}" class="t">{/if}<img src="image/opi.gif" style="vertical-align:middle">&nbsp;{$v[title]}</a>{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="image/why.gif" title="未通过原因"/></a>{/if}</td>
+<td>&nbsp;{$CATEGORY[$v[parentid]][catname]}&nbsp;</td>
+<td>&nbsp;{area_pos($areaid, '')}</td>
+<td class="f_gray px11" title="添加时间 {timetodate($v[addtime], 5)}">{timetodate($v[edittime], 5)}</td>
+<td>&nbsp;<input type="button" value="查看报名项目" class="btn2" onmouseover="this.className='btn2y'" onmouseout="this.className='btn2'"   onclick="window.location='my.php?mid=9&resume=1&action=apply&resumeid={$v[itemid]}'"></td>
+<td>
+{if $v[open] == 3}
+开放
+{elseif $v[open] == 2}
+<span class="f_blue">网站可见</span>
+{elseif $v[open] == 1}
+<span class="f_red">关闭</span>
+{else}
+&nbsp;
+{/if}
+</td>
+<td class="f_gray px11">{$v[hits]}</td>
+<td>
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=edit&itemid={$v[itemid]}"><img width="16" height="16" src="image/edit.gif" title="修改" alt=""/></a>&nbsp;
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=add&itemid={$v[itemid]}&catid={$v[catid]}"><img width="16" height="16" src="image/copy.gif" title="复制信息" alt=""/></a>&nbsp;
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$mid}&resume=1&action=refresh&itemid={$v[itemid]}"><img width="16" height="16" src="image/refresh.gif" title="一键更新" alt=""/></a>&nbsp;
+</td>
+</tr>
+{/loop}
+{if $nums[3]>0}
+<tr><td colspan=9 align="center"><div style="padding:5px;height:30px;line-height:30px;width:600px;margin:auto">您发布了({$nums[3]})条供应服务信息,您可以<input type="button" value="去前台找服务需求" class="btn2" onmouseover="this.className='btn2y'" onmouseout="this.className='btn2'"   onclick="window.location='{DT_PATH}job/search-htm-action-job.html'"></div></td></tr>
+{else}
+<tr><td colspan=9 align="center"><div style="padding:5px;height:30px;line-height:30px;width:600px;margin:auto">您未发布任何供应服务信息,请先<input type="button" value="添加供应技术服务" class="btn2" onmouseover="this.className='btn2y'" onmouseout="this.className='btn2'"   onclick="window.location='my.php?mid=9&resume=1&action=add'"></div></td></tr>
+{/if}
+</table>
+</div>
+{if $MG[resume_limit] || (!$MG['fee_mode'] && $MOD[fee_add])}
+<div class="limit">
+{if $MG[resume_limit]}
+总共可发 <span class="f_b f_red">{$MG[resume_limit]}</span> 条&nbsp;&nbsp;&nbsp;
+当前已发 <span class="f_b">{$limit_used}</span> 条&nbsp;&nbsp;&nbsp;
+还可以发 <span class="f_b f_blue">{$limit_free}</span> 条&nbsp;&nbsp;&nbsp;
+{/if}
+{if !$MG['fee_mode'] && $MOD[fee_add]}
+发布信息收费 <span class="f_b f_red">{$MOD[fee_add]}</span> {if $MOD[fee_currency] == 'money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}/条&nbsp;&nbsp;&nbsp;
+可免费发布 <span class="f_b">{if $MG[resume_free_limit]<0}无限{else}{$MG[resume_free_limit]}{/if}</span> 条&nbsp;&nbsp;&nbsp;
+{/if}
+</div>
+{/if}
+<div class="pages">{$pages}</div>
+{/if}
+{if $action == 'add' || $action == 'edit'}
+<script type="text/javascript">
+function check() {
+	var l;
+	var f;
+	f = 'title';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('请填写简历名称', f);
+		return false;
+	}
+
+	f = 'truename';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		Dmsg('请填写称呼/本站不会泄露个人隐私', f);
+		return false;
+	}
+	f = 'areaid_1';
+	if(Dd(f).value == 0) {
+		Dmsg('请选择居住地区', 'areaid', 1);
+		return false;
+	}
+	f = 'experience';
+	if(Dd(f).value.length < 1) {
+		Dmsg('请填写工作经验', f);
+		return false;
+	}
+	f = 'ycatidname';
+	if(Dd(f).value.length < 1) {
+		alert('请在简历服务范围下，确定一个主修范围');
+		return false;
+	}
+	f = 'mobile';
+	if(Dd(f).value.length < 7) {
+		Dmsg('请填写联系手机', f);
+		return false;
+	}
+	f = 'email';
+	if(Dd(f).value.length < 6) {
+		Dmsg('请填写电子邮件', f);
+		return false;
+	}
+	f = 'content';
+	l = FCKLen();
+	if(l < 5) {
+		Dmsg('自我推荐最少5字，当前已输入'+l+'字', f);
+		return false;
+	}
+	{if $FD}{fields_js()}{/if}
+{if $need_password}
+	f = 'password';
+	l = Dd(f).value.length;
+	if(l < 6) {
+		Dmsg('请填写支付密码', f);
+		return false;
+	}
+{/if}
+{if $need_question}
+	f = 'answer';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('请填写验证问题', f);
+		return false;
+	}
+	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+		Dd(f).focus();
+		return false;
+	}
+{/if}
+{if $need_captcha}
+	f = 'captcha';
+	l = Dd(f).value;
+	if(!is_captcha(l)) {
+		Dmsg('请填写正确的验证码', f);
+		return false;
+	}
+	if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+		Dd(f).focus();
+		return false;
+	}
+{/if}
+	return true;
+}
+</script>
+{/if}
+{template 'footer', 'member'}

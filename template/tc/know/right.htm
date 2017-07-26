@@ -1,0 +1,48 @@
+{if $catid}
+{php $cat=get_cat($catid);}
+{php $catname=$cat['catname'];}
+{else}
+{php $catname='相关';}
+{/if}
+			<dl class="autoheight hotlist">
+			<dt class="gcolor f18 b">{$catname}未回答的信息</dt>
+			<dd class="pd5">
+				 <ul class="tjxx">
+					{php $tags = tag("moduleid=$moduleid&fields=answer,linkurl,title&condition=status=3&pagesize=12&catid=$catid&order=credit desc,edittime desc&template=null&debug=0&showcat=1")}
+					 {loop $tags $k $v}
+					<li id='tjxxli{$k+1}'><span class="fr mr5 f12 color ">回({$v[answer]})</span>
+					<a href="{$v[linkurl]}" target="_blank"  title="{$v[alt]}">· {$v[title]}</a>
+					</li>
+					{/loop}	
+
+					<script type="text/javascript">
+					var k=$(".tjxx li").length;Dd('tjxxli'+k).style.borderBottom='0px';
+					$(".tjxx>li").hover(function () {$(this).addClass("whitebg"); }, function () {$(this).removeClass("whitebg"); });
+					</script>
+				
+			    </ul>
+			</dd>
+			<dt class="gcolor f18 b">推荐{$catname}专家</dt>
+			<dd class="pd5">
+				 <ul>
+					{php $tags = tag("table=know_expert&moduleid=$moduleid&fields=itemid,title,username,answer,best,major&condition=answer>0&pagesize=6&order=best desc&template=null&debug=0")}
+					 {loop $tags $k $v}
+					<li class="h70 cut">
+					<div class="fl mr5"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('expert.php?itemid='.$v['itemid'])}" title="{$v[title]}" target="_blank">
+					<script type="text/javascript">
+					document.writeln("<img src=\"{useravatar($t[username], 'large')}\" width=\"60\" alt=\"{$v[username]}\" class=\"smallpic grayb mid\" />");
+					</script>
+					</a></div>
+					<div class="fl f12"><a href="{$MODULE[$moduleid][linkurl]}{rewrite('expert.php?itemid='.$v['itemid'])}" target="_blank"  title="{$v[alt]}" class="f16 b">{$v[title]}</a><br><span class=" mr10">回答 {$v[answer]}</span><span class=" ml10">采纳 {$v[best]}</span><p>{$v[major]}</p></div>
+					</li>
+					{/loop}	
+			    </ul>
+			</dd>
+			</dl>
+			
+
+
+
+<div class="divline"></div>
+<div class='tc  grayb graybg' style="height:240px;">{ad(145)}</div>
+<div class="divline"></div>

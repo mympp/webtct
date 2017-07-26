@@ -1,0 +1,10 @@
+ErrorDocument 404 /404.php
+RewriteEngine On
+RewriteBase /
+#RewriteRule ^(.*)\.(asp|aspx|asa|asax|dll|jsp|cgi|fcgi|pl)(.*)$ /404.php
+RewriteRule index.html$ /index.php
+RewriteRule plist.html$ /plist.php
+RewriteRule newlist.html$ /nlist.php
+RewriteRule ^plist-([0-9]+)\.html$ /plist.php?typeid=$1
+RewriteRule ^product-([0-9]+)\.html$ /pdetail.php?itemid=$1
+RewriteRule ^news-([0-9]+)\.html$ /ndetail.php?itemid=$1

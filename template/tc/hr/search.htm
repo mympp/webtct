@@ -1,0 +1,154 @@
+{php $sitemenu='hr';$listpage='search';$mlogo=$DT_SKIN.'hr/blogo.png';$articlecatid='2165';}
+{template 'header'}
+													{if $action=='resume'}
+																{if !$vip}<script type="text/javascript">Dd('areasl').className='menuy';</script>{/if}
+																<div class="your"><font class="color f14 mr10">您所在的位置 </font><a href="{$MODULE[1][linkurl]}">
+																网站首页&nbsp;</a>&nbsp;&nbsp;>&nbsp;&nbsp;{if $moduleid<>3}<a href="{$MOD[linkurl]}" id="yourmdid">{$MOD[name]}</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="{$MOD[linkurl]}search.php?catid={$catid}&action=resume">{$CATEGORY[$catid][catname]}</a>{else}{$ztitle}{/if}<a id="yourmdmore"></a></div>
+													{else}
+																{template 'lay','tag'}
+																	{if $action!='news'&&$action!='gs'}
+																			{if !$vip}
+																				<script type="text/javascript">Dd('catsl').className='menuy';</script>
+																	
+																			{/if}
+																	{/if}
+													{/if}
+														<div class="autoheight pt5 whitebg">
+														{php $b=substr_count($CAT[arrparentid],",");$l=explode(',',$CAT[arrparentid]);}		
+														{if $action=='news'}
+																<dl class="options">		
+																<dt>职场信息分类：</dt>
+																<dd><a {if $catid==$articlecatid} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catida)}">全部</a>
+																{php $tagss = tag("moduleid=21&table=category&condition=moduleid=21 and parentid=2165&pagesize=30&order=listorder ASC&template=null")}
+																{loop $tagss $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>
+																[{$t[item]}]
+																</i></a>
+																{/loop}
+																</dd>
+																</dl>
+															{else}
+																<dl class="options">		
+																<dt>工作/职位：</dt>
+																<dd><a {if $catid==$catida} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catida)}">全部</a>
+																{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+																{loop $tagss $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>
+																{if $action=="job"}
+																[{$t[item]}]
+																{/if}
+																</i></a>
+																{/loop}
+																</dd>
+																</dl>
+																<dl class="options">		
+																<dt>学历：</dt>
+																<dd>
+																{loop $educationname $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catid.'&education='.$i.'&hope='.$hope.'&gender='.$gender.'&experience='.$experience.'&type='.$type.'&update='.$update)}" {if $education==$i} class="opyes wcolor"{else}class="color"{/if}>{set_style($t,'')}</a>
+																{/loop}
+																</dd>
+																</dl>
+																{if $action=='resume'}
+																<dl class="options">		
+																<dt>期望薪资：</dt>
+																<dd>
+																{loop $hopename $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catid.'&education='.$education.'&hope='.$i.'&gender='.$gender.'&experience='.$experience)}" {if $hope==$i} class="opyes wcolor"{else}class="color"{/if}>{set_style($t,'')}</a>
+																{/loop}
+																</dd>
+																</dl>
+																<dl class="options">		
+																<dt>性别：</dt>
+																<dd>
+																{loop $gendername $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catid.'&education='.$education.'&hope='.$hope.'&gender='.$i.'&experience='.$experience)}" {if $gender==$i} class="opyes wcolor"{else}class="color"{/if}>{set_style($t,'')}</a>
+																{/loop}
+																</dd>
+																</dl>
+																{/if}
+																{if $action=='job'}
+																<dl class="options">		
+																<dt>工作性质：</dt>
+																<dd>
+																{loop $typename $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catid.'&education='.$education.'&type='.$i.'&update='.$update.'&experience='.$experience)}" {if $type==$i} class="opyes wcolor"{else}class="color"{/if}>{set_style($t,'')}</a>
+																{/loop}
+																</dd>
+																</dl>
+																<dl class="options">		
+																<dt>更新时间：</dt>
+																<dd>
+																{loop $updatename $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catid.'&education='.$education.'&type='.$type.'&update='.$i.'&experience='.$experience)}" {if $update==$i} class="opyes wcolor"{else}class="color"{/if}>{set_style($t,'')}</a>
+																{/loop}
+																</dd>
+																</dl>
+																{/if}
+																<dl class="options">		
+																<dt>{if $action=='resume'}工作年限{else}工作经验{/if}：</dt>
+																<dd>
+																{loop $experience_type $i $t}
+																<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catid.'&education='.$education.'&hope='.$hope.'&gender='.$gender.'&experience='.$i.'&type='.$type.'&update='.$update)}" {if $experience==$i} class="opyes wcolor"{else}class="color"{/if}>{set_style($t,'')}</a>
+																{/loop}
+																</dd>
+																</dl>
+															{/if}
+												
+														<form action="{$MOD[linkurl]}search.php" id="fsearch">
+														<input type="hidden" name="education" value="{$education}" />
+														<input type="hidden" name="hope" value="{$hope}" />
+														<input type="hidden" name="gender" value="{$gender}" />
+														<input type="hidden" name="experience" value="{$experience}" />
+														<input type="hidden" name="action" value="{$action}">
+														<input type="hidden" name="areaid" value="{$areaid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="vip" value="{$vip}">
+			                                            <input type="hidden" name="thumb" value="{$thumb}">
+                                                        {template 'search', 'chip'}
+														</form>
+														</div>										
+<div class="divline"></div>
+	
+<div class="autoheight whitebg pd10">
+			<div class="listleft autoheight" {if $action!="resume"&&$action!="gs"&&$action!="news"} style="width:970px;"{/if}>
+			{if $action!='gs'&&$action!='news'}
+				{template 'listh4', 'chip'} 
+				<div class="tool">
+					{if $action=="resume"}{template 'form1','hr'}{else}{template 'form0','hr'}{/if}	
+				</div>
+			{else}
+				<h4>
+				<span class="listyes" id="listh4a">
+				<a href="javascript:void(0)" id="listh4">{if $action=='gs'}企业{else}资讯{/if} 信息列表</a>
+				</span>
+				</h4>
+			{/if}
+		{if $tags}
+			{if $action=="resume"}
+				{template 'list-hr-resume', 'tag'}
+			{elseif $action=="gs"}
+				<ul id='brandlist'>
+						{template 'list-hr-company', 'tag'}
+				</ul>
+			{elseif $action=="news"}
+				<ul id='artlist'>
+						{template 'list-hr-article', 'tag'}
+				</ul>
+			{else}
+				{template 'list-hr', 'tag'}
+			{/if}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+			</div>
+
+{if $action=="resume"||$action=="gs"||$action=="news"}
+			<div class="listright autoheight">
+					{template 'right', 'hr'}	
+			</div>
+{/if}
+			<div class="divline"></div>
+</div>
+<div class="divline"></div>
+{template 'footer'}

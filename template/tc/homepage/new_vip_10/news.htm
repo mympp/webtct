@@ -1,0 +1,239 @@
+{template 'header', $template}
+
+{if $itemid}
+<section class="met_section ">
+		<section class="met_section_head">
+			<i class="fa fa-home"></i>
+			<a href="{$COM[linkurl]}" title="网站首页">网站首页</a> &gt; <a href="{$COM[linkurl]}news" >{$MENU[$menuid][name]}</a> ><a href="{$COM[linkurl]}news" >详情</a>
+		</section>
+
+    <aside class="left_aside">
+
+		<section class="met_aside">
+			<h2>
+				<span>新闻中心</span>
+			</h2>
+			<div class="met_aside_list">
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news'  title='新闻' class="zm"><span>新闻列表</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=1'  title='新闻' class="zm"><span>热门新闻</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=2'  title='新闻' class="zm"><span>最新新闻</span></a></dt></dl>
+				<div class="met_clear"></div>
+			</div>
+		</section>
+
+		<div class='bianjiqi'><a href="#"><a rel="nofollow" target="_blank" href="{userurl($username, 'file=buy', $domain)}"><img src="{$HSPATH}1434509853.jpg" title="留言中心" alt="留言中心" width="230" height="80">
+		</a><br />
+<br />
+<a href="#"><img alt="" src="{$HSPATH}1434601193.jpg" style="width: 230px; height: 80px;" /></a><br /></div>
+
+    </aside>
+
+    <article >
+	
+	
+		<div class="met_article">
+		<div class="met_clear"></div>
+
+        <section class="met_module2">
+            <h1 class="met_title">{$title}</h1>
+			<div class="met_infos">
+				<span class="met_time">{timetodate($addtime, 3)}</span>
+				<span class="met_source">浏览次数：{$hits}</span>
+				<span class="met_hits"><a href="{$MENU[$menuid][linkurl]}" style="color:#999999;">返回列表</a> <span class="met_Clicks"></span></span>
+			</div>
+			<div class="met_editor" style="padding-bottom:15px;">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$content}
+			</div>
+       </section>
+
+	</div>
+    </article>
+    <div class="met_clear"></div>
+</section>
+{elseif $type}
+{if $type==1}
+<section class="met_section ">
+		<section class="met_section_head">
+			<i class="fa fa-home"></i>
+			<a href="{$COM[linkurl]}" title="网站首页">网站首页</a> &gt; <a href="{$COM[linkurl]}news" >热门新闻</a> >
+		</section>
+
+    <aside class="left_aside">
+
+		<section class="met_aside">
+			<h2>
+				<span>新闻中心</span>
+			</h2>
+			<div class="met_aside_list">
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news'  title='新闻' class="zm"><span>新闻列表</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=1'  title='新闻' class="zm"><span>热门新闻</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=2'  title='新闻' class="zm"><span>最新新闻</span></a></dt></dl>
+				<div class="met_clear"></div>
+			</div>
+		</section>
+
+		<div class='bianjiqi'><a rel="nofollow" target="_blank" href="{userurl($username, 'file=buy', $domain)}"><img src="{$HSPATH}1434509853.jpg" title="留言中心" alt="留言中心" width="230" height="80">
+		</a><br />
+<br />
+<a href="#"><img alt="" src="{$HSPATH}1434601193.jpg" style="width: 230px; height: 80px;" /></a><br /></div>
+
+    </aside>
+
+    <article>
+	
+	
+		<div class="met_article">
+
+		<section class="met_article_head">
+			<h1>
+				<span>热门新闻</span>
+			</h1>
+		</section>
+
+		<div class="met_clear"></div>
+
+        <div class="met_module2_list">
+			<ul>
+				<!--{php $tags=tag("table=news&condition=status=3 and username='$username'&pagesize=20&order=hits desc&template=null");}-->
+				{loop $tags $v}
+				<li class="list_1">
+					
+					<h2><a href="{$v[linkurl]}" title="{$v[title]}" target='_self'><i class="fa fa-caret-right"></i>{$v[title]}</a></h2>
+					
+					<span class='time'>{timetodate($v[addtime], 3)}</span>
+				</li>
+				{/loop}
+			</ul>
+			
+		    <div class="pages">{$pages}</div>
+		
+		</div>
+
+	</div>
+    </article>
+    <div class="met_clear"></div>
+</section>
+{else}
+<section class="met_section ">
+		<section class="met_section_head">
+			<i class="fa fa-home"></i>
+			<a href="{$COM[linkurl]}" title="网站首页">网站首页</a> &gt; <a href="{$COM[linkurl]}news" >最新新闻</a> >
+		</section>
+
+    <aside class="left_aside">
+
+		<section class="met_aside">
+			<h2>
+				<span>新闻中心</span>
+			</h2>
+			<div class="met_aside_list">
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news'  title='新闻' class="zm"><span>新闻列表</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=1'  title='新闻' class="zm"><span>热门新闻</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=2'  title='新闻' class="zm"><span>最新新闻</span></a></dt></dl>
+				<div class="met_clear"></div>
+			</div>
+		</section>
+
+		<div class='bianjiqi'><a rel="nofollow" target="_blank" href="{userurl($username, 'file=buy', $domain)}"><img src="{$HSPATH}1434509853.jpg" title="留言中心" alt="留言中心" width="230" height="80">
+		</a><br />
+<br />
+<a href="#"><img alt="" src="{$HSPATH}1434601193.jpg" style="width: 230px; height: 80px;" /></a><br /></div>
+
+    </aside>
+
+    <article>
+	
+	
+		<div class="met_article">
+
+		<section class="met_article_head">
+			<h1>
+				<span>热门新闻</span>
+			</h1>
+		</section>
+
+		<div class="met_clear"></div>
+
+        <div class="met_module2_list">
+			<ul>
+				<!--{php $tags=tag("table=news&condition=status=3 and username='$username'&pagesize=20&order=addtime desc&template=null");}-->
+				{loop $tags $v}
+				<li class="list_1">
+					
+					<h2><a href="{$v[linkurl]}" title="{$v[title]}" target='_self'><i class="fa fa-caret-right"></i>{$v[title]}</a></h2>
+					
+					<span class='time'>{timetodate($v[addtime], 3)}</span>
+				</li>
+				{/loop}
+			</ul>
+			
+		    <div class="pages">{$pages}</div>
+		
+		</div>
+
+	</div>
+    </article>
+    <div class="met_clear"></div>
+</section>
+{/if}
+{else}
+<section class="met_section ">
+		<section class="met_section_head">
+			<i class="fa fa-home"></i>
+			<a href="{$COM[linkurl]}" title="网站首页">网站首页</a> &gt; <a href="{$COM[linkurl]}news" >{$MENU[$menuid][name]}</a> >
+		</section>
+
+    <aside class="left_aside">
+
+		<section class="met_aside">
+			<h2>
+				<span>新闻中心</span>
+			</h2>
+			<div class="met_aside_list">
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news'  title='新闻' class="zm"><span>新闻列表</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=1'  title='新闻' class="zm"><span>热门新闻</span></a></dt></dl>
+				<dl class="list-none navnow"><dt id='part2_19'><a href='{$COM[linkurl]}news/index.php?type=2'  title='新闻' class="zm"><span>最新新闻</span></a></dt></dl>
+				<div class="met_clear"></div>
+			</div>
+		</section>
+
+		<div class='bianjiqi'><a rel="nofollow" target="_blank" href="{userurl($username, 'file=buy', $domain)}"><img src="{$HSPATH}1434509853.jpg" title="留言中心" alt="留言中心" width="230" height="80">
+		</a><br />
+<br />
+<a href="#"><img alt="" src="{$HSPATH}1434601193.jpg" style="width: 230px; height: 80px;" /></a><br /></div>
+
+    </aside>
+
+    <article>
+	
+	
+		<div class="met_article">
+
+		<section class="met_article_head">
+			<h1>
+				<span>{$MENU[$menuid][name]}</span>
+			</h1>
+		</section>
+
+		<div class="met_clear"></div>
+
+        <div class="met_module2_list">
+			<ul>
+				{loop $lists $v}
+				<li class="list_1">
+					<h2><a href="{$v[linkurl]}" title="{$v[title]}" target='_self'><i class="fa fa-caret-right"></i>{$v[title]}</a></h2>		
+					<span class='time'>{timetodate($v[addtime], 3)}</span>
+				</li>
+				{/loop}
+			</ul>
+			
+		   <div class="pages">{$pages}</div>
+		
+		</div>
+
+	</div>
+    </article>
+    <div class="met_clear"></div>
+</section>
+{/if}
+{template 'footer', $template}

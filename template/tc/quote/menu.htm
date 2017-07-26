@@ -1,0 +1,54 @@
+<!-- page-nav -->
+<div class="page-nav">
+    <?php $tagss = tag("moduleid=7&table=category&fields=catid,catname,style,item&condition=moduleid=7 and parentid=0&pagesize=30&order=listorder ASC&template=null")?>
+    <div class="w1200 box-center">
+        <ul class="page-nav-main clearfix">
+            <li class="page-sub-nav current">
+                <a href="<?php echo $MODULE['7']['linkurl'];?>">医疗科技网</a>
+            </li>
+            <li class="page-sub-nav page-sub-nav-ver">
+                <a href="search.php?catid={$project_catid}&qixie=0&cooperate=0&stype=0">科技项目转化<i class="arrow"></i></a>
+                <ul>
+                  <li><a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&stype=1')}">技术成果</a></li>
+                  <li><a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&stype=0')}">技术需求</a></li>
+                  <li><a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&stype=2')}">实验外包</a></li>
+                </ul>
+            </li>
+            <li class="page-sub-nav page-sub-nav-lg">
+                <a href="search.php?catid={$clinic_catid}&qixie=0&cooperate=0&stype=0">{strip_tags(cat_pos(get_cat($clinic_catid), '/'))}<i class="arrow"></i></a>
+                <ul>
+                  <li><a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$clinic_catid.'&stype=1')}">提供临床科研咨询及注册</a></li>
+                  <li><a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$clinic_catid.'&stype=0')}">临床科研咨询及注册需求</a></li>
+                </ul>
+            </li>
+            <li class="page-sub-nav page-sub-nav-ver">
+                <a href="solution.php">项目解决方案<i class="arrow"></i></a>
+                <ul>
+                  <li><a href="solution.php?action=kyxmzh#kyxmzh_div">科技项目转化</a></li>
+                  <li><a href="solution.php?action=zltxfd#zltxfd_div">质量体系辅导</a></li>
+                  <li><a href="solution.php?action=sczyxk#sczyxk_div">生产经营许可证</a></li>
+                  <li><a href="solution.php?action=cpzc#cpzc_div">开放实验室</a></li>
+                  <li><a href="solution.php?action=lczx#lczx_div">注册临床咨询</a></li>
+                  <li><a href="solution.php?action=zfzjxmsb#zfzjxmsb_div">政府项目申报</a></li>
+                </ul>
+            </li>
+            <li class="page-sub-nav page-sub-nav-ver">
+                <a href="news.php">新闻资讯<i class="arrow"></i></a>
+                <ul>
+                  <li><a href="{rewrite('news.php?catid='.$news_xiangmu_catid)}">项目申报</a></li>
+                  <li><a href="{rewrite('news.php?catid='.$news_zhengce_catid)}">政策资讯</a></li>
+                  <li><a href="{rewrite('news.php?catid='.$news_hangye_catid)}">注册标准</a></li>
+                  <li><a href="{rewrite('news.php?catid='.$news_keji_catid)}">科技前沿</a></li>
+                </ul>
+            </li>
+
+            <li class="page-sub-nav"><a href="contactus.php">关于我们</a></li>
+        </ul>
+    </div>
+</div>
+<!-- page-nav -->
+
+
+
+
+

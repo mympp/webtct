@@ -1,0 +1,69 @@
+{template 'header'}
+{template 'lay','tag'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';
+Dd("yourmdmore").innerText="信息首页";
+</script>	
+<div class="autoheight pt5 whitebg">
+	<dl class="options">		
+														
+														<dt>{$MOD[name]}范围：</dt>
+														<dd class="autoheight"><a {if $catid==''} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('index.php?areaid='.$areaid.'&kw='.urlencode($kw).'')}">全部</a>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$t[catid].'&kw='.urlencode($kw).'')}" {if $t[catid]==$catid||$t[catid]==$l[1]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+														</dl>
+															{if $childa!=0}
+															<dl class="options">
+															<dt>{$parenta}的分类：</dt>
+															<dd><a {if $catid==$catida} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&catid='.$catida)}">全部</a>
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catida&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&catid='.$t[catid].'&kw='.urlencode($kw).'')}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[2]}
+																	{php $childb=$t[child];$parentb=$t[catname];$catidb=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+															</dl>
+															{/if}
+
+														<form action="{$MOD[linkurl]}search.php" id="fsearch">
+														<input type="hidden" name="areaid" value="{$areaid}">
+														<input type="hidden" name="typeid" value="{$typeid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="vip" value="{$vip}">
+			                                            <input type="hidden" name="thumb" value="{$thumb}">
+                                                        {template 'search', 'chip'}
+														</form>
+														</div>
+<div class="divline"></div>
+<div class="autoheight whitebg">
+<dl class="autoheight pt5 whitebg pd10" id='brandlist'>
+<dt class='xdline ocolor '><b>{$parenta} {$kw} 相关的信息列表</b></dt>
+<dd>
+					
+		{if $tags}
+		{template 'thumb-brand','tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+</dd>
+</dl>
+{if $parenta}
+<script type="text/javascript">
+Dd('topbrand').innerText=' > {$parenta}/品牌';
+</script>
+{/if}
+{template $module,'leftmenu'}
+<script type="text/javascript">
+Dd('sidebar').innerHTML=Dd('{$module}sidebar').innerHTML;
+Dd('youcantext').innerText="快捷通道";
+</script>
+<div class="divline"></div>
+{template 'footer'}
+

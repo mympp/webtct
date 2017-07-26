@@ -1,0 +1,10 @@
+<!--产品内容-->
+<div class="swiper-slide">
+<div id="mtab{$v['catid']}" class="card product-card">
+{php $rpage = rand(0,9);}
+{php $put_page = $rpage*10;}
+{tag("table=sogex_info_mall&condition=status=3 and thumb <> ''&pagesize=10&page=$put_page&order=itemid desc&template=list_sogex_mmall")}
+</div>
+<input type="hidden" id="page{$v['catid']}" value="1" />
+</div>
+<!--产品内容 end-->

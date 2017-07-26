@@ -1,0 +1,52 @@
+{php $head_css = [DT_SKIN.'tc.page.header.css',DT_SKIN.'tc.list.base.css',DT_SKIN.'tc.news.list.css']}
+{php $footer_js = [DT_PATH.'file/script/article/tc.news.list.js']}
+{template 'module-header'}
+
+<!--news-wrap-->
+<div class="news-wrap">
+    <div class="post-content clearfix">
+        <!--post-content-main-->
+        <div class="post-content-main pull-left">
+            <div class="post-col-name clearfix">
+                <h2 class="pull-left">{$catname}</h2>
+                <div class="post-show-switch pull-right">
+                    <a href="javascript:;" id="listSwitch" class="current"><i class="n-i pull-left"></i><span class="pull-left">列表</span></a>
+                    <a href="javascript:;" id="cardSwitch"><i class="n-i pull-left"></i><span class="pull-left">卡片</span></a>
+                </div>
+            </div>
+
+            <ul class="post-card-list clearfix">
+            {loop $lists $k $v}
+                <li class="post-card clearfix">
+                    <div class="post-card-img pull-left">
+                        <a href="{$MODULE[21]['linkurl']}{$v['linkurl']}" target="_blank"><img onerror="this.src='{DT_SKIN}image/nopic.gif'" src="{$v['thumb']}"></a>
+                    </div>
+                    <div class="post-card-txt pull-right">
+                        <h3 class="post-card-title text-overflow"><a href="{$MODULE[21]['linkurl']}{$v['linkurl']}" target="_blank" class="em">{$v['title']}</a></h3>
+                        <div class="post-card-desc">
+                            {$v['introduce']}
+                        </div>
+                        <div class="post-card-info clearfix">
+                            <span class="post-card-date pull-left"><i class="n-i n-i-time"></i>{date('Y-m-d',$v['addtime'])}</span>
+                            <span class="post-card-source pull-left"><i class="n-i n-i-source"></i>{$v['copyfrom']}</span>
+                            <span class="post-card-view pull-right"><i class="n-i n-i-view"></i>{$v['hits']}</span>
+                        </div>
+                    </div>
+                </li>
+           {/loop}
+
+            </ul>
+
+             {pagination($page,$items['c'],$pagesize,$MODULE[21]['linkurl'].'search.php',$selector,'article_rewrite',$MODULE[21]['linkurl'])}
+
+
+        </div>
+        <!--post-content-main end-->
+
+        {template 'side-right',$module}
+
+    </div>
+</div>
+<!--news-wrap end-->
+
+{template 'footer2017'}

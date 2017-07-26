@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>天成医疗访问量综合统计</title>
+    <meta name="keywords" content="天成医疗,访问量,统计"/>
+    <meta name="description" content="天成医疗访问量综合统计"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        *{font-family:"Microsoft YaHei","微软雅黑","Hiragino Sans GB",STHeiti,simsun,sans-serif,Arial}
+        body{padding-top:50px}
+        .navbar-fixed-top{border:0}
+        @media (min-width:768px){.sidebar{position:fixed;top:51px;bottom:0;left:0;z-index:1000;display:block;overflow-x:hidden;overflow-y:auto;padding:20px;border-right:1px solid #eee;background-color:#f5f5f5}
+            .sidebar .nav li{border-bottom:1px solid #eee;line-height:1.4}
+            .sidebar .nav li p{margin:0}
+            .sidebar .nav li span{display:block;font-size:12px}
+        }
+        .nav-sidebar{margin-right:-21px;margin-bottom:20px;margin-left:-20px}
+        .nav-sidebar>li>a{padding-right:20px;padding-left:20px}
+        .nav-sidebar>.active>a,.nav-sidebar>.active>a:focus,.nav-sidebar>.active>a:hover{background-color:#428bca;color:#fff}
+        .main{padding:20px}
+        @media (min-width:768px){.main{padding-right:40px;padding-left:40px}
+        }
+        .main .page-header{margin-top:0;padding-bottom:0;border:none}
+        .main .page-header h2{margin-top:10px;padding-bottom:15px;border-bottom:1px solid #ddd}
+        .main .page-header h2 span{display:none}
+        .main .page-header h2 em,.main .page-header h2 i{color:#666;font-style:normal;font-size:14px}
+        .main .page-header h2 em{margin-left:10px}
+        .main .page-header .nav-tabs{margin-top:10px;text-align:center;font-size:18px}
+        .main .page-header .nav-tabs>li>a{line-height:1.5}
+        .placeholders{margin-bottom:30px;text-align:center}
+        .placeholders .placeholder{margin-top:20px}
+        .placeholders i{display:block;margin:0 auto;width:100px;height:100px;border-radius:50%;background-color:#428bca;color:#fff;text-align:center;font-weight:200;font-style:normal;font-size:26px;line-height:100px;cursor:pointer}
+        .placeholders .placeholder:nth-child(0) i{background-color:#408dff}
+        .placeholders .placeholder:nth-child(1) i{background-color:#ff604a}
+        .placeholders .placeholder:nth-child(2) i{background-color:#00d097}
+        .placeholders .placeholder:nth-child(3) i{background-color:#11c3ff}
+        .placeholders .placeholder:nth-child(4) i{background-color:#408dff}
+        .placeholders .placeholder:nth-child(5) i{background-color:#ff893b}
+        .placeholders .placeholder:nth-child(0) h3{color:#408dff}
+        .placeholders .placeholder h3{font-weight:200}
+        .placeholders .placeholder:nth-child(1) h3{color:#ff604a}
+        .placeholders .placeholder:nth-child(2) h3{color:#00d097}
+        .placeholders .placeholder:nth-child(3) h3{color:#11c3ff}
+        .placeholders .placeholder:nth-child(4) h3{color:#408dff}
+        .placeholders .placeholder:nth-child(5) h3{color:#ff893b}
+        .placeholders h3{margin-top:10px;margin-bottom:0}
+        .placeholder{margin-bottom:20px}
+        .placeholder .text-muted{color:#444;line-height:1.5}
+        .placeholder .text-muted img{width:22px;height:22px}
+        .placeholder.more{color:#666;text-decoration:none}
+        .placeholder.more i{background-color:#ccc;line-height:105px}
+        .navbar-header .navbar-brand{font-weight:700}
+        .navbar-header .navbar-brand img{display:inline-block;margin-right:10px;width:22px;vertical-align:middle}
+        #navbar li.sub>*{text-indent:15px}
+        #navbar li.sub{position:relative}
+        #navbar li.sub:after{position:absolute;top:25px;left:20px;width:4px;height:4px;border-radius:50%;background-color:#337AB6;content:''}
+        #navbar li.active.sub:after{background-color:#fff}
+        .modal-body .table{margin-bottom:0;color:#555;font-size:15px}
+        .refresh-btn{position:fixed;top:8px;right:10px;z-index:1031;width:44px;height:34px;outline:0;border:1px solid #303030;border-radius:4px;background-color:transparent;color:#fff;font-size:18px;line-height:34px}
+        @media screen and (max-width:767px){.nav-sidebar{margin-top:10px}
+            .nav-sidebar>.active>a,.nav-sidebar>.active>a:focus,.nav-sidebar>.active>a:hover,.nav>li>a:focus,.nav>li>a:hover{background-color:transparent}
+            .sidebar .nav li p,.sidebar .nav li span{display:inline-block}
+            .nav-sidebar>li>a{padding:10px 5px;color:#fff}
+            .sidebar .nav li p{margin-bottom:0}
+            .sidebar .nav li span{margin-left:5px;font-size:12px}
+            .navbar-fixed-top .navbar-collapse{max-height:364px}
+            #navbar li.sub>*{text-indent:8px}
+            #navbar li.sub:after{top:18px;left:5px;background-color:#fff}
+            .main .page-header h2{margin-top:0;border-bottom:none;font-size:24px}
+            .main .page-header h2 span{display:inline-block;color:#666;font-size:12px}
+            .main .page-header h2 em{display:block;margin:10px 0 0 0;font-size:12px}
+            .main .page-header .nav-tabs{float:none;margin:0}
+            .refresh-btn{right:70px}
+        }
+        @-webkit-keyframes scale{0%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
+            45%{opacity:.7;-webkit-transform:scale(.1);transform:scale(.1)}
+            80%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
+        }
+        @keyframes scale{0%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
+            45%{opacity:.7;-webkit-transform:scale(.1);transform:scale(.1)}
+            80%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
+        }
+        .ball-pulse>span:nth-child(0){-webkit-animation:scale .75s 0s infinite cubic-bezier(.2,.68,.18,1.08);animation:scale .75s 0s infinite cubic-bezier(.2,.68,.18,1.08)}
+        .ball-pulse>span:nth-child(1){-webkit-animation:scale .75s .12s infinite cubic-bezier(.2,.68,.18,1.08);animation:scale .75s .12s infinite cubic-bezier(.2,.68,.18,1.08)}
+        .ball-pulse>span:nth-child(2){-webkit-animation:scale .75s .24s infinite cubic-bezier(.2,.68,.18,1.08);animation:scale .75s .24s infinite cubic-bezier(.2,.68,.18,1.08)}
+        .ball-pulse>span:nth-child(3){-webkit-animation:scale .75s .36s infinite cubic-bezier(.2,.68,.18,1.08);animation:scale .75s .36s infinite cubic-bezier(.2,.68,.18,1.08)}
+        .ball-pulse>span{display:inline-block;margin:2px 3px;width:8px;height:8px;border-radius:100%;background-color:#ccc;-webkit-animation-fill-mode:both;animation-fill-mode:both}
+        th.sort-header::-moz-selection{background:0 0}
+        th.sort-header::selection{background:0 0}
+        th.sort-header{cursor:pointer}
+        table th.sort-header:after{float:right;visibility:hidden;margin-top:7px;border-color:#404040 transparent;border-style:solid;border-width:0 4px 4px;content:''}
+        table th.sort-header:hover:after{visibility:visible}
+        table th.sort-down:after,table th.sort-down:hover:after,table th.sort-up:after{visibility:visible;opacity:.4}
+        table th.sort-up:after{border-width:4px 4px 0;border-bottom:none}
+        .table>thead>tr>th{border-bottom:1px solid #ddd;font-size:16px}
+        .table-hover>tbody>tr.info{color:#337ab7}
+        @media (min-width:768px){.modal-sm{width:400px}
+        }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.tecenet.com/" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzIwQkYzQzc2REM4MTFFNkE5MkQ5OTE3RDczOTEwMzEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzIwQkYzQzg2REM4MTFFNkE5MkQ5OTE3RDczOTEwMzEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDMjBCRjNDNTZEQzgxMUU2QTkyRDk5MTdENzM5MTAzMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDMjBCRjNDNjZEQzgxMUU2QTkyRDk5MTdENzM5MTAzMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuQ7CusAAAW2SURBVHjaTFVZbFRVGP7unXtnXzrd6cKUFqQFLUvKLmgBsQEVUB5EH0RfVAKGhCDGGIKAPhhQIlFREDEuJGgMxlQQKFsQi2gtFESQLrRDGTqdzsztLJ25m/8506gnuXfm4dz//P+3HaGjqrLBlIX9gilUwzAAmPQIMEZGIMgSBEkGRIF+Jah3+iF6PbCOKYMpCPj/oh3QlDjUnu5eqXriWqFjQiBEH5dooRBM0+SbLG43xHw/DGWYnjgsBYXQ7oXhmjMbFbv3QHS6oA4NweLzQrTZodK3otMBKc+P8McfILxz55DQMT5g6rE4HA0N8C57jBdVWlrgnj+f2hAxcrUD0YOfQVdSGH/iJ/gWL0H44AGIViv0ZBJqfxDumbORHRhA0XPP83mv1VarEgx9WFfinoIXX4ancRFMBoHPD+ga7JPvh5FVIVARQU5zeNgqWvMCRm78heBrm5DpuQ1n/VRelC0tGqXmPAmJ40P4GQl2+h2Yug619zZ0OtrVMANSQT6MdJpjb6TS/OP4yeOIfX8EjqnT4aCiKZoqG+xDyfoNMFUVpqZBgmihwlbEfzgCqaQE+lAEWmwIhmZADQZhqxxL+NmhpzMcJoMO7t/yBsYdOgw9kcDwsaMo3bgJN5sWw/3wQjjqJvHDRfaSCvxInmrB4P5PIBAZ/pWr4JszF6F3dyF9rQPOGbO4YCw+H43eA+u4KtgDVVB+bEbkwD5eyPFAPYZpElHiIIC/zVHJuGfNhr22Fuq9EGyTJsPi8RBECT4JE6JG0zinTUdg76fIhgeQavsNAilEOd2Cind2IXv3LtR4/L+OWTsMW29TE8S8PIIiBltVFRy1E2FmsrDVTOCFBYLN4nTSCRq6Vq1E/upncd/JM+jbuAGZ7i7YysqoS5OTzQsLsswlHtq+Damfz8OIRDB06CuEP/qQ9hkEj41PlSVy2YocPoSSza/D/8QKSARP9TdHcG/P7tzYzEjEjXC1bryiK4pHDQ0QMax87tFGx7EW+YikJHUrwkq4Fr60FnJxMeSKSqgEB4PKFgiQ/G7QdBkox48hcfZsVLhcVqwIFtFTvGkz5KIiYj8NubAIkK3c0iaZYOTvm4h+8TkynZ1QE6QOOllw23ghkLX1jMmbsTgpAiwWOrQiKqn9Ayh//z2uwWTb70i0/kKdBcj3Ctek4HKTnF6FY8pU3FryKDzzZkIbjFCHnXyqyh1bYVIz2bv9xJWJxNFmmGQqUbACHtJf5Ltv0fnMao5D8o82BNevQ/CVdUhcOM+JlSh4GIF2klXF3n3wLm2Cf8li5K18isPjW/Y4NCpuqDqfQmKtZ27d4vrzNC7EyPXrRJYVMjHMLJzp6iLS+nMSIgbV3l7okUHkr1kDi9+P9JXLlCMKUq2tJMtiXjS3lymfHtesOfA0TOP/9WgMrsZGOMnSzN4sxZjEuDIzlBfEcuZ2D1IXW5G8dBHuufMIHtL1r5fIna5RHZPurGRb5cwpBHe8Bf/TqynZFiB1oZX8T8n14HxIXlKGEh+NVDJNMgWdojLb3Q21r487kiUjS0NTU3OFWZ6mr7RTrtrgX76c+99RX0/Bk4Q2EIJrwUN8I8OZYSyPDfBuddK6XFpKRhqHoa+/xPCJk4T70n8DSzTULA/u/BVPwrtwEeKUWhnqxEKpZnG5kCTyVFakpJQXdtRP4Q4EGcdWW4dYczM8TUsxTPoN79oNecwY7gTRHDE8HGc+J7uKLBBJv2Vb3kTp1u1kTzvkggLCNsO1ynI4ef4c9BTBEY8h+ecNxKjjmtPnYK0JQI9FWSWP0F7ovyNXlJeVbdtBIT2Uw5VuBGtNDS/GMGSuC729Hen2drIsxSwxL3q9OZ2TqlhouRc9Ap2cyPfbbGGhra5qqhSO71OHYxOt5eUQHE5oNLpJ7LOCDCaN5MUuVWqAbpgMY4aHOVOQYLfnlDQ4yA8THI5OQVPX/iPAABjkppLrZijRAAAAAElFTkSuQmCC" alt="天成医疗访问量综合统计">天成医疗访问量综合统计</a>
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar"  role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#platform" aria-controls="platform" role="tab" data-toggle="tab"><p>天成医疗平台</p><span>All Platform</span></a>
+                    </li>
+                    <li role="presentation" class="sub">
+                        <a href="#tecenet" aria-controls="tecenet" role="tab" data-toggle="tab"><p>天成医疗网</p><span>(www.tecenet.com)</span></a>
+                    </li>
+                    <li role="presentation" class="sub">
+                        <a href="#xiu17" aria-controls="xiu17" role="tab" data-toggle="tab"><p>秀医器</p><span>(xiu17.com)</span></a>
+                    </li>
+                    <li role="presentation" class="sub">
+                        <a href="#dsp" aria-controls="dsp" role="tab" data-toggle="tab"><p>天成DSP</p><span>(dsp.tecenet.com)</span></a>
+                    </li>
+                    <li role="presentation" class="sub">
+                        <a href="#yixieweixiu" aria-controls="yixieweixiu" role="tab" data-toggle="tab"><p>医械维修论坛</p><span>(yixieweixiu.com)</span></a>
+                    </li>
+                    <li role="presentation" class="sub">
+                        <a href="#job" aria-controls="job" role="tab" data-toggle="tab"><p>天成医疗人才网</p><span>(job.tecenet.com)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="tab-content">
+                <!--天成医疗平台-->
+                <div role="tabpanel" class="tab-pane fade active in" id="platform">
+                    <button type="button" class="refresh-btn" onclick="refresh('platform',14914538)"><span class="glyphicon glyphicon-refresh"></span></button>
+                    <div class="page-header row">
+                        <h2 class="col-xs-12 col-sm-8">天成医疗平台<span>（tecenet.com）</span><em>更新时间：<i class="time"></i></em></h2>
+                        <ul class="nav nav-tabs col-xs-12 col-sm-4 row" role="tablist">
+                            <li role="presentation" class="col-xs-6 col-sm-6 active"><a href="#platform_IP"  role="tab" data-toggle="tab">IP</a></li>
+                            <li role="presentation" class="col-xs-6 col-sm-6"><a href="#platform_PV" role="tab" data-toggle="tab">PV</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!--IP-->
+                        <div id="platform_IP" role="tabpanel" class="tab-pane fade active in row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTD');">今日</i>
+                                <h3>今日IP量</h3>
+                                <h4 class="text-muted td"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYS');">昨日</i>
+                                <h3>昨日IP量</h3>
+                                <h4 class="text-muted ys"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTM');">本月</i>
+                                <h3>本月IP量</h3>
+                                <h4 class="text-muted tm"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTL');">总量</i>
+                                <h3>总IP量</h3>
+                                <h4 class="text-muted tl"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?14914538" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--IP end-->
+                        <!--PV-->
+                        <div id="platform_PV" role="tabpanel" class="tab-pane fade row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTDV');">今日</i>
+                                <h3>今日PV量</h3>
+                                <h4 class="text-muted tdv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYSV');">昨日</i>
+                                <h3>昨日PV量</h3>
+                                <h4 class="text-muted ysv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTMV');">本月</i>
+                                <h3>本月PV量</h3>
+                                <h4 class="text-muted tmv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTLV');">总量</i>
+                                <h3>总PV量</h3>
+                                <h4 class="text-muted tlv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?14914538" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--PV end-->
+                    </div>
+                </div>
+                <!--天成医疗平台 end-->
+
+                <!--天成医疗网-->
+                <div role="tabpanel" class="tab-pane fade" id="tecenet">
+                    <button type="button" class="refresh-btn" onclick="refresh('tecenet',18964877)"><span class="glyphicon glyphicon-refresh"></span></button>
+                    <div class="page-header row">
+                        <h2 class="col-xs-12 col-sm-8">天成医疗网<span>（www.tecenet.com）</span><em>更新时间：<i class="time"></i></em></h2>
+                        <ul class="nav nav-tabs col-xs-12 col-sm-4 row" role="tablist">
+                            <li role="presentation" class="col-xs-6 col-sm-6 active"><a href="#tecenet_IP"  role="tab" data-toggle="tab">IP</a></li>
+                            <li role="presentation" class="col-xs-6 col-sm-6"><a href="#tecenet_PV" role="tab" data-toggle="tab">PV</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!--IP-->
+                        <div id="tecenet_IP" role="tabpanel" class="tab-pane fade active in row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTD');">今日</i>
+                                <h3>今日IP量</h3>
+                                <h4 class="text-muted td"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYS');">昨日</i>
+                                <h3>昨日IP量</h3>
+                                <h4 class="text-muted ys"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTM');">本月</i>
+                                <h3>本月IP量</h3>
+                                <h4 class="text-muted tm"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTL');">总量</i>
+                                <h3>总IP量</h3>
+                                <h4 class="text-muted tl"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18964877" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--IP end-->
+                        <!--PV-->
+                        <div id="tecenet_PV" role="tabpanel" class="tab-pane fade row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTDV');">今日</i>
+                                <h3>今日PV量</h3>
+                                <h4 class="text-muted tdv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYSV');">昨日</i>
+                                <h3>昨日PV量</h3>
+                                <h4 class="text-muted ysv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTMV');">本月</i>
+                                <h3>本月PV量</h3>
+                                <h4 class="text-muted tmv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTLV');">总量</i>
+                                <h3>总PV量</h3>
+                                <h4 class="text-muted tlv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18964877" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--PV end-->
+                    </div>
+                </div>
+                <!--天成医疗网 end-->
+
+                <!--秀医器-->
+                <div role="tabpanel" class="tab-pane fade" id="xiu17">
+                    <button type="button" class="refresh-btn" onclick="refresh('xiu17',18910614)"><span class="glyphicon glyphicon-refresh"></span></button>
+                    <div class="page-header row">
+                        <h2 class="col-xs-12 col-sm-8">秀医器 <span>（xiu17.com）</span><em>更新时间：<i class="time"></i></em></h2>
+                        <ul class="nav nav-tabs col-xs-12 col-sm-4 row" role="tablist">
+                            <li role="presentation" class="col-xs-6 col-sm-6 active"><a href="#xiu17_IP"  role="tab" data-toggle="tab">IP</a></li>
+                            <li role="presentation" class="col-xs-6 col-sm-6"><a href="#xiu17_PV" role="tab" data-toggle="tab">PV</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!--IP-->
+                        <div id="xiu17_IP" role="tabpanel" class="tab-pane fade active in row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTD');">今日</i>
+                                <h3>今日IP量</h3>
+                                <h4 class="text-muted td"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYS');">昨日</i>
+                                <h3>昨日IP量</h3>
+                                <h4 class="text-muted ys"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTM');">本月</i>
+                                <h3>本月IP量</h3>
+                                <h4 class="text-muted tm"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTL');">总量</i>
+                                <h3>总IP量</h3>
+                                <h4 class="text-muted tl"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18910614" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--IP end-->
+                        <!--PV-->
+                        <div id="xiu17_PV" role="tabpanel" class="tab-pane fade row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTDV');">今日</i>
+                                <h3>今日PV量</h3>
+                                <h4 class="text-muted tdv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYSV');">昨日</i>
+                                <h3>昨日PV量</h3>
+                                <h4 class="text-muted ysv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTMV');">本月</i>
+                                <h3>本月PV量</h3>
+                                <h4 class="text-muted tmv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTLV');">总量</i>
+                                <h3>总PV量</h3>
+                                <h4 class="text-muted tlv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18910614" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--PV end-->
+                    </div>
+                </div>
+                <!--秀医器 end-->
+
+                <!--天成DSP-->
+                <div role="tabpanel" class="tab-pane fade" id="dsp">
+                    <button type="button" class="refresh-btn" onclick="refresh('dsp',18959699)"><span class="glyphicon glyphicon-refresh"></span></button>
+                    <div class="page-header row">
+                        <h2 class="col-xs-12 col-sm-8">天成DSP <span>（dsp.tecenet.com）</span><em>更新时间：<i class="time"></i></em></h2>
+                        <ul class="nav nav-tabs col-xs-12 col-sm-4 row" role="tablist">
+                            <li role="presentation" class="col-xs-6 col-sm-6 active"><a href="#dsp_IP"  role="tab" data-toggle="tab">IP</a></li>
+                            <li role="presentation" class="col-xs-6 col-sm-6"><a href="#dsp_PV" role="tab" data-toggle="tab">PV</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!--IP-->
+                        <div id="dsp_IP" role="tabpanel" class="tab-pane fade active in row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTD');">今日</i>
+                                <h3>今日IP量</h3>
+                                <h4 class="text-muted td"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYS');">昨日</i>
+                                <h3>昨日IP量</h3>
+                                <h4 class="text-muted ys"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTM');">本月</i>
+                                <h3>本月IP量</h3>
+                                <h4 class="text-muted tm"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTL');">总量</i>
+                                <h3>总IP量</h3>
+                                <h4 class="text-muted tl"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18959699" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--IP end-->
+                        <!--PV-->
+                        <div id="dsp_PV" role="tabpanel" class="tab-pane fade row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTDV');">今日</i>
+                                <h3>今日PV量</h3>
+                                <h4 class="text-muted tdv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYSV');">昨日</i>
+                                <h3>昨日PV量</h3>
+                                <h4 class="text-muted ysv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTMV');">本月</i>
+                                <h3>本月PV量</h3>
+                                <h4 class="text-muted tmv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTLV');">总量</i>
+                                <h3>总PV量</h3>
+                                <h4 class="text-muted tlv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18959699" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--PV end-->
+                    </div>
+                </div>
+                <!--天成DSP end-->
+
+                <!--医械维修论坛-->
+                <div role="tabpanel" class="tab-pane fade" id="yixieweixiu">
+                    <button type="button" class="refresh-btn" onclick="refresh('yixieweixiu',18959698)"><span class="glyphicon glyphicon-refresh"></span></button>
+                    <div class="page-header row">
+                        <h2 class="col-xs-12 col-sm-8">医械维修论坛 <span>（yixieweixiu.com）</span><em>更新时间：<i class="time"></i></em></h2>
+                        <ul class="nav nav-tabs col-xs-12 col-sm-4 row" role="tablist">
+                            <li role="presentation" class="col-xs-6 col-sm-6 active"><a href="#yixieweixiu_IP"  role="tab" data-toggle="tab">IP</a></li>
+                            <li role="presentation" class="col-xs-6 col-sm-6"><a href="#yixieweixiu_PV" role="tab" data-toggle="tab">PV</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!--IP-->
+                        <div id="yixieweixiu_IP" role="tabpanel" class="tab-pane fade active in row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTD');">今日</i>
+                                <h3>今日IP量</h3>
+                                <h4 class="text-muted td"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYS');">昨日</i>
+                                <h3>昨日IP量</h3>
+                                <h4 class="text-muted ys"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTM');">本月</i>
+                                <h3>本月IP量</h3>
+                                <h4 class="text-muted tm"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTL');">总量</i>
+                                <h3>总IP量</h3>
+                                <h4 class="text-muted tl"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18959698" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--IP end-->
+                        <!--PV-->
+                        <div id="yixieweixiu_PV" role="tabpanel" class="tab-pane fade row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTDV');">今日</i>
+                                <h3>今日PV量</h3>
+                                <h4 class="text-muted tdv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYSV');">昨日</i>
+                                <h3>昨日PV量</h3>
+                                <h4 class="text-muted ysv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTMV');">本月</i>
+                                <h3>本月PV量</h3>
+                                <h4 class="text-muted tmv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTLV');">总量</i>
+                                <h3>总PV量</h3>
+                                <h4 class="text-muted tlv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?18959698" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--PV end-->
+                    </div>
+                </div>
+                <!--医械维修论坛 end-->
+
+                <!--天成医疗人才网-->
+                <div role="tabpanel" class="tab-pane fade" id="job">
+                    <button type="button" class="refresh-btn" onclick="refresh('job',17742009)"><span class="glyphicon glyphicon-refresh"></span></button>
+                    <div class="page-header row">
+                        <h2 class="col-xs-12 col-sm-8">天成医疗人才网 <span>（job.tecenet.com）</span><em>更新时间：<i class="time"></i></em></h2>
+                        <ul class="nav nav-tabs col-xs-12 col-sm-4 row" role="tablist">
+                            <li role="presentation" class="col-xs-6 col-sm-6 active"><a href="#job_IP"  role="tab" data-toggle="tab">IP</a></li>
+                            <li role="presentation" class="col-xs-6 col-sm-6"><a href="#job_PV" role="tab" data-toggle="tab">PV</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <!--IP-->
+                        <div id="job_IP" role="tabpanel" class="tab-pane fade active in row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTD');">今日</i>
+                                <h3>今日IP量</h3>
+                                <h4 class="text-muted td"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYS');">昨日</i>
+                                <h3>昨日IP量</h3>
+                                <h4 class="text-muted ys"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTM');">本月</i>
+                                <h3>本月IP量</h3>
+                                <h4 class="text-muted tm"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTL');">总量</i>
+                                <h3>总IP量</h3>
+                                <h4 class="text-muted tl"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?17742009" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--IP end-->
+                        <!--PV-->
+                        <div id="job_PV" role="tabpanel" class="tab-pane fade row placeholders">
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrOL');">当前</i>
+                                <h3>在线人数</h3>
+                                <h4 class="text-muted ol"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTDV');">今日</i>
+                                <h3>今日PV量</h3>
+                                <h4 class="text-muted tdv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrYSV');">昨日</i>
+                                <h3>昨日PV量</h3>
+                                <h4 class="text-muted ysv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTMV');">本月</i>
+                                <h3>本月PV量</h3>
+                                <h4 class="text-muted tmv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 placeholder">
+                                <i onclick="contrastDate(this,'arrTLV');">总量</i>
+                                <h3>总PV量</h3>
+                                <h4 class="text-muted tlv"><span class="loader-inner ball-pulse"><span></span><span></span><span></span></span></h4>
+                            </div>
+                            <a class="col-xs-6 col-sm-4 placeholder more" href="http://www.51.la/?17742009" target="_blank">
+                                <i class="glyphicon glyphicon-option-horizontal"></i>
+                                <h3>查看详细</h3>
+                            </a>
+                        </div>
+                        <!--PV end-->
+                    </div>
+                </div>
+                <!--天成医疗人才网 end-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 数据引用-->
+<div class="hidden">
+    <!--
+        通过51.la自定义引用如下模板获取代码：
+        <div class="tl">$TL</div><div class="tm">$TM</div><div class="ys">$YS</div><div class="td">$TD</div><div class="ol">$OL</div>
+        <div class="tlv">$TLV</div><div class="tmv">$TMV</div><div class="ysv">$YSV</div><div class="tdv">$TDV</div>
+        #data_platform => 天成医疗全平台 14914538
+        #data_tecenet => 天成医疗 18964877
+        #data_xiu17 => 秀医器 18910614
+        #data_dsp => 天成DSP 18959699
+        #data_eydsp => 医扬电商 尚没开通
+        #data_yixieweixiu => 医械维修论坛 18959698
+        #data_job => 天成医疗人才网 17742009
+    -->
+    <div id="data_platform">
+        <script language="javascript" type="text/javascript" src="http://quote.51.la/?id=14914538&mb=%3Cdiv+class%3D%22tl%22%3E%24TL%3C%2Fdiv%3E%3Cdiv+class%3D%22tm%22%3E%24TM%3C%2Fdiv%3E%3Cdiv+class%3D%22ys%22%3E%24YS%3C%2Fdiv%3E%3Cdiv+class%3D%22td%22%3E%24TD%3C%2Fdiv%3E%3Cdiv+class%3D%22ol%22%3E%24OL%3C%2Fdiv%3E%3Cdiv+class%3D%22tlv%22%3E%24TLV%3C%2Fdiv%3E%3Cdiv+class%3D%22tmv%22%3E%24TMV%3C%2Fdiv%3E%3Cdiv+class%3D%22ysv%22%3E%24YSV%3C%2Fdiv%3E%3Cdiv+class%3D%22tdv%22%3E%24TDV%3C%2Fdiv%3E%7Caj%7C%7Caj%7C%7Caj%7C%7Caj%7C&target=ajiang%5F51la"></script>
+    </div>
+    <div id="data_tecenet">
+        <script language="javascript" type="text/javascript" src="http://quote.51.la/?id=18964877&mb=%3Cdiv+class%3D%22tl%22%3E%24TL%3C%2Fdiv%3E%3Cdiv+class%3D%22tm%22%3E%24TM%3C%2Fdiv%3E%3Cdiv+class%3D%22ys%22%3E%24YS%3C%2Fdiv%3E%3Cdiv+class%3D%22td%22%3E%24TD%3C%2Fdiv%3E%3Cdiv+class%3D%22ol%22%3E%24OL%3C%2Fdiv%3E%3Cdiv+class%3D%22tlv%22%3E%24TLV%3C%2Fdiv%3E%3Cdiv+class%3D%22tmv%22%3E%24TMV%3C%2Fdiv%3E%3Cdiv+class%3D%22ysv%22%3E%24YSV%3C%2Fdiv%3E%3Cdiv+class%3D%22tdv%22%3E%24TDV%3C%2Fdiv%3E%7Caj%7C%7Caj%7C%7Caj%7C%7Caj%7C&target=ajiang%5F51la"></script>
+    </div>
+    <div id="data_xiu17">
+        <script language="javascript" type="text/javascript" src="http://quote.51.la/?id=18910614&mb=%3Cdiv+class%3D%22tl%22%3E%24TL%3C%2Fdiv%3E%3Cdiv+class%3D%22tm%22%3E%24TM%3C%2Fdiv%3E%3Cdiv+class%3D%22ys%22%3E%24YS%3C%2Fdiv%3E%3Cdiv+class%3D%22td%22%3E%24TD%3C%2Fdiv%3E%3Cdiv+class%3D%22ol%22%3E%24OL%3C%2Fdiv%3E%3Cdiv+class%3D%22tlv%22%3E%24TLV%3C%2Fdiv%3E%3Cdiv+class%3D%22tmv%22%3E%24TMV%3C%2Fdiv%3E%3Cdiv+class%3D%22ysv%22%3E%24YSV%3C%2Fdiv%3E%3Cdiv+class%3D%22tdv%22%3E%24TDV%3C%2Fdiv%3E%7Caj%7C%7Caj%7C%7Caj%7C%7Caj%7C&target=ajiang%5F51la"></script>
+    </div>
+    <div id="data_dsp">
+        <script language="javascript" type="text/javascript" src="http://quote.51.la/?id=18959699&mb=%3Cdiv+class%3D%22tl%22%3E%24TL%3C%2Fdiv%3E%3Cdiv+class%3D%22tm%22%3E%24TM%3C%2Fdiv%3E%3Cdiv+class%3D%22ys%22%3E%24YS%3C%2Fdiv%3E%3Cdiv+class%3D%22td%22%3E%24TD%3C%2Fdiv%3E%3Cdiv+class%3D%22ol%22%3E%24OL%3C%2Fdiv%3E%3Cdiv+class%3D%22tlv%22%3E%24TLV%3C%2Fdiv%3E%3Cdiv+class%3D%22tmv%22%3E%24TMV%3C%2Fdiv%3E%3Cdiv+class%3D%22ysv%22%3E%24YSV%3C%2Fdiv%3E%3Cdiv+class%3D%22tdv%22%3E%24TDV%3C%2Fdiv%3E%7Caj%7C%7Caj%7C%7Caj%7C%7Caj%7C&target=ajiang%5F51la"></script>
+    </div>
+    <div id="data_yixieweixiu">
+        <script language="javascript" type="text/javascript" src="http://quote.51.la/?id=18959698&mb=%3Cdiv+class%3D%22tl%22%3E%24TL%3C%2Fdiv%3E%3Cdiv+class%3D%22tm%22%3E%24TM%3C%2Fdiv%3E%3Cdiv+class%3D%22ys%22%3E%24YS%3C%2Fdiv%3E%3Cdiv+class%3D%22td%22%3E%24TD%3C%2Fdiv%3E%3Cdiv+class%3D%22ol%22%3E%24OL%3C%2Fdiv%3E%3Cdiv+class%3D%22tlv%22%3E%24TLV%3C%2Fdiv%3E%3Cdiv+class%3D%22tmv%22%3E%24TMV%3C%2Fdiv%3E%3Cdiv+class%3D%22ysv%22%3E%24YSV%3C%2Fdiv%3E%3Cdiv+class%3D%22tdv%22%3E%24TDV%3C%2Fdiv%3E%7Caj%7C%7Caj%7C%7Caj%7C%7Caj%7C&target=ajiang%5F51la"></script>
+    </div>
+    <div id="data_job">
+        <script language="javascript" type="text/javascript" src="http://quote.51.la/?id=17742009&mb=%3Cdiv+class%3D%22tl%22%3E%24TL%3C%2Fdiv%3E%3Cdiv+class%3D%22tm%22%3E%24TM%3C%2Fdiv%3E%3Cdiv+class%3D%22ys%22%3E%24YS%3C%2Fdiv%3E%3Cdiv+class%3D%22td%22%3E%24TD%3C%2Fdiv%3E%3Cdiv+class%3D%22ol%22%3E%24OL%3C%2Fdiv%3E%3Cdiv+class%3D%22tlv%22%3E%24TLV%3C%2Fdiv%3E%3Cdiv+class%3D%22tmv%22%3E%24TMV%3C%2Fdiv%3E%3Cdiv+class%3D%22ysv%22%3E%24YSV%3C%2Fdiv%3E%3Cdiv+class%3D%22tdv%22%3E%24TDV%3C%2Fdiv%3E%7Caj%7C%7Caj%7C%7Caj%7C%7Caj%7C&target=ajiang%5F51la"></script>
+    </div>
+</div>
+<!-- 数据引用 end-->
+
+<!-- modal-->
+<div class="modal fade" id="tableModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <table class="table table-hover" id="tableHtml">
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end-->
+
+<!-- Bootstrap core JavaScript -->
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/tablesort/4.1.0/tablesort.min.js"></script>
+<script src="http://cdn.bootcss.com/tablesort/4.1.0/src/sorts/tablesort.number.js"></script>
+<script>
+    // 获取当前毫秒当随机数
+    var randomNum = new Date().getTime();
+    // 数据展示
+    var data = new Array();
+    data['arrTL'] = [];
+    data['arrTM'] = [];
+    data['arrYS'] = [];
+    data['arrTD'] = [];
+    data['arrOL'] = [];
+    data['arrTLV'] = [];
+    data['arrTMV'] = [];
+    data['arrYSV'] = [];
+    data['arrTDV'] = [];
+    function showData(ele){
+        var dateBox = $("#data_"+ele);
+        var showBox = $("#"+ele);
+        var TL = dateBox.find(".tl a").html();
+        var TM = dateBox.find(".tm a").html();
+        var YS = dateBox.find(".ys a").html();
+        var TD = dateBox.find(".td a").html();
+        var OL = dateBox.find(".ol a").html();
+        var TLV = dateBox.find(".tlv a").html();
+        var TMV = dateBox.find(".tmv a").html();
+        var YSV = dateBox.find(".ysv a").html();
+        var TDV = dateBox.find(".tdv a").html();
+        showBox.find(".ol").html(thousandBitSeparator(OL));
+        showBox.find(".td").html(thousandBitSeparator(TD));
+        showBox.find(".ys").html(thousandBitSeparator(YS));
+        showBox.find(".tm").html(thousandBitSeparator(TM));
+        showBox.find(".tl").html(thousandBitSeparator(TL));
+        showBox.find(".tdv").html(thousandBitSeparator(TDV));
+        showBox.find(".ysv").html(thousandBitSeparator(YSV));
+        showBox.find(".tmv").html(thousandBitSeparator(TMV));
+        showBox.find(".tlv").html(thousandBitSeparator(TLV));
+        // data数组组装
+        data['arrOL'].push(OL);
+        data['arrTD'].push(TD);
+        data['arrYS'].push(YS);
+        data['arrTM'].push(TM);
+        data['arrTL'].push(TL);
+        data['arrTDV'].push(TDV);
+        data['arrYSV'].push(YSV);
+        data['arrTMV'].push(TMV);
+        data['arrTLV'].push(TLV);
+    }
+    showData("platform");
+    showData("tecenet");
+    showData("xiu17");
+    showData("dsp");
+    showData("yixieweixiu");
+    showData("job");
+    // 移动端导航收起
+    $('#navbar .nav-sidebar a').click(function (e) {
+        $('#navbar').collapse('hide');
+        $('body,html').scrollTop(0);
+        e.preventDefault();
+    });
+    // 每隔三位分隔
+    function thousandBitSeparator(num) {
+        return num && (num
+                        .toString().indexOf('.') != -1 ? num.toString().replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
+                    return $1 + ",";
+                }) : num.toString().replace(/(\d)(?=(\d{3})+\b)/g, function($0, $1) {
+                    return $1 + ",";
+                }));
+    }
+    // 表格数据处理
+    function contrastDate(ele,arr){
+        var tableName = $(ele).next().text();
+        var currentEle = $(ele).parent().parent().parent().prev().find("h2").text().split("（")[0];
+        var total = parseInt(data[arr][0]);
+        var tableHtml ='<thead>'
+                +'<tr><th>项目</th><th class="sort-default sort-header sort-down">'+tableName+'</th>><th>占比</th></tr>'
+                +'</thead>'
+                +'<tbody>'
+                +'<tr ><td>天成医疗平台</td><td>'+thousandBitSeparator(data[arr][0])+'</td><td>'+(parseInt(data[arr][0])/total*100).toFixed(2)+'%</td></tr>'
+                +'<tr><td>天成医疗网</td><td>'+thousandBitSeparator(data[arr][1])+'</td><td>'+(parseInt(data[arr][1])/total*100).toFixed(2)+'%</td></tr>'
+                +'<tr><td>秀医器</td><td>'+thousandBitSeparator(data[arr][2])+'</td><td>'+(parseInt(data[arr][2])/total*100).toFixed(2)+'%</td></tr>'
+                +'<tr><td>天成DSP</td><td>'+thousandBitSeparator(data[arr][3])+'</td><td>'+(parseInt(data[arr][3])/total*100).toFixed(2)+'%</td></tr>'
+                +'<tr><td>医械维修论坛</td><td>'+thousandBitSeparator(data[arr][4])+'</td><td>'+(parseInt(data[arr][4])/total*100).toFixed(2)+'%</td></tr>'
+                +'<tr><td>天成医疗人才网</td><td>'+thousandBitSeparator(data[arr][5])+'</td><td>'+(parseInt(data[arr][5])/total*100).toFixed(2)+'%</td></tr>'
+                +'</tbody>';
+        // 数据注入
+        $("#tableHtml").html(tableHtml);
+        // 当前行高亮
+        $("#tableHtml>tbody>tr").each(function(index,obj) {
+            if( $(obj).find("td:eq(0)").text().trim() == currentEle.trim() ){
+                $(obj).addClass('info');
+            }
+        });
+        // 模块框弹出
+        $('#tableModal').modal();
+        // 表格排序插件实例化
+        new Tablesort(document.getElementById('tableHtml'));
+    }
+    // 刷新数据
+    function refresh(ele,id){
+        // 清空数组
+        data['arrTL'] = [];
+        data['arrTM'] = [];
+        data['arrYS'] = [];
+        data['arrTD'] = [];
+        data['arrOL'] = [];
+        data['arrTLV'] = [];
+        data['arrTMV'] = [];
+        data['arrYSV'] = [];
+        data['arrTDV'] = [];
+        // 数据请求地址拼接
+        var reqUrl = 'http://quote.51.la/?id='+id+'&mb=%3Cdiv+class%3D%22tl%22%3E%24TL%3C%2Fdiv%3E%3Cdiv+class%3D%22tm%22%3E%24TM%3C%2Fdiv%3E%3Cdiv+class%3D%22ys%22%3E%24YS%3C%2Fdiv%3E%3Cdiv+class%3D%22td%22%3E%24TD%3C%2Fdiv%3E%3Cdiv+class%3D%22ol%22%3E%24OL%3C%2Fdiv%3E%3Cdiv+class%3D%22tlv%22%3E%24TLV%3C%2Fdiv%3E%3Cdiv+class%3D%22tmv%22%3E%24TMV%3C%2Fdiv%3E%3Cdiv+class%3D%22ysv%22%3E%24YSV%3C%2Fdiv%3E%3Cdiv+class%3D%22tdv%22%3E%24TDV%3C%2Fdiv%3E%7Caj%7C%7Caj%7C%7Caj%7C%7Caj%7C&target=data_'+ele+'&'+randomNum+'';
+        var scriptHtml = '<script src="'+reqUrl+'"><\/script>';
+        $("#data_"+ele).html(scriptHtml);
+        // 请求完成执行（延迟2秒执行）
+        $.getScript(reqUrl, function(){
+            $("#"+ele+" .placeholder h4").html("<span class='loader-inner ball-pulse'><span></span><span></span><span></span></span>");
+            setTimeout(function () {
+                var newTime = new Date().Format("yyyy-MM-dd HH:mm:ss");
+                showData("platform");
+                showData("tecenet");
+                showData("xiu17");
+                showData("dsp");
+                showData("yixieweixiu");
+                showData("job");
+                $("#"+ele+" .time").html(newTime);
+            }, 2000);
+        });
+    }
+    //格式化时间
+    Date.prototype.Format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "H+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    };
+    var time = new Date().Format("yyyy-MM-dd HH:mm:ss");
+    $(".time").html(time);
+
+</script>
+</body>
+</html>

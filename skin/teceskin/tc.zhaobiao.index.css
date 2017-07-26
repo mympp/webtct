@@ -1,0 +1,293 @@
+/*icon*/
+.zb-i{
+    display: inline-block;
+    position: relative;
+    width:20px;
+    height: 20px;
+    background-image: url("./image/buy/tc-zhaobiao-icons.png");
+    background-repeat: no-repeat;
+}
+.zb-i-s-type{
+    background-position: -80px 0;
+}
+.zb-i-s-open{
+    background-position: -100px 0;
+}
+.zb-i-s-area{
+    background-position: -120px 0;
+}
+.zb-i-release{
+    background-position: 0 -100px;
+}
+.zb-i-company{
+    background-position: -50px -100px;
+}
+.zb-i-type{
+    background-position: 0 0;
+}
+.zb-i-see{
+    background-position: -20px 0;
+}
+.zb-i-time{
+    background-position: -40px 0;
+}
+.zb-i-area{
+    background-position: -60px 0;
+}
+.company-show-name, .company-show-img,.bid-list-item{
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.mt30{
+    margin-top: 30px;
+}
+.bid-card{
+    background: #fff;
+    border: 1px solid #f1ebe7;
+    box-shadow: 0 1px 3px 0 rgba(55,18,0,.05);
+}
+.bid-container{
+    width:1200px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom:20px;
+}
+.bid-container-main{
+    width: 890px;
+}
+.bid-container-side{
+    width:280px;
+}
+
+
+/*bid-cate*/
+.bid-cate{
+    width:278px;
+    border:1px solid #eaeaea;
+
+}
+.bid-cate-dl{
+    padding: 20px 10px 20px 20px;
+    border-bottom:1px solid #eaeaea;
+}
+.bid-cate-dt{
+    font-weight: bold;
+    color: #666;
+}
+.bid-cate-dt .zb-i{
+    top:4px;
+    margin-right: 8px;
+}
+.bid-cate-dd{
+    margin: 10px 0 0 -10px;
+}
+a.bid-cate-item{
+    min-width:50px;
+    margin-left:10px;
+    display: inline-block;
+    line-height:30px;
+    color: #666;
+}
+a.bid-cate-item:hover{
+    text-decoration: underline;
+    color: #e53935;
+}
+
+/*bid-slider*/
+.bid-slider{
+    position: relative;
+}
+.bid-slider .hd{
+    width:100%;
+    position:absolute;
+    z-index:1;
+    bottom:0;
+    left:0;
+    height:30px;
+    line-height:30px;
+}
+.bid-slider .hd ul{
+    position: absolute;
+    width:100%;
+    text-align:center;
+}
+.bid-slider .hd li{
+    cursor:pointer;
+    display:inline-block;
+    *display:inline;
+    zoom:1;
+    width:12px;
+    height:12px;
+    margin:5px;
+    overflow:hidden;
+    background-color: #666;
+    border-radius:50%;
+    font-size: 0;
+    text-indent:-999em;
+}
+.bid-slider .hd .on{
+    background-color: #e53935;
+}
+.bid-slider .bd li{
+    width:740px;
+    height:275px;
+}
+.bid-btn-area{
+    width:150px;
+    margin:1px 0 0 -1px;
+}
+.bid-btn-area>a{
+    position: relative;
+    display: block;
+    height:136px;
+    margin-top:-1px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #fff;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.bid-btn-area>a:hover{
+    box-shadow: 0 2px 15px 2px rgba(0,0,0,.03), 0 12px 12px 2px rgba(0,0,0,.04);
+    z-index: 9;
+}
+.bid-btn-area .zb-i{
+    display: block;
+    width: 50px;
+    height:50px;
+    margin:25px auto 10px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.bid-btn-area>a:hover .zb-i{
+    margin:23px auto 11px;
+}
+
+.bid-box{
+
+}
+.bid-box-hd{
+    padding:20px 30px;
+    border-bottom:1px solid #f1ebe7;
+}
+.bid-container-side .bid-box-hd{
+    padding:20px;
+}
+.bid-box-hd-text{
+    position: relative;
+    padding-left:13px;
+    font-size: 18px;
+    color: #e53935;
+}
+.bid-box-hd-text a{
+    color: #e53935;
+}
+.bid-box-hd-text:before{
+    content: '';
+    position: absolute;
+    left:0;
+    top:4px;
+    width: 3px;
+    height:18px;
+    background-color: #e53935;
+}
+.bid-list-item{
+    padding:20px 0;
+    border-bottom:1px dotted #f1ebe7;
+}
+.bid-list-item:hover{
+    background-color: #fafafa;
+
+}
+.bid-list-item:last-child{
+    border-bottom:none;
+}
+.bid-list-item-title{
+    font-size:18px;
+    line-height:1.5;
+    padding:0 30px;
+}
+.bid-list-item-title a:hover{
+    color: #e53935;
+}
+.bid-list-item-info{
+    margin-top:5px;
+    padding:0 30px;
+    color: #eaeaea;
+}
+.bid-list-item-info .zb-i,.bid-list-item-time .zb-i{
+    top:5px;
+    margin-right: 3px;
+}
+.bid-list-item-info a,.bid-list-item-info em{
+    color: #777;
+    font-style: normal;
+}
+.bid-list-item-info a{
+    background: linear-gradient(90deg,#aaa 66%, transparent 0) repeat-x;
+    background-size: 0.2em 1px;
+    background-position: 0 18px;
+}
+.bid-list-item-info a:hover{
+    color: #e53935;
+}
+
+.bid-list-item-line{
+    display: inline-block;
+    margin:0 10px;
+}
+a.bid-more-btn{
+    display: block;
+    text-align: center;
+    padding:15px 0;
+    border-top:1px solid #f1ebe7;
+    color: #666;
+}
+a.bid-more-btn:hover{
+    color: #e53935;
+    background-color: #fafafa;
+}
+
+.company-show-item{
+    position: relative;
+    float: left;
+    width:139px;
+    height:135px;
+    overflow: hidden;
+    margin:-1px 0 0 -1px;
+    border-top:1px solid #f1ebe7;
+    border-left: 1px solid #f1ebe7;
+}
+.company-show-img{
+    width: 86px;
+    height: 86px;
+    padding: 24px;
+}
+.company-show-name{
+    position: absolute;
+    left:0;
+    bottom:-54px;
+    width:120px;
+    height:36px;
+    padding:8px 10px;
+    font-size: 12px;
+    line-height:1.5;
+    background-color: #e53935;
+    background-color: rgba(0,0,0,.7);
+    color: #fff;
+}
+.company-show-item:hover{
+    z-index: 2;
+    box-shadow: 0 0 18px 0 rgba(0,0,0,.08);
+}
+.company-show-item:hover .company-show-img{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.company-show-item:hover .company-show-name{
+    bottom:0;
+}

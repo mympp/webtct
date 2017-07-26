@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>找资金</title>
+
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+
+</head>
+<body>
+
+
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+			<a href="./calc.html" class="icon icon-left pull-left"></a>
+            <h1 class="title">垫资计算</h1>
+        </header>
+        <!--content-->
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">垫资金额</div>
+                                <div class="item-input">
+                                    <input type="number" placeholder="请输入您的垫资金额" id="money">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">比例</div>
+                                <div class="item-input">
+                                    <select id="percent" onchange="interest();">
+                                        <option value="0.01">1%</option>
+                                        <option value="0.02">中行（2%）</option>
+                                        <option value="0.03">3%</option>
+                                        <option value="0.04">4%</option>
+                                        <option value="0.05">5%</option>
+                                        <option value="0.06">6%</option>
+                                        <option value="0.07">7%</option>
+                                        <option value="0.08">8%</option>
+                                        <option value="0.09">9%</option>
+                                        <option value="0.10">10%</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">期限</div>
+                                <div class="item-input">
+                                    <select id="month" onchange="interest();">
+                                        <option value="1">1个月</option>
+                                        <option value="2">2个月</option>
+                                        <option value="3">3个月</option>
+                                        <option value="4">4个月</option>
+                                        <option value="5">5个月</option>
+                                        <option value="6">6个月</option>
+                                        <option value="7">7个月</option>
+                                        <option value="8">8个月</option>
+                                        <option value="9">9个月</option>
+                                        <option value="10">10个月</option>
+                                        <option value="11">11个月</option>
+                                        <option value="12">12个月</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="result" style="display:none;">
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">结果</div>
+                                <div class="item-input">
+                                    <input type="text" id="result" disabled="disabled" value="" style="color:#c70000">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-50"><a href="./calc.html" class="button button-big button-fill button-danger">返回</a></div>
+                    <div class="col-50"><a href="javascript:;" onclick="interest()" class="button button-big button-fill button-success">计算</a></div>
+                </div>
+            </div>
+            <script>
+                function interest(){
+                    if( $("#money").val() != ""){
+                        $(".result").show();
+                        $("#result").val(parseFloat($("#money").val()*$("#percent").val()*$("#month").val()).toFixed(2));
+                    }else{
+                        $.toast("请输入垫资金额");
+                    }
+                }
+            </script>
+        </div>
+        <!--content end-->
+
+        <!--bar-->
+        <nav class="bar bar-tab">
+            <a class="tab-item external" href="./index.html">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item external" href="./product-lib.html">
+                <span class="icon icon-app"></span>
+                <span class="tab-label">找产品</span>
+            </a>
+            <a class="tab-item external active" href="./calc.html">
+                <span class="icon icon-star"></span>
+                <span class="tab-label">找资金</span>
+            </a>
+            <a class="tab-item external" href="javascript:$.toast('敬请期待');">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">个人中心</span>
+            </a>
+        </nav>
+        <!--bar end-->
+    </div>
+</div>
+
+
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>var Zepto = jQuery</script>
+<script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+
+
+
+</body>
+</html>

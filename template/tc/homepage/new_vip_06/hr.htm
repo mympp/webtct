@@ -1,0 +1,134 @@
+{template 'header', $template}
+{if $itemid}
+<!--{php $hr=tag("table=hr_job&condition=username='$username' and status=3 and itemid='$itemid'&order=edittime desc&template=null");}-->
+{php $catid=$hr[0][catid];}
+<!--{php $catname=tag("table=category&condition=catid='$catid'&template=null");}-->
+{php $parid=$catname[0][parentid];if($parid==0){$parname=$catname[0][catname];}else{$sql="select catname from {$db->pre}category where catid='$parid'";$parname=$db->get_one($sql);}}
+<div class="crumbs"><img src="{$HSPATH}ico_4.jpg"/>您当前的位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}hr">人才招聘</a>&nbsp;>&nbsp;<a href="#">招聘详情</a></div>
+<div class="news_main">
+		<div class="news_main_left">
+			<!--{php $list=tag("table=hr_job&condition=status=3 and username='$username'&pagesize=5&order=addtime desc&template=null");}-->
+			<div class="main_left_title">
+				人才招聘
+			</div>
+			<ul>
+				{loop $list $v}
+					<li><a href="{$v[linkurl]}" title="{$v[title]}">{dsubstr($v[title],30,'...')}</a></li>
+				{/loop}
+			</ul>
+		</div>
+		<div class="news_main_right">
+			<div class="main_right_title">招聘详情</div>
+			<span class="s1"><b>{$title}</b></span><br/>
+			<span class="s2">发布时间：{timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}" style="color:#999999;">返回列表</a></span><br/>
+			<div class="s3" style="text-align:center">
+				<table cellpadding="5" cellspacing="1" width="90%" bgcolor="#CCCCCC" style="margin:20px 40px;">
+				<tr bgcolor="#FFFFFF">
+				<td width="120">&nbsp;行业</td>
+				<td width="230">&nbsp;{if is_array($parname)}{$parname[catname]}{else}{$parname}{/if}</td>
+				<td width="120">&nbsp;职位</td>
+				<td width="230">&nbsp;{$catname[0][catname]}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+				<td>&nbsp;部门</td>
+				<td>&nbsp;{$department}</td>
+				<td>&nbsp;人数</td>
+				<td>&nbsp;{if $total}{$total}人{else}若干{/if}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+				<td>工作地区</td>
+				<td>&nbsp;{area_pos($areaid, '')}</td>
+				<td>工作性质</td>
+				<td>&nbsp;{$TYPE[$type]}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+				<td>性别要求</td>
+				<td>&nbsp;{$GENDER[$gender]}</td>
+				<td>婚姻要求</td>
+				<td>&nbsp;{$MARRIAGE[$marriage]}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+				<td>学历要求</td>
+				<td>&nbsp;{$EDUCATION[$education]}</td>
+				<td>工作经验</td>
+				<td>&nbsp;{if $experience}{$experience}年以上{else}不限{/if}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+				<td>年龄要求</td>
+				<td>&nbsp;{if $minage && $maxage}{$minage}-{$maxage}岁{elseif $minage}{$minage}岁以上{elseif $maxage}{$maxage}岁以内{else}不限年龄{/if}</td>
+				<td>待遇水平</td>
+				<td>&nbsp;{if $minsalary && $maxsalary}{$minsalary}-{$maxsalary}{$DT[money_unit]}/月{elseif $minsalary}{$minsalary}{$DT[money_unit]}/月以上{elseif $maxsalary}{$maxsalary}{$DT[money_unit]}/月以内{else}面议{/if}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td>招聘进程</td>
+					<td>&nbsp;{get_field_value('hr_job','step',$step)}</td>
+					<td>公司性质</td>
+					<td>&nbsp;{get_field_value('hr_job','nature',$nature)}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+				<td>更新日期</td>
+				<td>&nbsp;{timetodate($edittime, 3)}</td>
+				<td>有效期至</td>
+				<td>&nbsp;{if $totime!=0}{timetodate($totime, 3)}{else}长期有效{/if}{if $expired}<span class="f_red">[已过期]</span>{/if}</td>
+				</tr>
+				<tr bgcolor="#FFFFFF">
+					<td>公司福利</td>
+					<td colspan="3">&nbsp;
+					{php $welfare_arr=explode(',',$welfare);}
+					{loop $welfare_arr $k $v}
+					{get_field_value('hr_job','welfare',$v)}&nbsp;
+					{/loop}
+					</td>
+				</tr>
+				</table>
+			</div>
+			<div class="s3">{$content}</div>
+			<div class="s3">
+				<table width="98%" cellpadding="3" cellspacing="3" align="center">
+				<tr>
+				<td width="100" align="center">联 系 人：</td>
+				<td>&nbsp;{$truename}</td>
+				</tr>
+				<tr>
+				<td align="center">联系电话：</td>
+				<td>&nbsp;{if $domain}{$telephone}{else}{anti_spam($telephone)}{/if}</td>
+				</tr>
+				<tr>
+				<td align="center">电子邮件：</td>
+				<td>&nbsp;{if $domain}{$email}{else}{anti_spam($email)}{/if}</td>
+				</tr>
+				{if $mobile}
+				<tr>
+				<td align="center">联系手机：</td>
+				<td>&nbsp;{if $domain}{$mobile}{else}{anti_spam($mobile)}{/if}</td>
+				</tr>
+				{/if}
+				{if $qq}
+				<tr>
+				<td align="center">联系QQ：</td>
+				<td>&nbsp;{$qq}</td>
+				</tr>
+				{/if}
+				{if $msn}
+				<tr>
+				<td align="center">联系MSN：</td>
+				<td>&nbsp;{$msn}</td>
+				</tr>
+				{/if}
+				</table>
+			</div>
+		</div>
+	</div>
+{else}
+<div class="location"><img src="{$HSPATH}ico_4.jpg"/><span>您现在的位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}hr">人才招聘</a></span></div>
+	<div class="list_news">
+		<div class="list_title"><img src="{$HSPATH}ico_6.jpg"><div class="list_title_font"><span>&nbsp;&nbsp;人才招聘</span></div></div>
+		<ul class="u">
+			{loop $lists $v}
+				<li><a href="{$v[linkurl]}">{$v[title]}</a><span>{timetodate($v[addtime], 3)}</span></li>
+			{/loop}
+		</ul>
+		<div class="pages">{$pages}</div>
+	</div>
+{/if}
+{template 'footer', $template}

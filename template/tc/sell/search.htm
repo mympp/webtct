@@ -1,0 +1,249 @@
+{php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'gongying.list.css']}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/sell/gongying.search.js',DT_PATH.'file/script/internalLink.js'];}
+{template 'module-header'}
+
+<!--container-->
+<div class="container">
+    <!--crumb-->
+    <div class="crumb container">
+        <a href="{DT_PATH}">天成医疗网首页</a><span>&gt;</span>
+        <a href="{$MODULE[5]['linkurl']}{sell_rewrite(['typeid'=>$typeid])}">{$TYPE[$typeid]}信息</a>
+        {if $catid}<span>&gt;</span><a href="{$MODULE[5]['linkurl']}{sell_rewrite(['typeid'=>$typeid,'catid'=>$catid])}">{$CATEGORY[$catid]}</a>{/if}
+    </div>
+    <!--crumb end-->
+    <!--selector-->
+    <div class="selector">
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>行情分类：</span>
+            </div>
+            {php $link_cat_title = empty($catid) ? '医疗器械' : $CATEGORY[$catid];}
+            {php $link_areaid_title = empty($areaid) ? '全国' : $childarea['areaname'];}
+            {if $typeid == 0}
+            	{php $link_typeid_title = '供应';}
+            {elseif $typeid == 1}
+            	{php $link_typeid_title = '需求';}
+            {else}
+            	{php $link_typeid_title = '其他';}
+            {/if}
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $catid_selector = $selector;}
+                	{php $catid_selector['catid'] = 0;}
+                    <li {if empty($catid)}class="current"{/if}><a href="{$MODULE[5]['linkurl']}{sell_rewrite($catid_selector)}" target="_self" title="{$link_areaid_title}医疗器械{$link_typeid_title}">不限</a></li>
+                    {loop $CAT $k $t}
+                    {php $catid_selector['catid'] = $t['catid'];}
+                    <li {if $catid == $t['catid']} class="current"{/if}><a href="{$MODULE[5]['linkurl']}{sell_rewrite($catid_selector)}" title="{$link_areaid_title}{$t['catname']}{$link_typeid_title}" target="_self">{$t['catname']}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+                <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>所在地区：</span>
+            </div>
+            {if $areaid}
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $areaid_selector = $selector;}
+                	{php $area_parentid = $childarea['parentid'] == 0 ? $areaid : $childarea['parentid'];}
+                	{php unset($areaid_selector['areaid']);}
+                    <li><a href="{$MODULE[5]['linkurl']}{sell_rewrite($areaid_selector)}" title="全国{$link_cat_title}{$link_typeid_title}">不限</a></li>
+                    {php $areaid_selector['areaid'] = $area_parentid;}
+                    <li class="current"><a href="{$MODULE[5]['linkurl']}{sell_rewrite($areaid_selector)}" title="{$link_areaid_title}{$link_cat_title}{$link_typeid_title}">{area_pos($area_parentid)}</a>
+                    {php unset($areaid_selector['areaid']);}
+                    <a href="{$MODULE[5]['linkurl']}{sell_rewrite($areaid_selector)}" class="clear-option" title="{$link_areaid_title}{$link_cat_title}{$link_typeid_title}">×</a></li>
+                </ul>
+                {php $secondarea = tag("table=area&fields=areaid,areaname&condition=parentid=$area_parentid&pagesize=34&template=null&debug=0")}
+                {if $secondarea}
+                <ul class="sl-v-list sl-v-sub-list">
+                	{php $areaid_selector = $selector;}
+                	{loop $secondarea $sk $sv}
+                	{php $areaid_selector['areaid'] = $sv['areaid'];}
+                    <li {if $areaid == $sv['areaid']} class="current"{/if}><a href="{$MODULE[5]['linkurl']}{sell_rewrite($areaid_selector)}" title="{$sv['areaname']}{$link_cat_title}{$link_typeid_title}">{$sv['areaname']}</a></li>
+                    {/loop}
+                </ul>
+                {/if}
+            </div>
+            {else}
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $areaid_selector = $selector;}
+                	<?php if(isset($areaid_selector['areaid'])) unset($areaid_selector['areaid']); ?>
+                    <li {if $areaid == 0} class="current"{/if}><a href="{$MODULE[5]['linkurl']}{sell_rewrite($areaid_selector)}" title="{$link_areaid_title}{$link_cat_title}{$link_typeid_title}">不限</a></li>
+                    {php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}
+                    {loop $mainarea $k $t}
+                    {php $areaid_selector['areaid'] = $t['areaid'];}
+                    <li {if $areaid == $t['areaid']} class="current"{/if}><a href="{$MODULE[5]['linkurl']}{sell_rewrite($areaid_selector)}" title="{$t['areaname']}{$link_cat_title}{$link_typeid_title}">{$t['areaname']}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            <a class="sl-value-more" onclick="slValShowMore(this)" href="javascript:;">更多</a>
+            {/if}
+        </div>
+
+<!--
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>发布时间：</span>
+            </div>
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $day_selector = $selector;}
+                	{php $day_selecotr['day'] = 0;}
+                    <li {if empty($day)}class="current"{/if}><a href="{$MODULE[5]['linkurl']}{sell_rewrite($day_selector)}" target="_self">不限</a></li>
+                    <li>
+                    {php $day_selector['day'] = 7;}
+                    <a href="{$MODULE[5]['linkurl']}{sell_rewrite($day_selector)}" target="_self">最近一周</a>
+                    </li>
+                    <li>
+                    {php $day_selector['day'] = 3;}
+                    <a href="{$MODULE[5]['linkurl']}{sell_rewrite($day_selector)}" target="_self">最近三天</a>
+                    </li>
+                    <li>
+                    {php $day_selector['day'] = 1;}
+                    <a href="{$MODULE[5]['linkurl']}{sell_rewrite($day_selector)}" target="_self">最近一天</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+-->
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>精准搜索：</span>
+            </div>
+            <div class="sl-value">
+                <form class="search-frm" action="search.php">
+                	{loop $selector $k $t}
+                	<input type="hidden" name="{$k}" value="{$t}" />
+                	{/loop}
+                    <input type="text" class="s-frm-input" name="kw" value="{$kw}">
+                    <input type="submit" class="s-frm-submit tc-list-i" value="搜索">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--selector end-->
+
+    <!--sort-->
+    <div class="sort clearfix">
+        <div class="sort-item sort-item-down {if empty($order)}current{/if}">
+        {php $order_selector = $selector;}
+		{php unset($order_selector['order']);}
+        <a href="{$MODULE[5]['linkurl']}{sell_rewrite($order_selector)}" target="_self" title="title="{$link_areaid_title}{$link_cat_title}{$link_typeid_title}"">发布时间<i class="tc-list-i"></i></a>
+        </div>
+        <div class="sort-item sort-item-down {if !empty($order)}current{/if}">
+        {php $order_selector['order'] = 'totime';}
+        <a href="{$MODULE[5]['linkurl']}{sell_rewrite($order_selector)}" target="_self" rel="nofollow">截止时间<i class="tc-list-i"></i></a>
+        </div>
+
+        <ul class="sort-tags-list pull-right">
+        	{php $validated_selector = $selector;}
+        	<?php $validated_selector['validated'] = $validated==1 ? 0 : 1; ?>
+            <li {if $validated}class="current"{/if}><a href="{$MODULE[5]['linkurl']}{sell_rewrite($validated_selector)}"><i class="tc-list-i sort-check"></i>认证推荐厂商</a></li>
+        </ul>
+    </div>
+    <!--sort end-->
+
+    <div class="default-layout gy-layout  mgt-10 mgb-20 clearfix">
+    	<div class="main pull-left">
+    	{if $lists}
+			<div class="card-list clearfix">
+       			{if $typeid == 1}
+        			{template 'list-xuqiu',$module}
+        		{else}
+        			{template 'list-gong',$module}
+        		{/if}
+        	</div>
+			{pagination($page,$items['c'],$pagesize,$MODULE[5]['linkurl'].'search.php',$selector,'sell_rewrite')}
+		{else}
+			{template 'empty-result','chip'}
+                {php $parentid = $area->field('arrchildid')->where(['areaid'=>$childarea['parentid']])->one();}
+           		<?php if(!empty($parentid)){
+           				$inCondition['areaid'] = $parentid['arrchildid'];
+           			}else{
+           				$inCondition = [];
+           			}
+           			$epagesize = $typeid == 1 ? 4 : 8;
+           		?>
+            	{php $expand = $sell->where($condition)->where($inCondition,'in')->where($gtCondition,'>')->where($neqCondition,'<>')->likeWhere($likeCondition)->limit(0,$epagesize)->select();}
+            	
+            	{if $expand}
+                <div class="search-no-result-ft">
+                    猜你喜欢
+                </div>
+                {/if}
+            
+            {if $expand}
+				{php $lists = $expand;}
+            	{if $typeid == 1}
+        			{template 'list-xuqiu',$module}
+        		{else}
+        			{template 'list-gong',$module}
+        		{/if}
+            {/if}
+		{/if}
+		</div>
+        
+        <div class="side pull-right mgt-20">
+            <div class="side-btn">
+            	{if $typeid}
+            	<a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=5&typeid=1" class="go-btn">发布我的需求信息</a>
+            	{else}
+                <a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=5&typeid=0" class="go-btn">发布我的供应信息</a>
+                {/if}
+            </div>
+
+            <ul class="count mgt-10">
+            	{if $typeid == 1}
+            	{php $count_type1 = $sell->field('count(*) as c')->where(['status'=>3,'typeid'=>1])->one();}
+            	{php $hits_type1 = $sell->field('sum(hits) as s')->where(['status'=>3,'typeid'=>1])->one();}
+                <li><p>总入库<i>{$count_type1['c']}</i>条需求信息<br>已被浏览<i>{$hits_type1['s']}</i>人次</p></li>
+                {php $count_today_type1 = $sell->field('count(*) as c')->where(['status'=>3,'typeid'=>1])->where(['addtime'=>$nowtime],'>')->one();}
+                {php $hits_today_type1 = $sell->field('sum(hits) as s')->where(['status'=>3,'typeid'=>1])->where(['addtime'=>$nowtime],'>')->one();}
+                <li><p>今日新增<i>{$count_today_type1['c']}</i>条需求信息<br>
+                已被浏览<i><?php if(isset($hits_today_type1['s'])){ echo $hits_today_type1['s'];}else{ echo '0';} ?></i>人次</p></li>
+                {else}
+                {php $count_type0 = $sell->field('count(*) as c')->where(['status'=>3,'typeid'=>0])->one();}
+                {php $hits_type0 = $sell->field('sum(hits) as s')->where(['status'=>3,'typeid'=>0])->one();}
+                <li><p>总入库<i>{$count_type0['c']}</i>条供应信息<br>已被浏览<i>{$hits_type0['s']}</i>人次</p></li>
+                {php $count_today_type0 = $sell->field('count(*) as c')->where(['status'=>3,'typeid'=>0])->where(['edittime'=>$nowtime],'>')->one();}
+                {php $hits_today_type0 = $sell->field('sum(hits) as s')->where(['status'=>3,'typeid'=>0])->where(['edittime'=>$nowtime],'>')->one();}
+                <li><p>今日更新<i>{$count_today_type0['c']}</i>条供应信息<br>
+                已被浏览<i><?php if(isset($hits_today_type0['s'])){ echo $hits_today_type0['s'];}else{ echo '0';} ?></i>人次</p></li>
+                {/if}
+            </ul>
+
+            <div class="side-box mgt-10">
+                <div class="side-box-hd">
+                    {if $typeid}<span>求购排行版</span>{else}<span>供应排行版</span>{/if}
+                </div>
+                <div class="side-box-bd rank-list">
+                <?php 
+                	if($typeid){
+                		$hot = $sell->field('itemid,title,linkurl,catid,areaid')->where(['typeid'=>1,'status'=>3])->limit(0,10)->order('itemid desc')->select();
+                	}else{
+                		$hot = $sell->field('itemid,title,linkurl,catid,areaid')->where(['typeid'=>0,'status'=>3])->limit(0,10)->order('hits desc')->select();
+                	}
+                ?>
+                {loop $hot $k $t}
+                    <div class="rank-item clearfix">
+                        <div class="num pull-left">{$k+1}</div>
+                        <div class="info pull-right">
+                            <h4 class="text-overflow"><a href="{$MODULE[5]['linkurl']}{$t['linkurl']}">{$t['title']}</a></h4>
+                            <p><span><a href="{sell_rewrite(['catid'=>$t['catid'],'typeid'=>$typeid])}" title="全国{$CATEGORY[$t['catid']]}{if $typeid}求购{else}需求{/if}">{$CATEGORY[$t['catid']]}</a></span><span><a href="{sell_rewrite(['areaid'=>$t['areaid'],'typeid'=>$typeid])}" title="{$AREA[$t['areaid']]['areaname']}医疗器械{if $typeid}求购{else}需求{/if}">{$AREA[$t['areaid']]['areaname']}</a></span></p>
+                        </div>
+                    </div>
+                 {/loop}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--container end-->
+<!--channel-class-->
+{$iLink}
+<!--channel-class end -->
+{template 'footer2017'}

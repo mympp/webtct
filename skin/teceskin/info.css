@@ -1,0 +1,36 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+
+.info_main {padding:20px 10px 0 10px;}
+.info_main li {padding:8px 0 8px 15px;}
+.info_main li strong {font-size:14px;}
+
+.brand {padding:5px 0 5px 0;}
+.brand img {padding:3px;}
+.brand li {height:22px;line-height:22px;overflow:hidden;}
+*/
+.itemize_and_search{ width:961px; height:100px;border:#DDDDDD 1px solid; border-top:none; padding:0px 10px 10px 10px;}
+.itemize{float:left;margin-top:10px;margin-bottom:10px; margin-bottom:0px!important;}
+.itemize li{ float:left; margin-left:12px;}
+.itemize li a{ color:#676767;}
+.search{background:url('image/memberinfo.jpg');height:30px; float:left; margin-left:10px;padding-top:5px;border:#bbd2dd 1px solid;}
+
+.h4title a{color:#2d4b75}
+
+.content_list{ width:983px; height:auto;margin:10px 0px;}
+.part_title{ width:983px; height:32px; float:left;}
+.info_list{ width:959px; padding-left:22px; padding-bottom:15px; height:auto; float:left; border:#DDDDDD 1px solid; border-top:none;}
+.info_list li{ width:280px; height:auto; float:left; margin-top:15px; margin-right:15px; padding:10px; border:#DDDDDD 1px solid;}
+.info_list li:hover{ width:280px; height:auto; float:left; margin-top:15px; margin-right:15px; padding:10px; border:#d64f14 1px solid;}
+
+.info_intro a{ font-size:14px; line-height:18px; color:#777777}
+.info_title{ height:40px; padding-top:10px; font-size:14px; font-weight:bold;}
+.info_title span,.info_title img{ float:left;}
+.info_title span{ line-height:30px; margin-right:20px; margin-left:20px;}
+
+.info_main{ margin-top:10px;}
+.title_trade{ line-height:25px; font-size:18px;}
+.data_list{ line-height:30px;}
+.content{ line-height:22px;}
+.content br{ margin-top:5px;}

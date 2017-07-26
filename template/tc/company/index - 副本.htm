@@ -1,0 +1,153 @@
+{template 'header'}
+<script type="text/javascript" src="{DT_PATH}file/script/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=blue"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/msclass.js"></script>
+											<div class="w240 fl autoheight"><!-- 左边内容开始-->
+														{template 'member','tag'}
+													
+													<div class="divline"></div>
+														<div class="orange"><div class="h4title">商铺经营分类</div><span class="mores"><a href="javascript:void(0)"  onClick="msgbox('{$MODULE[4][name]}所有分类','/tree.php?moduleid=$moduleid')">全部展开</a></span></div>
+															<div class="grayb nt h680 gdt pt10">
+														
+{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+{loop $tagss $i $t}
+																<dl class="tree">
+																<dt class="treeno" onclick="chulai('tree{$t[catid]}')" onmouseover="this.className='treeyes'" onmouseout="this.className='treeno'"><a href="javascript:void(0)"class="ocolor">{$t[catname]}</a></dt>
+																	<dd id="tree{$t[catid]}">
+																		<p><a href="{$t[linkurl]}">直接打开：{$t[catname]}</a></p>
+																		<ul>
+																				{php $tagsk = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=".$t[catid]."&pagesize=30&order=listorder ASC&template=null&debug=0")}
+																				{loop $tagsk $z $k}
+																		<li><a href="{$k[linkurl]}">	{$k[catname]}</a></li>
+																				{/loop}
+																		</ul>
+																	</dd>
+																</dl>
+
+													{/loop}	</div>
+									
+													<div class="divline"></div>	
+													<div class="blue"><div class="h4title">供应热门排行</div></div>
+															<div class="grayb nt autoheight pt10">
+																<ul class="rank_list">
+																<!--{tag("moduleid=5&condition=status=3 and level>0&pagesize=10&order=hits desc&showcat=0&template=list-trade&debug=0&price=1")}-->
+																</ul>
+													</div>
+													<div class="divline"></div>
+													<div class="orange"><div class="h4title">求购推荐排行</div></div>
+															<div class="grayb nt autoheight pt10">
+																<ul class="rank_list">
+																<!--{tag("moduleid=6&condition=status=3 and level>0&pagesize=10&order=hits desc&showcat=0&template=list-trade&debug=0")}-->				
+																</ul>
+													</div>
+
+											</div>
+											<div class="w730 fl autoheight ml10"><!-- 右边内容开始sss-->
+														<div class="autoheight">
+														<div class="fl cut w450" style="height:200px;">
+														<script type="text/javascript" src="{DT_PATH}file/script/A30.js"></script>
+														</div>
+														
+														<div class="fl w273 cut autoheight ml10">
+														<div class="blue"><div class="h4title">各地厂商分布</div></div>
+														<div class="grayb nt cut" style="height:168px;">
+														
+														<dl class="areas autoheight ">
+															<dd>{php $mainarea = get_mainarea(0)}
+															{loop $mainarea $k $v}
+															<a href="{$MODULE[4][linkurl]}{rewrite('search.php?areaid='.$v['areaid'].'&typeid='.$typeid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&catid='.$catid)}"class="color lenstr">{$v[areaname]}</a>
+															{/loop}</dd>
+															</dl>
+												
+														</div>
+														</div>
+														<div class="divline"></div>
+														</div>
+														
+														<div class="yinying"></div>
+														<div class="divline"></div>
+															<div class="autoheight w450 fl">
+																<div class="blue"><div class="h4title">最新加入的[{$MOD[page_inew]}]家厂商</div><span class="mores"><a href='{$MODULE[4][linkurl]}search-htm-areaid-0-type-0-kw--list--groupid-0-order--mode-0-vip-0-catid-0.html'><img src='{DT_SKIN}image/more.jpg'></a></span></div>
+																<div class="grayb nt h25 cut bluebg">
+																<span class="lenstr w60 tc">加入时间</span>
+																<span class="lenstr w90 tc">所在城市</span>
+																<span class="lenstr w190 tl">公司名称</span>
+																<span class="lenstr w90 tl">商铺级别</span>
+																</div>
+																<div class="grayb nt cut" id="buydiv">
+																
+
+																	<div id="buylist" style="width:448px;height:274px;overflow:auto">
+																	<ul class='gd'>
+				{php $tagt = tag("moduleid=$moduleid&condition=groupid>5 and catids<>''&areaid=$cityid&pagesize=".$MOD[page_inew]."&order=userid desc&template=null&debug=0&showcat=1")}
+																		{php $c=1;}
+																		{loop $tagt $z $t}
+																		{php if($c==3){$c=1;}}
+																		<li onmouseover="this.className='gs3'" {if fmod($c,2)==0}class="gs1" onmouseout="this.className='gs1'"{else}class="gs2" onmouseout="this.className='gs2'"{/if}> 
+																		<span class="lenstr w60 tc">{timetodate($t[edittime],2)}</span>
+																		<span class="lenstr w90 tc">[{area_pos($t[areaid], '/', 2)}]</span>
+																		<span class="lenstr w190 tl">
+																		<a href="{$t[linkurl]}" title="{$t[catname]}-{$t[title]}" target='_blank' class="lenstr color">{if $t[validated]}<img src="{DT_SKIN}image/shield.gif" class="mid mr10"/>{else}<img src="{DT_SKIN}image/shield_no.gif" class="mid mr10"/>{/if}{$t[company]}</a>
+																		</span>
+																		<span class="lenstr w90 tc">
+																		{if $t[vip]}<img src="{DT_SKIN}image/vip.gif"/><img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/>{/if}
+																		</span>
+																		</li>
+																		{php $c=$c+1;}
+																				{/loop}
+																	</ul>
+																	</div>
+																</div>
+											<script type="text/javascript">new Marquee(["buydiv","buylist"],0,1,448,274,30,0,0)	;</script>
+
+															</div>
+															<div class="autoheight w273 ml10 fl">
+																<div class="green"><div class="h4title">最新[{$MOD[page_inews]}]条发布企业新闻</div><span class="mores"><a href='{$MODULE[4][linkurl]}news.php'><img src='{DT_SKIN}image/more.jpg'></a></span></div>
+																<div class="grayb nt h300 cut" id="selldiv">
+																	<div style="width:359px;height:300px;overflow:auto">
+																	<div class="plist">
+																	<ul>
+																	<!--{tag("table=news&condition=status=3 and level>0&pagesize=".$MOD[page_inews]."&datetype=2&order=addtime desc&target=_blank&template=list-news")}-->
+																	</ul>
+																	</div>
+																	</div>
+																</div>
+															</div>
+											<div class="divline"></div>
+																<div class="grayb h110">
+																<dl>
+																<dt>厂商广告位</dt>
+																<dd>
+																</dd>
+																</dl>
+																</div>
+											<div class="divline"></div>
+																<div class="blue"><div class="h4title">本站推荐[{$MOD[page_irec]}]家厂商商铺名录</div><span class="mores"><a href='{$MODULE[4][linkurl]}search-htm-areaid-0-type-0-kw--list--groupid-7-order--mode-0-vip-1-catid-0.html'><img src='{DT_SKIN}image/more.jpg'></a></span></div>
+																<div class="grayb nt" style="height:610px;">
+																<dl class="com1">
+																<dt><b>厂商类型选择：</b>
+																<span class="lenstr mr10">
+																{loop $modes $k $v}
+																{if $k>0}
+															·<a href="{$MOD[linkurl]}{rewrite('search.php?mode='.$k.'&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&groupid='.$groupid.'&order='.$orderv.'&type='.$type.'&size='.$size.'&vip='.$vip.'&areaid='.$areaid)}" class="f12 color">{$v}</a>
+															{/if}
+															{/loop}</span>
+															<span class="lenstr"><b>运营模式：</b>
+																{loop $types $k $v}
+																{if $k>0}
+															·<a href="{$MOD[linkurl]}{rewrite('search.php?mode='.$k.'&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&groupid='.$groupid.'&order='.$orderv.'&type='.$type.'&size='.$size.'&vip='.$vip.'&areaid='.$areaid)}" class="f12 color">{$v}</a>
+															{/if}
+															{/loop}</span>			
+															
+															</dt>
+																<dd>
+																<ul>
+<!--{tag("moduleid=$moduleid&condition=validated>0 and vip>0 &areaid=$cityid&pagesize=".$MOD[page_irec]."&order=vip desc&template=list-company-index")}-->
+																</ul>
+																</dd>
+																</dl>
+																</div>
+
+
+											</div>
+{template 'footer'}

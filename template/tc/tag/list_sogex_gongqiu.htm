@@ -1,0 +1,20 @@
+{loop $tags $gk $gv}
+<div class="itemProduct">
+{if $gv['thumb'] != ''}
+							<a href="{so_rewrite('detail.php?itemid='.$gv['itemid'].'&infotype=6')}" title="{$gv['title']}" target="_blank">
+								<div class="itemImg">
+									<img src="{$gv['thumb']}" alt="{$gv['title']}">
+								</div>
+							</a>
+{/if}
+							<div class="itemProductR"><a class="mt50" href="{so_rewrite('detail.php?itemid='.$gv['itemid'].'&infotype=6')}" title="{$gv['title']}" target="_black">求购</a> </div>
+							<div class="itemProductC" {if $gv['thumb'] == ''}style="padding-left:8px;"{/if} >
+								<a href="{so_rewrite('detail.php?itemid='.$gv['itemid'].'&infotype=6')}" title="{$gv['title']}" target="_blank"><h4 class="text-overflow">{$gv['title']}</h4></a>
+								<ul>
+									<li>价格：<em><?php if($v['price'] && $v['price'] != 0){echo $v['price'];}else{echo '面议';} ?></em></li>
+									<li>关注度：<em>{$gv['hits']} ℃</em></li>
+								</ul>
+								<p class="h40">{$gv['description']}</p>
+							</div>
+						</div>
+{/loop}

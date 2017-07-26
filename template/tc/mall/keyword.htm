@@ -1,0 +1,115 @@
+﻿{php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'tc.chanpin.base.css',DT_SKIN.'tc.chanpin.list.css']}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/mall/tc.chanpin.list.js'];}
+<?php
+$areaname = area_pos($areaid,'');
+$ztitle = "【".$keyword[word]."】".$areaname.$keyword['word']."医疗器械大全-医疗器械产品库-天成医疗器械网";
+$zkeywords = $areaname.$keyword['word'].'，'.$areaname.$keyword['word'].'医疗器>械价格，'.$areaname.$keyword['word'].'产品';
+$zdescription = '天成医疗器械网为你找到'.$item['c'].'件'.$areaname.$keyword['word'].'产品。包含'.$areaname.$keyword['word'].'简介，'.$areaname.$keyword['word'].'参数，报价，供应批发等信息。天成医疗器械网产品库，提供'.$areaname.'各类医疗器械设备产品。'
+?>
+{template 'module-header'}
+
+<!--container-->
+<div class="container">
+    <!--crumb-->
+    <div class="crumb ">
+        <a href="{DT_PATH}">天成医疗网首页</a><span>&gt;</span>
+        <a href="{$MODULE[16]['linkurl']}">产品库</a>
+    </div>
+    <!--crumb end-->
+    
+    <!--cp-keyword-layout-->
+    <div class="cp-keyword-layout clearfix">
+        <!--main-->
+        <div class="main pull-left">
+            <!--keyword-wrap-->
+            <div class="keyword-wrap">
+                <h2 class="keyword-val">{$keyword['word']}</h2>
+                {if $kcontent}
+                <p class="keyword-intro">
+                    {$kcontent['content']}
+                </p>
+                {/if}
+
+                <div class="keyword-area">
+                    <div class="keyword-area-hd">按地区找关键词</div>
+                    <ul class="keyword-area-bd">
+                    	<li {if empty($areaid)}class="current"{/if}><a href="{keyword_rewrite(['kwid'=>$kwid])}" >全国</a></li>
+                    	{php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}
+                    	{loop $mainarea $k $t}
+                    	{php $area_selector = $selector;}
+                    	{php $area_selector['areaid'] = $t['areaid'];}
+                        <li {if $areaid == $t['areaid']}class="current"{/if}><a href="{keyword_rewrite($area_selector)}" title="{$t['areaname']}{$keyowrd['word']}">{$t['areaname']}</a></li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+            <!--keyword-wrap end-->
+
+			{if $malls}
+            <form method="post" id="mallForm" target="_blank" action="{$MODULE[16]['linkurl']}compare.php">
+            	{loop $malls $k $t}
+                <div class="cp-card cp-kw-card clearfix">
+                    <div class="cp-img pull-left">
+                        <a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['title']}"><img src="{$t['thumb']}" alt="{$t['title']}"></a>
+                    </div>
+                    <div class="cp-txt pull-left">
+                        <h3 class="text-overflow"><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h3>
+                        <ul class="cp-param clearfix">
+                            <li><span class="cp-param-key">产品品牌：</span><em class="cp-param-val">{$t['brand']}</em></li>
+                            <li><span class="cp-param-key">产品型号：</span><em class="cp-param-val">{$t['model']}</em></li>
+                            <li><span class="cp-param-key">产品分类：</span><em class="cp-param-val"><a href="{$MODULE[16]['linkurl']}{mall_cat_rewrite(['catid'=>$t['catid']])}" title="{$CATEGORY[$t['catid']]}医疗器械">{$CATEGORY[$t['catid']]}</a></em></li>
+                            <li><span class="cp-param-key">生产厂商：</span><em class="cp-param-val">{$t['company']}</em></li>
+                            <li><span class="cp-param-key">所在地区：</span><em class="cp-param-val"><a href="{$MODULE[16]['linkurl']}{mall_rewrite(['areaid'=>$t['areaid']])}" title="{area_pos($t['areaid'],'')}医疗器械">{area_pos($t['areaid'],'/')}</a></em></li>
+                            <li><span class="cp-param-key">相关科室：</span>
+                            <em class="cp-param-val">
+                            {if $t['kcatids']}
+                            {php $kcatid = explode(',',$t['kcatids']);}
+                            {loop $kcatid $kt}
+                            <i><a href="{$MODULE[16]['linkurl']}{keshi_rewrite(['kcatid'=>$t])}" title="{$KESHI[$kt]}医疗器械">{$KESHI[$kt]}</a></i>
+                            {/loop}
+                            {/if}
+                            </em>
+                            </li>
+                            <li><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" class="more">更多参数>></a></li>
+                        </ul>
+                    </div>
+                    <div class="cp-btn pull-right">
+                        <label class="compare-btn" for="check_{$t['itemid']}"><input type="checkbox" id="check_{$t['itemid']}" name="itemid[]" value="{$t['itemid']}">对比</label>
+                        <a class="cheaper-btn" href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank">查看详细</a>
+                    </div>
+                </div>
+                {/loop}
+            </form>
+
+            <!--分页-->
+            {pagination($page,$items['c'],$pagesize,$MODULE[16]['linkurl'].$action.'.php',$selector,'keyword_rewrite')}
+            <!--分页 end-->
+            {else}
+            	{template 'empty-result','chip'}
+            {/if}
+        </div>
+        <!--main end-->
+
+        {template 'search-side',$module}
+
+    </div>
+    <!--cp-keyword-layout end-->
+</div>
+<!--container end-->
+
+<!--对比框-->
+<div class="compare-box" style="display: none;">
+    <div class="compare-box-hd">
+        <span>[<em></em>/4]对比框</span>
+        <button class="compare-box-close" type="button" onclick="$(this).parent().parent('.compare-box').hide();">×</button>
+    </div>
+    <div class="compare-box-bd">
+        <ul></ul>
+    </div>
+    <div class="compare-box-ft">
+        <button type="button" class="compare-box-btn">开始对比</button>
+    </div>
+</div>
+<!--对比框 end-->
+
+{template 'footer2017'}

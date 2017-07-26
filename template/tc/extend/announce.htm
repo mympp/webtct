@@ -1,0 +1,100 @@
+<?$TYPE = get_type('announce', 1);?>
+{if !$itemid}
+{if $typeid}
+{php $ztitle=$TYPE[$typeid][typename]."-在线公告";}
+{else}
+{php $ztitle="在线公告";}
+{/if}
+{else}
+{php $ztitle=$title.'-'.$TYPE[$typeid][typename]."-在线公告";}
+{/if}
+{template 'module-header'}
+{template 'menu2017'}
+
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css"/>
+<style type="text/css">
+	img{display:inline-block;}
+	#topkeyword{width: 310px;height: 22px;line-height: 22px;}
+	.w1200.box-center table{border-collapse: collapse;}
+	.w1200.box-center table td{padding: 10px;border: 1px solid #eaeaea;}
+	.webmenulist{width:750px;}
+	.content img{max-width:100%!important; height: auto!important; width:expression(this.width > 980 ? "980px" : this.width)!important;}
+	.ver2017 h1.title{margin-bottom: 20px;}
+	.ver2017 .info{padding: 0;border:none;background: #f6f6f6;}
+</style>
+<script type="text/javascript" src="{DT_PATH}file/script/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+
+<div class="crumb w1200 box-center">
+{php $ztitle="<a href='".DT_PATH."announce/'>在线公告</a>&nbsp;   >   &nbsp;<a href='".DT_PATH."announce/".rewrite('index.php?typeid='.$typeid)."'>".$TYPE[$typeid][typename];}
+{template 'lay','tag'}
+</div>
+
+{if !$itemid}
+<div class="autoheight pt5 whitebg">
+<form action="index.php">
+<dl class="options">
+		<dt>网站公告</dt>
+		<dd class="pl10"><a href="{rewrite('index.php?typeid=')}"  class="{if !$typeid}opyes wcolor{else}color{/if}">不限</a>
+{loop $TYPE $t}
+<a href="{rewrite('index.php?typeid='.$t['typeid'])}" class="{if $t['typeid']==$typeid}opyes wcolor{else}color{/if}">{$t[typename]}</a>
+{/loop}</dd>
+</dl>
+<dl class="options cut" style="border-bottom-width:0px;height:30px;">	
+<dt>关键词搜索</dt>
+			<dd class="pl10"><input type="hidden" name="typeid" value="{$typeid}" class='fl'><input type="hidden" name="areaid" value="{$areaid}"  class='fl'><input type="text" size="30" name="kw" value="{$kw}" class="inputkw fl" id="keywords"  onfocus="if(this.value=='输入关键词'){this.value=''}"/><input type="submit" class="subm"/>
+			<script type="text/javascript">
+			document.getElementById('keywords').value='{if $kw!=''}{$kw}{else}输入关键词{/if}';
+			</script>
+			</dd>
+ </dl>
+</form>		
+</div>{/if}
+<dl class="autoheight whitebg mt10 ver2017">
+		<div class="autoheight whitebg w1200 box-center">
+		<div class="divline"></div>
+			{if $itemid}
+			<h1 class="title tc"><font class="bcolor f24 b">{$title}</font></h1>
+			<div class="info">
+			<table cellpadding="0" cellspacing="0" border=0 width=100%>
+			<tr>
+				<td>{template 'baidu', 'chip'}</td>
+				<td><a href="javascript:void(0)" class="jt" onclick="Print();" >[打印]</a></td>
+				<td>发布：{$adddate}&nbsp;</td>
+				<td>有效期：{$fromdate} 至 {$todate}&nbsp;</td>
+				<td>关注：<span id="hits">{$hits}</span></td>
+			</tr>
+			</table>
+			</div>
+			<div class="content" id="content">{$content}</div>
+			{else}
+{loop $lists $k $v}
+<table cellpadding="0" cellspacing="0" align="center"  class="mb10">
+<tr class="graybg">
+<td width="5"  align="left">&nbsp;</td>
+<td width="450" height=40 align="left" valign="middle"><a href="{$v[linkurl]}" target="_blank" class="f16 {if $v[islink]}ocolor{else}color{/if} b">{$v[title]}</a><span id="ggt{$v[itemid]}"></span></td>
+<td width="135" align="left"><a href="{rewrite('index.php?typeid='.$v['typeid'])}" class="color">[{$v[typename]}]</a>&nbsp;</td>
+<td width="70"  align="left">{$v[hits]}人关注</td>
+<td width="70" align="left">{timetodate($v[edittime], 3)}</td>
+</tr>
+<tr>
+<td colspan="6" width='970' height=60 valign="top">
+
+{dsubstr(strip_tags($v[content]),160,"..")}
+</td>
+</tr>
+{if strpos($v[content],'img')}
+<script type="text/javascript">
+Dd('ggt{$v[itemid]}').innerHTML='&nbsp;<img src="{DT_SKIN}image/photo.gif">&nbsp;图文信息';
+</script>
+{/if}
+</table>
+{/loop}
+			
+			
+			<div class="pages">{$pages}</div>
+			{/if}
+		</div>
+</dl>
+{template 'footer2017'}
+		

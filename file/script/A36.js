@@ -1,0 +1,1 @@
+document.write('<img src="http://www.tecenet.com/file/upload/201404/14/10-46-17-79-1.png" width="400" height="193" alt=""/>');

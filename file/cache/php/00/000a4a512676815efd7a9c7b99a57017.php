@@ -1,0 +1,1 @@
+<?php exit;?>1466424342a:1:{i:0;a:3:{s:5:"thumb";s:63:"http://www.tecenet.com/file/upload/201407/24/15-28-47-63-40.jpg";s:7:"linkurl";s:29:"http://zhangtong.tecenet.com/";s:7:"company";s:42:"北京通仪联合科技有限责任公司";}}

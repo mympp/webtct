@@ -1,0 +1,29 @@
+
+/* global */
+body {margin:0px;font-size:12px;color:#575447;background: url('bg4.gif') repeat;}
+/* common */
+.maintop{ height:34px; line-height:34px; background:url(img_02.gif) repeat-x;}
+.m {width:960px;margin:auto;}
+.m1 {width:960px;margin:auto;background:#F3ECD2;}
+.m2 {width:980px;margin:auto;}
+.top {padding:0 10px 0 10px;width:100%;margin:auto;background: url('topbg.jpg') repeat-x; height:40px; line-height:40px;}
+#top a {text-decoration:none;}
+.dsn { color:#FFFFFF}
+
+
+#menu a {text-decoration:none;}
+.menu {background:url('menulayer_bg.gif');height:65px;overflow:hidden;padding:0 0 0 20px;font-size:14px;font-weight:bold;}
+.menu_li {float:left;line-height:53px;padding:0 20px 0 20px;background:url('navleft2-1.gif') repeat-x;}
+.menu_li span {color:#ffffff;}
+.menu_on {float:left;line-height:53px;padding:0 20px 0 20px;background:url('navright2.gif') repeat-x;}
+.menu_on span {color:#ffffff;}
+
+
+.side_head {border:#DDD7B3 1px solid;border-bottom:none;background:url('piclock_title-1.gif') repeat-x;}
+.side_head div {padding:0 30px 0 30px;font-size:14px;height:40px;line-height:35px;overflow:hidden;letter-spacing:1px;}
+.side_body {border:#DDD7B3 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+.side_body li {background:url('../../image/ico_arrow.gif') no-repeat 5px 7px;padding:0 0 0 20px;height:26px;line-height:26px;overflow:hidden;}
+
+.main_head {border:#DDD7B3 1px solid;border-bottom:none;background:url('piclock_title.gif') repeat-x;}
+.main_head div {padding:0 30px 0 30px;font-size:14px;height:40px;line-height:35px;overflow:hidden;letter-spacing:1px;}
+.main_body {border:#DDD7B3 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}

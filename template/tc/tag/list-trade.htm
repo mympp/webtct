@@ -1,0 +1,5 @@
+{loop $tags $z $t}
+<li>
+<span>[{if $price==1}<font class="ocolor">{if $t[groupid]==8}询价{else}{if $t[price]>0}¥{$t[price]}{else}面议{/if}{/if}</font>{else}<font class="color">{$t[hits]}°C{/if}</font>]</span>
+<a class="w200 color lenstr" href="{$t[linkurl]}" target='_blank'>{$t[title]}</a></li>
+{/loop}

@@ -1,0 +1,20 @@
+{template 'header', $template}
+<div class="right">
+	<div class="right_top">
+		<img src="{$HSPATH}ico_6.jpg"/>&nbsp;&nbsp;您当前的位置：<a style="color:#9d1b5f" href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$COM[linkurl]}" style="color:#9d1b5f">{$MENU[$menuid][name]}</a>
+		<span><script type="text/javascript">show_date();</script></span>
+	</div>
+			<div class="list_link">
+				<div class="list_title"><span>友情链接</span></div>
+				<div class="list_link_content">
+					<ul>
+						{loop $lists $k $v}
+						{if $k<=10}
+						<li><a href="{$v[linkurl]}">{$v[title]}</a></li>
+						{/if}
+						{/loop}
+					</ul>
+				</div>
+				<div class="pages">{$pages}</div>
+			</div>
+{template 'footer', $template}

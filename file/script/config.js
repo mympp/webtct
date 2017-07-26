@@ -1,0 +1,1 @@
+var DTPath = "http://www.ltecenet.com/";var SKPath = "http://www.ltecenet.com/skin/teceskin/";var MEPath = "http://www.ltecenet.com/member/";var DTEditor = "kindeditor";var CKDomain = ".ltecenet.com";var CKPath = "/";var CKPrex = "Dy1_";

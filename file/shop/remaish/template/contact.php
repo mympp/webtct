@@ -1,0 +1,66 @@
+    <!--咨询联系-->
+    <div class="contact layout pt60" id="contact">
+        <div class="layout-hd">
+            <h2>加盟咨询<span>contact</span></h2>
+        </div>
+        <div class="layout-bd clearfix">
+            <form action="contact.php" class="form-wrap pull-left" method="post">
+                <input type="hidden" name="job" value="guestbook">
+                <input type="hidden" name="title" id="title" />
+                <input type="hidden" name="username" value="jingxing">
+                <input type="hidden" name="action" value="send">
+                <div class="form-hd">
+                    <strong>欢迎咨询加盟代理事宜</strong>
+                    <p>勾选您需要咨询的问题</p>
+                </div>
+                <div class="checkbox-area">
+                    <label for="check-1"><input type="checkbox" name="qc" id="check-1" value="请问加盟热脉网店所需条件有哪些？">请问加盟热脉网店所需条件有哪些？</label>
+                    <label for="check-2"><input type="checkbox" name="qc" id="check-2" value="我想详细了解贵品牌的加盟流程，请与我联系！">我想详细了解贵品牌的加盟流程，请与我联系！</label>
+                    <label for="check-3"><input type="checkbox" name="qc" id="check-3" value="我有兴趣，请问贵品牌拿货折扣和调换货政策？">我有兴趣，请问贵品牌拿货折扣和调换货政策？</label>
+                    <label for="check-4"><input type="checkbox" name="qc" id="check-4" value="作为贵品牌项目的网店加盟商能得到哪些支持？">作为贵品牌项目的网店加盟商能得到哪些支持？</label>
+                    <label for="check-5"><input type="checkbox" name="qc" id="check-5" value="我已留下邮箱，请将详细资料发邮件给我。">我已留下邮箱，请将详细资料发邮件给我。</label>
+                </div>
+                <textarea id=""  placeholder="留言补充…" name="content"></textarea>
+                <p class="msg">请填写联系方式以便我们及时与您取得联系（我们会对您的资料予以保密！）</p>
+                <div class="form-group pull-left">
+                    <label class="form-label" for="name">您的姓名：</label>
+                    <input class="form-text" type="text" id="name" name="truename" >
+                </div>
+                <div class="form-group pull-right">
+                    <label class="form-label" for="area">所在地区：</label>
+                    <input class="form-text" type="text" id="area" placeholder="填写您的所在地" name="company">
+                </div>
+                <div class="form-group pull-left">
+                    <label class="form-label" for="tel">移动电话：</label>
+                    <input class="form-text" type="text" id="tel" name="telephone" >
+                </div>
+                <div class="form-group pull-right">
+                    <label class="form-label" for="qq_email">QQ /邮箱：</label>
+                    <input class="form-text" type="text" id="qq_email" name="qq" >
+                </div>
+
+                <input type="submit" value=">>>> 提交咨询 <<<<">
+            </form>
+            <div class="already pull-right">
+                <div class="hd clearfix"><i class="rm-i pull-left"></i><span class="pull-left">已加盟伙伴</span></div>
+                <div class="bd clearfix">
+                    <div class="already-txt-list pull-left">
+                        <ul class="bd">      
+                            <li><strong style="margin-right:15px;">益丰大药房</strong>长沙高新开发区金洲大道68号</li>
+                            <li><strong style="margin-right:15px;">九州通</strong>湖北省武汉市汉阳区龙阳大道特8号</li>
+                            <li><strong style="margin-right:15px;">成都拓创</strong>成都市青羊区腾飞大道229号二号楼三层</li>
+                            <li><strong style="margin-right:15px;">福仁药业</strong>福建省闽侯县荆溪镇</li>
+                        </ul>
+                    </div>
+
+                   <!--  <ul class="already-img-list pull-right">
+                        <li><img src="http://placehold.it/170x105" alt=""></li>
+                        <li><img src="http://placehold.it/170x105" alt=""></li>
+                        <li><img src="http://placehold.it/170x105" alt=""></li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--咨询联系 end-->

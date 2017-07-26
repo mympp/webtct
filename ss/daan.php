@@ -1,0 +1,1 @@
+<meta http-equiv="refresh" content="0;url=/mall/search.php?fid=1&bcatid=858&list=1">

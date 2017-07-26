@@ -1,0 +1,33 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+.sell_tip {width:180px;height:70px;background:url('image/sell_tip.gif') no-repeat;overflow:hidden;z-index:1000;position:absolute;}
+.sell_tip p {margin:0 0 4px 2px;font-weight:bold;}
+.sell_tip div {padding:8px 0 0 10px;}
+.tool {border-bottom:#CCCCCC 1px dotted;background:#f6f6f6}
+.tool table {width:100%;}.tool a{color:#5e5e5e}
+.img_list li {height:22px;line-height:22px;overflow:hidden;}
+.product_option {padding:10px 20px 10px 20px;}
+.iq_btn {margin-top:10px;cursor:pointer;}
+
+.list,.list_on{border-bottom:#CCCCCC 1px dotted;;color:#666; padding-top:15px; padding-bottom:10px;}
+.list,.list_on,.list a,.list_on a{color:#717171}
+.list dt,.list_on dt{font-size:14px;margin:0px;padding:3px;line-height:16px;height:16px;font-weight:bold;padding-left:15px;background:url('image/ico7.gif') no-repeat center left;}
+.list dt font,.list_on dt font{font-size:12px;font-weight:normal;margin-right:10px;}
+.list_on dt a{color:#375c9b}
+.list dd,.list_on dd{padding-left:15px;line-height:20px;height:20px;}
+.list dt span,.list_on dt span{float:right;margin-right:10px;margin-top:-16px;}
+.list_on{border-bottom:#76add6 1px dotted;background:#f5f9fa;}
+.list dl span,.list_on dl span{display:-moz-inline-box; display:inline-block;}
+h1{line-height:30px;margin:10px;;padding:0px;padding-bottom:10px;text-align:center;color:#676767;font-size:16px;border-bottom:1px #c8c8c8 dashed}
+.riqi{margin-top:-30px;float:right;margin-right:20px;color:#9a9a9a}
+
+.search{background:url('image/memberinfo.jpg');height:30px;padding-top:5px;border:#bbd2dd 1px solid;}
+.compare {margin:8px;border:#d5e3ee 1px solid;}.compare a{color:#5b5b5b}
+.compare table {background:#FFFFFF;}
+.compare table tr {background:#f4f5f7;text-align:center;}
+.compare table td {width:120px;padding:5px;border-bottom:#d5e3ee 1px solid;line-height:180%;}
+.compare div {font-weight:bold;color:#FF6600;letter-spacing:2px;}
+.zixunbg{background:#f4f5f7;text-align:right;}
+.zixun td{padding:5px;border-bottom:#d5e3ee 1px dashed;}.zixun td td{border:none}

@@ -1,0 +1,83 @@
+# Destoon B2B Rewrite Rules
+ErrorDocument 404 /404.php
+RewriteEngine On
+RewriteBase /
+RewriteRule ^list\-([0-9]+)\.html$ $1.html [L,R=301]
+RewriteRule ^mall\/list\-htm\-catid\-([0-9]+)\.html$ /chanpin\/list\-htm\-catid\-$1\.html [L,R=301]
+RewriteRule ^mall\/show\-htm\-itemid\-([0-9]+)\.html$ /chanpin\/show\-$1\.html [L,R=301]
+RewriteRule ^buy\/show\-htm\-itemid\-([0-9]+)\.html$ /zhaobiao\/show\-$1\.html [L,R=301]
+RewriteRule ^down\/show\-htm\-itemid\-([0-9]+)\.html$ /gongxiang\/show\-$1\.html [L,R=301]
+RewriteRule ^company\/show\-htm\-itemid\-([0-9]+)\.html$ /gongsi\/show\-$1\.html [L,R=301]
+RewriteRule ^brand\/show\-htm\-itemid\-([0-9]+)\.html$ /pinpai\/show\-$1\.html [L,R=301]
+RewriteRule ^article\/show\.php\?itemid\-([0-9]+)\.html$ /zixun\/show\-$1\.html [L,R=301]
+RewriteRule ^sell\/show\.php\?itemid\-([0-9]+)\.html$ /gongying\/show\-$1\.html [L,R=301]
+RewriteRule ^down\/list\-htm\-catid\-([0-9]+)\.html$ /gongxiang\/list\-htm\-catid\-$1\.html [L,R=301]
+RewriteRule ^article\/show\-htm\-itemid\-([0-9]+)\.html$ /zixun\/show\-$1\.html [L,R=301]
+RewriteRule ^job\/resume\-htm\-itemid\-([0-9]+)\.html$ /fuwu\/resume\-htm\-itemid\-$1\.html [L,R=301]
+RewriteRule ^job\/show\-([0-9]+)\.html$ /fuwu\/show\-$1\.html [L,R=301]
+RewriteRule ^zixun\/show\-htm\-itemid\-([0-9]+)\.html$ /zixun\/show\-$1\.html [L,R=301]
+RewriteRule ^index\-htm\-page\-([0-9]+)\.html$ / [L,R=301]
+RewriteRule ^down\/search\-htm\-order\-([0-9]+)\-downtype\--catid\-([0-9]+)\.html$ /gongxiang\/search\-htm\-order\-$1\-downtype\--catid\-$2\.html [L,R=301]
+RewriteRule ^down\/search\-htm\-order\-([0-9]+)\-downtype\-([0-9]+)\-catid\-([0-9]+)\.html$ /gongxiang\/search\-htm\-order\-$1\-downtype\-$2\-catid\-$3\.html [L,R=301]
+RewriteRule ^down\/search\-htm\-order\-([0-9]+)\-downtype\-([0-9]+)\-catid\-([0-9]+)\-page\-([0-9]+)\.html$ /gongxiang\/search\-htm\-order\-$1\-downtype\-$2\-catid\-$3\-page\-$4\.html [L,R=301]
+RewriteRule ^company\/index\-htm\-page\-([0-9]+)\.html$ /gongsi\/index\-htm\-page\-$1.html [L,R=301]
+RewriteRule ^chanpin\/comment\/index\-htm\-mid\-([0-9]+)\-itemid\-([0-9]+)\.html$ /comment\/index\-htm\-mid\-$1\-itemid\-$2\.html [L,R=301]
+RewriteRule ^company\/search\-htm\-areaid\-([0-9]+)\-type\-([0-9]+)\-kw\--list\--groupid\-([0-9]+)\-order\--mode\-([0-9]+)\-vip\-([0-9]+)\-catid\-([0-9]+)\.html$ /gongsi\/search\-htm\-areaid\-$1\-type\-$2\-kw\--list\--groupid\-$3\-order\--mode\-$4\-vip\-$5\.html  [L,R=301]
+RewriteRule ^index.html$ / [L,R=301]
+RewriteRule ^company\/search\-htm\-areaid\-([0-9]+)\-kw\--list\--groupid\-([0-9]+)\-order\--mode\-([0-9]+)\-vip\-([0-9]+)\-type\-([0-9]+)\-catid\-([0-9]+)\.html$ /gongsi\/search\-htm\-areaid\-$1\-kw\--list\--groupid\-$2\-order\--mode\-$3\-vip\-$4\-type\-$5\.html [L,R=301]
+RewriteRule ^buy$ /zhaobiao/ [L,R=301]
+RewriteRule ^company\/search\-htm\-areaid\-([0-9]+)\-typeid\-([0-9]+)\-kw\--list\--order\--day\--vip\--catid\-([0-9]+)\.html$ /gongsi\/search\-htm\-areaid\-$1\-typeid\-$2\.html  [L,R=301]
+RewriteRule ^company\/list\-htm\-areaid\-([0-9]+)\-kw\--list\--order\--day\--vip\--typeid\-([0-9]+)\-catid\-([0-9]+)\.html$ gongsi\/list\-htm\-areaid\-$1\-kw\--list\--order\--day\--vip\--typeid\-$2\-catid\-$3\.html [L,R=301]
+RewriteRule ^buy\/$ /zhaobiao/ [L,R=301]
+RewriteRule ^mall\/list\-htm\-catid\-([0-9]+)\-page\-([0-9]+)\.html$ /chanpin\/list\-htm\-catid\-$1\-page\-$2\.html [L,R=301]
+RewriteRule ^article\/list\-htm\-catid\-([0-9]+)\-page\-([0-9]+)\.html$ /zixun\/list\-htm\-catid\-$1\-page\-$2\.html [L,R=301]
+RewriteRule ^buy\/index\-htm\-page\-([0-9]+)\.html$ /zhaobiao/ [L,R=301]
+RewriteRule ^brand\/index\-htm\-page\-([0-9]+)\.html$ /pinpai/ [L,R=301]
+RewriteRule ^fuwu\/show\-htm\-itemid\-([0-9]+)\.html$ /fuwu\/show\-$1\.html [L,R=301]
+RewriteRule ^pinpai\/show\-htm\-itemid\-([0-9]+)\.html$ /pinpai\/show\-$1\.html [L,R=301]
+RewriteRule ^gongxiang\/show\-htm\-itemid\-([0-9]+)\.html$ /gongxiang\/show\-$1\.html [L,R=301]
+RewriteRule ^taoxinxi\/index\-htm\-islink\-([0-9]+)\-typeid\-([0-9]+)\.html$ /taoxinxi/ [L,R=301]
+RewriteRule ^taoxinxi\/index\-htm\-islink\-([0-9]+)\-typeid\-.html$ /taoxinxi/ [L,R=301]
+RewriteRule ^taoxinxi\/index\-htm\-typeid\-([0-9]+)\.html$ /taoxinxi/ [L,R=301]
+RewriteRule ^gongsi\/search\-htm\-branid\-([0-9]+)\.html$ /gongsi/ [L,R=301]
+RewriteRule ^company\/search\-htm\-mode\-([0-9]+)\-catid\-([0-9]+)\-kw\--list\--groupid\-([0-9]+)\-order\--type\-([0-9]+)\-size\-([0-9]+)\-vip\-([0-9]+)\-areaid\-([0-9]+)\.html$ gongsi\/search\-htm\-mode\-$1\-type\-$4\-vip\-$6\-areaid\-$7\.html [L,R=301]
+RewriteRule ^down\/$ /gongxiang/ [L,R=301]
+RewriteRule ^chanpin\/([a-z0-9_\-]+)-([0-9]+)$ /chanpin/$1-$2/ [L,R=301]
+RewriteRule ^mall\/$ /chanpin/ [L,R=301]
+RewriteRule ^mall\/search\-htm\-areaid\-([0-9]+)\-tc\-([0-9]+)\-bcatid\-([0-9]+)\-stype\-([0-9]+)\-(.*?)\-vip\-([0-9]+)\-catid\-([0-9]+)\.html$ /chanpin\/search-htm-tc-1-list-1-catid-0.html [L,R=301]
+RewriteRule ^mall$ /chanpin/ [L,R=301]
+RewriteRule ^brand\/$ /pinpai/ [L,R=301]
+RewriteRule ^brand$ /pinpai/ [L,R=301]
+RewriteRule ^news\/$ /zixun/ [L,R=301]
+RewriteRule ^news$ /zixun/ [L,R=301]
+RewriteRule ^down$ /gongxiang/ [L,R=301]
+RewriteRule ^sell\/$ /zhaobiao/ [L,R=301]
+RewriteRule ^sell$ /zhaobiao/ [L,R=301]
+RewriteRule ^shuoshuo\/(.*?)$ /wenda/$1 [L,R=301]
+RewriteRule ^(.*)\.(asp|aspx|asa|asax|dll|jsp|cgi|fcgi|pl)(.*)$ /404.php
+RewriteRule ^(.*)/file/(.*)\.php(.*)$ /404.php
+RewriteRule ^(.*)-htm-(.*)$ $1.php?$2
+RewriteRule ^(.*)/show-([0-9]+)([\-])?([0-9]+)?\.html$ $1/show.php?itemid=$2&page=$4
+RewriteRule ^(.*)/list-([0-9]+)([\-])?([0-9]+)?\.html$ $1/list.php?catid=$2&page=$4
+RewriteRule ^(.*)/([A-za-z0-9_\-]+)-c([0-9]+)-([0-9]+)\.html$ $1/list.php?catid=$3&catdir=$2&page=$4
+RewriteRule ^(.*)/show/([0-9]+)/([0-9]+)?([/])?$ $1/show.php?itemid=$2&page=$3
+RewriteRule ^(.*)/list/([0-9]+)/([0-9]+)?([/])?$ $1/list.php?catid=$2&page=$3
+RewriteRule ^(.*)/([a-z]+)/(.*)\.shtml$ $1/$2/index.php?rewrite=$3
+RewriteRule ^(com)/([a-z0-9_\-]+)/([a-z]+)/(.*)\.html$ index.php?homepage=$2&file=$3&rewrite=$4
+RewriteRule ^(com)/([a-z0-9_\-]+)/([a-z]+)([/])?$ index.php?homepage=$2&file=$3
+RewriteRule ^(com)/([a-z0-9_\-]+)([/])?$ index.php?homepage=$2
+RewriteRule ^(.*)/([a-z0-9_\-]+)$ $1/index.php?my_letter=$2
+RewriteRule ^(.*)\/([0-9]+)\.htm$ $1/search.php?areaid=0&tc=9&kw=&stype=9&list=1&order=0&day=0&vip=0&catid=0&kcatid=$2
+RewriteRule ^(.*)\/([0-9]+)-([0-9]+)\.htm$ $1/search.php?areaid=0&tc=9&kw=&stype=9&list=1&order=0&day=0&vip=0&catid=0&kcatid=$2&page=$3
+RewriteRule ^(.*)\/peijian/$ $1/search.php?tc=9&bcatid=0&fid=0&kcatid=0&catid=0&stype=1&kw=&list=0&order=0&day=0&vip=0&areaid=0
+RewriteRule ^(.*)\/haocai/$ $1/search.php?tc=9&bcatid=0&fid=0&kcatid=0&catid=0&stype=2&kw=&list=0&order=0&day=0&vip=0&areaid=0
+RewriteRule ^(.*)/([a-z0-9_\-]+)-([0-9]+)-([0-9]+)/$ $1/search.php?catid=&kw=$2&keyid=$3&action=&page=$4
+RewriteRule ^([a-z0-9_\-]+)-([0-9]+)\/$ /search.php?catid=&kw=$1&keyid=$2&action=
+RewriteRule ^(.*)/([a-z0-9_\-]+)-([0-9]+)/$ $1/search.php?kw=$2&keyid=$3
+RewriteRule ^(.*)/([a-z0-9_\-]+)-([0-9]+)/$ $1/search.php?catid=&kw=$2&keyid=$3&action=
+RewriteRule ^show-([0-9]+)([\-])?([0-9]+)?\.html$ show.php?itemid=$1&page=$3
+#Apache .conf Rules (Replace line 12 & line 13 & line 14)
+#RewriteRule ^(.*)/com/([a-z0-9_\-]+)/([a-z]+)/(.*)\.html$ $1/index.php?homepage=$2&file=$3&rewrite=$4
+#RewriteRule ^(.*)/com/([a-z0-9_\-]+)/([a-z]+)([/])?$ $1/index.php?homepage=$2&file=$3
+#RewriteRule ^(.*)/com/([a-z0-9_\-]+)([/])?$ $1/index.php?homepage=$2
+#RewriteRule ^(.*)/search/([0-9]+)([\-])?([0-9]+)?(.*?)?$ $1/search.php?moduleid=$2&spread=$3&action=&topkw=$4&kw=$5

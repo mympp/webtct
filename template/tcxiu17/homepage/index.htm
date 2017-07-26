@@ -1,0 +1,18 @@
+{template 'header', $template}
+<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; 欢迎光临</div>
+{loop $HMAIN $HM $MAIN}
+{template 'main_'.$main_file[$HM], $template}
+{/loop}
+{template 'footer', $template}
+
+<style type="text/css">
+.erwei{position:fixed;z-index:1001;width:100px;height:140px;right:30px;bottom:0;text-align:center;font-size:12px;line-height:16px;background:#fafafa;
+_position:absolute;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle
+.marginBottom,10)||0)));}
+</style>
+<script>
+if(screen.width>1024){
+document.writeln("<div id=\"erwei\" class=\"erwei\"><img src=\"{DT_SKIN}image\/erwei.jpg\"><br>天成医疗微信<br>tianchengyiliao<br>微信发现扫一扫<\/div>");}
+</script>

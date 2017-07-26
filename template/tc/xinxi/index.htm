@@ -1,0 +1,219 @@
+{php $sitemenu='xinxi';$listpage='list';$JS=array('jquery.jslides');}
+{template 'header'}
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+<script language="javascript" type="text/javascript" src="{DT_PATH}file/script/MSClass.js"></script>
+</div>
+</div>
+    <!--banner切换开始 -->
+<div  style="height:295px;">
+    <div id="full-screen-slider">
+        <ul id="b_slides">            
+                    <li style="background: url('{DT_SKIN}/image/quote/01.jpg') center no-repeat;"></li>
+                    <li style="background: url('{DT_SKIN}/image/quote/02.jpg') center no-repeat;"></li>
+                    <li style="background: url('{DT_SKIN}/image/quote/03.jpg') center no-repeat;"></li>
+        </ul>
+    </div>
+</div>
+    <!--banner切换结束 -->
+<div class="autoheight" style="background: url('{DT_SKIN}/image/quote/bg.png')">
+<div class="divline"></div>
+<div class="webw">
+<div class="whitebg whitebg rad">
+<div class="fabubt"><p><a {if $_userid}href="{$MODULE[2][linkurl]}my.php?mid={$moduleid}&action=add" {else}href="javascript:void(0);" onclick='msgtip("您好！登陆提示！","发布行业问答信息，您需要登录本站！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;或&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>")'  {/if}><img src="{DT_SKIN}image/blank.gif"></a></p></div>
+<div class="graybg pt5 pl5">
+<table cellspacing=0 cellpadding=0 border=0>
+<form action="{$MOD[linkurl]}search.php"><tr>
+	<td width="310" valign="middle"><input type="hidden" name="stype" id="z_stype" value="99"> 	<input type="text" name="kw" id="z_kw" value="请输入关键词"  onfocus="if(this.value=='请输入关键词')this.value='';"/>
+	</td>
+	<td width="170" valign="middle">
+	<input type="radio" name="fields" value="0" id="fd_0" {if $fields==0} checked{/if}/><label for="fd_0"> 智能</label>&nbsp;
+<input type="radio" name="fields" value="1" id="fd_1"  {if $fields==1} checked{/if}/><label for="fd_1"> 标题</label>&nbsp;
+<input type="radio" name="fields" value="3" id="fd_3"  {if $fields==3} checked{/if}/><label for="fd_3"> 简介</label>&nbsp;
+</td>
+<td width="120" valign="middle"><input type="submit" value="提交搜索" class="btn1 rad"/></td>
+	<td  valign="middle">
+				<input type="button" value="发布供应信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=1');"/>
+				<input type="button" value="发布需求信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=0');"/>
+				<input type="button" value="发布招标信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=2');"/>
+				</td>
+</tr></form>
+</table>
+				
+			                                          
+														
+				
+				
+	
+	<div class="divline"></div>
+</div>			
+<dl class="quotecat"><dt>信息主题分类</dt><dd><ul>
+{php $child = get_maincat(0, $moduleid, 1);}
+			{loop $child $i $c}		
+				<li><a href="{$MOD[linkurl]}{$c[linkurl]}"><font class="f14">{set_style($c[catname], $c[style])}</font></a> <span>({$c[item]})</span></li>
+			{/loop}
+			<ul>
+			</dd>
+</dl>
+				{php $x = $db->count($DT_PRE.'quote', "status=3 and stype=0 and level > 1", 60);}
+				{php $g = $db->count($DT_PRE.'quote', "status=3 and level=0", 60);}
+<!--dh-->
+<div>
+<div class="quote_rbox mr10">
+<div class="quote" >
+		<dl class="mr10 grayb">
+		<dt style="background-color:#f99966">
+			<div class="q_grayb_r">
+				<p><a href="{$MOD[linkurl]}{rewrite('search.php?stype=0')}" style="color:#b90202;font-weight:bold;font-size:16px;">招标服务信息</a></p>
+				<p>共 {$x} 条寻求医疗资质服务信息！</p>
+			</div>
+			<div class="q_grayb_l" style="background:#e06f33;"><a href="{$MOD[linkurl]}{rewrite('search.php?stype=0')}" title="更多寻求资质服务信息">更多</a></div>
+		</dt>
+		<dd class="box_body" id="zxhf">
+<!--{php $tags=tag("moduleid=7&condition=status=3 and stype=0 and level > 1&order=edittime desc&pagesize=20&template=null")}-->
+	{loop $tags $k $t}
+<div class="quote_list">
+<p><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"><b> · {dsubstr($t[alt], 46, '...')}</b></a></p>
+<p>{$t[introduce]}<span class="ml10">{timetodate($t[edittime], 4)}</span></p>
+</div>
+{/loop}		
+		</dd>
+<script type="text/javascript">new Marquee(["zxhf"],1,0.1,370,260,20,2000,2000,1,3);</script>
+		</dl>
+		<dl class=" grayb">
+		<dt style="background-image:url('{DT_SKIN}image/quote/1.png');">
+			<div class="q_grayb_r">
+				<p><a href="{$MOD[linkurl]}{rewrite('search.php?stype=1')}" style="color:#244371;font-weight:bold;font-size:16px;">供应、寻求资质服务信息</a></p>
+				<p>共 {$g} 条提供医疗资质申办服务信息！</p>
+			</div>
+			<div class="q_grayb_l" style="background:#3f94d0;"><a href="{$MOD[linkurl]}{rewrite('search.php?stype=1')}" title="更多供应资质服务信息">更多</a></div>
+		</dt>
+		<dd class="box_body" id="zxhg">
+<!--{php $tags=tag("moduleid=7&condition=status=3 and level=0&order=edittime desc&pagesize=20&template=null")}-->
+	{loop $tags $k $t}
+<div class="quote_list">
+<p><a href="{$t[linkurl]}" target="_blank" title="{$t[title]}"><b> · {dsubstr($t[alt], 46, '...')}</b></a></p>
+<p>{$t[introduce]}<span class="ml10">{timetodate($t[edittime], 4)}</span></p>
+</div>
+{/loop}		
+		</dd>
+<script type="text/javascript">new Marquee(["zxhg"],1,0.1,370,260,20,2000,2000,1,3);</script>
+		</dl>
+</div>
+<div class="quote_ask">
+	<dl>
+		<dt class="quote_ask_banner">
+		<a href="" title="" target="_blank"></a><p></p>
+			<div class="q_grayb_r">
+				<p><span>注册疑问解答<span></p>
+				<p>专业人员专线为您解答医疗器械产品注册、临床试验、ISO体系认证等遇到疑难问题</p>
+			</div>
+		<iframe src="" name="send" id="send" style="display:none;"></iframe>
+		</dt>
+		<form method="post" action="{DT_PATH}page/zzxx_mess.php" id="dform" onsubmit="return check();"  target="send" >
+		<dd style="padding-left:35px;">
+		<input type="hidden" name="post[action]" value="save">
+		<input type="hidden" name="post[title]" value="资质服务提问咨询{timetodate($DT_TIME,4)}">
+        <table width="700" height="240" border="0" style="margin-top:10px;">
+          <tr>
+            <td width="70" align="right">联系人：</td>
+            <td width="120"><input type="text" name="post[truename]" ID="truename" value=""  /></td>
+            <td width="70" align="right">所在公司：</td>
+            <td width="120"><input type="text" name="post[company]" id="company" value="" /></td>
+          </tr>
+          <tr>
+            <td align="right">联系邮箱：</td>
+            <td><input type="text" name="post[email]" value=""  /></td>
+            <td align="right">联系电话：</td>
+            <td><input  type="text" name="post[mobile]" value="" /></td>
+          </tr>
+          <tr>
+            <td height="94" align="right" valign="center">问题描述：</td>
+            <td colspan="3" valign="top"><textarea name="post[content]" id="content" cols="67" rows="4"></textarea></td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">验证码：</td>
+            <td colspan="3" valign="top">{template 'captcha', 'chip'} <span id="dcaptcha" class="ocolor"></span><input type="submit" value="确认提交" id="but"></td>
+          </tr>
+        </table>
+		</dd>
+		</form>
+	</dl>
+</div>
+</div>
+<div class="quote_lbox grayb">
+	<dl>
+		<dt class="lbox_banner"><p><a href="{$MODULE[27][linkurl]}{rewrite('search.php?stype=99')}">最新动态</a></p>提供源文件下载</dt>
+		<dd class="xxlist">
+		{php $tagss = tag("moduleid=27&table=xinxi_27&condition=status=3&pagesize=5&order=edittime desc&template=null&debug=0")}
+		{loop $tagss $t $s}
+			<div>
+				<p><a href="{$s[linkurl]}" target="_blank" title="{$s[alt]}"> · {dsubstr($s[alt],26,"…")}</a></p>
+				{dsubstr($s[introduce],76,"…")}…{if $s[fileurl]}<a href="{$s[linkurl]}">[点击下载]{/if}</a>
+			</div>
+		{/loop}
+		</dd>
+	</dl>
+</div>
+<!--dh-->
+</div>
+
+<div style="float:left; margin-top:10px;" id="zzlc">
+	<ul class="zzlcdown" id="zzlc_nav">
+		<li class="zzlc_nav1 hover_s">在线申请招标
+			<ul>
+				<li>需求方（如：有产品需要注册的厂家或科研团队等）根据自身情况，在线申请招标，填写《招标需求信息》</li>
+			</ul>
+		</li>
+		<li class="zzlc_nav1">后台审核挂标
+			<ul>
+				<li>（1）根据《招标需求信息》，平台技术专员与需求方沟通，帮助需求方明确其需要的服务模式。</li>
+				<li>（2）平台技术小组为需求方定制招标公告及标书，同时将招标公告挂在服务采购招标页面，帮助需求方寻找合适的咨询服务。</li><li><input type="button" value="立即发布招标信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=2');"/></li>
+			</ul>
+		</li>
+		<li class="zzlc_nav1">投标申请报名
+			<ul>
+				<li>（1）咨询服务提供方（如：咨询公司，注册工程师，CRO公司等）可根据自身经验，在意向的招标公告内容中进行投标申请。</li>
+				<li>（2）同时平台技术小组，根据需求方要求，邀请合适的、经验丰富的提供方进行报名。</li><li><input type="button" value="立即发布招标信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=2');"/></li>
+			</ul>
+		</li>
+		<li class="zzlc_nav1">线上报名完成
+			<ul>
+				<li>平台客服联系已报名的服务提供方买标后，报名完成。</li><li><input type="button" value="立即发布招标信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=2');"/></li>
+			</ul>
+		</li>
+		<li class="zzlc_nav1">线下提交资料
+			<ul>
+				<li>（1）服务提供方根据标书要求，提交保证金，和在指定日期前完成标书制作并提交；</li>
+				<li>（2）平台技术小组，组织行业专家对标书进行评标，选定合适的服务提供方。</li><li><input type="button" value="立即发布招标信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=2');"/></li>
+			</ul>
+		</li>
+		<li class="zzlc_nav1">公示中标结果
+			<ul>
+				<li>根据专家评标结果，在服务采购招标页面进行公示。</li><li><input type="button" value="立即发布招标信息" class="btn2 rad" onclick="Go('{$MODULE[2][linkurl]}my.php?mid=7&action=add&stype=2');"/></li>
+			</ul>
+		</li>
+	</ul>
+	<script type="text/javascript">
+	$(function(){
+    $('#zzlc .zzlcdown').miniDropdown({
+      animation: 'slide', 
+      show: 100,
+      hide: 100,
+      delayIn: 100,
+      delayOut: 100
+    });
+});
+</script>
+
+</div>
+
+{template 'footer'}
+<script type="text/javascript">
+$(document).ready(function(){
+var dheight=$(document).height()-1000;
+$("#ico6").bind("click",function(){$("html, body").animate({scrollTop:dheight}, 800);});
+});function check() {var l;var f;f = 'content';l = Dd(f).value.length;if(l < 10 || l > 2000) {alert('内容不得少于10个汉字或者多余2000个汉字');return false;}
+f = 'truename';l = Dd(f).value.length;if(l < 2) {alert('请填写联系人');return false;}f = 'mobile';l = Dd(f).value.length;if(l < 7) {alert('请填写联系电话');
+return false;}f = 'captcha';l = Dd(f).value;if(!is_captcha(l)) {alert('请填写正确的验证码');return false;}if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+Dd(f).focus();return false;}}
+</script>

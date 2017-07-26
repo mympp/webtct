@@ -1,0 +1,60 @@
+<div id="con_two_{$v['catid']}" class="row" style="display:none;" data="{$v['catid']}">
+<input type="hidden"  {if $k != '0'}style="display:none;"{/if} id="page{$v['catid']}" value="1" />
+<div class="span8 bgcolor">
+{tag("table=sogex_info_news&condition=status=3&pagesize=$pagesize&order=itemid desc&template=list_sogex_news")}
+<div id="slide{$v['catid']}"></div>
+</div>
+
+<div class="span4">
+<div class="sidebar">
+
+<div class="areaInfoData clearfix">
+	<dl>
+		<dt class="bgcolorF8">推荐医疗咨询网站:<a class="join-to" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&amp;userId=6452136&amp;s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);">申请加入</a></dt>
+		<dd>
+			<ul class="website-list">
+				<li class="item">
+					<div class="img-area"><img src="http://www.tecenet.com/skin/sogex/images/tecenet-logo-sm.jpg" /></div>
+					<div class="txt-area">
+						<div class="item-title">
+							<a href="{DT_PATH}" class="website" target="_blank">天成医疗网</a>
+							<a href="{DT_PATH}member/grade.php" class="v-icon" target="_blank" title="天成医疗网认证" ><img src="{SO_SKIN}/images/v-icon.png" alt="天成医疗网认证" /></a>
+						</div>
+						<p class="description">天成医疗网-医疗器械网专业医疗器械供求信息与医疗器械供应、采购、招标；医疗器械维修、保养、调试等技术服务；国内、国外进口医疗器械厂家品牌招商推广平台。为医疗器械企业、医院等机构提供全方位技术与产品服务！</p>
+					</div>
+				</li>
+	        </ul>
+		</dd>
+	</dl>
+</div>
+<div class="areaInfoData clearfix">
+
+<dl>
+	<dt class="bgcolorF8">资讯分类:</dt>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-839.html" target="_blank">资讯新闻</a></dd>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-840.html" target="_blank">政策法规</a></dd>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-841.html" target="_blank">技术发展</a></dd>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-842.html" target="_blank">医院动向</a></dd>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-843.html" target="_blank">金融投资</a></dd>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-844.html" target="_blank">展会新闻</a></dd>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-2165.html" target="_blank">职场信息</a></dd>
+	<dd><a href="http://www.tecenet.com/zixun/list-htm-catid-2017.html" target="_blank">其他类别</a></dd>
+</dl>
+</div>
+<div class="hotList clearfix">
+	<dl>
+	<dt class="bgcolorF8">热门点击排行榜:</dt>
+	{php $hot_news = get_cache('hot_news');}
+	{loop $hot_news $k $v}
+	<dd><a href="detail.php?itemid={$v['infoid']}" title="{$v['title']}"><i>{$k+1}</i>{$v['title']}</a></dd>
+	<?php if($k>4) break; ?>
+	{/loop}
+	</dl>
+</div>
+</div>
+</div>
+
+
+		
+</div>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $ztitle==''}{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}{else}{$ztitle}{/if}</title>
+{if $head_keywords||$zkeywords}
+<meta name="keywords" content="{if $zkeywords}{$zkeywords}{else}{$head_keywords}{/if}"/>
+{/if}
+{if $head_description||$zdescription}
+<meta name="description" content="{if $zdescription}{$zdescription}{else}{$head_description}{/if}"/>
+{/if}
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=xhtml; url={$head_mobile}"> 
+<meta http-equiv="mobile-agent" content="format=html5; url={$head_mobile}">
+{/if}
+
+<script type="text/javascript" src="{DT_PATH}file/script/jquery.js"></script>
+<link rel="stylesheet" href="{DT_SKIN}tecenet.base.css">
+{loop $head_css $v}
+<link rel="stylesheet" href="{$v}" />
+{/loop}
+</head>
+<body>
+
+<!-- top-nav -->
+<div class="tc-top-nav" id="tcTopNav">
+    <div class="w1200 box-center">
+        <ul class="tc-top-nav-item pull-left">
+            <li class="current"><a href="{DT_PATH}" target="_blank">天成首页</a></li>
+            <li><a href="{$MODULE[16]['linkurl']}" target="_blank">产品</a></li>
+            <li><a href="{$MODULE[9]['linkurl']}" target="_blank">维修</a></li>
+            <li><a href="{$MODULE[5]['linkurl']}" target="_blank">供需</a></li>
+            <li><a href="{$MODULE[6]['linkurl']}" target="_blank">招标</a></li>
+            <li><a href="{$MODULE[7]['linkurl']}" target="_blank">资质</a></li>
+            <li><a href="{$MODULE[28]['linkurl']}" target="_blank">招聘</a></li>
+            <li><a href="{$MODULE[4]['linkurl']}" target="_blank">厂商</a></li>
+            <li><a href="{$MODULE[21]['linkurl']}" target="_blank">资讯</a></li>
+            <li><a href="{$MODULE[15]['linkurl']}" target="_blank">共享</a></li>
+            <li><a href="{$MODULE[10]['linkurl']}" target="_blank">问答</a></li>
+        </ul>
+        <div class="tools pull-right">
+            <div class="wap-qrcode">
+                <a href="javascript:;">手机版</a>
+                <img src="{DT_SKIN}image/wap-qrcode.png" alt="手机天成医疗网二维码" />
+            </div>
+            <a class="tn-login" href="{$MODULE[2]['linkurl']}login.php" target="_self">登录</a>
+            <a class="tn-reg" href="{$MODULE[2]['linkurl']}register.php" target="_self">立即注册</a>
+        </div>
+    </div>
+</div>
+<!--tc-top-nav end-->
+<!-- tc-header -->
+<div class="tc-header page-header">
+    <div class="w1200 box-center clearfix">
+        <!--logo-->
+        <h1 class="logo pull-left"><a href="{DT_PATH}" target="_self"><img src="{DT_SKIN}image/logo.gif" alt="天成医疗网"></a></h1>
+        <!--logo end-->
+        {template 'search-tool-2017','chip'}
+        <!--tc-custom-service-->
+        <div class="tc-custom-service pull-right">
+            <div class="tel pull-left">
+                <div class="hd">天成医疗网客服</div>
+                <div class="bd">400-617-3599</div>
+            </div>
+            <a class="online  pull-left" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&amp;userId=6452136&amp;s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');">在线咨询</a>
+        </div>
+        <!--tc-custom-service end-->
+    </div>
+</div>
+
+<!-- tc-header end -->
+

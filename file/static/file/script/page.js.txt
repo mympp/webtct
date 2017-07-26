@@ -1,0 +1,2 @@
+function show_resume_comment(u, m, i) 
+{document.write('<iframe src="'+u+'resume_comment.php?mid='+m+'&itemid='+i+'" name="destoon_comment" id="des'+'toon_comment" style="width:99%;height:0px;" scrolling="no" frameborder="0"></iframe>');}

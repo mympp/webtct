@@ -1,0 +1,10 @@
+.aboutcontent{background-color:#fff;background-position:left center;background-repeat:no-repeat;_height:340px;height:auto !important; min-height:340px;height:auto;line-height:24px;padding:10px;float:left;width:780px;}
+.aboutcontent a{color:#5b5b5b}
+.aboutmenu{float:left;width:195px;overflow:hidden}
+.aboutmenu li{border-bottom:1px dotted #ddd;;line-height:40px;height:40px;text-indent:10px;font-size:16px;}
+.aboutmenuy{border-left:6px #ff6600 solid;font-weight:bold}.aboutmenun{border-left:6px solid #fff}
+.aboutmenuy a{color:#ff6600}
+h1{margin-bottom:5px;color:#222;}
+.titles{width:900px;height:300px;}
+#webtitle{margin-top:60px;margin-left:100px;width:600px;position:absolute; }
+#webtitle div{font-size:14px;}

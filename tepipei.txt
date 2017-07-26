@@ -1,0 +1,3 @@
+http://www.tecenet.com/ http://wap.tecenet.com/
+http://www.tecenet.com/chanpin/show-(\d+).html http://wap.tecenet.com/16-0-\1-1-0.html
+http://www.tecenet.com/zixun/show-(\d+).html http://wap.tecenet.com/21-0-\1-1-0.html

@@ -1,0 +1,39 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+/* global */
+body {margin:0px;font-size:12px;color:#000000;background:url(bg.jpg) ;}
+/* common */
+.m {width:980px;margin:auto;padding-left:10px;padding-right:10px; background:#FFFbe7}
+.top {height:28px;line-height:28px;color:#000;background:url(top_bg.gif) repeat-x;padding:0px 10px 0px 10px;border-left:1px  #EEEEEE solid; border-right:1px #EEEEEE solid;}
+#top a {color:#000;text-decoration:none;}
+
+.head {height:115px;overflow:hidden;}
+.head div {float:left;}
+.head .logo {padding:15px 10px 0 20px;height:90px;overflow:hidden;}
+.head h1 {font-size:36px;margin:32px 0 5px 10px;color:#000;font-family:"ºÚÌå";}
+.head h4 {font-size:14px;margin:0 0 0 10px;color:#414141;}
+
+#menu a {text-decoration:none;}
+.menu {height:35px;overflow:hidden;font-size:12px;background: url(menu_bg.gif) ; padding-left:105px; }
+.menu span {color:#fff;font-size:14px;}
+
+.menu_li {float:left;line-height:35px;padding:0 15px 0 15px;}
+.menu_on {float:left;line-height:35px;padding:0 15px 0 15px;}
+
+.menu_index_li{float:left;line-height:35px;padding:0 15px 0 15px;margin-left:15px;}
+.menu_index_on{float:left;line-height:35px;padding:0 15px 0 15px; margin-left:15px;}
+
+.side_head {height:30px;background:url(side_head_l.gif) no-repeat left top;}
+.side_head div {padding:3px 10px 0 25px;font-size:14px;height:30px;line-height:30px;overflow:hidden;background:url(side_head_r.gif) no-repeat right top;}
+.side_head div strong{ color:#A21000; }
+.side_body {border:#dcab61 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+.side_body li {background:url('../../image/ico_arrow.gif') no-repeat 5px 7px;padding:0 0 0 20px;height:26px;line-height:26px;overflow:hidden;}
+
+.main_head {height:30px;background:url(main_head_l.gif) no-repeat left top;}
+.main_head div {padding:3px 10px 0 25px;font-size:14px;height:30px;line-height:30px;overflow:hidden;background:url(main_head_r.gif) no-repeat right top;}
+.main_head div strong{ color:#A21000; }
+.main_body {border:#dcab61 1px solid;border-top:none;background:#FFFFFF;padding:10px;margin:0 0 10px;}
+
+.foot {text-align:center;padding:15px;line-height:28px;background:#FFFFFF url(foot.gif) repeat-x top ;}

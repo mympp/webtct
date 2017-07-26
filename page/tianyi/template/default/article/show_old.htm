@@ -1,0 +1,54 @@
+<div class="artcon" style="margin-top: -120px;">
+	<div class="artcatname">
+		<div class="artcatname-t">
+			<span>行业资讯</span>
+		</div>
+		<div class="artcatname-m">
+			<a href="{$MOD[linkurl]}list.php?catid=52"><span>更多>></span></a>
+		</div>
+		<div class="c_b"></div>
+	</div>
+	<div class="artlist">
+		<div class="artlist-l">
+			<!--{php $top_picture=tag("moduleid=$moduleid&catid=52&offset=0&pagesize=1&condition=level=1&template=null")}-->
+			<a href="{$top_picture['0']['linkurl']}">
+				<img src="{$top_picture['0']['thumb']}" title="{$top_picture['0']['title']}"/>
+				<span class="artlist-l-title">{$top_picture['0']['title']}</span>
+			</a>
+		</div>
+		<div class="artlist-m">
+			<div class="artlist-m-img">
+				<!--{php $top_picture=tag("moduleid=$moduleid&catid=52&offset=0&pagesize=1&condition=level=2&template=null")}-->
+				<a href="{$top_picture['0']['linkurl']}">
+					<img src="{$top_picture['0']['thumb']}" title="{$top_picture['0']['title']}"/>
+					<span class="artlist-l-title">{$top_picture['0']['title']}</span>
+				</a>
+			</div>
+			<div class="artlist-m-li">
+				<ul>
+					<!--{php $loop=tag("moduleid=$moduleid&catid=52&offset=0&condition=level!=2 and level!=1&pagesize=5&template=null")}-->
+					{loop $loop $i $v}
+					<li><a href="{$v['linkurl']}">{$v['title']}</a></li>
+					{/loop}
+				</ul>
+			</div>
+		</div>
+		<div class="artlist-m">
+			<div class="artlist-m-img">
+				<!--{php $top_picture=tag("moduleid=$moduleid&catid=52&offset=1&pagesize=1&condition=level=2&template=null")}-->
+				<a href="{$top_picture['0']['linkurl']}">
+					<img src="{$top_picture['0']['thumb']}" title="{$top_picture['0']['title']}"/>
+					<span class="artlist-l-title">{$top_picture['0']['title']}</span>
+				</a>
+			</div>
+			<div class="artlist-m-li">
+				<ul>
+					<!--{php $loop=tag("moduleid=$moduleid&catid=52&offset=5&condition=level!=2 and level!=1&pagesize=5&template=null")}-->
+					{loop $loop $i $v}
+					<li><a href="{$v['linkurl']}">{$v['title']}</a></li>
+					{/loop}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

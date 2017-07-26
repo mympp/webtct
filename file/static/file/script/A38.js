@@ -1,0 +1,1 @@
+document.write('<a href="http://www.tecenet.com/gongying/show-10326.html" target="_blank"><img src="http://www.tecenet.com/file/upload/201406/12/13-25-46-19-1.jpg" width="497" height="201" alt="医疗许可、认证、相关资质申办"/></a>');

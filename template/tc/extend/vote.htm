@@ -1,0 +1,181 @@
+{php $CSS = array('vote');}
+{template 'header'}
+<style type="text/css">
+	.webmenulist{width:750px;}
+</style>
+<script type="text/javascript">
+Dd('youcan').innerHTML="<a href=\"{DT_PATH}\" class='wcolor h4'>天成网首页</a>";
+</script>
+<style type="text/css">
+.left_menu li{margin-top:5px;padding:5px;}
+.leftn{background:#d9dfea;border:1px solid #bfcfdd;}
+.leftn a{color:#3865a9}
+.lefty{background:#fef9c5;border:1px solid #fabc56;}
+.lefty a{color:#cc4315;font-weight:bold}
+.vote ul{padding:5px;}
+.vote ul li{line-height:25px;height:25px;}
+</style>
+{template 'lay','tag'}
+<script type="text/javascript">
+Dd('yourmdmore').innerText='民意投票';
+Dd('yourmdmore').href='{$MODULE[1][linkurl]}vote';
+</script>
+	<div class="autoheight whitebg">
+	<table cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+	{if $itemid<1}
+	<td valign="top" class="left_menu">
+		<ul>
+		{loop $TYPE $t}
+		<li class="leftn" id="type_{$t[typeid]}"><a href="{rewrite('index.php?typeid='.$t['typeid'])}">{$t[typename]}</a></li>
+		{/loop}
+		</ul>
+	</td>
+	{/if}
+	<td valign="top">
+		<div class="left_box" >		
+			{if $itemid}
+			<div style="margin:5px 15px 5px 15px;line-height:36px;" class="tc f18 bcolor">{if $linkto}<a href="{$linkto}" target="_blank">{/if}{$title}{if $linkto}</a>{/if}</div>
+			<div class="grayb color" style="padding:5px;margin-left:18px;"><span class="fr">票数：<span class="ocolor">{$item[votes]}</span>&nbsp;&nbsp;浏览：<span class="ocolor">{$item[hits]}</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.location.reload();">[刷新]</a>&nbsp;<script type="text/javascript">addFav('[收藏]');</script></span>添加时间：{$adddate}&nbsp;&nbsp;&nbsp;<img src="{DT_PATH}file/image/process_{get_process($fromtime, $totime)}.gif" align="absmiddle" alt="有效期：{$fromdate} 至 {$todate}"/></div>
+			{if $content}<div style="line-height:20px;padding:5px;background:#f5f5f5;margin-left:18px;" class="grayb nt mb10">{$content}</div>{else}<div class="b10"></div><div class="b10"></div>{/if}
+<form action="{$MODULE[1][linkurl]}vote/index.php" method="post"  id="vote_{$itemid}" onsubmit="return check_vote_1();">			<div class="vote_show">
+			<table cellpadding="6" cellspacing="1" width="100%" bgcolor="#E3EEF5">
+
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="submit" value="{$itemid}"/>
+			{loop $votes $k $v}
+			<tr bgcolor="#FFFFFF">
+			<td width="20"><div class="vote_show_n">{$v[number]}</div></td>
+			<td><input type="checkbox" name="vote[]" value="{$v[number]}" id="vote_{$itemid}_{$v[number]}"/>&nbsp;&nbsp;{$v[title]}</td>
+			<td width="260"><div class="vote_show_p"><div class="vote_show_{$v[number]}" style="width:{$v[percent]};"></div></div></td>
+			<td width="80" align="center">{$v[percent]}</td>
+			<td width="80" align="center">{$v[votes]}</td>
+			</tr>
+			{/loop}
+			
+
+			</table><div class="divline"></div><input type="submit" value="投票" class="subm w80 tc"/>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="Dd('guestbook').style.display='block'" class='ocolor f16 ml10'><u>我还有话要说</u></a>
+			</div></form>
+<div style="padding-left:20px;display:none">{load('vote_'.$itemid.'.htm')}</div>
+
+			<script type="text/javascript">
+			try {Dd('vote_{$itemid}').target = '_self';}catch (e){}
+			</script>
+			{else}
+			<table cellpadding="3" cellspacing="3" width="98%" align="center">
+			{loop $lists $k $v}
+			<tr>
+			<td>&middot; {if !$typeid}<a href="{rewrite('index.php?typeid='.$v['typeid'])}" class="color">[{$v[typename]}]</a>&nbsp;{/if}<a href="{$v[linkurl]}" class="ocolor  f14">{$v[title]}</a></td>
+			<td class="color" width="120">票数:{$v[votes]}</td>
+			<td class="color" width="120" align="center">{$v[adddate]}</td>
+			</tr>
+			{/loop}
+			<script type="text/javascript">
+			var k={$k};
+			if(k==0){document.location='{$lists[0][linkurl]}';}
+			</script>
+			</table>
+			<div class="pages">{$pages}</div>
+			{/if}
+		</div>
+	</td>
+	</tr>
+	</table>
+
+
+<form action="{DT_PATH}/guestbook/index.php" method="post"  style="display:none" id="guestbook">
+			<table width="90%" align="center" cellpadding="8" cellspacing="1" bgcolor="#E3EEF5">
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" width="90" align="right">留言类型&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<select name="post[type]">
+<option value="意见建议">意见建议</option>
+<option value="使用问题">使用问题</option>
+<option value="页面错误">页面错误</option>
+<option value="不良信息">不良信息</option>
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right"><span class="ocolor">*</span> 留言内容&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF" title="留言内容不支持任何语法，仅限文字"><textarea name="post[content]" rows="5" cols="70">请写下您宝贵的意见</textarea><br/>
+			<span id="dcontent" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" width="90" align="right">与我联系&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="radio" name="my" value="1" id="my_1" onclick="Ds('gb_contact');"/> <label for="my_1">需要</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="my" value="0" id="my_0" checked onclick="Dh('gb_contact');"/> <label for="my_0">不需要</label>
+			</td>
+			</tr>
+			<tbody id="gb_contact" style="display:none;">
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right">联系人&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[truename]"  size="10" id="truename" value="{$truename}"/>&nbsp;
+			<input type="checkbox" name="post[hidden]" value="1" id="hidden" checked/><label for="hidden" title="选择匿名后,联系人姓名仅网站工作人员可见"> 匿名留言</label>
+			<span id="dtruename" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right">联系电话&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[telephone]"  size="30" id="telephone" value="{$telephone}"/>
+			<span id="dtelephone" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right">电子邮件&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[email]"  size="30" id="email" value="{$email}"/>
+			<span id="demail" class="ocolor"></span>
+			</td>
+			</tr>
+			{if $DT[im_qq]}
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right">QQ&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[qq]" id="qq" value="{$qq}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_ali]}
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right">阿里旺旺&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[ali]" id="ali" value="{$ali}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_msn]}
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right">MSN&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="30" name="post[msn]" id="msn" value="{$msn}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_skype]}
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right">Skype&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[skype]" id="skype" value="{$skype}"/></td>
+			</tr>
+			{/if}
+			</tbody>
+			{if $MOD[guestbook_captcha]}
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color" align="right"><span class="ocolor">*</span> 验证码&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			{template 'captcha', 'chip'}
+			<span id="dcaptcha" class="ocolor"></span>
+			</td>
+			</tr>
+			{/if}
+			<tr>
+			<td bgcolor="#F1F7FC" class="f16 color"> </td>
+			<td bgcolor="#FFFFFF">
+			<input type="submit" name="submit" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" value=" 提交 "/>&nbsp;
+			<input type="reset" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" value=" 重写 "/>
+			</td>
+			</tr>
+			</table>
+			</form>
+
+</div>
+<script type="text/javascript">try{Dd('type_{$typeid}').className='lefty';}catch(e){}</script>
+{template 'footer'}

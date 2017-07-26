@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>天成医疗网_专业医疗器械供求信息与医疗器械维修安装等技术服务平台</title>
+	<meta name="keywords" content="医疗器械网,医疗器械,医疗器械维修,医疗网,天成医疗网,天成医疗,医疗设备"/>
+	<meta name="description" content="天成医疗网-医疗器械网专业医疗器械供求信息与医疗器械供应、采购、招标；医疗器械维修、保养、调试等技术服务；国内、国外进口医疗器械厂家品牌招商推广平台。为医疗器械企业、医院等机构提供全方位技术与产品服务！"/>
+
+	<meta http-equiv="mobile-agent" content="format=xhtml; url=http://wap.tecenet.com/"> 
+	<meta http-equiv="mobile-agent" content="format=html5; url=http://wap.tecenet.com/">
+
+	<link rel="shortcut icon" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+	<link rel="bookmark" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+
+	<link rel="stylesheet" href="{DT_SKIN}tecenet.base.css?v2016123001">
+	<link rel="stylesheet" href="{DT_SKIN}tecenet.index.css?v2016123001">
+
+
+	<!--<script type="text/javascript" src="http://www.tecenet.com/lang/zh-cn/lang.js"></script>-->
+	<!--<script type="text/javascript" src="http://www.tecenet.com/file/script/config.js"></script>-->
+	<script type="text/javascript" src="{DT_PATH}file/script/jquery.js"></script>
+	<script type="text/javascript" src="{DT_PATH}file/script/jquery.SuperSlide.2.1.1.source.js"></script>
+	<script type="text/javascript" src="{DT_PATH}file/script/elevator.min.js"></script>
+	<!--<script type="text/javascript" src="http://www.tecenet.com/file/script/common.js"></script>-->
+	<!--<script type="text/javascript" src="http://www.tecenet.com/file/script/page.js"></script>-->
+	<!--<script type="text/javascript" src="http://www.tecenet.com/file/script/jsfunction.js"></script>-->
+	<!--<script type="text/javascript">-->
+		<!--GoMobile('http://wap.tecenet.com/');</script>-->
+	<!--<script type="text/javascript" src="http://www.tecenet.com/file/script/jquery.jslides.js"></script>-->
+	<!--<script type="text/javascript" src="http://www.tecenet.com/file/script/MSClass.js"></script>-->
+	<script type="text/javascript" src="{DT_PATH}file/script/GETxiu17.js"></script>
+</head>
+<body {if isMobile()}style="position: absolute;"{/if}>
+<!-- top-nav -->
+<div class="tc-top-nav" id="tcTopNav">
+	<div class="w1200 box-center">
+        <div class="welcome pull-left">
+            <!--back-old-->
+            <a class="back-old" href="javascript:;" onclick="dialogMsg();">回到旧版</a>
+            <!--back-old end-->
+            欢迎来到国内专业医疗产业服务平台
+        </div>
+        <div class="tools pull-right">
+            <div class="wap-qrcode">
+                <a href="javascript:;">手机版</a>
+                <img src="{DT_SKIN}image/wap-qrcode.png" alt="手机天成医疗网二维码" />
+            </div>
+            {if !$_userid}
+            <a class="tn-login" href="{$MODULE[2]['linkurl']}login.php" target="_self">登录</a>
+            <a class="tn-reg" href="{$MODULE[2]['linkurl']}register.php" target="_self">立即注册</a>
+            {else}
+            <a href="{$MODULE[2]['linkurl']}" title="会员中心"><span class="ocolor" title="{$_username}">{$_username}</span></a> 
+            <a href="{$MODULE[2]['linkurl']}message.php">站内信</a> 
+            <a href="{$MODULE[2]['linkurl']}chat.php">对话</a> 
+            <a href="{$MODULE[2]['linkurl']}logout.php">退出</a>
+            {/if}
+        </div>
+    </div>
+</div>
+<!--tc-top-nav end-->
+
+<!-- tc-header -->
+<div class="tc-header">
+	<div class="w1200 box-center clearfix">
+        <!--logo-->
+        <h1 class="logo pull-left"><a href="{DT_PATH}" target="_self"><img src="{DT_SKIN}image/logo.gif" alt="天成医疗网"></a></h1>
+        <!--logo end-->
+        <!--tc-search-->
+        <div class="tc-search pull-left">
+            <form id="" class="site-frm pull-left" action="{DT_PATH}search.php" onsubmit="return Dsearch();">
+                <div class="select-group" id="select-tab">
+                    <button type="button" class="select-btn" id="select-btn">
+                        默认全站<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" id="search-type">
+                        <li><a href="javascript:void(0)" data-mid="0" data-mname="默认全站" rel="nofollow">默认全站</a></li>
+                        <li><a href="javascript:void(0)" data-mid="9" data-mname="服务需求" rel="nofollow">服务需求</a></li>
+                        <li><a href="javascript:void(0)" data-mid="9" data-mname="技术工程师" data-action="resume" rel="nofollow">技术工程师</a></li>
+                        <li><a href="javascript:void(0)" data-mid="13" data-mname="厂商品牌" rel="nofollow">厂商品牌</a></li>
+                        <li><a href="javascript:void(0)" data-mid="4" data-mname="厂商网店" rel="nofollow">厂商网店</a></li>
+                        <li><a href="javascript:void(0)" data-mid="16" data-mname="产品平台" rel="nofollow">产品平台</a></li>
+                        <li><a href="javascript:void(0)" data-mid="5" data-mname="供应信息" rel="nofollow">供应信息</a></li>
+                        <li><a href="javascript:void(0)" data-mid="6" data-mname="求购信息" rel="nofollow">求购信息</a></li>
+                        <li><a href="javascript:void(0)" data-mid="21" data-mname="文章中心" rel="nofollow">文章中心</a></li>
+                        <li><a href="javascript:void(0)" data-mid="10" data-mname="问答平台" rel="nofollow">问答平台</a></li>
+                        <li><a href="javascript:void(0)" data-mid="15" data-mname="共享下载" rel="nofollow">共享下载</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="moduleid" value="0" id="destoon_moduleid">
+                <input type="hidden" name="from" value="1">
+                <input type="hidden" name="spread" value="0" id="destoon_spread">
+                <input type="hidden" name="action" value="" id="sresume">
+                <input type="text" name="kw" value="" id="topkeyword" class="site-txt pull-left">
+                <input type="submit" class="site-submit  pull-left" value="搜本站">
+            </form>
+			<form class="so-frm pull-left" action="http://so.tecenet.com/search.php" method="get" target="_blank" onsubmit="return soTecnentValue();">
+                <input type="text" name="keyword" value="" id="soInputTxt" class="so-txt" autocomplete="off">
+                <input class="so-submit" type="submit" value="搜医搜">
+            </form>
+            
+			
+            <div class="hot-key pull-left" id="hotkey">
+                {tag("moduleid=1&table=keyword&condition=moduleid=16 and length(word)>4   and length(word)<10 and status=3 &pagesize=10&order=month_search desc&key=month_search&template=list-search_kw&debug=0", -2)}
+            </div>
+        </div>
+        <!--tc-search end-->
+
+        <!--tc-custom-service-->
+        <div class="tc-custom-service pull-right">
+            <div class="tel pull-left">
+                <div class="hd">天成医疗网客服</div>
+                <div class="bd">400-617-3599</div>
+            </div>
+            <a class="online  pull-left" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&amp;userId=6452136&amp;s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');">在线咨询</a>
+        </div>
+        <!--tc-custom-service end-->
+    </div>
+</div>
+<!-- tc-header end -->
+
+<!-- tc-nav -->
+<div class="tc-nav">
+	<div class="w1200 box-center">
+		<div class="menu-hd pull-left">热门服务<i></i></div>
+		<ul class="tc-nav-item pull-right">
+			<li><a href="{DT_PATH}" target="_blank">首页</a></li>
+			<li><a href="{$MODULE[16]['linkurl']}" target="_blank">产品</a></li>
+			<li><a href="{$MODULE[9]['linkurl']}" target="_blank">维修</a></li>
+			<li><a href="{$MODULE[5]['linkurl']}" target="_blank">供需</a></li>
+			<li><a href="{$MODULE[6]['linkurl']}" target="_blank">招标</a></li>
+			<li><a href="{$MODULE[7]['linkurl']}" target="_blank">资质</a></li>
+			<li><a href="{$MODULE[28]['linkurl']}" target="_blank">招聘</a></li>
+			<li><a href="{$MODULE[4]['linkurl']}" target="_blank">厂商</a></li>
+			<li><a href="{$MODULE[21]['linkurl']}" target="_blank">资讯</a></li>
+			<li><a href="{$MODULE[15]['linkurl']}" target="_blank">共享</a></li>
+			<li><a href="{$MODULE[10]['linkurl']}" target="_blank">问答</a></li>
+		</ul>
+	</div>
+
+</div>
+<!-- tc-nav end -->
+
+<!--tc-banner-->
+<div class="tc-banner">
+<!-- full-slide -->
+	<div class="full-slide">
+		<div class="bd">
+			<ul>
+				{php $index_ad_tags = tag("moduleid=2&table=ad&condition=pid=226 and fromtime<$DT_TIME and totime>$DT_TIME and status=3&pagesize=5&order=listorder asc&template=null")}
+				
+				{loop $index_ad_tags $k $t}
+				<li style="background:url({$t['image_src']}) center center no-repeat;">
+					<a target="_blank" href="{$t['image_url']}"></a>
+				</li>
+				{/loop}	
+			</ul>
+		</div>
+		<div class="hd">
+			<ul></ul>
+		</div>
+	</div>
+	<!-- full-slide end-->
+	
+		<!--left-area-->
+	<div class="left-area">
+		<ul class="mod-cate-wrp">
+			<li class="mod-cate mod-cate-product">
+				<strong><i class="icon"></i>找产品</strong>
+				<div class="mod-cate-bd " style="display: none;">
+					<form class="mod-search" action="{$MODULE[16]['linkurl']}search.php" method="get">
+						<div class="input-group">
+							<span class="input-group-hd">器械产品分类</span>
+							<select name="catid" class="form-control">
+								<option value="0" >全部</option>
+								{loop $mall_catid $t}
+								<option value="{$t['catid']}">{$t['catname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">产品属性</span>
+							<select name="stype" class="form-control">
+								<option value="">全部</option>
+								<option value="0">整机</option>
+								<option value="1">配件</option>
+								<option value="2">耗材</option>
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">关键字</span>
+							<input type="text" name="kw" class="form-control" />
+						</div>
+						<input type="submit" value="搜  索">
+					</form>
+					<div class="mod-cate-img">
+						<a href="{$MODULE[16]['linkurl']}" target="_blank"><img src="{DT_SKIN}image/mod-cate-product-img.jpg" alt="找产品"></a>
+					</div>
+				</div>
+			</li>
+			<li class="mod-cate mod-cate-company">
+				<strong><i class="icon"></i>找供应商</strong>
+				<div class="mod-cate-bd " style="display: none;">
+					<form class="mod-search" action="{$MODULE[4][linkurl]}search.php" >
+						<div class="input-group">
+							<span class="input-group-hd">运作模式</span>
+							<select name="mode" class="form-control">
+								<option value="1">生产商</option>
+								<option value="2">贸易商</option>
+								<option value="3">服务商</option>
+								<option value="4">其他机构</option>
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">地区</span>
+							<select name="areaid" class="form-control">
+								<option value="0">全国</option>
+								{loop $area_first $t}
+								<option value="{$t['areaid']}">{$t['areaname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">经营范围</span>
+							<select name="catid" class="form-control">
+								<option value="0">全部</option>
+								{loop $company_catid $t}
+								<option value="{$t['catid']}">{$t['catname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">关键字</span>
+							<input type="text" name="kw" class="form-control" />
+						</div>
+						<input type="submit" value="搜  索">
+					</form>
+					<div class="mod-cate-img">
+						<a href="{$MODULE[4][linkurl]}" target="_blank"><img src="{DT_SKIN}image/mod-cate-company-img.jpg" alt="找供应商"></a>
+					</div>
+				</div>
+			</li>
+			<li class="mod-cate mod-cate-repair">
+				<strong><i class="icon"></i>找维修</strong>
+				<div class="mod-cate-bd " style="display: none;">
+					<div class="mod-cate-tab" id="job-select-tab">
+						<span class="on" data-action="">找 维 修</span>
+						<span data-action="resume">找工程师</span>
+					</div>
+
+					<form class="mod-search" action="{$MODULE[9]['linkurl']}search.php" method="get">
+					<input type="hidden" name="action" value="" id="job-action" />
+						<div class="input-group">
+							<span class="input-group-hd">服务分类</span>
+							<select name="catid" class="form-control">
+								<option value="0">全部</option>
+								{loop $job_catid $t}
+								<option value="{$t['catid']}">{$t['catname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">地区</span>
+							<select name="areaid" class="form-control">
+								<option value="0">全国</option>
+								{loop $area_first $t}
+								<option value="{$t['areaid']}">{$t['areaname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">关键字</span>
+							<input type="text" name="kw" class="form-control" />
+						</div>
+						<input type="submit" value="搜  索">
+					</form>
+					<div class="mod-cate-img">
+						<a href="{$MODULE[9]['linkurl']}" target="_blank"><img src="{DT_SKIN}image/mod-cate-repair-img.jpg" alt="找维修，找工程师"></a>
+					</div>
+
+				</div>
+			</li>
+			<li class="mod-cate mod-cate-sell">
+				<strong><i class="icon"></i>找买卖</strong>
+				<div class="mod-cate-bd " style="display: none;">
+					<div class="mod-search-hd "><i class="icon"></i>找买卖</div>
+					<form class="mod-search" action="{$MODULE[5]['linkurl']}search.php" method="get">
+						<div class="input-group">
+							<span class="input-group-hd">服务分类</span>
+							<select name="catid" class="form-control">
+								<option value="0">全部</option>
+								{loop $sell_catid $t}
+								<option value="{$t['catid']}">{$t['catname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">地区</span>
+							<select name="areaid" class="form-control">
+								<option value="0">全国</option>
+								{loop $area_first $t}
+								<option value="{$t['areaid']}">{$t['areaname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">关键字</span>
+							<input type="text" name="kw" class="form-control" />
+						</div>
+						<input type="submit" value="搜  索">
+					</form>
+					<div class="mod-search-hd mod-search-hd-ztb"><i class="icon"></i>招投标</div>
+					<form class="mod-search" action="{$MODULE[6][linkurl]}search.php" method="get">
+						<div class="input-group">
+							<span class="input-group-hd">服务分类</span>
+							<select name="catid" class="form-control">
+								<option value="0">全部</option>
+								{loop $buy_catid $t}
+								<option value="{$t['catid']}">{$t['catname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">地区</span>
+							<select name="areaid" class="form-control">
+								<option value="0">全国</option>
+								{loop $area_first $t}
+								<option value="{$t['areaid']}">{$t['areaname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">关键字</span>
+							<input type="text" name="kw" class="form-control" />
+						</div>
+						<input type="submit" value="搜  索">
+					</form>
+					<div class="mod-cate-img">
+						<a href="{$MODULE[5][linkurl]}" target="_blank"><img src="{DT_SKIN}image/mod-cate-sell-img.jpg" alt="找维修，找工程师"></a>
+					</div>
+				</div>
+			</li>
+			<li class="mod-cate mod-cate-market">
+				<strong><i class="icon"></i>找推广</strong>
+				<div class="mod-cate-bd " style="display: none;">
+					<a href="http://www.eydsp.com" target="_blank"><img style="margin-top:5px" src="{DT_SKIN}image/mod-cate-market-img.jpg" alt="找维修，找工程师"></a>
+				</div>
+			</li>
+			<li class="mod-cate mod-cate-job">
+				<strong><i class="icon"></i>找人才</strong>
+				<div class="mod-cate-bd " style="display: none;">
+					<div class="mod-cate-tab" id="hr-select-tab">
+						<span class="on" data-action="">岗位招聘</span>
+						<span data-action="resume">人才资源</span>
+					</div>
+
+					<form class="mod-search" action="{$MODULE[28]['linkurl']}" method="get">
+					<input type="hidden" name="action" value="" id="hr-action" />
+						<div class="input-group">
+							<span class="input-group-hd">类型</span>
+							<select name="catid" class="form-control">
+								<option value="0">全部</option>
+								{loop $hr_catid $t}
+								<option value="{$t['catid']}">{$t['catname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">地区</span>
+							<select name="areaid" class="form-control">
+								<option value="0">全国</option>
+								{loop $area_first $t}
+								<option value="{$t['areaid']}">{$t['areaname']}</option>
+								{/loop}
+							</select>
+						</div>
+						<div class="input-group">
+							<span class="input-group-hd">关键字</span>
+							<input type="text" name="kw" class="form-control" />
+						</div>
+						<input type="submit" value="搜  索">
+					</form>
+					<div class="mod-cate-img">
+						<a href="{$MODULE[28]['linkurl']}" target="_blank"><img src="{DT_SKIN}image/mod-cate-job-img.jpg" alt="找岗位招聘，找人才资源"></a>
+					</div>
+				</div>
+			</li>
+			<li class="mod-cate mod-cate-service">
+				<strong><i class="icon"></i>找服务</strong>
+				<div class="mod-cate-bd " style="display: none;">
+					<dl class="mod-cate-dl-1">
+						<dt><i class="icon"></i>资质服务</dt>
+						<dd>
+							<p>①科技成果转化</p>
+							<p>②立项申报咨询</p>
+							<p>③生产/经营报证</p>
+							<div class="btn-area">
+								<a href="{DT_PATH}about/intro.html#keLangMedical">了解更多</a>
+								<a href="http://wpa.qq.com/msgrd?v=3&uin=379255200&site=qq&menu=yes" target="_blank">客   服</a>
+							</div>
+						</dd>
+					</dl>
+					<dl class="mod-cate-dl-2">
+						<dt><i class="icon"></i>物流服务</dt>
+						<dd>
+							<p>①平台一体化集约物流配送</p>
+							<p>②信息系统可视化</p>
+							<p>③专业化团队管理</p>
+							<div class="btn-area">
+								<a href="{DT_PATH}about/intro.html#yiLiantongLogistics">了解更多</a>
+								<a href="http://wpa.qq.com/msgrd?v=3&uin=657911476&site=qq&menu=yes" target="_blank">客   服</a>
+							</div>
+						</dd>
+					</dl>
+					<dl class="mod-cate-dl-3">
+						<dt><i class="icon"></i>医学工程</dt>
+						<dd>
+							<p>①ISO国际标准/GMP标准设计</p>
+							<p>②专业资质整体施工</p>
+							<p>③优质设备耗材供应</p>
+							<p>④一站式完整服务</p>
+							<div class="btn-area">
+								<a href="{DT_PATH}about/intro.html#tianYiEngineering">了解更多</a>
+								<a href="http://wpa.qq.com/msgrd?v=3&uin=657911476&site=qq&menu=yes" target="_blank">客   服</a>
+							</div>
+						</dd>
+					</dl>
+					<dl class="mod-cate-dl-4">
+						<dt><i class="icon"></i>进出口服务</dt>
+						<dd>
+							<div class="pull-left">
+								<p>①医疗器械出口服务</p>
+								<p>②跨境电商平台</p>
+								<p>③海量产品数据库</p>
+							</div>
+							<div class="pull-right">
+								<p>④采购安装一站式</p>
+								<p>⑤多平台异国采购 </p>
+								<p>⑥整体打包外贸服务</p>
+							</div>
+							<div class="btn-area pull-left" style="margin-top:40px">
+								<a href="{DT_PATH}about/intro.html#importExport">了解更多</a>
+								<a href="http://wpa.qq.com/msgrd?v=3&uin=657911476&site=qq&menu=yes" target="_blank">客   服</a>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+	<!--left-area end-->
+	
+		<!--right-area-->
+	<div class="right-area">
+		<!--member-->
+		<div class="member">
+			<div class="user-info">
+			{php $now_hour = date('H',time())}
+				<p>HI，{if $_username}{$_username} {/if}{if $now_hour >= 6 && $now_hour < 12}早上好 !{elseif $now_hour >= 12 && $now_hour < 18}下午好 !{else}晚上好 !{/if}</p>
+				<p>欢迎{if $_userid}回到{else}来到{/if}天成医疗网！</p>
+			</div>
+			<div class="btn-area clearfix">
+				{if !$_userid}
+				<a href="{$MODULE[2]['linkurl']}login.php" class="login-btn pull-left"><i class="icon"></i>登录</a>
+				<a href="{$MODULE[2]['linkurl']}register.php" class="reg-btn pull-right"><i class="icon"></i>注册</a>
+				{else}
+				<a href="{$MODULE[2]['linkurl']}" class="login-btn box-center"><i class="icon"></i>会员中心</a>
+				{/if}
+			</div>
+		</div>
+		<!--member end-->
+		<!--mod-tab-->
+		<div class="mod-tab">
+			<div class="mod-tab-hd">
+				<ul class="clearfix">
+					<li class="item-1"><i class="icon"></i>客服咨询</li>
+					<li class="item-2 on"><i class="icon"></i>平台资质</li>
+					<li class="item-3"><i class="icon"></i>在线公告</li>
+				</ul>
+			</div>
+			<ul class="mod-tab-bd">
+				<li class="mod-tab-customer" style="display:none;">
+					<form action="{DT_PATH}guestbook/index.php" method="post">
+						<input type="hidden" name="submit" value="1" />
+						<textarea  name="post[content]"  placeholder="请详细输入您的疑问以及联系方式，我们会第一时间为您解答"></textarea>
+						<input type="submit" value="发表留言" >
+					</form>
+					<div class="btn-area">
+						<a class="pull-left" href="http://wpa.qq.com/msgrd?v=3&uin=657911476&site=qq&menu=yes" target="_blank"><i class="icon"></i>QQ客服</a>
+						<a class="pull-right" href="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');" target="_blank"><i class="icon"></i>在线客服</a>
+					</div>
+				</li>
+				<li class="mod-tab-quality">
+					<dl class="mod-tab-quality-1">
+						<dt>食药监管局认可</dt>
+						<dd>互联网药认：粤-经营性-2013-0006</dd>
+					</dl>
+					<dl class="mod-tab-quality-2">
+						<dt>上市公司投资支持</dt>
+						<dd>达安基因投资与天成共同协办</dd>
+					</dl>
+					<dl class="mod-tab-quality-3">
+						<dt>认证资质的颁发</dt>
+						<dd>卫生部医药生物工程技术研究中心授权</dd>
+					</dl>
+				</li>
+				<li class="mod-tab-notice" style="display:none;">
+					<div class="bd">
+						<ul>
+							{php $announces = tag("table=announce&order=listorder DESC,itemid DESC&fields=title,linkurl,edittime&pagesize=12&template=null")}
+							{loop $announces $k $t}
+							<li class="item clearfix">
+								<a href="{$t['linkurl']}" target="_blank" class="pull-left text-overflow">{$t['title']}</a>
+								<p class="pull-right">[{date('m-d',$t['edittime'])}]</p>
+							</li>
+							{/loop}
+						</ul>
+					</div>
+					<div class="hd">
+						<a class="notice-prev"></a>
+						<a class="notice-next"></a>
+						<ul class="hidden"></ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--mod-tab end-->
+	</div>
+	<!--right-area end-->
+	
+</div>
+<!--tc-banner end-->
+
+<!-- tc-data -->
+<div class="tc-data">
+	<div class="w1200 box-center clearfix">
+		<ul class="tc-data-show pull-left" id="count">
+			<li>
+				<span>订单市场金额</span>
+				<em id="span_num">
+					<a class="span_num_link" href="javascript:;" style="display: none;" onclick="getSpanNum();">点击显示</a>
+				</em>
+			</li>
+			<li>
+				<span>首页关注次数</span>
+
+				<em><script type="text/javascript" src="module/count.php"></script></em>
+			</li>
+			<li>
+				<span>技术服务信息</span>
+				<em>
+						{php $hr = $db->count($DT_PRE.'hr_job', "status=3", 60);}
+						{php $peijian = $db->count($DT_PRE.'mall', "status=3 and stype=1", 60);}
+						{php $brand = $db->count($DT_PRE.'brand_13', "status=3", 60);}
+						{php $job = $db->count($DT_PRE.'job', "status=3", 60);}
+						{php $resume = $db->count($DT_PRE.'resume', "status in (2,3)", 60);}
+						{php $art = $db->count($DT_PRE.'article_21', "status=3", 60);}
+						{php $down = $db->count($DT_PRE.'down_15', "status=3", 60);}
+						{php $num=$job+$resume;}
+						{php $num=number_format($num,0,'.',',')}
+						{php $sell = $db->count($DT_PRE.'sell_5', "status=3", 60);}
+						{php $sell=number_format($sell,0,'.',',')}
+						{$num}
+				</em>
+			</li>
+			<li>
+				<span>供应商总数</span>
+				<em id="span_company">
+					<a class="span_company_link" href="javascript:;" style="display: none;" onclick="getSpanCompany();">点击显示</a>
+				</em>
+			</li>
+			<li>
+				<span>产品总数</span>
+				<em id="span_product">
+					<a class="span_product_link" href="javascript:;" style="display: none;" onclick="getSpanProduct();">点击显示</a>
+				</em>
+			</li>  
+		</ul>
+		<a class="join-btn pull-right" href="{$MODULE[2]['linkurl']}my.php">注册会员<br>享受特权</a>
+	</div>
+</div>
+<!-- tc-data end-->
+
+<!-- tc-recommend-->
+<div class="tc-recommend">
+	<div class="w1200 box-center clearfix">
+		<div class="tc-recommend-hd pull-left">
+			<p>推荐企业</p>
+			<a href="{$MODULE[2]['linkurl']}grade.php" target="_blank">我要上首页</a>
+		</div>
+		<ul class="pull-right">
+			<li>{ad(38)}</li>
+			<li>{ad(39)}</li>
+			<li>{ad(40)}</li>
+			<li>{ad(41)}</li>
+		</ul>
+	</div>
+</div>
+<!-- tc-recommend -->
+
+<!--wrap-->
+<div class="wrap">
+	<!-- 供求行情 -->
+	<div class="layout yellow-skin" id="supply">
+		<div class="layout-hd clearfix">
+			<h2>供求行情</h2>
+			<em class="intro">最新实时有效的供应和需求信息</em>
+			<a href="{$MODULE[2][linkurl]}my.php?action=add&mid=5" target="_blank" class="btn-action">发布供求信息</a>
+		</div>
+		<div class="layout-bd clearfix">
+			<div class="left-area w260 pd-20">
+				<!--供求行情分类-->
+				<dl class="cate-list cate-list-md">
+					<dt><strong>{$MODULE['5']['name']}分类</strong></dt>
+					{php $sell_cat_tags = tag("moduleid=5&table=category&fields=catid,catname,style&condition=moduleid=5 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+					<dd class="mgt-10">
+						{loop $sell_cat_tags $k $t}
+						<a href="{$MODULE[5][linkurl]}{rewrite('list.php?catid='.$t[catid].'&typeid=99')}" class="text-overflow">{set_style($t[catname],$t[style])}</a>
+						{/loop}
+					</dd>
+				</dl>
+				<dl class="cate-list cate-list-sm mgt-20">
+					<dt><strong>各地需求信息</strong></dt>
+					<dd class="mgt-10">
+						{php $sell_area_tags = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}			
+						{loop $sell_area_tags $k $t}			
+						<a href="{$MODULE[5][linkurl]}{rewrite('search.php?areaid='.$t['areaid'].'')}" class="text-overflow">{$t[areaname]}</a>
+						{/loop}
+					</dd>
+				</dl>
+				<!--供求行情分类 end-->
+			</div>
+			<div class="mid-area w640">
+				<!-- 最新医疗求购行情 -->
+				<div class="col demand-col">
+					<div class="col-hd pd-10 clearfix">
+						<h3 class="pull-left"><a href="{$MODULE[5]['linkurl']}{rewrite('search.php?typeid=0&catid=0')}" target="_blank">求购行情</a></h3>
+						<div class="btn-area pull-right">
+							<a class="prev font-hide" href="javascript:;">上一页</a>
+							<a class="next font-hide" href="javascript:;">下一页</a>
+						</div>
+						<ul class="hidden"></ul>
+					</div>
+					<ul class="col-bd demand-col-bd clearfix">
+						{php $sell_tags_type0 = tag("moduleid=5&fields=linkurl,title,areaid,hits&condition=status=3 and typeid=0&pagesize=12&order=edittime desc&template=null&debug=0&showcat=1")}
+						{loop $sell_tags_type0 $k $t}
+						<li class="demand-item">
+							<h4 class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h4>
+							<p><span class="desc">地区：{area_pos($t['areaid'], '/', 2)}</span><span class="desc mgl-10"><i class="num">{$t['hits']}</i>人关注</span></p>
+							<a class="btn" href="{$t['linkurl']}" target="_blank">我要供货</a>
+						</li>
+						{/loop}
+					</ul>
+				</div>
+				<!-- 最新医疗求购行情 end-->
+				<!-- 最新医疗供应行情 -->
+				<div class="col supply-col line-t-1">
+					<div class="col-hd pd-10 clearfix">
+						<h3 class="pull-left"><a href="{$MODULE[5]['linkurl']}{rewrite('search.php?typeid=1&catid=0')}" target="_blank">供应行情</a></h3>
+						<div class="btn-area pull-right">
+							<a class="prev font-hide" href="javascript:;">上一页</a>
+							<a class="next font-hide" href="javascript:;">下一页</a>
+						</div>
+						<ul class="hidden"></ul>
+					</div>
+					<ul class="col-bd supply-col-bd clearfix">
+					{php $sell_tags_type1 = tag("moduleid=5&fields=thumb,title,areaid,hits&condition=status=3 and typeid=1 and thumb <> ''&pagesize=12&order=edittime desc&template=null&debug=0&showcat=1")}
+					{loop $sell_tags_type1 $k $t}
+						<li class="supply-item">
+							<a href="" target="_blank">
+								<div class="img-area pull-left"><img src="{$t['thumb']}" alt="{$t['title']}"></div>
+								<div class="txt-area pull-right">
+									<h4 class="text-overflow" title="{$t['title']}">{$t['title']}</h4>
+									<div class="info">
+										<p class="desc">所在地：{area_pos($t['areaid'], '/', 2)}</p>
+										<p class="desc">关注数：<i class="num">{$t['hits']}</i>人</p>
+									</div>
+								</div>
+							</a>
+						</li>
+					{/loop}
+					</ul>
+				</div>
+				<!-- 最新医疗供应行情 end-->
+			</div>
+			<div class="right-area w260">
+				<!-- 招标采购 -->
+				<div class="col">
+					<div class="col-hd pd-10 clearfix">
+						<h3 class="pull-left"><a href="{$MODULE[6]['linkurl']}" target="_blank">招标采购</a></h3>
+						<a class="more pull-right" href="{$MODULE[6]['linkurl']}" target="_blank">更多</a>
+					</div>
+					<ul class="col-bd txt-list pd-20">
+						{php $buy_tags = tag("moduleid=6&fields=linkurl,title&condition=status=3&pagesize=5&order=edittime desc&template=null")}
+						{loop $buy_tags $k $t}
+						<li><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></li>
+						{/loop}
+					</ul>
+				</div>
+				<!-- 招标采购 end-->
+			</div>
+		</div>
+	</div>
+	<!-- 供求行情 end-->
+
+	<!-- 产品信息 -->
+	<div class="layout green-skin" id="product">
+		<div class="layout-hd clearfix">
+			<h2>产品信息</h2>
+			<em class="intro">海量产品精准分类，快捷找到适合的货品</em>
+			<a href="{$MODULE[2][linkurl]}my.php?action=add&mid=16" target="_blank" class="btn-action">发布产品信息</a>
+		</div>
+		<div class="layout-bd clearfix">
+			<div class="left-area w260 pd-20">
+				<!--医院科室分类-->
+				<dl class="cate-list cate-list-md">
+					<dt><strong>医院科室分类</strong></dt>
+					<dd class="mgt-10">
+						{loop $keshi_catid $k $t}
+						<?php if($k > 32) break; ?>
+						<a class="text-overflow" href="{$MODULE[16][linkurl]}{rewrite('search.php?kcatid='.$t[catid])}">{$t['catname']}</a>
+						{/loop}
+						
+					</dd>
+				</dl>
+				<!-- 医院科室分类 end-->
+				<!-- 医疗器械分类 -->
+				<dl class="cate-list cate-list-lg mgt-20">
+					<dt><strong>医疗器械分类</strong></dt>
+					<dd class="mgt-10">
+						{loop $mall_catid $k $t}
+						<?php if($t['catid'] == '1027') continue; ?>
+						<?php if($k > 22) break; ?>
+						<a class="text-overflow" href="{$MODULE[16][linkurl]}{rewrite('search.php?catid='.$t[catid])}" title="{$t['catname']}">{$t['catname']}</a>
+						{/loop}
+					</dd>
+				</dl>
+				<!--医疗器械分类 end-->
+			</div>
+			<div class="mid-area w640">
+				<!-- 推荐厂商网店 -->
+				<div class="col product-col">
+					<div class="col-hd pd-10 clearfix">
+						<h3 class="pull-left"><a href="{$MODULE[16]['linkurl']}{rewrite('search.php?tc=1')}" target="_blank">推荐医疗产品信息</a></h3>
+						<div class="btn-area pull-right">
+							<a class="prev font-hide" href="javascript:;">上一页</a>
+							<a class="next font-hide" href="javascript:;">下一页</a>
+						</div>
+						<ul class="hidden"></ul>
+					</div>
+					<div class="col-bd pd-10 clearfix">
+						<div class="ulWrap">
+						{php $mall_tc_tags = tag("moduleid=16&table=mall&fields=linkurl,thumb,title&condition=groupid in (1,8) and status = 3&pagesize=16&order=itemid desc &template=null")}
+						{loop $mall_tc_tags $k $t}
+						{if $k%4 == 0}<ul>{/if}
+							<li class="product-item pd-10">
+								<a href="{$t['linkurl']}" target="_blank" title="{$t['title']}"><img src="{$t['thumb']}" alt="{$t['title']}" /></a>
+								<p class="title"><a href="{$t['linkurl']}" title="{$t['title']}" target="_blank">{$t['title']}</a></p>
+							</li>
+						{if ($k+1)%4 == 0}</ul>{/if}
+						{/loop}
+						</div>
+					</div>
+				</div>
+				<!-- 推荐医疗产品信息 end-->
+			</div>
+			<div class="right-area w260">
+				<!-- 产品服务平台 -->
+				<div class="col">
+					<div class="col-hd pd-10 clearfix">	
+						<h3 class="pull-left">产品服务平台</h3>
+					</div>
+					<div class="col-bd pd-10">
+						<a href="http://www.sharedour.com/" target="_blank"><img src="{DT_SKIN}image/about-xd.jpg" width="240" height="160" alt=""></a>
+						<a href="http://www.medcha.com/" target="_blank"><img src="{DT_SKIN}image/about-tl.jpg" class="mgt-10" width="240" height="160" alt=""></a>
+					</div>
+				</div>
+				<!-- 产品服务平台 end-->
+			</div>
+		</div>
+	</div>
+	<!-- 产品信息 end-->
+
+    <!--厂商信息-->
+    <div class="layout violet-skin" id="company">
+        <div class="layout-hd clearfix">
+            <h2>厂商信息</h2>
+            <em class="intro">海量优质供应商资源，连通上下游</em>
+            <a href="{$MODULE[2][linkurl]}grade.php" target="_blank" class="btn-action">立即开设网店</a>
+        </div>
+        <div class="layout-bd clearfix">
+            <div class="left-area w260 pd-20">
+                <!--厂商类型-->
+                <dl class="cate-list cate-list-md">
+                    <dt><strong>厂商类型</strong></dt>
+                    <dd class="mgt-10">
+                        <a class="text-overflow" href="{$MODULE[4]['linkurl']}{rewrite('search.php?mode1=1')}">生产商</a>
+                        <a class="text-overflow" href="{$MODULE[4]['linkurl']}{rewrite('search.php?mode2=2')}">贸易商</a>
+                        <a class="text-overflow" href="{$MODULE[4]['linkurl']}{rewrite('search.php?mode3=3')}">服务商</a>
+                    </dd>
+                </dl>
+                <!--厂商类型 end-->
+                <!-- 经营范围 -->
+                <dl class="cate-list cate-list-lg mgt-20">
+                    <dt><strong>经营范围</strong></dt>
+                    <dd class="mgt-10">
+                    {php $company_cat_tags = tag("moduleid=4&table=category&fields=linkurl,catid,catname&condition=moduleid=4 and parentid=0&pagesize=50&order=listorder asc&template=null")}
+                    {loop $company_cat_tags $k $t}
+						<a class="text-overflow" href="{$MODULE[4]['linkurl']}{rewrite('search.php?catid='.$t['catid'])}">{$t['catname']}</a>
+					{/loop}
+                    </dd>
+                </dl>
+                <!--经营范围 end-->
+            </div>
+            <div class="mid-area w640">
+
+                <!-- 推荐厂商网店 -->
+                <div class="col company-col line-t-1">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[4]['linkurl']}{rewrite('search.php?vip=1&validated=1')}" target="_blank">推荐厂商网店</a></h3>
+                        <div class="btn-area pull-right">
+                            <a class="prev font-hide" href="javascript:;">上一页</a>
+                            <a class="next font-hide" href="javascript:;">下一页</a>
+                        </div>
+                        <ul class="hidden"></ul>
+                    </div>
+                   	<div class="col-bd mg-10 clearfix">
+						<ul class="ulWrap">
+							{php $company_recom_tags = tag("moduleid=4&fields=linkurl,thumb,company,areaid,pnum&condition=pnum>0 and hits>20 and groupid>5 and groupid<>8 and closeshop=0&pagesize=16&order=hits desc,level desc&template=null&debug=0&showcat=1")}
+							{loop $company_recom_tags $k $t}
+								{if $k%4 == 0}<li>{/if}
+								<a class="company-item" href="{$t['linkurl']}" target="_blank">
+									<div class="img-area pull-left"><img src="{$t['thumb']}" alt=""></div>
+									<div class="txt-area pull-right">
+										<h4 class="text-overflow" title="{$t['company']}">{$t['company']}</h4>
+										<div class="info">
+											<p class="desc">所在地区：{area_pos($t['areaid'], '/', 2)}</p>
+											<p class="desc">产品总数：<i class="num">{$t['pnum']}</i></p>
+										</div>
+									</div>
+								</a>
+								{if ($k+1)%4 == 0}</li>{/if}
+							{/loop}
+						</ul>
+					</div>
+                </div>
+                <!-- 推荐厂商网店 end-->
+            </div>
+            <div class="right-area w260">
+                <!-- 医疗机构 -->
+                <div class="col">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[4][linkurl]}{rewrite('search.php?catid=2365')}" target="_blank">医疗机构</a></h3>
+                        <a class="more pull-right" href="{$MODULE[4][linkurl]}{rewrite('search.php?catid=2365')}" target="_blank">更多</a>
+                    </div>
+                    <ul class="col-bd txt-list pd-20">
+                    	{php $company_hos_tags = tag("moduleid=4&fields=linkurl,company&condition=closeshop=0 and catids like '%2365%'&pagesize=7&order=level desc,userid desc&template=null&debug=0&showcat=1")}
+                    	{loop $company_hos_tags $k $t}
+                    	<li class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['company']}">{$t['company']}</a></li>
+                    	{/loop}	
+                        
+                    </ul>
+                </div>
+                <!-- 医疗机构 end-->
+            </div>
+        </div>
+        <div class="layout-ft">
+        	<div class="company-list">
+				<div class="company-list-hd">
+                    <div class="btn-area">
+                        <a class="prev font-hide" href="javascript:;">上一页</a>
+                        <a class="next font-hide" href="javascript:;">下一页</a>
+                    </div>
+                    <ul class="hidden"></ul>
+				</div>
+				<div class="company-list-bd pdt-20 pdb-20">
+					<ul>
+						{php $company_new_tags = tag("moduleid=4&fields=linkurl,thumb,company&condition=groupid>5 and groupid<>8 and thumb <> '' and closeshop=0&pagesize=24&order=userid desc&template=null&debug=0&showcat=1")}
+						{loop $company_new_tags $k $t}
+						<li><a href="{$t['linkurl']}" target="_blank"><img src="{$t['thumb']}" alt="{$t['company']}"><p>{dsubstr($t['company'],24,'')}</p></a></li>
+						{/loop}
+		                
+		            </ul>
+				</div>
+        	</div>
+        </div>
+    </div>
+    <!--厂商信息 end-->
+
+    <!--设备服务-->
+    <div class="layout red-skin" id="equipment">
+        <div class="layout-hd clearfix">
+            <h2>设备服务</h2>
+            <em class="intro">全国分地区分类，提供便捷的工程师上门服务</em>
+            <a href="{$MODULE[2][linkurl]}my.php?action=add&mid=9" target="_blank" class="btn-action">发布设备服务信息</a>
+        </div>
+        <div class="layout-bd clearfix">
+            <div class="left-area w470">
+                <!--设备服务需求-->
+                <div class="col equipment-col">
+		            <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?type=99')}" target="_blank">设备服务需求</a></h3>
+                        <a class="more pull-right" href="{$MODULE[9]['linkurl']}{rewrite('search.php?type=99')}" target="_blank">更多</a>
+                    </div>
+                    <div class="col-bd">
+                    	{php $job_new_tags=tag("moduleid=9&fields=catid,linkurl,title,areaid,hits&condition=status=3 and step<4 &pagesize=8&order=edittime desc&debug=0&showcat=1&template=null")}
+                    	
+                    	<?php foreach($job_catid as $r){
+                    		$job_category[$r['catid']] = $r['catname'];	
+                    	}
+                    	?>
+                    	{loop $job_new_tags $k $t}
+                        <div class="equipment-item">
+                            <div class="title clearfix">
+                                <a class="type" href="{$MODULE[9]['linkurl']}{rewrite('search.php?catid='.$t['catid'])}">{str_replace('服务','',$job_category[$t['catid']])}</a>
+                                <h4 class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h4>
+                            </div>
+                            <div class="info">
+                                <span class="desc"><b>地区：</b><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?areaid='.$t['areaid'])}">{area_pos($t['areaid'], '/', 2)}</a></span>
+                                <span class="desc mgl-10"><b>关注：</b><i class="num">{$t['hits']}</i></span>
+                            </div>
+                        </div>
+                        {/loop}
+                    </div>
+                </div>	
+                <!--设备服务需求 end-->
+            </div>
+            <div class="mid-area w470">
+                <!--技术工程师-->
+                <div class="col engineer-col">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?action=resume')}" target="_blank">技术工程师</a></h3>
+                        <a class="more pull-right" href="{$MODULE[9]['linkurl']}{rewrite('search.php?action=resume')}" target="_blank">更多</a>
+                    </div>
+                    <div class="col-bd">
+                    {php $resume_new_tags = tag("moduleid=9&fields=linkurl,thumb,title,truename,username,areaid&table=resume&condition=status=3 and thumb <> ''&pagesize=8&order=edittime desc&template=null&debug=0&showcat=1")}
+                    {loop $resume_new_tags $k $t}
+                    	{php $com = $db->get_one("select thumb from {$db->pre}company where username = '".$t['username']."'")}
+                        <div class="engineer-item">
+                            <a href="{$t['linkurl']}" target="_blank" title="{$t['title']}"><img class="avatar pull-left" src="{useravatar($t[username],'large')}" alt="{$t['title']}"></a>
+                            <div class="txt-area pull-right">
+                                <h4 class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h4>
+                                <div class="info">
+                                    <span class="desc"><i class="user-icon"></i>{$t['truename']}</span>
+                                    <span class="desc mgl-10"><i class="local-icon"></i><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?ation=resume&areaid='.$t['areaid'])}" title="{$t['title']}">{area_pos($t['areaid'], '/', 2)}</a></span>
+                                </div>
+                            </div>
+                        </div>
+                     {/loop}
+                    </div>
+                </div>
+                <!--技术工程师 end-->
+            </div>
+            <div class="right-area w260">
+                <!--技术资料共享-->
+                <div class="col doc-col">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[15]['linkurl']}" target="_blank">技术资料共享</a></h3>
+                        <a class="more pull-right" href="{$MODULE[15]['linkurl']}">更多</a>
+                    </div>
+                    <div class="col-bd pd-20">
+                    	{php $gongxiang_new_tags = tag("moduleid=15&catid=404&fields=thumb,linkurl,title,fileext,hits,download,catid&condition=status=3 &pagesize=5&order=edittime desc&template=null&debug=0")}	
+                    	{loop $gongxiang_new_tags $k $t}
+                        <div class="doc-item">
+                            <h4 class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}"><img src="{DT_SKIN}image/down/file/{$t['fileext']}.jpg" alt="{$t['fileext']}">{$t['title']}</a></h4>
+                            <div class="info">
+                            	{php $cat = get_cat($t['catid'])}
+                                <span class="desc"><i class="type-icon"></i>{$cat['catname']}</span>
+                                <span class="desc mgl-10"><i class="view-icon"></i>{$t['hits']}</span>
+                                <span class="desc mgl-10"><i class="down-icon"></i>{$t['download']}</span>
+                            </div>
+                        </div>
+                        {/loop}
+                    </div>
+                </div>
+                <!--技术资料共享 end-->
+
+            </div>
+        </div>
+    </div>
+    <!--设备服务 end-->
+
+    <!--产业服务-->
+    <div class="layout blue-skin" id="service">
+        <div class="layout-hd clearfix">
+            <h2>产业服务</h2>
+            <em class="intro">服务于医疗行业全产业链，提供全面完整的解决方案</em>
+        </div>
+        <div class="layout-bd clearfix">
+            <div class="left-area w470">
+                <!--人才服务-->
+                <div class="col job-col">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[28]['linkurl']}" target="_blank">人才服务</a><em>职帅</em></h3>
+                        <a class="more pull-right" href="{$MODULE[2]['linkurl']}my.php?action=add&mid=28" target="_blank">发布招聘</a>
+                        <a class="more pull-right bdln" href="{$MODULE[2]['linkurl']}my.php?action=add&mid=28&resume=1" target="_blank">发布简历</a>
+                    </div>
+                    <div class="col-bd pdt-10 pdb-10 clearfix">
+                    	{php $hrjob_new_tags=tag("table=hr_job&fields=linkurl,title,minsalary,maxsalary,areaid,company&condition=status=3&pagesize=6&order=edittime desc&template=null&debug=0&showcat=1")}
+                    	{loop $hrjob_new_tags $k $t}
+                        <div class="job-item pull-left">
+                            <div class="job-title"><a href="{$MODULE[28]['linkurl']}{$t['linkurl']}" target="_blank">{$t['title']}</a></div>
+                            <div class="job-salary">
+                                <em>{if $t[minsalary] && $t[maxsalary]}{$t[minsalary]}-{$t[maxsalary]}{$DT[money_unit]}{elseif $t[minsalary]}{$t[minsalary]}{$DT[money_unit]}以上{elseif $t[maxsalary]}{$t[maxsalary]}{$DT[money_unit]}以内{else}面议{/if}</em>{area_pos($t['areaid'], '/', 2)}
+                            </div>
+                            <div class="desc">{$t['company']}</div>
+                        </div>
+                        {/loop}
+                    </div>
+                </div>
+                <!--人才服务 end-->
+            </div>
+            <div class="mid-area w470">
+                <!--科技服务-->
+                <div class="col tech-col">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[7]['linkurl']}" target="_blank">科技服务</a><em>科琅</em></h3>
+                        <a class="more pull-right" href="{$MODULE[2]['linkurl']}my.php?action=add&mid=7" target="_blank">发布资质信息</a>
+                    </div>
+                    <div class="col-bd pdt-10 pdb-10 clearfix">
+                        <a class="item-1" href="{$MODULE[7]['linkurl']}solution.php?action=kyxmzh#kyxmzh_div" target="_blank">科研项目转化</a>
+                        <a class="item-2" href="{$MODULE[7]['linkurl']}solution.php?action=zltxfd#zltxfd_div" target="_blank">开放实验室</a>
+                        <a class="item-3" href="{$MODULE[7]['linkurl']}solution.php?action=sczyxk#sczyxk_div" target="_blank">质量体系辅导</a>
+                        <a class="item-4" href="{$MODULE[7]['linkurl']}solution.php?action=cpzc#cpzc_div" target="_blank">注册临床咨询</a>
+                        <a class="item-5" href="{$MODULE[7]['linkurl']}solution.php?action=lczx#lczx_div" target="_blank">生产经营许可证</a>
+                        <a class="item-6" href="{$MODULE[7]['linkurl']}solution.php?action=zfzjxmsb#zfzjxmsb_div" target="_blank">政府资金项目申报</a>
+                    </div>
+                </div>
+                <!--科技服务 end-->
+
+                <!--宣传广告-->
+                <div class="col pd-10 clearfix">
+                    <a href="http://yiliantong.tecenet.com/" target="_blank"><img src="{DT_SKIN}image/about-ylt.jpg" width="218" height="96" class="pull-left" alt=""></a>
+                    <a href="http://www.tecenet.com/about/intro.html#hospitalInvestment" target="_blank"><img src="{DT_SKIN}image/about-yy.jpg" width="218" height="96" class="pull-right" alt=""></a>
+                </div>
+                <!--宣传广告 end-->
+            </div>
+            <div class="right-area w260">
+                <div class="col">
+                    <div class="pd-10">
+                        <a href="{DT_PATH}about/intro.html#tianYiEngineering" target="_blank"><img src="{DT_SKIN}image/about-ty.jpg" width="240" height="96"alt=""></a>
+                    </div>
+                    <div class="pd-10 line-t-1">
+                        <a href="http://www.eydsp.com/" target="_blank"><img src="{DT_SKIN}image/about-ey.jpg" width="240" height="96" alt=""></a>
+                    </div>
+                    <div class="pd-10 line-t-1">
+                        <a href="http://www.tecenet.com/about/intro.html#healthServices" target="_blank"><img src="{DT_SKIN}image/about-yrj.jpg" width="240" height="96" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--产业服务 end-->
+
+    <!--产业资讯-->
+    <div class="layout orange-skin" id="news">
+        <div class="layout-hd clearfix">
+            <h2>产业资讯</h2>
+            <em class="intro">最值得关心的医疗产业最新消息</em>
+            <a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=21" target="_blank" class="btn-action">发布产业资讯信息</a>
+        </div>
+        <div class="layout-bd clearfix">
+            <div class="left-area w300">
+                <!--资讯动态-->
+                <div class="col top-news-col">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[21]['linkurl']}" target="_blank">资讯动态</a></h3>
+                        <a class="more pull-right" href="{$MODULE[21]['linkurl']}" target="_blank">更多</a>
+                    </div>
+                    <div class="col-bd pd-10">
+                        <div class="img-change">
+                            <ul>
+                            	{php $article_new_tags = tag("moduleid=21&fields=title,linkurl,thumb&condition=status=3 and level>0 and thumb<>'' and catid!=2018&order=level desc,addtime desc&pagesize=5&template=null&showcat=1")}
+                            	{loop $article_new_tags $k $t}
+                                <li>
+                                    <a href="{$t['linkurl']}" target="_blank"><img src="{$t['thumb']}" alt="{$t['title']}"></a>
+                                    <p class="text-overflow"><a href="{$t['linkurl']}">{$t['title']}</a></p>
+                                </li>
+                                {/loop}
+                            </ul>
+                            <a href="javascript:;" class="prev font-hide">上一页</a>
+                            <a href="javascript:;" class="next font-hide">下一页</a>
+                        </div>
+                        <ul class="txt-list">
+                        	{php $article_new_tags = tag("moduleid=21&fields=title,linkurl&condition=status=3 and level>0 and thumb<>'' and catid!=2018&order=level desc,addtime desc&pagesize=6&page=2&template=null&showcat=1")}
+                        	{loop $article_new_tags $k $t}
+                            <li class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></li>
+                            {/loop}
+                        </ul>
+                    </div>
+                </div>
+                <!--资讯动态 end-->
+            </div>
+            <div class="mid-area w640">
+                <!--天成动态-->
+                <div class="col tc-news">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[21]['linkurl']}{rewrite('list.php?catid=2371')}" target="_blank">天成动态</a></h3>
+                        <a class="more pull-right" href="{$MODULE[21]['linkurl']}{rewrite('list.php?catid=2371')}" target="_blank">更多</a>
+                    </div>
+                    <div class="col-bd pd-20">
+                    	{php $catid_data = $db->query("select catid from {$db->pre}category where arrparentid like '%2371%'")}
+                    	<?php 
+                    	$cat = array();
+                    	while($r = $db->fetch_array($catid_data)){
+                    		$cat[] = $r['catid']; 
+                    	}
+                    	$cat[] = '2371';
+                    	$cat_str = implode(',',$cat);
+                    	?>
+                    	{php $article_2371_tags = tag("moduleid=21&fields=linkurl,title,edittime,introduce&condition=status=3 and catid in ($cat_str)&order=edittime desc&pagesize=2&template=null")}
+                    	{loop $article_2371_tags $k $t}
+                        <div class="tc-news-item">
+                            <div class="title clearfix">
+                                <h4 class="pull-left text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h4>
+                                <em class="pull-right">[{date('m-d',$t['edittime'])}]</em>
+                            </div>
+                            <div class="desc">
+                                {$t['introduce']}
+                            </div>
+                        </div>
+                        {/loop}
+                       
+                    </div>
+                </div>
+                <!--天成动态 end-->
+                <!--媒体报道-->
+                <div class="col media-news line-t-1">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{DT_PATH}link/{rewrite('index.php?typeid=225')}" target="_blank">媒体报道</a></h3>
+                        <a class="more pull-right" href="{DT_PATH}link/{rewrite('index.php?typeid=225')}" target="_blank">更多</a>
+                    </div>
+                    <div class="col-bd pd-10 clearfix">
+                    	{php $link_tags = tag("table=link&condition=status=3 and typeid=225&areaid=$cityid&pagesize=4&order=level desc,listorder asc,itemid desc&template=null")}
+                    	{loop $link_tags $k $t}
+                        <div class="media-news-item">
+                            <a class="img-area pull-left" href="{$t['linkurl']}" target="_blank"><img src="{$t['thumb']}" alt="{$t['title']}"></a>
+                            <h4><a href="{$t['linkurl']}" target="_blank">{$t['title']}</a></h4>
+                        </div>
+                        {/loop}
+                    </div>
+                </div>
+                <!--媒体报道 end-->
+
+            </div>
+            <div class="right-area w260">
+                <!--政策法规-->
+                <div class="col">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[21]['linkurl']}{rewrite('list.php?catid=840')}" target="_blank">政策法规</a></h3>
+                        <a class="more pull-right" href="{$MODULE[21]['linkurl']}{rewrite('list.php?catid=840')}" target="_blank">更多</a>
+                    </div>
+                    <ul class="col-bd txt-list pd-20">
+                    	{php $catid_data = $db->query("select catid from {$db->pre}category where arrparentid like '%844%'")}
+                    	<?php 
+                    	$cat = array();
+                    	while($r = $db->fetch_array($catid_data)){
+                    		$cat[] = $r['catid']; 
+                    	}
+                    	$cat[] = '840';
+                    	$cat_str = implode(',',$cat);
+                    	?>
+                    	{php $article_840_tags = tag("moduleid=21&fields=linkurl,title&condition=status=3 and catid in ($cat_str)&order=edittime desc&pagesize=3&template=null")}
+                    	{loop $article_840_tags $k $t}
+                        <li><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></li>
+                        {/loop}
+                    </ul>
+                </div>
+                <!--政策法规 end-->
+                <!--展会信息-->
+                <div class="col line-t-1">
+                    <div class="col-hd pd-10 clearfix">
+                        <h3 class="pull-left"><a href="{$MODULE[21]['linkurl']}{rewrite('list.php?catid=844')}" target="_blank">展会信息</a></h3>
+                        <a class="more pull-right" href="{$MODULE[21]['linkurl']}{rewrite('list.php?catid=844')}" target="_blank">更多</a>
+                    </div>
+                    <ul class="col-bd txt-list pd-20">
+                    	{php $catid_data = $db->query("select catid from {$db->pre}category where arrparentid like '%844%'")}
+                    	<?php 
+                    	$cat = array();
+                    	while($r = $db->fetch_array($catid_data)){
+                    		$cat[] = $r['catid']; 
+                    	}
+                    	$cat[] = '844';
+                    	$cat_str = implode(',',$cat);
+                    	?>
+                        {php $article_844_tags = tag("moduleid=21&fields=title,linkurl&condition=status=3 and catid in ($cat_str)&order=edittime desc&pagesize=3&template=null")}
+                    	{loop $article_844_tags $k $t}
+                        <li><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></li>
+                        {/loop}
+                    </ul>
+                </div>
+                <!--展会信息 end-->
+            </div>
+        </div>
+    </div>
+    <!--产业资讯 end-->
+
+	<!-- 友情连接 -->
+    <div class="layout">
+        <div class="links-tab">
+            <div class="links-tab-hd">
+                <ul class="clearfix">
+                	{php $link_title_tags = tag("table=type&condition=item='link'&pagesize=10&order=listorder asc&template=null")}
+                	{loop $link_title_tags $k $t}	
+                	<?php if($t['typeid'] == 225) continue; ?>
+                    <li><a href="{$EXT[link_url]}index.php?typeid={$t[typeid]}">{$t['typename']}</a></li>
+                    {/loop}
+                </ul>
+                <a class="join-btn" href="{DT_PATH}link/{rewrite('index.php?action=reg')}">申请加入</a>
+            </div>
+            <div class="links-tab-bd">
+            	{loop $link_title_tags $k $t}
+            	<?php if($t['typeid'] == 225) continue; ?>
+            	<ul>
+            		{php $link_web_tags = tag("table=link&condition=status=3  and link_moduleid=0 and typeid=".$t[typeid]."&pagesize=".$DT['page_text']."&order=listorder asc,itemid desc&template=null");}
+            		{loop $link_web_tags $lk $lt}
+            		<li class="text-overflow"><a href="{$lt['linkurl']}">{$lt['title']}</a></li>
+            		{/loop}
+            	</ul>
+            	{/loop}
+               
+            </div>
+        </div>
+    </div>
+	<!-- 友情连接 end-->
+
+
+
+
+</div>
+<!--wrap end-->
+
+<!-- tc-footer-->
+<div class="tc-footer">
+    <div class="help-list clearfix">
+        <dl>
+            <dt>关于本站</dt>
+            <dd>
+                <ul>
+                    <li><a href="{DT_PATH}about/index.html" rel="nofollow">关于天成医疗</a></li>
+                    <li><a href="{DT_PATH}about/agreement.html" rel="nofollow">法律声明</a></li>
+                    <li><a href="{DT_PATH}about/pay.html" rel="nofollow">付款方式</a></li>
+                    <li><a href="{DT_PATH}about/jobs.html" rel="nofollow">招聘精英</a></li>
+                    <li><a href="{DT_PATH}about/contact.html" rel="nofollow">联系方式</a></li>
+                </ul>
+            </dd>
+        </dl>
+		<dl>
+			<dt>会员服务</dt>
+			<dd>
+                <ul>
+                    <li><a href="{DT_PATH}member/register.php">会员注册</a></li>
+                    <li><a href="{DT_PATH}member/grade.php">会员升级</a></li>
+                    <li><a href="{DT_PATH}member/grade.php" rel="nofollow">权限说明</a></li>
+                    <li><a href="{DT_PATH}guestbook/" rel="nofollow">在线留言</a></li>
+                    <li><a href="http://www.eydsp.com/eytopic/yiliao/index.html" target="_blank">广告推广</a></li>
+                    <li><a href="http://www.eydsp.com/500mb/020/pc/yl/index.html" target="_blank">网站建设</a></li>
+                </ul>
+			</dd>
+		</dl>
+		<dl>
+			<dt>增值服务</dt>
+			<dd>
+                <ul>
+                    <li><a href="{DT_PATH}about/intro.html#tianYiEngineering">医学工程服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#tianJiaoMedical">设备管理服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#chengTianTrading">供应和信息系统服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#keLangMedical">科技服务平台</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#yiLiantongLogistics">物流服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#hospitalInvestment">康复护理医养结合服务</a></li>
+                </ul>
+                <ul>
+                    <li><a href="{DT_PATH}about/intro.html#humanResources">人力资源服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#productsServices">产业服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#E-businessMarketing">电子商务服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#importExport">综合外贸服务</a></li>
+                    <li><a href="{DT_PATH}about/intro.html#healthServices">健康管理服务</a></li>
+                    <li><a href="http://yiliantong.tecenet.com/" rel="nofollow">物流快递查询</a></li>
+                </ul>
+			</dd>
+		</dl>
+		<dl>
+			<dt>关注我们</dt>
+			<dd>
+                <ul>
+					<li class="wechat-qrcode">
+						<a href="javascript:;" rel="nofollow"><i class="ft-icon ft-icon-wechat"></i>微信公众平台</a>
+						<img src="http://www.tecenet.com/file/image/weixin.jpg" alt="天成医疗网微信公众平台二维码">
+					</li>
+                    <li><a href="http://wap.tecenet.com/" rel="nofollow"><i class="ft-icon ft-icon-tel"></i>手机版天成</a></li>
+                    <li><a href="http://weibo.com/tecenet" target="_blank" rel="nofollow"><i class="ft-icon ft-icon-weibo"></i>新浪微博</a></li>
+                    <li><a href="http://t.qq.com/GZtianchengyiliao" target="_blank" rel="nofollow"><i class="ft-icon ft-icon-qq"></i>腾讯微博</a></li>
+                    <li><a href="http://user.qzone.qq.com/2990334470 " target="_blank" rel="nofollow"><i class="ft-icon ft-icon-zone"></i>QQ空间</a></li>
+                </ul>
+			</dd>
+		</dl>
+        <dl>
+            <dt>Q群平台</dt>
+            <dd>
+                <ul class="qq-group">
+                    <li><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=36521899e56af426ede6c2335f41131172b7b130ea717a4a22bce0d26bce3820" rel="nofollow">维修技术群</a></li>
+                    <li><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=c7e5fc9f68e781cad6b598caaef8fc6ba4e7552cfe3a8adf46b4023780552f41" rel="nofollow">器械买卖群</a></li>
+                    <li><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=438ebd7bfa07429507fe607834ec01b4ab218f46f1883ce6b597de19b0332d19" rel="nofollow">供应商群</a></li>
+                    <li><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=30ecef7c1c1f940add0714e3849c62f5631801493171e6d8e7c8988d34eba578" rel="nofollow">实验室装修</a></li>
+                </ul>
+			</dd>
+        </dl>
+		<dl class="app">
+			<dt>手机APP</dt>
+			<dd>
+				<img src="http://www.tecenet.com/file/image/and.png"  alt="天成医疗网安卓客户端二维码"/>
+			</dd>
+		</dl>
+    </div>
+	
+	<div class="tc-footer-inner">
+		<div class="tc-links">
+			<a href="{$MODULE[9]['linkurl']}" title="医疗器械维修服务">设备技术服务网</a><span>|</span>
+			<a href="{$MODULE[16]['linkurl']}" title="医疗器械产品大全">产品服务网</a><span>|</span>
+			<a href="{$MODULE[6]['linkurl']}" title="医疗器械求购">招标采购平台</a><span>|</span>
+			<a href="{$MODULE[16]['linkurl']}search-htm-stype-1-list-1.html" title="医疗器械维修配件">配件销售网</a><span>|</span>
+			<a href="{$MODULE[13]['linkurl']}" title="医疗器械厂家品牌">品牌信息网</a><span>|</span>
+			<a href="{$MODULE[21]['linkurl']}" title="医疗资讯网">医疗资讯网</a><span>|</span>
+			<a href="{$MODULE[4]['linkurl']}">厂商网店</a><span>|</span>
+			<a href="{$MODULE[5]['linkurl']}" title="医疗器械供应信息">供应平台</a><span>|</span>
+			<a href="{$MODULE[15]['linkurl']}" title="医疗资料共享">医疗资料共享</a><span>|</span>
+			<a href="{$MODULE[10]['linkurl']}" title="医疗问答平台">医疗问答平台</a><span>|</span>
+			<a href="{DT_PATH}taoxinxi">群内行情信息</a>
+	    </div>
+		
+		<div class="copyright">
+			<p><span>版权所有 ©广州天成医疗技术股份有限公司</span><span>CopyRight ©Guangzhou TianCheng Medical Technology Co.,Ltd.</span></p>
+			<p>
+                <a href="http://www.51.la/?14914538" target="_blank" rel="nofollow">-</a>
+                广州总部地址：广州市高新技术产业开发区开源大道11号科技企业加速器B8栋3楼
+                <a href="http://tongji.baidu.com/web/welcome/ico?s=2b363fb3d03ff9991c4971afddf8731d" target="_blank" rel="nofollow">-</a>
+            </p>
+            <p><span>总机号码：020-22017999</span><span>传真：020-22017998</span><span>邮编：510530</span><span>服务邮箱：note@tecenet.com</span></p>
+			<p>
+				<span>ICP备案号：<a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" rel="nofollow">粤ICP备13045514号</a></span>
+				<span>互联网药品信息服务经营许可证：<a href="http://app1.sfda.gov.cn/datasearch/face3/content.jsp?tableId=28&tableName=TABLE28&Id=5329" target="_blank">(粤)-经营性-2013-0006</a></span>
+
+			</p>
+			<div class="authenticate">
+				<img src="{DT_SKIN}image/tecesprite.gif">
+				<a href="http://www.baidu.com/s?wd=www.tecenet.com%40v" target="_blank" rel="nofollow"><img src="http://www.tecenet.com/skin/teceskin/image/ebs.png"></a>
+				<a href="http://app1.sfda.gov.cn/datasearch/face3/content.jsp?tableId=28&amp;tableName=TABLE28&amp;Id=5329" target="_blank" rel="nofollow"><img src="http://www.tecenet.com/skin/teceskin/image/fda.png"></a>
+			</div>
+		</div>
+
+	</div>
+    
+</div>
+<!-- tc-footer end-->
+
+<!--dialog-->
+<div class="dialog-wrp"  style="display:none;">
+    <div class="dialog">
+        <div class="dialog-hd">
+            请帮助我们成长
+            <button type="button" onclick="closeDialogMsg();">关闭</button>
+        </div>
+        <div class="dialog-bd">
+            Hi，如果使用时有任何不满意，<br>请告诉我们，我们会做的更好！<a href="http://www.tecenet.com/guestbook/#ask" target="_blank">提建议>></a>
+        </div>
+        <div class="dialog-ft">
+            <a href="javascript:;" class="btn btn-primary" onclick="closeDialogMsg();">继续使用</a>
+            <a href="http://www.tecenet.com/" target="_self" class="btn btn-default">返回旧版本</a>
+        </div>
+    </div>
+</div>
+<!--dialog end-->
+
+<!--elevator-->
+<div class="elevator" style="display: none;">
+	<dl class="elevator-item elevator-service">
+		<dt><i></i>客服</dt>
+		<dd>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1465794385&amp;site=qq&amp;menu=yes" rel="nofollow">产品服务</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2300379865&amp;site=qq&amp;menu=yes" rel="nofollow">招商推广</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1928771453&amp;site=qq&amp;menu=yes" rel="nofollow">设备技术</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3381476778&amp;site=qq&amp;menu=yes" rel="nofollow">配件耗材</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=379255200&amp;site=qq&amp;menu=yes" rel="nofollow">资质服务</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1391268333&amp;site=qq&amp;menu=yes" rel="nofollow">管理软件</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1515050627&amp;site=qq&amp;menu=yes" rel="nofollow">医疗人才</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=786466321&amp;site=qq&amp;menu=yes" rel="nofollow">工程装修</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=657911476&amp;site=qq&amp;menu=yes" rel="nofollow">网站客服</a>
+		</dd>
+	</dl>
+	<dl class="elevator-item elevator-tel">
+		<dt><i></i>电话</dt>
+		<dd>
+			<p>400-617-3599</p>
+		</dd>
+	</dl>
+	<dl class="elevator-item elevator-msg">
+		<dt><a href="http://www.tecenet.com/guestbook/#ask" target="_blank"><i></i>留言</a></dt>
+	</dl>
+
+	<ul>
+		<li class="menu-item"><a href="#supply">供求行情</a></li>
+		<li class="menu-item"><a href="#product">产品信息</a></li>
+		<li class="menu-item"><a href="#company">厂商信息</a></li>
+		<li class="menu-item"><a href="#equipment">设备服务</a></li>
+		<li class="menu-item"><a href="#service">产业服务</a></li>
+		<li class="menu-item"><a href="#news">产业资讯</a></li>
+	</ul>
+	<a class="elevator-item to-top" href="#tcTopNav">顶部</a>
+</div>
+<!-- elevator end-->
+
+<script>
+	jQuery(".demand-col").slide({
+		titCell:".col-hd ul",
+		mainCell:"ul.demand-col-bd",
+		effect:"leftLoop",
+		autoPage:true,
+		vis:2,
+		scroll:2
+	});
+	jQuery(".supply-col").slide({
+		titCell:".col-hd ul",
+		mainCell:"ul.supply-col-bd",
+		effect:"leftLoop",
+		autoPage:true,
+		vis:2,
+		scroll:2
+	});
+	jQuery(".product-col").slide({
+		titCell:".col-hd ul",
+		mainCell:".col-bd .ulWrap",
+		autoPage:true,
+		effect:"leftLoop",
+		vis:2
+	});
+	jQuery(".company-col").slide({
+		titCell:".col-hd ul",
+		mainCell:".col-bd ul",
+		autoPage:true,
+		effect:"leftLoop",
+		vis:2
+	});
+    jQuery(".company-list").slide({
+        titCell:".company-list-hd ul",
+        mainCell:".company-list-bd ul",
+        autoPage:true,
+        effect:"leftLoop",
+        vis:11,
+        scroll:5
+    });
+    jQuery(".img-change").slide({
+        mainCell:"ul",
+        autoPage:true
+    });
+    jQuery(".links-tab").slide({
+        titCell:".links-tab-hd ul li",
+        mainCell:".links-tab-bd",
+        delayTime:100
+    });
+    jQuery(".full-slide").slide({
+    	titCell:".hd ul", 
+    	mainCell:".bd ul",
+        autoPlay: true,
+    	effect:"fold",
+        interTime:8000,
+        autoPage:true,
+    	trigger:"click" 
+    });
+	jQuery(".mod-tab").slide({
+		titCell:".mod-tab-hd ul li",
+		mainCell:".mod-tab-bd",
+		delayTime:100
+	});
+	jQuery(".mod-cate-wrp").slide({
+		type:"menu",
+		titCell:".mod-cate",
+		targetCell:".mod-cate-bd",
+        effect:"fade",
+        delayTime:200,
+		triggerTime:50,
+		defaultPlay:false,
+		returnDefault:true
+	});
+	jQuery(".mod-tab-notice").slide({
+		titCell:".hd ul",
+		mainCell:".bd ul",
+		autoPage:true,
+		effect:"top",
+		scroll:4,
+		vis:4,
+		trigger:"click",
+		prevCell:".notice-prev",
+		nextCell:".notice-next"
+	});
+</script>
+<script>
+    function soTecnentValue(){
+        var sokeyword = document.getElementById("topkeyword").value;
+        document.getElementById("soInputTxt").value = sokeyword;
+        return true;
+    }
+    function dialogMsg(){
+        $(".dialog-wrp").fadeIn();
+    }
+    function closeDialogMsg(){
+        $(".dialog-wrp").hide();
+    }
+    $(document).mouseup(function(e){
+        var _con = $(".dialog");   // 设置目标区域
+        if(!_con.is(e.target) && _con.has(e.target).length === 0){
+            $('.dialog-wrp').hide();
+        }
+    });
+	// elevator
+	jQuery(function($) {
+		$(document).ready( function() {
+			$('.elevator').stickUp({
+				parts: {
+					0:'supply',
+					1:'product',
+					2:'company',
+					3:'equipment',
+					4:'service',
+					5:'news'
+				},
+				itemClass: 'menu-item',
+				itemHover: 'active',
+				topMargin: 'auto'
+			});
+		});
+	});
+	$('.elevator ul a[href*=#],.to-top').anchor({
+		transitionDuration : 500
+	});
+	window.onscroll = function(){
+		var t = document.documentElement.scrollTop || document.body.scrollTop;
+		if( t >= 640 ) {
+			$(".elevator").fadeIn(500);
+		} else {
+			$(".elevator").fadeOut(200);
+		}
+	}
+</script>
+<script>
+	$(document).ready(function(){
+		$('#search-type a').click(function(){
+			$('#select-btn').html($(this).data('mname')+'<span class="caret"></span>');
+			$('#destoon_moduleid').val($(this).data('mid'));
+			if($(this).data('mid') == 9 && $(this).data('action') == 'resume') $('#sresume').val('resume');
+			$('#search-type').hide();
+		});
+		$('#select-tab').mouseover(function(){
+			$('#search-type').show();
+		});
+		$('#select-tab').mouseout(function(){
+			$('#search-type').hide();
+		});
+		$('#job-select-tab > span').click(function(){
+			$('#job-action').val($(this).data('action'));
+			$('#job-select-tab').children('span').each(function(){
+				if($(this).is('.on')){
+					$(this).removeClass('on');
+				}else{
+					$(this).addClass('on');
+				}
+			});
+		});
+		$('#hr-select-tab > span').click(function(){
+			$('#hr-action').val($(this).data('action'));
+			$('#hr-select-tab').children('span').each(function(){
+				if($(this).is('.on')){
+					$(this).removeClass('on');
+				}else{
+					$(this).addClass('on');
+				}
+			});
+		});
+	});
+</script>
+{template 'analytics','include'}
+</body>
+</html>

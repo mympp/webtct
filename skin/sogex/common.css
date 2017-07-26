@@ -1,0 +1,50 @@
+html,body{height:100%}
+html,body,form,fieldset,input,p,img,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6{margin:0; padding:0}
+ul,ol{list-style:none}
+img,fieldset{border:none}a{text-decoration:none}
+em{font-style:normal}
+body{background:#fff;font-size:12px;-webkit-font-smoothing:antialiased;font-family:"Microsoft YaHei",arial,sans-serif;min-height:512px;min-width:1000px;-moz-osx-font-smoothing:grayscale;position:relative}
+footer,header,nav,section{display:block\9}input::-ms-clear{display:none}
+.page-wrap{display:block;_height:100%;min-height:100%;position:relative}
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; }
+/* css common */
+.clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.clearfix { *zoom:1; }
+/* css common */
+.clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.clearfix { *zoom:1; }
+  #wraper{width:100%; height:auto;}
+  #head{min-width:1000px; font-size:12px; position:relative; z-index:1000;}
+  #head .head_wraper{background:#FFF;border-bottom:1px solid #ebebeb; height: 55px; min-width:1000px; position:fixed; top:0; width:100%;}
+
+  /*登录导航条*/
+  .hd-utools{position:absolute; right:15px; top:20px; z-index:202;}
+  .hd-rtools .meun{ float:left; height:14px; line-height:14px;}
+  #hd_nav{float:right; display:block;}
+  #hd_nav li, .skin-text li{ float:left; height:14px; font-size:12px; padding:0 10px; border-right:1px solid rgba(0,0,0,0.1);}
+  #hd_nav a{display:inline-block; height:14px; line-height:14px;}
+
+  /*tabs*/
+  .t-tabs{background:#f8f8f8; line-height:36px; height:38px; padding:55px 0 0 121px; float:none; zoom:1;}
+  .t-tabs a, .t-tabs b{width:54px; display:inline-block; text-align:center; color:#666;font-size:14px;}
+  .t-tabs a:hover{border-bottom:2px solid #38f; font-weight:bold; color:#38f; text-decoration:none;}
+  .t-tabs b {border-bottom:2px solid #38f; font-weight:bold; color:#d3251e;}
+  .t-tabs .enable {border-bottom:2px solid #38f; font-weight:bold;color:#d3251e;}
+
+  /*搜索框*/
+  #t-hw-search{padding:11px 0 0 10px; display:block; float:left; height:35px; }
+  .form{clear:both; position:relative; zoom:1;}
+  #suggest-align{position:relative;}
+  .round{background:#fff; border:1px solid #ccc; border-right:none; display:inline-block; height:34px; float:left; vertical-align:top; width:440px;}
+  .input_key{-webkit-appearance:none; float:left; background:#fff; border:0; border-radius:0; font:16px/22px arial; height:22px; margin:7px 0 0 7px; outline:0; padding:0; width: 410px;}
+  .s_btn{-webkit-appearance:none; float:left; background:#d3251e; border:none; border-radius:0; color:#fff; cursor:pointer; font-size:14px; height:36px; outline:none; padding:0; vertical-align:top; width:93px;}
+
+/*顶部logo*/
+  .head_wraper{font-size:14px; font-family:arial,sans-serif; height:55px; position:relative; text-align:left; z-index:200;}
+  #t-hw{display:inline-block; float:left; padding-left:10px; position:relative;}
+  #t-hw .t-hw-logo{float:left; overflow:hidden; margin:7px 0 0 0; width:100px;}
+  #t-hw .t-hw-logo a{background:url(images/tces-hd-logo.png) no-repeat;background-image:-webkit-image-set(url(images/tces-hd-logo.png) 1x,url(images/tces-hd-logo.png) 2x); display:inline-block; height:36px; width:100px; vertical-align:top;}
+  .ipt_del{z-index:1;position:absolute;right:10px;top:10PX;;height:20px;width:20px;background:#fff url(images/clearAll.png) no-repeat 0px 0px; cursor:pointer;}

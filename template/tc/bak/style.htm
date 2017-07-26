@@ -1,0 +1,64 @@
+{template 'header_mb', 'mobile'}
+<style>
+.m_btn {display:table-cell;position: relative;z-index: 1;font-size: 16px;line-height: 38px;text-align: center;color: #00a5e0;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border: 1px solid #0baae4;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+.m_list{max-width:29.375%;float:left;margin:10px 0 10px 9.5px;text-align:center;}
+.b_m{text-align:center;display:none;position:absolute;width:100%;}
+.m_img{width: 100%;background-color: white;margin-bottom: 85px;}
+.m_img img{padding: 10px 6px;}
+.m_wz_btn{position: fixed;left: 0;right: 0;bottom: 0;width: 100%;background-color: white;height:85px;}
+.m_wz{-webkit-box-shadow: 0 -1px 2px rgba(0,0,0,.15);font-size:14px;padding-top: 6px;}
+</style>
+{if $lists}
+	<ul id="m_list">
+		{loop $lists $k $v}
+			<li id="m_{$v[itemid]}" class="m_list" onclick="preview('b_m_{$v[itemid]}');">
+				<img src="{$v[thumb]}" style="margin-bottom:4px;" width="94" height="140" title="点击预览"/></br>{$v[title]}
+			</li>
+		{/loop}
+	</ul>
+	{loop $lists $k $v}
+		<div class="b_m" id="b_m_{$v[itemid]}">
+			<div class="m_img" onclick="close_preview('b_m_{$v[itemid]}')"><img src="{$v[thumb]}" width="246" height="320" title="点击返回"/></div>
+			<div class="m_wz_btn">
+				<div class="m_wz">
+					模版：{$v[title]}&nbsp;&nbsp;&nbsp;
+					{if $v['m_skin'] == 'default'}默认{else}人气：{$v[hits]}{/if}&nbsp;&nbsp;&nbsp;
+					{if $v[fee] and $_groupid!=$c['groupid'] }
+						{if $v[currency] == 'money'}
+							<span class="f_red">{$v[fee]}{$DT[money_unit]}/月</span>
+						{else}
+							<span class="f_blue">{$v[fee]}{$DT[credit_unit]}/月</span>
+						{/if}
+					{else}
+						<span class="f_green">免费</span>
+					{/if}
+				</div>
+				<div style="border-spacing:10px;">
+					{if $c[m_skin] == $v[m_skin]}
+						<a href="{$EXT[mobile_url]}4-{$_username}-0-0-1.html"  style="width:1%;color: #00a5e0;" class="m_btn">我的主页</a>
+						<!-- <span class="f_red">[{if $havedays}{$havedays}天剩余{else}使用中{/if}]</span> -->
+					{else}
+						
+							<a href="?itemid={$v[itemid]}" style="width:25%;color: #00a5e0;" class="m_btn"{if $havedays} onclick="return confirm('确定要启用此模板吗？如果之前购买过模板，付费模板的有效期将被清空');"{/if}>启用</a>
+						
+						<a href="{$EXT[mobile_url]}index.php?moduleid=4&username={$_username}&preview={$v[m_skin]}" class="m_btn" style="width:10%;color: #00a5e0;">预览</a>
+						{/if}
+				</div>
+			</div>
+		</div>
+	{/loop}
+	<div class="pages" style="clear:both;">{$pages}</div>
+	<script type="text/javascript">
+		function preview (id) { 			
+			$("#"+id).css('display','block'); 
+			$("#m_list").css('display','none'); 
+		}
+		function close_preview (id) {
+			$("#"+id).css('display','none'); 
+			$("#m_list").css('display','block'); 
+		}
+	</script
+{else}
+	<div style="text-align:center;font-size:16px;margin:20px 0;">提示信息：未找到相关模板</div>
+{/if}
+{template 'footer_mb', 'mobile'}

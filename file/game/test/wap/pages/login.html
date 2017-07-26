@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+    <title>会员登录_天成医疗网</title>
+
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <link rel="stylesheet" href="../css/weui.css"/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="../css/iconfont.css"/>
+    <link rel="stylesheet" href="../css/tc.wap.base.css"/>
+</head>
+<body ontouchstart>
+
+<!--tc-page-->
+<div class="tc-page login-page">
+    <!--tc-footer-tab-->
+    <div class="tc-footer-tab weui-tabbar">
+        <a href="javascript:;" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon iconfont icon-home"></i>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon iconfont icon-list"></i>
+            <p class="weui-tabbar__label">频道</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon iconfont icon-focus"></i>
+            <p class="weui-tabbar__label">发现</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+            <i class="weui-tabbar__icon iconfont icon-people"></i>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+    <!--tc-footer-tab end-->
+
+    <!--tc-frame-->
+    <div class="tc-frame">
+        <!--logo-->
+        <img class="login-logo" src="../images/tecenet-logo-lg.png" alt="天成医疗网">
+        <!--logo end-->
+
+        <form id="tcLoginForm" action="" method="post">
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <i class="weui-tabbar__icon iconfont icon-people"></i>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="username" type="text" placeholder="用户名/Email/已认证手机">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <i class="weui-tabbar__icon iconfont icon-lock"></i>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="password" type="password" placeholder="请输入密码">
+                    </div>
+                    <div class="weui-cell__ft">
+                        <i id="seePassword" class="weui-tabbar__icon iconfont icon-attention"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui_btn_area pd-20">
+                <a href="javascript:;" class="weui-btn tc-btn_primary" onclick="validateLogin();">登录</a>
+
+                <div class="weui-flex mg-t-10">
+                    <span class="weui-flex__item text-left">
+                        <a class="text-muted" href="javascript:;">忘记密码</a>
+                    </span>
+                    <span class="weui-flex__item text-right">
+                        <span class="text-muted">没有账号？</span>
+                        <a class="text-primary" href="javascript:;">注册新账号</a>
+                    </span>
+                </div>
+            </div>
+        </form>
+
+        <!--社交账号登录-->
+        <div class="other-login mg-30">
+            <div class="other-login__hd">
+                <div class="other-login__title">社交账号登录</div>
+            </div>
+            <div class="other-login__bd weui-flex mg-t-10">
+                <div class="weui-flex__item mg-l-10 mg-r-10">
+                    <a class="other-login__item other-login__qq mg-auto" href="javascript:;"  title="QQ"><i class="iconfont icon-QQ"></i></a>
+                </div>
+                <div class="weui-flex__item mg-l-10 mg-r-10">
+                    <a class="other-login__item other-login__wechat mg-auto" href="javascript:;"  title="微信"><i class="iconfont icon-weixin"></i></a>
+                </div>
+                <div class="weui-flex__item mg-l-10 mg-r-10">
+                    <a class="other-login__item other-login__weibo mg-auto" href="javascript:;"  title="微博"><i class="iconfont icon-weibo"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <!--社交账号登录 end-->
+    </div>
+    <!--tc-frame end-->
+
+
+</div>
+<!--tc-page end-->
+
+
+<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+    // 检查表单是否为空
+    function validateLogin(){
+        var userNameEm = document.querySelector('input[name="username"]');
+        var passWordEm = document.querySelector('input[name="password"]');
+        if( userNameEm.value.length < 3 ){
+            $.toptip('请您填写用户名/Email/已认证手机');
+            userNameEm.focus();
+            return false;
+        }
+        if( passWordEm.value.length < 5 ){
+            $.toptip('请您填写密码');
+            passWordEm.focus();
+            return false;
+        }
+        document.querySelector('#tcLoginForm').submit();
+    }
+
+    // 点击查看密码
+    document.querySelector('#seePassword').addEventListener('click', function (e){
+        if(e.target.matches('.on')){
+            e.preventDefault();
+            e.target.classList.remove('on');
+            e.path[2].querySelector('input').setAttribute('type','password');
+        }else{
+            e.preventDefault();
+            e.target.classList.add('on');
+            e.path[2].querySelector('input').setAttribute('type','text');
+        }
+    });
+</script>
+
+
+</body>
+</html>

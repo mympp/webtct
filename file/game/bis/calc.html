@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>找资金</title>
+
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+</head>
+<body>
+
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <h1 class="title">找资金</h1>
+        </header>
+
+        <!--content-->
+        <div class="content zzj-content">
+            <div class="card">
+                <div class="card-header">资金服务方式</div>
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <p><a class="button button-big button-success" href="./calc.dz.html">垫资计算</a></p>
+                        <p><a class="button button-big button-danger open-calcYw" href="javascript:;">业务流程</a></p>
+                        <p><a class="button button-big button-primary" href="./calc.tx.html">结算提现</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--content end-->
+
+        <!--bar-->
+        <nav class="bar bar-tab">
+            <a class="tab-item external" href="./index.html">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item external" href="./product-lib.html">
+                <span class="icon icon-app"></span>
+                <span class="tab-label">找产品</span>
+            </a>
+            <a class="tab-item external active" href="./calc.html">
+                <span class="icon icon-star"></span>
+                <span class="tab-label">找资金</span>
+            </a>
+            <a class="tab-item external" href="javascript:$.toast('敬请期待');">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">个人中心</span>
+            </a>
+        </nav>
+        <!--bar end-->
+    </div>
+</div>
+<div class="popup popup-calcYw">
+    <header class="bar bar-nav">
+        <h1 class="title">请选择业务流程方式</h1>
+    </header>
+    <div class="content">
+        <div class="content-block">
+            <p><a class="button button-big button-fill button-primary external" href="./calc.yw.1.html">经销商让资金方从厂商购买卖给医院</a></p>
+            <p><a class="button button-big button-fill button-primary external" href="./calc.yw.2.html">经销商从厂商购买卖给资金方卖给医院</a></p>
+            <p><a href="#" class="button button-big button-danger close-popup">关闭</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>var Zepto = jQuery</script>
+<script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script>
+    $(document).on('click','.open-calcYw', function () {
+        $.popup('.popup-calcYw');
+    });
+</script>
+
+
+</body>
+</html>

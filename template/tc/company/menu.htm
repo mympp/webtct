@@ -1,0 +1,37 @@
+<!--page-nav-->
+<div class="page-nav">
+    <div class="w1200 box-center">
+        <ul class="page-nav-main clearfix">
+            <li class="page-sub-nav current">
+                <a href="{$MODULE[4]['linkurl']}">厂商宣传网首页</a>
+            </li>
+            <li class="page-sub-nav page-sub-nav-lg">
+                <a href="{$MODULE[4]['linkurl']}search.php">医疗器械厂商网店分类<i class="arrow"></i></a>
+                <ul>
+                	{php $company_cat = tag("moduleid=4&table=category&fields=catid,catname,style,item&condition=moduleid=4 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+                	{loop $company_cat $k $t}
+                	<li><a href="{$MODULE[4]['linkurl']}{com_rewrite(['catid'=>$t[catid]])}" title="{$t['catname']}医疗器械公司">{$t['catname']}<em>{$t['item']}</em></a></li>
+                	{/loop}
+                </ul>
+            </li>
+            <li class="page-sub-nav page-sub-nav-sm">
+                <a href="#">地区分布<i class="arrow"></i></a>
+                <ul>
+                {php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}
+                {loop $mainarea $k $t}
+                	<li><a href="{$MODULE[4]['linkurl']}{com_rewrite(['areaid'=>$t[areaid]])}" title="{$t['areaname']}医疗器械公司">{$t['areaname']}</a></li>
+                {/loop}
+                </ul>
+            </li>
+            <li class="page-sub-nav"><a href="{$MODULE[4]['linkurl']}search.php?validated=1&vip=1">推荐厂商网店列表</a></li>
+            <li class="page-sub-nav page-sub-nav-ver">
+                <a href="#">开设企业宣传网 <i class="arrow"></i></a>
+                <ul>
+                    <li><a href="{$MODULE[2]['linkurl']}register.php?kd=1" target="_blank" rel="nofollow">注册开设宣传网</a></li>
+                    <li><a href="{$MODULE[2]['linkurl']}grade.php" target="_blank" rel="nofollow">申请升级宣传网</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--page-nav end-->

@@ -1,0 +1,1 @@
+<?php defined('IN_DESTOON') or exit('Access Denied'); return array ('title' => '会员 xinkeyiyao 您好, 以下是您关注上“试剂”的业务需求信息提醒','total' => '15','num' => '2','sql' => ' and ( contentlike \\\'%试剂%\\\' ) and addtime>1279992761','ord' => 'addtime DESC','template' => 'alert-2',); ?>

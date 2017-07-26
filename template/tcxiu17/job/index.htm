@@ -1,0 +1,14 @@
+{template 'header'}
+<script type="text/javascript" src="{DT_PATH}file/script/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=blue"></script>
+{if $action=="resume"}
+<script type="text/javascript">
+location="{$MODULE[9][linkurl]}search-htm-action-resume.html";
+</script>
+{else}
+<script type="text/javascript">
+location="{$MODULE[9][linkurl]}search-htm-action-job.html";
+</script>
+{/if}
+
+{template 'footer'}

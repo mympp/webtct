@@ -1,0 +1,103 @@
+{template 'header', $template}
+<div class="right">
+	<div class="right_top">
+		<img src="{$HSPATH}ico_6.jpg"/>&nbsp;&nbsp;您当前的位置：<a style="color:#9d1b5f" href="{$COM[linkurl]}">首页</a> &raquo; <a style="color:#9d1b5f" href="{$COM[linkurl]}">{$MENU[$menuid][name]}</a>
+		<span><script type="text/javascript">show_date();</script></span>
+	</div>
+			
+			<div class="list_introduce">
+				<div class="list_title"><span>公司介绍</span></div>
+				<div class="list_introduce_content">
+					<div class="company_logo"><span></span>{if $COM[thumb]}<img src="{$COM[thumb]}" height="180" width="180"/>{else}<img src="{$HSPATH}logo.jpg"/>{/if}</div>
+				<b>{$COM[company]}&nbsp;简介:</b><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{strip_tags($content)}
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+			
+			<div class="list_record">
+				<div class="list_title"><span>相关档案</span></div>
+				<div class="list_record_content">
+					<table width="98%" cellpadding="3" cellspacing="1" align="center">
+						<tr>
+						<td width="110" class="f_b"><b>公司名称：</b></td>
+						<td width="260">{$COM[company]}</td>
+						<td width="90" class="f_b"><b>公司类型：</b></td>
+						<td width="260">{$COM[type]} ({$COM[mode]})</td>
+						</tr>
+						<tr>
+						<td class="f_b"><b>所 在 地：</b></td>
+						<td>{area_pos($COM[areaid], '/')}</td>
+						<td class="f_b"><b>公司规模：</b></td>
+						<td>{$COM[size]}</td>
+						</tr>
+						<tr>
+						<td class="f_b"><b>注册资本：</b></td>
+						<td>{if $COM[capital]}{$COM[capital]}万{$COM[regunit]}{else}未填写{/if}</td>
+						<td class="f_b"><b>注册年份：</b></td>
+						<td>{$COM[regyear]}</td>
+						</tr>
+					</table>
+					<table width="98%" cellpadding="3" cellspacing="1" align="center">
+						<tr>
+						<td class="f_b"><b>资料认证：</b></td>
+						<td>
+						{if $COM[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="资料通过工商认证"/>{/if}
+						{if $COM[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="资料通过实名认证"/>{/if}
+						{if $COM[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="资料通过银行帐号认证"/>{/if}
+						{if $COM[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="资料通过手机认证"/>{/if}
+						{if $COM[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="资料通过邮件认证"/>{/if}
+						{if $COM[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle"/> 企业资料通过{$COM[validator]}认证{/if}
+						</td>
+						</tr>
+						{if $COM[mode]}
+						<tr>
+						<td width="110" class="f_b"><b>经营模式：</b></td>
+						<td>{$COM[mode]}</td>
+						</tr>
+						{/if}
+						{if $COM[business]}
+						<tr>
+						<td class="f_b"><b>经营范围：</b></td>
+						<td>{$COM[business]}</td>
+						</tr>
+						{/if}
+						{if $COM[sell]}
+						<tr>
+						<td class="f_b"><b>销售的产品：</td>
+						<td>{$COM[sell]}</td>
+						</tr>
+						{/if}
+						{if $COM[catid]}
+						<tr>
+						<td class="f_b"><b>主营行业：</b></td>
+						<td>
+						{php $catids = explode(',', substr($COM['catid'], 1, -1));}
+						<table cellpadding="2" cellspacing="2" width="100%">
+						{loop $catids $i $c}
+						{if $i%3==0}<tr>{/if}
+						<td width="33%">
+						{php $cate = get_cat($c);}
+						<a href="{$MODULE[4]['linkurl']}{com_rewrite(['catid'=>$c])}" target="_blank">{$cate['catname']}</a>
+						</td>
+						{if $i%3==2}</tr>{/if}
+						{/loop}
+						</table>
+						</td>
+						</tr>
+						{/if}
+					</table>
+				</div>
+			</div>
+			{if $could_comment && in_array($moduleid, explode(',', get_module_setting(3, 'comment_module')))}		
+			<div class="list_comment">
+				<div class="list_title"><span>相关评论</span><span class="a">共0条</span></div>
+				<div class="comment">
+					<iframe src="{$MODULE[3][linkurl]}comment.php?mid={$moduleid}&itemid={$COM[userid]}" id="destoon_comment" style="width:100%;" scrolling="no" frameborder="0"></iframe>
+				</div>
+			</div>
+			{/if}
+	
+{template 'footer', $template}
+
+

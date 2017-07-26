@@ -1,0 +1,18 @@
+<div class="list_s_a">
+		<!--{php $tags=tag("moduleid=16&condition=status>2 and username='$username'  and thumb<>''&pagesize=4&order=addtime desc&fields=itemid,title,linkurl,thumb,edittime&template=null");}-->
+		<h3>
+			<span><p>产品中心</p></span>
+			<a href="{userurl($username, 'file=mall', $domain)}" title="产品中心">更多</a>
+		</h3>
+		<ul class="list_box">
+			{loop $tags $i $t}
+			{php $id=$t[itemid]}
+			<li>
+			<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=mall&itemid='.$t['itemid'], $domain)}{/if}"><img src="{$t[thumb]}" width="70" height="70" style="float:left;margin-top:12px;"/></a>
+			<p style="padding-top:10px;display:block;"><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=mall&itemid='.$t['itemid'], $domain)}{/if}" target="_blank" title="{$t[title]}">&nbsp;{$t[title]}</a></p>
+			<!--{php $data=tag("table=mall_data&condition=itemid='$id'&fields=content&template=null");}-->
+			<p>{dsubstr(strip_tags($data[0][content]),120,'...')}</p>
+			</li>
+			{/loop}
+		</ul>
+</div>

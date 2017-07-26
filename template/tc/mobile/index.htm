@@ -1,0 +1,304 @@
+{template 'header', 'mobile'}
+<style type="text/css">
+	.slide {width:100%;height:140px;background:#FAFAFA;overflow:hidden;}
+	.slide a img {height: 140px;}
+	.quick {height:70px;background:#FFFFFF;text-align:center;padding:15px 0;}
+	.quick li {width:25%;float:left;}
+	.quick img {width:46px;margin:0 0 6px 0;}
+	.quick span {display:block;font-size:12px;}
+	.quick em {font-style:normal;font-size:12px;color:#FFFFFF;z-index:8;position:relative;display:block;width:22px;height:22px;line-height:22px;left:50%;margin:-74px 0 0 8px;background:#FF0000;border-radius:50%;text-align:center;}
+
+	.channel {background:#FFFFFF url('static/img/bg-channel.png') repeat-x 0 bottom;height:44px;overflow-x:auto;margin-top:10px;font-size:16px;}
+	.channel ul {width:10000px;}
+	.channel li {height:42px;line-height:42px;padding:0 10px;border-bottom:#EFEFF4 2px solid;float:left;}
+	.channel .on {border-bottom:#007AFF 2px solid;color:#007AFF;}
+	.channel_fix {position:fixed;z-index:9;left:0;top:{if $DT_MOB[browser]=='b2b'}58{else}38{/if}px;right:0;border-top:#A7A7AA 0.5px solid;}
+	#main {background:#FFFFFF;}
+	.spin-more,.spin-load {height:44px;background:#FFFFFF url('static/img/spinner.gif') no-repeat center center;background-size:16px 16px;display:none;}
+	
+	.so-tencenet{display:-webkit-box}
+	.so-tencenet input{display:block;margin:0;padding:0;font-family:inherit;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:none;outline:0;border-radius: 0;}
+	.so-tencenet input[type=text]{-webkit-appearance:none;font-size:18px;line-height:22px;overflow:hidden;padding:8px 10px;word-break:break-all;-webkit-box-flex:1;border: 1px solid #ccc;border-right:none;background:url("http://www.tecenet.com/skin/sogex/images/mhomeLogo.png") no-repeat 5px center #fff;background-size:auto 32px;opacity:0.8;}
+	.so-tencenet input[type=submit]{width: 70px;background-color: #da1427;color: #fff;letter-spacing: 2px;font-size: 14px;}
+
+	.so-tencenet input[type=text]:focus,.so-tencenet input[type=text].hide-bg{background-image:none;opacity:1;}
+
+	.home-goto {background:#FFFFFF;padding:8px 8px 16px 8px;text-align:center;display:none;}
+	.home-goto div {background:#007AFF;padding:8px;border-radius:4px;font-size:16px;color:#FFFFFF;}
+	.list-txt {border-top:none;}
+	/*导航*/
+	.main-nav {border-top: none!important;background: #eee;padding: 13px;}
+	.main-nav-list {display: -webkit-box;margin-bottom: 4px;-webkit-box-pack: justify;text-align: center;}
+	.main-nav-list .ocolor {color: #f80;font-size: 15px;}
+	.main-nav-list a {color: #777;display: block;height: 20px;font-size: 13px;text-align: center;width: 80px;white-space: nowrap;}
+	.counts {overflow: hidden;white-space: nowrap;background: #fff9d9;line-height: 40px;height: 40px;border-bottom: 1px dashed #ccc;border-top: 1px dashed #ccc;text-align: Center;color: #606060;font-size: 12px;}
+	.counts b {color: red;font-size: 15px;}
+	.adout-img img{display:block;margin:0 auto;max-width:100%}
+
+	.slick-slider{position:relative;display:block;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-khtml-user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent}
+	.slick-list{position:relative;display:block;overflow:hidden;margin:0;padding:0}
+	.slick-list:focus{outline:0}
+	.slick-list.dragging{cursor:pointer;cursor:hand}
+	.slick-slider .slick-list,.slick-slider .slick-track{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+	.slick-track{position:relative;top:0;left:0;display:block}
+	.slick-track:after,.slick-track:before{display:table;content:''}
+	.slick-track:after{clear:both}
+	.slick-loading .slick-track{visibility:hidden}
+	.slick-slide{position: relative;display:none;float:left;height:100%;}
+	.slick-slide p{position: absolute;bottom:0;left:0;width: 100%;height: 24px;font-size: 12px;line-height: 24px;text-indent:10px;margin: 0;background-color: rgba(0,0,0,0.5);color: #fff;
+	}
+	[dir=rtl] .slick-slide{float:right}
+	.slick-slide img{display:block;margin: 0 auto;max-width: 100%;height: auto;}
+	.slick-slide.slick-loading img{display:none}
+	.slick-slide.dragging img{pointer-events:none}
+	.slick-initialized .slick-slide{display:block}
+	.slick-loading .slick-slide{visibility:hidden}
+	.slick-vertical .slick-slide{display:block;height:auto;border:1px solid transparent}
+	.slick-dots{position: absolute;right:10px;bottom:8px;width: 100px;text-align: right;}
+	.slick-arrow.slick-hidden{display:none}
+	.slick-dots li{margin:0 3px;}
+	.slick-dots li,.slick-dots button{display: inline-block;width: 8px;height: 8px;}
+	.slick-dots button{display: block;padding: 0;background-color: #fff;border: none;font-size: 0;text-indent:-999em;border-radius:50%;}
+	.slick-dots .slick-active button{background-color: #007AFF;}
+</style>
+<div id="head-bar">
+	<div class="head-bar">
+		{if $DT_MOB[browser]=='b2b'}
+			<div class="head-bar-back" onclick="api.execScript({name:'root',script:'Dexec({$_userid});'});api.closeWin({name:'destoon'});api.closeFrame({name:'destoon'});">
+			<img src="static/img/icon-back.png" width="24" height="24"/><span>返回</span>
+			</div>
+		{else}
+			<div class="head-bar-left">
+			<a href="channel.php"><img src="static/img/icon-sort.png" width="24" height="24"/></a>
+			</div>
+		{/if}
+		<div class="head-bar-title">{$head_name}</div>
+		<div class="head-bar-right">
+			<a href="setting.php"><img src="static/img/icon-setting.png" width="24" height="24"/></a>
+		</div>
+	</div>
+	<div class="head-bar-fix"></div>
+</div>
+<div class="home-search">
+<style>
+.so-tencenet{display:-webkit-box}
+.so-tencenet input{display:block;margin:0;padding:0;font-family:inherit;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:none;outline:0;border-radius: 0;}
+.so-tencenet input[type=text]{-webkit-appearance:none;font-size:18px;line-height:22px;overflow:hidden;padding:8px 10px;word-break:break-all;-webkit-box-flex:1;border: 1px solid #ccc;border-right:none;background:url("http://www.tecenet.com/skin/sogex/images/mhomeLogo.png") no-repeat 5px center #fff;background-size:auto 32px;opacity:0.8;}
+.so-tencenet input[type=submit]{width: 70px;background-color: #da1427;color: #fff;letter-spacing: 2px;font-size: 14px;}
+
+.so-tencenet input[type=text]:focus,.so-tencenet input[type=text].hide-bg{background-image:none;opacity:1;}
+</style>
+	<form class="so-tencenet" action="http://so.tecenet.com/msearch.php" method="get" target="_blank">
+		<input type="text" autocomplete="off" name="keyword">
+		<input type="submit" value="搜医搜">
+	</form>	
+</div>
+
+
+
+{if $ads}
+	{php $tagt = tag("moduleid=2&table=ad&condition=pid=222 and fromtime<$DT_TIME and totime>$DT_TIME and status=3&pagesize=5&order=listorder asc&template=null")}
+	<div class="slider">
+		{loop $tagt $z $t}
+		<div>
+			<a href="{$t[image_url]}" target="_blank" rel="external"><img src="{$t[image_src]}" alt="{$t[introduce]}"/></a>
+			{if $t[introduce]} <p>{$t[introduce]}</p>{/if}
+		</div>
+		{/loop}	
+	</div>
+{/if}
+
+
+
+<nav class="main-nav">
+	<div class="main-nav-list">
+		<a class='ocolor'>52,427</a>
+		<!-- <a class='ocolor'  id="span_num">
+			{php $mall=getsqldata("sum(amount)","{$db->pre}mall_order","number>=1",0,0);}
+			{php $fee=getsqldata("sum(fee)","{$db->pre}mall_order","number>=1 and fee>0",0,0);}
+			{php $num=$mall[0]['sum(amount)']+$fee[0]['sum(fee)'];}
+			{php $num=number_format($num,0,'.',',')}
+			{php $buy = $db->count($DT_PRE.'buy_6', "status=3", 60);}
+			{php $buy=number_format($buy,0,'.',',')}
+		</a> -->
+		<a class='ocolor' id="span_product">
+			{php $mall = $db->count($DT_PRE.'mall', "status=3", 60);}
+			{php $num=number_format($mall,0,'.',',')}
+		</a>
+
+		<a class='ocolor'>
+			{php $brand = $db->count($DT_PRE.'brand_13', "status=3", 0);}
+			{php $num=number_format($brand,0,'.',',')}
+			{$num}
+		</a>
+	</div>
+	<div class="main-nav-list">
+		<a href="">供需信息</a>
+		<!-- <a href="">订单总额</a> -->
+		<a href="">产品数</a>
+		<a href="">上线厂家</a>
+	</div>
+	<!-- <div class="main-nav-list" style="border-top: 1px solid #A9BBD1; padding-top:3px;">
+		<a class='ocolor' >
+			<font><script type="text/javascript" src="http://www.tecenet.com/module/count.php"></script></font>
+		</a>
+		<a class='ocolor'>
+			{php $quote = $db->count($DT_PRE.'quote', "status=3", 60);}
+			{php $peijian = $db->count($DT_PRE.'mall', "status=3 and stype=1", 60);}
+			{php $brand = $db->count($DT_PRE.'brand_13', "status=3", 60);}
+			{php $job = $db->count($DT_PRE.'job', "status=3", 60);}
+			{php $resume = $db->count($DT_PRE.'resume', "status=3", 60);}
+			{php $art = $db->count($DT_PRE.'article_21', "status=3", 60);}
+			{php $down = $db->count($DT_PRE.'down_15', "status=3", 60);}
+			{php $num=$job+$resume;}
+			{php $num=number_format($num,0,'.',',')}
+			{$num}
+		</a>
+		<a class='ocolor'>
+			{php $memb = $db->count($DT_PRE.'member', "groupid>4 and edittime<>'1399513082'", 60);}
+			{php $num=number_format($memb+10000,0,'.',',')}
+   			{$num}
+		</a>
+	</div>
+	<div class="main-nav-list">	
+		<a href="">关注次数</a>
+		<a href="">服务信息</a>			
+		<a href="">会员数</a>
+	</div> -->
+</nav>
+
+<div class="adout-img">
+	<a href="http://www.tecenet.com/about/intro.html" target="_blank">
+		<img src="static/img/index_about_img.png" alt="天成医疗产业服务平台介绍" />
+	</a>
+</div>
+
+<div class="quick">
+	<ul>
+		<li><a href="my.php"><img src="static/img/home-member.png" width="46" height="46"/><span>会员中心</span></a></li>
+		<li><a href="my.php?action=info"><img src="static/img/home-post.png" width="46" height="46"/><span>发布信息</span></a></li>
+		<li><a href="my.php?action=trade"><img src="static/img/home-order.png" width="46" height="46"/><span>订单中心</span></a></li>
+		{if isset($MODULE[16])}
+		<li><a href="cart.php"><img src="static/img/home-cart.png" width="46" height="46"/><span>购物车</span></a>{if $_cart}<em>{if $_cart>99}99{else}{$_cart}{/if}</em>{/if}</li>
+		{else}
+		<li><a href="message.php"><img src="static/img/home-message.png" width="46" height="46"/><span>站内信</span></a>{if $_message}<em>{if $_message>99}99{else}{$_message}{/if}</em>{/if}</li>
+		{/if}
+	</ul>
+</div>
+<div id="segment"></div>
+<div class="channel" id="channel">
+	<ul>
+	<li class="on" id="m_today" onclick="Dmenu('today')">摘要</li>
+	{loop $MOD_MY $i $m}
+	<li id="m_{$m[moduleid]}" onclick="Dmenu('{$m[moduleid]}');">{$m[name]}</li>
+	{/loop}
+	</ul>
+</div>
+<div style="height:100px;margin:10px auto;display:none">{ad(219)}</div>
+<div class="spin-load" onclick="window.location.reload();"></div>
+<div id="main"></div>
+<div class="spin-more" onclick="window.location.reload();"></div>
+<div class="home-goto"><a href="channel.php"><div>进入频道</div></a></div>
+
+<!--首屏轮换图-->
+<script src="static/js/slick.min.js"></script>
+<script>
+$('.slider').slick({
+	autoplay: true,
+	autoplaySpeed: 5000,
+	arrows: false,
+	dots: true,
+	adaptiveHeight: true
+});
+</script>
+<!--首屏轮换图 end-->
+
+<script>
+// 搜索失去焦点去背景
+$(".so-tencenet input[type='text']").blur(function(){
+	if($(".so-tencenet input[type='text']").val() != ''){
+		$(".so-tencenet input[type='text']").addClass("hide-bg");
+	}else{
+		$(".so-tencenet input[type='text']").removeClass("hide-bg");
+	}
+});
+</script>
+<script type="text/javascript">
+	// var C = {$MOD_MY[0][moduleid]};
+	var C ='today';
+	var P = 1;	
+	function Dmenu(i) {
+		if(i == C) return;
+		$('.spin-more').show();
+		$('.spin-load').show();
+		$('.home-goto').hide();	
+		$('#m_'+C).removeClass('on');
+		C = i;
+		$('#m_'+C).addClass('on');
+		P = 1;
+		$('html, body').animate({scrollTop:$('#segment').offset().top-{if $DT_MOB[browser]=='b2b'}108{else}88{/if}}, 500);
+		$('#channel').addClass('channel_fix');
+		Dload();
+	}
+	function Dstop() {
+		$('.spin-more').hide();
+		$('.spin-load').hide();
+		$('.home-goto a').attr('href', 'index.php?moduleid='+C);
+		$('.home-goto div').html('进入'+$('#m_'+C).html()+'频道');
+		$('.home-goto').show('slow');
+	}
+	function Dload() {
+		if(P > 3) {
+			Dstop();
+			return;
+		}			
+		var url = C == 'today' ? 'today.php?page='+P : 'index.php?action=ajax&moduleid='+C+'&page='+P;
+
+		$.get(url, function(result){
+			$('.spin-load').hide();	
+			if(result && result.indexOf('list-empty') == -1) {
+				P == 1 ?  $('#main').html(result) : $('#main').append(result);
+			} else {
+				if(P == 1) $('#main').html('<br/><br/><center>暂无信息</center><br/><br/>');
+				P = 4;
+				if(C != 'today') Dstop();
+			}
+		});		
+	}
+
+	//$(document).on('pageinit', function(event) {
+	$(document).ready(function() {
+		$('.spin-more').show();
+		Dload();
+		$('#main').on('scrollstop',function(event){
+			var cmh2 = $(window).height();
+			var cmh1 = $('.spin-more').offset().top;
+			if($(document).scrollTop() + cmh2 >= cmh1-100) {
+				P++;
+				Dload();
+			}
+			//if($(document).scrollTop() > T-44) {	
+			if($(document).scrollTop() > $('#segment').offset().top) {	
+				$('#channel').addClass('channel_fix');
+			} else {
+				$('#channel').removeClass('channel_fix');
+			}
+		});
+		{if $ads}
+//			var ds = new dslide('mobile-slide');
+//			$('#mobile-slide').on('swipeleft',function(){
+//				ds.slide(ds.c+1);
+//			});
+//			$('#mobile-slide').on('swiperight',function(){
+//				ds.slide(ds.c-1);
+//			});
+//			$(window).bind('orientationchange.slide', function(e){
+//				ds.w = $(document).width();
+//				$('#mobile-slide').find('ul').css('width', ds.w*(ds.max+1));
+//				$('#mobile-slide').find('img').css('width', ds.w);
+//				$('#mobile-slide').find('div').css('width', ds.w);
+//			});
+		{/if}
+	});
+</script>
+{template 'footer', 'mobile'}

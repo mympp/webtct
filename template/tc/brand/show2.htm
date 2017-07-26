@@ -1,0 +1,103 @@
+<div class="divline"></div>
+<div class="whitebg pd10 autoheight"> 
+<dl>
+<dt>
+</dt>
+<dd class='fl'><img src="{$thumb}" alt="{$t[alt]}" width="220" height="200" align="center"onerror="this.src='{DT_SKIN}image/nopic.gif'"  class="grayb"/></dd>
+<dd class='fl'>
+
+	<table width="520" cellpadding="1" cellspacing="1" class="table mg10">
+	<tr>
+	<td colspan="2"><div class="autoheight">
+	<div class='f12 color'>发布时间：{str_replace('-','/',$editdate)}</div>
+	<h1 class="h1 lenter"><font class='f14 mr10 bcolor'>{strip_tags(cat_pos(get_cat($catid), '/'))}/品牌名称</font>{$title}</h1></div></td>
+	</tr>
+	<tr>
+		<td  height="30" class="tableth">官方主页</td>
+		<td>{if $homepage}<a href="{$homepage}" target="_blank" rel="nofollow">{$homepage}</a>{else}暂无{/if}</td>
+	</tr>
+		<tr>
+		<td  height="30" class="tableth">关注次数</td>
+		<td><span id="hits" class="bcolor">{$hits}℃</span></td>
+	</tr>
+		<tr>
+		<td  height="30" class="tableth">相关数据</td>
+		<td><span class="f14">产品<b class="f18 ocolor">{$pnum}</b>件</span><span class="f14 ml10">经销商网店<b class="f18 ocolor">
+		{php $r = $db->get_one("select COUNT(*) AS num from ".$DT_PRE."company wher&#101; brandid like '%,".$itemid.",%' or company ='".$title."'");}
+		{php $company=$r['num'];}
+		{$company}
+		</b>家</span></td>
+	</tr>
+	<tr>
+		<td  height="30" class="tableth"  style="border:0px;">信息分享</td>
+		<td style="border:0px;"><span class="fl" style="line-height:14px;">{template 'baidu', 'chip'}</span></td>
+	</tr>
+	</table>
+	 </dd>
+<dd class='fl'>
+<table cellpadding="2" cellspacing="2" width="200" bgcolor="#ffffff" align="center" class="tc mt10" >
+<tr>
+<td width=30% class="pl10"><a href="{$MODULE[16][linkurl]}search.php?bcatid={$catid}&fid={$itemid}&list=1" target="_blank" class="suby" rel="nofollow">查看产品信息</a></td>
+</tr>	
+{if $company}
+<tr>
+<td width=30% class="pl10"><a href="{$MODULE[4][linkurl]}search-htm-branid-{$itemid}.html" target="_blank" class="suba" rel="nofollow">查看经销网店</a></td>
+</tr>
+{else}
+<tr>
+<td width=30% class="pl10"><a href="javascript:void(0)"  rel="nofollow" onclick='msgtip("亲！本站暂无该厂商/品牌的经销网店","您可以认领本厂商信息进行维护和开设该厂商网店！<br>请 <a href=/member/register.php?kd=1 class=\"ocolor f14\" rel="nofollow">“注册并开店进行管理”</a>&nbsp;&nbsp;或&nbsp;&nbsp;<a href=/member/login.php class=\"ocolor f14\" rel="nofollow">“会员登录后申诉取回”</a>")'  class="suba">暂无经销网店</a></td>
+</tr>
+{/if}
+<tr>
+<td width=30% class="pl10"><a href="{$MODULE[4][linkurl]}search-htm-branid-{$itemid}.html" target="_blank" class="suba" rel="nofollow">加入经销网店</a></td>
+</tr>
+<tr>
+<td width=30% class="pl10" ><a href="{if $_username==$username}{$MODULE[2][linkurl]}my.php?mid=13&action=edit&itemid={$itemid}{else}{$MOD[linkurl]}{rewrite('message.php?itemid='.$itemid)}{/if}" class="suba"  rel="nofollow">了解该厂商/品牌相关政策</a></td>
+</tr>
+<tr>
+<td width=30% class="pl10"><a href="javascript:Dd('info_favorite').submit();" class="suba" rel="nofollow">点这收藏信息</a></td>
+</tr>
+</table>
+</dd>
+<div class="divline"></div>
+</dl>
+<div class="divline"></div>
+<div class="shield color"><div style="background:#eee;padding-left:5px;">{template 'va', 'chip'}</div></div>
+<dl class="dllist">
+<dd>
+<div class="content" id="content">{$content}</div>
+<br class="clear" />
+<div class="w600 autoheight graybg grayb pd10" style='margin:auto'>
+<h3 class='h3 f16'><font class="bcolor">相关联系资料</font></h3>
+{if !$shownotes}
+          {if $_groupid}
+			   {if $notes}
+		         {$notes}
+			   {else}
+				 <div >无相关数据！ <a href="{if $_username==$username}{$MODULE[2][linkurl]}my.php?mid=13&action=edit&itemid={$itemid}{else}{$MOD[linkurl]}{rewrite('message.php?itemid='.$itemid)}{/if}"><u class="bcolor" rel="nofollow">点击完善</u></a></div>		
+			   {/if}
+		  {else}
+		  <div ><p>只有本站开店会员及以上等级会员才能查看！非会员请 <a href='{$MODULE[2][linkurl]}regedit.php'><u class="bcolor" rel="nofollow">注册</u></a></p></div>
+		  {/if}
+{else}
+<div>数据未公开，请与天成医疗网客服联系 免费热线 4000521617</div>
+{/if}
+</div>
+<br class="clear" />
+</dd>
+
+
+{if $company}
+<dt><span class="fr"><a href="{$MODULE[4][linkurl]}search-htm-brandid-{$itemid}.html" rel="nofollow">更多..</a></span><font class='f16 ocolor'>相关经销商网店</font></dt>
+<dd>
+{php $tags =tag("moduleid=4&condition=brandid like '%,$itemid,%' or company ='".$title."'&showcat=1&pagesize=$company&order=pnum desc&template=list-company-pic&title=$title")}
+
+		<br class="clear" />
+</dd>
+{/if}
+
+{if $CP}{template 'property', 'chip'}{/if}
+{template 'comment', 'chip'}
+</dl>
+</div>
+<br class="clear">

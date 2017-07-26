@@ -1,0 +1,259 @@
+{php $sitemenu='job';$listpage='search';}
+{template 'module-header'}
+<script type="text/javascript" src="http://www.tecenet.com/lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/config.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/common.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/page.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jsfunction.js"></script>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css?v20161208"/>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}job.css"/>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}search_fuwu.css"/>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}idialog.css"/>
+<style>
+img{display: inline-block;}
+#topkeyword{width:310px;height:22px;line-height:22px}
+.page-header .logo h1{font-weight: normal;}
+.tc-footer {margin-top: 20px;}
+.tc-footer .copyright{width: 100%;}
+#topkeyword{width:310px;height:22px;line-height:22px}
+</style>
+
+<div style="width:980px;" class="box-center">{template 'lay','tag'}</div>	
+{php $r = $db->get_one("select COUNT(*) AS num FROM {$db->pre}job_talent t LEFT JOIN {$db->pre}job r ON t.talentid=r.itemid WHERE r.itemid=$itemid");}
+{php $talent=$r['num'];}
+{php $applylist=getsqldata("a.*,r.truename,r.baomi,r.catid,r.gender,r.education,r.school,r.thumb,r.areaid,r.age,r.experience,j.title,j.linkurl","{$db->pre}job_apply a LEFT JOIN {$db->pre}resume r ON a.resumeid=r.itemid LEFT JOIN {$db->pre}job j ON a.jobid=j.itemid","a.jobid=$itemid ORDER BY a.applyid DESC",$apply,0);}
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<script type="text/javascript">Dd('catsl').className='menuy';</script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+<div style="width:980px;" class="box-center whitebg pd10 autoheight">
+<div class="shield color"><div style="padding-left:5px;float:left;margin-right:20px;">时间期限 {str_replace('-','/',$editdate)} - {str_replace('-','/',$todate)} <i class="ml10 hcolor">(#{$itemid})</i></div>{template 'va', 'chip'}</div>
+<div class="divline"></div>
+<div class="fl autoheight" style="width:760px;">
+	<h1 class="h1 lh30">{$title}</h1>
+	<table cellpadding="6" cellspacing="1" border=0 class="xuans"><tr><th>悬赏</th><td width="680"><span class="hcolor fr f12">本站支持本服务线下结算及相关票据\资质服务 <a href="{DT_STATIC}about/open.html" class="bcolor " title="点击进入">详细了解</a></span>
+	<b class="f24" style="height:24px;line-height:24px;">
+	{if $username}{if $minsalary && $maxsalary}{$minsalary}-{$maxsalary}{$DT[money_unit]}{elseif $minsalary}{$minsalary}{$DT[money_unit]}以上{elseif $maxsalary}{$maxsalary}{$DT[money_unit]}以内{else}面议{/if}{/if}</b>
+	</td></tr></table>
+</div>
+<div class="yxtime fl">
+{php  $date1=date("Y-m-d");}
+{php  $time1=strtotime($date1);}
+{php  $overtime=intval(($totime-$time1)/60/60/24);}
+	{if $todate=='长期有效'&&$step<4}<div class="youxiao" id="jobstatus"><img src="{DT_SKIN}image/job/forever.jpg"></div>{elseif ($overtime>0&&$step<4)}
+	<div>
+	{if $overtime<100&&$overtime>10}
+	<div class="yxt2"><p>{$overtime}</p></div>
+	{elseif $overtime<10&&$overtime>0}
+	<div class="yxt2"><p>0{$overtime}</p></div>
+	{else}
+	<div class="yxt3"><p>{$overtime}</p></div>
+	{/if}
+	</div>
+	{else}<div class="shixiao"></div>{/if}
+</div>
+<div class="divline"></div>
+<div class="jc">
+<ul id="jcb" {if $step>4} style="padding-left:10px;"{/if}>
+{if $step<5}
+{fieldstitle(54,'*',0,5)}
+{else}
+{fieldstitle(54,'*',0)}
+{/if}
+<input type="hidden" id="jcbtj" value="{$step}">
+</ul>
+<div style="padding-top:30px; text-align:center">
+<table cellpadding="0" cellspacing="1" align="center"  border=0>	
+<tr>
+	<td   align="center" height="80" colspan=3>
+	</td>
+</tr>
+<tr>
+	<td height=35  align="center" width="80">
+	<span class="wcolor f18 ">{$apply}</span>
+	</td>
+	<td height=35  align="center" width="386">
+	<span class="wcolor f18 ">{$talent}</span>
+	</td>
+	<td height=35  align="center" width="80">
+	<span class="wcolor f18 " ><font class='hits'>{$hits}</font></span>
+	</td>
+</tr>
+</table>
+<div class="divline"></div>
+<table cellpadding="0" cellspacing="1" align="center"  border=0 style="margin-top:-100px;">	
+<tr>
+<td width=100 class="pl10" id="baomin"  align="center">
+{if $_userid}<!-- 是否会员 -->
+{php $r =getsqldata("*","{$db->pre}resume","username='".$_username."'",10);}
+{php $n=count($r);}<!-- 简历个数 -->
+{if $n}
+{if $n==1&&($r[0]['status']!=3)}
+<a href="javascript:void(0);" onclick="msgtip('报名参加项目','<b>不能报名的原因!</b><br>1.您的技术供应信息没有通过审核<br>2.您的技术供应信息在审核中!')" ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+{else}
+<a href="javascript:void(0);" onclick="msgdiv('jobbox','技术工程师报名参加服务','{$MOD[linkurl]}{rewrite('apply.php?itemid='.$itemid)}')" ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+{/if}
+
+{else}
+{if $_groupid==1||$admin_user}
+<a href="javascript:void(0);" onclick="msgdiv('jobbox','技术工程师报名参加服务','{$MOD[linkurl]}{rewrite('apply.php?itemid='.$itemid)}')" ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+{else}
+<a href="{$MOD[linkurl]}{rewrite('apply.php?itemid='.$itemid)}"><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+{/if}
+{/if}
+{else}
+<a href="javascript:void(0);" onclick='msgtip("您好！登陆提示！","要报名参加本项服务需求，您需要登录本站！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>")' ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+{/if}
+
+
+</td>
+<td width=340 class="pl10"  align="center"><a    {if $_userid}href="javascript:Dd('info_favorite').submit();" {else}href="javascript:void(0);" onclick='msgtip("您好！登陆提示！","会员收藏夹，您需要登录本站！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>")'  {/if}><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a></td>
+<td width=100 class="pl10"  align="center"><a href="#commet" ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a></td>
+</tr>
+</table>
+<script type="text/javascript">
+{if $expired&&$_groupid!=1}
+Dd('baomin').innerHTML="<a href='javascript:void(0);' onclick=\"msgtip('报名参加项目','<b>不能报名的原因!</b><br>服务过期截至报名!')\" ><img src=\"{DT_SKIN}image/blank.gif\" width=98 height=98></a>";
+{/if}
+var k=$("#jcb li").length;k=k-1;
+for(i=0;i<={$step};i++){
+Dd('options54-'+i).style.backgroundImage="url({DT_SKIN}image/job/jc2.png)";Dd('options54-'+i).className='bcolor';
+}
+if(Dd('jcbtj').value==k){
+Dd('options54-'+k).style.backgroundImage="url({DT_SKIN}image/job/jc4.png)";
+Dd('options54-'+k).className='ocolor';
+{if $_groupid!=1&&$step>4}
+Dd('baomin').innerHTML="<a href='javascript:void(0);' onclick=\"msgtip('报名参加项目','<b>不能报名的原因!</b><br>服务过期截至报名!')\" ><img src=\"{DT_SKIN}image/blank.gif\" width=98 height=98></a>";
+{/if}
+}else{Dd('options54-'+k).style.backgroundImage="url({DT_SKIN}image/job/jc3.png)";}
+</script>
+{if $step>4}
+<script type="text/javascript">
+Dd('options54-2').style.backgroundImage="url({DT_SKIN}image/job/jc1.png)";
+Dd('options54-3').style.backgroundImage="url({DT_SKIN}image/job/jc1.png)";
+Dd('options54-4').style.backgroundImage="url({DT_SKIN}image/job/jc1.png)";
+</script>
+{/if}
+</div>
+
+</div>
+
+
+
+
+
+<br class="clear">
+
+<div class="contentleft autoheight"> 
+<dl class="dllist">
+
+
+
+<dt class="bcolor"><span class="fr" style="line-height:12px;">{template 'baidu', 'chip'}</span>服务需求介绍<br class='clear'></dt>
+<dd>
+<table cellpadding="6" cellspacing="1" width="98%" bgcolor="#ffffff" align="center" class="table">	
+<tr bgcolor="#FFFFFF">
+		<td width="85" height="25"  align="center" class="tableth">&nbsp;&nbsp;设备分类</td>
+	<td height="25" width="200" >&nbsp;{strip_tags(cat_pos(get_cat($catid), '/'))}</td>
+	<td width="85" height="25"   align="center" class="tableth">&nbsp;所属单位</td>
+	<td height="25" >&nbsp;{if $department}{$department}{else}无{/if}</td>
+  </tr>
+		<tr bgcolor="#FFFFFF">
+		<td height="25"  align="center" class="tableth">&nbsp;工作地区</td>
+		<td height="25">&nbsp;{area_pos($areaid, '')}</td>
+		<td height="25"  align="center" class="tableth">&nbsp;工作性质</td>
+		<td height="25">&nbsp;{$TYPE[$type]}</td>
+  </tr>
+		<tr bgcolor="#FFFFFF">
+		<td height="25"  align="center" class="tableth">&nbsp;设备品牌</td>
+		<td height="25">&nbsp;{$pinpai}</td>
+		<td height="25"  align="center" class="tableth">&nbsp;设备型号</td>
+		<td height="25">&nbsp;{$xinghao}</td>
+  </tr>
+  		<tr bgcolor="#FFFFFF">
+		<td height="25"  align="center" class="tableth">&nbsp;合作要求</td>
+		<td height="25">&nbsp;{$MARRIAGE[$marriage]}</td>
+		<td height="25"  align="center" class="tableth">&nbsp;</td>
+		<td height="25">&nbsp;</td>	
+		</table>
+</dd>
+<dt class="bcolor">服务需求详细内容</dt>
+<dd>
+<div class="content" id="content">
+            {if $_userid}
+	            {$content}	
+			{else}
+				{xcontent($content,'*','1,3,5,7,9')}
+			{/if}</div>
+<br class="clear" />
+</dd>
+<dt class="bcolor">报名参与的技术工程师清单</dt>
+<dd>
+
+
+{php $tagt =tag("moduleid=$moduleid&table=job_apply&condition=jobid=$itemid and status=3&areaid=$cityid&showcat=1&pagesize=1&length=20&order=jobid desc&template=null")}
+{php $xdusername=$tagt[0][apply_username]}
+{php $xdresumeid=$tagt[0][resumeid]}	
+{if $applylist}
+			<div class="applyresume">
+				<ul class="memberlist autoheight">
+				{loop $applylist $k $v}
+                   {if $v[truename]}
+				{if $xdresumeid==$v[resumeid]}
+				<li><a href="{rewrite('resume.php?itemid='.$v[resumeid])}" target="_blank" title="被选中的技术工程师" class="ocolor">
+				<script type="text/javascript">
+				document.writeln("<img src=\"{useravatar($v[apply_username], 'large')}&time={$DT_TIME}\" width=\"80\" height=\"80\" class=\"orangeb whitebg border2\">");
+				</script>
+				<span class="xuanding p_ab"><img src="{DT_SKIN}image/job/yesresume.png"></span>
+				<br>{area_pos($v[areaid], '')}<br>{xname($v[truename],$v[baomi])}</a></li>
+				<script type="text/javascript">
+					Dd('xdtruename').innerText='{xname($v[truename],$v[baomi])}';
+				</script>
+				{else}
+				<li><a href="{rewrite('resume.php?itemid='.$v[resumeid])}" target="_blank"  title="报名技术工程师" class="color">
+				<script type="text/javascript">
+				document.writeln("<img src=\"{useravatar($v[apply_username], 'large')}&time={$DT_TIME}\" width=\"80\" height=\"80\"  class=\"grayb whitebg border2\">");
+				</script>
+				<br>{area_pos($v[areaid], '')}<br>{xname($v[truename],$v[baomi])}</a></li>
+				{/if}
+				{if $_groupid!=1}
+				{if $_username==$v[apply_username]}
+				<script type="text/javascript">
+Dd('baomin').innerHTML="<a href='javascript:void(0);' onclick=\"msgtip('报名参加项目','<b>不能报名的原因!</b><br>你已经报名参加过该项目了!')\" ><img src=\"{DT_SKIN}image/blank.gif\" width=98 height=98></a>";
+				 </script>
+                {/if}
+				{/if}
+				{php $allresumeid=$allresumeid.$v[resumeid].',';}
+				{php $allresume=$allresume.$v[apply_username].',';}
+				{else}
+				<li>
+				<script type="text/javascript">
+				document.writeln("<img src=\"{useravatar('', 'large')}\" width=\"80\" height=\"80\">");
+				</script>
+				<br>该报名失效</li>
+				{/if}
+				{/loop}
+				</ul>
+			</div>
+			
+		{else}
+<div class="nocontent">还没有技术工程师报名,你赶上了,报名吧！</div>
+		{/if}
+		<br class="clear" />
+</dd>
+		{if $CP}{template 'property', 'chip'}{/if}
+		{template 'comment', 'chip'}
+		<div class="divline"></div>
+               <input type="hidden" name="allresumeid" value="{$allresumeid}" id="allresumeid">
+			   <input type="hidden" name="allresume" value="{$allresume}" id="allresume">
+			   <input type="hidden" name="xdresumeid" value="{$xdresumeid}" id="selresumeid">
+			   <input type="hidden" name="xdusername" value="{$xdusername}" id="selusername">
+</dl>
+</div>
+<div class="contentright ml5">
+{template 'contentright', 'chip'}
+</div>
+<br class="clear">
+</div>
+{template 'fav','chip'}
+
+{template 'footer2017'}

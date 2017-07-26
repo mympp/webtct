@@ -1,0 +1,26 @@
+<div class="news_about">
+		<div class="news">
+			<div class="news_title"><span>NEWS</span>/新闻<a href="{userurl($username, 'file=news', $domain)}">查看更多>></a></div>
+			<!--{php $tags=tag("table=news&condition=status=3 and username='$username'&pagesize=2&order=addtime desc&template=null");}-->
+			<div class="news_content">
+				<ul>
+				{if $tags}
+					{php $i=0}
+						{loop $tags $t}
+							{if $i<=1}
+							{php $sql="select content from {$db->pre}news_data where itemid=".$t['itemid']."";$news_con=$db->get_one($sql);preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$news_con['content'],$match);}
+							<li><div class="news_img">{if $match[1]!=null}<img src="{$match[1]}" width="77" height="55"/>{else}<img src="{$HSPATH}news.jpg"/>{/if}</div><div class="news_font"><span>{timetodate($t[addtime], 2)}</span><a href="{$t[linkurl]}"><label>{dsubstr($t[title],50,'...')}</label><br/>{php echo dsubstr(strip_tags($news_con['content']),120,'...');}</a></div></li>
+							{/if}
+							{php $i=$i+1}
+						{/loop}
+				{else}
+				<li>暂无新闻</li>
+				{/if}
+				</ul>
+			</div>
+		</div>
+		<div class="about">
+			<span>关于</span><br/>
+			{dsubstr(strip_tags($COM[intro]),300,'...')}
+		</div>
+</div>

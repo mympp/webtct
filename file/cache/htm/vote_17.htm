@@ -1,0 +1,30 @@
+<div class="vote">
+<form action="http://www.tecenet.com/vote/index.php" method="post" target="_blank" id="vote_17" onsubmit="return check_vote_17();">
+<input type="hidden" name="itemid" value="17"/>
+<input type="hidden" name="submit" value="1"/><br>
+<a href="http://www.tecenet.com/vote/index-htm-itemid-17.html" class="suba">开始为：快来选出你心中最具影响力的国产医疗器械吧！投票</a>
+<ul>
+</ul>
+<p><input type="submit" value="投票" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'"/>
+<input type="button" value="结果" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" onclick="window.location='http://www.tecenet.com/vote/index-htm-itemid-17.html';"/></p>
+</form>
+</div>
+<script type="text/javascript">
+function check_vote_17() {
+var inputs = Dd('vote_17').getElementsByTagName('input');
+var inputs_length = inputs.length;
+var selected = 0;
+for(var i = 0; i < inputs_length; i++) {
+if(inputs[i].type == 'checkbox' && inputs[i].checked == true) selected++;
+}
+if(selected < 1) {
+alert('最少需要选择1个投票选项');
+return false;
+}
+if(selected > 3) {
+alert('最多可选择3个投票选项');
+return false;
+}
+return true;
+}
+</script>

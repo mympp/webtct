@@ -1,0 +1,41 @@
+{template 'header', 'mobile'}
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-title">更多</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+
+{if $DT[city]}
+<div class="blank-35"></div>
+<div class="list-set">
+<ul>
+<li><div style="border:none;"><span>{$city_name}</span><a href="city.php">切换分站</a></div></li>
+</ul>
+</div>
+{/if}
+
+<div class="blank-35"></div>
+<div class="list-set">
+<ul>
+<li><div style="border:none;"><a href="about.php" class="my-link">关于天成医疗</a></div></li>
+<li><div><a href="http://so.tecenet.com/mindex.php" class="my-link">进入天成医搜</a></div></li>
+<li><div><a href="announce.php">最新网站公告</a></div></li>
+{if $DT[telephone]}
+<li><div><a href="tel:{$DT[telephone]}">在线客服电话</a></div></li>
+{/if}
+</ul>
+</div>
+<div class="blank-35"></div>
+<div class="list-set">
+<ul>
+<li><div style="border:none;"><a href="guestbook.php">相关意见反馈</a><div></li>
+<li><div><a href="tips.php">使用技巧提示</a><div></li>
+<li><div><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODg2MTExMg==&mid=223574755&idx=1&sn=1fcdce2c9c8e4b7a3eb1a998b2aa8e4f#rd">进入微信平台</a><div></li>
+<li><div><a href="{DT_PATH}file/and_tece.apk">安卓应用下载</a><div></li>
+{if !in_array($DT_MOB[browser], array('app', 'b2b', 'screen'))}
+<li><div><a href="mobile.php?action=pc" rel="external">进入电脑版</a><div></li>
+{/if}
+</ul>
+</div>
+{template 'footer', 'mobile'}

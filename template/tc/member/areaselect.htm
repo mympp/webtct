@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>地区列表</title>
+<meta name="keywords" content=""/>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/admin.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/member.js"></script>
+<style type="text/css">
+body{margin:0px;padding:0px;font-size:12px;}a{text-decoration:none;color:#535353}
+.autoheight{_height:10px;height:auto !important; min-height:10px;height:auto;}
+.lenstr{ display:block;display:-moz-inline-box; display:inline-block; white-space:nowrap;overflow: hidden; -o-text-overflow: ellipsis;text-overflow:ellipsis;word-break:keep-all; }
+    dl{margin:0px;margin-top:5px;}
+	.white{background:white}
+	.f12{font-size:12px;}
+	.orange{background:#fffcd9}
+	.graybg{background:#efefef}
+	dd{margin:0px;line-height:14px;line-height:14px;}
+	.w860{width:860px;background:#f3f3f3;height:130px;}
+	.w860 dd{padding-left:10px;height:24px;border-bottom:1px dashed #ccc;line-height:24px;;float:left;width:110px;font-size:14px;}
+	.city{width:860px;height:245px;}
+	.city dt{font-weight:bold;line-height:20px;text-indent:5px;border-bottom:1px dashed #ccc;padding-bottom:5px;color:#ff3300}
+	.city dd{padding:2px 0px 2px 10px;float:left;width:110px;}
+	.city label{width:110px;}
+	.w600{width:600px;}
+	.color{color:#333}
+	.opyes{background:#eee}
+	.hd{display:none}
+	#areas{border:0px;float:left;width:860px;height:445px;margin:0px;padding:0px;}
+	.bgs{background:url('image/TTT.png') 240px center no-repeat;width:860px;height:140px;;border:0px;float:left;margin:0px;padding:0px;overflow:hidden;font-size:22px;color:#555555;}
+	#fonts{line-height:140px;padding-left:320px;font-family:"黑体"}
+#areacount{background:#fff;border:none;width:20px;color:red;text-align:center}
+#
+table{background:#eee;}
+table td{background:#f2f2f2;height:30px;line-height:30px;}
+#kw{padding:5px;border:1px solid #bbb;width:280px;color:#bbbbbb}
+#sub{height:30px;line-height:30px;background:#ff9933;border:none;color:#fff}
+#makesure{position:fixed;z-index:1001;background:#ff9e3e;font-family:"黑体";text-align:center;left:790px;top:110px;height:30px;line-height:30px;}
+#makesure a{padding:10px 10px 10px 10px;color:#fff;font-size:18px;}
+#areasname{width:300px;}
+</style>
+</head>	
+{php $areaid=intval($_REQUEST['areaid']);}
+{php $areaida=intval($_REQUEST['areaida']);}
+{php $areaname=strip_tags($_REQUEST['areaname']);}
+{php $kw=strip_tags($_REQUEST['kw']);}
+{php $ct=intval($_REQUEST['ct']);}
+{php $areacount=intval($_REQUEST['areacount']);}
+{php $areas=strip_tags($_REQUEST['areaessel']);}
+<body>
+{if  !$areaida&&!$kw}
+<div STYLE="height:320px;width:860px;margin:0px;overflow:hidden;"> 
+<table cellpadding="3" cellspacing="0">
+<form action="?"  method="get" target="areas" name="formkw" id="formkw">
+<tr>
+	<td width="300" align="center"><input type="text" name="kw" id="kw" {if $kw}value="{$kw}"{else}value="输入地区 如广州" onfocus="if(this.value=='输入地区 如广州')this.value=''"{/if} onblur="if(this.value=='')this.value='输入地区 如广州';"></td>
+	<td width="80" align="left"><input type="submit" id="sub" value="地区搜索"></td>
+	<td width="480" class="f12"><a href="javascript:void(0)" onclick="Dd('areas').src='areaselect.php?ct=1&kw=0'+Dd('areasid').value+'0'">打开你已选的<input type="text" name="areacount" id="areacount" value="" readonly="true"  onfocus=this.blur()>个地区</a>：<input type="text" name="areasid" id="areasid" value=","  class="hd">
+	<input type="text" name="areasname" id="areasname" value=","  size=10></td>
+</tr>
+</form>
+<script type="text/javascript">
+Dd('areacount').value=parent.Dd('areacount').innerText;
+Dd('areasid').value=parent.Dd('areasid').value;
+Dd('areasname').value=parent.Dd('areasname').value;
+</script>
+</table>
+
+<dl class="w860">		
+														
+								
+														{php $tagss = tag("table=area&condition=parentid=0&pagesize=60&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<dd id="areabg{$t[areaid]}" onmouseover="if(this.className=='')this.className='white';" onmouseout="if(this.className=='white')this.className='';" class="">
+															<a href="?areaida={$t[areaid]}&areaid={$t[areaid]}" target="areas" id="area{$t[areaid]}">{$t[areaname]}</a>
+															</dd>
+																	
+															{php $childa=$t[child];$parenta=$t[areaname];$areaida=$t[areaid];} 		
+															{/loop}
+															
+</dl>
+<div class="bgs" id="bg">
+
+														
+														<iframe src="" id="areas" name="areas" frameborder=0 scrolling="no"   class="hd" ></iframe>
+														<font id="fonts">请在上边选择各个省份！</font>
+</div>
+<script type="text/javascript">
+if(parseInt(parent.Dd('areacz').value)>0){
+Dd('areas').className='';
+Dd('areas').src='areaselect.php?ct=1&kw=0'+Dd('areasid').value+'0';
+Dd('fonts').className='hd';
+}
+</script>
+{else}
+
+
+                                               {if $areaida}
+														<dl class="city">
+														
+															<dt id="areabg{$areaida}"><label><input type="checkbox" name="areaid" value="{$areaida}" title="" onclick="yesd({$areaida})" id="areas{$areaida}">选择<font id="areaz{$areaida}"></font>所有城市/地区：</label></dt>
+															<script type="text/javascript">
+                           if(parent.Dd('areaesid').value.indexOf(',{$areaida},')>=0&&parent.Dd('areaesid').value!=','){Dd('areas{$areaida}').checked='true';}
+															</script>
+															{php $tagss = tag("table=area&condition=parentid=$areaida&pagesize=60&order=listorder ASC&template=null")}
+															{if $tagss}
+															{loop $tagss $i $t}
+															<dd onmouseover="if(this.className=='white')this.className='graybg';Dd('memo{$t[areaid]}').className='w600'" onmouseout="if(this.className=='graybg')this.className='white';Dd('memo{$t[areaid]}').className='lenstr w600'" class="white" id="areabg{$t[areaid]}"><label class="lenstr" title="{$t[areaname]}"><input type="checkbox" name="areaid" value="{$t[areaid]}" title="{$t[areaname]}" id="areas{$t[areaid]}" onclick="yesd({$t[areaid]})">{$t[areaname]}</label>
+															</dd>
+															<script type="text/javascript">
+                           if(parent.Dd('areasid').value.indexOf(',{$t[areaid]},')>=0&&parent.Dd('areasid').value!=','){Dd('areas{$t[areaid]}').checked='true';Dd('areabg{$t[areaid]}').className='orange';}
+															</script>
+															{/loop}
+															{/if}
+															</dl>
+														
+														<script type="text/javascript">
+														parent.Dd('areabg{$areaida}').className='orange';
+														Dd('areaz{$areaida}').innerText=parent.Dd('area{$areaida}').innerText;
+														Dd('areas{$areaida}').title=parent.Dd('area{$areaida}').innerText;
+														</script>
+
+                                                        {else}
+														<dl class="city">
+												<dt id="areabg{$areaida}"><label>{if $ct}你已所选的类别{else}<font id="areaz{$areaida}">{$kw}</font>的前30个相关分类：</label>{/if}</dt>
+												{if $ct}
+												{php $condi=" areaid in ($kw)"}
+												{else}
+												{php $condi=" (areaname LIKE '%$kw%' )"}
+												{/if}
+									
+															{php $tagss = tag("table=area&condition=$condi&pagesize=60&order=listorder ASC&template=null&debug=0")}
+															{if $tagss}
+															{loop $tagss $i $t}
+															<dd onmouseover="if(this.className=='white')this.className='graybg';Dd('memo{$t[areaid]}').className='w600'" onmouseout="if(this.className=='graybg')this.className='white';Dd('memo{$t[areaid]}').className='lenstr w600'" class="white" id="areabg{$t[areaid]}"><label  class="lenstr" title="{$t[areaname]}"><input type="checkbox" name="areaid" value="{$t[areaid]}" title="{$t[areaname]}" id="areas{$t[areaid]}" onclick="yesd({$t[areaid]})">{strip_tags(area_pos($t[areaid]))}</label>
+															</dd>
+															<script type="text/javascript">
+                           if(parent.Dd('areasid').value.indexOf(',{$t[areaid]},')>=0&&parent.Dd('areasid').value!=','){Dd('areas{$t[areaid]}').checked='true';Dd('areabg{$t[areaid]}').className='orange';}
+															</script>
+															{/loop}
+
+															{else}<dd><p style="color:#8f8f8f;font-size:12px;line-height:30px;">无任何相关分类数据，请尽量使用模糊搜索</p>
+															<p style="color:#688cea;font-size:14px;">例子：广东省 搜广东 </p></dd>{/if}
+															</dl>
+
+														{/if}
+														<script type="text/javascript">
+														parent.Dd('areas').className='';
+														parent.Dd('fonts').className='hd';
+														 function yesd(i){
+														var areas=parent.Dd('areasid').value;
+														var areasname=parent.Dd('areasname').value;
+														var areacount=parseInt(parent.Dd('areacount').value);
+														//alert(areasname);
+														areas=areas.replace(',,',',');
+													
+														 if(Dd('areas'+i).checked==true)
+															 {	
+															 if (areacount<9){
+															 if(areas.indexOf(','+i+',')<0){areas=areas+i+',';areasname=areasname+Dd('areas'+i).title+',';areacount=areacount+1;
+															 Dd('areabg'+i).className='orange';}
+															  } else{ Dd('areas'+i).checked=false;alert('信息请勿超过9个类别'); }
+															 }
+														 else
+															 {areas=areas.replace(i+',',',');areasname=areasname.replace(Dd('areas'+i).title+',',',');areacount=areacount-1;
+															 Dd('areabg'+i).className='';}
+														 areas=areas.replace(',,',',');areasname=areasname.replace(',,',',');
+														 parent.Dd('areasname').value=areasname;
+														 parent.Dd('areasid').value=areas; parent.Dd('areacount').value=areacount;	
+														var s=areasname;
+														if(s==''||s==','){s='请选择地区分类!';}
+														parent.parent.Dd('areastitle').innerText=s;
+														parent.parent.Dd('areasname').value=s;
+														parent.parent.Dd('areacount').innerText=areacount;
+														if (areacount>0)parent.parent.Dd('areacz').value=1;
+														parent.parent.Dd('areasid').value=areas;
+														}
+														
+														</script>
+
+														<div id="makesure" ><a href="javascript:void(0)"  onclick="parent.parent.closebox('areassel');">确 定</a></div>
+
+
+{/if}
+</div></body></html>

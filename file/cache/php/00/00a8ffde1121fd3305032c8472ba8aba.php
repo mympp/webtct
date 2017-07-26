@@ -1,0 +1,1 @@
+<?php exit;?>1466280489a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201404/10/09-18-44-14-8.jpg";s:7:"linkurl";s:27:"http://hfywksm.tecenet.com/";s:7:"company";s:33:"合肥有为康商贸有限公司";}}

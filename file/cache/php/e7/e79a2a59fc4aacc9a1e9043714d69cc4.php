@@ -1,0 +1,1 @@
+<?php exit;?>1499243530a:2:{i:0;a:4:{s:5:"catid";s:4:"1173";s:8:"moduleid";s:2:"16";s:7:"catname";s:18:"眼科手术器械";s:7:"linkurl";s:6:"yanke/";}i:1;a:4:{s:5:"catid";s:4:"1232";s:8:"moduleid";s:2:"16";s:7:"catname";s:18:"眼科手术用钳";s:7:"linkurl";s:5:"1232/";}}

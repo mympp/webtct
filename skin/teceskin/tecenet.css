@@ -1,0 +1,47 @@
+#webmid{background:url('image/tecebg/bg0.jpg') center top;}
+#webbodycontent a:hover{text-decoration:none}
+.topmenubg{position:relative}
+.searchlist dd{margin-bottom:20px;}
+.w655{width:652px;padding-left:3px;}
+.w108{width:108px;}
+.searchlist dt{margin-top:10px;}
+.tetop{height:240px;}
+.tesearch{height:49px;background:url('image/tecebg/tops.png') center top no-repeat;}
+.memtop{text-align:right;padding-right:5px;width:760px;padding-top:15px;height:30px;;margin:auto;margin-top:18px;}
+.memtop a{font-size:16px;}
+.searchtop{width:764px;margin:auto;height:40px;margin-top:0px;}
+.searchtop ul{margin:0px;}
+.searchtop ul li{float:left;height:40px;}
+#topkeyword{border:none;width:580px;height:34px;line-height:34px;font-size:16px;color:#777;border:1px solid #cdcdcd;border-right:0px;}
+.icoyes{background:url('image/tecebg/select.png') center center;}
+.icono{background:none}
+.icoright{float:left;width:40px;;margin-left:30px;}
+.icoright img{width:40px;height:80px;margin-top:50px;background:no-repeat center center;}
+.selbg{width:900px;margin:auto;height:30px;line-height:30px;margin-top:30px;}
+.selbg ul{margin:auto;width:420px;}
+.selbg ul li{float:left;width:38px;font-size:22px;text-align:center;}
+.selbg ul li font{cursor:pointer;padding:0px 5px 0px 5px;}
+.selyes{filter:alpha(Opacity=60);-moz-opacity:0.5;opacity: 0.5;z-index:100; background-color:#ffffff;}
+.counts{width:980px;line-height:32px;height:32px;text-align:left;padding-left:0px;margin-left:0px;}
+.counts li{float:left;font-size:14px;margin-right:20px;}.counts font{font-weight:bold}
+.tececontact{width:500px;height:70px;float:left;}
+
+.yqlj{line-height:16px;;}.yqlj dt{font-size:16px;text-align:left;font-weight:bold;padding:5px;;}
+.yqlj dd{margin-left:10px;}
+.abouttece{width:995px;height:auto;}
+.abouttece dl{padding-top:10px;line-height:20px;float:left;width:180px;;}
+.foot dt{font-weight:bold}.abouttece dd{font-size:12px;margin-top:5px;}
+.footbg{background-color:#f3f5f7;border-top:4px solid #dadde0;color:#8a8a8a;}
+.footbg a{color:#8b8b8b}.footbg .abouttece dt{color:#5e5e5e;font-size:14px;}
+.footbg hr{color:#e3e3e3;border-bottom:1px solid #ffffff;}
+.footbg2{background-color:#363636;color:#acacac;}
+.footbg2 a{color:#8c8c8c}.footbg2 .abouttece dt{color:#e3e3e3;font-size:14px;}
+.footbg2 hr{color:#7c7c7c;border-bottom:1px solid #535353;}
+.qqgroup{background:url('image/qqgroup.gif') no-repeat center left; width:97px;text-indent:30px;line-height:22px;color:#fff;cursor:pointer;margin-top:5px;}
+.copyright{text-align:center;line-height:18px;font-size:12px;width:990px;}
+.tececontact{width:900px;height:110px;margin:auto;}
+.tecehonor{margin:auto;width:900px;text-align:center}.tecehonor img{margin-left:20px;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.tetop{height:160px;}
+.searchtop{width:764px;margin:auto;height:40px;margin-top:18px;}
+}

@@ -1,0 +1,1 @@
+<?php exit;?>1466162414a:1:{i:0;a:5:{s:6:"itemid";s:6:"499361";s:5:"title";s:9:"痛经丸";s:7:"linkurl";s:16:"show-499361.html";s:5:"thumb";s:76:"http://www.tecenet.com/file/upload/201505/21/11-06-58-76-32336.jpg.thumb.jpg";s:8:"edittime";s:10:"1432200031";}}

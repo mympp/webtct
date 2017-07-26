@@ -1,0 +1,163 @@
+/*icon*/
+.zb-i{
+    display: inline-block;
+    position: relative;
+    width:20px;
+    height: 20px;
+    background-image: url("./image/buy/tc-zhaobiao-icons.png");
+    background-repeat: no-repeat;
+}
+.zb-i-type{
+    background-position: 0 0;
+}
+.zb-i-see{
+    background-position: -20px 0;
+}
+.zb-i-time{
+    background-position: -40px 0;
+}
+.zb-i-area{
+    background-position: -60px 0;
+}
+/*ami*/
+.ami{
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.bid-wrap{
+    background-color: #faf8f7;
+    padding-bottom:30px;
+}
+.bid-wrap .crumb{
+    background-color: #fff;
+}
+.bid-wrap .selector,.bid-wrap .sort{
+    border-radius:0;
+    border-left:none;
+    border-right:none;
+}
+.bid-wrap .sort{
+    border-top: none;
+}
+.bid-container{
+    width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bid-card{
+    background: #fff;
+    border: 1px solid #f1ebe7;
+    box-shadow: 0 1px 3px 0 rgba(55,18,0,.05);
+    border-radius:4px;
+}
+
+.bid-container-main{
+    width:870px;
+}
+.bid-container-side{
+    width:300px;
+}
+.bid-list-box{
+    /*padding:10px 0;*/
+}
+.bid-list-item{
+    padding:20px 0;
+    border-bottom:1px dotted #f1ebe7;
+}
+.bid-list-item:last-child{
+    border-bottom:none;
+}
+.bid-list-item-title{
+    font-size:20px;
+    line-height:1.5;
+    padding:0 30px;
+}
+.bid-list-item-title a:hover{
+    color: #e53935;
+}
+.bid-list-item-info{
+    margin-top:5px;
+    padding:0 30px;
+    color: #eaeaea;
+}
+.bid-list-item-info .zb-i,.bid-list-item-time .zb-i{
+    top:5px;
+    margin-right: 3px;
+}
+.bid-list-item-info a,.bid-list-item-info em{
+    color: #777;
+    font-style: normal;
+}
+.bid-list-item-info a{
+    background: linear-gradient(90deg,#aaa 66%, transparent 0) repeat-x;
+    background-size: 0.2em 1px;
+    background-position: 0 18px;
+}
+.bid-list-item-info a:hover{
+    color: #e53935;
+}
+
+.bid-list-item-line{
+    display: inline-block;
+    margin:0 10px;
+}
+
+.bid-banner{
+    width:300px;
+    height:250px;
+    overflow: hidden;
+    border-radius:4px;
+}
+
+.bid-new-list-head{
+    padding:0 20px;
+    height: 56px;
+    line-height: 56px;
+    color: #444444;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom:1px solid #f1ebe7;
+}
+.bid-new-list-body{
+    padding: 20px 0;
+    margin: 0 20px;
+}
+.bid-new-list-item{
+    padding:15px 0;
+    border-bottom:1px dotted #eaeaea;
+}
+.bid-new-list-item:first-child{
+    padding-top: 0;
+}
+.bid-new-list-item:last-child {
+    padding-bottom:0;
+    border-bottom:none;
+}
+.bid-new-list-item-title{
+    max-height:44px;
+    overflow: hidden;
+    font-size:15px;
+    line-height:1.65;
+}
+.bid-new-list-item-info{
+    font-size: 12px;
+    color: #888;
+}
+.bid-new-list-item-info em{
+    font-style: normal;
+}
+.bid-new-list-item-info .zb-i{
+    top:5px;
+}
+.bid-new-list-item-see{
+    margin-left:20px;
+}
+

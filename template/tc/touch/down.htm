@@ -1,0 +1,53 @@
+{template 'header', $TP}
+<div class="head_bar">
+<table>
+<tr>
+<td class="head_bar_td_w5">&nbsp;</td>
+<td class="head_bar_td_w50"><div class="head_back"><a href="{$back_link}"><span>返回</span></a></div></td>
+<td><div class="head_name"><a href="{$head_link}"><span>{$head_name}</span></a></div></td>
+<td class="head_bar_td_w55 t_r"><a href="index.php?moduleid={$moduleid}&amp;action=category"><img src="image/sort.png" width="40" height="40" alt="行业分类"/></a></td>
+</tr>
+</table>
+</div>
+<div class="head_bar_fix"></div>
+<style type="text/css">
+	.down-content {height:120px;padding:0 0 0 5px;overflow:hidden;clear:both;margin-top:1px;}
+.down-content img {float:left;margin:10px 10px 0 0;border:#EEEEEE 1px solid;}
+.down-content ul {margin:12px 0 0 0;}
+.down-content li {height:25px;line-height:25px;padding-right:20px;overflow:hidden;}
+.down-content strong {font-size:15px;display:block;width:100%;}
+.down-content em {font-size:10px;color:#666666;font-style:normal;}
+.down-content span {font-size:12px;color:#666666;}
+.down-content .price {font-size:12px;color:#FF0000;font-weight:bold;}
+</style>
+<div class="main">
+{if $itemid}
+	<?php error_reporting(E_ALL);?>
+	<div class="title"><strong>{$title}</strong></div>
+	<div class="info">日期:<small>{$editdate}</small>&nbsp;&nbsp;关注:<small>{$hits}</small></div>
+	<div class="content">
+	<div class="down-content">
+		<img src="{if isset($thumb)&&$thumb}{$thumb}{else}image/nopic.png{/if}" width="100" height="100">
+		<ul>
+			<li>下载条件:{if $downtype==0}完全共享{/if}{if $downtype==1}下载需{$t[djifen]}积分{/if}{if $downtype==2}下载需{$t[dprice]}金币{/if}</li>
+			<li>文件大小:{$filesize}K</li>
+			<li>更新日期:{$editdate}</li>
+			<li>下载次数:{$download}</li>
+		</ul>	
+	</div>
+	简介:{$introduce}
+	{template 'down_content', 'touch'}
+	{template 'chip-comment-list', $TP}
+	{template 'chip-comment', $TP}
+	</div>
+{else}
+	<ul class="listtxt">
+	{loop $lists $v}
+	<li><span class="f_r px11 f_gray">&nbsp;&nbsp;{$v[date]}</span><a href="index.php?moduleid={$moduleid}&amp;itemid={$v[itemid]}"><strong>{$v[title]}</strong></a></li>
+	{/loop}
+	</ul>
+{/if}
+	{if $pages}<div class="pages">{$pages}</div>{/if}
+	{template 'chip-search', $TP}
+</div>
+{template 'footer', $TP}

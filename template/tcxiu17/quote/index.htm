@@ -1,0 +1,45 @@
+{template 'header'}
+<div class="autoheight">
+
+
+<div class="qqun">
+{php $num = $db->count($DT_PRE.'announce', "islink=0", 60);}
+<div class="blue"><div class="h4title">实时群内行情信息({$num})条</div><span class="mores"><a href='{DT_PATH}announce' title="所有群内发布的行情信息"><img src='{DT_SKIN}image/more.jpg'></a></span></div>
+<div class="catalog grayb nt autoheight">	
+<ul>
+{php $lists = tag("moduleid=3&table=announce&condition=islink=0 and level>0&pagesize=10&order=edittime desc&template=null&debug=0")}
+{loop $lists $k $v}
+<li><a href="{if $v[islink]}{$v[linkurl]}{else}{$MODULE[1][linkurl]}announce/index.php?itemid={$v[itemid]}{/if}" target="_blank" class="{if $v[islink]}ocolor{else}color{/if}"><img src="{DT_SKIN}image/msg.gif">&nbsp;<b >{$v[title]}</b></a>-{dsubstr(strip_tags($v[content]),260, '..')}-发布时间：[{timetodate($v[edittime],2)}]&nbsp;<img src="{DT_PATH}file/image/process_{get_process($v['fromtime'], $v['totime'])}.gif"/></li>
+{/loop}
+</ul>
+<div class="divline"></div><table width='410'>
+	<tr><td align='center' height=30><a href="{DT_PATH}announce"  class='bbotton color b'>点击查看更多实时信息</a></td></tr></table>
+
+</div>
+</div>
+<div class="quote">
+{php $num = $db->count($DT_PRE.'quote', "status=3", 60);}
+<div class="orange"><div class="h4title">天成医疗网客服已验证并推荐供求({$num})条</div><span class="mores"><a href='{$MODULE[7][linkurl]}search.php?catid=0' title="更多客服已验证的行情"><img src='{DT_SKIN}image/more.jpg'></a></span></div>
+<div class="catalog grayb nt autoheight">	
+
+{php $lists = tag("moduleid=7&condition=status=3&pagesize=13&order=level desc,edittime desc&template=null&debug=0&showcat=1")}
+<ul>
+{loop $lists $k $v}
+<li><table width='540'><tr>
+{if $v[thumb]}
+<td width='100' valign='top'><a href="{$v[linkurl]}" target="_blank"><img src='{$v[thumb]}' width=60 height=45 class='grayb'></a></td>
+{/if}
+<td width=100% valign='top'><a href="{$v[linkurl]}" target="_blank" class="color"><img src="{DT_SKIN}image/message_3_.gif">&nbsp;<b >{$v[title]}{if $v[level]}<img src="{DT_SKIN}image/vip_{$v[level]}.gif" title="推荐{$v[level]}级" alt=""/>{/if}</b></a>-<a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$v[catid])}" class='color'>[{$v[catname]}]</a>-{strip_tags($v[introduce])}-发布时间：[{timetodate($v[edittime],2)}]-
+<a href="{$v[linkurl]}"><img src="{DT_SKIN}image/mores.gif"></a></td></tr></table>
+</li>
+{/loop}
+</ul>
+<div class="divline"></div>
+<table width='500'>
+	<tr><td align='center' height=30><a href="{$MODULE[7][linkurl]}search.php?catid=0" class='bbotton ocolor b'>查看更多推荐供求信息</a></td></tr>
+</table>
+</div>
+</div>
+<div class="divline"></div>
+</div>
+{template 'footer'}

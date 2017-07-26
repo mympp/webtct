@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>找资金</title>
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+</head>
+<body>
+
+<header class="bar bar-nav">
+    <a href="./calc.html" class="icon icon-left pull-left "></a>
+    <h1 class="title">业务流程</h1>
+</header>
+
+<div class="content cl-wrap">
+    <style>
+        .cl-wrap{
+            padding-bottom:2.5rem;
+        }
+        .cl-wrap .list-block{
+            margin: 0.5rem 0 0 0 ;
+        }
+        .cl-wrap .content-block-title{
+            margin-top:0.75rem;
+        }
+        .cl-wrap .tip{
+            margin:0 0.5rem;
+        }
+        .list-block .item-inner select{
+            -webkit-appearance: menulist-button;
+            -moz-appearance: menulist-button;
+            -ms-appearance: menulist-button;
+            appearance: menulist-button;
+            width: auto;
+        }
+        .list-block .button-danger{
+            color: #c70000;
+        }
+        .cl-wrap .lead{
+            color: #0894ec;
+        }
+        .cl-wrap .item-content .border-none{
+            min-height:0;
+            padding-bottom:0;
+        }
+        .cl-wrap .item-content .border-none:after{
+            display: none;
+        }
+        .label-switch input[type=checkbox]{
+            display: block;
+            position: absolute;
+            width:0;
+            height:0;
+        }
+        .label-checkbox{
+            display: inline-block;
+            margin-left:1rem;
+        }
+    </style>
+
+    <h4 class="lead text-center">经销商从厂商购买卖给资金方卖给医院</h4>
+    <!--tip-->
+    <p class="tip button button-warning" style="display: none;">warning button</p>
+    <!--tip end-->
+
+    <div class="content-block-title">生产商底价：</div>
+    <div class="list-block">
+        <ul>
+            <li class="item-content">
+                <input type="number"  min="0" max="100000000" id="producerCost" class="item-inner item-require" name="" placeholder="请输入金额" onChange="isNum(this);calcB();riskB();dzBCount();">
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-block-title">合同价：</div>
+    <div class="list-block">
+        <ul>
+            <li class="item-content">
+                <input type="number" min="0" max="100000000" id="producerSell" class="item-inner item-require" placeholder="请输入金额" onChange="isNum(this);calcB();riskB();">
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-block-title">平台商卖给医院：</div>
+    <div class="list-block">
+        <ul>
+            <li class="item-content">
+                <input type="number" min="0" max="100000000" id="sellerSell" class="item-inner item-require" placeholder="请输入金额" onChange="isNum(this);calcB();riskB();">
+            </li>
+        </ul>
+    </div>
+
+    <div class="result content-block-title" style="display: none;">计算结果：</div>
+    <div class="result list-block" style="display: none;">
+        <ul>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">平台商利润</div>
+                    <div class="item-after button-danger" id="sellerProfit"></div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">平台商收取</div>
+                    <div class="item-after" title="平台商卖给医院*0.02"><span class="button-danger" id="sellerMan"></span>管理费</div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">是否需垫资</div>
+                    <div class="">
+                        <label class="label-checkbox label-checkbox-b" for="dzNo">
+                            <input type="radio" name="dz" value="no" id="dzNo" checked="">
+                            <span class="item-media"><i class="icon icon-form-checkbox"></i>否</span>
+                        </label>
+                        <label class="label-checkbox label-checkbox-b" for="dzYes">
+                            <input type="radio" name="dz" value="yes" id="dzYes">
+                            <span class="item-media"><i class="icon icon-form-checkbox"></i>是</span>
+                        </label>
+                    </div>
+                </div>
+            </li>
+
+            <li class="item-content" id="dzBBox" style="display: none;">
+                <div class="item-inner border-none">垫资利息费用：</div>
+                <div class="item-inner">
+                    <div class="producer-cost" title="厂家底价">0</div>
+                    <div>*</div>
+                    <select id="sellerInterestPercent" onchange="interestB()">
+                        <option value="0.01">0.01</option>
+                        <option value="0.02">0.02</option>
+                        <option value="0.03">0.03</option>
+                        <option value="0.04">0.04</option>
+                        <option value="0.05">0.05</option>
+                        <option value="0.06">0.06</option>
+                        <option value="0.07">0.07</option>
+                        <option value="0.08">0.08</option>
+                        <option value="0.09">0.09</option>
+                        <option value="0.10">0.10</option>
+                    </select>
+                    <div>*</div>
+                    <select id="sellerInterestMouth" class="form-control plan-input-md pull-left" onchange="interestB()">
+                        <option value="1">1个月</option>
+                        <option value="2">2个月</option>
+                        <option value="3">3个月</option>
+                        <option value="4">4个月</option>
+                        <option value="5">5个月</option>
+                        <option value="6">6个月</option>
+                        <option value="7">7个月</option>
+                        <option value="8">8个月</option>
+                        <option value="9">9个月</option>
+                        <option value="10">10个月</option>
+                        <option value="11">11个月</option>
+                        <option value="12">12个月</option>
+                    </select>
+                    <div>=</div>
+                    <div class="button-danger" id="sellerInterest">0</div>
+                </div>
+            </li>
+
+            <li class="item-content" style="display: block;">
+                <div class="item-inner border-none">增值部分国家扣税：</div>
+                <div class="item-inner">
+                    <div>(</div>
+                    <div class="seller-sell" title="平台商卖给医院">0</div>
+                    <div>-</div>
+                    <div class="producer-sell" title="合同价">0</div>
+                    <div>)</div>
+                    <div>*</div>
+                    <select id="taxPercentB" onchange="taxB()">
+                        <option value="0.17">0.17</option>
+                        <option value="0.12">0.12</option>
+                        <option value="0.07">0.07</option>
+                        <option value="0.06">0.06</option>
+                        <option value="0.04">0.04</option>
+                    </select>
+                    <div>=</div>
+                    <div class="button-danger" id="taxCountB">0</div>
+                </div>
+            </li>
+
+            <li class="item-content" style="display: block;">
+                <div class="item-inner border-none">生产商结算给经销商：</div>
+                <div class="item-inner">
+                    <div class="producer-sell" title="合同价">0</div>
+                    <div>-</div>
+                    <div class="producer-cost" title="厂家底价">0</div>
+                    <div>=</div>
+                    <div class="button-danger" id="producerToDistributor">0</div>
+                </div>
+            </li>
+
+            <li class="item-content" style="display: block;">
+                <div class="item-inner  border-none">平台商结算给经销商：</div>
+                <div class="item-inner">
+                    <div class="seller-profit" title="平台商的利润">0</div>
+                    <div>-</div>
+                    <div class="seller-man" title="平台商收取的管理费">0</div>
+                    <div>-</div>
+                    <div class="tax-count-b"  title="增值部分国家扣税">0</div>
+                    <div class="interestB" style="display: none;">-</div>
+                    <div class="interestB interest-b-count" title="垫资利息费用" style="display: none;">0</div>
+                    <div>=</div>
+                    <div class="button-danger" id="sellerToDistributor">0</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-block">
+        <div class="row">
+            <div class="col-50"><a href="./calc.html" class="button button-big button-fill button-danger">返回</a></div>
+            <div class="col-50"><a href="javascript:;" onclick="showResult()" class="button button-big button-fill button-success">计算</a></div>
+        </div>
+    </div>
+</div>
+<!--content end-->
+
+<!--bar-->
+<nav class="bar bar-tab">
+    <a class="tab-item external" href="./index.html">
+        <span class="icon icon-home"></span>
+        <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item external" href="./product-lib.html">
+        <span class="icon icon-app"></span>
+        <span class="tab-label">找产品</span>
+    </a>
+    <a class="tab-item external active" href="./calc.html">
+        <span class="icon icon-star"></span>
+        <span class="tab-label">找资金</span>
+    </a>
+    <a class="tab-item external" href="javascript:$.toast('敬请期待');">
+        <span class="icon icon-me"></span>
+        <span class="tab-label">个人中心</span>
+    </a>
+</nav>
+<!--bar end-->
+
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>var Zepto = jQuery</script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script src="./js/calc.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>【祖宗十八代】看看你能到哪一代_天成医疗网</title>
+    <meta name="description" content="「天成医疗」喊你来认祖归宗啦！" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <style>
+    #loadingDiv{position:fixed;width:100%;height:100%;left:0;top:0;padding: 0.5rem;box-sizing:border-box;text-align:center;}
+    #loadingDiv img{max-width:100%;margin-bottom:3rem;}
+    #loadingDiv p{font-size:16px;}
+    .pacman{position:relative;display: inline-block;margin: 20px 0 20px -20px;}
+    .pacman>div:nth-child(2){-webkit-animation:pacman-balls 1s 0s infinite linear;animation:pacman-balls 1s 0s infinite linear}
+    .pacman>div:nth-child(3){-webkit-animation:pacman-balls 1s .33s infinite linear;animation:pacman-balls 1s .33s infinite linear}
+    .pacman>div:nth-child(4){-webkit-animation:pacman-balls 1s .66s infinite linear;animation:pacman-balls 1s .66s infinite linear}
+    .pacman>div:nth-child(5){-webkit-animation:pacman-balls 1s .99s infinite linear;animation:pacman-balls 1s .99s infinite linear}
+    .pacman>div:first-of-type{width:0;height:0;border-right:25px solid transparent;border-top:25px solid #a57c57;border-left:25px solid #a57c57;border-bottom:25px solid #a57c57;border-radius:25px;-webkit-animation:rotate_pacman_half_up .5s 0s infinite;animation:rotate_pacman_half_up .5s 0s infinite}
+    .pacman>div:nth-child(2){width:0;height:0;border-right:25px solid transparent;border-top:25px solid #a57c57;border-left:25px solid #a57c57;border-bottom:25px solid #a57c57;border-radius:25px;-webkit-animation:rotate_pacman_half_down .5s 0s infinite;animation:rotate_pacman_half_down .5s 0s infinite;margin-top:-50px}
+    .pacman>div:nth-child(3),.pacman>div:nth-child(4),.pacman>div:nth-child(5),.pacman>div:nth-child(6){background-color:#a57c57;width:15px;height:15px;border-radius:100%;margin:2px;width:10px;height:10px;position:absolute;-webkit-transform:translate(0,-6.25px);-ms-transform:translate(0,-6.25px);transform:translate(0,-6.25px);top:25px;left:100px}
+    @-webkit-keyframes rotate_pacman_half_up{0%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+    50%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+    100%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+    }
+    @keyframes rotate_pacman_half_up{0%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+    50%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}
+    100%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}
+    }
+    @-webkit-keyframes rotate_pacman_half_down{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+    50%{-webkit-transform:rotate(0);transform:rotate(0)}
+    100%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+    }
+    @keyframes rotate_pacman_half_down{0%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+    50%{-webkit-transform:rotate(0);transform:rotate(0)}
+    100%{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
+    }
+    @-webkit-keyframes pacman-balls{75%{opacity:.7}
+    100%{-webkit-transform:translate(-100px,-6.25px);transform:translate(-100px,-6.25px)}
+    }
+    @keyframes pacman-balls{75%{opacity:.7}
+    100%{-webkit-transform:translate(-100px,-6.25px);transform:translate(-100px,-6.25px)}
+    }
+    </style>
+    <script>var _hmt = _hmt || [];</script>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+<body>
+
+
+<div class="game-wrap" style="display:none;">
+    <div class="container">
+        <div class="heading">
+            <h1 class="title"><a href='http://tc08.tecenet.com/2048.index.r1.html'><img src="http://tc08.tecenet.com/game/2048/images/game-title.png" alt="祖宗十八代"></a></h1>
+            <div class="scores-container">
+                <div class="score-container">0</div>
+                <div class="best-container">0</div>
+            </div>
+        </div>
+        <div class="game-container">
+            <div class="game-message">
+                <p></p>
+                <div class="lower">
+                    <a class="keep-playing-button">继续挑战</a>
+                    <a class="retry-button">再试一次</a>
+                    <a class="wechat-button">呼唤亲朋好友</a>
+                    <a class="reward-button"></a>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+        </div>
+
+        <div class="game-intro">
+            <a class="btn btn-2 help-btn" href="#helpBtn">游戏帮助</a>
+            <a class="btn btn-1 restart-button">开始新游戏</a>
+        </div>
+
+        <div class="game-tip">
+            <b>等级说明提示：</b><br>曾孙→孙子→儿子→父亲→祖父→曾祖→高祖→天祖→烈祖→太祖→远祖→鼻祖
+        </div>
+
+    </div>
+
+    <div class="other-info"></div>
+    <div class="jd">
+        <script type="text/javascript">
+            var jd_union_unid="1000105161",jd_ad_ids="535:6",jd_union_pid="CKCAuM6uKxDJyfHcAxoAIOqnx9MCKgA=";
+            var jd_width=200;
+            var jd_height=200;
+            var jd_union_euid="";
+            var p="BBIEVBJYHAcTNwpfBkgyTUMIRmtKRk9aZV8ETVxNNwpfBkgycQctSSdLeGFnCXkFTXFZByFnLRd7cgtZK18QBxIAVh5cFjISBlQaWxQGEgBVK2tKRk9aZVA1FDJNQwhGaxUHGw9dElsWBBUHXRlrFDIiNw%3D%3D";
+        </script>
+        <script type="text/javascript" charset="utf-8" src="//u.x.jd.com/static/js/auto.js"></script>
+    </div>
+    <div class="footer"></div>
+</div>
+
+
+
+
+<div class="remodal" data-remodal-id="helpBtn" role="dialog" style="display: none;">
+    <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+    <div>
+        <h2 class="remodal-title">游戏帮助</h2>
+        <div id="slideBox" class="slideBox">&nbsp;</div>
+    </div>
+    <button data-remodal-action="cancel" class="btn btn-1 remodal-cancel">继续游戏</button>
+</div>
+
+<div class="remodal reward-remodal" data-remodal-id="reward" role="dialog" style="display: none;">
+    <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+    <div>
+        <h2 class="remodal-title">恭喜你，成功晋升为<span></span>啦！</h2>
+        <h3 class="remodal-sub-title">继续挑战有更大惊喜哦</h3>
+    </div>
+    <button data-remodal-action="cancel" class="btn btn-1 remodal-cancel">继续挑战</button>
+    <a href="javascript:;" data-url="" onclick="rewardUrl(this)" class="btn btn-1 remodal-cancel reward-url">领取太祖奖品</a>
+    <button data-remodal-action="cancel" class="btn btn-1 remodal-cancel wechat-share-btn">找朋友比比</button>
+</div>
+
+<div class="wechat-share-guide" style="display: none;">
+    <img src="http://img.ej120.com/game/wuya/res/share-bg.png" alt="">
+    <a href="javascript:;" onclick="wechatShareDialogClose()" class="close-btn">×</a>
+</div>
+
+
+
+
+<script src="http://img.ej120.com/lib/js/zepto.min.js"></script>
+<script src="http://tc08.tecenet.com/game/2048/js/create.game.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2b363fb3d03ff9991c4971afddf8731d";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+    var _mtac = {};
+    (function() {
+        var mta = document.createElement("script");
+        mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500421174");
+
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+    })();
+</script>
+<div style="display:none;">
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</div>
+
+
+
+</body>
+</html>

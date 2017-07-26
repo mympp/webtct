@@ -1,0 +1,287 @@
+{template 'header'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+
+						<div class="w240 fl autoheight"><!-- 左边内容开始-->
+														{template 'member','tag'}
+														<div class="divline"></div>
+														<div class="orange"><div class="h4title">发布会员的资料</div></div>
+															<div class="grayb nt pb10 pt10 autoheight">
+                                                            {template 'contact', 'chip'}
+														
+																</div>
+											<div class="divline"></div>
+											<div class="orange"><div class="h4title">该会员更多{$MOD[name]}信息</div></div>
+											<div class="grayb nt autoheight pt10">
+												<ul class="leftlist h500">
+						{php $tagt = tag("moduleid=$moduleid&condition=status=3 and username='$username'&pagesize=20&order=hits desc&showcat=1&template=null&debug=0")}
+													{loop $tagt $z $t}
+													<li><span  class="ocolor">[{if $t[groupid]==8||$t[groupid]==1}询价{else}{if $t[price]>0}¥{$t[price]}{else}面议{/if}{/if}]</span><a class="w160 color lenstr" href="{$t[linkurl]}" target='_blank'>{$t[title]}</a></li>
+													{/loop}
+													
+                                                    </ul>
+											</div>
+
+											</div>
+											<div class="w730 fl autoheight ml10"><!-- 右边内容开始sss-->
+														{template 'lay','tag'}
+														<div class="autoheight pt5 grayb nt">
+														{if $groupid=='8'||$groupid=='1'}<div class="validate"><img src="{DT_SKIN}image/tc.gif"></div>{/if}
+														<table width="100%" height=420>
+			<tr>
+			<td colspan="2">
+			<h1 >{$title}</h1><span class="riqi">发布：{$editdate}&nbsp;&nbsp;点击：<span id="hits">{$hits}</span></span>
+			<span class="shoucang"><form method="post" action="{$MODULE[2][linkurl]}favorite.php" target="_blank">
+	<input type="hidden" name="action" value="add"/>
+	<input type="hidden" name="title" value="{$title}"/>
+	<input type="hidden" name="url" value="{$linkurl}"/>
+	<input type="image" src="{DT_SKIN}image/btn_fav.gif"/>
+	</form></span>
+			</td>
+			</tr>
+			<tr>
+			<td width="309" align="center" valign="top">
+		  <div class="album">
+					<table width="91%" cellpadding="0" cellspacing="0">
+					<tr align="center">
+					<td width="250" valign="top"><div><span id="abm" title="点击查看大图"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="DIMG"/></span></div></td>
+					</tr>
+					<tr>
+					<td>
+					{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
+					</tr>
+					<tr align="center">
+					<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 点击图片查看原图</td>
+					</tr>
+					<tr align="center">
+					<td height="30">本站产品编码：<b class="ocolor">{$itemid}</b></td>
+					</tr>
+					<tr align="center">
+					<td height="30"><span class='ocolor'>结算方式：{if $paystep=='0'||$paystep==''}买家结算,卖家发货{elseif $paystep=='1'}天成官方财务结算流程{else}天成官方结算并加入CRM{/if}</span></td>
+					</tr>
+					</table>
+			  </div>			</td>
+			<td width="747" valign="top">
+				<div id="imgshow" style="display:none;"></div>	
+				<table width="100%" cellpadding="5" cellspacing="5">			
+				<tr>
+				<td class="bcolor" width="20%">来 源：</td>
+				<td>{if $groupid==8||$groupid==1}天成官方{else}第三方{/if}&nbsp;</td>
+				</tr>
+
+				<tr>
+				<td class="bcolor" width="20%">类 别：</td>
+				<td>{if $stype==0}整机{elseif $stype==1}配件 {else}耗材 {/if}&nbsp;</td>
+				</tr>
+				{if $brand}
+				<tr>
+				<td class="bcolor" width="20%">品 牌：</td>
+				<td>{$brand}&nbsp;</td>
+				</tr>
+				{/if}
+				<tr>
+				<td class="bcolor">厂 商：</td>
+				<td class="color">{$factory}</td>
+				</tr>
+				<tr>
+				<td class="bcolor">型 号：</td>
+				<td class="color">{$model}</td>
+				</tr>	
+				<tr>
+				<td class="bcolor">规 格：</td>
+				<td class="color">{$standard}</td>
+				</tr>
+				<tr>
+				<td class="bcolor">单 价：</td>
+				<td class="f14">{if $groupid==8||$groupid==1}面议{else}{if $price>0}<b class="ocolor f14">¥{$price}</b>{else}面议{/if}{/if}&nbsp;&nbsp;
+				<a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}" class="ocolor f14"><img src="{DT_SKIN}image/web2.gif" class="mid"><b>&nbsp;点击咨询</b></td>
+				</tr>
+					<tr {if $orders==0}style="display:none"{/if}>
+				<td class="bcolor">销 量：</td>
+				<td><a href="#order" onclick="Mshow('order');">累计出售 <span class="f_orange">{$sales}</span> 件，{$orders} 个订单</a></td>
+				</tr>
+				<tr>
+				<td class="bcolor">评 价：</td>
+				<td><a href="#comment" onclick="Mshow('comment');">已有 <span class="f_orange">{$comments}</span> 条评价</a></td>
+				</tr>
+				<tr {if $groupid==8||$groupid==1}style="display:none"{/if}>
+				<td class="bcolor">库 存：</td>
+				<td>还剩 <span class="f_orange">{$amount}</span> 件</td>
+				</tr>
+				<tr{if $hits<10} style="display:none"{/if}>
+				<td width="50" class="bcolor" >人 气：</td>
+				<td>已有 <span class="f_orange"><span id="hits">{$hits}</span></span> 人关注</td>
+				</tr>
+				<tr>
+				<td class="bcolor">所在地：</td>
+				<td>{area_pos($areaid, ' ')}</td>
+				</tr>
+				{if $status == 3}
+				<tr>
+				<td colspan="2">
+				<div id="cart_tip" style="display:none;">
+					<p><img src="{DT_SKIN}image/close.gif" alt="关闭" width="17" height="12" onclick="Dh('cart_tip');"/>提示信息</p>
+					<div>已成功添加到购物车！购物车里已有 <span id="cart_num">0</span> 种商品</div>
+					<center>
+					<input type="button" value="再逛逛" onclick="Dh('cart_tip');"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="去结算" onclick="Go('{$MOD[linkurl]}cart.php');"/>
+					</center>
+				</div>
+				<img src="{DT_SKIN}image/btn_tobuy.gif" alt="立即购买" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');"/>
+				&nbsp;
+				<img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" class="c_p" onclick="AddCart({$itemid});"/>
+				&nbsp;
+				<a href="{DT_PATH}mall/copy.php?itemid={$itemid}" target="caozuo" ><img src="{DT_SKIN}image/btn_zhuanzai.gif" alt="收藏"/></a>
+				</td>
+				</tr>
+				{else}
+				<tr>
+				<td></td>
+				<td><strong class="f_red">该商品已下架</strong></td>
+				</tr>				
+				{/if}
+				<tr>
+				<td colspan="2">{template 'baidu', 'chip'}
+				</td>
+				</tr>
+			  </table>			</td>
+			</tr>
+		</table>
+			
+            <div class="hentiao"><div class="htbg" ><ul class="bluet">
+			<li class="bluey" id="t_detail"><a href="#detail" onclick="Mshow('detail');">详细内容介绍</a></li>
+			<li class="bluen" id="t_comment"><a href="#comment" onclick="Mshow('comment');">买家评价({$comments})</a></li>
+		<li class="bluen" id="t_order"><a href="#order" onclick="Mshow('order');">交易记录({$orders})</a></li>
+			</ul></div></div>
+	<div  style="display:;" id="c_detail">
+		{if $CP}{template 'property', 'chip'}{/if}
+	<div class="content spic" id="content">
+    {if $factoryid && ($groupid==8||$groupid==1)}
+	<div class="orangeb ocolor orangebg pd10">
+	厂商联系资料：{if $_userid}
+	{php $lists = tag("moduleid=13&condition=itemid=".$factoryid."&pagesize=1&order=edittime desc&template=null&debug=0")}
+	     {loop $lists $k $cu}
+		 {if $cu[shownotes]=='0'}
+				 {if $cu[notes]}
+				 {$cu[notes]}
+				 {else}
+				 发布者未完善厂商联系资料！请直接与发布者联系！
+				 {/if}
+		 {else}
+		 厂商资料发布者未公开厂商资料！
+		 {/if}
+		 {/loop}
+    {else}
+	会员登陆，可直接查看厂商直接联系方式！
+	{/if}
+	</div>
+	{/if}
+	{$content}</div>
+	</div>
+	<div  style="display:none;" id="c_comment">
+		<center>正在载入评论详细...</center>
+	</div>
+	<div style="display:none;" id="c_order">
+		<center>正在载入交易记录...</center>
+	</div>
+			
+			<div class="divline"></div>
+			
+			
+		
+			{template 'comment', 'chip'}
+			 </div>
+ </div>
+ <script type="text/javascript">
+function AddCart(i) {
+	makeRequest('action=ajax&itemid='+i, '{$MOD[linkurl]}cart.php', '_AddCart');
+}
+function _AddCart() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		if(xmlHttp.responseText == -3) {alert('商品不存在或已下架');return;}
+		if(xmlHttp.responseText == -4) {alert('不能添加自己的商品');return;}
+		var cart_num = substr_count(get_cookie('cart'), ',');
+		Dd('cart_num').innerHTML = cart_num;
+		if(cart_num) Dd('destoon_cart').innerHTML = '<strong class="f_red">'+cart_num+'</strong>';
+		Ds('cart_tip');
+	}
+}
+var c_c = Dd('c_comment').innerHTML;
+var c_o = Dd('c_order').innerHTML;
+var n_c = {$comments};
+var n_o = {$orders};
+function Mshow(i) {
+	if(i == 'detail') {
+		Dd('t_detail').className = 'bluey';
+		Dd('t_comment').className = 'bluen';
+		Dd('t_order').className = 'bluen';
+		Ds('c_detail');
+		Dh('c_comment');
+		Dh('c_order');
+	} else if(i == 'comment') {
+		Dd('t_detail').className = 'bluen';
+		Dd('t_comment').className = 'bluey';
+		Dd('t_order').className = 'bluen';
+		Dh('c_detail');
+		Ds('c_comment');
+		Dh('c_order');
+		load_comment(0);
+	} else if(i == 'order') {
+		Dd('t_detail').className = 'bluen';
+		Dd('t_comment').className = 'bluen';
+		Dd('t_order').className = 'bluey';
+		Dh('c_detail');
+		Dh('c_comment');
+		Ds('c_order');
+		load_order(0);
+	}
+}
+function load_comment(p) {
+	if(n_c == 0) {
+		Dd('c_comment').innerHTML = '<div class="comment_no">暂无评论</div>';
+		return;
+	}
+	if(p == 0 && Dd('c_comment').innerHTML != c_c) return;
+	makeRequest('action=comment&itemid={$itemid}&page='+p, '{$MOD[linkurl]}api.php', '_load_comment');
+}
+function _load_comment() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		Dd('c_comment').innerHTML= xmlHttp.responseText;
+	}
+}
+function load_order(p) {
+	if(n_o == 0) {
+		Dd('c_order').innerHTML = '<div class="order_no">暂无交易</div>';
+		return;
+	}
+	if(p == 0 && Dd('c_order').innerHTML != c_o) return;
+	makeRequest('action=order&itemid={$itemid}&page='+p, '{$MOD[linkurl]}api.php', '_load_order');
+
+}
+function _load_order() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		Dd('c_order').innerHTML= xmlHttp.responseText;
+	}
+}
+/* var url = window.location.href; */
+if(window.location.href.indexOf('#') != -1) {
+	var t = window.location.href.split('#');
+	try {Mshow(t[1]);} catch(e) {}
+}
+</script>
+<form method="post" name="contact" id="invite" action="/special/kefu.php" target="helps">
+<input type="hidden" name="title" value="{$member[company]}">
+<input type="hidden" name="status" value="{if online($member[userid])==1}1{else}0{/if}">
+<input type="hidden" name="truename" value="{$truename}({gender($member[gender])})">
+<input type="hidden" name="username" value="{$username}">
+{if $member[qq]}<input type="hidden" name="qq" value="{$member[qq]}">{/if}
+{if $member[telephone]}<input type="hidden" name="telephone" value="{$member[telephone]}">{/if}
+{if $member[mobile]}<input type="hidden" name="mobile" value="{$member[mobile]}">{/if}
+{if $member[mail]}<input type="hidden" name="mail" value="{$member[mail]}">{/if}
+<input type="submit" class="hd">
+</form>
+<script> 
+setTimeout("contact.submit();Dd('kefus').value='1'",1000); 
+</script> 
+{template 'zoom', 'chip'}
+{template 'footer'}

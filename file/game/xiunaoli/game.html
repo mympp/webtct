@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>【秀脑力】测试一下健忘指数_天成医疗网</title>
+    <meta name="description" content="「天成」统计：全凭记忆只有3%的人全部做对！" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,target-densitydpi=device-dpi" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link href="//cdn.bootcss.com/csshake/1.5.1/csshake-default.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/xiunaoli.css?ver=04.28.01">
+
+    <script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+<body>
+
+<div class="game-wrap" id="gameWrap">
+    <a href="http://wap.tecenet.com/" target="_blank" class="tecenet-link"></a>
+
+    <div class="monkey"></div>
+    <div class="subject-wrap">
+        <div id="question"></div>
+        <div id="selectitem"></div>
+        <div id="index"></div>
+        <div class="btn-area" style="display: none;">
+            <a class="again" href="javascript:;" onclick="window.location.reload();">再挑战一次</a>
+            <a class="wechat-share" href="javascript:;" onclick="shareGuide()">分享看答案</a>
+            <a class="taobao-link shake shake-vertical-slow shake-constant" href="http://shop00001.cn/080ajL">618理想生活狂欢节</a>
+            <a class="more-game-link" href="http://tc08.tecenet.com/game/index.html?open=g_xiunaoli">更多游戏挑战</a>
+        </div>
+    </div>
+</div>
+
+<div id="gameIndex" class="index" style="display: none;">
+    <div class="answer-wrap">
+        <div class="answer-bd" id="answer">
+
+        </div>
+        <div class="btn-area" >
+            <a class="again" href="javascript:;" onclick="window.location.reload();">背熟答案，再来一次</a>
+            <a class="taobao-link" href="http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzIyOTQ2MTg3OQ==&shelf_id=2&showwxpaytitle=1#wechat_redirect">经常用脑，找大宝剑</a>
+        </div>
+    </div>
+</div>
+
+<div class="wechat-share-guide" style="display: none;">
+    <img src="http://img.ej120.com/game/wuya/res/share-bg.png" alt="">
+    <a href="javascript:;" class="close-btn">×</a>
+</div>
+
+
+<script src="./js/subject-lib.js"></script>
+<script type="text/javascript">
+    $("#selectitem").on("touchstart",".itemchose",function(){
+        $(this).addClass("touchstart");
+    });
+
+    var kwid = "sctz1";
+    var testcount = 25;
+    var title = "【秀脑力】测试一下健忘指数_天成医疗网";
+    var testitems = new Array();
+    var randstr = "";
+    var correctCount = 0;
+    var errCount = 0;
+    var testres = [];
+    for (var i = 0; i < testcount; i++) {
+        var count = tests.length;
+        var index = Math.floor(Math.random() * 10000) % count;
+        randstr = randstr + index + ",";
+        testitems.push(tests[index]);
+        tests.splice(index, 1);
+    }
+    var curindex = 0;
+    $("docucment").ready(function () {
+        document.title = title;
+        showitem();
+    });
+    function showitem() {
+        $("#index").html((curindex + 1) + "/" + testitems.length);
+        var testobj = testitems[curindex];
+        $("#question").html((curindex + 1) + "、" + testobj["q"]);
+        var arritem = testobj["i"];
+        var tcount = arritem.length;
+        var html = "";
+        for (var i = 0; i < tcount; i++) {
+            var count = arritem.length;
+            var index = Math.floor(Math.random() * 10000) % count;
+            html = html + "<input class=\"itemchose\" class=\"itemchose\" type=\"button\" value=\"" + arritem[index] + "\" onclick='checkres(this)' />";
+            arritem.splice(index, 1);
+        }
+        $("#selectitem").html(html);
+    }
+    function checkres(obj) {
+        $(".monkey").addClass("shake shake-constant shake-slow");
+        $(obj).addClass("act");
+
+        var testanswer = $.trim(obj.value);
+        var testobj = testitems[curindex];
+        var key = $.trim(testobj["k"]);
+        var num = testobj["n"];
+        testres.push({ "n": num, "a": testanswer });
+        if (key == testanswer) {
+            correctCount++;
+        }
+        if (curindex < testcount - 1) {
+            setTimeout(function(){$(".monkey").removeClass("shake shake-constant shake-slow");}, 1000);
+            curindex++;
+            showitem();
+        } else {
+            $("#selectitem,#index").html("");
+            $("#question").addClass("show-score");
+            $(".monkey").removeClass("shake shake-constant shake-slow");
+            var totalScore =  Math.floor(correctCount / testcount * 100);
+            if(totalScore == 100){
+                $("#question").html("我在【秀脑力】得"+"<span>"+totalScore+"</span>"+"分，嗯？就想问一句，还有谁！");
+                document.title = "我在【秀脑力】得"+totalScore+"分，嗯？就想问一句，还有谁！";
+            }
+            else if(totalScore >= 81){
+                $("#question").html("我在【秀脑力】得"+"<span>"+totalScore+"</span>"+"分，啥？天才长啥样，快看这里！");
+                document.title = "我在【秀脑力】得"+totalScore+"分，啥？天才长啥样，快看这里！";
+            }
+            else if(totalScore >= 61){
+                $("#question").html("我在【秀脑力】得"+"<span>"+totalScore+"</span>"+"分，耶！读得书多，欢迎来骗！");
+                document.title = "我在【秀脑力】得"+totalScore+"分，耶！读得书多，欢迎来骗！";
+            }
+            else if(totalScore >= 41){
+                $("#question").html("我在【秀脑力】得"+"<span>"+totalScore+"</span>"+"分，晕！那些年读的书，都是假的！");
+                document.title = "我在【秀脑力】得"+totalScore+"分，晕！那些年读的书，都是假的！";
+            }
+            else if(totalScore >= 1){
+                $("#question").html("我在【秀脑力】得"+"<span>"+totalScore+"</span>"+"分，啊！少壮不努力，老大控几不住我记几！");
+                document.title = "我在【秀脑力】得"+totalScore+"分，啊！少壮不努力，老大控几不住我记几！";
+            }else{
+                $("#question").html("我在【秀脑力】得"+"<span>"+totalScore+"</span>"+"分，呃！脑子是什么，好吃吗？");
+                document.title = "我在【秀脑力】得"+totalScore+"分，呃！脑子是什么，好吃吗？";
+            }
+            wechatShare();
+            $(".game-wrap .btn-area").show();
+        }
+    }
+    function showAnswers() {
+        if($(".game-wrap .btn-area").css("display") == "block"){
+            $("#gameWrap").hide();
+            $(".wechat-share-guide").hide();
+            $("#gameIndex").show();
+            var html = "";
+            for (var i = 0; i < testitems.length; i++) {
+                var testobj = testitems[i];
+                var key = $.trim(testobj["k"]);
+                var question = testobj["q"];
+                var answer = $.trim(testres[i]["a"]);
+                if (key == answer) {
+                    html = html + "<div>" + (i + 1) + "、" + question.replace("（", "").replace("）", "（" + answer + "）") + "√</div>"
+                } else {
+                    html = html + "<div>" + (i + 1) + "、" + question.replace("（", "").replace("）", "（<span style='color:#ce0000'>" + answer + "</span>）") + "X<br/>正确答案：" + key + "</div>"
+                }
+            }
+            $("#answer").html(html);
+        }else{
+            console.log("share");
+        }
+    }
+    function shareGuide(){
+        $(".wechat-share-guide").show();
+    }
+    $(".wechat-share-guide .close-btn").on('click',function(e){
+        $(".wechat-share-guide").hide();
+    });
+</script>
+
+<script>
+    autodivheight();
+    function autodivheight(){
+        var winHeight=0;
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        //通过深入Document内部对body进行检测，获取浏览器窗口高度
+        if (document.documentElement && document.documentElement.clientHeight)
+            winHeight = document.documentElement.clientHeight;
+        var currHeight = winHeight;
+        document.getElementById("gameWrap").style.height = currHeight+"px";
+        document.getElementById("gameIndex").style.height = currHeight+"px";
+    }
+    window.onresize=autodivheight;
+</script>
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    function wechatShare(){
+        var localUrl = encodeURIComponent(window.location.href.split("#")[0]);
+        $.ajax({
+            url: 'http://www.tecenet.com/api/weixin/jssdk.php?callback=cb&url=' + localUrl,
+            dataType: 'jsonp',
+            error: function () {
+            },
+            success: function (cb) {
+                if (typeof cb.timestamp != 'undefined' && typeof cb.nonceStr != 'undefined' && typeof cb.signature != 'undefined') {
+                    wx.config({
+                        debug: false,
+                        appId: cb.appId,
+                        timestamp: cb.timestamp,
+                        nonceStr: cb.nonceStr,
+                        signature: cb.signature,
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo']
+                    });
+                    wx.ready(function () {
+                        wx.onMenuShareTimeline({
+                            title: document.title,
+                            link: "http://www.tecenet.com/file/game/xiunaoli/",
+                            imgUrl: "http://www.tecenet.com/file/game/xiunaoli/images/wechat-share-icon.png",
+                            success: function () {
+                                showAnswers();
+                            }
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: document.title,
+                            desc: $("[name=description]").attr("content"),
+                            link: "http://www.tecenet.com/file/game/xiunaoli/",
+                            imgUrl: "http://www.tecenet.com/file/game/xiunaoli/images/wechat-share-icon.png",
+                            type: '',
+                            dataUrl: '',
+                            success: function () {
+                                showAnswers();
+                            }
+                        });
+                        wx.onMenuShareQQ({
+                            title: document.title,
+                            desc: $("[name=description]").attr("content"),
+                            link: "http://www.tecenet.com/file/game/xiunaoli/",
+                            imgUrl: document.title,
+                            success: function () {
+                                showAnswers();
+                            }
+                        });
+                        wx.onMenuShareWeibo({
+                            title: document.title,
+                            desc: $("[name=description]").attr("content"),
+                            link: "http://www.tecenet.com/file/game/xiunaoli/",
+                            imgUrl: "http://www.tecenet.com/file/game/xiunaoli/images/wechat-share-icon.png",
+                            success: function () {
+                                showAnswers();
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    }
+    wechatShare();
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2b363fb3d03ff9991c4971afddf8731d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<div style="display:none;">
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</div>
+</body>
+</html>

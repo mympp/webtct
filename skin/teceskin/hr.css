@@ -1,0 +1,159 @@
+﻿.mc{ margin:0 auto;}
+.webbg{background:url('image/hr/banner.jpg') center top  ;}
+.webbg2{background:url('image/hr/bg2.gif') #efefef repeat-x top center;}
+.webbg label{color:#fff}
+.webmenu{height:40px;}
+.webmenulist{width:740px;}
+.youcan{width:130px;text-align:center;line-height:43px;background:url('image/hr/youcan.gif'); }
+.youcan a{color:#ffffff;font-size:16px;font-weight:bold}
+.webmem{float:left;width:120px;height:43px;background:url('image/hr/member.gif') no-repeat left center;text-indent:5px;}
+.dropdown a:hover, .dropdown a.active {background:#328ed3;}
+.dropdown ul { position:absolute; display:none;background:#328ed3;z-index:100;}
+.dropdown ul li { float:none; margin-left:2px;background:#F7F7F7;border:2px solid #Fff;margin-right:2px;line-height:34px;height:34px;}
+.dropdown ul li a {width:185px;line-height:34px;height:34px;color:#333;}
+.dropdown ul li a:hover {background:#519e12; color:#fff;   }
+.rcolor{color:#ff0000}
+.listyes,.opyes{background:#519e12}
+.listleft h4,.dllist dt,.options dd a:hover{border-color: #519e12;}
+/*webmid28 search*/
+#webmid28 .searchBox,#webmid28 .seasubmit{border-color: #328ed3;}
+#webmid28 .seasubmit{background-color:#328ed3;}
+#webmid28  #topkws,#webmid28 #topkeyword{color: #328ed3;}
+
+.options dt{color:#222;font-weight:bold;font-size:15px;width:110px;}.options dd{margin-left:115px; max-width: 840px;overflow:hidden;}
+.options dd a{margin-right:5px;border-bottom:#fff solid 2px;white-space: normal;display: inline-block;}
+.options dd a:hover{border-bottom:#328ed3 solid 2px;color:#2b446f}
+.opyes{background:#328ed3;}
+.searchtool{width:990px;height:50px;overflow:hidden}
+.searcha input{border:1px solid #ddd;line-height:30px;height:30px;padding:5px;font-size:16px;background:#fff;color:#666;width:290px;}
+.searchb{margin-right:10px;}
+.searchb input{background:#339900 url('image/hr/search.png') center center no-repeat;width:80px;height:42px;}
+.searchc input{width:80px;border:1px solid #ddd;line-height:42px;height:42px;background:#eee;font-size:16px;;cursor:pointer;}
+.searchd input{margin-left:2px;width:76px;border:1px solid #ddd;line-height:42px;height:42px;background:#eee;font-size:16px;cursor:pointer;;}
+.searche{margin-right:15px;padding-top:5px;padding-left:10px;}
+.searche label{margin-left:5px;font-size:14px;;line-height:30px;height:30px;cursor:pointer;}
+.searche input{;width:20px;height:20px;}
+.searchf{width:220px;text-align:center}
+.indexleft{width:216px;background:#222;}
+.indexlefttitle{background:#339900;font-size:18px;color:#fff;padding:5px;margin-bottom:5px;}
+#areas li a:link,#areas li a:visited{color:#fff}
+#areas li a:hover{color:#ff6600}
+.indexright{width:764px;}
+.areacount{padding-top:10px;}
+.areacount dt{font-size:16px;color:#444;;border-bottom:1px dotted #ddd;line-height:24px;font-weight:bold;}
+.areacount dd{padding-left:5px;padding-right:5px;}
+.areacount dd p{line-height:24px}
+.gglist dt{font-size:16px;color:#339900;border-bottom:1px dotted #a0cd7c;font-weight:bold;}
+.gglist dd{padding-left:10px;line-height:26px;font-size:14px;height:120px;}
+
+#brandlist{padding:5px;}
+#brandlist li{line-height:50px;height:50px;border-bottom:1px dotted #ccc;}
+#artlist li{border-bottom:1px dotted #ccc;}
+
+
+#CSSBox ul li {height:125px;}
+#CSSBox ul li{float:left;;padding-top:15px;width:120px;overflow:hidden;text-align:Center}
+#CSSBox ul li  img{padding:1px;background:#fff}
+#CSSBox ul li  a:link img,.brand a:visited img,.brand a:active img{border:1px solid #ddd;}
+#CSSBox ul li  a:hover img{border:1px solid #f59d0a;background:#fbda82}
+#CSSBox ul li div{ display:block; text-align:center; font-size:14px;}
+.greenbg{background:#519e12;}
+/*进程条效果开始*/
+.jc{width:974px;height:293px;border:0px;background:#e4e4e4 url('image/job/jc.jpg') top center repeat-x;padding:0px;}
+#jcb{height:60px;padding-top:26px;padding-left:50px;}
+#jcb li{float:left;margin-left:50px;line-height:30px;height:30px;text-align:center;padding-top:45px;background:url('image/job/jc1.png') center top no-repeat;font-size:14px;}
+
+.w530{width:530px;}.w230{width:230px;}.w520{width:520px;}
+#sidebar{height:auto;}
+#sidebar h3{padding-left:5px;letter-spacing:0px;}
+.sidelist{position:relative;z-index:10;height:43px;width:216px;margin-left:0px;margin-bottom:2px;}
+.sidelist dt{margin:0px;background:url('image/jt2.gif') no-repeat 200px center;}
+.sidelist span h3{margin:0px;;position:relative;z-index:11;height:40px;line-height:40px;font-size:14px;font-weight:normal;color:#fff}
+.i-list{display:none;position:absolute;z-index:10;left:216px;top:0px;width:600px;height:auto;padding:5px;background:#fff;border:1px solid #339900;}
+.i-list h5{line-height:30px;height:30px;border-bottom:1px solid #ffcc00;font-weight:normal;font-size:14px;margin-bottom:5px;margin-top:0px;}
+.i-list ul{width:600px;padding:5px 5px 5px 5px;margin:0px;margin-top:-5px;}
+.i-list ul li{width:280px;text-align:left;background-position: center 20px;background-repeat:no-repeat;float:left;margin-top:5px;margin-right:5px;margin-bottom:10px;font-size:14px;}
+.i-list ul li span{font-size:10px;color:#8f8f8f;margin-left:5px;}
+.sidead{text-align:center;width:445px;background:#e4e4e4;line-height:55px;height:55px;font-size:12px;margin-top:10px;border:1px solid #eee}
+.treehover{border:1px solid #339900;border-right:0;border-left:4px solid #339900;background:url('image/jt1.gif') no-repeat 200px center;background-color:#ffffff;width:208px;}
+.treehover a{color:#339900;}
+.treeout{width:212px;}
+.treeout a{color:#fff}
+.arrow1{background:url('image/jt1.gif') no-repeat center;;padding-left:14px;height:40px;float:right;margin-right:6px;}
+.count{height:50px;padding-top:10px;padding-bottom:10px;}
+.count li{height:50px;font-size:14px;float:left;margin-right:10px;width:180px;}
+.count li span{font-size:22px;color:#ff6600;padding:3px;}
+.count img{vertical-align:bottom}
+
+.listresume{padding:5px;padding-top:0px;}
+.listresume li{border-bottom:1px dashed #ddd;padding-top:15px;padding-bottom:15px;}
+.listresume dd{float:left;overflow:hidden;height:84px;}
+.listresume dd p{font-size:12px;line-height:18px;color:#797979;padding-left:10px;font-family:"宋体";}
+.listresume dt em{font-size:10px}
+.resumedd1{width:430px;}.resumedd2{width:160px;background:#f5f7f8}
+.resumedd2 ul{margin:0px;}
+.resumedd2 li{line-height:24px;padding:0px;font-size:14px;text-align:center;border:0px;}
+.resumedd2 li a{float:left;margin-left:10px;width:60px;font-size:12px;line-height:16px;height:16px;padding:3px;}
+.w600{width:600px;}
+.resumepic{width:82px;height:104px;padding-top:1px;line-height:14px;text-align:center;overflow:hidden}
+.resumetop{background:url('image/job/resumetop.jpg') top center no-repeat;height:228px;}
+.resumetitle{height:60px;}
+.resumetitle span{background:rgba(255, 255, 255, 0.2) none repeat scroll 0 0 !important;filter:Alpha(opacity=20);background-color:#ffffff;width:70px;height:30px;line-height:30px;color:#fff;margin-top:-45px;text-align:center;}
+.resumetitle span a{position:relative;line-height:30px;font-size:16px;color:#fff}
+.resumetitle h1{font-size:22px;font-weight:normal;line-height:60px;height:60px;margin:0px;color:#222;position:relative;text-indent:10px;}
+.resumetopinfo{height:140px;background:rgba(255, 255, 255, 0.5) none repeat scroll 0 0 !important;filter:Alpha(opacity=50); background:#fff;}
+.resumetopinfo div{position:relative;}
+.resumethumb{height:140px;width:140px;background:#d1d1d1 url('image/job/resumepic.png') center center no-repeat;text-align:center}
+.resumethumb div{padding-top:90px;height:16px;;font-size:12px;color:#fff}
+.resumememo{width:750px;}
+.resumememo dl{padding:10px;margin:0px;height:75px;}
+.resumememo dt{font-size:18px;color:#444;line-height:30px;height:30px;}
+.resumememo font{margin-left:10px;font-size:12px;}
+.resumememo dd{margin-left:10px;line-height:26px;height:26px;float:left;font-size:12px;}
+.resumesel{width:100px;color:#222;}
+.resumeapply{margin-top:15px;width:100px;height:40px;}
+.resumeapply li{float:left;line-height:22px;margin-left:10px;text-align:right;padding-right:10px;}
+.resumeapply li font{font-size:18px;}
+.resumeselt{margin-top:10px;width:100px;}
+.resumeselt li{margin-top:5px;}
+.resumemenu{background:#a5c1e0;height:33px;width:995px;}
+.resumemenu ul{width:980px;background:url('image/job/nuli.png') right center no-repeat;height:33px;}
+.resumemenu ul li{float:left;margin-right:30px;padding-top:6px;font-size:14px;color:#fff;line-height:24px;margin-left:5px;}
+.resumemenu a:link{color:#325096}
+.resumemenu a:visited{border-bottom:2px solid #fff;color:#fff}
+.resumemenu a:hover,.resumemenu a:active {border-bottom:2px solid #fff;color:#fff}
+.validated dt{float:left;font-size:14px;margin-right:10px;font-weight:normal;color:#3577a6}.validated dd{float:left}
+.shield{background:#f7f7f7;width:975px;height:30px;line-height:30px;}
+.shield dl{float:left}.shield dt{color:#666;font-size:12px;padding-top:2px;;}
+.h1{font-size:28px;padding:15px 0px 15px 0px;font-weight:bold;line-height:34px;}
+.yxtime .shixiao{width:213px;;background:url('image/job/overjob.jpg') right center no-repeat;height:102px;}
+.yxt2{width:213px;;background:url('image/job/overtime.jpg') right center no-repeat;height:102px;}
+.yxt2 p{padding-top:34px;font-size:38px;color:#ffffff;letter-spacing:48px;text-indent:24px;font-weight:bold}
+.yxt3{width:213px;;background:url('image/job/overtime3.jpg') right center no-repeat;height:102px;}
+.yxt3 p{padding-top:34px;font-size:38px;color:#ffffff;letter-spacing:24px;text-indent:12px;font-weight:bold}
+.contentleft .dllist dt{border-bottom:none;background:#f8f8f8}.contentleft .tableth{color:#4c4c4c}
+.contentleft .dllist dd{padding-bottom:30px;}
+.xuanding{margin-left:-85px;margin-top:40px;}
+
+/*人才服务页面*/
+	.hr_banner{margin:8px 0px;height:630px;border:1px solid #ccc;letter-spacing:1px;}
+	.hr_banner h1{text-align: center;margin:22px auto;}
+	.hr_banner dl{float:left;width:410px;padding:15px 35px;}
+	.hr_banner dl dt{float:left;width:64px;}
+	.hr_banner dl dt img{width:64px;height:64px;}
+	.hr_banner dl dd{width:330px;float:left;margin-left:16px;}
+	.hr_banner dl dd h4{margin-bottom:12px;margin-top:0px;font-size:16px;font-weight:600;}
+	.hr_banner dl dd span{line-height:24px;font-size:14px;} 
+.webw .clear{line-height:25px;}     /* ie，火狐在友情连接下增加间距,不对谷歌起作用*/
+/*简历页面*/
+.w_half{width:50%;}
+.w_one_third{width:33%;}
+.font16{font-size:16px;}
+.resume_content_list{}
+.resume_content_list dl{}
+.resume_content_list dl dt{padding:8px;height:15px;}
+.resume_content_list dl dd{height:auto;margin-left:24px;border-top:1px dashed #ccc;}
+.resume_content_list dl ul li{float:left;height:22px;padding:2px 0;line-height:22px;}
+.resume_content_list .pointer{float:left;font-size:14px;}
+.resume_content_list .list_content{line-height: 18px;padding: 6px 0;}
+

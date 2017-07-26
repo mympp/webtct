@@ -1,0 +1,256 @@
+{php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'tc.chanpin.base.css',DT_SKIN.'tc.chanpin.list.css']}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/mall/tc.chanpin.list.js'];}
+{php $link_area_title = !empty($areaid) ? $childarea['areaname'] : '全国';}
+<?php 
+if(!empty($catid)){
+	$link_cat_title = !empty($catid) ? $CATEGORY[$catid] : '医疗器械';
+}elseif(!empty($kcatid)){
+	$link_cat_title = !empty($kcatid) ? $KESHI[$kcatid].'医疗器械' : '医疗器械';
+}else{
+	$link_cat_title = '医疗器械';
+} 
+$areaname = area_pos($areaid,'-');
+if($action == 'keshi'){
+	$ztitle_keshi = empty($kcatid) ? '科室' : $KESHI[$kcatid];
+	$ztitle_stype = empty($stype) ? '产品' : $stypes['stype'];
+	$ztitle = $areaname.$ztitle_keshi.'医疗器械'.$ztitle_stype.'，科室医疗器械大全-医疗器械产品库-天成医疗器械网';
+	$zkeywords = $areaname.$ztitle_keshi."医疗器械".$stypes[$stype]."，".$ztitle_keshi.$stype[$stype]."价格,".$ztitle_keshi."医疗器械产品";
+	$zdescription = '科室医疗器械产品，就上天成医疗器械网，为你找到'.$item['c'].'件科室医疗器械产品。天成医疗器械网产品库，提供各个科室的医疗器械设备产品报价，图片，批发采购等信息。';
+}
+if($action == 'search'){
+	if(!empty($selector)) $ztitle = "$areaname".$CATEGORY[$catid].$stypes[$stype]."-医疗器械产品库-天成医疗器械网";
+	if(!empty($selector)) $zkeywords = $areaname.$CATEGORY[$catid].$stypes[$stype].",".$CATEGORY[$catid].$stypes[$stype]."价格,".$CATEGORY[$catid]."产品";
+	if(!empty($selector)) $zdescription = $areaname.$CATEGORY[$catid].$stypes[$stype]."产品,上天成医疗器械网,为您找到".$item[c]."件".$areaname.$CATEGORY[$catid].$stypes[$stype]."的产品参数，报价，供应批发等信息。天成医疗器械网产品库，提供".$areaname."各类医疗器械产品信息。";
+}
+?>
+{template 'module-header'}
+
+<!--container-->
+<div class="container">
+    <!--crumb-->
+    <div class="crumb ">
+        <a href="{DT_PATH}">天成医疗网首页</a><span>&gt;</span>
+        <a href="{$MODULE[16]['linkurl']}">产品库</a>
+    </div>
+    <!--crumb end-->
+
+    <!--selector-->
+
+{php $link_stype_title = !empty($stype) ? $stypes[$stype] : '';}
+    <div class="selector">
+    	{if $action == 'search'}
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>医疗器械分类：</span>
+            </div>
+            <div class="sl-value">
+                <ul class="sl-v-list sl-v-list-row2 sl-v-list-qixie">
+                	{php $cat_selector = $selector;}
+                	<?php if(!empty($catid)) unset($cat_selector['catid']); ?>
+                    <li {if empty($catid)}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{mall_cat_rewrite($cat_selector)}" target="_self" title="{$link_area_title}{$link_cat_title}{$link_stype_title}">不限</a></li>
+                    {loop $first_cat $k $t}
+                    	{php $cat_selector['catid'] = $t['catid'];}
+                    	<li {if $catid == $t['catid']}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{mall_cat_rewrite($cat_selector)}" target="_self" title="{$link_area_title}{$t['catname']}{$link_stype_title}">{$t['catname']}</a></li>
+                    {/loop}
+                </ul>
+                {if !empty($second_cat)}
+                <ul class="sl-v-list sl-v-sub-list">
+                	{loop $second_cat $k $t}
+                		{php $cat_selector['catid'] = $t['catid'];}
+                    	<li {if $catid == $t['catid']}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{mall_cat_rewrite($cat_selector)}" target="_self" title="{$link_area_title}{$t['catname']}{$link_stype_title}">{$t['catname']}</a></li>
+                    {/loop}
+                </ul>
+                {/if}
+                <a class="sl-value-more" onclick="slValShowMore(this)" href="javascript:;">更多</a>
+            </div>
+        </div>
+        {/if}
+
+		{if $action == 'keshi'}
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>医院科室分类：</span>
+            </div>
+            <div class="sl-value">
+                <ul class="sl-v-list sl-v-list-row2 sl-v-list-keshi">
+                	{php $kcatid_selector = $selector;}
+                	{php unset($kcatid_selector['kcatid']);}
+                    <li {if empty($kcatid)}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{keshi_rewrite($kcatid_selector)}" target="_self" title="{$link_area_title}{$link_stype_title}">不限</a></li>
+                    {loop $first_keshi $k $t}
+                    {php $kcatid_selector['kcatid'] = $k;}
+                    <li {if $kcatid == $k}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{keshi_rewrite($kcatid_selector)}" title="{$link_area_title}{$t}{$link_stype_title}">{$t}</a></li>
+                    {/loop}
+                </ul>
+                <a class="sl-value-more" onclick="slValShowMore(this)" href="javascript:;">更多</a>
+            </div>
+        </div>
+		{/if}
+
+         <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>所在地区：</span>
+            </div>
+            {if $areaid}
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $areaid_selector = $selector;}
+                	{php $area_parentid = $childarea['parentid'] == 0 ? $areaid : $childarea['parentid'];}
+                	{php unset($areaid_selector['areaid']);}
+                    <li><a href="{$MODULE[16]['linkurl']}{link_rewrite($areaid_selector)}" title="全国{$link_cat_title}{$link_stype_title}">不限</a></li>
+                    {php $areaid_selector['areaid'] = $area_parentid;}
+                    <li class="current"><a href="{$MODULE[16]['linkurl']}{link_rewrite($areaid_selector)}" title="{$link_area_title}{$link_cat_title}{$link_stype_title}">{area_pos($area_parentid)}</a>
+                    {php unset($areaid_selector['areaid']);}
+                    <a href="{$MODULE[16]['linkurl']}{link_rewrite($areaid_selector)}" class="clear-option" title="{$link_area_title}{$link_cat_title}{$link_stype_title}">×</a></li>
+                </ul>
+                {php $secondarea = tag("table=area&fields=areaid,areaname&condition=parentid=$area_parentid&pagesize=34&template=null&debug=0")}
+                {if $secondarea}
+                <ul class="sl-v-list sl-v-sub-list">
+                	{php $areaid_selector = $selector;}
+                	{loop $secondarea $sk $sv}
+                	{php $areaid_selector['areaid'] = $sv['areaid'];}
+                    <li {if $areaid == $sv['areaid']} class="current"{/if}><a href="{$MODULE[16]['linkurl']}{link_rewrite($areaid_selector)}" title="{$sv['areaname']}{$link_cat_title}{$link_stype_title}">{$sv['areaname']}</a></li>
+                    {/loop}
+                </ul>
+                {/if}
+            </div>
+            {else}
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $areaid_selector = $selector;}
+                	<?php if(isset($areaid_selector['areaid'])) unset($areaid_selector['areaid']); ?>
+                    <li {if $areaid == 0} class="current"{/if}><a href="{$MODULE[16]['linkurl']}{link_rewrite($areaid_selector)}" title="{$link_area_title}{$link_cat_title}{$link_stype_title}">不限</a></li>
+                    {php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}
+                    {loop $mainarea $k $t}
+                    {php $areaid_selector['areaid'] = $t['areaid'];}
+                    <li {if $areaid == $t['areaid']} class="current"{/if}><a href="{$MODULE[16]['linkurl']}{link_rewrite($areaid_selector)}" title="{$t['areaname']}{$link_cat_title}{$link_stype_title}">{$t['areaname']}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+            <a class="sl-value-more" onclick="slValShowMore(this)" href="javascript:;">更多</a>
+            {/if}
+        </div>
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>属性分类：</span>
+            </div>
+            <div class="sl-value">
+                <ul class="sl-v-list">
+                	{php $stype_selector = $selector;}
+                	{php unset($stype_selector['stype'])}
+                    <li  {if empty($stype)}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{link_rewrite($stype_selector)}" title="{$link_area_title}{$link_cat_title}" target="_self">不限</a></li>
+                    {php $stype_selector['stype'] = 1;}
+                    <li {if $stype == 1}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{link_rewrite($stype_selector)}" title="{$link_area_title}{$link_cat_title}整机" target="_self">整机</a></li>
+                    {php $stype_selector['stype'] = 2;}
+                    <li {if $stype == 2}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{link_rewrite($stype_selector)}" title="{$link_area_title}{$link_cat_title}配件" target="_self">配件</a></li>
+                    {php $stype_selector['stype'] = 3;}
+                    <li {if $stype == 3}class="current"{/if}><a href="{$MODULE[16]['linkurl']}{link_rewrite($stype_selector)}" title="{$link_area_title}{$link_cat_title}耗材" target="_self">耗材</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sl-wrap">
+            <div class="sl-key pull-left">
+                <span>精准搜索：</span>
+            </div>
+            <div class="sl-value">
+                <form class="search-frm" action="{$MODULE[16]['linkurl']}{$action}.php">
+                	{loop $selector $k $t}
+                	<input type="hidden" name="{$k}" value="{$t}" />
+                	{/loop}
+                    <input type="text" class="s-frm-input" name="kw" value="{$kw}">
+                    <input type="submit" class="s-frm-submit tc-list-i" value="搜索">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--selector end-->
+    <!--sort-tags-->
+    <div class="sort-tags clearfix">
+        <div class="sort-item sort-item-down current pull-left"><a href="javascript:;" target="_self">发布时间<i class="tc-list-i"></i></a></div>
+        <ul class="sort-tags-list clearfix pull-right">
+        	{php $vip_selector = $selector;}
+        	{php $vip_selector['validated'] = empty($validated) ? 1 : 0 ;}
+            <li><a href="{link_rewrite($vip_selector)}"><i class="tc-list-i sort-check"></i>认证推荐厂商</a></li>
+        </ul>
+    </div>
+    <!--sort-tags end-->
+
+    <!--cp-list-layout-->
+    <div class="cp-list-layout clearfix">
+        <!--main-->
+        <div class="main pull-left">
+        {if $malls}
+            <form method="post" id="mallForm" class="clearfix" target="_blank" action="{$MODULE[16]['linkurl']}compare.php">
+            	{loop $malls $k $t}
+                <div class="cp-card cp-img-card">
+                    <div class="cp-img"><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank"><img src="{$t['thumb']}" alt="{$t['title']}" onerror="javascript:this.src='{DT_SKIN}image/tip/nopic-md-4-3.png';"></a></div>
+                    <div class="cp-txt">
+                        <h3 class="text-overflow"><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank">{$t['title']}</a></h3>
+                        <p class="cp-cmp text-overflow"><a href="{str_replace('www',$t['username'],DT_PATH)}" target="_blank">{$t['company']}</a></p>
+                        <p class="cp-area"><a href="{$MODULE[16]['linkurl']}{link_rewrite(['areaid'=>$t['areaid']])}" title="{area_pos($t['areaid'],'')}医疗器械">{area_pos($t['areaid'],'/')}</a></p>
+                    </div>
+                    <div class="cp-btn">
+                        <label class="compare-btn" for="check_{$t['itemid']}"><input type="checkbox" id="check_{$t['itemid']}" name="itemid[]" value="{$t['itemid']}">对比</label>
+                        <a class="cheaper-btn" href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank">详细</a>
+                    </div>
+                </div>
+                {/loop}
+            </form>
+            {pagination($page,$items['c'],$pagesize,$MODULE[16]['linkurl'].$action.'.php',$selector,$pagination_func,$MODULE[16]['linkurl'])}
+        {else}
+        	{template 'empty-result','chip'}
+        	{php $parentid = $area->field('arrchildid')->where(['areaid'=>$childarea['parentid']])->one();}
+           		<?php if(!empty($parentid)){
+           				$inCondition['areaid'] = $parentid['arrchildid'];
+           			}else{
+           				$inCondition = [];
+           			}
+           			$epagesize = $typeid == 1 ? 4 : 8;
+           		?>
+            	{php $expand = $mall_db->where($condition)->where($inCondition,'in')->where($gtCondition,'>')->where($neqCondition,'<>')->likeWhere($likeCondition)->limit(0,$epagesize)->select();}
+            	
+            	{if $expand}
+                <div class="search-no-result-ft">
+                    猜你喜欢
+                </div>
+                {/if}
+            
+            {if $expand}
+            	{loop $expand $k $t}
+                <div class="cp-card cp-img-card">
+                    <div class="cp-img"><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank"><img src="{$t['thumb']}" alt="{$t['title']}" onerror="javascript:this.src='{DT_SKIN}image/tip/nopic-md-4-3.png';"></a></div>
+                    <div class="cp-txt">
+                        <h3 class="text-overflow"><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank">{$t['title']}</a></h3>
+                        <p class="cp-cmp text-overflow"><a href="{str_replace('www',$t['username'],DT_PATH)}" target="_blank">{$t['company']}</a></p>
+                        <p class="cp-area"><a href="{$MODULE[16]['linkurl']}{link_rewrite(['areaid'=>$t['areaid']])}" title="{area_pos($t['areaid'],'')}医疗器械">{area_pos($t['areaid'],'/')}</a></p>
+                    </div>
+                </div>
+                {/loop}
+            {/if}
+        {/if}
+        </div>
+        <!--main end-->
+
+        {template 'search-side',$module}
+
+    </div>
+    <!--cp-list-layout end-->
+
+</div>
+<!--container end-->
+
+<!--对比框-->
+<div class="compare-box" style="display: none;">
+    <div class="compare-box-hd">
+        <span>[<em></em>/4]对比框</span>
+        <button class="compare-box-close" type="button" onclick="$(this).parent().parent('.compare-box').hide();">×</button>
+    </div>
+    <div class="compare-box-bd">
+        <ul></ul>
+    </div>
+    <div class="compare-box-ft">
+        <button type="button" class="compare-box-btn">开始对比</button>
+    </div>
+</div>
+<!--对比框 end-->
+
+{template 'footer2017'}

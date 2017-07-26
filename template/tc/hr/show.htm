@@ -1,0 +1,167 @@
+{php $sitemenu='hr';$listpage='list';$mlogo=$DT_SKIN.'hr/blogo.png';}
+{template 'header'}
+{template 'lay','tag'}	
+{php $r = $db->get_one("select COUNT(*) AS num from {$db->pre}hr_job_talent t LEFT JOIN {$db->pre}hr_job r ON t.talentid=r.itemid wher&#101; r.itemid=$itemid");}
+{php $com= $db->get_one("select * from {$db->pre}company wher&#101; username='$username' and closeshop=0");}
+{php $talent=$r['num'];}
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<script type="text/javascript">Dd('catsl').className='menuy';</script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+<div class="whitebg pd10 autoheight">
+<div class="shield color"><div style="padding-left:5px;float:left;margin-right:20px;">时间期限 {str_replace('-','/',$editdate)} - {str_replace('-','/',$todate)} <i class="ml10 hcolor">(招聘信息编号：{$itemid})</i></div>{template 'va', 'chip'}</div>
+<div class="divline"></div>
+<div class="fl autoheight" style="width:760px;">
+	<h1 class="h1">{$title}</h1>
+	<table cellpadding="6" cellspacing="1" border=0 class="xuans"><tr><th>待遇</th><td width="680"><span class="hcolor fr f12"><a href="{if $com[linkurl]}{$com[linkurl]}{else}#{/if}" target="_blank" class="bcolor " title="点击进入">{$company} 详细了解</a></span>
+	<b class="f24" style="height:24px;line-height:24px;">
+	{if $username}{if $minsalary && $maxsalary}{$minsalary}-{$maxsalary}{$DT[money_unit]}{elseif $minsalary}{$minsalary}{$DT[money_unit]}以上{elseif $maxsalary}{$maxsalary}{$DT[money_unit]}以内{else}面议{/if}{/if}</b>
+	</td></tr></table>
+</div>
+<div class="yxtime fl">
+{php  $date1=date("Y-m-d");}
+{php  $time1=strtotime($date1);}
+{php  $overtime=intval(($totime-$time1)/60/60/24);}
+	{if $totime=='0'}
+	<div class="youxiao" id="jobstatus"><img src="{DT_SKIN}image/job/forever.jpg"></div>
+	{elseif $totime>0 && $overtime>0}
+	<div>
+		{if $overtime<100&&$overtime>10}
+		<div class="yxt2"><p>{$overtime}</p></div>
+		{elseif $overtime<10&&$overtime>0}
+		<div class="yxt2"><p>0{$overtime}</p></div>
+		{else}
+		<div class="yxt3"><p>{$overtime}</p></div>
+		{/if}
+	</div>
+	{else}<div class="shixiao {$overtime}"></div>{/if}
+</div>
+<div class="divline"></div>
+
+
+<div class="contentleft autoheight"> 
+<dl class="dllist">
+
+
+
+<dt class="bcolor"><span class="fr" style="line-height:12px;">{template 'baidu', 'chip'}</span>招聘职位介绍<br class='clear'></dt>
+<dd>
+<table cellpadding="6" cellspacing="1" width="98%" bgcolor="#ffffff" align="center" class="table">	
+		<tr bgcolor="#FFFFFF">
+		<td width="80">&nbsp;行业分类</td>
+		<td width="230">&nbsp;{$CATEGORY[$parentid][catname]}</td>
+		<td width="80">&nbsp;职位分类</td>
+		<td width="230">&nbsp;{$CATEGORY[$catid][catname]}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;招聘部门</td>
+		<td>&nbsp;{$department}</td>
+		<td>&nbsp;招聘人数</td>
+		<td>&nbsp;{if $total}{$total}人{else}若干{/if}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;工作地区</td>
+		<td>&nbsp;{area_pos($areaid, '')}</td>
+		<td>&nbsp;工作性质</td>
+		<td>&nbsp;{$TYPE[$type]}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;性别要求</td>
+		<td>&nbsp;{$GENDER[$gender]}</td>
+		<td>&nbsp;婚姻要求</td>
+		<td>&nbsp;{$MARRIAGE[$marriage]}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;学历要求</td>
+		<td>&nbsp;{$EDUCATION[$education]}</td>
+		<td>&nbsp;工作经验</td>
+		<td>&nbsp;{if $experience}{$experience}年以上{else}不限{/if}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;年龄要求</td>
+		<td>&nbsp;{if $minage && $maxage}{$minage}-{$maxage}岁{elseif $minage}{$minage}岁以上{elseif $maxage}{$maxage}岁以内{else}不限年龄{/if}</td>
+		<td>&nbsp;待遇水平</td>
+		<td>&nbsp;{if $minsalary && $maxsalary}{$minsalary}-{$maxsalary}{$DT[money_unit]}/月{elseif $minsalary}{$minsalary}{$DT[money_unit]}/月以上{elseif $maxsalary}{$maxsalary}{$DT[money_unit]}/月以内{else}面议{/if}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td>招聘进程</td>
+			<td>&nbsp;{get_field_value('hr_job','step',$step)}</td>
+			<td>&nbsp;公司性质</td>
+			<td>&nbsp;{get_field_value('hr_job','nature',$nature)}</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+			<td>&nbsp;公司福利</td>
+			<td colspan="3">&nbsp;
+			{php $welfare_arr=explode(',',$welfare);}
+			{loop $welfare_arr $k $v}
+			{get_field_value('hr_job','welfare',$v)}&nbsp;
+			{/loop}
+			</td>
+		</tr>
+		<tr bgcolor="#FFFFFF">
+		<td>&nbsp;更新日期</td>
+		<td>&nbsp;{$editdate}</td>
+		<td>&nbsp;有效期至</td>
+		<td>&nbsp;{$todate}{if $expired}<span class="f_red">[已过期]</span>{/if}</td>
+		</tr>
+		</table>
+
+<div style="text-align:center;background:url('{DT_SKIN}image/hr/jc.jpg') center top no-repeat;height:165px;">
+<table cellpadding="0" cellspacing="1" align="center"  border=0>	
+<tr>
+	<td   align="center" height="80" colspan=3>
+	</td>
+</tr>
+<tr>
+	<td height=35  align="center" width="80">
+	<span class="wcolor f18 ">{$apply}</span>
+	</td>
+	<td height=35  align="center" width="386">
+	<span class="wcolor f18 ">{$talent}</span>
+	</td>
+	<td height=35  align="center" width="80">
+	<span class="wcolor f18 " ><font class='hits'>{$hits}</font></span>
+	</td>
+</tr>
+</table>
+<div class="divline"></div>
+<table cellpadding="0" cellspacing="1" align="center"  border=0 style="margin-top:-80px;">	
+<tr>
+<td width=100 class="pl10" id="baomin"  align="center">
+{if $_userid}<!-- 是否会员 -->
+		{php $r =getsqldata("*","{$db->pre}hr_resume","username='".$_username."'",10);}
+		{if $r[0]['status']!=3}
+		<a href="javascript:void(0);" onclick="msgtip('简历投递','<b>不能应聘的其中一个原因：</b><br> · 或者你还未注册成为本站会员并发布简历!<br> · 或者您的简历在审核中!<br> · 或者简历没有通过审核')"  rel="nofollow" ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+		{else}
+		<a href="javascript:void(0);" onclick="msgdiv('jobbox','简历投递','{$MOD[linkurl]}{rewrite('apply.php?itemid='.$itemid)}')"   rel="nofollow" ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+		{/if}
+{else}
+
+<a href="javascript:void(0);" onclick='msgtip("您好！登陆提示！","要投递简历！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>并创建简历")'    rel="nofollow" ><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a>
+{/if}
+</td>
+<td width=340 class="pl10"  align="center"><a    {if $_userid}href="javascript:Dd('info_favorite').submit();" {else}href="javascript:void(0);" onclick='msgtip("您好！登陆提示！","会员收藏夹，您需要登录本站！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>")'  {/if}   rel="nofollow"><img src="{DT_SKIN}image/blank.gif" width=98 height=98></a></td>
+<td width=100 class="pl10"  align="center"></td>
+</tr>
+</table>
+</div>
+</dd>
+<dt class="bcolor">职位招聘详细内容</dt>
+<dd>
+<div class="content" id="content">
+            {if $_userid}
+	            {$content}	
+			{else}
+				{xcontent($content,'*','1,3,5,7,9')}
+			{/if}</div>
+<br class="clear" />
+</dd>
+</dl>
+</div>
+<div class="contentright ml5">
+{php $tag_condition="table=hr_job&condition=status>2 and username='$username'&pagesize=14&order=itemid desc&template=null&debug=0"}
+{template 'contentright', 'chip'}
+</div>
+<br class="clear">
+</div>
+{template 'fav','chip'}
+{template 'footer'}

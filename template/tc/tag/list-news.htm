@@ -1,0 +1,6 @@
+{loop $tags $z $t}
+{if !$width}
+{php $width='215';}
+{/if}
+                 <li class="pt10" id="c{$t[catid]}{$z}" onmouseover="this.className='whitebg pt10'" onmouseout="this.className='pt10'"><p class="lenstr" style="width:{$width}px;"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><i class='mr5 {if $hot}ocolor{else}bcolor{/if}'>{$z+1}.</i>{$t[title]}</a></p></li>
+{/loop}

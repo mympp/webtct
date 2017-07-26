@@ -1,0 +1,1 @@
+<?php exit;?>1466433360a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201407/08/14-43-36-68-8.png";s:7:"linkurl";s:30:"http://rongfuqiya.tecenet.com/";s:7:"company";s:36:"上海茸富气压设备有限公司";}}

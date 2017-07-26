@@ -1,0 +1,57 @@
+{template 'header', $template}
+{if $itemid}
+<div class="product_main">
+		<div class="product_main_title"><div class="product_main_title_content">&rarr;&nbsp;{$title}&nbsp;&larr;</div></div>
+		<div class="product_main_content">
+			<div class="product_main_content_left">
+				<div class="big_img"><img src="{$albums[0]}" width="93%" height="90%"/></div>
+				<div class="u">
+					<ul>
+						{loop $thumbs $k $v}
+						<li><a href="#"><img src="{$v}" width="90%" height="90%"/></a></li>
+						{/loop}	
+					</ul>
+				</div>
+			</div>
+			<div class="product_main_content_right">
+				<table>
+					<tr><td width="100" class="s">名&nbsp;&nbsp;&nbsp;称：</td><td>{$title}</td></tr>
+					<tr><td class="s">单&nbsp;&nbsp;&nbsp;价：</td><td>￥<span style="color:#FF0000">&nbsp;{$price}</span></td></tr>
+					<tr><td class="s">品&nbsp;&nbsp;&nbsp;牌：</td><td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填写{/if}</td></tr>
+					<tr><td class="s">所在地：</td><td>{area_pos($areaid, '')}</td></tr>
+					<tr><td class="s">销&nbsp;&nbsp;&nbsp;量：</td><td>累积售出<span style="color:#FF9900;">&nbsp;{$sales}&nbsp;</span>件，<span style="color:#FF9900;">&nbsp;{$orders}&nbsp;</span>个订单</td></tr>
+					<tr><td class="s">评&nbsp;&nbsp;&nbsp;价：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$comments}&nbsp;</span>条评价</td></tr>
+					<tr><td class="s">库&nbsp;&nbsp;&nbsp;存：</td><td>还剩出<span style="color:#FF9900;">&nbsp;{$amount}&nbsp;</span>件</td></tr>
+					<tr><td class="s">人&nbsp;&nbsp;&nbsp;气：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$hits}&nbsp;</span>人关注</td></tr>
+					<tr><td class="s">更&nbsp;&nbsp;&nbsp;新：</td><td>{$editdate}</td></tr>
+				</table>
+				<table style="margin-top:20px;float:left;">
+					<tr><td width="150"><img alt="立即购买" src="{DT_SKIN}image/btn_tobuy.gif" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');" style="cursor:pointer;"/></td><td><img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" onclick="Go('{$MOD[linkurl]}{rewrite('cart.php?itemid='.$itemid)}');" style="cursor:pointer;"/></td></tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="details_parameter">
+		<div class="product_main_title"><div class="product_main_title_content">&rarr;&nbsp;详细参数&nbsp;&larr;</div></div>
+		<div class="parameter_content">
+			{$content}
+		</div>
+	</div>
+{else}
+<div class="list_product">
+		<div class="list_title"><div class="title_content">&rarr;&nbsp;产品中心&nbsp;&larr;</div></div>
+		<div class="list_product_content">
+			<div class="list_product_content_con">
+				{loop $lists $k $v}
+				{if $k<15}
+				<div class="img_content" style="margin-left:7px;"><a href="{$v[linkurl]}" title="{$v[title]}"><img src="{imgurl($v[thumb], 1)}" width="250" height="240"/></a><br/><a href="{$v[linkurl]}">{dsubstr($v[title],20,'...')}</a><br/><span>￥{$v[price]}</span>
+				</div>
+				{/if}
+				{/loop}
+			<div class="pages">{$pages}</div>
+			</div>
+		</div>
+		
+</div>
+{/if}
+{template 'footer', $template}

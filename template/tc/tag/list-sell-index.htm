@@ -1,0 +1,18 @@
+<ul class="selllists">
+{php $TYPE = explode('|', trim($stype));}
+{loop $tags $k $t}
+<li class="autoheight">
+<table>
+<tr>
+	{if $t[thumb]}<td width="60"><a href="{$t[linkurl]}" target="_blank"  title="{$t[alt]}"><img src="{$t[thumb]}" class="thumb" width="48" height="48"></a></td>{/if}
+	<td height="55"><p><a href="{$t[linkurl]}" target="_blank" class="color f14 b lenstr {if $t[thumb]}w240{else}w300{/if}" title="{$t[alt]}"> <span class="gcolor b">· </span>{$t[alt]}</a></p>
+<p><span>{$TYPE[$t[typeid]]}</span><span class="ml10">发布时间 [{timetodate($t[edittime],2)}]</span></p></td>
+</tr>
+</table>
+
+</li>
+{/loop}	
+</ul>
+<script type="text/javascript">
+$(".selllists>li").hover(function () {$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg"); });
+</script>

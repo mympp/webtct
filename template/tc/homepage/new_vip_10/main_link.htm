@@ -1,0 +1,33 @@
+	<section class="s4">
+		<h3>
+			<i class="fa fa-link"></i>
+			友情链接
+			<a href="{userurl($username, 'file=link', $domain)}" title="友情链接">更多</a>
+		</h3>
+		<div class="s4_box">
+
+		
+
+        <div class="tem_txt">
+			 <!--{php $tags = tag("table=link&fields=title,linkurl&condition=status=3 and username='$username'&pagesize=8&order=addtime desc&template=null")}-->
+			{loop $tags $v}
+			<a href="{$v[linkurl]}" title="{$v[title]}" target="_blank">{$v[title]}</a>
+			{/loop}
+		</div>
+
+		
+		
+		
+		
+		
+		</div>
+
+	</section>
+		
+	<div class="s4_jg"></div>
+
+
+	
+	<div class="met_clear"></div>	
+</div>
+<div class="met_clear"></div>

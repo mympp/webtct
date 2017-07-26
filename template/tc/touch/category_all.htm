@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="paul">
+<meta name="shenma-site-verification" content="">
+<meta name="copyright" content="Copyright (c) 2012-2015 Tecenet.">
+<meta name="description" content="天成医疗网">
+<link rel="apple-touch-icon-precomposed" href="">
+<title>全站分类--天成医疗网</title>
+<link rel="stylesheet" type="text/css" href="media/css/index.css">
+
+</head>
+
+<body id="main" page="home" class="page-footer-fixed">
+
+	<div id="wrapper" class="wrapper " style="display: block;">
+		<!-- 头部 -->
+		<header id="header">
+			<div class="header">
+				<div id="mod-news" class="module">
+				  	<div class="module-t" style="position: fixed; width:100%;">			 	
+				 		<div class="logowrapper" style="height:45px;" link="" id="logolink" issnow="0" data-iarea="132,89">
+							<a href="javascript:window.history.back();"><div class="art-back" id="logo"></div></a>
+						</div>
+
+						<div data-href="{$head_link}" class="header-title">全站分类</div>
+
+					 	<nav class="head-link" style="right: 12;">
+							<a href="index.php" id="login">
+								<img style="padding-top: 5px;" src="image/home3.png" width="28" height="28" alt="首页"/>
+							</a>
+							<a id="pop-nav"></a>
+						</nav>
+				  	</div>
+
+					<div class="module-c">				 			
+					 	<div id="nav-pop-pnl" class="nav-top  close" style="position:static; margin-top:60px;">			 			
+			 				
+							{loop $WAP_MODULE $i $m}
+							{if $m[moduleid] !=10  && $m[moduleid] != 12}							
+							  <div class="nav-box">
+								<h3><span>
+									{if $m[moduleid]==9&&$m[action]==resume}
+										<a href="index.php?moduleid={$m[moduleid]}&amp;action={$m[action]}">{$m[name]}</a>
+									{elseif $m[moduleid]==16&&$m[stype]==1}
+										<a href="index.php?moduleid={$m[moduleid]}&amp;stype={$m[stype]}">{$m[name]}</a>
+									{else}
+										<a href="index.php?moduleid={$m[moduleid]}">{$m[name]}</a>
+									{/if}
+								</span></h3>
+								<div class="channel-list">
+									{php $lists = get_maincat(0, $m[moduleid]);}
+									{loop $lists $v}
+										{if $m[moduleid]==9&&$m[action]==resume}
+											<a href="index.php?moduleid={$m[moduleid]}&amp;action={$m[action]}&amp;catid={$v[catid]}">{$v[catname]}</a>
+										{elseif $m[moduleid]==16&&$m[stype]==1}
+											<a href="index.php?moduleid={$m[moduleid]}&amp;stype={$m[stype]}&amp;catid={$v[catid]}">{$v[catname]}</a>
+										{else}											
+											<a href="index.php?moduleid={$m[moduleid]}&amp;catid={$v[catid]}">{$v[catname]}({$v[item]})</a>
+										{/if}
+									{/loop}
+													
+								</div>
+							  </div>
+							  {/if}
+							{/loop}
+
+						</div>
+				    </div>
+				</div>
+			</div>		
+		</header>	  			 
+
+	</div>
+</body>
+</html>

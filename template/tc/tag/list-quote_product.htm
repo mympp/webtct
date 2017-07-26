@@ -1,0 +1,16 @@
+{loop $tags $k $v}
+<table cellpadding="0" cellspacing="0" align="center"  class="grayb nb nl nr mb10">
+<tr class="graybg">
+<td width="5"  align="left">&nbsp;</td>
+<td width="450" height=30 align="left"><a href="{$v[linkurl]}"target="_blank" class="color w420 lenstr"><img src="{DT_SKIN}image/message_3_.gif">&nbsp;<b class='f14'>&nbsp;{$v[title]}{if $v[level]}<img src="{DT_SKIN}image/vip_{$v[level]}.gif" title="推荐{$v[level]}级" alt=""/>{/if}</b></a></td>
+<td width="155" align="left" class='ppp'>[{cat_pos(get_cat($v[catid]), '-')}]&nbsp;</td>
+<td width="80" align="left">{$v[truename]}</td>
+<td width="70"  align="left">{area_pos($v[areaid], ' - ', 2)}</td>
+<td width="70" align="left">{timetodate($v[edittime], 3)}</td>
+</tr>
+<tr>
+<td colspan="6" width='970' height=20><div style="padding-left:20px;">{$v[introduce]}</div></td>
+</tr>
+</table>
+{/loop}
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

@@ -1,0 +1,138 @@
+{template 'header', $template}
+{if $itemid}
+<section class="met_section met_section_asidenone">
+	<section class="met_section_head">
+			<i class="fa fa-home"></i>
+			<a href="{$COM[linkurl]}" title="网站首页">网站首页</a> &gt; <a href="{$COM[linkurl]}mall">{$MENU[$menuid][name]}</a> > <a href="{$COM[linkurl]}">详情</a>
+		</section>
+
+    <article>
+		<div class="met_article">
+
+		<div class="met_clear"></div>
+
+        <div id="showproduct">
+            <dl class='pshow' class="pshow" style="visibility: visible;">
+                <dt data-product_x="400" style="width: 500px;float:left">
+					<div class="met_box" style="visibility: visible;width:500px;height:400px;position:relative;">
+						<div class="met_imgshowbox">
+							<div class="my-simple-gallery slides">
+						
+
+							<div class="flex-active-slide" style="width: 500px; float: left;position: relative; opacity: 1; display: block; z-index: 2;text-align:center;">
+							    <a href="#">
+									<img src="{$albums[0]}" alt="" width="400" height="300" style="text-align:center;"/>
+							    </a>
+							</div>
+
+							</div>
+						</div>
+						<ul style="float:left;position:absolute;bottom:0;width:500px;text-align:center;">
+							{loop $thumbs $k $v}
+							<li><img src="{$v}" width="70" height="70" style="margin:0 10px;border:1px solid #dcdcdc;"/></li>
+							{/loop}
+						</ul>
+					</div>
+				</dt>
+		        <dd style="float:left;width:400px;">
+					<div class="met_box" style="width:400px;line-height:30px;">
+					<h1 class='met_title'>{$title}</h1>
+						<table border="0">
+						<tr><td width="100" class="s" style="boeder-top:0px">名&nbsp;&nbsp;&nbsp;称：</td><td>{$title}</td></tr>
+						<tr><td class="s">单&nbsp;&nbsp;&nbsp;价：</td><td>￥<span style="color:#FF0000">&nbsp;{$price}</span></td></tr>
+						<tr><td class="s">品&nbsp;&nbsp;&nbsp;牌：</td><td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填写{/if}</td></tr>
+						<tr><td class="s">所在地：</td><td>{area_pos($areaid, '')}</td></tr>
+						<tr><td class="s">销&nbsp;&nbsp;&nbsp;量：</td><td>累积售出<span style="color:#FF9900;">&nbsp;{$sales}&nbsp;</span>件，<span style="color:#FF9900;">&nbsp;{$orders}&nbsp;</span>个订单</td></tr>
+						<tr><td class="s">评&nbsp;&nbsp;&nbsp;价：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$comments}&nbsp;</span>条评价</td></tr>
+						<tr><td class="s">库&nbsp;&nbsp;&nbsp;存：</td><td>还剩出<span style="color:#FF9900;">&nbsp;{$amount}&nbsp;</span>件</td></tr>
+						<tr><td class="s">人&nbsp;&nbsp;&nbsp;气：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$hits}&nbsp;</span>人关注</td></tr>
+						<tr><td class="s">更&nbsp;&nbsp;&nbsp;新：</td><td>{$editdate}</td></tr>
+						</table>
+						<table style="margin-top:20px;">
+							<tr><td width="150"><img alt="立即购买" src="{DT_SKIN}image/btn_tobuy.gif" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');" style="cursor:pointer;"/></td><td><img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" onclick="Go('{$MOD[linkurl]}{rewrite('cart.php?itemid='.$itemid)}');" style="cursor:pointer;"/></td></tr>
+						</table>
+					</div>
+		        </dd>
+	        </dl>
+			<div class="met_clear"></div>
+
+			<ol class="met_nav">
+
+				<li class="met_now"><a href="#mettab1">详细信息</a></li>
+
+			</ol>
+			<div class="met_nav_contbox">
+
+				<div style="padding:20px;">
+					{$content}
+				</div>
+<div id="metinfo_additional"></div></div><div class="met_clear"></div></div>
+
+			</div>
+			<h3 class="met_related" style="padding-top:20px;border:1px solid #dcdcdc;width:980px;border-top:0;border-bottom:0">&nbsp;&nbsp;&nbsp;&nbsp;您可能喜欢</h3>
+			<ul class="met_related_list" style="visibility: visible;border:1px solid #dcdcdc;width:980px;height:220px;border-top:0px;">
+			<!--{php $list=tag("table=mall&condition=status=3 and username='$username'&pagesize=3&order=addtime desc&template=null");}-->
+			{loop $list $v}
+				<li style="width: 33.3333%;float:left;text-align:center;">
+					<a href="{$v[linkurl]}" title="{$v[title]}" target='_self'>
+						<img src="{imgurl($v[thumb], 1)}" width ="213" height="160"/>
+						<h2>{$v[title]}</h2>
+					</a>
+				</li>
+			{/loop}
+			</ul>
+
+	    </div>
+
+	</div>
+    </article>
+    <div class="met_clear"></div>
+</section>
+{else}
+<section class="met_section met_section_asidenone">
+<section class="met_section_head">
+			<i class="fa fa-home"></i>
+			<a href="{$COM[linkurl]}" title="网站首页">网站首页</a> &gt; <a href="{$COM[linkurl]}">{$MENU[$menuid][name]}</a>
+		</section>
+
+    <article>
+	
+	
+		<div class="met_article">
+
+		<section class="met_article_head">
+			<h1>
+				<span>{$MENU[$menuid][name]}</span>
+			</h1>
+		</section>
+
+		<div class="met_clear"></div>
+
+        <div class="active" id="imglist">
+			
+			<ul class="list_1" style="visibility: visible;">
+				{loop $lists $k $v}
+				<li style="width: 21%;margin:2%;">
+					<a href="{$v[linkurl]}" title="{$v[title]}" target='_self'>
+						<img src="{imgurl($v[thumb], 1)}" width ="190" height="150"/>
+						<h2 style="text-align:center;">{dsubstr($v[title],20,'...')}</h2><br/>
+						<h2 style="color:#FF0000;border-top:0px;text-align:center;">￥{$v[price]}</h2>
+					</a>
+				</li>
+				{/loop}
+			</ul>
+
+
+
+			<div class="met_clear"></div>
+			
+		    <div class="pages">{$pages}</div>
+		
+		</div>
+
+	</div>
+    </article>
+    <div class="met_clear"></div>
+</section>
+{/if}
+{template 'footer', $template}

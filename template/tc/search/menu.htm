@@ -1,0 +1,33 @@
+<!--头部nav-->
+
+<div id="topNav" class="headNav">
+	<span><a href="{SO_PATH}"><img src="{SO_SKIN}/images/homeLogo.png" alt="天成医搜"></a></span>
+	<div class="topSearch">
+			<form action="search.php" method="get">
+				<div class="topSearchIpt">
+					<input type="hidden" name="type" value="{$type}" id="type" />  
+					<input type="text" name="keyword" id="keyword" class="keyword_input" autocomplete="off" value="{$keyword}" style="width:390px">
+					<span class="ipt_del" style="display:none;"></span>
+				</div>
+				<input class="searchBtn" type="submit" value="搜医搜">
+			</form>
+	</div>
+
+	<!-- header-nav -->
+	<div class="indexHdNav clearfix" style="margin-top:8px;">
+		<a href="http://www.tecenet.com/" target="_blank">天成医疗网</a>|
+		<a href="http://hao.tecenet.com/" target="_blank">医疗厂家导航</a>|
+		{if $_username}
+		<a href="{DT_PATH}member/" style="text-decoration:underline;">{$_username}</a>|
+		{else}
+		<a href="http://www.tecenet.com/member/login.php">登录</a>|
+		<a href="http://www.tecenet.com/member/register.php">注册</a>|
+		{/if}
+		<a href="http://so.tecenet.com/feekback.php" target="_blank">意见反馈</a>
+	</div>
+	<!-- header-nav end-->
+
+			
+</div>
+	<!--END  头部nav-->
+

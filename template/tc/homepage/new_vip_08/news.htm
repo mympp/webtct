@@ -1,0 +1,28 @@
+{template 'header', $template}
+{if $itemid}
+<div class="news_main">
+		<div class="news_main_title"><div class="news_main_title_content">&rarr;&nbsp;新闻详情&nbsp;&larr;</div></div>
+		<div class="news_main_content">
+			<span class="s1">{$title}</span>
+			<span class="s2">发布时间：{timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}" style="color:#999999;">返回列表</a></span>
+			<div class="s3">
+				{$content}
+			</div>
+		</div>
+	</div>
+{else}
+	<div class="list_news">
+		<div class="list_title"><div class="title_content">&rarr;&nbsp;新闻中心&nbsp;&larr;</div></div>
+		<div class="list_news_content">
+			<div class="list_news_content_con">
+				<ul>
+					{loop $lists $v}
+						<li><a href="{$v[linkurl]}">{$v[title]}</a><span>{timetodate($v[addtime], 3)}</span></li>
+					{/loop}
+				</ul>
+				<div class="pages">{$pages}</div>
+			</div>
+		</div>
+	</div>
+{/if}
+{template 'footer', $template}

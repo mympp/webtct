@@ -1,0 +1,12 @@
+{php $links = tag("table=link&condition=status=3 and link_moduleid=$moduleid&areaid=$cityid&pagesize=".$DT['page_text']."&order=listorder asc,itemid desc&template=null")}	
+    <!--友情链接-->
+<div class="layout links-layout">
+    <div class="links-hd">友情链接：</div>
+    <div class="links-bd">
+        {loop $links $k $t}
+        <a href="{$t['linkurl']}" title="{$t['title']}" target="_blank">{$t['title']}</a>
+        {/loop}
+        <a href="{DT_PATH}link/index-htm-action-reg.html" class="apply-to" rel="nofollow">申请加入&gt;&gt;</a>
+    </div>
+</div>
+<!--友情链接 end-->

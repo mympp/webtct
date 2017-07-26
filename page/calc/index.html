@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>业务结算</title>
+    <meta name="keywords" content="业务结算"/>
+    <meta name="description" content="业务结算"/>
+
+    <link rel="apple-touch-icon-precomposed" href="./images/app-icon.png"/>
+    <link rel="icon" sizes="256x256" href="./images/app-icon.png">
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/tc.extend.calculation.css">
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--banner-->
+<div class="banner text-center">
+    <h1>业务结算</h1>
+</div>
+<!--banner end-->
+
+<!--container-->
+<div class="container user-info">
+
+    <!--业务计算-->
+    <div class="cash-calc ">
+        <h2 class="lead text-center">业务计算</h2>
+        <div class="plan-input-group clearfix">
+            <div class="plan-input-hd pull-left">提现金额：</div>
+            <div class="plan-input-bd pull-left">
+                <input type="number" id="cashShow" class="form-control plan-input-md pull-left" style="width:200px;">
+                <a onclick="cashCalc();" class="btn btn-warning btn-md pull-left" href="javascript:;" target="_blank" style="margin-left: 20px;">业务计算</a>
+            </div>
+        </div>
+    </div>
+    <!--业务计算 end-->
+
+    <hr>
+
+    <!--业务流程-->
+    <h2 class="lead text-center">业务流程</h2>
+    <div class="plan-input-group clearfix">
+        <div class="plan-input-hd pull-left">经销商：</div>
+        <div class="plan-input-bd pull-left">
+            <input type="text" id="jxs" class="form-control plan-input-md" value="经销商" onfocus="this.value=''">
+        </div>
+    </div>
+
+    <div class="plan-input-group clearfix">
+        <div class="plan-input-hd pull-left">生产商：</div>
+        <div class="plan-input-bd pull-left">
+            <input type="text" id="scs" class="form-control plan-input-md" value="生产商" onfocus="this.value=''">
+        </div>
+    </div>
+    <div class="plan-input-group clearfix">
+        <div class="plan-input-hd pull-left">平台商：</div>
+        <div class="plan-input-bd pull-left">
+            <input type="text" id="pts" class="form-control plan-input-md" value="平台商" onfocus="this.value=''">
+        </div>
+    </div>
+    <div class="text-center">
+        <a onclick="changeName();" class="btn btn-danger btn-md" href="javascript:;" target="_blank">业务流程</a>
+    </div>
+    <!--业务流程 end-->
+</div>
+
+<div class="container cl-wrap" style="display: none;">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#planA" role="tab" data-toggle="tab">方案A</a></li>
+        <li role="presentation"><a href="#planB" role="tab" data-toggle="tab">方案B</a></li>
+        <li role="presentation"><a href="#planC" role="tab" data-toggle="tab">业务提现</a></li>
+    </ul>
+    <!-- Nav tabs end-->
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="planA">
+            <h2 class="lead text-center"><strong>从<span class="jxs">经销商</span>采购</strong></h2>
+            <!--tip-->
+            <div class="tip alert alert-warning" style="display: none;"></div>
+            <!--tip end-->
+            <!--方案A-->
+            <div class="plan-wrap">
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="jxs">经销商</span>从<span class="scs">生产商</span>采购价：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="number" min="0" max="100000000" id="distributorCost" class="form-control plan-input-md" onChange="isNum(this);calc();dzCount();">
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="jxs">经销商</span>卖给<span class="pts">平台商</span>：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="number" min="0" max="100000000" id="distributorSell" class="form-control plan-input-md" onChange="isNum(this);calc();risk();">
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="jxs">经销商</span>的利润：</div>
+                    <div class="plan-input-bd pull-left plan-txt">
+                        <div id="distributorProfit" class="plan-txt pull-left">0</div>
+                        <a href="javascript:;" onclick="flowCash(this)" class="pull-left btn btn-sm btn-warning" style="display: none;">提现</a>
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>卖给医院：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="number" min="0" max="100000000" id="midSell" class="form-control plan-input-md" onchange="isNum(this);calc();risk();">
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>的利润：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div id="midProfit" class="plan-txt">0</div>
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>收取：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div id="midMan" class="plan-txt pull-left"  data-toggle="tooltip" data-placement="top" title="平台商卖给医院*0.02">0</div>
+                        <div class="plan-txt pull-left ">管理费</div>
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left">是否需垫资：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="radio" name="dz" value="no" id="dzNo" checked><label for="dzNo" class="radio-label">否</label>
+                        <input type="radio" name="dz" value="yes" id="dzYes"><label for="dzYes" class="radio-label">是</label>
+                    </div>
+                </div>
+                <div class="plan-input-group plan-input-group-lg clearfix" id="dzBox" style="display: none;">
+                    <div class="plan-input-hd pull-left">垫资利息费用：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left distributor-cost" data-toggle="tooltip" data-placement="top" title="经销企业从厂家采购价">0</div>
+                        <div class="operator pull-left">*</div>
+                        <select id="midInterestPercent" class="form-control plan-input-md pull-left" onchange="interest()">
+                            <option value="0.01">0.01</option>
+                            <option value="0.02">0.02</option>
+                            <option value="0.03">0.03</option>
+                            <option value="0.04">0.04</option>
+                            <option value="0.05">0.05</option>
+                            <option value="0.06">0.06</option>
+                            <option value="0.07">0.07</option>
+                            <option value="0.08">0.08</option>
+                            <option value="0.09">0.09</option>
+                            <option value="0.10">0.10</option>
+                        </select>
+                        <div class="operator pull-left">*</div>
+                        <select id="midInterestMouth" class="form-control plan-input-md pull-left" onchange="interest()">
+                            <option value="1">1个月</option>
+                            <option value="2">2个月</option>
+                            <option value="3">3个月</option>
+                            <option value="4">4个月</option>
+                            <option value="5">5个月</option>
+                            <option value="6">6个月</option>
+                            <option value="7">7个月</option>
+                            <option value="8">8个月</option>
+                            <option value="9">9个月</option>
+                            <option value="10">10个月</option>
+                            <option value="11">11个月</option>
+                            <option value="12">12个月</option>
+                        </select>
+                        <div class="operator pull-left">=</div>
+                        <div class="plan-txt pull-left text-danger" id="midInterest">0</div>
+                    </div>
+                </div>
+                <div class="plan-input-group plan-input-group-lg clearfix">
+                    <div class="plan-input-hd pull-left">增值部分国家扣税：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="operator pull-left">(</div>
+                        <div class="plan-txt pull-left mid-sell" data-toggle="tooltip" data-placement="top" title="平台商卖给医院">0</div>
+                        <div class="operator pull-left">-</div>
+                        <div class="plan-txt pull-left distributor-sell" data-toggle="tooltip" data-placement="top" title="经销企业卖给平台商">0</div>
+                        <div class="operator pull-left">)</div>
+                        <div class="operator pull-left">*</div>
+                        <select name="" class="form-control plan-input-md pull-left" id="taxPercent" onchange="tax()">
+                            <option value="0.17">0.17</option>
+                            <option value="0.12">0.12</option>
+                            <option value="0.07">0.07</option>
+                            <option value="0.06">0.06</option>
+                            <option value="0.04">0.04</option>
+                        </select>
+                        <div class="operator pull-left">=</div>
+                        <div class="plan-txt pull-left text-danger" id="taxCount">0</div>
+                    </div>
+                </div>
+                <div class="plan-input-group plan-input-group-lg clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>结算给<span class="jxs">经销商</span>：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left mid-profit" data-toggle="tooltip" data-placement="top" title="平台商的利润">0</div>
+                        <div class="operator pull-left">-</div>
+                        <div class="plan-txt pull-left mid-man" data-toggle="tooltip" data-placement="top" title="平台商收取的管理费">0</div>
+                        <div class="operator pull-left">-</div>
+                        <div class="plan-txt pull-left tax-count" data-toggle="tooltip" data-placement="top" title="增值部分国家扣税">0</div>
+                        <div class="pull-left plan-txt" id="interestA" style="display: none;">
+                            <div class="operator pull-left">-</div>
+                            <div class="plan-txt pull-left interest-a-count" data-toggle="tooltip" data-placement="top" title="垫资利息费用">0</div>
+                        </div>
+                        <div class="operator pull-left">=</div>
+                        <div class="plan-txt pull-left text-danger" id="statements">0</div>
+                    </div>
+                </div>
+            </div>
+            <!--方案A end-->
+        </div>
+        <div role="tabpanel" class="tab-pane" id="planB">
+            <h2 class="lead text-center"><strong><span class="pts">平台商</span>从<span class="scs">生产商</span>直接采购</strong></h2>
+            <!--tip-->
+            <div class="tip alert alert-warning" style="display: none;"></div>
+            <!--tip end-->
+            <!--方案B-->
+            <div class="plan-wrap">
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="scs">生产商</span>底价：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="number" min="0" max="100000000" id="producerCost" class="form-control plan-input-md" onChange="isNum(this);calcB();riskB();dzBCount();">
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left">合同价：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="number" min="0" max="100000000" id="producerSell" class="form-control pull-left plan-input-md" onChange="isNum(this);calcB();riskB();">
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>卖给医院：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="number" min="0" max="100000000" id="sellerSell" class="form-control plan-input-md" onChange="isNum(this);calcB();riskB();">
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>的利润：</div>
+                    <div class="plan-input-bd pull-left cash-inner">
+                        <div id="sellerProfit" class="plan-txt pull-left">0</div>
+                        <a href="javascript:;" onclick="flowCash(this)" class="btn btn-warning btn-sm pull-left" style="display: none;">提现</a>
+                    </div>
+                </div>
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>收取：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div id="sellerMan" class="plan-txt pull-left" data-toggle="tooltip" data-placement="top" title="平台商卖给医院*0.02">0</div>
+                        <div class="plan-txt pull-left">管理费</div>
+                    </div>
+                </div>
+
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left">是否需垫资：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="radio" name="dzB" value="no" id="dzBNo" checked><label for="dzBNo" class="radio-label">否</label>
+                        <input type="radio" name="dzB" value="yes" id="dzBYes"><label for="dzBYes" class="radio-label">是</label>
+                    </div>
+                </div>
+                <div class="plan-input-group plan-input-group-lg clearfix" id="dzBBox" style="display: none;">
+                    <div class="plan-input-hd pull-left">垫资利息费用：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left producer-cost"  data-toggle="tooltip" data-placement="top" title="厂家底价">0</div>
+                        <div class="operator pull-left">*</div>
+                        <select id="sellerInterestPercent" class="form-control plan-input-md pull-left" onchange="interestB()">
+                            <option value="0.01">0.01</option>
+                            <option value="0.02">0.02</option>
+                            <option value="0.03">0.03</option>
+                            <option value="0.04">0.04</option>
+                            <option value="0.05">0.05</option>
+                            <option value="0.06">0.06</option>
+                            <option value="0.07">0.07</option>
+                            <option value="0.08">0.08</option>
+                            <option value="0.09">0.09</option>
+                            <option value="0.10">0.10</option>
+                        </select>
+                        <div class="operator pull-left">*</div>
+                        <select id="sellerInterestMouth" class="form-control plan-input-md pull-left" onchange="interestB()">
+                            <option value="1">1个月</option>
+                            <option value="2">2个月</option>
+                            <option value="3">3个月</option>
+                            <option value="4">4个月</option>
+                            <option value="5">5个月</option>
+                            <option value="6">6个月</option>
+                            <option value="7">7个月</option>
+                            <option value="8">8个月</option>
+                            <option value="9">9个月</option>
+                            <option value="10">10个月</option>
+                            <option value="11">11个月</option>
+                            <option value="12">12个月</option>
+                        </select>
+                        <div class="operator pull-left">=</div>
+                        <div class="plan-txt pull-left text-danger" id="sellerInterest">0</div>
+                    </div>
+                </div>
+
+
+                <div class="plan-input-group plan-input-group-lg clearfix">
+                    <div class="plan-input-hd pull-left">增值部分国家扣税：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="operator pull-left">(</div>
+                        <div class="plan-txt pull-left seller-sell" data-toggle="tooltip" data-placement="top" title="平台商卖给医院">0</div>
+                        <div class="operator pull-left">-</div>
+                        <div class="plan-txt pull-left producer-sell" data-toggle="tooltip" data-placement="top" title="合同价">0</div>
+                        <div class="operator pull-left">)</div>
+                        <div class="operator pull-left">*</div>
+                        <select name="" class="form-control plan-input-md pull-left" id="taxPercentB" onchange="taxB()">
+                            <option value="0.17">0.17</option>
+                            <option value="0.12">0.12</option>
+                            <option value="0.07">0.07</option>
+                            <option value="0.06">0.06</option>
+                            <option value="0.04">0.04</option>
+                        </select>
+                        <div class="operator pull-left">=</div>
+                        <div class="plan-txt pull-left text-danger" id="taxCountB">0</div>
+                    </div>
+                </div>
+
+                <div class="plan-input-group plan-input-group-lg clearfix">
+                    <div class="plan-input-hd pull-left"><span class="scs">生产商</span>结算给<span class="jxs">经销商</span>：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left producer-sell" data-toggle="tooltip" data-placement="top" title="合同价">0</div>
+                        <div class="operator pull-left">-</div>
+                        <div class="plan-txt pull-left producer-cost" data-toggle="tooltip" data-placement="top" title="厂家底价">0</div>
+                        <div class="operator pull-left">=</div>
+                        <div class="plan-txt pull-left text-danger" id="producerToDistributor">0</div>
+                    </div>
+                </div>
+
+                <div class="plan-input-group plan-input-group-lg clearfix">
+                    <div class="plan-input-hd pull-left"><span class="pts">平台商</span>结算给<span class="jxs">经销商</span>：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left seller-profit" data-toggle="tooltip" data-placement="top" title="平台商的利润">0</div>
+                        <div class="operator pull-left">-</div>
+                        <div class="plan-txt pull-left seller-man" data-toggle="tooltip" data-placement="top" title="平台商收取的管理费">0</div>
+                        <div class="operator pull-left">-</div>
+                        <div class="plan-txt pull-left tax-count-b"  data-toggle="tooltip" data-placement="top" title="增值部分国家扣税">0</div>
+                        <div class="pull-left plan-txt" id="interestB" style="display: none;">
+                            <div class="operator pull-left">-</div>
+                            <div class="plan-txt pull-left interest-b-count" data-toggle="tooltip" data-placement="top" title="垫资利息费用">0</div>
+                        </div>
+                        <div class="operator pull-left">=</div>
+                        <div class="plan-txt pull-left text-danger" id="sellerToDistributor">0</div>
+                    </div>
+                </div>
+            </div>
+            <!--方案B end-->
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="planC">
+            <h2 class="lead text-center"><strong>业务提现</strong></h2>
+            <!--tip-->
+            <div class="tip alert alert-warning" style="display: none;"></div>
+            <!--tip end-->
+            <!--方案C-->
+            <div class="plan-wrap">
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left">提现金额：</div>
+                    <div class="plan-input-bd pull-left">
+                        <input type="number" id="cashNum" class="form-control plan-input-md" onChange="isNum(this);cash();">
+                    </div>
+                </div>
+                <div class="plan-input-group plan-input-group-lg clearfix">
+                    <div class="plan-input-hd pull-left" >技术合同金额：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left cash-num">0</div>
+                        <div class="operator pull-left">÷&nbsp;[&nbsp;1&nbsp;-&nbsp;(&nbsp;</div>
+                        <select class="form-control plan-input-md pull-left" id="cashSl" onchange="cash();" style="width: 70px;" data-toggle="tooltip" data-placement="top" title="税费">
+                            <option value="0.17">17</option>
+                            <option value="0.12">12</option>
+                            <option value="0.07">7</option>
+                            <option value="0.06" selected>6</option>
+                            <option value="0.04">4</option>
+                        </select>
+
+                        <div class="operator pull-left">%&nbsp;+</div>
+                        <input type="number" id="cashSx" placeholder="手续费" class="form-control plan-input-md pull-left" onchange="isNum(this);cash();" data-toggle="tooltip" data-placement="top" title="手续费一般1%-2%" style="width:85px;">
+                        <div class="operator pull-left">%&nbsp;)&nbsp;]&nbsp;=</div>
+                        <div class="plan-txt pull-left text-danger" id="cashCount">0</div>
+                    </div>
+                </div>
+
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left">某公司人工手续费成本：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left text-danger cash-sx">0</div>
+                    </div>
+                </div>
+
+                <div class="plan-input-group clearfix">
+                    <div class="plan-input-hd pull-left">返增值票：</div>
+                    <div class="plan-input-bd pull-left">
+                        <div class="plan-txt pull-left text-danger cash-sl">0</div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--方案C end-->
+        </div>
+
+
+
+    </div>
+    <!-- Tab panes end-->
+
+</div>
+<!--container end-->
+
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script>
+    function changeName(){
+        var jxs = $("#jxs").val();
+        var scs = $("#scs").val();
+        var pts = $("#pts").val();
+        if( $("#jxs").val() =="" ){
+            $("#jxs").focus();
+            alert("请填写经销商名字");
+            return false;
+        }
+        if( $("#scs").val() =="" ){
+            $("#scs").focus();
+            alert("请填写生产商名字");
+            return false;
+        }
+        if( $("#pts").val() =="" ){
+            $("#pts").focus();
+            alert("请填写平台商名字");
+            return false;
+        }
+        $(".cl-wrap .jxs").html(jxs);
+        $(".cl-wrap .scs").html(scs);
+        $(".cl-wrap .pts").html(pts);
+        $(".user-info").hide();
+        $(".cl-wrap").fadeIn();
+    }
+
+    //
+    function cashCalc(){
+        if( $("#cashShow").val() =="" ){
+            $("#cashShow").focus();
+            alert("请填写提现金额");
+            return false;
+        }else{
+            $("#cashNum").val($("#cashShow").val());
+            cash();
+            $(".user-info").hide();
+            $(".cl-wrap").fadeIn();
+            $('.nav-tabs li:eq(2) a').tab('show');
+        }
+    }
+
+    // 输入类型提示
+    function isNum(ele){
+        if(!isNaN($(ele).val())){
+            $(".tip").html("");
+            $(".tip").hide();
+        }else{
+            $(".tip").html("请您输入数字");
+            $(".tip").show();
+        }
+    }
+    //风控提示
+    function risk(){
+        var dSell = $("#distributorSell").val();
+        var mSell = $("#midSell").val();
+        if( mSell/1.15 > dSell ){
+            $(".tip").html("请注意，低于成交价的1.15");
+            $(".tip").show();
+        }else{
+            $(".tip").html("");
+            $(".tip").hide();
+        }
+    }
+    function riskB(){
+        var dSell = $("#producerSell").val();
+        var mSell = $("#sellerSell").val();
+        if( mSell/1.15 > dSell ){
+            $(".tip").html("请注意，低于成交价的1.15");
+            $(".tip").show();
+        }else{
+            $(".tip").html("");
+            $(".tip").hide();
+        }
+    }
+    /***
+     * 方案A：
+     * distributorCost 经销商采购价
+     * distributorSell 经销商售价
+     * distributorProfit 经销商利润
+     * midSell 中间商售价
+     * midProfit 中间商利润
+     * midMan 中间商管理费
+     * midInterest 利息
+     */
+    function calc(){
+        var distributorCost   = $("#distributorCost").val();
+        var distributorSell   = $("#distributorSell").val();
+        var distributorProfit = $("#distributorProfit").html();
+        var midSell           = $("#midSell").val();
+        var midProfit         = $("#midProfit").html();
+        // 经销商利润
+        if( distributorCost != "" &&  distributorSell != ""){
+            $("#distributorProfit").html(distributorSell-distributorCost);
+        }
+        // 中间商利润
+        if( midSell != "" && distributorSell != ""){
+            $("#midProfit").html(midSell-distributorSell);
+        }
+        // 中间商管理费
+        if (midSell != ""){
+            $("#midMan").html(midSell*0.02);
+        }
+        if( $("#distributorProfit").html() != 0){
+            $("#distributorProfit").next().fadeIn();
+        }
+        tax();
+        statements();
+    }
+    //利息费用
+    function interest(){
+        if( $("#distributorCost").val() != ""){
+            $(".distributor-cost").html($("#distributorCost").val());
+            $("#midInterest").html(parseFloat($("#distributorCost").val()*$("#midInterestPercent").val()*$("#midInterestMouth").val()).toFixed(2));
+            $(".interest-a-count").html($("#midInterest").html());
+            statements();
+        }
+    }
+    // 增值部分国家扣税
+    function tax(){
+        if( $("#midSell").val() != "" && $("#distributorSell").val() != ""){
+            $(".mid-sell").html($("#midSell").val());
+            $(".distributor-sell").html($("#distributorSell").val());
+            $("#taxCount").html(parseFloat(($("#midSell").val()-$("#distributorSell").val())*$("#taxPercent").val()).toFixed(2));
+            statements();
+        }
+    }
+    // 中间商结算
+    function statements(){
+        if( $("#midProfit").html() != "" && $("#midMan").html() != 0 && $("#taxCount").html() != 0){
+            $(".mid-profit").html($("#midProfit").html());
+            $(".mid-man").html($("#midMan").html());
+            $(".tax-count").html($("#taxCount").html());
+            $("#statements").html($("#midProfit").html()-$("#midMan").html()-$("#taxCount").html()-$(".interest-a-count").html());
+        }
+    }
+    // 垫资费用
+    function dzCount(){
+        if($("#dzYes").is(":checked")){
+            interest();
+        }
+    }
+    // 是否垫资
+    $(".plan-input-group input[name='dz']").click(function(){
+        if($(this).val() == "yes"){
+            $("#dzBox").slideDown();
+            interest();
+            $(".interest-a-count").html($("#midInterest").html());
+            $("#interestA").show();
+        }else{
+            $("#dzBox").slideUp();
+            $("#interestA").hide();
+            $(".interest-a-count").html(0);
+        }
+        statements();
+    });
+    /***
+     * 方案B：
+     * producerCost 生产商底价
+     * producerCostSell 生产商售价
+     * sellerSell 卖家售价
+     * sellerProfit 卖家利润
+     */
+    function calcB(){
+        var producerCost  = $("#producerCost").val();
+        var producerSell  = $("#producerSell").val();
+        var sellerSell    = $("#sellerSell").val();
+        // 卖家利润
+        if(sellerSell != "" && producerSell != ""){
+            $("#sellerProfit").html(sellerSell-producerSell);
+        }
+        // 卖家管理费
+        if(sellerSell != ""){
+            $("#sellerMan").html(sellerSell*0.02);
+        }
+        // 生产商结算
+        if(producerCost !="" && producerSell != ""){
+            $(".producer-sell").html($("#producerSell").val());
+            $(".producer-cost").html($("#producerCost").val());
+            $("#producerToDistributor").html($("#producerSell").val()-$("#producerCost").val());
+        }
+
+        if( $("#sellerProfit").html() != 0){
+            $("#sellerProfit").next().fadeIn();
+        }
+        taxB();
+        statementsB();
+    }
+    //利息费用
+    function interestB(){
+        if( $("#producerCost").val() != ""){
+            $(".producer-cost").html($("#producerCost").val());
+            $("#sellerInterest").html(parseFloat($("#producerCost").val()*$("#sellerInterestPercent").val()*$("#sellerInterestMouth").val()).toFixed(2));
+            $(".interest-b-count").html($("#sellerInterest").html());
+            statementsB();
+        }
+    }
+    function taxB(){
+        if( $("#producerSell").val() != "" && $("#sellerSell").val() != ""){
+            $(".producer-sell").html($("#producerSell").val());
+            $(".seller-sell").html($("#sellerSell").val());
+            $("#taxCountB").html(parseFloat(($("#sellerSell").val()-$("#producerSell").val())*$("#taxPercentB").val()).toFixed(2));
+            statementsB();
+        }
+    }
+    function statementsB(){
+        if( $("#sellerProfit").html() != "" && $("#sellerMan").html() != 0 && $("#taxCountB").html() != 0){
+            $(".seller-profit").html($("#sellerProfit").html());
+            $(".seller-man").html($("#sellerMan").html());
+            $(".tax-count-b").html($("#taxCountB").html());
+            $("#sellerToDistributor").html($("#sellerProfit").html()-$("#sellerMan").html()-$("#taxCountB").html()-$(".interest-b-count").html());
+        }
+    }
+    // 垫资费用
+    function dzBCount(){
+        if($("#dzBYes").is(":checked")){
+            interestB();
+        }
+    }
+    // 是否垫资
+    $(".plan-input-group input[name='dzB']").click(function(){
+        if($(this).val() == "yes"){
+            $("#dzBBox").slideDown(200);
+            interestB();
+            $(".interest-b-count").html($("#sellerInterest").html());
+            $("#interestB").show();
+        }else{
+            $("#dzBBox").slideUp(200);
+            $("#interestB").hide();
+            $(".interest-b-count").html(0);
+        }
+        statementsB();
+    });
+
+    function mobile(){
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+//            $(".plan-wrap input[type='text']").each(function () {
+//                $(this).attr("type","number")
+//            });
+        } else {
+
+        }
+    }
+    mobile();
+
+
+    /***
+     * 业务提现：
+     */
+    function cash(){
+        var cashNum =  parseFloat($("#cashNum").val());
+        var cashSl  =  parseFloat($("#cashSl").val());
+        var cashSx  =  $("#cashSx").val()*0.01 || 0;
+        var cashCount = parseFloat($("#cashCount").html()) || 0;
+        if(cashNum != ""){
+            $("#cashCount").html(parseFloat(cashNum/(1-(cashSl+cashSx))).toFixed(2));
+            $(".cash-num").html(cashNum);
+            $(".cash-sx").html(parseFloat($("#cashCount").html()*cashSx).toFixed(2));
+            $(".cash-sl").html(parseFloat($("#cashCount").html()*cashSl).toFixed(2));
+        }
+    }
+    $('[data-toggle="tooltip"]').tooltip();
+
+    //利润金额直接提现
+    function flowCash(ele){
+        var cashNum = $(ele).prev().html();
+        $("#cashNum").val(cashNum);
+        cash();
+        $('.nav-tabs li:eq(2) a').tab('show');
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

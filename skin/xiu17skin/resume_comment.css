@@ -1,0 +1,47 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2011 Destoon.COM
+	This is NOT a freeware, use is subject to license.txt
+*/
+/* global */
+* {word-break:break-all;}
+body {margin:0px;font-size:12px;color:#333333;background:#FFFFFF;}
+ul,li{ list-style:none; margin:0px; padding:0px;}
+input,select,textarea {font-size:12px;}
+form {margin:0;}
+a{text-decoration:none;}
+a:link,a:visited,a:active{color:#1B4C7A;text-decoration:none;}
+a:hover {color:#FF6600;}
+.red{ width:15px; height:15px; background:url(image/1star.gif) no-repeat center;display:-moz-inline-box;display:inline-block;}
+.hui{ width:15px; height:15px; background:url(image/0star.gif) no-repeat center;display:-moz-inline-box;display:inline-block;}
+#pp,#pz,#pd{ width:10px; border:none; text-align:center}
+#destoon_comment{ font-size:12px; padding:20px;}
+.avg_comment{ width:690px;  line-height:25px; margin-bottom:10px;}
+b{ color:#676767}
+.f_red{color:#d73a06}
+.comments_list{ width:680px; border-bottom:#EEEEEE 1px solid;margin-bottom:10px;}
+.comments_list li{ width:670px;}
+.nobg{border:none;background:transparent;}
+.comment{width:680px;padding:5px 0px 15px 10px;border-top:#AACCEE 1px dotted;}
+.comment_sp{background:#F9FCFE;}
+.no_comment{line-height:35px;font-size:16px;color:#ff3300;text-align:center;}
+.comment_title{ width:640px; line-height:25px;color:#1B4C7A;}
+.comment_floor{ font-weight:bold; float:right;}
+.comment_time{ color:#333333;}
+.comment_content{ width:680px; padding-left:10px; line-height:25px;}
+.comment_content ul{margin:0px;padding:0px;width:600px;background:#f7f8f9;height:30px;padding-left:10px;border:solid 1px #f2f2f2;}
+.comment_content li{margin-right:30px;float:left;width:150px;line-height:15px;padding-top:5px;}.comment_content img{vertical-align:middle;}
+.comment_content li b{float:left;}
+.comment_operate{ text-align:right; margin-top:10px; margin-right:10px;}
+input.allstar{ width:40px; border:none; text-align:center}
+.allstar{width:93px;height:15px;line-height:15px;background:url(image/xstar.gif) no-repeat left center;float:left;}
+.strs{float:left;line-height:15px;height:15px;width:100px;margin-left:10px;}
+input{border:0px;}
+.botton{background:#d9e0f4;line-height:20px;padding:3px 10px 3px 10px;border:#8eaed9 1px solid;font-size:14px;color:#000066;letter-spacing:3px;font-weight:bold}
+.stars{width:110px;float:left}
+/* pages */
+.pages {padding:15px 0 15px 0;text-align:center;font-size:12px;color:#666666;}
+.pages a:link,.pages a:visited,.pages a:active  {color:#004499;background:#FFFFFF;border:#9AAFE5 1px solid;padding:1px;text-decoration:none;}
+.pages a:hover  {background:#FFFFFF;border:#2E6AB1 1px solid;color:#FF6600;padding:1px;text-decoration:none;}
+.pages strong {background:#2E6AB1;padding:1px;border:#1D589E 1px solid;color:#FFFFFF;}
+.pages_inp {border:#2E6AB1 1px solid;padding:1px;width:26px;}
+.pages_btn {width:26px;background:#F1F7FC;border:#2E6AB1 1px solid;color:#004499;font-weight:bold;font-size:11px;}

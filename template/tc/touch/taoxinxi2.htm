@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>抢单平台_天成医疗网 - 专业医疗服务供求撮合平台</title>
+<meta name="keywords" content="医疗器械网,医疗器械,医疗器械维修,医疗网,天成医疗网,天成医疗,医疗设备"/>
+<meta id="metaDescription" name="description" content="天成医疗网-医疗器械网专业医疗器械供求信息与医疗器械供应、采购、招标；医疗器械维修、保养、调试等技术服务；国内、国外进口医疗器械厂家品牌招商推广平台。为医疗器械企业、医院等机构提供全方位技术与产品服务！">
+<meta name="description" content="天成医疗网-医疗器械网专业医疗器械供求信息与医疗器械供应、采购、招标；医疗器械维修、保养、调试等技术服务；国内、国外进口医疗器械厂家品牌招商推广平台。为医疗器械企业、医院等机构提供全方位技术与产品服务！"/>
+
+<!-- head 中 -->
+<link rel="stylesheet" href="{DT_STATIC}file/jqweui/lib/weui.css">
+<link rel="stylesheet" href="{DT_STATIC}file/jqweui/css/jquery-weui.css">
+<style>
+	html,body{height: 100%; background: #f8f8f8; font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
+	#layout{height: 100%; max-width:640px; margin: 0 auto;}
+	.home_hd h1{width:100%; background: #fff; text-align: center; }
+	.cardhd{text-align: center; background: #09BB07;color: #fff; font-size: 1em;font-weight: bolder;}
+	.hd_skin{text-align: center; color: #000;}
+	.pdb100{padding-bottom: 100px;}
+	.pdt20{padding-top: 20px;}
+	.pdl15{padding-left: 15px;}
+	.main_skin a {color: #000; padding: 0; font-size: 14px;}
+	.headSkin{width:100%; text-align: center; color: #000; font-size: 1em; font-weight: bolder; border-bottom: 0;}
+</style>
+</head>
+<body>
+<div id="shareImage" style='margin:0 auto;width:0px;height:0px;overflow:hidden;'><img src="{DT_STATIC}file/jqweui/images/tecenet.jpg" /></div>
+<div id="layout">
+	<div class="weui_tab">
+		<div class="weui_tab_bd">
+			<div id="tab1" class="weui_tab_bd_item">
+				<div class="weui_cells weui_cells_form">
+				<form action="">
+					<div class="weui_cell">
+						<div class="headSkin">高 级 搜 索</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_hd"><label class="weui_label">关 键 词</label></div>
+						<div class="weui_cell_bd weui_cell_primary pdl15">
+							<input id="keyword" class="weui_input" type="text" name="keyword" placeholder="请输入关键词">
+						</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_hd"><label class="weui_label">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp区</label></div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<select id="areaid" class="weui_select" name="areaid">
+								<option selected="" value="">不限地区</option>
+									<option value="1">北京</option>
+									<option value="2">上海</option>
+									<option value="3">天津</option>
+									<option value="4">重庆</option>
+									<option value="5">河北</option>
+									<option value="6">山西</option>
+									<option value="7">内蒙古</option>
+									<option value="8">辽宁</option>
+									<option value="9">吉林</option>
+									<option value="10">黑龙江</option>
+									<option value="11">江苏</option>
+									<option value="12">浙江</option>
+									<option value="13">安徽</option>
+									<option value="14">福建</option>
+									<option value="15">江西</option>
+									<option value="16">山东</option>
+									<option value="17">河南</option>
+									<option value="18">湖北</option>
+									<option value="19">湖南</option>
+									<option value="20">广东</option>
+									<option value="21">广西</option>
+									<option value="22">海南</option>
+									<option value="23">四川</option>
+									<option value="24">贵州</option>
+									<option value="25">云南</option>
+									<option value="26">西藏</option>
+									<option value="27">陕西</option>
+									<option value="28">甘肃</option>
+									<option value="29">青海</option>
+									<option value="30">宁夏</option>
+									<option value="31">新疆</option>
+									<option value="32">台湾</option>
+									<option value="33">香港</option>
+									<option value="34">澳门</option>
+							</select>
+						</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_hd"><label class="weui_label">发布时间</label></div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<select id="day" class="weui_select" name="day">
+								<option selected="" value="">不限时间</option>
+								<option value="1">1天内</option>
+								<option value="3">3天内</option>
+								<option value="7">7天内</option>
+								<option value="15">15天内</option>
+								<option value="30">30天内</option>
+								<option value="90">90天内</option>
+							</select>
+						</div>
+					</div>
+					<div class="weui-row" style="padding: 20px 0 50px 0;">
+						<div class="weui-col-5"></div>
+						<div class="weui-col-90"><a id="ajaxSearch" href="javascript:;" class="weui_btn weui_btn_primary">搜 &nbsp;&nbsp;&nbsp;&nbsp; 索</a></div>
+						<div class="weui-col-5"></div>
+					</div>
+				</form>
+				</div>
+
+				<div class="weui-row">
+					<div class="weui-col-5"></div>
+					<div class="weui-col-90 pdb100 pdt20">
+						<div class="layoutMain" id="searchs" v-show="isShow" >				
+							<!--信息卡片-->
+							<div class="weui_panel" v-for="item in item" track-by="$index">
+								<div class="weui_panel_hd cardhd">求 购 信 息</div>
+								<div class="weui_panel_bd">
+									<div class="weui_media_box weui_media_text main_skin">
+										<p>{{{ item.content }}}</p>
+										<ul class="weui_media_info" style="color: #333;">
+											<li class="weui_media_info_meta ">用户：{{ item.truename }}</li>
+											<li class="weui_media_info_meta  weui_media_info_meta_extra">{{ item.addtime }}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--//信息卡片-->
+						</div>
+					</div>
+					<div class="weui-col-5"></div>
+				</div>
+			</div>
+			<div id="tab2" class="weui_tab_bd_item weui_tab_bd_item_active">
+				<div class="weui-pull-to-refresh-layer" style="display: ">
+					<!-- <div class="pull-to-refresh-arrow"></div> -->
+					<div class="pull-to-refresh-preloader"></div>
+					<div class="down"></div>
+					<div class="up">正在加载最新信息...</div>
+					<div class="refresh">正在加载最新信息...</div>
+				</div>
+				<!-- 信息主体 -->
+				<div class="weui-row">
+					<div class="weui-col-5"></div>
+					<div class="weui-col-90 pdb100">
+						<div class="layoutMain" id="newdata" v-show="isShow">				
+							<!--信息卡片-->
+							<div class="weui_panel" v-for="item in item" track-by="$index">
+								<div class="weui_panel_hd cardhd">求 购 信 息</div>
+								<div class="weui_panel_bd">
+									<div class="weui_media_box weui_media_text main_skin">
+										<p>{{{ item.content }}}</p>
+										<ul class="weui_media_info" style="color: #333;">
+											<li class="weui_media_info_meta ">编号：{{ item.itemid }}</li>
+											<li class="weui_media_info_meta weui_media_info_meta_extra">{{ item.truename }}</li>
+											<li class="weui_media_info_meta  weui_media_info_meta_extra">{{ item.addtime }}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--//信息卡片-->
+						</div>
+					</div>
+					<div class="weui-col-5"></div>
+				</div>
+				<!--//信息主体-->
+				<div class="weui-row pdb100">
+					<div class="weui-col-20"></div>
+					<div class="weui-col-60">
+						<a id="getNew" href="javascript:;" class="weui_btn weui_btn_primary">获取消息</a>
+					</div>
+					<div class="weui-col-20"></div>
+				</div>
+			</div>
+			<div id="tab3" class="weui_tab_bd_item">
+			<form id="ajaxAddForm" action="{DT_PATH}api/taoxinxi.php?action=ajaxAdd" method="post">
+				<div class="weui_cells weui_cells_form">
+					<div class="weui_cell">
+						<div class="headSkin">快 速 发 布</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_bd weui_cell_primary">
+							<textarea name="content" class="weui_textarea" placeholder="请输入具体描述" rows="3"></textarea>
+							<div class="weui_textarea_counter"><span>0</span>/200</div>
+						</div>
+					</div>
+				</div>
+				<div class="weui_cells_title">联系方式</div>
+				<div class="weui_cells weui_cells_form">
+					<div class="weui_cell">
+						<div class="weui_cell_hd"><label class="weui_label">联 系 人：</label></div>
+						<div class="weui_cell_bd weui_cell_primary pdl15">
+							<input name="truename" class="weui_input" type="text" placeholder="称呼">
+						</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_hd"><label class="weui_label">手&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp机：</label></div>
+						<div class="weui_cell_bd weui_cell_primary pdl15">
+							<input name="mphone" class="weui_input" type="text" placeholder="手机号码">
+						</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_hd"><label class="weui_label">Q&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQ：</label></div>
+						<div class="weui_cell_bd weui_cell_primary pdl15">
+							<input name="qq" class="weui_input" type="text" placeholder="QQ号码">
+						</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_hd"><label class="weui_label">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp区：</label></div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<select id="areaid" class="weui_select" name="areaid">
+								<option selected="" value="">不限地区</option>
+									<option value="1">北京</option>
+									<option value="2">上海</option>
+									<option value="3">天津</option>
+									<option value="4">重庆</option>
+									<option value="5">河北</option>
+									<option value="6">山西</option>
+									<option value="7">内蒙古</option>
+									<option value="8">辽宁</option>
+									<option value="9">吉林</option>
+									<option value="10">黑龙江</option>
+									<option value="11">江苏</option>
+									<option value="12">浙江</option>
+									<option value="13">安徽</option>
+									<option value="14">福建</option>
+									<option value="15">江西</option>
+									<option value="16">山东</option>
+									<option value="17">河南</option>
+									<option value="18">湖北</option>
+									<option value="19">湖南</option>
+									<option value="20">广东</option>
+									<option value="21">广西</option>
+									<option value="22">海南</option>
+									<option value="23">四川</option>
+									<option value="24">贵州</option>
+									<option value="25">云南</option>
+									<option value="26">西藏</option>
+									<option value="27">陕西</option>
+									<option value="28">甘肃</option>
+									<option value="29">青海</option>
+									<option value="30">宁夏</option>
+									<option value="31">新疆</option>
+									<option value="32">台湾</option>
+									<option value="33">香港</option>
+									<option value="34">澳门</option>
+							</select>
+						</div>
+					</div>
+					<!-- <div class="weui_cell weui_vcode">
+						<div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<input class="weui_input" type="number" placeholder="请输入验证码">
+						</div>
+						<div class="weui_cell_ft">
+							<img src="{DT_STATIC}file/jqweui/images/vcode.jpg">
+						</div>
+					</div> -->
+					<div class="weui-row" style="padding: 50px 0;">
+						<div class="weui-col-5"></div>
+						<div class="weui-col-90"><a id="ajaxAdd" href="javascript:;" class="weui_btn weui_btn_primary">发布</a></div>
+						<div class="weui-col-5"></div>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+		<div class="weui_tabbar">
+			<a href="#tab1" class="weui_tabbar_item ">
+				<div class="weui_tabbar_icon">
+					<img src="{DT_STATIC}file/jqweui/images/icon_nav_button.png" alt="">
+				</div>
+				<p class="weui_tabbar_label">搜索</p>
+			</a>
+			<a href="#tab2" class="weui_tabbar_item weui_bar_item_on">
+				<div class="weui_tabbar_icon">
+					<img src="{DT_STATIC}file/jqweui/images/icon_nav_msg.png" alt="">
+				</div>
+				<p class="weui_tabbar_label">抢单</p>
+			</a>
+			<a href="#tab3" class="weui_tabbar_item">
+				<div class="weui_tabbar_icon">
+					<img src="{DT_STATIC}file/jqweui/images/icon_nav_article.png" alt="">
+				</div>
+				<p class="weui_tabbar_label">发布</p>
+			</a>
+		</div>
+	</div>
+</div>
+<!-- body 最后 -->
+<script src="{DT_STATIC}file/jqweui/lib/jquery-2.1.4.js"></script>
+<script src="{DT_STATIC}file/jqweui/js/jquery-weui.js"></script>
+<script src="{DT_STATIC}file/jqweui/lib/vue.js"></script>
+<script>
+	$("#tab2").pullToRefresh();
+	$("#tab2").on("pull-to-refresh", function() {
+		getItemId();
+		var url = "{DT_PATH}api/taoxinxi.php?action=ajaxGetNew&firstItemId=" + firstItemId
+		//var url = "{DT_PATH}api/taoxinxi.php?action=ajaxGetOld&lastItemId=" + lastItemId
+		var data = {};
+		$.get(url, data, function(data) {
+			var objArr = JSON.parse(data);
+			if(objArr == 0){
+				$.toast("已经是最新");
+			}
+			for (var i = 0; i < objArr.length; i++) {
+				vm.item.unshift(objArr[i]);
+			}
+		});
+		$("#tab2").pullToRefreshDone();
+	});
+	//$("#tab2").pullToRefreshDone();
+
+
+	//Vue
+	var vm = new Vue({
+		el:'#newdata',
+		data:{
+			isShow:false,
+			item: [
+			{
+				content:'',
+				truename:'',
+				addtime:'',
+			}]
+		}
+	})
+
+	var searchs = new Vue({
+		el:'#searchs',
+		data:{
+			isShow:false,
+			item: [
+			{
+				content:'',
+				truename:'',
+				addtime:'',
+			}]
+		}
+	})
+
+	//标记页面最早，最后数据
+	var firstItemId;
+	var lastItemId;
+
+	function getItemId(){
+		var a = vm.item[0].itemid;
+		var b = vm.item[vm.item.length - 1].itemid;
+		if ( a > b ){
+			firstItemId = a;
+			lastItemId = b;
+		} else {
+			firstItemId = b;
+			lastItemId = a;
+		}
+	}
+
+	//加载完成获取初始数据
+	$(document).ready(function(){
+		$.toast("正在加载···");
+		var url = "{DT_PATH}api/taoxinxi.php?action=getShow"
+		var data = {};
+		$.get(url, data, function(data) {
+			//console.log(data);
+			var objArr = JSON.parse(data);
+			vm.item = objArr;
+			vm.isShow = "ture";
+		});
+
+		//获取最新数据数据	
+		$("#getNew").click(function(){
+			getItemId();
+			var url = "{DT_PATH}api/taoxinxi.php?action=ajaxGetOld&lastItemId=" + lastItemId
+			var data = {};
+			$.get(url, data, function(data) {
+				var objArr = JSON.parse(data);
+				for (var i = 0; i < objArr.length; i++) {
+					vm.item.push(objArr[i]);
+				}
+			});
+			$.toast("加载成功");
+		});
+
+		//搜索数据
+		$("#ajaxSearch").click(function(){
+			var keyword = $("#keyword").val();
+			var day = $("#day").val();
+			var areaid = $("#areaid").val();
+			var data = {};
+			var url = "{DT_PATH}api/taoxinxi.php?action=ajaxGetSearch"
+			if (keyword == "" && day == "" && areaid == "") {
+				$.toast("请输入搜索条件", "forbidden");
+			} else {
+				if (keyword !== "") {
+					url +="&keyword=" + keyword
+				}
+				if ( day !== "" ){
+					url += "&day=" + day
+				}
+				if (areaid !== "") {
+					url += "&areaid=" +areaid
+				}
+
+				//AJAX请求查询结果			
+				$.get(url, data, function(data) {
+					var objArr = JSON.parse(data);
+					searchs.item = objArr;
+					searchs.isShow = "ture";
+				});
+
+			}
+			
+		});
+	});
+
+	//ajaxAdd验证表单
+	$("#ajaxAdd").click(function(){
+		var myreg = /^\d{6,11}$/;
+		if ( $("textarea[name='content']") .val() == "" ) {
+			$.toptip('请填写发布信息', 2000, 'error');
+		} else {
+			if ( $("input[name='truename']").val() == "" ) {
+				$.toptip('请填写联系人', 2000, 'error');
+			}else{
+				if ( !myreg.test($("input[name='qq']").val()) && !myreg.test( $("input[name='mphone']").val() ) ) {
+					$.toptip('请留下正确的QQ或手机号码', 2000, 'error');
+				}else{
+					$("#ajaxAddForm").submit();
+				}
+			}
+		}
+	});
+</script>
+<div style="width: 0;height: 0;overflow: hidden;">
+	{template 'analytics','include'}
+</div>
+</body>
+</html>

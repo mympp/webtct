@@ -1,0 +1,1 @@
+<?php exit;?>1465954675a:1:{i:0;a:5:{s:6:"itemid";s:5:"34521";s:5:"title";s:43:" 供应“钟磊”牌二溴海因消毒片";s:7:"linkurl";s:15:"show-34521.html";s:5:"thumb";s:57:"http://www.tecenet.com/file/upload/cj2/cj_20140313887.jpg";s:8:"edittime";s:10:"1394604655";}}

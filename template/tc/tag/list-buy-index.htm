@@ -1,0 +1,24 @@
+											<ul id="buyul{$i}" class="buyul">
+											{loop $tags $z $k}
+																<li class="whitebg cut autoheight">
+																{if $k[thumb]}<div class="fl ml5  mr10"><a href="{$k[linkurl]}" target="_blank" title="{$k[alt]}"><img onerror="this.src='{DT_SKIN}image/nopic.gif'" src="{$k[thumb]}" width="95" height="85" class="thumb"/></a></div>{/if}
+																<dl class="autoheight fl " style="width:{if $k[thumb]}555{else}670{/if}px;" >
+																<dt class="mb5">
+																<span class="fr mr10 f12 hcolor">{if $k[status]>3}
+																[过期截止]
+																{else}
+																{if $k[totime]} [ {timetodate($k[totime], 3)} 截止]{else}长期有效{/if}
+																{/if}</span>
+																<span class="lenstr" style="width:{if $k[thumb]}420{else}520{/if}px;" ><a href="{$k[linkurl]}" target="_blank"  title="{$t[alt]}">{$k[title]}</a></span>
+																</dt>
+																<dd>
+																		<div class='hcolor f12 lh18'>{if $k[buycode]}采购编号：{$k[buycode]}&nbsp;{/if}{$k[introduce]}</div>
+																		<div><span>所在地区 {area_pos($k[areaid], '')}  &nbsp;&nbsp;信息分类 {$k[catname]}</span><span class="ml10">{timetodate($k[edittime],3)}</span><span class="fr mr10">{$k[hits]}人关注</span></div>
+																</dd>
+																</dl>
+																</li>
+											{/loop}		
+											</ul>
+											<script type="text/javascript">
+											$("#buyul{$i}>li").hover(function () {$(this).removeClass("whitebg");$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg");$(this).addClass("whitebg"); });
+											</script>

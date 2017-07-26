@@ -1,0 +1,20 @@
+<dl class="options search" style="border:0px;">
+															<dt>关键词搜索：</dt>
+															<dd>
+		   <label style='padding-top:5px;position:absolute;height:24px;margin-left:-90px;'>
+		   <input type="checkbox" name="itemid" value="1" {if $itemid}checked=checked{/if}>ID
+		   </label>
+
+		           {if $sfields}   
+				    <select  name="fields" style="height:30px;float:left">{loop $sfields $k $v}<option value="{$k}" {if $fields==$k}selected{/if} >{$v}</option>{/loop}</select>
+				     {/if}
+		   <input type="text" size="30" name="kw" value="{$kw}" id="keywordss"  class="inputkw nr fl ml5" onblur="if(this.value==''){this.value='输入关键词'}" onfocus="this.value=''"/>
+
+			<script type="text/javascript">document.getElementById('keywordss').value='{if $kw!=''}{$kw}{else}输入关键词{/if}';</script>
+			<input type="image" src="{DT_SKIN}image/search2.jpg" class="fl ml-5" onmouseover="if(document.getElementById('keywordss').value=='输入关键词'){document.getElementById('keywordss').value=''}" value="搜索"/>
+			{if !$kwnum}
+			{php $kwnum=7;}
+			{/if}
+			&nbsp;<b>热搜</b>：<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and length(word)>4&pagesize=$kwnum&order=total_search  desc&key=month_search&action=$action&ccatid=$catid&template=list-search_kw", -2)}-->
+															</dd>
+													    </dl>

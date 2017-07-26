@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>厂家列表</title>
+<meta name="keywords" content="{$head_keywords}"/>
+<style type="text/css">
+body{margin:0px;padding:0px;font-size:12px;}a{font-size:12px;color:#555;text-decoration:none;}
+.cs{width:230px;}i{color:#ff3300}
+.pages {padding:10px 0 10px 0;text-align:center;font-size:12px;color:#666666;}
+.pages a:link,.pages a:visited,.pages a:active  {color:#004499;background:#FFFFFF;border:#9AAFE5 1px solid;padding:1px;text-decoration:none;}
+.pages a:hover  {background:#FFFFFF;border:#2E6AB1 1px solid;color:#FF6600;padding:1px;text-decoration:none;}
+.pages strong {background:#2E6AB1;padding:1px;border:#1D589E 1px solid;color:#FFFFFF;}
+.pages_inp {border:#2E6AB1 1px solid;padding:1px;width:30px;text-align:center;color:#666666;}
+.pages_btn {width:26px;background:#F1F7FC;border:#2E6AB1 1px solid;color:#004499;font-weight:bold;font-size:11px;}
+.pages label {background:#FFFFFF;border:#2E6AB1 1px solid;color:#004499;padding:1px 5px 1px 5px;}
+.pages label em {color:red;font-weight:bold;font-style:normal;}
+.pages label span {font-weight:bold;}
+.pages cite {font-style:normal;}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jsfunction.js"></script>
+<div style="background:#fafafa;height:350px;" class="autoheight pd10">
+<br>
+<center><input type="button" value="{if $fname!=''}我要建一个“{$fname}”的厂商/品牌{else}我要加一个厂商到厂商/品牌目录{/if}" height=30 style="padding:5px;border:1px #ff9933 solid;background:#ffffcc; ;color:#cc0000" onclick="Dd('cj').style.display='none';Dd('qdcs').style.display='none';Dd('fn').style.display='block';this.style.display='none'" /></center><br>
+<table cellpadding="5" cellspacing="1" bgcolor="#d8dfef" width="850" align="center" style="font-size:12px">
+<form method="get" action="{$MODULE[13][linkurl]}tree.php"><input type="hidden" name="tz" value="1">
+<tr>
+	<td bgcolor="#f7f9fd" >
+	
+		厂家/品牌分类：{if $id1==''||$id1=='全部分类'}
+		{php $id1="858,859";$item="40";}
+		{/if}
+		{category_select('id1', '选择分类', $id1, 13)} 
+厂商名称关键词：<input type="text" name="fname" value="{$fname}" size=30>
+<input type="checkbox" name="username" value="{$_username}" {if $username!=''}checked{/if}>自己加的
+<input type="hidden" name="checked" value="{$checked}">
+<input type="submit">
+
+</td>
+</tr></form>
+<tr>
+	<td bgcolor="#fcfdfe" valign="top" align="center" colspan=2 height=200>
+	<div id='cj'>
+
+ 
+{php $tj=" and title like '%".$fname."%'"}
+ {if $username!=''}
+ {php $tj=$tj." and username='".$username."'"}
+{/if}
+<!--{tag("moduleid=13&condition=itemid>0 $tj&pagesize=12&catid=$id1&page=$page&showcat=1&showpage=1&order=level desc,pnum desc&template=s-brand&checked=$checked&debug=0&tz=$tz")}-->
+</div>
+	<br>
+<center><input type="button" value="确定该厂商" height=20 style="padding:3px;" id="qdcs" onclick="window.parent.closebox('boxdd');" /></center><br>
+<form method="post" action="{$MODULE[13][linkurl]}copy.php"  id='fn'  style="display:none">
+   <table cellpadding="5" cellspacing="1" bgcolor="#d8dfef" border=0>
+<tr>
+		<td align="CENTER" height="25"  colspan="3"  bgcolor="#f7f9fd" width="850"><b style="font-size:14px;">添加厂家/品牌信息</b></td>
+</tr>
+<tr>
+		<td align="right" height="25" bgcolor="#f7f9fd" width=120>
+		<font color="#ff3300">*</font>厂家/品牌分类：
+		</td>
+		<td align="left" bgcolor="#ffffff">
+		{category_select('post[catid]', '选择分类', $id1, 13)} 
+		
+		</td>
+</tr>
+<tr>
+		<td align="right" height="25" bgcolor="#f7f9fd" width=120>
+		<font color="#ff3300">*</font>厂家/品牌名字：
+		</td>
+		<td align="left" bgcolor="#ffffff" WIDTH="550"><input type="text" name="post[title]" value="{$fname}" size=50><input type="checkbox" name="" onclick="if(this.checked==true){Dd('yy').style.display='block';}else{Dd('yy').style.display='none';}">完善</td>
+</tr>
+</table>
+
+<table id="yy" style="display:none;"cellpadding="5" cellspacing="1" bgcolor="#d8dfef">
+<tr>
+		<td align="right" height="25" bgcolor="#f7f9fd" width="160">
+		厂家/品牌LOGO：
+		</td>
+		<td align="left" bgcolor="#ffffff" width="690"><input name="post[thumb]" id="thumb" type="text" size="60" value="" readonly/>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb(13,135,100, Dd('thumb').value, true);" class="t">[上传]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[预览]</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[删除]</a></td>
+</tr>
+<tr>
+		<td align="right" height="25" bgcolor="#f7f9fd">
+		官方网站：
+		</td>
+		<td  bgcolor="#ffffff" align="left"><input type="text" name="post[homepage]" value="http://" size=40></td>
+</tr>
+<tr>
+		<td align="right" height="25" bgcolor="#f7f9fd">
+		开放其他网店推广：
+		</td>
+		<td  bgcolor="#ffffff" align="left"><input type="radio" name="post[close]" value=0 checked=checked>开放  &nbsp;&nbsp;<input type="radio" name="post[close]" value=1>关闭</td>
+</tr>
+<tr>
+		<td align="right" height="25" bgcolor="#f7f9fd">
+		厂家/品牌介绍：
+		</td>
+		<td   bgcolor="#ffffff"align="left"><textarea name="post[content]" rows="3" cols="50"></textarea></td>
+</tr>
+</table>
+<table cellpadding="5" cellspacing="1" >
+<tr>
+		<td align="center" height="25" colspan="2"><input type="submit" value="确定提交"></td>
+</tr>
+</table>
+
+<script type="text/javascript">
+function yesbrand(bcatid,fname,fid){
+parent.Dd('factory').value=fname;
+parent.Dd('pbrand').value=fname;
+parent.Dd('bcatid').value=bcatid;
+parent.Dd('factoryid').value=fid;
+var DG = frameElement.lhgDG;
+DG.cancel();
+}
+function yesbrand2(fname,fid){
+if(parent.Dd('brandid').value.indexOf(','+fid+',')<0){
+parent.Dd('brandname').value=parent.Dd('brandname').value+fname+',';
+parent.Dd('brandid').value=parent.Dd('brandid').value+fid+',';
+}
+if(parent.Dd('brandname').value.substr(0,1)!=','){parent.Dd('brandname').value=','+parent.Dd('brandname').value;}
+if(parent.Dd('brandid').value.substr(0,1)!=','){parent.Dd('brandid').value=','+parent.Dd('brandid').value;}
+var DG = frameElement.lhgDG;
+DG.cancel();
+}
+</script>
+{if $d['itemid']>0}
+<script type="text/javascript">
+Dd('f{$t[itemid]}').checked=true;
+yesbrand({$catid},'{$fname}',{$d['itemid']});
+</script>
+{/if}
+	</td>
+</tr>
+</table></form>
+</div>
+{if $_REQUEST['actions']}
+<script type="text/javascript">
+Dd('cj').style.display='none';Dd('qdcs').style.display='none';Dd('fn').style.display='block';this.style.display='none'
+</script>
+{/if}
+<style type="text/css">
+	#Dtop {border-right:#CCCCCC 3px solid;border-bottom:#CCCCCC 3px solid;}
+#Dtop .dbody{border:#333333 1px solid;padding:1px;background:#EBF0F6;}
+#Dtop .dhead{background:#2875B9 url('/member/image/close.gif') no-repeat right 4px;padding:0 0 0 0;letter-spacing:1px;border-bottom:#333333 1px 
+solid;color:#FFFFFF;line-height:20px;font-weight:bold;cursor:move;}
+#Dtop .dhead span{float:right;cursor:pointer;display:block;width:22px;height:19px;text-align:right;}
+#Dtop .dbox{padding:8px;line-height:200%;}
+</style>
+</body>
+</html>

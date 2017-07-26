@@ -1,0 +1,86 @@
+{php $sitemenu='brand';$listpage='list';$mlogo='mall.gif';}
+{template 'module-header'}
+<script type="text/javascript" src="http://www.tecenet.com/file/script/config.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/common.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css?v20161216"/>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/brand.css?v20161208"/>
+<style>
+img{display: inline-block;}
+#topkeyword{width:310px;height:22px;line-height:22px}
+.tc-footer{margin-top: 20px;}
+.tc-footer .copyright{width: 100%;}
+</style>
+
+<div class="crumb box-center" style="width:1000px;">
+{template 'lay','tag'}
+</div>
+
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';
+Dd('catsl').className='menuy';
+</script>	
+<div class="autoheight pt5 whitebg">
+	<dl class="options">		
+														{php $b=substr_count($CAT[arrparentid],",");$l=explode(',',$CAT[arrparentid]);}	
+														{if $kcatid}
+														{php $d=getsqldata("parentid","{$db->pre}category","catid=$kcatid",1,0);}
+														{php $k=$d[0][parentid];}
+														{/if}
+														<dt>{$MOD[name]}范围：</dt>
+														<dd class="autoheight"><a {if $catid==''} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('index.php?areaid='.$areaid.'')}">全部</a>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid].'')}" {if $t[catid]==$catid||$t[catid]==$l[1]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+														</dl>
+															{if $childa!=0}
+															<dl class="options">
+															<dt>{$parenta}的分类：</dt>
+															<dd><a {if $catid==$catida} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&catid='.$catida)}">全部</a>
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catida&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&catid='.$t[catid].'')}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[2]}
+																	{php $childb=$t[child];$parentb=$t[catname];$catidb=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+															</dl>
+															{/if}
+
+														<form action="{$MOD[linkurl]}search.php" id="fsearch">
+														<input type="hidden" name="areaid" value="{$areaid}">
+														<input type="hidden" name="typeid" value="{$typeid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="vip" value="{$vip}">
+			                                            <input type="hidden" name="thumb" value="{$thumb}">
+                                                        {template 'search', 'chip'}
+														</form>
+														</div>
+
+<div class="divline"></div>
+<ul class="webw h60 w980 center whitebg grayb pd5">
+<li class="fl grayb w490 h60 cut mr10 ml10">{ad(158)}</li>
+<li class="fl grayb w490 h60 cut mr10 ml10">{ad(159)}</li>
+</ul>
+<div class="divline"></div>
+<dl class="autoheight whitebg">
+<dd id='brandlist' style="width:998px;" class="box-center">
+{if $tags}				
+		{if $page == 1}{ad($moduleid,0,'',6)}{/if}	
+		{template 'list-brand', 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+</dd>
+</dl>
+{if $parenta}
+<script type="text/javascript">
+Dd('topbrand').innerText=' > {$parenta}/品牌';
+</script>
+{/if}
+<div class="divline"></div>
+{template 'footer2017'}

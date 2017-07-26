@@ -1,0 +1,1 @@
+var DTPath = "http://www.tctianyi.com/";var SKPath = "http://www.tctianyi.com/skin/default/";var MEPath = "http://www.tctianyi.com/member/";var DTEditor = "fckeditor";var CKDomain = "";var CKPath = "/";var CKPrex = "chb_";

@@ -1,0 +1,115 @@
+{php $sitemenu='mall';$mlogo='mall.gif';$listpage='search';}
+{template 'header','mall'}
+<style>
+.webmenulist{
+width: 750px;
+}
+.youcan {
+    width: 128px;
+    background-color: #9e1e00;
+    height: 39px;
+}
+.webmenulist {
+    width: 730px;
+    background: #D10E44;
+    height: auto;
+}
+</style>
+<div class="divline"></div>
+<div class="whitebg fl autoheight" style="width:220px;">
+<dl class='dllist'>
+<dt class='f16 rcolor'>全站最新添加40个产品</dt>
+<dd class='product' id='product'>
+<ul class="ullist">
+			{php $tagt = tag("moduleid=16&fields=groupid,price,linkurl,title&condition=status=3 and vip>0 &pagesize=40&order=edittime desc&template=null&debug=0&showcat=1")}
+					{loop $tagt $z $t}
+					<li><span class='fr mr10 f12 rcolor'>{if $t[groupid]==8}询价{else}{if $t[price]>0}¥{$t[price]}{else}<font class='f12'>面议</font>{/if}{/if}</span><a href="{$t[linkurl]}">·{dsubstr($t[title],60,"..")}</a>
+					
+					</li>
+			{/loop}
+</ul>
+<script type="text/javascript">
+$(".ullist>li").hover(function () {$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg"); });
+</script>
+</dd>
+
+</dl>
+</div>
+<div class="ml10 fl autoheight cut" style="width:765px;_margin-left:10px;">
+<div class="autoheight">
+{ad(143)}
+</div>
+<div class="divline"></div>
+<dl class='divs whitebg noborder'>
+{php $keshi = $db->count($DT_PRE.'category', "moduleid=12", 60);}
+<dt style="background-image:url('{DT_SKIN}image/mall/fangan.png');"><span style='background:#b83514;' class='fr'><a href="{$MODULE[12][linkurl]}">更多>></a></span>医院科室解决方案包<br>
+<p>{$keshi}个科室所需医疗器械及耗材打包方案</p>
+</dt>
+<dd class='keshi'>
+<ul class='autoheight'>
+{php $tagt = tag("moduleid=12&table=category&fields=catid,catname&condition=moduleid=12 and parentid=0&pagesize=60&order=catid desc&template=null&debug=0&showcat=1")}			
+{loop $tagt $z $t}			
+<li><a href="{$MOD[link]}{$t[catid]}.htm" title="{$t[catname]}" target='_blank'>{$t[catname]}</a></li>
+{/loop}
+</ul>
+</dd>
+</dl>
+<div class="divline whitebg"></div>
+<div class='workflow'>
+			<dl><dt>如何加入科室方案包</dt><dd>
+			
+			<ul>
+<li class="autowidth"><span>1.注册/升级为开店会员</span><font> </font></li>
+<li class="autowidth"><span>2.发布产品信息</span><font> </font></li>
+<li class="autowidth"><span>3.选择对应科室名称</span><font> </font></li>
+<li class="autowidth"><span>4.本站客服审核</span></li></dd>
+			
+			</dl>
+			</div>
+<div class="divline whitebg"></div>
+
+{php $brand = $db->count($DT_PRE.'mall', "status=3 and bcatid=858", 60);}
+<dl class="autoheight pt5 whitebg pd10">
+<dt class='xdline'><span class='fr f14'><a href='{$MOD[link]}search-htm-bcatid-858-typeid-99-list-1.html'>更多..</a></span><a href='{$MOD[link]}search-htm-bcatid-858-typeid-99-list-1.html' class='rcolor b'>国内推荐厂商/品牌</a><span class="f14 ml10 hcolor">(共计{$brand}个国内厂商/品牌的相关产品)</span></dt>
+<dd>
+<div class="w600 fl h500">
+{php $tags = tag("moduleid=$moduleid&fields=itemid,linkurl,thumb,groupid,price,qq,vip,username,company,title&condition=status=3 and bcatid=858 and thumb<>''&pagesize=6&order=level desc&template=thumb-mall&debug=0&lazy=$lazy&nocheck=1&showcat=0&width=602")}		
+</div>
+<div  class="fl h500" style="width:145px;background:#fce3d3">
+		<ul>
+			{php $tagt = tag("moduleid=13&fields=linkurl,title,thumb&condition=status=3 and thumb<>'' &catid=858&pagesize=6&order=level desc&template=null&debug=0&showcat=1")}			
+		    {loop $tagt $z $t}															
+			<li class="pl5 pt5"><a href="{$t[linkurl]}" title="{$t[alt]}"><img src='{$t[thumb]}' alt='{$t[alt]}' width="135" height="77" align="center"></a></li>
+			{/loop}	
+		</ul>
+</div>
+<br class="clear">
+</dd>
+</dl>
+<div class="divline whitebg"></div>
+{php $brand = $db->count($DT_PRE.'mall', "status=3 and bcatid=859", 60);}
+<dl class="autoheight pt5 whitebg pd10" >
+<dt class='xdline ocolor'><span class='fr f14'><a href='{$MOD[link]}search-htm-bcatid-859-typeid-99-list-1.html'>更多..</a></span><a href='{$MOD[link]}search-htm-bcatid-859-typeid-99-list-1.html' class='rcolor b'>国外推荐厂商/品牌</a><span class="f14 ml10 hcolor">(共计{$brand}个国外厂商/品牌的相关产品)</span></dt>
+<dd>
+<div class="w600 fl h500">
+{php $tags = tag("moduleid=$moduleid&fields=itemid,linkurl,thumb,groupid,price,qq,vip,username,company,title&condition=status=3 and bcatid=859 and thumb<>''&pagesize=6&order=level desc&template=thumb-mall&debug=0&nocheck=1&lazy=$lazy&showcat=0&width=602")}	
+</div>
+<div  class="fl h500" style="width:145px;;background:#fce3d3">
+		<ul>
+			{php $tagt = tag("moduleid=13&fields=linkurl,title,thumb&condition=status=3 and thumb<>'' and catid=859&pagesize=6&order=level desc&template=null&debug=0&showcat=1")}			
+		    {loop $tagt $z $t}															
+			<li class="pl5 pt5"><a href="{$t[linkurl]}" title="{$t[alt]}"><img src='{$t[thumb]}' alt='{$t[alt]}' width="135" height="77" align="center"></a></li>
+			{/loop}	
+		</ul>
+</div>
+<br class="clear">
+</dd>
+</dl>
+</div>
+{template 'mall_leftmenu','tecenet/html'}
+<script type="text/javascript">
+Dd('sidebar').innerHTML=Dd('{$module}sidebar').innerHTML;
+Dd('youcantext').innerText='医疗器械分类(68分类)';
+$("#leftmenu").slideToggle("normal");
+</script>
+{template 'footer'}

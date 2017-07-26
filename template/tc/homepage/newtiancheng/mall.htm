@@ -1,0 +1,215 @@
+{template 'header2', $template}
+		{if $itemid}
+			<div class="product_main">
+				<div class="main_title"><span>{$title}</span></div>
+				<div class="details_content">
+					<div class="de_img">
+						<div class="big_img" onmouseover="SAlbum();" onmouseout="HAlbum();" onclick="PAlbum(Dd('mid_pic'));">
+							<img src="{$albums[0]}" width="90%" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);"/>
+						</div>
+						<ul>
+							{loop $thumbs $k $v}
+							<li><img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"/></li>
+							{/loop}
+						</ul>
+					</div>
+					<div class="de_right">
+						<table>
+							<tr><td width="100" class="s">名&nbsp;&nbsp;&nbsp;称：</td><td>{$title}</td></tr>
+							<tr><td class="s">单&nbsp;&nbsp;&nbsp;价：</td><td>￥<span style="color:#FF0000">&nbsp;{$price}</span></td></tr>
+							<tr><td class="s">品&nbsp;&nbsp;&nbsp;牌：</td><td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填写{/if}</td></tr>
+							<tr><td class="s">所在地：</td><td>{area_pos($areaid, '')}</td></tr>
+							<tr><td class="s">销&nbsp;&nbsp;&nbsp;量：</td><td>累积售出<span style="color:#FF9900;">&nbsp;{$sales}&nbsp;</span>件，<span style="color:#FF9900;">&nbsp;{$orders}&nbsp;</span>个订单</td></tr>
+							<tr><td class="s">评&nbsp;&nbsp;&nbsp;价：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$comments}&nbsp;</span>条评价</td></tr>
+							<tr><td class="s">库&nbsp;&nbsp;&nbsp;存：</td><td>还剩出<span style="color:#FF9900;">&nbsp;{$amount}&nbsp;</span>件</td></tr>
+							<tr><td class="s">人&nbsp;&nbsp;&nbsp;气：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$hits}&nbsp;</span>人关注</td></tr>
+							<tr><td class="s">更&nbsp;&nbsp;&nbsp;新：</td><td>{$editdate}</td></tr>
+						</table>
+						<table style="margin-top:10px;float:left;">
+							<tr><td width="150"><img alt="立即购买" src="{DT_SKIN}image/btn_tobuy.gif" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');"/></td><td><img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" onclick="Go('{$MOD[linkurl]}{rewrite('cart.php?itemid='.$itemid)}');"/></td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--{php $tags=tag("moduleid=16&condition=status>2 and username='$username'&pagesize=5&order=hits desc&fields=itemid,title,linkurl,thumb,edittime,price&template=null");}-->
+
+<div class="side_body">
+	<div class="side_head"><div><span class="f_r"></span><strong>推荐产品</strong></div></div>
+<table>
+	{loop $tags $t}
+<tr align="center"><td valign="top" width="20%" height="180">
+<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
+	<a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=sell&itemid='.$t['itemid'], $domain)}{/if}"><img src="{imgurl($t[thumb], 1)}" width="130" height="100" alt="{$t[alt]}"/></a>
+	<div><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=mall&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[alt]}">{$t[title]}</a></div>
+	<p>{timetodate($t[edittime], 3)}</p>
+</div>
+</td></tr>
+{/loop}
+</table>
+</div>
+			
+			<div class="details_parameter">
+				<div class="par_title"><span>详细参数</span></div>	
+				<div class="parameter_content">
+					{$content}
+				</div>
+			</div>
+			<script type="text/javascript">
+			var content_id = 'content';
+			var img_max_width = {$MOD[max_width]};
+			</script>
+			<script type="text/javascript" src="{DT_PATH}file/script/content.js"></script>
+		{else}
+		
+		{template 'side_type', $template}
+		{template 'side_search', $template}
+		{template 'side_link', $template}
+		<div class="right">
+	<div class="right_top">
+		<img src="{$HSPATH}ico_6.jpg"/>&nbsp;&nbsp;您当前的位置：<a style="color:#9d1b5f" href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$COM[linkurl]}" style="color:#9d1b5f">{$MENU[$menuid][name]}</a>
+		<span><script type="text/javascript">show_date();</script></span>
+	</div>
+	<script type="text/javascript">
+           function dh(moreshow,num,id){
+	var dh=document.getElementById(moreshow+"_"+id);
+	var cat_more=document.getElementById('cat_more_'+id);
+	if(dh.style.display != "block"){
+		dh.style.display = "block";
+		if(num==1){
+			cat_more.innerHTML = '隐藏显示分类';
+			cat_more.className='cat_more_2';
+		}else{
+			cat_more.innerHTML = '隐藏';
+			cat_more.className='qy_c_h';
+		}
+	}else{
+		dh.style.display = "none";
+		if(num==1){
+			cat_more.innerHTML = '查看更多分类';
+			cat_more.className='cat_more_1';
+		}else{
+			cat_more.innerHTML = '更多';
+			cat_more.className='qy_c_m';
+		}
+	}
+}
+         </script> 	
+			<div class="list_product">			
+				<div class="list_title"><span>商品分类</span></div>
+				<div class="list_product_category">
+					<div class="autoheight pt5 whitebg">
+														{php $b=substr_count($CAT[arrparentid],",");$l=explode(',',$CAT[arrparentid]);}	
+														{if $kcatid}
+														{php $d=getsqldata("parentid","{$db->pre}category","catid=$kcatid",1,0);}
+														{php $k=$d[0][parentid];}
+														{/if}
+													<div class="qy_category w760">
+													<div class="qy_hy">医疗器械分类</div>
+													<div class="qy_c_m" onclick="return dh('moreshow',2,1)" id="cat_more_1">更多</div>
+													<ul><span>
+														<a href="javascript:void(0);" onclick="chulai('mall2list')" class="rcolor" id='malllink'></a>
+														<div class="mt10 hd" id='malllist'>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=50&order=listorder ASC&template=null")}
+														
+														<li><a {if $catid==0} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if} href=""><span class='f16 b rcolor'>所有医疗器械</span></a></li>
+															{loop $tagss $i $t}
+															{if $i==17}</span><span id="moreshow_2" style="display: none;">{/if}
+											         	<li><a  href="{userurl($username, 'file=mall&catid='.$t[catid], $domain)}"  {if $catid==$t[catid]} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if}>{set_style($t[catname],$t[style])}</a></li>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+															<script type="text/javascript">
+															Dd('mallall').className='color';
+															Dd('malllink').className='opyes wcolor';
+															Dd('malllink').innerHTML='> {$t[catname]}<i>[{$t[item]}]</i>';	
+															</script>
+																	{/if}
+															{/loop}
+														</div>
+														{if $childa!=0}
+														<div class="mt10 pd5 graybg" id='mall2list'>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catida&pagesize=30&order=listorder ASC&template=null")}
+														<a {if $catid==$catida} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catida)}">全部</a>
+															{loop $tagss $i $t}
+															<li>
+															<a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="rcolor" style="border-color:#9e1e00;"{else}class="color" style="border-color:#F5F5F5;"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a></li>
+															{/loop}	
+																	{if $t[catid]==$catid||$t[catid]==$l[2]}
+																	{php $childb=$t[child];$parentb=$t[catname];$catidb=$t[catid];}
+																	{/if}
+														</div>
+														{else}
+														<span id='mall2list' class="hd"></span>
+														{/if}
+														</span>
+														</ul>
+														</div>
+
+														<div class="qy_category w760 bt1">
+														<div class="qy_hy">医院科室分类：</div>
+														<div class="qy_c_m" onclick="return dh('moreshow',2,2)" id="cat_more_2">更多</div>
+                         
+													<dd><ul><span>
+														<li><a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&stype='.$stype.'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&kcatid=0&catid='.$catid)}" class="{if $kcatid==0}opyes wcolor{else}color{/if}">全部</a></li>
+														{php $tagss = tag("moduleid=12&table=category&condition=moduleid=12 and parentid=0&pagesize=50&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															{if $i==17}</span><span id="moreshow_2" style="display: none;">{/if}
+															<li><a  href="{$MOD[linkurl]}{$t[catid]}.htm" class="color" id="keshi{$t[catid]}">{set_style($t[catname],$t[style])}</a></li>			
+														{if $t[catid]==$kcatid||$t[catid]==$k}
+															{php $kchilda=$t[child];$kparenta=$t[catname];$kcatida=$t[catid];} 
+														{/if}										
+														{/loop}
+														</span>
+														</ul>
+														{if $kchilda!=0}
+														<div class="mt10 pd5 graybg" id='keshi2list'>
+														{php $tagss = tag("moduleid=12&table=category&condition=moduleid=12 and parentid=$kcatida&pagesize=30&order=listorder ASC&template=null")}
+														<a {if $kcatid==$kcatida} class="rcolor" style="border-color:#9e1e00;"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catid.'&kcatid='.$kcatida)}">全部</a>
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catid.'&kcatid='.$t[catid])}" {if $t[catid]==$kcatid} class="rcolor" style="border-color:#9e1e00;"{else}class="color" style="border-color:#F5F5F5;"{/if}>{set_style($t[catname],$t[style])}</a>	
+															{if $t[parentid]==$kcatida}
+															<script type="text/javascript">
+															Dd('keshi{$t[parentid]}').className='opyes wcolor';
+															</script>
+															{/if}
+															{/loop}	
+														
+														</div>
+														{else}
+														<span id='keshi2list' class="hd"></span>
+														{/if}
+														</dd>
+														</div>
+															<dl class="options">
+															<dt>产品属性：</dt>
+															<dd><a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&kcatid='.$kcatid.'&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="opyes wcolor">全部</a>
+															<a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&kcatid='.$kcatid.'&catid='.$catid.'&stype=0&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="color">整机</a>
+															<a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&kcatid='.$kcatid.'&catid='.$catid.'&stype=1&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="color">配件</a>
+															<a href="{$MOD[linkurl]}{rewrite('search.php?tc='.$tc.'&kcatid='.$kcatid.'&catid='.$catid.'&stype=2&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="color">耗材</a>
+															
+															</dd>
+															</dl>
+
+</div>		
+				</div>
+				<div class="list_title">
+					<span>商品列表</span>	
+				</div>
+				<div class="product_list">
+					{if $view}
+					{loop $lists $k $v}
+					{if $k<16}
+					<div class="product_content"><a href="{$v[linkurl]}"><div class="product_img"><span></span><img src="{imgurl($v[thumb], 1)}" width="108" height="108"/></div><span>{{dsubstr($v[title],20,'...')}</span><br/><span class="a">￥{$v[price]}</span></a></div>
+					{/if}
+					{/loop}
+					{else}
+					{loop $lists $k $v}
+					{if $k<16}
+					<div class="product_content"><a href="{$v[linkurl]}" title="{$v[title]}"><div class="product_img"><span></span><img src="{imgurl($v[thumb], 1)}" width="108" height="108"/></div><span>{dsubstr($v[title],20,'...')}</span><br/><span class="a">￥{$v[price]}</span></a></div>
+					{/if}
+					{/loop}
+					{/if}
+				</div>
+				<br/><div class="pages">{$pages}</div>
+			</div>
+		{/if}
+{template 'footer', $template}

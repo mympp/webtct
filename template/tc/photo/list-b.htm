@@ -1,0 +1,52 @@
+{php $sitemenu='photo';}
+
+{template 'header'}
+<script type="text/javascript">
+Dd('menubgs').className="divline2";
+</script>
+</div>
+</div>
+{php $cats = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and catid=$catid&template=null&debug=0")}
+{if $cats[0][level] == 2}
+{php $tag = tag("moduleid=$moduleid&table=photo_$moduleid&condition=status=3 and level = 1 and catid = $catid&order=addtime asc&template=null&debug=0")}
+<div style="width:100%; height:393px; background:url({$tag[0][thumb]}) no-repeat center; border-bottom:3px solid #bbb;">
+	<div class="webw">
+		<div class="ksintroduce">
+			<p class="kstitle">{$catname}产品方案</p>
+			<p class="ksintro">{dsubstr($seo_description,265,'……')}</p>
+		</div>
+	</div>
+</div>
+{/if}
+
+<div class="webw">
+	<dl class="ksjs fl">
+		<dt class="ksit">方案详细介绍</dt>
+		<dd class="kscontent">{$seo_description}</dd>
+		<dd class="ksfa">
+			<div><p class="ksfa_pic"><a href="{$MODULE[16][linkurl]}search.php?kcatid={$catid}&level=1&list=1" target="_blank"><img src="{DT_SKIN}image/photo/ptfa.gif" /></a></p><p class="ksfa_intro">普通医院科室最低基本需求仪器设备配置打包采购产品打包方案.</p></div>
+			<div><p class="ksfa_pic"><a href="{$MODULE[16][linkurl]}search.php?kcatid={$catid}&level=2&list=1" target="_blank"><img src="{DT_SKIN}image/photo/tjfa.gif" /></a></p><p class="ksfa_intro">标准三甲医院科室需求仪器设备配备采购产品打包方案.</p></div>
+			<div><p class="ksfa_pic"><a href="{$MODULE[16][linkurl]}search.php?kcatid={$catid}&level=3&list=1" target="_blank"><img src="{DT_SKIN}image/photo/gjfa.gif" /></a></p><p class="ksfa_intro">科研实验室医学研究院进口仪器设备配备需求整体需求产品打包方案.</p></div>
+			<div><p class="ksfa_pic"><a href="{$MODULE[16][linkurl]}search.php?kcatid={$catid}&level=4&list=1" target="_blank"><img src="{DT_SKIN}image/photo/zdyfa.gif" /></a></p><p class="ksfa_intro">自选采购配备科室仪器设备，包括进出口仪器设备、试剂耗材等等.</p></div>
+		</dd>
+	</dl>
+	<dl class="kslist fr">
+		<dt class="kslistti"><p>科室其他相关信息</p></dt>
+		<dd class="kslists">
+			<ul>
+{php $ls = tag("moduleid=$moduleid&table=photo_$moduleid&condition=catid=$catid and status=3 and level != 1&pagesize=5&order=addtime asc&template=null&debug=0")}
+{loop $ls $l $s}
+				<li>
+					<div class="fl"><a href="{$s[linkurl]}" title="{$s[title]}" target="_blank"><img src="{$s[thumb]}" alt="{$s[title]}" width="55" height="55" /></a></div>
+					<div class="fl">
+						<p class="kslstit"><a href="{$s[linkurl]}" title="{$s[title]}" target="_blank">{dsubstr($s[title],30,'……')}</a></p>
+						<p class="kslstim">{timetodate($s[edittime], 4)}</p>
+					</div>
+				</li>
+{/loop}
+			</ul>
+		</dd>
+	</dl>
+</div>
+
+{template 'footer'}

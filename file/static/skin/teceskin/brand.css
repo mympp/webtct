@@ -1,0 +1,56 @@
+.webmenulist{width:750px;}
+.topnews{height:300px;}.w190{width:190px;}
+.w170{width:170px;}.w150{width:150px;}
+.themeleft{width:200px;float:left;height:350px;background:white;padding:5px 10px 5px 10px;margin-bottom:20px;}
+.tecetitle{font-size:16px;line-height:28px;height:28px;color:#F77602;border-bottom:1px solid #FF9C00;text-indent:5px;margin-bottom:5px;font-weight:normal;}
+.tecememo{line-height:20px;font-size:13px;}.tecememo p{text-indent:20px;margin-top:5px;}
+.tecememo p b{color:#f27302;font-weight:normal;font-size:16px;}
+.tecememo div img{padding:1px;border:1px solid #ddd;}
+.rightmenu{width:225px;float:left;height:370px;margin-left:10px;padding-top:10px;;}
+.youcan{width:114px;}
+#sidebar{width:110px;background:#fff;height:auto;}
+#sidebar h3{text-indent:5px;color:#808080;letter-spacing:1px;width:110px}
+#sidebar h3 span{color:#ea660f;}
+#sidebar h3 font{font-family:"宋体";font-size:12px;padding-left:5px;}
+.sidelist{position:relative;z-index:10;height:40px;width:109px;margin-left:0px;margin-bottom:2px;}
+.i-list h5{line-height:30px;height:30px;border-bottom:1px solid #ffcc00;font-weight:normal;font-size:14px;margin-bottom:5px;margin-top:0px;}
+.sidelist dt{margin:0px;background-color:#f7f7f7;}
+.sidelist span h3{;position:relative;z-index:11;height:40px;line-height:40px;font-size:14px;font-weight:normal;}
+.i-list{display:none;position:absolute;z-index:10;left:109px;top:0px;width:700px;padding:5px;background:#fff;border:1px solid #f77602;}
+.i-list ul li{min-width:100px;_width:100px;width:auto;margin-left:10px;;float:left;list-style:none;line-height:28px;height:28px;}
+.i-list ul li a{color:#000;text-decoration:none;font-size:14px;}
+.i-list ul li a:hover{text-decoration:underline;color:red;}
+.treehover{border:1px solid #f77602;border-right:0;border-left:0px;background-color:#ffffff;margin:0px;}
+.treeout{margin-top:1px;margin-bottom:1px;}
+.h90{height:90px;}
+.leftadd{background-color:#ffefce;height:190px;padding-left:2px;padding-top:2px;}
+.leftadd li{width:105px;text-align:center;background-position: center 10px;background-repeat:no-repeat;}
+.leftadd li p{font-size:12px;}
+.leftadd li font{font-size:12px;font-family:"宋体";color:#FFF}
+
+.leftmenu{margin-top:0px;padding:0px 2px 2px 2px;}
+.ico a p{color:#f77602;padding-bottom:5px;padding-top:70px;}.ico a:hover p{color:#fff}
+.themeright{width:228px;;float:left;height:280px;padding:4px;background:url('image/png/list.png') no-repeat center 175px;border:1px solid #e0e0e0;background-color:#fff}
+.honor dd{line-height:36px;font-size:14px;padding-left:25px;}
+.money{font-size:24px;color:#f77602;line-height:26px;text-align:center}
+.xdline{background:url('image/indexline.gif') repeat-x left 37px;line-height:40px;height:40px;font-size:20px;font-weight:normal;text-indent:5px;margin-bottom:10px;margin-top:0px;}
+.xdline font{font-size:12px;color:#747474;padding-left:10px;font-family:"宋体";}
+.xdline font span{color:#f0740f;padding:0px 10px 0px 10px;}
+.brandtj{width:985px;margin:auto;height:105px;background:#f2f2f2}
+.brandtj dt{width:100px;height:95px;background:url('image/brand.gif') no-repeat 10px 20px;float:left;padding-left:50px;}
+.brandtj dt p{margin-top:20px;font-size:20px}
+.brandtj dd{float:left;height:95px;width:830px;margin-left:5px;}
+.brandtj dd ul li{float:left;margin-left:15px;height:100px;padding-top:5px;}
+.brandtj dd ul li div{width:80px;}
+.brandtj img{padding:2px;}
+.brandtj a:link img,.brandtj a:visited img,.brandtj a:active img{border:1px solid #ddd;}
+.brandtj a:hover img{border:1px solid #f59d0a;background:#fbda82}
+.brand{margin-bottom:10px; float:left;margin-left:25px;margin-right:25px;width:140px;margin-top:5px;text-align:center;}
+.brand p{line-height:20px;height:20px;width:140px;}
+.brand img{padding:3px;}
+.brand .pnum{margin:-22px 2px 2px 4px;background:rgba(255, 255, 255, 0.5) none repeat scroll 0 0 !important;filter:Alpha(opacity=50);width:134px;position:absolute;z-index:10}
+.brand a:link img,.brand a:visited img, .brand a:active img{border:1px solid #ddd;}
+.brand a:hover img{border:1px solid #f59d0a;background:#fbda82}
+.brand a:link .pnum,.brand a:visited .pnum, .brand a:active .pnum{background-color:#fff;color:#5178ae}
+.brand a:hover .pnum{background-color:#fbda82;color:#ff6600}
+.brand .pnum font{position:relative;font-size:12px;}

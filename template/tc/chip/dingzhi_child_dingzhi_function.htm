@@ -1,0 +1,17 @@
+<tr>
+	<td class="tl">限制定制功能</td>
+	<td class="tr">
+	<input type="hidden" name="dingzhi" value="" id="dingzhi" />
+	{php $tag_dingzhi_function=tag("moduleid=$moduleid&table=order_function&template=null");}
+	{php $member_dingzhi=$db->get_one("select * from $DT_PRE"."member_dingzhi where username='$_username'");}
+	{php $member_child=$db->get_one("select action from $DT_PRE"."member_dingzhi where username='$username'");}
+	{loop $tag_dingzhi_function $k $v}
+	{if strpos($member_dingzhi['action'],'|'.$v['name'].'|')===false}
+	{else}
+	<input type="checkbox" name="dingzhi_power[]" value="{$v[name]}" {if strpos($member_child['action'],'|'.$v['name'].'|')===false}checked="checked"{/if}/>{$v[title]}&nbsp;&nbsp;
+	{/if}
+	{/loop}
+	<br/>
+	<font color="#336600" style="font-size:12px;">不打钩默认开放给该账号</font>
+	</td>
+</tr>

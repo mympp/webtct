@@ -1,0 +1,14 @@
+
+.tool {border-bottom:#CCCCCC 1px dotted;background:#f6f6f6;}
+.tool table {width:100%;}.tool a{color:#5e5e5e}
+.img_list li {height:22px;line-height:22px;overflow:hidden;}
+.product_option {padding:10px 20px 10px 20px;}
+.bnts{height:34px;width:150px;}.bnts a{margin-left:55px;font-size:14px;line-height:34px;text-align:left}
+h1{line-height:30px;margin:10px;;padding:0px;padding-bottom:10px;text-align:center;color:#676767;font-size:16px;border-bottom:1px #c8c8c8 dashed}
+.list{border-bottom:#CCCCCC 1px dotted;;color:#666;padding-top:5px; padding-bottom:5px;}
+.list  a{color:#7c7c7c;}
+.list2{border-bottom:#e28836 1px dotted;;color:#ee7422; padding-top:5px; padding-bottom:5px;background:#fffee8}
+.list2  a{color:#ee3702}
+.search{background:url('image/memberinfo.jpg');height:30px;padding-top:5px;border:#bbd2dd 1px solid;}
+.price{margin-top:-25px;clear:both;padding:3px 0px 3px 0px;width:99px;text-align:right}
+.price span{font-size:12px;color:#ed591b;background:#fff;margin-right:5px;}.price span font{font-size:12px;}

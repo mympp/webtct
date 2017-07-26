@@ -1,0 +1,134 @@
+{php $stype = $_GET['stype'];}
+{if $stype === 'small'}
+	{template 'small-inquiry',$module}
+{else}
+
+{php $head_css = [DT_SKIN.'gongying.inquiry.css']}
+{php $footer_js = [DT_PATH.'lang/zh-cn/lang.js',DT_PATH.'file/script/config.js',DT_PATH.'file/script/jquery.js',DT_PATH.'file/script/common.js',DT_PATH.'file/script/calendar.js'];}
+{template 'module-header'}
+<div class="container">
+    <!--crumb-->
+    <div class="crumb">
+        <a href="{DT_PATH}">天成医疗网首页</a><span>&gt;</span>
+        <a href="{$MODULE[5]['linkurl']}">供应信息</a><span>&gt;</span>
+        <a href="#">报价单</a>
+    </div>
+    <!--crumb end-->
+    
+    <div class="inquiry-wrap">
+    	<div class="inquiry-hd">
+            <h1><a href="{$MODULE[5]['linkurl']}{$linkurl}" target="_blank">{$title}</a>询价单</h1>
+            <p class="company">{$company}</p>
+        </div>
+        <div class="inquiry-bd">
+            <form method="post" action="{$MOD[linkurl]}inquiry.php" onsubmit="return check();">
+                <div class="form-group clearfix">
+                    <label for="title" class="form-name"><i>*</i>询价标题：</label>
+                    <div class="form-control">
+                        <input type="text" name="title" value="我对您发布的“{$title}”很感兴趣" id="title" >
+                        <div class="help-block"><i class="info"></i>建议您修改主题，吸引对方注意,得到优先回复! </div>
+                    </div>
+                    <span class="alert" id="dtitle"></span>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="form-name">我想了解：</div>
+                    <div class="form-control">
+                    	{loop $itype $k $v}
+						<label class="checkbox-label" for="type_{$k}"><input type="checkbox" name="type[]" value="{$v}" id="type_{$k}" checked="">{$v}</label>
+						{/loop}
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="form-name">快捷提问：</div>
+                    <div class="form-control">
+                        <select onchange="if(this.value)Dd('content').value+=this.value+'\n';">
+                            <option value="">请选择常用问题</option>
+                            {loop $iask $v}
+							<option value="{$v}">{$v}</option>
+							{/loop}
+                        </select>
+                        <div class="help-block"><i class="info"></i>不用打字 “快捷提问”帮您忙！  </div>
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label for="content" class="form-name"><i>*</i>主要内容：</label>
+                    <div class="form-control">
+                        <textarea rows="4" cols="80" name="content" id="content"></textarea>
+                        <div class="date-select">
+                            <span>我希望在{dcalendar('date', $date)}日前回复</span>
+                        </div>
+                    </div>
+                    <span class="alert" id="dcontent"></span>
+                </div>
+				
+				{if !$_userid}
+                <div class="msg-box">
+                    <p>还不是会员，请 <a class="btn btn-sm btn-default" href="{$MODULE[2]['linkurl']}register.php">免费注册</a> 或 请留下您的联系方式(有 <i>*</i> 的是必填项)：已经是会员？请  <a class="btn btn-sm btn-danger" href="{$MODULE[2]['linkurl']}login.php">立即登录</a></p>
+                </div>
+				{/if}
+
+                <div class="form-group clearfix">
+                    <label for="company" class="form-name">公司名称：</label>
+                    <div class="form-control">
+                        <input class="input-sm" type="text" name="company" id="company" value="{$company}">
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <label for="truename" class="form-name"><i>*</i>联系人：</label>
+                    <div class="form-control">
+                        <input class="input-sm" type="text" name="truename" id="truename" value="{$truename}">
+                    </div>
+                    <span class="alert" id="dtruename"></span>
+                </div>
+
+                <div class="form-group clearfix">
+                    <label for="telephone" class="form-name"><i>*</i>联系电话：</label>
+                    <div class="form-control">
+                        <input class="input-sm" type="text" name="telephone" id="telephone" value="{$mobile}">
+                    </div>
+                    <span class="alert" id="dtelephone"></span>
+                </div>
+
+                <div class="form-group clearfix">
+                    <label for="email" class="form-name">电子邮箱：</label>
+                    <div class="form-control">
+                        <input class="input-sm" type="text" name="email" id="email" value="{$email}">
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <label for="qq" class="form-name">QQ：</label>
+                    <div class="form-control">
+                        <input class="input-sm" type="text" name="qq" id="qq" value="{$qq}">
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <label for="captcha" class="form-name"><i>*</i>验证码：</label>
+                    <div class="form-control">
+                        {template 'captcha', 'chip'}
+                    </div>
+                   
+                </div>
+
+                <div class="form-submit">
+                    <input class="btn btn-success" type="submit" name="submit" value=" 发送询价单 " onclick="_hmt.push(['_trackEvent', 'gongying', 'click', 'inquirySubmit']);">
+                    {if !$_userid}
+                    <p class="time-num">
+                    	{if $MG[inquiry_limit]}
+                        <span>今日可询价<i>{$MG[inquiry_limit]}</i>次</span>
+                        <span>当前已询价<i>{$limit_used}</i>次</span>
+                        <span>还可以询价<i>{$limit_free}</i>次</span>
+                        {/if}
+                    </p>
+                    {/if}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{template 'footer2017'}
+
+{/if}

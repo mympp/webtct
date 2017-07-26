@@ -1,0 +1,1 @@
+document.write('<a href="http://www.tecenet.com/pinpai/show-3.html" target="_blank"><img src="http://www.tecenet.com/file/upload/201404/24/11-42-24-24-1.jpg" width="199" height="60" alt=""/></a>');

@@ -1,0 +1,26 @@
+<div class="vote">
+<form action="http://www.tecenet.com/vote/index.php" method="post" target="_blank" id="vote_9" onsubmit="return check_vote_9();">
+<input type="hidden" name="itemid" value="9"/>
+<input type="hidden" name="submit" value="1"/><br>
+<a href="http://www.tecenet.com/vote/index-htm-itemid-9.html" class="suba">开始为：十大家用微波理疗仪品牌排行榜，您认为哪个最好?投票</a>
+<ul>
+</ul>
+<p><input type="submit" value="投票" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'"/>
+<input type="button" value="结果" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" onclick="window.location='http://www.tecenet.com/vote/index-htm-itemid-9.html';"/></p>
+</form>
+</div>
+<script type="text/javascript">
+function check_vote_9() {
+var inputs = Dd('vote_9').getElementsByTagName('input');
+var inputs_length = inputs.length;
+var selected = 0;
+for(var i = 0; i < inputs_length; i++) {
+if(inputs[i].type == 'radio' && inputs[i].checked == true) selected++;
+}
+if(selected == 0) {
+alert('请选择投票选项');
+return false;
+}
+return true;
+}
+</script>

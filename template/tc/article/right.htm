@@ -1,0 +1,41 @@
+<div class="graybg" id='rights'>
+
+{template 'themer', $module}
+	{if $MOD[page_lrecimg]}
+	<dl>
+	<dt class='f18 tc bcolor pd5 b'>推荐{$catname}图文信息</dt>
+	<dd class="thumbinfo"><!--{tag("moduleid=$moduleid&fields=linkurl,title,thumb&condition=status=3 and thumb<>''&catid=$catid&pagesize=".$MOD[page_lrecimg]."&order=".$MOD[order]."&width=240&thumbwidth=230&thumbheight=120&template=thumb-table")}-->
+	<div class="divline"></div>
+	</dd>
+	</dl>
+	{/if}
+	{if $MOD[page_lrec]}
+	<dl>
+<div class="divline"></div>
+<div class="tc center">{ad(128)}</div>
+<div class="divline"></div>
+	<dt class='f18 tc bcolor pd5 b'>推荐{$MOD[name]}</dt>
+	<dd>
+	<ul class="ullist" style="margin-left:-5px;">
+	<!--{tag("moduleid=$moduleid&fields=catid,linkurl,title&condition=status=3 and level=1&catid=$catid&order=".$MOD[order]."&width=230&pagesize=".$MOD[page_lrec]."&template=list-news")}-->
+	</ul>
+	</dd>
+	<div class="divline"></div>
+	</dl>
+	{/if}
+
+	{if $MOD[page_lhits]&&!$itemid}
+	<dl>
+	<dt class='f18 tc bcolor pd5 b'>{$MOD[name]}点击排行</dt>
+	<dd>
+	<ul class="ullist" style="margin-left:-5px;">
+	<!--{tag("moduleid=$moduleid&fields=catid,linkurl,title&condition=status=3 and addtime>$today_endtime-30*86400&catid=$catid&width=230&order=hits desc&hot=1&pagesize=".$MOD[page_lhits]."&template=list-news")}-->
+	</ul>
+	</dd>
+	</dl>
+	{/if}
+
+</div>
+<div class="divline"></div>
+<div class="tc center">{ad(187)}</div>
+<div class="divline"></div>

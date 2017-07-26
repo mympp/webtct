@@ -1,0 +1,1 @@
+<?php exit;?>1466434968a:2:{i:0;a:4:{s:5:"catid";s:4:"1188";s:8:"moduleid";s:2:"16";s:7:"catname";s:24:"医用激光仪器设备";s:7:"linkurl";s:8:"jiguang/";}i:1;a:4:{s:5:"catid";s:4:"1328";s:8:"moduleid";s:2:"16";s:7:"catname";s:27:"介入式激光诊治仪器";s:7:"linkurl";s:5:"1328/";}}

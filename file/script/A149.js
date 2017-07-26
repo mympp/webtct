@@ -1,0 +1,1 @@
+document.write('<div style="background:url(http://www.tecenet.com/file/upload/201408/06/11-02-20-77-1.jpg) top left;width:995px;height:70px;"><img src="http://www.tecenet.com/skin/teceskin/image/blank.gif" width="995" height="70" alt="" style="background:url(http://www.tecenet.com/skin/teceskin/image/ads/vip.gif) bottom right no-repeat;;"/></div>');

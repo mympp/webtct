@@ -1,0 +1,20 @@
+{if $tags}
+<dl id="keyword_box">
+<dt>{if $keyword_box_title}{$keyword_box_title}{else}相关推荐{/if}</dt>
+<dd>
+{loop $tags $k $v}
+<span><a href="{rewrite('keyword.php?itemid='.$v['itemid'])}">{$v['word']}</a></span>
+{/loop}
+</dd>
+</dl>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#keyword_box span').mouseover(function(){
+		$(this).css('border','1px solid ##FF9C00');
+	});	
+	$('#keyword_box span').mouseout(function(){
+		$(this).css('border','1px solid #cccccc');
+	});
+});
+</script>
+{/if}

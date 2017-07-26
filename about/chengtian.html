@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+    <title>天成医疗产业服务平台</title>
+    <meta name="keywords"
+          content="天成医疗,服务介绍,医学工程服务平台,设备管理服务平台,供应链服务平台,科技服务平台,物流服务平台,人力资源服务平台,产业服务平台,电子商务服务平台,综合外贸服务平台,健康管理服务平台,康复护理医养结合服务平台"/>
+    <meta name="description"
+          content="为医疗器械企业、医院等机构提供医学工程设计施工、招标采购、电子商务、信息系统、科研成果转化、金融结算、进出口、产品报证和体系考核、设备管理服务、物流配送、健康管理、媒体宣传与推广服务，是目前国内领先的线上线下一体化医疗产业专业服务平台"/>
+    <link href="intro/css/tc.intro.min.css?v2" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- modal -->
+<div class="modal hidden">
+    <div class="modal-dialog">
+        <div class="modal-header clearfix">
+            <span class="pull-left">扫一扫分享</span>
+            <a class="pull-right" onclick="closeDialog();" href="javascript:void(0);">×</a>
+        </div>
+        <div class="modal-content">
+            <img class="qrcodeImg" src="http://qr.liantu.com/api.php?text=" alt="">
+        </div>
+        <div class="modal-footer">例如：打开微信，点击底部的“发现”，使用 “扫一扫” 即可将网页分享到我的朋友圈。</div>
+    </div>
+</div>
+<!-- modal end-->
+
+<!-- header -->
+<style>
+    html{-webkit-text-size-adjust: none;}
+    body{ font-size:12px; margin:auto;margin-top:0px; padding-top:0px; background-color:#FFFFFF;color:#666;font-family: "Microsoft Yahei", "微软雅黑",simsun !important;}
+    .center{margin:auto;margin-top:0px;height:auto;}
+    .webw{width:995px;margin:auto;margin-top:0px;height:auto;padding-left:8px;}/*网页内容固定标准宽度*/
+    a{text-decoration:none;}
+    img {border:none; border:0;}
+    ul li {list-style-type:none;}
+    ol li {list-style-type:decimal;}
+    img,p,ul{ margin:0; padding:0; border:0;}
+    a span{font-weight:normal; }
+    li div{vertical-align:top}
+    b{font-weight:bold}.b{font-weight:bold}
+    h4{font-size:12px;}
+    h3{font-size:12px;}
+    .clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
+    .clearfix {*zoom:1;}
+    .em{font-size:12px;color:#969696;}
+    .fontsong{font-family:"宋体";}
+    .f12{font-size:12px;}.f14{font-size:14px}.f16{font-size:16px}.f18{font-size:18px}.f20{font-size:20px}.f24{font-size:24px}
+    a:link,a:visited {color:#333;}
+    a:hover{color:#f05409;}
+    .htbg{background:url('http://www.tecenet.com/skin/teceskin/image/linebg2.gif') left center;height:32px;margin:0px;padding:0px;overflow:hidden;color:#2d4b75}
+    .divline{ line-height:8px; height:8px; clear:both; overflow:hidden}
+    .cut{overflow:hidden}
+    .gdt{overflow:auto;overflow-x:hidden;}
+    .hidden,.hd{display:none}
+    .tl{text-align:left}.tc{text-align:center}.tr{text-align:right}
+    .fl{float:left}.fr{float:right}
+    .inputkw{line-height:18px;height:18px;;font-size:12px;color:#888;padding:5px;border:2px solid #cecece;}
+    .input{line-height:24px;height:24px;;font-size:14px;color:#888;text-indent:5px;width:140px;}
+    .mid{vertical-align:middle}
+    #keywords{color:#3d3d3d}
+    .nocontent{background:url('http://www.tecenet.com/skin/teceskin/image/png/untitled.png') left center no-repeat;width:450px;margin:auto;height:190px;line-height:190px;text-indent:80px;font-size:14px;color:#a2a2a2}
+    .nocontent p,.nocontent div{line-height:30px;margin-top:65px;text-indent:0px;margin-left:80px;color:#5b5b5b}
+    /*默认按钮开始  9  */
+    .subm{vertical-align:middle;background:#f77602;font-size:16px;color:#fff;font-family: "微软雅黑";border:none;margin:0px;margin-left:-5px;height:32px;overflow:hidden}
+    /*灰色按钮开始  3*/
+    .suba{font-size:14px;color:#fff;;display:block;line-height:30px;height:30px;text-align:Center;padding-left:10px;padding-right:10px;}
+    .suba:link,.suba:visited{background:#81898f;color:#fff}
+    .suba:hover,.suba:active {background:#F77602;color:#fff}
+    /*黄色按钮开始  6*/
+    .suby{font-size:14px;color:#fff;;display:block;line-height:30px;height:30px;text-align:Center;padding-left:10px;padding-right:10px;}
+    .suby:link,.suby:visited,.suby:hover,.suby:active {background:#F77602;color:#fff}
+    /*字体颜色   4*/
+    .color,.color:link,.color:visited{color:#333}
+    .hcolor,.hcolor:link,.hcolor:visited{color:#838383}
+    .ocolor,.ocolor:link,.ocolor:visited,.f_red{color:#ff8800}
+    .bcolor,.bcolor:link,.bcolor:visited{color:#137eb8}
+    .wcolor,.wcolor:link,.wcolor:visited{color:white}
+    .rcolor,.rcolor:link,.rcolor:visited{color:#cc3515}
+    .gcolor,.gcolor:link,.gcolor:visited{color:#359A00}.highlight{color:#ff8800;font-weight:bold}
+    /*背景色效果开始  5*/
+    .webbg{background:url('http://www.tecenet.com/skin/teceskin/image/bg.gif') repeat-x top center;height:auto;background-color:#ffffff;}/*网页背景*/
+    .webbg2{background:url('http://www.tecenet.com/skin/teceskin/image/bg2.gif') repeat-x top center;height:auto;background-color:#EFEFEF;}/*网页背景*/
+    .graybg{background-color:#F5F5F5;}
+    .whitebg{background-color:#ffffff;}
+    .orangebg{background-color:#f77602;}.yellowbg{background-color:#fffac8;}
+    .bluebg{background-color:#f5f9fa;}
+    .greenbg{background-color:#f3ffdf;}
+    .transparent{background:rgba(255, 255, 255, 0.8) none repeat scroll 0 0 !important;filter:Alpha(opacity=80);background:#fff}
+    /*距离效果开始  4*/
+    .ml-5{margin-left:-5px;}
+    .ml10{margin-left:10px;}.ml5{margin-left:5px;}
+    .mr10{margin-right:10px;}.mg10{margin:10px;}.mr5{margin-right:5px;}
+    .mt10{margin-top:10px;}.mt5{margin-top:5px;}
+    .mb10{margin-bottom:10px;}.mb5{margin-bottom:5px;}
+    .ml20{margin-left:20px;}
+    .pd10{padding:10px;}.pd5{padding:5px;}.pd2{padding:2px;}
+    .ti10{text-indent:10px;}.ti5{text-indent:5px;}
+    .pt10{padding-top:10px;}.pt5{padding-top:5px;}.pl10{padding-left:10px;}.pl5{padding-left:5px;}.pb10{padding-bottom:10px;}.pb5{padding-bottom:5px;}
+    .clear{line-height:0px; margin:0px; height:0px; font-size:0px;clear:both;overflow:hidden;display:inline;}
+    /*虚线效果开始  9*/
+    .d{text-decoration:line-through;}
+    .xline{border:dashed 1px #ccc;}
+    .oxline{border:dashed 1px #ff9933;}
+    .gline{border:dashed 1px #c8ee95;}
+    .bline{border:dashed 1px #c9ddf1;}
+    .xbline{background:url('http://www.tecenet.com/skin/teceskin/image/indexline.gif') repeat-x left bottom;line-height:24px;height:24px;font-size:18px;font-weight:normal;text-indent:5px;padding-bottom:4px;}
+    /*固定宽度开始  3*/
+    .w995{width:995px;}
+    .w980{width:980px;}
+    .w800{width:800px;}
+    .w730{width:733px;}
+    .w700{width:700px;}
+    .w650{width:650px;}.w600{width:600px;}
+    .w500{width:500px;}.w480{width:480px;}
+    .w420{width:420px;}.w400{width:400px;}
+    .w485{width:485px;}
+    .w380{width:380px;}
+    .w360{width:361px;}.w355{width:355px;}.w350{width:350px;}.w300{width:300px;}
+    .w280{width:280px;}
+    .w260{width:260px;}
+    .w240{width:240px;}.w235{width:235px;}
+    .w220{width:220px;}.w200{width:200px;}
+    .w195{width:195px;}.w180{width:180px;}.w160{width:160px;}.w140{width:140px;}
+    .w120{width:120px;}.w100{width:100px;}
+    .w90{width:90px;}.w80{width:80px;}.w60{width:60px;}.w50{width:50px;}.w40{width:40px;}
+    /*9固定高度开始*/
+    .h850{height:850px;}.h800{height:800px;}
+    .h750{height:750px;}.h700{height:700px;}
+    .h650{height:650px;}.h680{height:680px;}
+    .h600{height:600px;}
+    .h550{height:550px;}
+    .h500{height:500px;}
+    .h450{height:450px;}
+    .h400{height:400px;}
+    .h380{height:380px;}
+    .h300{height:300px;}
+    .h280{height:280px;}
+    .h250{height:250px;}
+    .h200{height:200px;}
+    .h120{height:120px;}.h150{height:150px;}
+    .h100{height:100px;}.h90{height:90px;}
+    .h80{height:80px;}.h70{height:70px;}.h60{height:60px;}.h50{height:50px;}
+    .h35{height:35px;}
+    .h30{height:30px;}
+    .h25{height:25px;}
+    /*2广告尺寸开始*/
+    .ad1s{width:995px;}
+    .ad2s{width:491px;padding:1px;}.ad2s img{width:491px;}
+    /*3固定背景色开始*/
+    .bgw{background:white}
+    /*6固定边框效果开始*/
+    .blueb{border:1px solid #CDD8E3;}
+    .orangeb{border:1px solid #f77602;}.yellowb{border:1px solid #ffd275;}
+    .grayb{border:1px solid #DdDDDD;}
+    .whiteb{border:1px solid #fff;}
+    .rad{border-radius:4px;}
+    /*4取消部分边框效果开始*/
+    .nt{border-top:none;border-top:0px;}
+    .nl{border-left:none;border-left:0px;}
+    .nr{border-right:none;border-right:0px;}
+    .nb{border-bottom:none;border-bottom:0px;}
+    .noborder{border:0px}
+    /*5鼠标手势动作*/
+    .mou_i{cursor:Text;}
+    .mou_p{cursor:print;}
+    /*4自动高度开始*/
+    .autoheight{_height:1px;height:auto !important; min-height:1px;height:auto;}
+    .autowidth{_width:10px;width:auto !important; min-width:10px;width:auto;}
+    /*9SPAN内容固定宽度及截取长度*/
+    .lenstr{ display:block;display:-moz-inline-box; display:inline-block; white-space:nowrap;overflow: hidden; -o-text-overflow: ellipsis;text-overflow:ellipsis;word-break:keep-all; }
+    /*3顶部信息*/
+    .h4title{line-height:32px;height:32px;text-indent:15px;font-size:14px;;font-weight:bold}
+    .shoucang{float:left;margin-left:10px;margin-top:-35px;}
+    .topbg{height:155px;margin:auto;margin-top:0px;width:auto;}
+    .topmenubg{background:url('http://www.tecenet.com/skin/teceskin/image/topmenubg.jpg');height:27px;line-height:27px;width:100%;margin-top:0px;color:#939393;position:fixed;z-index:1001;}
+    .topinfo{width:610px;height:27px;}.topinfo a{color:#848484}
+    .topmenu{height:27px;width:320px;}.topmenu li{margin-right:10px;float:right}.topmenu li a{color:#939393;}
+    .siteinfo{padding-top:40px;height:80px;margin-top:20px;}
+    .siteinfo .logo{width:230px;height:63px;}
+    .siteinfo .logo h3{margin-top:90px;}
+    .siteinfo .banner{width:220px;padding-left:10px;height:45px;line-height:24px;;padding-top:10px;color:#afafaf;margin-left:40px;}
+    .siteinfo .banner b{font-size:18px;vertical-align:middle;color:#717171;letter-spacing:1px;}
+    .welcome{width:670px;}
+    .welcome a{padding:5px 5px 5px 5px; margin-right:5px;line-height:26px;color:#888}
+    .welcomey,.welcome a:hover{ background:#ffffff;border:1px solid #d2d2d2;border-bottom:#fff 1px solid;color:#dc2e2e;}
+    #shopcart{position:absolute;z-index:1;margin-left:855px;margin-top:-31px;height:30px;line-height:30px;font-size:14px;text-indent:38px;width:138px;display:none}
+    .shopcart{color:#333;background:#fff4ca url('http://www.tecenet.com/skin/teceskin/image/mall/cart.gif') no-repeat left center;border:1px solid #afafaf;}
+    .nocart{background:url('http://www.tecenet.com/skin/teceskin/image/mall/nocart.gif') no-repeat left center;border:0px;}.nocart a{display:none}
+    .youcan{height:40px;float:left;background-color:#f77602;overflow:hidden;width:125px;}
+    .youcan h1{font-size:16px;color:#fff;margin:0px;cursor:pointer;line-height:40px}
+    .youcan h4{font-size:16px;color:#fff;font-weight:normal;margin:0px;cursor:pointer;padding:10px 10px 9px 15px;}
+    .youcan h4 span{background:url('http://www.tecenet.com/skin/teceskin/image/downs.gif') no-repeat right center;padding:7px;}
+    .webmenulist{float:left;height:40px;}
+    .dropdown {margin:0px;padding-left:15px;}
+    .dropdown ul { margin: 0; padding: 2px 0px 2px 0px;}
+    .dropdown li { float:left;min-width:40px;_width:40px;width:auto;line-height:38px;font-size:14px;}
+    .dropdown a { display:block; padding:0px 5px 0; height:39px;color:#fff;}
+    .dropdown a:hover, .dropdown a.active {background:#F77602;}
+    .menuy {margin-left:10px;background-image:url('http://www.tecenet.com/skin/teceskin/image/line.gif');margin-right:20px;}
+    .menun{margin-left:10px;margin-right:10px;}
+    .dropdown ul { position:absolute; display:none;background:#F77602;z-index:100;}
+    .dropdown ul li { float:none; margin-left:2px;background:#F7F7F7;border:2px solid #Fff;margin-right:2px;line-height:34px;height:34px;}
+    .dropdown ul li a {width:145px;line-height:34px;height:34px;color:#ee6a1c;}
+    .dropdown ul li a:hover {background:#ffc166; color:#fff; }
+    .webmem{float:left;width:120px;height:40px;background:url('http://www.tecenet.com/skin/teceskin/image/member.gif') no-repeat left center}.webmem ul{margin:0px;padding-left:5px;}.webmem ul 
+    li{line-height:38px;font-size:16px;color:#fff}
+    .webmem ul li a{color:#fff}
+    .webmem ul li a:hover{border-bottom:2px solid #fff;padding-bottom:2px;}
+    .topsearch{width:505px;padding:10px 10px 0px 10px;}
+    .searchBox{float: left;height:26px; font-size:14px;color:#ff6633; border:3px solid #FF9200; border-right-width:1px;}
+    #topkeyword{float:left;width:360px;line-height:24px;height: 26px;padding-left:6px;font-size:14px;color:#ff6633;border:none;background-color:#FFFFFF;}
+    .outkw{background:url('http://www.tecenet.com/skin/teceskin/image/keyword.gif') no-repeat left center;background-color:#FFFFFF;border:1px solid #cfd5da;}
+    .hotkey{width:480px;height:40px; overflow:hidden; white-space:nowrap;}
+    #hotkey a:link{color:#838383}
+    .searchs{float:left; z-index:80; overflow:hidden; width:85px;}
+    .searchs #topkws{width:85px; height: 26px; line-height: 26px; text-align: center; overflow:hidden;}
+    .searchs div{height:26px;line-height: 26px; background:#f7f7f7; cursor:pointer;}
+    .searchs ul{position:absolute; z-index: 999; background:#eeeeee;margin-top:-5px;margin-left:0px;border:1px solid #ccc}
+    .searchs ul li{line-height:30px;height:30px;padding-left:5px;padding-right:5px;font-size:14px;}
+    .seasubmit{float: left;border:1px solid #FF9200;background:#FF9200 url('http://www.tecenet.com/skin/teceskin/image/png/search.png') no-repeat center center;}
+    .T4000{margin-left:40px;width:200px;}
+
+    #destoon_member {height:22px;line-height:22px;}
+    .topmenu li{margin-right:8px;}
+    .ocolor{color:#ff8800}
+    .gcolor{color:#359A00}
+
+    @media screen and (max-width: 768px){
+        .topmenubg,.topsearch,.T4000{display: none;}
+        .topbg{position: relative;height: 1rem;padding:  0.375rem 0.25rem;border-bottom: 2px solid #c72721;}
+        .siteinfo{padding: 0;margin: 0;height: auto;width: auto;}
+        .siteinfo .logo,.siteinfo .logo img{width: 3.7rem;height: 1rem;}
+        .siteinfo .logo img{}
+    }
+</style>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/config.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jquery.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/common.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/page.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jsfunction.js"></script>
+
+<div class='topmenubg'>
+<!--最顶部菜单-->
+<script type="text/javascript">topmenu(3)</script>
+<script type="text/javascript">Dd('tece3').className='welcomey';</script>
+</div>
+<!--Header-->
+<div class='topbg cut'><!--背景和LOGO -->
+<div class="webw siteinfo">
+<div class="logo fl cut">
+<a href="http://www.tecenet.com" title="回到天成医疗网首页"><img src="http://www.tecenet.com/skin/teceskin/image/logo.gif"></a>
+<h1>天成医疗网<br>www.tecenet.com</h1>
+</div>
+<div class="topsearch fl">
+<table cellpadding="0" cellspacing="0" border=0 onmouseover="Dd('hotkey').className=''" onmouseout="Dd('hotkey').className='hotkey'">
+<form id="destoon_search" action="http://www.tecenet.com/search.php" onsubmit="return Dsearch();">
+<tr>
+<td width="455" height="30">
+<div class="searchBox clearfix">
+<input type="hidden" name="moduleid" value="3" id="destoon_moduleid"/>
+<input type="hidden" name="from" value="3" />
+<input type="hidden" name="spread" value="0" id="destoon_spread"/>
+<input type="hidden" name="action" value="" id="sresume"/>
+<input type="text" name="kw" value="" id="topkeyword" class='tokw'  />
+<div class='searchs'>
+<div onclick="chulai('sellists')">
+<span class='lenstr' id='topkws'>扩展 V </span>
+</div>
+<ul id='sellists' class='hd'>
+<li ><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',0);guanbi('sellists');"  rel="nofollow">默认全站</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',9);guanbi('sellists');"  rel="nofollow">服务需求</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',9);guanbi('sellists');Dd('sresume').value='resume'" class='f12'  rel="nofollow">技术工程师</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',13);guanbi('sellists');"  rel="nofollow">厂商品牌</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',4);guanbi('sellists');"  rel="nofollow">厂商网店</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',16);guanbi('sellists');"  rel="nofollow">产品平台</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',5);guanbi('sellists');"  rel="nofollow">供应信息</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',6);guanbi('sellists');"  rel="nofollow">求购信息</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',21);guanbi('sellists');"  rel="nofollow">文章中心</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',10);guanbi('sellists');"  rel="nofollow">问答平台</a></li>
+<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',15);guanbi('sellists');"  rel="nofollow">共享下载</a></li>
+</ul>
+</div> 
+</div>
+</td>
+<td width="44" height="30"><input type="image" src="http://www.tecenet.com/skin/teceskin/image/blank.gif" width="44" height=30 class='seasubmit'></td>
+</tr>
+<tr>
+<td colspan=2 width="499" height="30">
+<div class="hotkey" id="hotkey"><a href="http://www.tecenet.com/yiliao-7812/" class="color" ><font class="f12">医疗</font></a>&nbsp; <a href="http://www.tecenet.com/gongsi-9913/" class="color" ><font class="f12">公司</font></a>&nbsp; <a href="http://www.tecenet.com/beijing-7809/" class="color" ><font class="f12">北京</font></a>&nbsp; <a href="http://www.tecenet.com/yicixing-7820/" class="color" ><font class="f12">一次性</font></a>&nbsp; <a href="http://www.tecenet.com/guangzhou-7828/" class="color" ><font class="f12">广州</font></a>&nbsp; <a href="http://www.tecenet.com/zhiliaoyi-126/" class="color" ><font class="f12">治疗仪</font></a>&nbsp; <a href="http://www.tecenet.com/shiji-7922/" class="color" ><font class="f12">试剂</font></a>&nbsp; <a href="http://www.tecenet.com/shenghua-7841/" class="color" ><font class="f12">生化</font></a>&nbsp; <a href="http://www.tecenet.com/shiyan-7849/" class="color" ><font class="f12">实验</font></a>&nbsp; <a href="http://www.tecenet.com/neikuijing-225/" class="color" ><font class="f12">内窥镜</font></a>&nbsp; <a href="http://www.tecenet.com/zhenkongbeng-739/" class="color" ><font class="f12">真空泵</font></a>&nbsp; <a href="http://www.tecenet.com/chaoshengbo-7835/" class="color" ><font class="f12">超声波</font></a>&nbsp; <a href="http://www.tecenet.com/tcpeijian-47804/" class="color" ><font class="f12">tcpeijian</font></a>&nbsp; <a href="http://www.tecenet.com/peiyangxiang-91/" class="color" ><font class="f12">培养箱</font></a>&nbsp; <a href="http://www.tecenet.com/haocai-8067/" class="color" ><font class="f12">耗材</font></a>&nbsp; <a href="http://www.tecenet.com/jianyan-7870/" class="color" ><font class="f12">检验</font></a>&nbsp; <a href="http://www.tecenet.com/fenxiyi-669/" class="color" ><font class="f12">分析仪</font></a>&nbsp; <a href="http://www.tecenet.com/chaosheng-7879/" class="color" ><font class="f12">超声</font></a>&nbsp; <a href="http://www.tecenet.com/jianceyi-657/" class="color" ><font class="f12">检测仪</font></a>&nbsp; <a href="http://www.tecenet.com/jingmai-7822/" class="color" ><font class="f12">静脉</font></a>&nbsp; <a href="http://www.tecenet.com/hot/" class="color" target=""><font class="f12">更多</font></a>&nbsp; </div>
+</td>
+</tr>
+</form>
+</table>
+</div>
+    <div class="T4000 fl">
+        <img src="http://www.tecenet.com/skin/teceskin/image/400.gif">
+    </div>
+</div>
+</div>
+<!--//Header-->
+
+<script type="text/javascript">
+    show_task('moduleid=3&html=webpage&itemid=1');
+</script>
+<script type="text/javascript" src="http://www.tecenet.com/member/mem.php"></script>
+
+
+<style>
+    .header-nav{
+        background-color: #c72721;
+        border-bottom: 1px solid #9c120d;
+        border-top: 1px solid #9c120d;
+    }
+    .header-nav>ul{
+        width: 1060px;
+        margin: 0 auto;
+    }
+    .header-nav>ul>li{
+        float: left;
+        height: 50px;
+    }
+
+    .header-nav>ul>li>a{
+        position: relative;
+        font-size: 16px;
+        line-height: 50px;
+        color: #fff;
+        padding: 0 12px;
+        display: block;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        transition: all .2s ease;
+        text-decoration: none;
+    }
+    .header-nav>ul>li>a:hover,.header-nav>ul>li>a.current{
+        background-color: #b51610;
+    }
+    .header-nav>ul>li>a.current{
+        color: #ffc133;
+    }
+    .header-nav>ul>li>a.current:after{
+        content: '';
+        position: absolute;
+        bottom:-1px;
+        left:0;
+        width: 100%;
+        height: 2px;
+        background-color: #ffc133;
+    }
+    .header-nav>ul>li>a.current{
+        background-color: #b51610;
+
+    }
+</style>
+<!-- header-nav -->
+<div class="header-nav">
+    <ul class="clearfix">
+        <li><a href="./intro.html" target="_self">天成医疗</a></li>
+        <li><a href="./tianyi.html" target="_self">医学工程</a></li>
+        <li><a href="./tianjiao.html" target="_self">设备技术</a></li>
+        <li><a href="./chengtian.html" target="_self">供应信息</a></li>
+        <li><a href="./kelang.html" target="_self">科技</a></li>
+        <li><a href="./yiliantong.html" target="_self">物流</a></li>
+        <li><a href="./zhishuai.html" target="_self">人力资源</a></li>
+        <li><a href="./xiangdao.html" target="_self">产品</a></li>
+        <li><a href="./yiyang.html" target="_self">电子商务</a></li>
+        <li><a href="./tianling.html" target="_self">综合外贸</a></li>
+        <li><a href="./jiankang.html" target="_self">健康管理</a></li>
+        <li><a href="./yitou.html" target="_self">医投运营</a></li>
+        <li><a href="./honor.html" target="_self">企业荣誉</a></li>
+    </ul>
+</div>
+<!-- header-nav end-->
+<!-- header end-->
+
+<div id="tecenet">
+    <div class="ctmy module" id="chengTianTrading">
+    <div class="container">
+        <div class="module-hd clearfix">
+            <div class="pull-left">
+                <span>ChengTian Trading</span>
+                <h2>广州医融家供应链管理有限公司</h2>
+            </div>
+            <div class="pull-right">
+                供应和信息系统服务平台
+            </div>
+        </div>
+        <div class="module-bd clearfix">
+            <div class="intro pull-left mt30">
+                <p>
+                    成天供应链服务平台由广州成天贸易有限公司和广州天康信息技术有限公司两个子公司组合而成，目前下属模板包括财税部、资金部、市场一部、市场二部和信息部，是天成医疗的全资子公司。依托母公司中山大学达安基因股份有限公司和广州市天成医疗技术有限公司拥有的雄厚资金、领先技术、人才优势和优越的项目资源与专业技术服务资源，致力于为广大生产厂家、经销商、医疗机构提供高效、快捷、专业、优质的招投标、信息系统等服务。
+                </p>
+            </div>
+
+            <div class="module-list pull-right mt30">
+                <dl>
+                    <dt><i>1</i>招投标服务</dt>
+                    <dd>
+                        <p>一站式招投标服务</p>
+                    </dd>
+                </dl>
+                <!--<dl>-->
+                    <!--<dt><i>2</i>资金服务</dt>-->
+                    <!--<dd>-->
+                        <!--<p>利用现有资金渠道服务平台，为企业提供各种资金服务；通过各种形式提供资金支持，帮助客户解决供应链中各个业务环节的资金问题；-->
+                        <!--</p>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+                <dl>
+                    <dt><i>2</i>增值税、所得税等税务筹划服务</dt>
+                    <dd>
+                        <p>根据国家纳税筹划要求和利用税收优惠政策，为客户提供与企业发展相应的税收规划服务，帮助企业降低综合税负
+                        </p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><i>3</i>财务管理规范化服务</dt>
+                    <dd>
+                        <p>针对财务人员的专业技术性要求，为客户提供财务各岗位模块的指导服务；</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><i>4</i>医院信息系统开发及指导服务</dt>
+                    <dd>
+                        <p>专业的软件人员设计出符合现有医院管理需求的系统软件，辅助医院管理，提供医院工作效率；</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><i>5</i>厂家及经销商信息系统开发服务</dt>
+                    <dd>
+                        <p>
+                            有效组织企业现有的信息资源，根据企业战略、经营、管理、生产等开展信息处理工作，为企业各层次提供所需的信息，力求资源有效配置、共享管理、协调运行，以最少的耗费创造最大的效益。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="contact">
+            <div class="item">
+                <p class="name"><i class="icon"></i><span>安明珠<em>（总监）</em></span></p>
+                <p class="tel"><i class="icon"></i><span>固话：020-22017999-8003</span></p>
+                <p class="wechat"><i class="icon"></i><span>微信号：hannah749742</span></p>
+            </div>
+            <div class="item">
+                <p class="name"><i class="icon"></i><span>黄&nbsp;&nbsp;荣<em>（销售经理）</em></span></p>
+                <p class="tel"><i class="icon"></i><span>固话：020-22017999-8111</span></p>
+                <p class="wechat"><i class="icon"></i><span>微信号：huangrong1981518</span></p>
+            </div>
+            <div class="item">
+                <p class="name"><i class="icon"></i><span>吴巧娜<em>（税务咨询师）</em></span></p>
+                <p class="tel"><i class="icon"></i><span>固话：020-22017989</span></p>
+                <p class="wechat"><i class="icon"></i><span>微信号：13632563906</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--about-->
+     <div class="about" id="aboutTianCheng">
+    <div class="container">
+        <div class="title">
+            <p>About TianCheng</p>
+            <h2>关于天成医疗</h2>
+        </div>
+        <div class="content">
+            <p>
+                广州天成医疗技术股份有限公司成立于2012年11月，是中山大学达安基因股份有限公司的成员企业。公司秉承“开放、协同、共享”的核心价值观，通过搭建电子商务交易平台，将全国1.5万家医疗器械生产企业生产的21万种产品全部上线，为他们提供医学工程设计施工、招标采购、电子商务、信息系统、科研成果转化、进出口、产品报证和体系考核、设备管理服务、物流配送、健康管理、人力资源服务，是目前国内领先的线上线下一体化医疗产业专业服务平台。</p>
+            <p>
+                公司旗下的天成医疗网（www.tecenet.com）是目前国内功能最全的医疗行业综合性在线服务平台，上线4年时间总关注数近2000万人次，预计到2016年底，日均IP流量达到15万个。目前收录供应商信息近4万家、产品数据超过21万种，占国内全行业生产和产品总数的95%以上。工程师数据库近6万人，发展会员5万个。天成医疗网面向全国数万家医疗机构、数十万家产品供应商和经销商、数百万名医疗行业从业人员，结合国内领先的医疗产业垂直搜索服务平台、实时高效的供需订单撮合平台、庞大的医疗产业网络投放平台、专业的移动端APP服务平台和微信运营平台，服务于医疗行业全产业链，提供全面完整的解决方案。
+            </p>
+        </div>
+        <div class="clearfix">
+            <img src="intro/images/p2-img-01.jpg" alt="关于天成医疗">
+            <img src="intro/images/p2-img-02.jpg" alt="关于天成医疗">
+            <img src="intro/images/p2-img-03.jpg" alt="关于天成医疗">
+            <img src="intro/images/p2-img-04.jpg" alt="关于天成医疗">
+            <img src="intro/images/p2-img-05.jpg" alt="关于天成医疗">
+        </div>
+    </div>
+</div>
+    <!--about end-->
+    <!-- footer -->
+     <div class="common-footer">
+    <div class="container">
+        <p>
+            版权所有 ©广州天成医疗技术股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;
+            CopyRight ©Guangzhou TianCheng Medical Technology Co.,Ltd.
+        </p>
+        <p></p>
+        <p>
+            地址：广州萝岗区开源大道11号B8栋第三层&nbsp;&nbsp;&nbsp;&nbsp;
+            邮编：510530&nbsp;&nbsp;&nbsp;&nbsp;
+            总机号码：020-22017999&nbsp;&nbsp;&nbsp;&nbsp;
+            传真：020-22017998&nbsp;&nbsp;&nbsp;&nbsp;
+            服务邮箱：note@tecenet.com
+        </p>
+        <p>
+            互联网药品信息服务经营许可证：(粤)-经营性-2013-0006&nbsp;&nbsp;&nbsp;&nbsp;
+            ICP备案号：粤ICP备13045514号
+        </p>
+    </div>
+</div>
+    <!-- footer end-->
+</div>
+
+<!-- side-tool -->
+<div class="side-tool">
+    <a href="" class="to-top" title="回到顶部" style="display: none;">回到顶部</a>
+    <a href="javascript:void (0)" class="to-share" onclick="dialog()">分享</a>
+    <a href="http://www.tecenet.com/" target="_blank" class="to-home" title="回到首页">回到首页</a>
+</div>
+<!-- side-tool end-->
+
+
+
+<script src="intro/js/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    var localUrl = encodeURIComponent(window.location.href.split("#")[0]);
+    $.ajax({
+        url: 'http://www.tecenet.com/api/weixin/jssdk.php?callback=cb&url=' + localUrl,
+        dataType: 'jsonp',
+        error: function () {
+        },
+        success: function (cb) {
+            if (typeof cb.timestamp != 'undefined' && typeof cb.nonceStr != 'undefined' && typeof cb.signature != 'undefined') {
+                wx.config({
+                    debug: false,
+                    appId: cb.appId,
+                    timestamp: cb.timestamp,
+                    nonceStr: cb.nonceStr,
+                    signature: cb.signature,
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo']
+                });
+                wx.ready(function () {
+                    wx.onMenuShareTimeline({
+                        title: $('title').text(),
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/about/intro/images/wechat-share-icon.png"
+                    });
+                    wx.onMenuShareAppMessage({
+                        title: $('title').text(),
+                        desc: $("[name=description]").attr("content"),
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/about/intro/images/wechat-share-icon.png",
+                        type: '',
+                        dataUrl: ''
+                    });
+                    wx.onMenuShareQQ({
+                        title: $('title').text(),
+                        desc: $("[name=description]").attr("content"),
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/about/intro/images/wechat-share-icon.png"
+                    });
+                    wx.onMenuShareWeibo({
+                        title: $('title').text(),
+                        desc: $("[name=description]").attr("content"),
+                        link: window.location.href,
+                        imgUrl: "http://www.tecenet.com/about/intro/images/wechat-share-icon.png"
+                    });
+                });
+            }
+        }
+    });
+</script>
+<script src="intro/js/intro.inner.min.js"></script>
+<div style="display: none;">
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+    <!-- google analytics-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-80996109-1', 'auto', {'allowLinker': true});
+        ga('require', 'linker');
+        ga('linker:autoLink', ['xiu17.com', 'eydsp.com', 'yixieweixiu.com', 'tcmeds.com']);
+        ga('send', 'pageview');
+    </script>
+</div>
+</body>
+</html>

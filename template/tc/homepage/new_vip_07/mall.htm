@@ -1,0 +1,86 @@
+{template 'header', $template}
+{if $itemid}
+	<div class="crumbs"><div><img src="{$HSPATH}ico_2.jpg" width="100%" height="100%"/></div>您的当前位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}mall">产品中心</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}/mall">产品详情</a></div>
+
+	<div class="product_main">
+		<div class="product_main_left">
+			<div class="operate">
+				<h3> 热门商品 </h3>
+				<ul id="J_navlist">
+				<!--{php $list=tag("table=mall&condition=username='$username'&pagesize=10&order=hits desc&template=null");}-->
+				{loop $list $k $v}
+				  <li>
+					<h4><a href="{$COM[linkurl]}mall/itemid-{$v[itemid]}.shtml" title="{$v[title]}">{dsubstr($v[title],20,'...')}</a></h4>
+				  </li>	 
+				{/loop}
+				  <li>
+					<h4><a href="{$COM[linkurl]}mall">更多</a></h4>
+				  </li>
+				</ul>
+				 <script type="text/javascript" language="javascript">
+					navList(12);
+				 </script>
+			 </div>
+		</div>
+		<div class="product_main_right">
+			<div class="product_main_right_title"><b>{$title}</b></div>
+			<div class="details_content">
+				<div class="de_img">
+					<div class="big_img" onmouseover="SAlbum();" onmouseout="HAlbum();" onclick="PAlbum(Dd('mid_pic'));">
+						<img src="{$albums[0]}" width="90%" height="90%"/>
+					</div>
+					<ul>
+						{loop $thumbs $k $v}
+						<li><a href="#"><img src="{$v}" width="90%" height="90%"/></a></li>
+						{/loop}
+					</ul>
+				</div>
+				<div class="de_right">
+					<table>
+						<tr><td width="100" class="s">名&nbsp;&nbsp;&nbsp;称：</td><td>{$title}</td></tr>
+						<tr><td class="s">单&nbsp;&nbsp;&nbsp;价：</td><td>￥<span style="color:#FF0000">&nbsp;{$price}</span></td></tr>
+						<tr><td class="s">品&nbsp;&nbsp;&nbsp;牌：</td><td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填写{/if}</td></tr>
+						<tr><td class="s">所在地：</td><td>{area_pos($areaid, '')}</td></tr>
+						<tr><td class="s">销&nbsp;&nbsp;&nbsp;量：</td><td>累积售出<span style="color:#FF9900;">&nbsp;{$sales}&nbsp;</span>件，<span style="color:#FF9900;">&nbsp;{$orders}&nbsp;</span>个订单</td></tr>
+						<tr><td class="s">评&nbsp;&nbsp;&nbsp;价：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$comments}&nbsp;</span>条评价</td></tr>
+						<tr><td class="s">库&nbsp;&nbsp;&nbsp;存：</td><td>还剩出<span style="color:#FF9900;">&nbsp;{$amount}&nbsp;</span>件</td></tr>
+						<tr><td class="s">人&nbsp;&nbsp;&nbsp;气：</td><td>已有出<span style="color:#FF9900;">&nbsp;{$hits}&nbsp;</span>人关注</td></tr>
+						<tr><td class="s">更&nbsp;&nbsp;&nbsp;新：</td><td>{$editdate}</td></tr>
+					</table>
+					<table style="margin-top:10px;">
+						<tr><td width="150"><img alt="立即购买" src="{DT_SKIN}image/btn_tobuy.gif" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');" style="cursor:pointer;"/></td><td><img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" onclick="Go('{$MOD[linkurl]}{rewrite('cart.php?itemid='.$itemid)}');" style="cursor:pointer;"/></td></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="details_parameter">
+			<div class="product_main_right_title"><b>商品详情</b></div>
+			<div class="parameter_content">
+				{$content}
+			</div>
+		</div>
+	</div>
+{else}
+	<div class="crumbs"><div><img src="{$HSPATH}ico_2.jpg" width="100%" height="100%"/></div>您的当前位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}mall">产品中心</a></div>
+	<div class="list_product">
+		<div class="list_title"><span class="a">&rarr;&nbsp;PRODUCT DISPLAY</span>&nbsp;<span class="b">\产品中心</span></div>
+		<div class="list_product_content">
+			{loop $lists $k $v}
+			{if $k<15}
+			{php $sql="select catname from {$db->pre}category where catid=".$v[catid]."";$catname=$db->get_one($sql);if($i==0){$catname_1=$catname[catname];$id=$catname[catid];$id=$catname[catid];}}
+			<div class="pro_show">
+				<div class="pro_img">
+					<div class="img" style="margin-bottom:5px;">
+					<img class="on" src="{imgurl($v[thumb], 1)}" width="230" height="146"/><a href="{$v[linkurl]}" title="{$v[title]}"><img class="back" src="{$HSPATH}background.jpg" style="display:none;"></a>
+					</div>
+					<span>{dsubstr($v[title],20,'...')}</span>
+				</div>
+				<span>{$catname[catname]}<br/>医用级</span>
+			</div>
+			{/if}
+			{/loop}
+			<div class="pages">{$pages}</div>
+		</div>	
+	</div>
+{/if}
+{template 'footer', $template}	

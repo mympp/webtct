@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>乌鸦喝水_天成医疗网</title>
+    <meta name="description" content="「天成医疗」喊你丢小石头，根本停不下来！" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <link rel="stylesheet" href="http://img.ej120.com/game/wuya/res/css.css?version=3.0">
+    <style>
+        .game-wrap .btn-area{top: 50%;margin-top: 1rem;}
+        .gg-ad,.gg-ad ins{height:60px; margin: 0 auto;}
+        .gg-ad{position: fixed;left:0;bottom:0;width:100%;}
+        .adslot_1 { display:inline-block; width: 320px; height: 50px; }
+        @media (min-width:500px) { .adslot_1 { width: 468px; height: 60px; } }
+        @media (min-width:800px) { .adslot_1 { width: 728px; height: 90px; } }
+    </style>
+    <script src="http://img.ej120.com/lib/js/zepto.min.js"></script>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+<body>
+
+<div class="game-wrap" id="gameWrap">
+    <div class="btn-area">
+        <a href="javascript:;" target="_self" class="game-intro"></a>
+        <a href="./game.html?ver=3.20.02" target="_self" class="game-go"></a>
+    </div>
+    <div class="gg-ad">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- wy_index_320x100 -->
+        <ins class="adsbygoogle"
+             style="display:block;width:320px;height:100px;margin: 10px auto;"
+             data-ad-client="ca-pub-3506468552102874"
+             data-ad-slot="1372912343"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div>
+
+<div class="dialog-wrap" style="display:none;">
+    <div class="dialog">
+        <div class="dialog-box">
+            <div class="hd">玩法：</div>
+            <div class="bd">
+                <p>1、开始游戏后，找准乌鸦位置，点一下屏幕，让石头落进瓶中！</p>
+                <p>2、每点一下就会出现一只新乌鸦（忠告：猛戳屏幕，虽然滚滚石下，但是一个也不会中瓶哦！）</p>
+            </div>
+            <div class="hd">说明：（游戏仅供娱乐）</div>
+            <div class="bd">
+                <p>1、命中超过60%说明你还没有老哦！</p>
+                <p>2、命中低于40%，赶快去做老年痴呆症诊断吧！</p>
+            </div>
+            <a href="javascript:;" target="_self" class="btn"></a>           
+        </div>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- wy_300x250 -->
+        <ins class="adsbygoogle"
+             style="display:block;width:300px;height:250px;margin: 10px auto;"
+             data-ad-client="ca-pub-3506468552102874"
+             data-ad-slot="4549181545"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+</div>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    // 弹出框
+    $(".game-intro").on('click',function(e){
+        $(".dialog-wrap").show();
+    });
+    $(".dialog-box .btn").on('click',function(e){
+        $(".dialog-wrap").hide();
+    });
+    // 自动高度
+    autodivheight();
+    function autodivheight(){
+        var winHeight=0;
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        //通过深入Document内部对body进行检测，获取浏览器窗口高度
+        if (document.documentElement && document.documentElement.clientHeight)
+            winHeight = document.documentElement.clientHeight;
+        var currHeight = winHeight;
+        document.getElementById("gameWrap").style.height = currHeight+"px";
+    }
+    window.onresize=autodivheight;
+    // getRandom
+    var gameTicket = Math.random().toString(36).substr(2);
+    var localUrl = encodeURIComponent(window.location.href.split("#")[0]);
+    var domain = new Array("http://kw0c.tcmeds.com/","http://tc08.tecenet.com/","http://img.ej120.com/");
+    var index_file = new Array("wy.index.r1.html","wy.index.r2.html","wy.index.r3.html");
+    var game_file = new Array("wy.game.r1.html","wy.game.r2.html","wy.game.r3.html");
+    var domain_i = getRandom(0,2);
+    var index_file_i = getRandom(0,2);
+    var game_file_i = getRandom(0,2);
+    var r_domain = domain[domain_i];
+    var r_file = index_file[index_file_i];
+    var r_game = game_file[game_file_i];
+    var LastNum = 0;
+    //记录上一次产生的随机值
+    function getRandom(x,y){
+        var r = Math.round(Math.random()*(y-x))+x;
+        if( r==LastNum ) getRandom(x,y);//再次调用自身
+        LastNum=r;//记录值
+        return r;
+    }
+    // gameLink
+    $(".game-go").attr("href",r_domain + r_game+"?gameTicket="+gameTicket+"");
+    // wechat-share
+    $.ajax({
+        url: 'http://www.tecenet.com/api/weixin/jssdk.php?callback=cb&url=' + localUrl,
+        dataType: 'jsonp',
+        error: function () {
+            console.log("weixinAPI error");
+        },
+        success: function (cb) {
+            if (typeof cb.timestamp != 'undefined' && typeof cb.nonceStr != 'undefined' && typeof cb.signature != 'undefined') {
+                wx.config({
+                    debug: false,
+                    appId: cb.appId,
+                    timestamp: cb.timestamp,
+                    nonceStr: cb.nonceStr,
+                    signature: cb.signature,
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo']
+                });
+                wx.ready(function () {
+                    wx.onMenuShareTimeline({
+                        title: "【乌鸦喝水】测试一下：人老了没有？",
+                        link: r_domain + r_file+"?gameTicket="+gameTicket,
+                        imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png"
+                    });
+                    wx.onMenuShareAppMessage({
+                        title: "【乌鸦喝水】测试一下：人老了没有？",
+                        desc: $("[name=description]").attr("content"),
+                        link: r_domain + r_file+"?gameTicket="+gameTicket,
+                        imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png",
+                        type: '',
+                        dataUrl: ''
+                    });
+                    wx.onMenuShareQQ({
+                        title: "【乌鸦喝水】测试一下：人老了没有？",
+                        desc: $("[name=description]").attr("content"),
+                        link: r_domain + r_file+"?gameTicket="+gameTicket,
+                        imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png"
+                    });
+                    wx.onMenuShareWeibo({
+                        title: "【乌鸦喝水】测试一下：人老了没有？",
+                        desc: $("[name=description]").attr("content"),
+                        link: r_domain + r_file+"?gameTicket="+gameTicket,
+                        imgUrl: "http://img.ej120.com/game/wuya/res/wechat-share-icon.png"
+                    });
+                });
+            }
+        }
+    });
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2b363fb3d03ff9991c4971afddf8731d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+var _mtac = {};
+(function() {
+    var mta = document.createElement("script");
+    mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+    mta.setAttribute("name", "MTAH5");
+    mta.setAttribute("sid", "500421174");
+
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(mta, s);
+})();
+</script>
+<div style="display:none;">
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</div>
+</body>
+</html>

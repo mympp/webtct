@@ -1,0 +1,633 @@
+{template 'header', $module}
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="spread.php?action=add"><span>购买排名</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="ss1"><a href="spread.php?status=3&stype=1"><span>已通过:整月类型<span class="px10">({$nums['monthly']})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="ss2"><a href="spread.php?status=3&stype=2"><span>已通过:单次类型<span class="px10">({$nums['single']})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="s2"><a href="spread.php?status=2"><span>审核中<span class="px10">({$nums['wait']})</span></span></a></td>
+<td class="tab_nav" >&nbsp;</td>
+<td class="tab" id="s1"><a href="spread.php?status=1"><span>未通过<span class="px10">({$nums['reject']})</span></span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="search"><a href="spread.php?action=search"><span>查找排名</span></a></td>
+<td class="tab_nav">&nbsp;</td>
+<td class="tab" id="record"><a href="spread.php?action=record"><span>推广记录</span></a></td>
+</tr>
+</table>
+</div>
+{if $action == 'add'}
+
+<table cellspacing="1" cellpadding="6" class="tb">
+<tr>
+<td class="tl">推广类型：</td>
+<td class="tr">
+<input type="radio" name="stype" value="1" onclick="change_stype(1)" checked="checked" />整月&nbsp;&nbsp;
+<input type="radio" name="stype" value="2" onclick="change_stype(2)" />单条&nbsp;&nbsp; 
+</td>
+</tr>
+</table>
+<div id="monthly">
+<form method="post" action="spread.php" onsubmit="return check();">
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="word" value="{$word}"/>
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="stype" value="1" />
+<table cellspacing="1" cellpadding="6" class="tb" style="border-top:0px;">
+<tr>
+<td class="tl">类型：</td>
+<td class="tr">
+	<input type="radio" name="mid" value="99" onclick="change_price(99)" checked="checked" />首页&nbsp;&nbsp;
+	<input type="radio" name="mid" value="0" onclick="change_price(0)" />全网&nbsp;&nbsp;
+	{loop $type $k $v}
+	<input type="radio" name="mid" value="{$v['catid']}" onclick="change_price({$v['catid']})" />{$v['name']}&nbsp;&nbsp;
+	{/loop}
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>关键词：</td>
+<td class="tr"><strong><input type="text" id="word" name="word" value="" /></strong></td>
+</tr>
+<tr>
+<td class="tl">起价：</td>
+<td class="tr f_red f_b"><span id="start_price">{$index_price}</span>{$unit}</td>
+</tr>
+<tr>
+<td class="tl">加价幅度：</td>
+<td class="tr f_b">{if $step}{$step}{$unit}{else}不限{/if}</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>出价：</td>
+<td class="tr"><input type="text" name="buy_price" value="{$price}" size="10" id="price" onkeyup="CA();"/></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>绑定创意：</td>
+<td class="tr">
+<select name="ideaid">
+	{php $ideas=$db->query("select * from {$db->pre}sogex_ideas where userid = $_userid and status = 3");}
+	<?php while($v=$db->fetch_array($ideas)){ ?>
+	<option value="{$v['ideaid']}">{$v['name']}</option>
+	<?php } ?>
+</select>
+	<a target="_blank" class="t" href="ideas.php?action=add">[申请创意]</a>
+</td>
+</tr>
+{if $currency == 'money'}
+<tr>
+<td class="tl">{$DT[money_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_money}{$unit}</span>&nbsp;&nbsp;<a href="charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+</tr>
+<tr>
+<td class="tl">支付密码：</td>
+<td class="tr">{template 'password', 'chip'}</td>
+</tr>
+{else}
+<tr>
+<td class="tl">{$DT[credit_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$unit}</span>&nbsp;&nbsp;<a href="credit.php?action=buy" target="_blank" class="t">[购买]</a></td>
+</tr>
+{/if}
+
+<tr>
+<td class="tl"> </td>
+<td class="tr"><input type="submit" name="submit" value="确定购买" class="btn"/>&nbsp;
+<input type="button" value="重新选择" class="btn" onclick="Go('{$EXT[spread_url]}');"/>
+</td>
+</tr>
+
+</table>
+</form>
+</div>
+
+<div id="single" style="display:none;">
+<form method="post" action="spread.php" onsubmit="return single_check();">
+<input type="hidden" name="mid" value="{$mid}"/>
+<input type="hidden" name="word" value="{$word}"/>
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="stype" value="2" />
+<table cellspacing="1" cellpadding="6" class="tb" style="border-top:0px;">
+<tr>
+<td class="tl">类型：</td>
+<td class="tr">
+	<input type="radio" name="mid" value="99" onclick="change_price(99)" checked="checked" />首页&nbsp;&nbsp;
+	<input type="radio" name="mid" value="0" onclick="change_price(0)" />全网&nbsp;&nbsp;
+	{loop $type $k $v}
+	<input type="radio" name="mid" value="{$v['catid']}" onclick="change_price({$v['catid']})" />{$v['name']}&nbsp;&nbsp;
+	{/loop}
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>关键词：</td>
+<td class="tr"><strong><input type="text" id="sword" name="word" value="" /></strong></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>绑定创意：</td>
+<td class="tr">
+<select name="ideaid">
+	{php $ideas=$db->query("select * from {$db->pre}sogex_ideas where userid = $_userid and status = 3");}
+	<?php while($v=$db->fetch_array($ideas)){ ?>
+	<option value="{$v['ideaid']}">{$v['name']}</option>
+	<?php } ?>
+</select>
+	<a target="_blank" class="t" href="ideas.php?action=add">[申请创意]</a>
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>每次点击花费：</td>
+<td class="tr"><input type="text" id="spend" name="spend" value="" /></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>预存：</td>
+<td class="tr"><input type="text" id="least" name="least"</td>
+</tr>
+{if $currency == 'money'}
+<tr>
+<td class="tl">{$DT[money_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_money}{$unit}</span>&nbsp;&nbsp;<a href="charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+</tr>
+<tr>
+<td class="tl">支付密码：</td>
+<td class="tr">{template 'password', 'chip'}</td>
+</tr>
+{else}
+<tr>
+<td class="tl">{$DT[credit_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$unit}</span>&nbsp;&nbsp;<a href="credit.php?action=buy" target="_blank" class="t">[购买]</a></td>
+</tr>
+{/if}
+<tr>
+<td class="tl"> </td>
+<td class="tr"><input type="submit" name="submit" value="确定购买" class="btn"/>&nbsp;
+<input type="button" value="重新选择" class="btn" onclick="Go('{$EXT[spread_url]}');"/>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<script type="text/javascript">
+function CA() {
+	if(Dd('price').value.match(/^[0-9]{1,}$/)) {
+		Dd('payment').innerHTML = Dd('price').value*Dd('month').value + '{$unit}';
+	}else{
+		Dd('price').value = $('#start_price').html();
+		Dd('payment').innerHTML = Dd('price').value*Dd('month').value + '{$unit}';
+	}
+}
+
+function change_price(v){
+		var index_price=<?php echo $index_price; ?>;
+		var all_price=<?php echo $all_price; ?>;
+		var type_price=<?php echo $type_price; ?>;
+		
+		if(v=='99'){
+			$('#start_price').html(''+index_price);	
+		}else if(v == '0'){
+			$('#start_price').html(''+all_price);
+		}else{
+			$('#start_price').html(''+type_price);
+		}
+}
+
+function change_stype(v){
+	if(v=='1'){
+		Dd('monthly').style.display='block';
+		Dd('single').style.display='none';
+	}else{
+		Dd('monthly').style.display='none';
+		Dd('single').style.display='block';
+	}
+}
+
+function check() {
+
+	var p = Dd('price').value;
+	if(Dd('word').value ==''){
+		alert('关键词不可为空');
+		Dd('word').focus();
+		return false;
+	}
+	
+	if(Dd('price').value == ''){
+		alert('出价不可为空');
+		Dd('price').focus();
+		return false;
+	}
+
+	var s = $('#start_price').html();
+	if((parseInt(p)) < (parseInt(s))){
+		alert('出价不可比起价低');
+		Dd('price').focus();
+		return false;
+	}
+
+	{if $currency == 'money'}
+	if(p > {$_money}) {
+		alert('帐户余额不足，请先充值');
+		return false;
+	}
+	{else}
+	if(p > {$_credit}) {
+		alert('您的{$DT[credit_name]}不足，请先购买');
+		return false;
+	}
+	{/if}
+
+	{if $currency == 'money'}
+	if(Dd('password').value.length < 6) {
+		alert('请填写支付密码');
+		Dd('password').focus();
+		return false;
+	}
+	{/if}
+	
+	return true;
+}
+
+function single_check() {
+
+	var p = Dd('least').value;
+	if(Dd('sword').value ==''){
+		alert('关键词不可为空');
+		Dd('sword').focus();
+		return false;
+	}
+
+	if(Dd('spend').value == ''){
+		alert('每次点击话费不可为空');
+		Dd('spend').focus();
+		return false;
+	}
+	
+	if(Dd('least').value == ''){
+		alert('预存不为空');
+		Dd('least').focus();
+		return false;
+	}
+
+	{if $currency == 'money'}
+	if(p > {$_money}) {
+		alert('帐户余额不足，请先充值');
+		return false;
+	}
+	{else}
+	if(p > {$_credit}) {
+		alert('您的{$DT[credit_name]}不足，请先购买');
+		return false;
+	}
+	{/if}
+
+	{if $currency == 'money'}
+	if(Dd('password').value.length < 6) {
+		alert('请填写支付密码');
+		Dd('password').focus();
+		return false;
+	}
+	{/if}
+	
+	return true;
+}
+
+
+</script>
+
+<script type="text/javascript">s('spread');m('add');</script>
+{elseif $action == 'edit'}
+<form method="post" action="spread.php" onsubmit="return single_check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="itemid" value="{$itemid}" />
+<table cellspacing="1" cellpadding="6" class="tb" style="border-top:0px;">
+<tr>
+<td class="tl">类型：</td>
+<td class="tr">
+	<input type="radio" name="mid" value="99" onclick="change_price(99)" {if $mid == 99}checked{/if} />首页&nbsp;&nbsp;
+	<input type="radio" name="mid" value="0" onclick="change_price(0)" {if $mid === 0}checked{/if} />全网&nbsp;&nbsp;
+	{loop $type $k $v}
+	<input type="radio" name="mid" value="{$v['catid']}" onclick="change_price({$v['catid']})" {if $v[catid]==$mid}checked{/if} />{$v['name']}&nbsp;&nbsp;
+	{/loop}
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>关键词：</td>
+<td class="tr"><strong><input type="text" id="sword" name="word" value="{$word}" /></strong></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>绑定创意：</td>
+<td class="tr">
+<select name="ideaid">
+	{php $ideas=$db->query("select * from {$db->pre}sogex_ideas where userid = $_userid and status = 3");}
+	<?php while($v=$db->fetch_array($ideas)){ ?>
+	<option value="{$v['ideaid']}" {if $tid == $v[ideaid]}selected{/if}>{$v['name']}</option>
+	<?php } ?>
+</select>
+	<a target="_blank" class="t" href="ideas.php?action=add">[申请创意]</a>
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span>每次点击花费：</td>
+<td class="tr"><input type="text" id="spend" name="spend" value="{$spend}" /></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red"></span>剩余费用</td>
+<td class="tr">{$least}</td>
+</tr>
+<tr>
+<td class="tl">充值：</td>
+<td class="tr"><input type="text" id="recharge" name="recharge" />&nbsp;&nbsp;(不充值不用填写)</td>
+</tr>
+{if $currency == 'money'}
+<tr>
+<td class="tl">{$DT[money_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_money}{$unit}</span>&nbsp;&nbsp;<a href="charge.php?action=pay" target="_blank" class="t">[充值]</a></td>
+</tr>
+<tr>
+<td class="tl">支付密码：</td>
+<td class="tr">{template 'password', 'chip'}</td>
+</tr>
+{else}
+<tr>
+<td class="tl">{$DT[credit_name]}余额：</td>
+<td class="tr"><span class="f_blue f_b">{$_credit}{$unit}</span>&nbsp;&nbsp;<a href="credit.php?action=buy" target="_blank" class="t">[购买]</a></td>
+</tr>
+{/if}
+<tr>
+<td class="tl"> </td>
+<td class="tr"><input type="submit" name="submit" value="确定购买" class="btn"/>&nbsp;
+<input type="button" value="重新选择" class="btn" onclick="Go('{$EXT[spread_url]}');"/>
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<script type="text/javascript">
+function CA() {
+	if(Dd('price').value.match(/^[0-9]{1,}$/)) {
+		Dd('payment').innerHTML = Dd('price').value*Dd('month').value + '{$unit}';
+	}else{
+		Dd('price').value = $('#start_price').html();
+		Dd('payment').innerHTML = Dd('price').value*Dd('month').value + '{$unit}';
+	}
+}
+
+function change_price(v){
+		var index_price=<?php echo $index_price; ?>;
+		var all_price=<?php echo $all_price; ?>;
+		var type_price=<?php echo $type_price; ?>;
+		
+		if(v=='99'){
+			$('#start_price').html(''+index_price);	
+		}else if(v == '0'){
+			$('#start_price').html(''+all_price);
+		}else{
+			$('#start_price').html(''+type_price);
+		}
+}
+
+
+function single_check() {
+
+	var p = Dd('recharge').value;
+	if(Dd('sword').value ==''){
+		alert('关键词不可为空');
+		Dd('sword').focus();
+		return false;
+	}
+
+	if(Dd('spend').value == ''){
+		alert('每次点击话费不可为空');
+		Dd('spend').focus();
+		return false;
+	}
+	
+	if(p !== ''){
+	{if $currency == 'money'}
+	if(p > {$_money}) {
+		alert('帐户余额不足，请先充值');
+		return false;
+	}
+	{else}
+	if(p > {$_credit}) {
+		alert('您的{$DT[credit_name]}不足，请先购买');
+		return false;
+	}
+	{/if}
+
+	{if $currency == 'money'}
+	if(Dd('password').value.length < 6) {
+		alert('请填写支付密码');
+		Dd('password').focus();
+		return false;
+	}
+	{/if}
+	}
+	return true;
+}
+
+
+</script>
+<script type="text/javascript">s('spread');m('ss2');</script>
+{elseif $action == 'search'}
+<div style="margin-left:22px;margin-bottom:8px;">
+<form action="spread.php" method="post">
+<input type="hidden" name="action" value="{$action}" />
+<input type="text" name="word"  style="width:150xp;height:18px;" value="{$word}" />&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="查找" class="btn" />
+</form>
+</div>
+
+<div class="ls">
+<div style="border-bottom:1px solid #ccc;margin-bottom:8px;height:24px;line-height:12px;">
+<span style="font-size:16px;">整月类型：</span>
+</div>
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>关键词</th>
+<th>模块</th>
+<th>出价</th>
+<th>单位</th>
+<th>开始日期</th>
+<th>结束日期</th>
+<th>剩余(天)</th>
+<th>投放状态</th>
+<th>申请时间</th>
+</tr>
+{loop $mlists $k $v}                     
+<tr  align="center">
+<td><a href="{$EXT[spread_url]}{rewrite('index.php?kw='.urlencode($v['word']))}" target="_blank" class="b">{$v[word]}</a></td>
+<td>{if $v['mid']=='99'}首页{elseif $v['mid']=='0'}全网{else}{$type[$v[mid]]['name']}{/if}</td>
+<td>{$v[price]}</td>
+<td>{if $v[currency]=='money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}</td>
+<td>{timetodate($v[fromtime], 3)}</td>
+<td>{timetodate($v[totime], 3)}</td>
+<td{if $v[days]<5} class="f_red"{/if}>{$v[days]}</td>
+<td>{$v[process]}</td>
+<td class="f_gray px11">{timetodate($v[addtime], 5)}</td>
+</tr>
+{/loop}
+</table>
+<div style="border-bottom:1px solid #ccc;margin-bottom:8px;margin-top:24px;height:24px;line-height:12px;">
+<span style="font-size:16px;">单次类型：</span>
+</div>
+<table cellpadding="0" cellspacing="0" class="tb">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>关键词</th>
+<th>模块</th>
+<th>每次点击扣费</th>
+<th>单位</th>
+<th>投放状态</th>
+<th>申请时间</th>
+</tr>
+{loop $slists $k $v}
+<tr align="center">
+<td>{$v['word']}</td>
+<td>{if $v['mid']=='99'}首页{elseif $v['mid']=='0'}全网{else}{$type[$v[mid]]['name']}{/if}</td>
+<td>{$v['spend']}</td>
+<td>{if $v[currency]=='money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}</td>
+<td>{if $v[spread_status]==3}已启动{else}已停用{/if}</td>
+<td>{timetodate($v[addtime], 5)}</td>
+</tr>
+{/loop}
+</table>
+{$pages}
+</div>
+
+<script type="text/javascript">s('spread');m('search');</script>
+
+{elseif $action == 'record'}
+<!-- 推广点击记录 -->
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>搜索词语</th>
+<th>点击时间</th>
+<th>所用花费</th>
+<th>客户ip</th>
+</tr>
+{loop $lists $k $v}
+<tr align="center">
+<td>{if $v['word']}{$v['word']}{else}无{/if}</td>
+<td>{date('Y-m-d H:i:s',$v['addtime'])}</td>
+<td>{$v['spend']}</td>
+<td>{$v['ip']}</td>
+</tr>
+{/loop}
+</table>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('spread');m('record');</script>
+{else}
+
+<div class="ls">
+{if $status == 3 && $stype == 1}
+<!-- 整月类型推广 -->
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>关键词</th>
+<th>模块</th>
+<th>出价</th>
+<th>单位</th>
+<th>开始日期</th>
+<th>结束日期</th>
+<th>剩余(天)</th>
+<th>投放状态</th>
+<th>申请时间</th>
+<th>信息</th>
+</tr>
+{loop $lists $k $v}                     
+<tr  align="center">
+<td><a href="{$EXT[spread_url]}{rewrite('index.php?kw='.urlencode($v['word']))}" target="_blank" class="b">{$v[word]}</a></td>
+<td>
+	{if $v['mid']=='99'}首页{elseif $v['mid']=='0'}全网{else}{$type[$v[mid]]['name']}{/if}
+</td>
+<td>{$v[price]}</td>
+<td>{if $v[currency]=='money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}</td>
+<td>{timetodate($v[fromtime], 3)}</td>
+<td>{timetodate($v[totime], 3)}</td>
+<td{if $v[days]<5} class="f_red"{/if}>{$v[days]}</td>
+<td>{$v[process]}</td>
+<td class="f_gray px11">{timetodate($v[addtime], 5)}</td>
+<td><a href="spread.php?action=link&itemid={$v[tid]}" target="_blank" class="b">查看</a></td>
+</tr>
+{/loop}
+</table>
+{elseif $status == 3 && $stype == 2}
+<!-- 单条推广类型 -->
+<table cellspacing="0" cellpadding="0" class="tb">
+<tr>
+<th>关键字</th>
+<th>模块</th>
+<th>每次点击扣费</th>
+<th>剩余费用</th>
+<th>单位</th>
+<th>申请时间</th>
+<th>信息</th>
+<th>投放状态</th>
+<th>操作</th>
+</tr>
+{loop $lists $k $v}
+<tr align="center">
+<td>{$v[word]}</td>
+<td>{if $v['mid']=='99'}首页{elseif $v['mid']=='0'}全网{else}{$type[$v[mid]]['name']}{/if}</td>
+<td>{$v[spend]}</td>
+<td>{$v[least]}</td>
+<td>{if $v[currency]=='money'}{$DT[money_unit]}{else}{$DT[credit_unit]}{/if}</td>
+<td>{timetodate($v[addtime], 3)}</td>
+<td><a href="spread.php?action=link&itemid={$v[tid]}" target="_blank" class="b">查看</a></td>
+<td><span style="font-weight:bold;">{if $v[spread_status]==3}已启动{else}已停用{/if}</span></td>
+<td>
+<a onclick="if(!confirm('确定{if $v[spread_status] != '3'}启动{else}停用{/if}该推广?')){ return false;}" href="spread.php?action=spread_change&spread_status={if $v[spread_status] != '3'}3{else}1{/if}&itemid={$v[itemid]}" class="b">{if $v[spread_status] != '3'}启动{else}停用{/if}</a>&nbsp;<a href="spread.php?action=edit&itemid={$v['itemid']}" class="b">修改</a>
+</td>
+</tr>
+{/loop}
+</table>
+{elseif $status == 2}
+<!-- 待审核 -->
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>关键词</th>
+<th>模块</th>
+<th>推广类型</th>
+<th>信息</th>
+<th>申请时间</th>
+</tr>
+{loop $lists $k $v}
+<tr align="center">
+<td>{$v[word]}</td>
+<td>{if $v['mid']=='99'}首页{elseif $v['mid']=='0'}全网{else}{$type[$v[mid]]['name']}{/if}</td>
+<td>{if $stype == 1}整月推广{else}单条推广{/if}</td>
+<td><a href="spread.php?action=link&itemid={$v[tid]}" target="_blank" class="b">查看</a></td>
+<td>{timetodate($v[addtime], 3)}</td>
+</tr>
+{/loop}
+</table>
+{elseif $status == 1}
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+<th>关键词</th>
+<th>模块</th>
+<th>推广类型</th>
+<th>信息</th>
+<th>申请时间</th>
+<th style="min-width:300px;">备注</th>
+<th>操作</th>
+</tr>
+{loop $lists $k $v}
+<tr align="center">
+<td>{$v[word]}</td>
+<td>{if $v['mid']=='99'}首页{elseif $v['mid']=='0'}全网{else}{$type[$v[mid]]['name']}{/if}</td>
+<td>{if $stype == 1}整月推广{else}单条推广{/if}</td>
+<td><a href="spread.php?action=link&itemid={$v[tid]}" target="_blank" class="b">查看</a></td>
+<td>{timetodate($v[addtime], 3)}</td>
+<td>{$v[note]}</td>
+<td><a href="javascript:void(0);" onclick="if(confirm('确定删除推广?')){window.location.href='spread.php?itemid={$v['itemid']}&action=delete'}">删除</a></td>
+</tr>
+{/loop}
+</table>
+{/if}
+</div>
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('spread');{if $stype}m('ss{$stype}'){else}m('s{$status}');{/if}</script>
+{/if}
+{template 'footer', $module}

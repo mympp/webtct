@@ -1,0 +1,23 @@
+
+<ul class="{$css}ul" id="artlll">
+{loop $tags $z $t}
+					<li id="{$css}list{$z+1}" class="pt10 whitebg h100 cut" style="padding:10px 0px;">
+					<dl class="autoheight fl ">
+					<dt class="mb5" style="padding:2px;">
+					<b class="lenstr w500"><a href="{$t[linkurl]}" class="color f18">{if $stype==1}【供】{elseif $stype==0}【求】{else}【外包】{/if}{$t[title]}</a></b>
+					</dt>
+					<dd style="width:705px;margin-left:11px;" class='tl'>
+					<div class='hcolor h40 cut f12 lh18' style="line-height: 22px;">{dsubstr($t[introduce],220,'...')}</div>
+					<div style="color:#296ecc;">	<span>地区：{area_pos($t[areaid], '/')}</span><span style="margin-left:15px;">时间：{date('Y.m.d',$t[addtime])}</span><span class="ml10"></span><span class="fr mr10"><a href="{$t[linkurl]}" style="color:#296ecc;">阅读全文</a>&nbsp;&nbsp;<span class="ml10">{$t[hits]}人关注</span></span></div>
+					</dd>
+					<br class="clear"/>
+					</dl>
+					</li>	
+{/loop}					
+</ul>
+<script type="text/javascript">
+$(".{$css}ul>li").hover(function () {$(this).removeClass("whitebg");$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg");$(this).addClass("whitebg"); });
+</script>
+
+{if $showpage && $pages}<div class="divline"></div>
+<div class="pages">{$pages}</div>{/if}

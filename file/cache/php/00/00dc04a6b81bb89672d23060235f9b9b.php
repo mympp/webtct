@@ -1,0 +1,1 @@
+<?php exit;?>1466430585a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201406/24/15-12-29-56-8.png";s:7:"linkurl";s:29:"http://sales_chj.tecenet.com/";s:7:"company";s:33:"江苏省华杰仪器有限公司";}}

@@ -1,0 +1,158 @@
+<script type="text/javascript" src="{DT_PATH}file/script/arrowtree.js"></script> 
+<script type="text/javascript" src="{DT_PATH}file/script/miniDropdown.js"></script>
+						<div class='topmenubg'>
+						<!--最顶部菜单-->
+						<script type="text/javascript">topmenu(	{if $moduleid>2}{$moduleid}{else}1{/if})</script>
+						</div>
+
+<div class="h50"></div>
+	<div class="center autoheight webw">
+				<div class="searchtool">
+						<form method="get" action="{$MODULE[$moduleid][linkurl]}search.php" id="searchform" target="_blank">
+									<div class="searche fl">
+									<label class="fl"><input type="radio" name="type" value=0 checked=checked onclick="if(this.checked==true){Dd('searchform').action='{$MODULE[16][linkurl]}search.php';}">搜产品</label>
+									<label class="fl"><input type="radio" name="type" value=1 onclick="if(this.checked==true){Dd('searchform').action='{$MODULE[6][linkurl]}search.php';}">搜招标</label>
+									<label class="fl"><input type="radio" name="type" value=2 onclick="if(this.checked==true){Dd('searchform').action='{$MODULE[4][linkurl]}search.php';}">搜厂商</label>
+									</div>
+										<div class="searcha fl"><input type="text" name="kw" value="请输入关键词" alt="请输入关键词" onfocus="if(this.value.indexOf('词')>0){this.value='';}" onblur="if(this.value==''){this.value=this.alt;}"></div>
+										<div class="searchb fl"><input type="image" src="{DT_SKIN}image/blank.gif"></div>
+						</form>
+				</div>
+	</div>
+<div class="webbg3">
+<div class="center autoheight webw">
+<div id="shopcart" class="shopcart"><a href='{$MODULE[16][linkurl]}cart.php'  rel="nofollow">购物车(<span id='destoon_cart'>0</span>)</a></a></div>
+<div class="webmenu">
+    <div class="youcan "><h1 id="youcan"><font id="youcantext">产品服务网首页</font><span>&nbsp;</span></h1>
+        <div class="leftmenu" id="leftmenu" >
+<div id="sidebar"></div> 
+  </div>
+    </div>
+<div  class="webmenulist" id="mini-dropdown-2">
+<ul class="dropdown" id="nav">
+{php $menuy=" class='menuy'";}
+{php $menun=" class='menun'";}
+<li {$menun}><a title="招标采购平台" href="{$MODULE[6][linkurl]}"  class="wcolor">招标信息<font id="topfw" class="f12 fontsong"></font></a>
+      	<ul>
+			<li><a href="{$MODULE[6][linkurl]}{rewrite('list.php?catid=1816')}">医疗机构专区</a></li>
+			<li><a href="{$MODULE[6][linkurl]}{rewrite('list.php?catid=1817')}">厂商企业专区</a></li>
+			<li><a href="{$MODULE[6][linkurl]}{rewrite('list.php?catid=2077')}">政府单位专区</a></li>
+			<li><a href="{$MODULE[6][linkurl]}{rewrite('list.php?catid=1818')}">其他单位专区</a></li>
+		 </ul>
+</li>
+<li {$menun}><a title="医疗器械产品目录" href="{$MODULE[16][linkurl]}"  class="wcolor">医疗产品<font id="topmall" class="f12 fontsong"></font></a>
+        <ul>
+			<li><a href="{$MODULE[16][linkurl]}search-htm-tc-1-list-1-catid-0.html">国内产品</a></li>
+			<li><a href="{$MODULE[16][linkurl]}search-htm-tc-0-list-1-catid-0.html">国外产品</a></li>
+        </ul>
+</li>
+<li {$menun} id="buypaymenu"><a href="{$MODULE[13][linkurl]}"   class="wcolor">医疗品牌厂商<font id="buypay" class="f12 fontsong"></font></a>
+        <ul>
+	 		<li><a href="{$MODULE[13][linkurl]}list-htm-catid-858.html">国内厂家</a></li>
+          	<li><a href="{$MODULE[13][linkurl]}list-htm-catid-859.html">国外厂家</a></li>
+		 </ul>
+</li>
+<li {$menun}><a title="科室解决方案" href="{$MODULE[12][linkurl]}" class="wcolor">科室解决方案<font id="topbrand" class="f12 fontsong"></font></a>
+</li>
+<li {$menun}><a title="医疗资讯新闻" href="{$MODULE[21][linkurl]}" class="wcolor">行业资讯<font id="topbrand" class="f12 fontsong"></font></a>
+</li>
+<li {$menun}><a href="javascript:void(0)" class="wcolor mou_i">平台简介<font id="moremodule" class="f12 fontsong"></font></a>
+        <ul>
+		 <li><a href="javascript:void(0)" >关于我们</a></li>
+         <li><a href="javascript:void(0)">联系我们</a></li>
+        </ul>
+</li>
+</ul>
+</div>
+<script type="text/javascript">
+$(function(){
+    $('#mini-dropdown-2 .dropdown').miniDropdown({
+      animation: 'slide', 
+      show: 100,
+      hide: 100,
+      delayIn: 100,
+      delayOut: 100
+    });
+});
+</script>
+<div class="webmem">
+<ul id="mstatus"><li><img src="http://www.tecenet.com/skin/teceskin/image/loadb.gif" style="padding-top:5px;"></li></ul>
+<span id="joinusto" class="hd"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--
+<div class="webbg">
+<div class="h400"></div>
+</div>-->
+<!--ad strat-->
+<div  style="height:450px;">
+    <div id="full-screen-slider">
+        <ul id="b_slides">            
+<!-- 读取宽屏广告图 开始 -->
+	{php $tagt = tag("moduleid=2&table=ad&condition=pid=37 and fromtime<$DT_TIME and totime>$DT_TIME and status=3&pagesize=5&order=listorder asc&template=null")}			
+{loop $tagt $z $t}			
+                    <li style="background: url('{$t[image_src]}') center no-repeat;">
+					<div class="shadow"></div>
+					<div class="webw"><div class="fabubt"><a href="{$t[image_url]}" target="_blank" title="{$t[introduce]}"><span class="lenstr tc mou_p">{$t[image_alt]}</span></a></div></div>
+					</li>
+{/loop}
+<!-- 读取宽屏广告图结束  -->
+        </ul>
+    </div>
+</div>
+<!--ad end-->
+<div class="autoheight webbg2"  >
+<div class="count">
+			<div class="webw" >
+			<ul id="count">
+			   {php $mall=getsqldata("sum(amount)","{$db->pre}mall_order","number>1",0,0);}
+			   {php $fee=getsqldata("sum(fee)","{$db->pre}mall_order","number>1",0,0);}
+				{php $num=$mall[0]['sum(amount)']+$fee[0]['sum(fee)'];}
+				{php $num=number_format($num,0,'.',',')}		
+				<li><p><font class='ocolor'>{$num}</font></p>
+				<span>线上交易总额</span>
+				</li>
+				<li><p>
+				{php $mall = $db->count($DT_PRE.'mall', "status=3", 60);}
+				{php $num=number_format($mall,0,'.',',')}
+				<a href="{$MODULE[16][linkurl]}index.php?action=mall"><u>{$num}</u></a></p>
+				<span>上线产品信息</span>
+				</li>
+				<li><p>
+				{php $buy = $db->count($DT_PRE.'buy_6', "status=3", 60);}
+				{php $buy=number_format($buy,0,'.',',')}
+				<a href="{$MODULE[6][linkurl]}"><u>{$buy}</u></a>
+				</p>
+				<span>招标采购信息</span>
+				</li>
+				<li><p>
+				{php $company= $db->count($DT_PRE.'company', "username!='gztc' and groupid>5", 60);}
+				{php $company=number_format($company,0,'.',',')}
+				<a href="{$MODULE[4][linkurl]}"><u>{$company}</u></a></p>
+				<span>供应商信息</span>
+				</li>
+				{php $message = $db->count($DT_PRE.'message', "typeid<4", 60);}
+				{php $num=number_format($message,0,'.',',')}
+				<li><p>{$num}</p>
+				<span>咨询量信息</span>
+				</li>
+				{php $mall_order = $db->count($DT_PRE.'mall_order', "status>0", 60);}
+				{php $num=number_format($mall_order,0,'.',',')}
+				<li><p>{$num}</p>
+				<span>订单量信息</span>
+				</li>  
+			</ul>
+			<div class="join">
+			   
+			   <p id="joinusto"><a href="http://www.tecenet.com/member/my.php" id="joinus">立即发布信息</a></p>
+			   <span>已有<font id='members'>{php $memb = $db->count($DT_PRE.'member', "groupid>4 and edittime<>'1399513082'", 60);}
+			   {$memb+10000}</font>会员已经加入天成医疗网</span>
+			<script type="text/javascript" src="{DT_PATH}member/mem.php"></script>
+			</div>
+			</div>
+</div>
+	<div class="webw center"  >
+

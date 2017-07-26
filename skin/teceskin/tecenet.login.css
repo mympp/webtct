@@ -1,0 +1,234 @@
+.login-wrap{
+    height:440px;
+    padding:30px 0;
+    background-color: #f9f9f9;
+    background: url("./image/login-full-banner-1.jpg") no-repeat center top;
+    background-size:cover;
+}
+.login-box{
+    width: 430px;
+    margin:0 auto;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.login-hd{
+    padding:15px 25px;
+    border-bottom:1px solid #eaeaea;
+}
+.login-hd h2{
+    font: 18px/1.5 "Microsoft YaHei";
+    color: #444;
+}
+
+.login-hd  h2>span{
+    color: #e56639;
+}
+.login-hd .link{
+    font-size: 12px;
+    color: #666;
+    line-height: 27px;
+}
+.login-hd a{
+    color: #e56639;
+    text-decoration: underline;
+}
+.login-hd a.btn{
+    color: #fff;
+    text-decoration: none;
+    border-radius:0;
+}
+.login-bd{
+    padding:20px;
+}
+.login-bd .form-group{
+    margin-bottom: 40px;
+}
+.login-bd .form-control{
+    display: block;
+    width: 100%;
+    height: 26px;
+    padding: 6px 0;
+    font-size: 14px;
+    line-height: 26px;
+    text-indent:10px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #eaeaea;
+    outline:none;
+
+}
+.login-bd .form-name{
+    line-height: 34px;
+    text-align: right;
+    font-size: 16px;
+}
+.form-item{
+    position: relative;
+    margin-top: 20px;
+    -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.form-item:first-child{
+    margin-top: 0;
+}
+.form-item .item-tip{
+    position: absolute;
+    left:10px;
+    top:12px;
+    padding:0 5px;
+    color: #808080;
+    -webkit-transition: all linear .2s;
+    transition: all linear .2s;
+}
+.form-item .item-tip-focus{
+    color: #e56639;
+    top:-8px;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+.form-item .form-input-focus{
+    border-color: #e56639;
+}
+.form-item input[type="submit"]{
+    display: block;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+}
+.captcha > *{
+    float: left;
+}
+.captcha img{
+    width: 98px;
+    height: 40px;
+    margin-left: 20px;
+}
+.captcha .form-input{
+    width: 200px;
+}
+.captcha .captcha-tips{
+    line-height: 20px;
+    margin-left:20px;
+    color: #888;
+    outline: none;
+}
+.captcha .captcha-tips:hover{
+    color: #e56639;
+    text-decoration: underline;
+}
+/*other-signup*/
+.other-signup{
+    position: relative;
+    margin-top:35px;
+    padding: 25px 0 10px 0;
+    border-top:1px dashed #eaeaea;
+}
+.other-signup .name{
+    position: absolute;
+    left:50%;
+    top:-10px;
+    width: 110px;
+    margin-left:-55px;
+    text-align: center;
+    background-color: #fff;
+    color: #666;
+}
+.other-signup .btn-area{
+    text-align: center;
+}
+
+.other-signup .btn-area .icon{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 15px 0 40px;
+    margin: 0 10px;
+    background-image: url(./images/reg-icons.png);
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    color: #bbb;
+    text-decoration: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.other-signup .btn-area .icon.wechat{
+    background-position:15px -50px;
+}
+.other-signup .btn-area .icon.wechat:hover{
+    background-position:15px 0;
+    border-color: #23b576;
+    color: #23b576;
+}
+.other-signup .btn-area .icon.qq{
+    background-position:15px -150px;
+}
+.other-signup .btn-area .icon.qq:hover{
+    background-position:15px -100px;
+    border-color: #66afe9;
+    color: #66afe9;
+}
+/*btn*/
+.btn{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn-success{
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+@-webkit-keyframes shake {
+    from, to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-5px, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(5px, 0, 0);
+    }
+}
+@keyframes shake {
+    from, to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-5px, 0, 0);
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(5px, 0, 0);
+    }
+}
+.shake {
+    -webkit-animation-name: shake;
+    animation-name: shake;
+}

@@ -1,0 +1,1 @@
+<?php defined('IN_DESTOON') or exit('Access Denied'); return array ('title' => '会员 bohuikang 您好, 以下是您关注上“”的业务需求信息提醒','total' => '0','num' => '0','sql' => '','ord' => 'addtime DESC','template' => 'alert-2',); ?>

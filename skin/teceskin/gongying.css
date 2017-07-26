@@ -1,0 +1,470 @@
+body{
+    color: #313540;
+}
+.tc-gy-i{
+    position: relative;
+    display: inline-block;
+    background-image: url("./image/sell/tc-gongying.png");
+    background-repeat: no-repeat;
+}
+.slider-wrap{
+    position: relative;
+    z-index:2;
+}
+.slider-box,.slider-box li{
+    height:360px;
+}
+.slider-box li.slider-li-1>a{
+    position: absolute;
+    left: 50%;
+    top:195px;
+    display: block;
+    width: 138px;
+    height:44px;
+    margin-left: -552px;
+}
+
+.data-bar{
+    position: absolute;
+    left:50%;
+    top:30px;
+    width: 300px;
+    height:300px;
+    margin-left:280px;
+    background-color: #fff;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+    z-index:5;
+}
+.data-bar-hd{
+    padding:15px 20px;
+    color: #666;
+    background-color: #fff;
+    border-bottom:1px solid #eaeaea;
+ }
+.data-bar-bd{
+    padding: 0 20px;
+}
+.data-bar-bd .data-item{
+    padding:10px 5px 0 5px;
+    font-size: 13px;
+    color: #888;
+}
+.data-bar-bd .data-item em{
+    margin:0 10px;
+    color: #c72721;
+    font-size:30px;
+    font-style: normal;
+    font-weight: 200;
+    font-family:Georgia;
+}
+.data-bar-bd .btn-area{
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top:1px solid #eaeaea;
+}
+.data-bar-bd .btn-area>a {
+    position: relative;
+    width: 64px;
+    font-size: 12px;
+    padding:8px 12px 8px 45px;
+    border-radius:5px;
+    border:1px solid #c72721;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+}
+.data-bar-bd .btn-area>a:hover{
+    top:-2px;
+
+}
+.data-bar-bd .btn-area>a:active{
+    top:0;
+    box-shadow: none;
+}
+.data-bar-bd .btn-area>a>strong{
+    display: block;
+    margin-top:1px;
+    font-weight: normal;
+    font-size: 16px;
+}
+.data-bar-bd .btn-q{
+    float: left;
+    background-color: #fff;
+    color: #c72721;
+}
+.data-bar-bd .btn-q:hover{
+    box-shadow: 0 2px 0 #c72721;
+}
+.data-bar-bd .btn-g{
+    float: right;
+    background-color: #c72721;
+    color: #fff;
+}
+.data-bar-bd .btn-g:hover{
+    box-shadow: 0 2px 0 #a3221d;
+}
+.data-bar-bd .btn-area>a>i{
+    position: absolute;
+    left:10px;
+    top: 13px;
+    width:24px;
+    height:24px;
+}
+.data-bar-bd .btn-q>i{
+    background-position: -40px 0;
+}
+.data-bar-bd .btn-g>i{
+    background-position: 0 0;
+}
+.announce{
+    position: relative;
+    padding:10px 0;
+    box-shadow: 0 0 10px #ccc;
+}
+.announce h2{
+    line-height:40px;
+}
+.announce h2 .tc-gy-i{
+    top:4px;
+    width: 20px;
+    height: 20px;
+    margin-right:8px;
+    background-position: -80px 0;
+}
+
+.announce-list{
+
+    width: 1000px;
+    margin-left:50px;
+}
+.announce-list li{
+    position: relative;
+    float: left;
+    width:510px;
+    line-height: 40px;
+    color: #666;
+    padding-left:7px;
+}
+.announce-list li:before{
+    content: '';
+    position: absolute;
+    left:0;
+    top:50%;
+    margin-top:-2px;
+    width: 4px;
+    height: 4px;
+    background-color: #e56639;
+    border-radius:50%;
+}
+.announce-list li>a{
+    margin:0 10px;
+    color: #e56639;
+    text-decoration: underline;
+}
+.announce-list li>span{
+    color: #333;
+    margin:0 5px;
+}
+
+.gy-wrap{
+    background-color: #f1f1f1;
+    overflow: hidden;
+    padding-bottom:30px;
+}
+.gy-module{
+    margin-top:30px;
+    background-color: #fff;
+}
+.gy-module-hd{
+    height: 60px;
+    padding: 0 20px;
+}
+.gy-module-hd>span{
+    font-size: 16px;
+    font-weight: bold;
+    line-height:60px;
+}
+.gy-module-hd .slider-btn{
+    margin-top:17px;
+}
+.gy-module-hd .slider-btn>a{
+    float: left;
+    width:36px;
+    height:24px;
+    border:1px solid #eaeaea;
+    margin-left:-1px;
+}
+.gy-module-hd .slider-btn>a:hover{
+    background-color: #ddd;
+    border:1px solid #ddd;
+}
+.gy-module-hd .slider-btn i{
+    width:20px;
+    height:20px;
+    margin:2px 0 0 8px;
+}
+.gy-module-hd .prev>i{
+    background-position: 0 -40px;
+}
+.gy-module-hd .prev:hover>i{
+    background-position: -20px -40px;
+}
+.gy-module-hd .next>i{
+    background-position: -40px -40px;
+}
+.gy-module-hd .next:hover>i{
+    background-position: -60px -40px;
+}
+.param-list li{
+    font-size: 13px;
+    line-height: 20px;
+}
+.param-list .key{
+    color: #999;
+}
+.param-list .val{
+    color: #888;
+}
+.param-list .key i{
+    top:4px;
+    left:-2px;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.param-list .tag i{
+    background-position: -100px 0;
+}
+.param-list .local i{
+    background-position: -120px 0;
+}
+.param-list .date i{
+    background-position: -140px 0;
+}
+.param-list .num i{
+    background-position: -160px 0;
+}
+.param-list .tag:hover i{
+    background-position: -100px -20px;
+}
+.param-list .local:hover i{
+    background-position: -120px -20px;
+}
+.param-list .date:hover i{
+    background-position: -140px -20px;
+}
+.param-list .num:hover i{
+    background-position: -160px -20px;
+}
+.gy-module-bd .main{
+    width: 960px;
+}
+.gy-module-bd .side{
+    width: 180px;
+    padding:0 30px;
+    color: #fff;
+}
+.gy-module-bd .side h2{
+    display: block;
+    margin-top:142px;
+    font-size: 28px;
+    font-weight: 200;
+}
+.gy-module-bd .side .btn{
+    display: block;
+    width: 110px;
+    height: 36px;
+    margin-top:40px;
+    line-height:36px;
+    text-align: center;
+    border:1px solid #fff;
+    color: #fff;
+}
+.gy-module-bd .side .btn:hover{
+    background-color: rgba(255,255,255,.1);
+}
+.gy-card{
+    width: 380px;
+    background-color: #fff;
+    margin-top:30px;
+}
+.gy-card-hd{
+    height: 60px;
+    padding: 0 20px;
+}
+.gy-card-hd h2{
+    font-size:16px;
+    font-weight: bold;
+    line-height: 60px;
+}
+.gy-card-bd .item{
+    padding: 15px 20px;
+    border-top:1px solid #eaeaea;
+}
+.gy-card-bd .item h3{
+    font-size: 16px;
+}
+.gy-card-bd .param-list{
+    margin-top:5px;
+}
+.gy-card-bd .param-list li{
+    float: left;
+    width:175px;
+    font-size: 12px;
+}
+.gy-card-bd .param-list .key i{
+    margin-right:0;
+}
+.gy-card-ft{
+    text-align: center;
+    border-top:1px solid #eaeaea;
+}
+.gy-card-ft .more-btn{
+    display: block;
+    padding:12px 0;
+    color: #666;
+}
+.gy-card-ft .more-btn:hover{
+    background-color: #fafafa;
+    color: #e56639;
+}
+
+.hot-demand .gy-module-hd{
+    border-top: 1px solid #e53935;
+}
+
+.hot-demand .item{
+    position: relative;
+    float: left;
+    width: 280px;
+    padding: 15px 20px;
+    border-top:1px solid #eaeaea;
+}
+.hot-demand .item:hover{
+    -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.hot-demand .item:before{
+    content: '';
+    position: absolute;
+    top:0;
+    width:1px;
+    height:100%;
+    background-color: #e6e6e6;
+}
+.hot-demand .item:before{
+    left:0;
+}
+
+
+
+.hot-demand .item h3{
+    position: relative;
+    font-size: 18px;
+}
+.hot-demand .item h3:before{
+    display: none;
+    content: '';
+    position: absolute;
+    left: 0;
+    top:50%;
+    width: 3px;
+    height: 3px;
+    border-radius:50%;
+    background-color: #e56639;
+}
+.hot-demand .param-list{
+    margin-top: 5px;
+}
+.hot-demand .side{
+    height: 314px;
+    background: url("./image/sell/tc-gongying-hd-1.png") no-repeat 0 0;
+}
+
+.hot-supply .gy-module-hd{
+    border-top:1px solid #83c44e;
+}
+.hot-supply .gy-module-bd .main{
+    border-top:1px solid #eaeaea;
+}
+.hot-supply .item{
+    position: relative;
+    width: 280px;
+    padding:20px;
+    text-align: center;
+    border-left:1px solid #eaeaea;
+}
+.hot-supply .main>ul>li{
+    width:320px;
+}
+.hot-supply .item img{
+    display: block;
+    width: 240px;
+    height:180px;
+    margin:0 auto;
+}
+.hot-supply .item .info{
+    margin-top:20px;
+}
+.hot-supply .item .info>h3{
+    font-size: 16px;
+}
+.hot-supply .item .info>ul{
+    margin:7px 0;
+    font-size: 13px;
+    color: #888;
+}
+.hot-supply .item .info>ul>li{
+    display: inline-block;
+    margin:0 5px;
+}
+.hot-supply .item .btn{
+    display: inline-block;
+    width: 80px;
+    height: 24px;
+    font-size: 12px;
+    line-height:24px;
+    background-color: #e56639;
+    color: #fff;
+}
+.hot-supply .item .btn:hover{
+    background-color: #d45e33;
+}
+
+.supply-card{
+    padding: 15px 20px;
+    border-top: 1px solid #eaeaea;
+}
+.supply-card-img{
+
+}
+.supply-card-img img{
+    width:90px;
+    height:68px;
+}
+.supply-card-txt{
+    width:235px;
+}
+.supply-card-txt h3{
+    font-size:16px;
+}
+.supply-card-txt ul{
+    margin-top:5px;
+    font-size: 13px;
+    line-height: 22px;
+    color: #888;
+}
+.supply-card-txt ul em{
+    font-style: normal;
+    color: #e56639;
+}
+.hot-supply .side{
+    height: 314px;
+    background: url("./image/sell/tc-gongying-hd-2.png") no-repeat 0 0;
+}
+
+

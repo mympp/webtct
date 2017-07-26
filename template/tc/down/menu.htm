@@ -1,0 +1,14 @@
+<!--page-nav-->
+<div class="page-nav">
+    <div class="w1200 box-center">
+        <ul class="page-nav-main clearfix">
+            <li class="page-sub-nav current"><a href="{$MODULE[15]['linkurl']}">技术资料共享首页</a></li>
+            {loop $CAT $k $v}
+            	<li class="page-sub-nav">
+            		<a href="{$MODULE[15]['linkurl']}{down_rewrite(['catid'=>$k])}" title="{$v}资料下载">{$v}</a>
+            	</li>
+            {/loop}
+        </ul>
+    </div>
+</div>
+<!--page-nav end-->

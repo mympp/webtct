@@ -1,0 +1,205 @@
+/*index*/
+.tc-data .card-header{
+    font-size:0.7rem;
+    color: #888;
+}
+.tc-data .card-content-inner em{
+    font-style: normal;
+    font-size: 1.0rem;
+    color: #0894ec;
+}
+
+
+.zzj-content{
+
+}
+
+.zzj-content .card-header{
+    text-align: center;
+}
+.zzj-content .card-content-inner {
+    text-align: center;
+}
+.zzj-content .card-content-inner .button{
+    display: inline-block;
+    width: 4.0rem;
+    height: 4.0rem;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+    line-height: 4.0rem;
+}
+
+
+
+
+
+/*category-layout*/
+.category-layout {
+    background-color: #f1f1f1;
+}
+.category-layout .label-checkbox{
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+.category-layout .icon-form-checkbox{
+    top: -0.1rem;
+    margin-right: 0.5rem;
+}
+/*p-i*/
+.p-i{
+    display: inline-block;
+    position: relative;
+    background-image: url(../images/bis_product_icons.png);
+    background-repeat: no-repeat;
+    -webkit-background-size: 2.5rem auto;
+    background-size: 2.5rem auto;
+}
+.p-i-cmp,.p-i-num{
+    top: 0.16rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.25rem;
+
+}
+.p-i-cmp{
+    background-position: 0 0;
+}
+.p-i-num{
+    background-position: -1rem 0;
+}
+/*product-item*/
+.product-item{
+    display: block;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    padding-right: 1.5rem;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NUM0QzFDNzMyREM0MTFFNUJDNTI4OTMzMEE0RjBENzMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NUM0QzFDNzQyREM0MTFFNUJDNTI4OTMzMEE0RjBENzMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1QzRDMUM3MTJEQzQxMUU1QkM1Mjg5MzMwQTRGMEQ3MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1QzRDMUM3MjJEQzQxMUU1QkM1Mjg5MzMwQTRGMEQ3MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pjs2Bb4AAAItSURBVHjazJhbK0RRGIb3DIOU/AG5kUTOgxmHceFGKf6BO+Vf+E8KKYcYg3FuMpNIDhFJXJAcp/GtvKumrzVs+zBrvfU2u689q6d3rb33+lYgl8tZvymZ3JOX7eQp8gT50fJA0Wj4z3tKbY5VR14hV5ObyWLkZ6sICtq4p4V8CjihevIWucoUQJFUmtUayTvkShMAL5DiGqs3IMlK3YBSgwrIZkBWmAAoIRMKyG2/IIMO/hMjbygepCS53ARAoQHyOqu1YbrLTADMAXJbASmSDOkGlOpTQHaQN72CdAuYBeQuq4cBWaIbUEJGC0Am3UIGPVoqMsk9Vu/CwxTQDSj0iSQPWD2C6Q7oBhT6AmRKAZkwAVDoowBkn+LdqQVQ6A2QhwrIuAmAEjKi2KrF/jPdfgIKveI7Pcfq/eSMCYBSD4pakymA0+RxVrsn15oAOEMeY7Vbcif5ys4ApT7CzZJHWO2G3I1fSyfgPHmY1a7x6bvT/ZpZUMBdOoHzI8El8pCiK+wq8CQXNcFlBdw51tyD00G9SnAVHV++zgDn6hzHiwTjCrgTTKvrQya3Ca5jA5CvY3IP+UlnTxJEb8zhjpDck1cL20mCAcBFWD2D2ovOvjiERojDpTGtnsL9N8EQegt+LJrC5vRN59lMORp0DrePNH2BswvYivXVzuoHSO7dz+2QHcAa6+eMOl87WHOffm8m7QCK7foog+tFi2mZACg3npPkRUxrtkitgvUtwAA5A3LWdzPizwAAAABJRU5ErkJggg==);
+    background-size: 0.7rem;
+    background-repeat: no-repeat;
+    background-position: 97% center;
+    background-position: -webkit-calc(100% - .5rem) center;
+    background-position: calc(100% - .5rem) center;
+}
+.product-item .highlight{
+    color: #c70000;
+}
+.product-info{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+.product-info li{
+    color: #666;
+    font-size: 0.6rem;
+}
+
+
+.bar .button.searchbar-submit{
+    float: right;
+    width: auto;
+    top: 0;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    text-align: center;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.searchbar .searchbar-submit+.search-input {
+    margin-right: 2.8rem;
+}
+
+#pagebutton{
+    padding: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.65rem;
+    line-height: 1.5;
+}
+.pagination{
+    overflow: hidden;
+    padding: 0;
+    margin: 0 0 0.25rem 0;
+}
+.pagination li{
+    display: none;
+}
+
+.pagination li.prev,.pagination li.next{
+    display: block;
+    padding: 0 10px;
+    float: left;
+    width: 50%;
+}
+
+.pagination li.prev>a,.pagination li.next>a,.pagination li.prev>span,.pagination li.next>span,#pagebutton input[type="button"]{
+    color: #0894ec;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background: none;
+    padding: 0 0.5rem;
+    margin: 0;
+    font-size: 0.85rem;
+    height: 2rem;
+    line-height: 2rem;
+    white-space: nowrap;
+    position: relative;
+    text-overflow: ellipsis;
+    font-family: inherit;
+    cursor: pointer;
+    color: white;
+    background-color: #4cd964;
+
+}
+.pagination li.prev>span,.pagination li.next>span{
+    color: white;
+    background-color: #eaeaea;
+}
+
+#pagebutton>span,#pagebutton>b{
+
+}
+#pagebutton>input[type="button"]{
+    display: inline-block;
+    height: 1.35rem;
+    line-height:  1.35rem;
+    font-size: 0.7rem;
+    border-radius: none;
+    border: 1px solid #0894ec;
+    color: #0894ec;
+    background-color: transparent;
+}
+#pagebutton>input[type="text"]{
+    
+}
+.popup-detail-title{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2.0rem;
+    line-height: 2.0rem;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.popup-detail-content{
+    padding-top: 2.0rem;
+    height: 100%;
+}
+.popup-detail .content iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}

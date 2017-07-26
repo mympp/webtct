@@ -1,0 +1,7 @@
+<?php global $CFG;?>
+{loop $tags $t}
+{php $num= $db->count($DT_PRE.'hr_job',"company='".$t[company]."'", 60);}
+<li><span class="lenstr w100"> <b>· </b>[{area_pos($t[areaid], '/', 2)}]</span><span class="w500 lenstr "><a href="http://{$t[username]}{$CFG['com_domain']}" target="_blank" class="f16 b">{$t[company]}</a></span><span class="lenstr w100">招聘职位数 <font class="rcolor f14">{$num}</font></span></li>
+{/loop}
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

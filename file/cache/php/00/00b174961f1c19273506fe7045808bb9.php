@@ -1,0 +1,1 @@
+<?php exit;?>1466415251a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201404/14/11-21-54-71-8.jpg";s:7:"linkurl";s:30:"http://kinglytech.tecenet.com/";s:7:"company";s:33:"广州市庆益科技有限公司";}}

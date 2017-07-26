@@ -1,0 +1,35 @@
+{if $lists}
+	{loop $lists $v}
+		<div class="list-img">
+			{if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+			<ul>
+				<li{if $v[vip]} class="vip" title="{VIP}:{$v[vip]}"{/if}><a href="{$v[linkurl]}"><strong>{$v[title]}</strong></a></li>
+				{if $v[moduleid] == 9 || $v[moduleid] == 24}
+					<li class="f_orange px12">￥[
+						{if $v[minsalary] && $v[maxsalary]}
+							{$v[minsalary]}-{$v[maxsalary]}{$DT[money_unit]}/月
+						{elseif $v[minsalary]}
+							{$v[minsalary]}{$DT[money_unit]}/月以上
+						{elseif $v[maxsalary]}
+							{$v[maxsalary]}{$DT[money_unit]}/月以内
+						{else}
+							面议
+						{/if}]
+						<span>&nbsp;&nbsp;{$v[introduce]}</span>	
+					</li>
+					<li><span>{area_pos($v[areaid], '')}，{$v[hits]} 人关注，{if $v[moduleid] == 9}{$v[apply]} 人报名{else}维修 {$v[talent]} 个项目{/if}</span><em style="float:right;">{$v[date]}</em></li>
+				{elseif $v[moduleid] == 16}
+					<li class="price">{$DT[money_sign]}￥ {if $v[price]<=0}面议{else}{$v[price]}{/if}<em style="float:right;font-weight:normal;">{$v[date]}</em></li>
+					<li><span>{$v[introduce]}</span></li>
+				{else}
+					<li>
+						<span>&nbsp;&nbsp;{$v[introduce]}</span>	
+					</li>
+					<li><span>浏览 {$v[hits]}</span><em style="float:right;">{$v[date]}</em></li>
+				{/if}
+			</ul>
+		</div>
+	{/loop}
+{else}
+	{template 'chip-empty', 'mobile'}
+{/if}

@@ -1,0 +1,36 @@
+
+
+	</td>
+</tr>
+<tr>
+	<td class="graybg" align="center"  height="80" valign="middle"><table>
+	<tr>
+		<td><img src="../ewm.php?size=4&dz=<?echo urlencode('http://www.tecenet.com/api/cj/index.php');?>"></td>
+		<td><div style="font-size:14px;">
+			<b style="font-size:16px;color:#444">本功能如何下载到手机？</B><br>请用微信扫一扫<br>扫描后，点击右上角“≡”按钮后，在浏览器打开！<br>在浏览器分享中存于桌面！<br>
+您的屏幕宽度为：<script type="text/javascript">document.write(window.screen.width);</script><br>
+图片显示限制为：<script type="text/javascript">document.write(screenw);</script>
+
+		</div></td>
+	</tr>
+				<tr>
+					<td align="center"  colspan=2>
+					请输入文章ID&nbsp;<input type="text" name="itemid" id="itemid" class="input" value="<?echo $itemid;?>" size="8">
+					<input type="button" onclick="location.href='<?echo $files;?>?action=addnew&itemid='+Dd('itemid').value" value='修改' class="sub">
+					<input type="button" value="删除" onclick="<?if($_username){?>location.href='<?echo $files;?>?action=del&itemid='+Dd('itemid').value<?}else{?>alert('请先登录;')<?}?>" class="sub">
+					</td>
+				</tr>
+	</table>
+	
+	</td>
+</tr>
+</table>
+<span style="display:none">
+<script src="http://s4.cnzz.com/z_stat.php?id=1000496684&web_id=1000496684" language="JavaScript"></script>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+</span>
+</body>
+</html>
+
+
+

@@ -1,0 +1,133 @@
+{php $headertp=$module;$JS=array('jquery.jslides');$index='yes';$articlecatid='2165';}
+{php $CATEGORY = cache_read('category-21.php');$childs=get_catarrchildid($articlecatid,$CATEGORY);}
+
+{template 'header'}
+<script language="javascript" type="text/javascript" src="{DT_PATH}file/script/MSClass.js"></script>
+<div class="autoheight">
+<div class="indexleft fl mr10">
+					<div class="indexlefttitle">招聘职位分类</div>
+					{template 'job','leftmenu'}
+</div>
+<div class="indexright fl">
+				<ul class="count">
+				{php $num1 = $db->get_one("SELECT COUNT(distinct company) AS num FROM ".$DT_PRE."hr_job WHERE status=3");}
+				{php $num2 = $db->count($DT_PRE.'hr_job',"status=3", 60);}
+				{php $num3 = $db->count($DT_PRE.'hr_resume',"status=3", 60);}
+				{php $num4 = $db->count($DT_PRE.'article_21',"status=3 and catid in ($childs)", 60);}
+							<li><a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=gs')}"><img src="{DT_SKIN}image/hr/com.png" ><span>{$num1['num']}</span>家企业</a></li>
+							<li><a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=job')}"><img src="{DT_SKIN}image/hr/job.png" ><span>{$num2}</span>个职位</a></li>
+							<li><a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=resume')}"><img src="{DT_SKIN}image/hr/res.png" ><span>{$num3}</span>封简历</a></li>
+							<li><a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=news')}"><img src="{DT_SKIN}image/hr/news.png" ><span>{$num4}</span>条资讯</a></li>
+				</ul>
+
+	<div class="autoheight">
+		<div class="graybg grayb fl mr10" style="height:130px;width:520px;background:url('{DT_SKIN}image/hr/hr.jpg')"></div>
+		<dl class="fl w230 gglist">
+				<dt><a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=news')}">职场资讯信息</a></dt>
+				<dd>
+					<ul>
+							{php $arts=tag("moduleid=21&catid=$articlecatid&condition=status=3&pagesize=4&order=edittime desc&template=null&debug=0&showcat=1")}
+								{loop $arts $c $t}
+								<li class="lenstr w230"> · <a href="{$t[linkurl]}" title="{$t[catname]}-{$t[alt]}" target="_blank">{$t[title]}</a></li>							
+								{/loop}
+					</ul>
+				</dd>
+		</dl>
+    </div>
+				<dl class="areacount">
+				<dt><span class="fr mr10 fn f12"><a href="{$MODULE[$moduleid][linkurl]}search.php?areaid=0" target="self">更多{$num2}条</a></span>最新招聘信息推荐</dt>
+				<dd class="h250"  id="fwgy">
+					<ul>
+							{php $jobs=tag("table=hr_job&condition=status=3&pagesize=10&order=edittime desc&template=null&debug=0&showcat=1")}
+								{loop $jobs $c $t}
+								<li class="pt10">
+								<table width="100%" cellspacing=1 cellpadding=2 bgcolor="#e6e6e6">
+								<tr class="graybg">
+									<td width="80"><font class="color f14 lenstr w80">{area_pos($t[areaid], '&nbsp;')}</font></td>
+									<td><a href="{$t[linkurl]}" target="_blank" class="f16 b">{$t[title]}</a></td>
+									<td width="200"><font class="color f14  lenstr w200">{$t[company]}</font></td>
+									<td width="200"><font class="ocolor f18">￥:[{if $t[minsalary] && $t[maxsalary]}{$t[minsalary]}-{$t[maxsalary]}{$DT[money_unit]}{elseif $t[minsalary]}{$t[minsalary]}{$DT[money_unit]}以上{elseif $t[maxsalary]}{$t[maxsalary]}{$DT[money_unit]}以内{else}面议{/if}]</font></td>
+								</tr>
+								<tr class="whitebg">
+									<td colspan="4"><p>{$t[introduce]}</p></td>
+								</tr>
+								</table>
+								
+								</li>							
+								{/loop}
+					</ul>
+				</dd>
+<script type="text/javascript">
+new Marquee("fwgy",0,20,760,280,20,3000,3000,138)
+</script>
+				</dl>
+</div>
+<div class="divline"></div>
+</div>
+<div class="divline"></div>
+<div class="graybg grayb">
+		<div id="CSSBox">
+		<ul id="CSSContent">
+			{php $tagt = tag("moduleid=13&condition=status=3&pagesize=16&order=level desc,pnum desc&template=null&debug=0&showcat=1")}			
+		    {loop $tagt $z $t}															
+			<li><a href="{$t[linkurl]}" title="{$t[alt]}"><img src='{$t[thumb]}' alt='{$t[alt]}' width="104" height="77" align="center"><div class="lenstr">{$t[alt]}</div></a></li>
+			{/loop}	
+		</ul>
+		</div>
+<script type="text/javascript">
+new Marquee(
+{
+	MSClass	  : ["CSSBox","CSSContent"],
+	Direction : 2,
+	Step	  : 0.1,
+	Width	  : 966,
+	Height	  : 125,
+	Timer	  : 20,
+	DelayTime : 3000,
+	WaitTime  : 1000,
+	ScrollStep: 240,
+	AutoStart : true
+});
+</script>
+</div>
+<div class="divline"></div>
+<div class="divline"></div>
+<div class="autoheight">
+<div class="indexleft fl mr10">
+					<div class="indexlefttitle" style="background:#306ab1">人才地区分类</div>
+											{php $mainarea = get_mainarea(0)}
+						<ul class='pl10' id="areas">
+						{loop $mainarea $k $v}
+						<li class="fl w60 pt10 tc"><a href="{$MOD[linkurl]}search.php?areaid={$v[areaid]}" class="f14" >{$v[areaname]}</a></li>
+						{/loop}
+						</ul>
+						<div class="divline"></div>
+</div>
+<div class="indexright fl">
+		<dl class="gglist">
+			<dt><span class="fr mr10 fn f12"><a href="{$MODULE[$moduleid][linkurl]}search.php?action=resume" target="self">更多{$num3}条</a></span>最近发布简历信息</dt>
+			<dd  id="resumegy">
+					<ul>
+							{php $resume=tag("table=hr_resume&condition=status=3&pagesize=20&order=edittime desc&template=null&debug=0&showcat=1")}
+								{loop $resume $c $t}
+								<li class="xline nt nl nr pt10" style="line-height:30px;height:30px;width:760px;">
+								<div class="fl lenstr w100"><a href="{$t[linkurl]}" target="_blank" class="f16 b gcolor">
+								{xname($t[title],$baomi,-1)}<font class="f12">({if $t[gender]==1}男{else}女{/if})</font></a></div>
+								    <div class="color f14  lenstr w100 ml10 fl" >{area_pos($t[areaid], '&nbsp;')}</div>
+									<div class="color f14  lenstr w300 ml10 fl" >{$t[school]}:{$t[major]}</div>
+									<div class="fl ml10 w200 lenstr">最低要求:{if $t[minsalary] && $t[maxsalary]}{$t[minsalary]}-{$t[maxsalary]}{$DT[money_unit]}{elseif $t[minsalary]}{$t[minsalary]}{$DT[money_unit]}以上{elseif $t[maxsalary]}{$t[maxsalary]}{$DT[money_unit]}以内{else}面议{/if}</div>	
+									<div class="divline"></div>
+								</li>							
+								{/loop}
+					</ul>
+				</dd>
+<script type="text/javascript">
+new Marquee("resumegy",0,20,760,384,20,3000,3000,165)
+</script>
+		</dl>
+</div>
+<div class="divline"></div>
+</div>
+
+
+{template 'footer'}
