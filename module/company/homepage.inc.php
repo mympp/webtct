@@ -37,11 +37,9 @@ $HMAIN = $_HMAIN;
 if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].'index.php?moduleid=4&username='.$username;
 $seo_title = isset($HOME['seo_title']) && $HOME['seo_title'] ? $HOME['seo_title'] : '';
 $head_title = '';
+
+$db->query("update {$db->pre}company set hits = (hits + 1) where username = '$username'");
+
 include template('index', $template);
-if(isset($update) && $db->cache_ids && ($username == $_username || $_groupid == 1 || $domain)) {
-	foreach($db->cache_ids as $v) {
-		$dc->rm($v);
-	}
-	dheader($COM['linkurl']);
-}
+
 ?>

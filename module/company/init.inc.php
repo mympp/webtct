@@ -5,7 +5,7 @@ if(isset($update) || isset($preview)) {
 	$db->cids = 1;
 	userclean($username);
 }
-$COM = userinfo($username);
+$COM = userinfo($username,0);
 if(!$COM || ($COM['groupid'] < 5 && $COM['groupid'] > 1)) {
 	userclean($username);
 	$head_title = $L['not_company'];
@@ -256,13 +256,6 @@ $seo_keywords = isset($HOME['seo_keywords']) ? $HOME['seo_keywords'] : '';
 $seo_description = isset($HOME['seo_description']) ? $HOME['seo_description'] : '';
 $head_keywords = strip_tags($seo_keywords ? $seo_keywords : $COM['company'].','.str_replace('|', ',', $COM['business']));
 $head_description = strip_tags($seo_description ? $seo_description : $COM['introduce']);
-var_dump($DT_BOT);
-if(!$DT_BOT) {
-	if($DT['cache_hits']) {
-		 cache_hits($moduleid, $userid);
-	} else {
-		$db->query("UPDATE LOW_PRIORITY {$table} SET hits=hits+1 WHERE userid=$userid", 'UNBUFFERED');
-	}
-}
+
 include DT_ROOT.'/module/company/'.$file.'.inc.php';
 ?>
