@@ -38,7 +38,9 @@ if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].'index.php?moduleid=
 $seo_title = isset($HOME['seo_title']) && $HOME['seo_title'] ? $HOME['seo_title'] : '';
 $head_title = '';
 
-$db->query("update {$db->pre}company set hits = (hits + 1) where username = '$username'");
+//$db->query("update {$db->pre}company set hits = (hits + 1) where username = '$username'");
+$new_hits = (int)$COM['hits']+1;
+$db->query("update {$db->pre}company set hits = $new_hits where userid = '".$COM['userid']."'");
 
 include template('index', $template);
 
