@@ -62,7 +62,7 @@
 			</table>
 			{if $status == 3}
 			<div>
-			<img src="{DT_SKIN}image/btn-service.png" alt="在线咨询" class="c_p" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136&s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackEvent', 'gongsi_shop', 'click', 'product_chat']);"/>
+			<img src="{DT_SKIN}image/btn-service.png" alt="在线咨询" class="c_p" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136&s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);"/>
 			&nbsp;
 			<!-- <img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('cart.php?itemid='.$itemid)}');"/> -->
 			</div>
@@ -188,8 +188,10 @@
 try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
 </script>
 {/if}
-<div class="main_head">内容声明</div>
+<div class="main_head"><div><strong>内容声明</strong></div></div>
 <div class="main_body">
+<p style="font-size:12px;line-height:1.5;color:#666;">
 天成医疗网为互联网信息服务提供者，天成医疗网（含网站、客户端等）所展示的商品/服务的标题、价格、详情等信息内容系由店铺经营者发布，其真实性、准确性和合法性均由店铺经营者负责。天成医疗网提醒您购买商品/服务前注意谨慎核实，如您对商品/服务的标题、价格、详情等任何信息有任何疑问的，请在购买前通过网页提供咨询方式与店铺经营者沟通确认；天成医疗网存在海量店铺，如您发现店铺内有任何违法/侵权信息，请立即向天成医疗网举报并提供有效线索。
+</p>
 </div>
 {template 'footer', $template}

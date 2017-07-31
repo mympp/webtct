@@ -24,7 +24,7 @@
             <div class="data-item data-item-1">
                 <i class="tc-gs-i"></i>
                 <div class="data-num">
-                    <p>入驻企业</p>
+                    <p>入驻企业<span>（天成规范企业）</span></p>
 					{php $company = $db->count($DT_PRE.'company', "groupid>5 and business<>'' and catids<>''", 60);}
 					{php $num=number_format($company,0,'.',',')}
                     <p><em>{$num}</em>家</p>
