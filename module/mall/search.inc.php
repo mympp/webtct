@@ -5,7 +5,7 @@ defined('IN_DESTOON') or exit('Access Denied');
 /**
 * 新版搜索列表页面
 */
-$stypes = ['','整机','配件','耗材'];
+$stypes = [0=>'医疗器械','整机','配件','耗材'];
 
 if(!empty($areaid)){
 	$selector['areaid'] = $areaid;
