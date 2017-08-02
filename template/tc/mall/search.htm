@@ -1,5 +1,5 @@
 {php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'tc.chanpin.base.css',DT_SKIN.'tc.chanpin.list.css']}
-{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/mall/tc.chanpin.list.js'];}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/mall/tc.chanpin.list.js',DT_PATH.'file/script/internalLink.js'];}
 {php $link_area_title = !empty($areaid) ? $childarea['areaname'] : '全国';}
 <?php 
 if(!empty($catid)){
@@ -252,5 +252,5 @@ if($action == 'search'){
     </div>
 </div>
 <!--对比框 end-->
-
+{$iLink}
 {template 'footer2017'}

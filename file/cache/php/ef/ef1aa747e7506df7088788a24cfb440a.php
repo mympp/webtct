@@ -1,1 +1,1 @@
-<?php exit;?>1499739618a:9:{s:6:"areaid";s:2:"24";s:8:"areaname";s:6:"贵州";s:8:"parentid";s:1:"0";s:11:"arrparentid";s:1:"0";s:5:"child";s:1:"1";s:10:"arrchildid";s:38:"24,305,306,307,308,309,310,311,312,313";s:9:"listorder";s:2:"24";s:11:"resumecount";s:3:"113";s:8:"jobcount";s:2:"71";}
+<?php exit;?>1501769388a:9:{s:6:"areaid";s:2:"24";s:8:"areaname";s:6:"贵州";s:8:"parentid";s:1:"0";s:11:"arrparentid";s:1:"0";s:5:"child";s:1:"1";s:10:"arrchildid";s:38:"24,305,306,307,308,309,310,311,312,313";s:9:"listorder";s:2:"24";s:11:"resumecount";s:3:"116";s:8:"jobcount";s:2:"77";}

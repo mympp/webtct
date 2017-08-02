@@ -1,5 +1,7 @@
 <?php 
+use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
 //if($DT_BOT || $_POST) dhttp(403);
 
 /**
@@ -41,6 +43,14 @@ $nmalls = $mall_db->field('thumb,title,linkurl,company,username')->where(['statu
 //推荐供应商
 $company_db = new tcdb('company');
 $rcompanys = $company_db->field('linkurl,company,thumb')->where(['groupid'=>7])->order('pnum desc')->limit(0,6)->select();
+
+$internalLink = new internalLink();
+$internalLink->setModule(['mall','keshi','sell']);
+$iLink = $internalLink->build($catid,$areaid,[
+	'company' => ['name'=>'企业'],
+	'sell' => ['name'=>'供应'],
+	'mall' => ['name'=>'产品'],
+]);
 
 $seo_file = 'list';
 include DT_ROOT.'/include/seo.inc.php';
