@@ -1,0 +1,106 @@
+{php $sitemenu='know';$listpage='search';}
+{template 'module-header'}
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css?v20161208"/>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/know.css?v20161208"/>
+<style>
+#topkeyword{width:310px;height:22px;line-height:22px}
+#full-screen-slider{position:relative;top:0}
+.tc-footer{margin-top:20px}
+.tc-footer .copyright{width: 100%;}
+img{display: inline;}
+</style>
+<style type="text/css">
+	#webbodycontent{display:none}
+</style>
+</div></div>
+<div class="autoheight" style="background: url('{DT_SKIN}/image/know/bg.png');">
+<div class="webw">{template 'lay','tag'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<div class="autoheight grayb whitebg">
+<div class="seltype">
+
+						<ul>
+						<li {if $typeid==99}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?typeid=99">所有问题</a></li>
+						<li {if $new==1}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?typeid=0&new=1">已解决问题</a></li>
+						<li {if $typeid==2}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?typeid=2">问题投票中</a></li>
+						<li {if $typeid==3}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?typeid=3">快速抢沙发</a></li>
+						<li {if $typeid==5}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?typeid=5">高分寻高手</a></li>
+						<li {if $typeid==4}class="seltypey"{/if}><a href="{$MOD[linkurl]}search.php?typeid=4">推荐的问题</a></li>
+						</ul>
+</div>										
+															<dl class="options">
+															<dt>问答主题：</dt>
+															<dd><a href="{$MOD[linkurl]}search.php?typeid=99"class=" {if !$catid}opyes wcolor{else}color{/if}">全部</a>
+						{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+						{loop $tagss $i $t}<a href="{$MOD[linkurl]}{$listpage}.php?catid={$t[catid]}&typeid={$typeid}" class=" {if $catid==$t[catid]}opyes wcolor{else}color{/if}">{set_style($t[catname],$t[style])} <i>({$t[item]})</i></a>{/loop}	
+															</dd>
+															</dl>
+															<dl class="options">
+															<dt>排列顺序：</dt>
+															<dd><a href="{$MOD[linkurl]}search.php?catid={$catid}&order=0&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==0}opyes wcolor{else}color{/if}">默认排序</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$catid}&order=1&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==1}opyes wcolor{else}color{/if}">按相似度</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$catid}&order=2&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==2}opyes wcolor{else}color{/if}">按悬赏从高到低</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$catid}&order=3&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==3}opyes wcolor{else}color{/if}">按回答从高到低</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$catid}&order=4&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==4}opyes wcolor{else}color{/if}">按浏览人气排序</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$catid}&order=5&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==5}opyes wcolor{else}color{/if}">按点赞从高到低</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$catid}&order=6&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==6}opyes wcolor{else}color{/if}">按点踩从高到低</a>
+															<a href="{$MOD[linkurl]}search.php?catid={$catid}&order=7&typeid={$typeid}&kw={urlencode($kw)}" class=" {if $_REQUEST['order']==7}opyes wcolor{else}color{/if}">按发布从新到老</a>
+															</dd>
+															</dl>
+															<dl class="options"  style="border:0px;">
+															<dt>问题搜索：</dt>
+															<dd>
+				<form action="{$MODULE[2][linkurl]}{$DT[file_my]}" id="ask_form">
+				<input type="hidden" name="mid" value="{$moduleid}"/>
+				<input type="hidden" name="cid" value="{$catid}"/>
+				<input type="hidden" name="typeid" value="{$typeid}"/>
+				<input type="hidden" name="order" value="{$order}"/>
+				<input type="hidden" name="kw" value="" id="ask_kw"/>
+				</form>
+				<form action="{$MOD[linkurl]}search.php" onsubmit="return know_sch_check();">
+														<input type="hidden" name="typeid" value="{$typeid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="order" value="{$order}">
+			                                           	<input type="text" name="kw" id="know_kw" value="{$kw}"  onfocus="if(this.value=='请输入问题')this.value='';"/>
+														<input type="radio" name="fields" value="0" id="fd_0" {if $fields==0} checked{/if}/><label for="fd_0"> 智能</label>&nbsp;
+<input type="radio" name="fields" value="1" id="fd_1"  {if $fields==1} checked{/if}/><label for="fd_1"> 标题</label>&nbsp;
+<input type="radio" name="fields" value="3" id="fd_3"  {if $fields==3} checked{/if}/><label for="fd_3"> 简介</label>&nbsp;&nbsp;	<input type="submit" value="搜索答案" class="know_btn_1 rad" onclick="Dd('know_typeid').value=99;"/>
+				<input type="submit" value="我要回答" class="know_btn_2 rad" onclick="Dd('know_typeid').value=3;"/>
+				<input type="button" value="我要提问" class="know_btn_2 rad" onclick=";Dd('ask_form').submit();"/>		
+				<script type="text/javascript">
+					function know_sch_check() {
+						if(Dd('know_kw').value == '请输入问题' || Dd('know_kw').value.length < 1) {
+							alert('请输入问题');
+							Dd('know_kw').focus();
+							return false;
+						}
+						return true;
+					}
+				</script>
+
+														</form>
+														</dd>
+															</dl>
+
+<div class="divline greenbg"></div>
+	<div class="autoheight widthad cut tc pd5">{ad(148)}</div>
+	<div class="divline"></div>
+				<div class="listleft autoheight pl10 pr10">
+
+							{if $tags}
+	{template 'list-'.$module, 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+
+
+				</div>
+				<div class="listright autoheight graybg">
+					{template 'right', $module}	
+				</div>
+
+<div class="divline"></div>
+</div>
+
+</div>
+{template 'footer2017'}

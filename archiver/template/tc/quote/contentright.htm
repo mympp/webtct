@@ -1,0 +1,97 @@
+{template 'themer',$module}
+			<dl class="graybg grayb autoheight">
+			<dt class="ocolor f16 tc pt10 b">TA的联系方式</dt>
+			{if $moduleid!=15}
+			<dd class="pd5 autoheight">
+             <!--联系方式-->
+             <style>
+             	.userinfo li{border-bottom:0px;padding-left:15px;}
+             </style>
+             <ul class="userinfo">
+				{if $com&&$member[groupid]>5&&$member[groupid]!=1&&$com[thumb]&&!$action}
+				<li style="text-align:center;"><a href="{$com[linkurl]}" target="_blank" title="{$member[company]}&#10;{$com[mode]}">
+				<script type="text/javascript">
+				document.writeln("<img src=\"{$com[thumb]}\" onerror=\"this.src=\'{useravatar($username, 'large')}\'\" width=100 height=100  class=\"grayb\"  style=\'margin:auto;\' align=\"center\" />");
+				</script>
+				</a></li>
+				{else}
+				<li style="text-align:center;">
+				<script type="text/javascript">
+				document.writeln("<img src=\"{useravatar($username, 'large')}\"  style=\'margin:auto;\' align=\"center\" width=100 height=100  class=\"grayb\"/>");
+				</script>
+				</li>
+				{/if}
+			<?php
+				function get_png($filename){
+					$file_path = md5($filename);
+					if(file_exists($file_path.'.png')){
+						echo '<img src="'.DT_PATH.'file/contactpng/"'.$file_path.'.png">';
+					}else{
+						$vals = array(
+							'word' => $filename,
+							'img_path' => DT_ROOT.'/file/contactpng/',
+							'font' => DT_ROOT.'/file/captcha/protest.ttf',
+							'img_url' => DT_PATH.'file/contactpng/',
+							);
+						$img = create_captcha($vals);
+						echo $img['image'];
+					}
+				}
+			?>
+			<li style="border-top:1px solid #ddd;margin-left:15px;margin-right:15px;"></li>
+			{if $truename}<li><span >姓名：</span>{$truename}</li>{/if}
+			{if $mobile}<li><span >手机：</span><?php get_png($mobile);?></li>{/if}
+			{if $email}<li><span >邮箱：</span>{$email}</li>{/if}
+			{if $telephone}<li><span >电话：</span>{get_png($telephone)}</li>{/if}
+			{if $fax}<li><span >传真：</span>{get_png($fax)}</li>{/if}
+			{if $qq}<li><span >Q Q：</span>{if $qq && $DT[im_qq]}
+				{if check_dingzhi_member($username,'qq_kefu')}
+					{php $qq_array=explode(';',$qq);}
+					{loop $qq_array $k $v}
+						{php $qq_message=explode('|',$v);}
+						{im_qq($qq_message[0])}&nbsp;
+					{/loop}
+				{else}
+					{im_qq($qq)}&nbsp;{get_png($qq)}
+				{/if}
+			
+			{/if}</li>{/if}
+							{if $ali||$msn||$skype}<li><span >通讯：</span>
+									{if $ali && $DT[im_ali]}{im_ali($ali)}&nbsp;{/if}
+									{if $msn && $DT[im_msn]}{im_msn($msn)}&nbsp;{/if}
+									{if $skype && $DT[im_skype]}{im_skype($skype)}&nbsp;{/if}
+							</li>
+							{/if}
+					{if $member[vip]}
+					<li><span class="lenstr" style="text-align:left">等级：</span><img src="{DT_SKIN}image/vip.gif"/> <img src="{DT_SKIN}image/vip_{$member[vip]}.gif"/> [第{vip_year($member[fromtime])}年] 指数:{$member[vip]}</li>
+					{/if}
+					{if $member[validated] || $member[vcompany] || $member[vtruename] || $member[vbank] || $member[vmobile] || $member[vemail]}
+					<li><span class="lenstr" style="text-align:left"><a href="{userurl($member[username], 'file=credit')}" class="ocolor">认证</a></span>
+					{if $member[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="通过工商认证"/>{/if}
+					{if $member[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="通过实名认证"/>{/if}
+					{if $member[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="通过银行帐号认证"/>{/if}
+					{if $member[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="通过手机认证"/>{/if}
+					{if $member[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="通过邮件认证"/>{/if}
+					{if $member[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle" alt="通过{$member[validator]}认证"/> {/if}
+					</li>
+					{/if}
+					<li style="border-bottom:1px solid #ddd;margin-left:15px;margin-right:15px;"></li>
+</ul>
+             <!--联系方式-->
+			</dd>
+			{/if}
+			<br/>
+
+				{php $tagt = tag("moduleid=$moduleid&condition=status>2 and catid='$catid' and stype='$stype'&pagesize=14&order=itemid desc&template=null&debug=0")}
+				
+					<dt class="bcolor f16 tc pt10 b">同类项目推荐</dt>
+					<dd>
+					<ul class="ullist">
+							{loop $tagt $z $t}
+							<li style="border-bottom:0px;"><span class="fr w40 lenstr tr">[{$t[hits]}°]</span><a class="color lenstr" style="font-size:14px;" href="{$t[linkurl]}" target='_blank'><span style="font-size: 55px;float: left;line-height: 15px;margin-right:3px;color:#989898;">·</span>{dsubstr($t[title],30,'...')}</a></li>
+							{/loop}
+							{if $z>12}<li><a href="search-{$catid}-0-0.html&stype={$stype}" class="pl10 f14 b bcolor">更多..</a></li>{/if}									
+					</ul>
+					</dd>
+					</dl>
+			

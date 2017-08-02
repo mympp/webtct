@@ -1,0 +1,156 @@
+{php $ztitle=$ztitle." 实时医疗行业抢单平台【器械 耗材 供应 销售 公司 厂商】医疗需求信息";$zkeywords='医疗行业,抢单平台,设备求购, 医疗器械求购, 公司厂商,医疗需求信息';}
+{if $content}
+{php $ztitle= strip_tags($content);$ztitle = preg_replace("/\&([^;]+);/i", '', $ztitle);$ztitle= dsubstr($ztitle, 255, '', 0);$zdescription=$ztitle;}
+{/if}
+{template 'module-header'}
+{template 'menu2017'}
+
+<script type="text/javascript" src="http://www.tecenet.com/lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/config.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jquery.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/common.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/page.js"></script>
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jsfunction.js"></script>
+
+
+
+<link rel="stylesheet" href="http://www.tecenet.com/skin/teceskin/style.css">
+<link rel="stylesheet" href="http://www.tecenet.com/file/script/skins/idialog.css">
+<style type="text/css">
+	img{display:inline-block;}
+	#topkeyword{width: 310px;height: 22px;line-height: 22px;}
+	.w1200.box-center table{border-collapse: collapse;}
+	.w1200.box-center table td{padding: 10px;border: 1px solid #eaeaea;}
+	.webmenulist{width:750px;}
+	.listinfo{background:#e1e6ea}
+	.listinfo td{background:#fff;}
+	.touxiang{width:100px;text-align:center;}
+	.touxiang div{margin-top:10px;;}.touxiang img{border-radius: 9px;-webkit-border-radius: 9px;-moz-border-radius: 9px;border:1px solid #c6c6c6;}
+	.touxiang span{width: 80px; text-align: center;color:#888} 
+	.wxtool{height:30px;overflow:hidden;}.wxtool ul{height:24px;}
+	.tools{border-radius: 5px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border:1px solid #f7c495;background:#fef5e4;line-height:24px;;height:24px;padding-right:10px;}
+	.listinfo .message{_height:70px;min-height:70px;height:auto;font-size:16px;padding:5px;}
+	.icontent{width:98%;padding:5px;height:80px;border:1px solid #f2f2f2;}
+	.hylist{width:96%;background:#fbfdfd;margin:auto;padding:10px;}
+	.hylist dt{font-size:18px;font-weight:bold;}
+	.hylist dd{font-size:12px;line-height:20px;border-top:1px dotted #ccc;min-height:20px;height:auto;padding:5px;}
+	.hylist dd .lou,.morelist{background:#ff9900;padding:3px;color:#fff}
+</style>
+
+
+
+{php $ztitle='';}
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+
+<div class="crumb w1200 box-center">
+{template 'lay','tag'}
+</div>
+
+<script type="text/javascript">
+Dd('yourmdmore').href='{$MODULE[1][linkurl]}taoxinxi/';
+Dd('yourmdmore').innerText=' 医疗行业抢单平台';
+</script>
+
+<div class="autoheight pt5 whitebg w1200 box-center" id="taoxx">
+<div class="fl ml10 cut" style="width:880px;">
+<form action="index.php">
+<dl class="options">
+		<dt><b>各地信息</b></dt>
+		<dd class="pl10" style="width:760px;"><a href="{rewrite('index.php?areaid=0')}"  class="{if !$areaid}opyes wcolor{else}color{/if}">不限</a>
+														{php $mainarea = get_mainarea(0)}
+															{loop $mainarea $k $v}
+														<a href="{rewrite('index.php?areaid='.$v['areaid'])}" class="{if $areaid==$v[areaid]}opyes wcolor{else}color{/if}">{$v[areaname]}</a>
+															{/loop}</dd>
+														</dl>
+<dl class="options cut" style="border-bottom-width:0px;height:30px;">	
+<dt><span  class="hcolor">关键词搜索</span></dt>
+			<dd class="pl10"><input type="hidden" name="typeid" value="{$typeid}" class='fl'><input type="hidden" name="areaid" value="{$areaid}"  class='fl'><input type="text" size="30" name="kw" value="{$kw}" class="inputkw fl" id="keywords"  onfocus="if(this.value=='输入关键词'){this.value=''}"/><input type="submit" class="subm"/>
+			<script type="text/javascript">
+			Dd('keywords').value='{if $kw!=''}{$kw}{else}输入关键词{/if}';
+			</script>
+			<label class="f14 pd5 color grayb graybg rad"  ><input type="checkbox" name="dingyue" value="1" 
+			{if $_username}
+			onclick="if(this.checked==true&&(Dd('keywords').value=='输入关键词'||Dd('keywords').value=='')){msgtip('订阅失败','<br><br>请在左边输入关键词！');this.checked=false;}else{Go('{$MODULE[2][linkurl]}alert.php?action=add&kw='+Dd('keywords').value)}"
+			{else}
+			onclick="if(this.checked==true{msgtip('请先登录！','要订阅抢单业务！<br>请 <a href=/member/register.php class=ocolor f14>“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php class=ocolor f14>“会员登录”</a>并创建简历');}"
+			{/if}
+			>我要订阅，抢单平台上该关键词相关需求的实时提醒</label>
+			</dd>
+ </dl>
+</form>
+</div>
+<div class="tc w60 f16 pd10 fl ml10" style="margin-top:20px;background:#4985c7"><a href="javascript:void(0);" onclick="Dd('icontent').focus()" class="wcolor">发&nbsp;&nbsp;布<br>信&nbsp;&nbsp;息</a></div>
+		<div class="divline"></div>
+</div>
+<dl class="autoheight whitebg mt10 pd5 w1200 box-center">
+<iframe name="caozuo" src="" style="display:none"></iframe>
+<table  cellspacing="1" cellpadding="5" align="center" width="100%" class="listinfo">
+{if $lists}
+
+		{loop $lists $k $v}
+		{php $allowitemid=$v[allowitemid];$itemid=$v[itemid];$username=$v[username];$truename=$v[truename];$content=$v[content];$ip=$v[ip];$areaid=$v[areaid];$addtime=$v[addtime];  }
+				{template 'list-weixin-pc','tag'}
+		{/loop}
+{else}
+			{template 'list-weixin-pc','tag'}
+{/if}
+</table>
+
+{if $lists}<div class="pages">{$pages}</div>{/if}
+								 
+<div class="divline" id="pages"></div>	
+
+<dd>
+  <form method="post" action="index.php" onsubmit="return check();" id='form2'>
+					<input type="hidden" name="action" value='addsave'>
+					<input type="hidden" name="post[allowitemid]" id="allowitemid" value="{if $itemid&&$action}{$itemid}{/if}">
+					<input type="hidden" name="post[ip]" id="addip" value="{$DT_IP}">
+					<input type="hidden" name="post[areaid]" id="areaid" value="{$areaid}">
+					<input type="hidden" name="forward" id="forward" value="{$forward}">
+  <table border="0" bgcolor="#dcf2bb" cellspacing="1" cellpadding="5" width="100%" >
+  <tr>
+    <td width="100" height="110" align="center" valign="middle"  bgcolor="#f8fbe3" CLASS="touxiang">					
+												{if $_username}
+												<img src="{useravatar($_username, 'large')}"  width="68" height="68" /><br>{$_truename}
+												{else}
+												 <img src="{useravatar('', 'large')}"  width="68" height="68" /><br>游客
+												{/if}
+												<br>
+	</td>
+    <td bgcolor="#f8fbe3" align="center"  valign="top" onmouseover="setinput('inputs')"><div class="divline" id="allowtitle"></div><textarea name="post[content]"  id="icontent" class="icontent"  ></textarea></td>
+  </tr>
+	<tr>
+	<td align="center" bgcolor="#fcfdf2" height="40">验证码</td>
+	<td  bgcolor="#fcfdf2">{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"> 点击左图更改验证码</span></td>
+	</tr>
+	<tr>
+    <td colspan="2" align="center"  bgcolor="#fcfdf2"><div class="pd10" id="inputs"></div></td>
+    </tr>
+</table>
+</form>
+	<script type="text/javascript">
+	function setinput(input){
+	dakai(input);
+	Dd(input).innerHTML="<input type='submit' class='subm' name='submit' value='确 定 并 提 交'/>";
+	}
+	function check() {
+		var l;
+		var f;
+		f = 'icontent';
+		l =  Dd(f).value.length;
+		if(l < 5) {
+			alert('内容应最少10字，当前已输入'+l+'字');
+			return false;
+		}
+		f = 'captcha';
+		l = Dd(f).value;
+		if(!is_captcha(l)) {
+			alert('请填写正确的验证码');
+			return false;
+		}
+	}
+	</script>
+</dd>
+</dl>
+{template 'footer2017'}
+		

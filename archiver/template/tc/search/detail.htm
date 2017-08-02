@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{$web_title}</title>
+	<meta name="keywords" content="天成，医搜，天成医搜，医疗器械，医疗服务，医疗器械供应，医疗器械采购，医疗器械维修"/>
+    <meta name="description" content="天成医搜-聚焦医疗服务行业的垂直搜索引擎，让用户更快捷地获取医疗器械产品、供应采购、技术服务、新闻、科研等信息，解决所需。为您提供精准、实时、可靠的搜索体验。"/>
+	<link rel='canonical' href='{SO_PATH}detail-{$infotype}-{$itemid}.html' />
+	<link rel="shortcut icon" href="{SO_SKIN}/images/sogex.ico" />
+	<!-- Bootstrap -->
+    <link href="{SO_SKIN}/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="lib/js/respond.js"></script>
+    <![endif]-->
+    <link href="{SO_SKIN}/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="layout">
+<!-- 头部搜索 -->
+<div id="topNav" class="container-fluid bgfff">
+	<span><a href="{SO_PATH}"><img src="{SO_SKIN}/images/homeLogo.png" alt="天成医搜"></a></span>
+	<div class="topSearch">
+			<form action="search.php" method="post">
+				<div class="topSearchIpt">
+					<input type="hidden" name="type" value="0" />
+					<input type="text" name="keyword" value="{$keyword}" class="keyword_input" autocomplete="off" style="width:390px;">
+					<span class="ipt_del" style="display:none;"></span>
+				</div>
+				<input class="searchBtn" type="submit" value="搜医搜">
+			</form>
+		</div>
+		
+		<!-- header-nav -->
+		<div class="indexHdNav clearfix" style="margin-top:8px;">
+			<a href="http://www.tecenet.com/" target="_blank">天成医疗网</a>|
+			<a href="http://hao.tecenet.com/" target="_blank">医疗厂家导航</a>|
+			{if $_username}
+			<a href="{DT_PATH}member/" style="text-decoration:underline;">{$_username}</a>|
+			{else}
+			<a href="http://www.tecenet.com/member/login.php">登录</a>|
+			<a href="http://www.tecenet.com/member/register.php">注册</a>|
+			{/if}
+			<a href="http://so.tecenet.com/feekback.php" target="_blank">意见反馈</a>
+		</div>
+		<!-- header-nav end-->
+</div>
+
+	<!--END  头部nav-->
+	
+	<div class="contentMine">
+		<div class="sider">
+			<div class="siderInfo">
+				<h4><img src="{SO_SKIN}/images/tips1.png" alt="">网页信息</h4>
+				{if $keyword}<p>您查询的关键词是：{$keyword}</p>{/if}
+				<!-- <p>以下是该网页在北京时间{date('Y-m-d H:i:s',$updatetime)}的快照；</p> -->
+				<p class="ft12 clrba">(天成搜索和网页 <a href="{$url}" target="_blank" onclick="_hmt.push(['_trackEvent', 'soTecenet', 'click', 'detailToSourcePage']);">{$url}</a> 的作者无关，不对其内容负责。天成搜索快照为网络故障时之索引，不代表被搜索网站的页面。)</p>
+			</div>
+
+			<div class="siderInfo mt15">
+				<h4><img src="{SO_SKIN}/images/tips2.png" alt="">增值服务</h4>
+				<dl class="siderServerList clearfix">
+					<dd class="item-1" data="1">
+						<div class="siderServerTit"><i></i>医学工程装修服务</div>
+						<div class="siderServerContent" id="ssContent1"></div>
+					</dd>
+					<dd class="item-2" data="2">
+						<div class="siderServerTit"><i></i>医疗行业资质服务</div>
+						<div class="siderServerContent" id="ssContent2"></div>
+					</dd>
+					<dd class="item-3" data="3">
+						<div class="siderServerTit"><i></i>产品采购招标服务</div>
+						<div class="siderServerContent" id="ssContent3"></div>
+					</dd>
+					<dd class="item-4" data="4">
+						<div class="siderServerTit"><i></i>设备技术整包服务</div>
+						<div class="siderServerContent" id="ssContent4"></div>
+					</dd>
+					<dd class="item-5" data="5">
+						<div class="siderServerTit"><i></i>供应链融资服务</div>
+						<div class="siderServerContent" id="ssContent5"></div>
+					</dd>
+					<dd class="item-6" data="6">
+						<div class="siderServerTit"><i></i>医疗软件信息系统</div>
+						<div class="siderServerContent" id="ssContent6"></div>
+					</dd>
+					<dd class="item-7" data="7">
+						<div class="siderServerTit"><i></i>行业进出口服务</div>
+						<div class="siderServerContent" id="ssContent7"></div>
+					</dd>
+					<dd class="item-8" data="8">
+						<div class="siderServerTit"><i></i>医疗招聘求职服务</div>
+						<div class="siderServerContent" id="ssContent8"></div>
+					</dd>
+					<dd class="item-9" data="9">
+						<div class="siderServerTit"><i></i>医院投资管理服务</div>
+						<div class="siderServerContent" id="ssContent9"></div>
+					</dd>
+					<dd class="item-10" data="10">
+						<div class="siderServerTit"><i></i>健康导医综合服务</div>
+						<div class="siderServerContent" id="ssContent10"></div>
+					</dd>
+					<dd class="item-11" data="11">
+						<div class="siderServerTit"><i></i>医疗物流管理服务</div>
+						<div class="siderServerContent" id="ssContent11"></div>
+					</dd>
+					<dd class="item-12" data="12">
+						<div class="siderServerTit"><i></i>医疗报证科研服务</div>
+						<div class="siderServerContent" id="ssContent12"></div>
+					</dd>
+				</dl>
+				
+			</div>
+
+			<div class="siderInfo mt15">
+				<h4><img src="{SO_SKIN}/images/tips1.png" alt="">一周热点新闻</h4>
+				<ul class="siderNewsList">
+					{loop $hot_news $k $v}
+					<li><a href="{so_rewrite('detail.php?itemid='.$v['infoid'].'&infotype=3')}" title="{$v['title']}">{$v['title']}</a></li>
+					<?php if($k > 3) break; ?>
+					{/loop}
+				</ul>
+			</div>
+
+		</div>
+		<div class="contentBox">
+			<div class="contentBoxIn">
+				<div class="contentBoxIner">					
+					<div class="swichBtn" onclick="_hmt.push(['_trackEvent', 'soTecenet', 'click', 'detailPageSnapshot']);">
+					</div>
+					<div id="detailed" style="display: none;">
+					</div>
+					<div id="fasted" style="height:auto;">
+						{if $infotype == '1'}
+						{template 'mall_detail',$module}
+						{elseif $infotype == '2'}
+						{template 'company_detail',$module}
+						{else} 
+						<h3 class="tc">{$title}</h3>
+				  		<p class="tc">{if $addtime && $infotype !=3}<span>时间：{date('Y-m-d',$addtime)}</span>&nbsp;&nbsp;{/if}<span class="ml20">点击：{$hits}次</span>&nbsp;&nbsp;<span class="ml20">原网址：<a href="{$url}" target="_blank">{$url}</a> </span></p>
+						
+
+						<!--客服-->
+						<div class="c-service clearfix detail-c-service" style="margin: 10px auto;">
+							{if $infotype > 0}
+							<div class="c-contact">
+								<div class="hd">想对该信息了解更深？您可转入人工服务</div>
+								<ul class="bd clearfix">
+									{php $qq_arr = array(1=>'786466321',2=>'2300379865',3=>'657911476',4=>'1928771453',5=>'1928771453',6=>'657911476',7=>'657911476');}
+									{php $telephone_arr = array(1=>'020-22017986',2=>'020-22017985',3=>'4006173599',4=>'020-22017982',5=>'020-22017982',6=>'4006173599',7=>'020-22017996');}
+									<li><a href="http://wpa.qq.com/msgrd?v=3&uin={$qq_arr[$infotype]}&site=qq&menu=yes&s=tecenet.com" target="_blank"><i class="qq"></i><span>{$info_type_lists[$infotype]['name']}在线QQ客服</span></a></li>
+									<li><i class="tel"></i><span>{$info_type_lists[$infotype]['name']}热线：{$telephone_arr[$infotype]}</span></li>
+								</ul>
+							</div>
+							{/if}
+							<a class="pull-right" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&amp;userId=6452136&amp;s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);"><img src="{SO_SKIN}/images/detail-c-service.png" alt=""></a>
+						</div>
+						<!--客服 end-->
+
+
+						<p><pre>{$content}</pre></p>
+						{/if}
+						 <div style="height: 45px;clear:both;"></div>
+					</div>
+				</div>
+				<div class="contentBoxBtm fl">
+					
+					<div class="shareCon">
+						<div class="bdsharebuttonbox bdshare-button-style0-24" style="margin-top:3px;" data-bd-bind="1473303569481"><span class="shareT fl">分享：</span><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+					</div>
+					<!--
+					<div id="comment">
+						<ul>
+							<li>点评</li>
+							<li>|</li>
+							<li>
+								<div id="comment_star">
+							
+							<ul>
+								<li><img src="{SO_SKIN}/images/star3.png" id="star1" onmousedown="star_down(1)" onmouseover="star_over(1)" onmouseout="star_out(1)" /></li>
+								<li><img src="{SO_SKIN}/images/star1.png" id="star2" onmousedown="star_down(2)" onmouseover="star_over(2)" onmouseout="star_out(2)"/></li>
+								<li><img src="{SO_SKIN}/images/star1.png" id="star3" onmousedown="star_down(3)" onmouseover="star_over(3)" onmouseout="star_out(3)"/></li>
+								<li><img src="{SO_SKIN}/images/star1.png" id="star4" onmousedown="star_down(4)" onmouseover="star_over(4)" onmouseout="star_out(4)"/></li>
+								<li><img src="{SO_SKIN}/images/star1.png" id="star5" onmousedown="star_down(5)" onmouseover="star_over(5)" onmouseout="star_out(5)"/></li>
+							</ul>
+						</div
+							</li>
+							<li>
+								<form action="" method="post">
+								<input type="hidden" id="star" value="1" name="star" />
+								<input type="text" name="content" value="" style="height:14px;font-size:12px;width:350px;margin:0px;" placeholder="我还有话要说.." />
+								<input type="submit" name=" 提 交 " style="color: #fff;background: #d3251e;border: none;width: 70px;height: 24px;margin-left: -7px;border-radius: 0 4px 4px 0;margin:0px 0px 0px -7px;"/>
+								</form>
+							</li>
+						</ul>
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div></div>
+</div>
+
+<div style="display:none;">{template 'so_analytics','include'}</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{DT_PATH}file/script/sogex/jquery.min.js"></script>
+    <script src="{DT_PATH}file/script/sogex/bootstrap.min.js"></script>
+    <script src="{DT_PATH}file/script/sogex/sogex_common.js"></script>
+    <script src="{DT_PATH}file/script/sogex/added-services.js?v20161214"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		var localUrl = encodeURIComponent(window.location.href.split("#")[0]);
+		var shareTitle = $('#mall_title h1').text();
+		$.ajax({
+			url: 'http://www.tecenet.com/api/weixin/jssdk.php?callback=cb&url='+localUrl,
+			dataType: 'jsonp',
+			error: function(){},
+			success: function(cb){
+				if ( typeof cb.timestamp != 'undefined' && typeof cb.nonceStr != 'undefined' && typeof cb.signature != 'undefined' ) {
+					wx.config({
+						debug: false,
+						appId: cb.appId,
+						timestamp: cb.timestamp,
+						nonceStr: cb.nonceStr,
+						signature: cb.signature,
+						jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo']
+					});
+					wx.ready(function () {
+						wx.onMenuShareTimeline({
+							title: shareTitle+"_天成医搜",
+							link: window.location.href,
+							imgUrl: "http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png"
+						});
+						wx.onMenuShareAppMessage({
+							title: shareTitle+"_天成医搜",
+							desc: '我在天成医搜找到了“'+shareTitle+'”',
+							link: window.location.href,
+							imgUrl: $("#mall_image img").length>0?$("#mall_image img").attr("src"):"http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png",
+							type: '',
+							dataUrl: ''
+						});
+						wx.onMenuShareQQ({
+							title: shareTitle+"_天成医搜",
+							desc: '我在天成医搜找到了“'+shareTitle+'”',
+							link: window.location.href,
+							imgUrl: $("#mall_image img").length>0?$("#mall_image img").attr("src"):"http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png"
+						});
+						wx.onMenuShareWeibo({
+							title:shareTitle+"_天成医搜",
+							desc: '我在天成医搜找到了“'+shareTitle+'”',
+							link: window.location.href,
+							imgUrl: $("#mall_image img").length>0?$("#mall_image img").attr("src"):"http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png"
+						});
+					});
+				}
+			}
+		});
+	</script>
+	<script>
+    	$(document).ready(function(){
+    		//JQuery输出ifream
+			$("#detailed").append("<iframe src='' id='iframepage' name='iframepage' border：none frameborder='0px'  height='600px' width='100%'  marginwidth='100%'></iframe>");
+
+			//监控浏览器大小改变iframe大小
+				var maxheight = $(window).height();
+				var height = maxheight-120;
+				$("#iframepage").css('height',height);
+
+			$(window).resize(function () {
+				var maxheight = $(window).height();
+				var height = maxheight-120;
+				$("#iframepage").css('height',height);
+			});
+
+
+			$(".swichBtn").click(function(){
+				if ($("#detailed").is(":hidden")) {
+					$('#iframepage').attr('src','{$url}');
+					$(".swichBtn").css("background-position","0px 0px");
+					$("#detailed").fadeIn("slow");
+					$("#fasted").fadeOut("slow");
+				} else {
+					$(".swichBtn").css("background-position","-106px 0px");
+					$("#detailed").fadeOut("slow");
+					$("#fasted").fadeIn("slow");
+					return;
+				}
+			});
+
+			$('.siderServerList dd').hoverDelay({
+				hoverDuring : 400,
+				outDuring : 400,
+				hoverEvent : function(that){
+					//鼠标移入
+					$(that).addClass("hover");
+					var d_id = $(that).attr('data');
+					//var tpl = document.getElementById('tpl'+d_id).innerHTML;
+					var tpl = services['tpl'+d_id];
+					$('#ssContent'+d_id).html(tpl);
+					$('#ssContent'+d_id).show(120);
+					var ssc_height = $('.siderServerContent').height();
+				},
+				outEvent : function(that){
+					//鼠标移除
+					$(that).removeClass("hover");
+					var d_id = $(that).attr('data');
+					$('#ssContent'+d_id).hide();
+				}
+			});
+
+			$('#share').mouseover(function(){
+				$('#share_img').attr('src','{SO_SKIN}/images/share_white.png');
+				$(this).css('background','#db453f');
+				$(this).css('color','white');
+				$('.share_button').slideDown(1000);
+			});
+			
+			$('#share').mouseleave(function(){
+				$('#share_img').attr('src','{SO_SKIN}/images/share_red.png');
+				$(this).css('background','#e6e6e6');
+				$(this).css('color','#db453f');
+				$('.share_button').slideUp(1000);
+			});
+			
+			new changeTopValue().scrollChangeValue();
+    	});
+
+		function changeTopValue(){
+			var scrollEle = $(".sider");
+			var positionEle = $(".siderServerContent");
+			var defaultTopValue = $("#topNav").outerHeight() + $(".sider .siderInfo:eq(0)").outerHeight() + 60;
+			var newTopValue ;
+			// 默认赋值
+			positionEle.css("top",defaultTopValue);
+			// 滚动执行重新赋值
+			this.scrollChangeValue = function(){
+				scrollEle.on('scroll',function(){
+					newTopValue = defaultTopValue - scrollEle.scrollTop();
+					positionEle.css("top",newTopValue);
+				}); 
+			}
+		}
+
+
+		function star_down(n){
+			for(var i = 1;i<= 5 ;i++){
+				if(i <= n){
+					$('#star'+i).attr('src','{SO_SKIN}/images/star3.png');
+				}else{
+					$('#star'+i).attr('src','{SO_SKIN}/images/star1.png');
+				}
+			}
+			$('#star').val(n);
+		}
+		function star_over(n){
+			for(var i= 1; i<= 5; i++){
+				if(i <= n){
+					$('#star'+i).attr('src','{SO_SKIN}/images/star2.png');
+				}else{
+					$('#star'+i).attr('src','{SO_SKIN}/images/star1.png');
+				}
+				
+			}
+		}
+		
+		function star_out(n){
+			val = $('#star').val();
+			for(var i= 1;i<=5;i++){
+				if(i <= val){
+					$('#star'+i).attr('src','{SO_SKIN}/images/star3.png');
+				}else{
+					$('#star'+i).attr('src','{SO_SKIN}/images/star1.png');
+				}
+			}
+		}
+		
+	(function($) {
+		$.fn.hoverDelay = function(options) {
+			var defaults = {
+				hoverDuring : 200,
+				outDuring : 200,
+				hoverEvent : function() {
+					$.noop();
+				},
+				outEvent : function() {
+					$.noop();
+				}
+			};
+			var sets = $.extend(defaults, options || {});
+			return $(this).each(function() {
+				var hoverTimer, outTimer,that;
+				$(this).hover(function() {
+					clearTimeout(outTimer);
+					that = this;
+					hoverTimer = setTimeout(function() {
+						sets.hoverEvent.call(null,that)
+					}, sets.hoverDuring);
+				}, function() {
+					clearTimeout(hoverTimer);
+					that = this;
+					outTimer = setTimeout(function() {
+						sets.outEvent.call(null,that)
+					}, sets.outDuring);
+				});
+			});
+		}
+	})(jQuery);
+
+
+    </script>
+</body>
+</html>

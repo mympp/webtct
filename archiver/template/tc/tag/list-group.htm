@@ -1,0 +1,18 @@
+<ul class="list_group">
+{loop $tags $i $t}
+{php $t[price] = str_replace('.00', '', $t[price]);}
+{php $t[marketprice] = str_replace('.00', '', $t[marketprice]);}
+<li class="list_group_box grayb">
+<div class="list_group_price"><span class="fr"><strong class='ocolor f20'>{$t[orders]}</strong>人已购</span>原价：<span class="bcolor f20"><del>{$t[marketprice]}元</del></span><span class="ml10">现 <font class='color f16'>{$t[discount]}</font> 折</span> </div>
+	<div class="mid"><a href="{$t[linkurl]}" target="_blank" id="link_{$t[itemid]}"><img src="{$t[thumb]}" width="270" height="220" alt="{$t[alt]}" class='mid' /></a>
+	{if !$nolevel}<div class='level'>{if $t[level]}<img src='{DT_SKIN}image/blank.gif'class='tlevel'>{else}<img src='{DT_SKIN}image/blank.gif'class='nlevel'>{/if}</div>{/if}
+	</div>
+	<div class="list_group_join" ><span class='fr mr10'><a href="{$t[linkurl]}" target="_blank" ><img src="{DT_SKIN}image/shoping.gif"></a></span>只需<strong class='f24'>￥{$t[price]}</strong></div>
+	<div class="list_group_title"><a href="{$t[linkurl]}" target="_blank" class='color ti10'>{$t[title]}</a></div>
+</li>
+{/loop}
+</ul>
+<script type="text/javascript">
+$(".list_group>li").hover(function () {$(this).removeClass("list_group_box grayb");$(this).addClass("list_group_box yellowb yellowbg"); }, function () {$(this).removeClass("list_group_box yellowb yellowbg");$(this).addClass("list_group_box grayb"); });
+</script>
+{if $showpage && $pages}<div class="divline"></div><div class="pages">{$pages}</div>{/if}

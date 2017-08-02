@@ -1,0 +1,80 @@
+{php require DT_ROOT.'/include/post.func.php';}
+{php $sitemenu='company';$listpage='list';}
+{template 'header'}
+{template 'lay','tag'}
+{php $MS = cache_read('module-2.php');}
+{php $vips = array($L['vip_level'], 全部, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);}
+{php $modes = explode('|', $L['choose'].'|'.$MS['com_mode']);}
+{php $types = explode('|', $L['choose'].'|'.$MS['com_type']);}
+{php $sizes = explode('|', $L['choose'].'|'.$MS['com_size']);}
+{php $mode_select = dselect($modes, 'mode', '', $mode);}
+{php $type_select = dselect($types, 'type', '', $type);}
+{php $size_select = dselect($sizes, 'size', '', $size);}
+{php $vip_select = dselect($vips, 'vip', '', $vip);}
+
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';
+Dd("siteinfos").className='';
+</script>
+<div class="autoheight pt5 whitebg">
+	<dl class="options">		
+														
+														<dt>网店经营范围：</dt>
+														<dd class="autoheight"><a {if $catid==''} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('index.php?areaid='.$areaid.'')}">全部</a>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid].'')}" {if $t[catid]==$catid||$t[catid]==$l[1]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+														</dl>
+															{if $childa!=0}
+															<dl class="options">
+															<dt>{$parenta}的分类：</dt>
+															<dd><a {if $catid==$catida} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&catid='.$catida)}">全部</a>
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catida&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&catid='.$t[catid].'')}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[2]}
+																	{php $childb=$t[child];$parentb=$t[catname];$catidb=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+															</dl>
+															{/if}
+
+														<form action="{$MOD[linkurl]}search.php" id="fsearch">
+														<input type="hidden" name="list" value="{$list}"><input type="hidden" name="areaid" value="{$areaid}">
+			<input type="hidden" name="order" value="{$orderv}"><input type="hidden" name="catid" value="{$catid}"><input type="hidden" name="vip" value="{$vip}"><input type="hidden" name="thumb" value="{$thumb}">
+                                                        {template 'search', 'chip'}
+														</form>
+														</div>
+<div class="divline"></div>
+
+<div class="autoheight whitebg pd10">
+			<div class="listleft autoheight">
+			{template 'listh4', 'chip'}
+				<div class="tool">
+				 {template 'form', $module}
+				</div>
+
+		<div class="autoheight intro">
+       {if $tags}
+
+       {template 'list-company', 'tag'}
+
+
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+		</div>
+		
+			</div>
+			<div class="listright autoheight">
+					{template 'right', $module}	
+			</div>
+			<div class="divline"></div>
+</div>
+<br class="clear">
+{template 'footer'}

@@ -1,0 +1,40 @@
+               <div class="webmenu">
+						{php $menuy=" class='menuy'";}
+						{php $menun=" class='menun'";}
+			   <div class="youcan"><a href="{$MODULE[$moduleid][linkurl]}"><h1>天成医疗专题区首页</h1></a> </div>
+						<div  class="webmenulist" id="mini-dropdown-2">
+						<ul class="dropdown" id="nav">
+						{if !$listpage}
+						{php $listpage='list';}
+						{/if}
+						{php $tagsb = tag("moduleid=$moduleid&table=category&fields=catid,catname,style,item,child&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+						{loop $tagsb $i $t}
+						<li id="xcatsl" {$menun}> <a href="{$MOD[linkurl]}{rewrite($listpage.'.php?catid='.$t[catid])}" class="wcolor f14">{$t[catname]}{if $t[child]}&nbsp;∨{/if}</a>
+						{php $tagss = tag("moduleid=$moduleid&table=category&fields=catid,catname,style,item&condition=moduleid=$moduleid and parentid=".$t[catid]."&pagesize=30&order=listorder ASC&template=null")}
+						{if $tagss}
+						<ul>
+						{loop $tagss $i $k}
+						<li><a href="{$MOD[linkurl]}{rewrite($listpage.'.php?catid='.$k[catid])}">与  {set_style($k[catname],$k[style])}  相关({$k[item]})</a></li>
+						{/loop}				
+						</ul>
+						{/if}
+						</li>
+						{/loop}		
+						</ul>
+						</div>
+				<div class="webmem"><ul id="mstatus"><li><img src="{DT_SKIN}image/loadb.gif" style="padding-top:5px;"></li></ul>
+				<span id="joinusto" class="hd"></span>
+				</div>
+               </div>
+
+<script type="text/javascript">
+$(function(){
+    $('#mini-dropdown-2 .dropdown').miniDropdown({
+      animation: 'slide', 
+      show: 100,
+      hide: 100,
+      delayIn: 100,
+      delayOut: 100
+    });
+});
+</script>

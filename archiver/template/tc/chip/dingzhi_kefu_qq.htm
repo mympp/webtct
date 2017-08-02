@@ -1,0 +1,65 @@
+<div id="kefu">
+<link href="{DT_PATH}skin/teceskin/style.css" type="text/css" rel="stylesheet" />
+	<script src="{DT_PATH}file/script/jquery.js" type="text/javascript" ></script>
+	<script>
+$(document).ready(function(){
+$("#ico1").bind("mouseover",function(){
+  	$('#onlineService').animate({width: 'show', opacity: 'show'}, 'normal');
+  	Dd('ico1').className='ico1y';
+  	Dd('ico2').className='ico2sy';
+  	Dd('kefutab1').style.display='block';
+  	Dd('kefutab2').style.display='none';
+  	return false;}
+);
+$("#ico2").bind("mouseover",function(){
+  	$('#onlineService').animate({width: 'show', opacity: 'show'}, 'normal');
+  	Dd('ico1').className='ico1sy';
+  	Dd('ico2').className='ico2y';
+  	Dd('kefutab1').style.display='none';
+  	Dd('kefutab2').style.display='block';
+  	return false;}
+);
+  $(document).bind("click",function(event){
+	if ($(event.target).isChildOf("#online_qq_layer") == false)
+	{$('#onlineService').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#onlineService').hide(); }); icos(0);}});
+		jQuery.fn.isChildAndSelfOf = function(b){ return (this.closest(b).length > 0);};
+		jQuery.fn.isChildOf = function(b){ return (this.parents(b).length > 0);};
+});
+</script>
+			<div id="online_qq_layer">
+			<div id="online_qq_tab">
+				<div class="online_icon" style="height:125px;">
+				<ul>
+				<li><a href="javascript:void(0);"  id="ico1" rel="nofollow"><img src="{DT_SKIN}image/blank.gif" ></a></li>
+				<li><a href="javascript:void(0);"  id="ico2" rel="nofollow" ><img src="{DT_SKIN}image/blank.gif" ></a></li>
+</ul>
+
+		</div>
+		</div>
+	<div id="onlineService">
+		<div class="online_windows">
+			<div class="online_w_c">
+<dl id="kefutab1"  class="h30">
+<dt>在线QQ客服</dt>
+{if $COM[qq]}
+	{php $qq_array=explode(';',$COM[qq]);}
+	{loop $qq_array $k $v}
+		{php $qq_message=explode('|',$v);}
+		<dd><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$qq_message[0]}&site=qq&menu=yes"  rel="nofollow" ><img src='{DT_SKIN}image/blank.gif' class="qqico"> {$qq_message[1]}</a></dd>
+	{/loop}
+{/if}
+</dl>
+<dl id="kefutab2" style="display:none" class="h30">
+<dt>各类服务热线</dt>
+{if !$COM[contacts]}
+{if $COM['fax']}<dd>传真:<font class="f12">{$COM[fax]}</font> </dd>{/if}
+{if $COM['telephone']}<dd>电话:<font class="f12">{$COM[telephone]}</font> </dd>{/if}
+{if $COM['mail']}<dd>邮箱:<font class="f12">{$COM[mail]}</font> </dd>{/if}
+{if $COM['mobile']}<dd>手机:<font class="f12">{$COM[mobile]}</font> </dd>{/if}
+{/if}
+</dl>
+			</div>
+		</div>
+</div>
+</div>
+</div>

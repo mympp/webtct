@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>天成医搜</title>
+    <meta name="keywords" content="医疗器械网,医疗器械,医疗器械维修,医疗网,天成医疗网,天成医疗,医疗设备"/>
+    <meta name="description" content="天成医疗网-医疗器械网专业医疗器械供求信息与医疗器械供应、采购、招标；医疗器械维修、保养、调试等技术服务；国内、国外进口医疗器械厂家品牌招商推广平台。为医疗器械企业、医院等机构提供全方位技术与产品服务！"/>
+  <link rel="shortcut icon" href="{SO_SKIN}/images/sogex.ico" />
+  <link rel="stylesheet" type="text/css" href="{SO_SKIN}/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="{SO_SKIN}/style.css" />
+    <style>
+        /*error-page*/
+        #topNav{
+            position: static;
+        }
+        .error-page{
+            padding:30px 0;
+            text-align: center;
+        }
+        .error-page img{
+            display: inline-block;
+        }
+        .error-page p{
+            padding:20px 0;
+            font:200 20px/1.5 "Microsoft YaHei";
+            color: #333;
+        }
+        .error-page .back-btn{
+            display: inline-block;
+            margin:10px auto;
+            width:200px;
+            height: 40px;
+            font:16px/40px "Microsoft YaHei";
+            background-color: #d3251e;
+            color: #fff;
+            border-radius:30px;
+            letter-spacing: 1px;
+        }
+        .error-page .back-btn:hover{
+            background-color: #ff4a3c;
+        }
+    </style>
+</head>
+<body>
+<!--导航-->
+	{template 'menu',$module}
+	<!--导航-->	
+<!--top-nav end-->
+
+<!--404-->
+<div class="error-page">
+    <img src="{SO_SKIN}/images/404-img.png" alt="error page images">
+    <p>抱歉，您所访问的页面已经丢失。</p>
+    <a href="{SO_PATH}" target="_self" class="back-btn">返回医搜首页</a>
+</div>
+<!--404 end-->
+
+
+  	<!--Footer-->
+	<div id="footer" class="footer">
+	    <div class="foot clearfix">
+	        <div class="copyright pull-left">
+	            <div class="link">
+	                <a href="feekback.php">用户反馈</a>|<a href="http://hao.tecenet.com/" target="_blank">医疗厂家导航</a>
+	            </div>
+	            <p>版权所有©广州天成医疗技术股份有限公司 / CopyRight © Guangzhou TianCheng Medical Technology Co.,Ltd. / 粤ICP备13045514号</p>
+	        </div>
+	        <div class="tel-400 pull-right">
+	            <img src="{SO_SKIN}/images/tel-400.png" alt="">
+	        </div>
+	    </div>
+	</div>
+	<!--Footer end-->
+
+
+
+ <!-- JavaScript Includes -->
+{loop $so_footer_js $k $v}
+<script type="text/javascript" src="{DT_PATH}file/script/sogex/{$v}"></script>
+{/loop}
+<script type="text/javascript">
+	$(document).ready(function(){
+		var seg_word = "{$sword_str}";
+		var seg_arr = seg_word.split("','");
+		for(var i in seg_arr){
+			$('.result h3,.result .res-desc').highlight(seg_arr[i]);
+		}
+	});
+</script>
+<div style="display:none;">{template 'so_analytics','include'}</div>
+</body>
+</html>

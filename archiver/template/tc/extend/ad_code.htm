@@ -1,0 +1,34 @@
+{if $typeid==1}
+{$code}
+{elseif $typeid==2}
+<a href="{$url}" title="{$text_title}" target="_blank">{$text_name}</a>
+{elseif $typeid==3}
+			{if $adm}
+			<script language="JavaScript" type="text/javascript">
+			tips{$pid} = new Array({php echo count($adm);});
+				<?php foreach($adm as $k=>$t){?>
+					tips{$pid}[{$k}] = '<a href="{$t[url]}" target="_blank"><div style="background:url({$t[pic]}) top left;width:{$width}px;height:{$height}px;"><img src="{DT_SKIN}image/blank.gif" width="{$width}" height="{$height}"  style="background:url({DT_SKIN}image/ads/vip.gif) bottom right no-repeat;;"/></div></a>';
+				<?php }?>
+					index = Math.floor(Math.random() * tips{$pid}.length);
+					document.write(tips{$pid}[index]);
+			</script>
+			{else}
+				{if $url}<a href="{$url}" target="_blank" >{/if}<div style="background:url({$image_src}) top left;width:{$width}px;height:{$height}px;"><img src="{DT_SKIN}image/blank.gif" width="{$width}" height="{$height}" alt="{$image_alt}" style="background:url({DT_SKIN}image/ads/vip.gif) bottom right no-repeat;;"/></div>{if $url}</a>{/if}
+			{/if}
+{elseif $typeid==4}
+{if $url}<a href="{$url}" target="_blank"><img src="{DT_SKIN}image/spacer.gif" width="{$width}" height="{$height}" alt="" style="position:absolute;z-index:2;"/></a>{/if}<embed src="{$flash_src}" quality="high" loop="{if $flash_loop}true{else}false{/if}" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" wmode="transparent" width="{$width}" height="{$height}"></embed>
+{elseif $typeid == 5}
+<script type="text/javascript">
+var config = '5|0xFFFFFF|0x333333|80|0xFAFAFA|0x333333|0x000000';
+var files = "{loop $tags $k $v}{if $k}|{/if}{$v[thumb]}{/loop}";
+var links = "{loop $tags $k $v}{if $k}|{/if}{$v[linkurl]}{/loop}";
+var texts = '';
+document.write('<embed src="{DT_PATH}file/flash/slide.swf" wmode="opaque" FlashVars="config='+config+'&bcastr_flie='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&menu="false" quality="high" width="{$width}" height="{$height}" type="application/x-shockwave-flash" extendspage="http://get.adobe.com/flashplayer/"></embed>');
+</script>
+{elseif $typeid==6}
+	{if $tags}
+		<div id="adword">
+		<div class="adword">{template 'list-'.$ad_module, 'tag'}</div>
+		</div>
+	{/if}
+{/if}

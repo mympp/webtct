@@ -1,0 +1,227 @@
+{php $sitemenu='know';$listpage='list';$JS=array('jquery.jslides');}
+{template 'module-header'}
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css?v20161208"/>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/know.css?v20161208"/>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/MSClass.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/arrowtree.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/miniDropdown.js"></script>
+<style>
+#topkeyword{width:310px;height:22px;line-height:22px}
+#full-screen-slider{position:relative;top:0}
+.tc-footer{margin-top:20px}
+.tc-footer .copyright{width: 100%;}
+</style>
+
+</div>
+</div>
+<!--banner切换开始 -->
+<div>
+    <div id="full-screen-slider">
+        <ul id="b_slides">
+            <li style="background: url('{DT_SKIN}/image/know/01.jpg') center no-repeat;">
+                <div class="webw "><span id="knownum" class="lenstr">{php $knowcount = $db->count($DT_PRE.'know', "status=3", 60);}
+					0{$knowcount}</span></div>
+            </li>
+            <li style="background: url('{DT_SKIN}/image/know/02.jpg') center no-repeat;"><p id="membernum" class="webw">
+                {php $memb = $db->count($DT_PRE.'member', "groupid>4 and edittime<>'1399513082'", 60);}
+                {$memb}</p></li>
+            <li style="background: url('{DT_SKIN}/image/know/03.jpg') center no-repeat;"></li>
+        </ul>
+    </div>
+</div>
+<!--banner切换结束 -->
+<div class="autoheight" style="background: url('{DT_SKIN}/image/know/bg.png');">
+    <div class="divline"></div>
+    <div class="webw">
+        <div class="whitebg grayb rad">
+            <div class="fabu"><p><a href="{$MODULE[2][linkurl]}{$DT[file_register]}">注册</a><a
+                    href="{$MODULE[2][linkurl]}{$DT[file_login]}">登录</a></p></div>
+            <div class="fabubt"><p><a {if $_userid}href="{$MODULE[2][linkurl]}my.php?mid={$moduleid}&action=add"
+                                      {else}href="javascript:void(0);"
+                                      onclick='msgtip("您好！登陆提示！","发布行业问答信息，您需要登录本站！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;或&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>")'
+                                      {/if}><img src="{DT_SKIN}image/blank.gif"></a></p></div>
+            <div class="graybg pt5 pl5">
+                <form action="{$MODULE[2][linkurl]}{$DT[file_my]}" id="ask_form" class="hd">
+                    <input type="hidden" name="mid" value="{$moduleid}"/>
+                    <input type="hidden" name="cid" value="{$catid}"/>
+                    <input type="hidden" name="action" value="add"/>
+                    <input type="hidden" name="kw" value="" id="ask_kw"/>
+                </form>
+                <form action="{$MOD[linkurl]}search.php" onsubmit="return know_sch_check();">
+                    <div class="fl w650">
+                        <input type="text" name="kw" id="know_kw" value="请输入问题"
+                               onfocus="if(this.value=='请输入问题')this.value='';"/>
+                        <input type="hidden" name="typeid" value="99" id="know_typeid"/>
+                        <input type="submit" value="搜索答案" class="know_btn_1 rad" onclick="Dd('know_typeid').value=99;"/>
+                        <input type="submit" value="我要回答" class="know_btn_2 rad" onclick="Dd('know_typeid').value=3;"/>
+                        <input type="button" value="我要提问" class="know_btn_2 rad"
+                               onclick="if(know_sch_check()){Dd('ask_kw').value=Dd('know_kw').value;Dd('ask_form').submit();}"/>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    function know_sch_check() {
+                        if (Dd('know_kw').value == '请输入问题' || Dd('know_kw').value.length < 1) {
+                            alert('请输入问题');
+                            Dd('know_kw').focus();
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+                <div class="fl">
+                    <ul class="knownum">
+                        <li>已解决问题数 <span>{php echo $db->count($table, 'status=3 and process=3', 1800);}</span></li>
+                        <li>待解决问题数<span> {php echo $db->count($table, 'status=3 and process=1', 1800);}</span></li>
+                    </ul>
+                </div>
+                <div class="divline"></div>
+            </div>
+            <dl class="knowcat">
+                <dt>信息主题分类</dt>
+                <dd>
+                    <ul>
+                        {php $child = get_maincat(0, $moduleid, 1);}
+                        {loop $child $i $c}
+                        <li><a href="{$MOD[linkurl]}{$c[linkurl]}"><font class="f14">{set_style($c[catname],
+                            $c[style])}</font></a> <span>({$c[item]})</span>
+                            {if $c[child]}
+                            <div>
+                                {php $sub = get_maincat($c[catid], $moduleid, 1);}
+                                {loop $sub $j $s}<a href="{$MOD[linkurl]}{$s[linkurl]}" class="b">{set_style($s[catname],
+                                $s[style])}</a>&nbsp;|&nbsp;{/loop}
+                            </div>
+                            {/if}
+                        </li>
+                        {/loop}
+                        <ul>
+                </dd>
+            </dl>
+            <div class=" pd5 ">
+                <ul class="knowdl">
+                    {if $MOD[page_isolve]}
+                    <li class="knowdlli" id="knowdl2">
+                        <dl>
+                            <dt><span class="fr"><a
+                                    href="{$MOD[linkurl]}{rewrite('search.php?typeid=1')}">更多..</a></span><font>待解决的问题</font>
+                            </dt>
+                            <dd class="box_body">
+                                <!--{tag("moduleid=$moduleid&fields=username,credit,linkurl,title,answer,process,edittime&condition=status=3&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_isolve]."&datetype=4&template=list-know-index")}--></dd>
+                        </dl>
+                    </li>
+                    {/if}
+                    {if $MOD[page_ivote]}
+                    <li class="knowdlli" id="knowdl3">
+                        <dl>
+                            <dt><span class="fr"><a
+                                    href="{$MOD[linkurl]}{rewrite('search.php?typeid=2')}">更多..</a></span><font>高分悬赏问题</font>
+                            </dt>
+                            <dd class="box_body">
+                                <!--{tag("moduleid=$moduleid&fields=username,credit,linkurl,title,answer,process,edittime&condition=status=3 and credit>5&areaid=$cityid&order=credit desc&pagesize=".$MOD[page_irec]."&datetype=4&template=list-know-index")}--></dd>
+                        </dl>
+                    </li>
+                    {/if}
+
+
+                    <div class="divline"></div>
+                    {if $MOD[page_irec]}
+                    <li class="knowdlli" id="knowdl1">
+                        <dl>
+                            <dt><span class="fr"><a
+                                    href="{$MOD[linkurl]}{rewrite('search.php?typeid=4')}">更多..</a></span><font>精彩推荐</font>
+                            </dt>
+                            <dd class="box_body">
+                                <!--{tag("moduleid=$moduleid&fields=username,credit,linkurl,title,answer,process,edittime&condition=status=3 and credit>0&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_irec]."&datetype=4&template=list-know-index")}--></dd>
+                        </dl>
+                    </li>
+                    {/if}
+                    {if $MOD[page_iresolve]}
+                    <li class="knowdlli" id="knowdl4">
+                        <dl>
+                            <dt><span class="fr"><a
+                                    href="{$MOD[linkurl]}{rewrite('search.php?typeid=0')}">更多..</a></span><font>已解决的问题</font>
+                            </dt>
+                            <dd class="box_body">
+                                <!--{tag("moduleid=$moduleid&condition=status=3 and process=3&order=updatetime desc&areaid=$cityid&pagesize=".$MOD[page_iresolve]."&datetype=4&template=list-know-index")}--></dd>
+                        </dl>
+                    </li>
+                    {/if}
+
+                </ul>
+
+
+                <div class="divline"></div>
+                <div class="autoheight h70 cut widthad pd5">{ad(146)}</div>
+                <div class="divline"></div>
+                <div>
+                    <ul class="knowdl">
+                        <li class="knowdlli" id="knowdl6">
+                            <dl>
+                                <dt><font>最新回复信息</font></dt>
+                                <dd class="box_body" id="zxhf">
+                                    <!--{php $tags=tag("table=know_answer&moduleid=$moduleid&fields=username,qid,content,edittime&condition=status=3&areaid=$cityid&order=addtime desc&pagesize=20&template=null")}-->
+
+                                    {loop $tags $k $t}
+                                    <div class="know_list">
+                                        <table>
+                                            <tr>
+                                                <td width="30"><a
+                                                        href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?username='.$t['username'])}"
+                                                        rel="nofollow" title="{$t[username]}">
+                                                    <script type="text/javascript">
+                                                        document.writeln("<img src=\"{useravatar($t[username], 'large')}\" width=\"20\" alt=\"{$t[username]}\" class=\"smallpic grayb\" />");
+                                                    </script>
+                                                </a></td>
+                                                <td align="left"><a
+                                                        href="{$MODULE[$moduleid][linkurl]}{rewrite('show-'.$t['qid'].'.html')}"
+                                                        target="_blank" title="{$t[content]}">{dsubstr(strip_tags($t[content]),
+                                                    58, '...')}</a></td>
+                                                <td width="90" align="center" valign="middle">{timetodate($t[edittime],
+                                                    4)}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    {/loop}
+                                </dd>
+                                <script type="text/javascript">new Marquee(["zxhf"], 1, 0.1, 485, 415, 20, 2000, 2000, 1, 3);</script>
+                            </dl>
+                        </li>
+                        {if $MOD[page_iexpert]}
+                        <li class="knowdlli" id="knowdl7">
+                            <dl>
+                                <dt><span class="fr"><a
+                                        href="{$MOD[linkurl]}{rewrite('expert.php?page=1')}">更多..</a></span><font>推荐活跃团队</font>
+                                </dt>
+                                <dd class="box_body" id="hytd">
+                                    <!--{php $tags=tag("table=know_expert&fields=itemid,title,username,title,major,answer,best&condition=1&pagesize=".$MOD['page_iexpert']."&order=addtime desc&template=null");}-->
+                                    {loop $tags $t}
+                                    <div class="know_expert cut">
+                                        <a href="{$MOD[linkurl]}{rewrite('expert.php?itemid='.$t['itemid'])}"
+                                           target="_blank" title="{$t[title]}">
+                                            <script type="text/javascript">
+                                                document.writeln("<img src=\"{useravatar($t[username], 'large')}\" width=\"60\" alt=\"{$t[alt]}\"/>");
+                                            </script>
+                                        </a>
+                                        <div><a href="{$MOD[linkurl]}{rewrite('expert.php?itemid='.$t['itemid'])}"
+                                                target="_blank" title="{$t[alt]}"><strong>{$t[title]}</strong>({$t[username]})</a><br/>{dsubstr($t[major],
+                                            86, '..')}<br>回帖：{$t[answer]}&nbsp;&nbsp;采纳：{$t[best]}
+                                        </div>
+
+                                    </div>
+                                    {/loop}
+                                </dd>
+                                <script type="text/javascript">
+                                    new Marquee("hytd", 1, 20, 485, 435, 20, 3000, 3000, 170)
+                                </script>
+                            </dl>
+                        </li>
+                        {/if}
+                    </ul>
+                </div>
+                <div class="divline"></div>
+            </div>
+        </div>
+    </div>	
+    {template 'link2017','chip'}
+    {template 'footer2017'}

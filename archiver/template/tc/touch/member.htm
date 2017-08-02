@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta name="MobileOptimized" content="320">
+<meta name="author" content="paul">
+<meta name="shenma-site-verification" content="">
+<meta name="copyright" content="Copyright (c) 2012-2015 Tecenet.">
+<meta name="description" content="天成医疗网">
+<link rel="apple-touch-icon-precomposed" href="">
+
+<link rel="stylesheet" type="text/css" href="media/css/index.css">
+<link rel="stylesheet" type="text/css" href="media/css/cart.css">
+
+<title>会员中心--天成医疗网</title>
+<style type="text/css">
+	.line {
+		line-height: 50px; 
+		height: 50px;
+	}
+	.module-t {
+		position: fixed; 
+		width: 100%; 
+		top: 0;
+	}
+	.module-c {
+		background-color: #FFF; 
+		padding-top: 45px;
+	}
+	.list-title {
+		font-size: 14px; 
+		color: #555; 
+		padding-left: 5px;
+	}
+	.list-num {
+		font-size: 13px; 
+		color: #555; 
+		padding-right: 5px;
+	}
+	.w10{
+		border: 0; 
+		margin: 5px 0;
+	}
+	.list-button {
+		padding: 12px; 
+		background: #555; 
+		width: 36%;
+	}
+</style>
+
+</head>
+
+<body id="main" page="home" class="page-footer-fixed">
+
+	<div id="wrapper" class="wrapper" style="display: block;">
+<!-- 头部 -->
+	<header id="header">
+		<div class="header">
+			<div id="mod-news" class="module">
+			  	<div class="module-t">			 	
+			 		<div class="logowrapper" style="height:45px;">
+						<a href="javascript:window.history.back();" class="art-back" id="logo"></a>
+					</div>
+
+					<div class="header-title">会员中心</div>
+
+				 	<nav class="head-link" style="right: 12;">
+						<a href="index.php" id="login">
+							<img style="padding-top: 5px;" src="image/home3.png" width="28" height="28" alt="首页"/>
+						</a>
+						<a id="pop-nav"></a>
+					</nav>
+			  	</div>
+
+				<div class="module-c">
+
+				 	<div class="list-mod">
+				 		<ul class="line">
+				 			<li style="text-align: center;">欢迎，{$_company}({$_truename})</li> 			
+				 		</ul>
+
+				 		<ul>
+				 			<li>
+				 				<a href="index.php?moduleid=4&amp;username={$_username}">
+									<script type="text/javascript">
+									document.writeln("<img style='margin: auto;' src=\"{useravatar($_username, 'large')}\" width='128' height='128'/>");
+									</script>	
+								</a>
+							</li>
+				 		</ul>
+
+				 		<ul class="cont-list line">	
+
+				 			<li style="height:50px; line-height: 50px;">
+
+				 				<a href="index.php?moduleid={$moduleid}&amp;action=message">
+				 					<span class="list-title">
+				 					<strong>消息</strong>
+				 				</span></a>
+
+				 				<span class="list-num">
+				 					{if $_message}<b style="color: red;">{$_message}</b>{else}{$_message}{/if}
+				 				</span>
+				 			</li>
+	 			
+				 		</ul>
+
+				 		<ul class="cont-list line">	
+
+				 			<li style="height:50px; line-height: 50px;">
+
+				 				<a  href="index.php?moduleid=2&amp;action=charge">
+				 					<span class="list-title"><strong>{$DT[money_name]}</strong></span></a>
+
+				 				<span class="list-num">￥{$_money}</span>
+				 			</li>
+	 			
+				 		</ul>
+
+				 		<ul class="cont-list line">	
+
+				 			<li style="height:50px; line-height: 50px;">
+
+				 				<a><span class="list-title"><strong>{$DT[credit_name]}</strong></span></a>
+
+				 				<span class="list-num">{$_credit}</span>
+				 			</li>
+	 			
+				 		</ul>
+
+				 		<ul class="line ">
+				 			<li style="text-align: center;">
+				 				<a href="index.php?moduleid=9&action=resume&make_job=true" class="btn-jd-darkred btn-large w10 list-button">发布服务需求</a>
+
+				 				<a href="index.php?moduleid=9&make_resume=true" class="btn-jd-darkred btn-large w10 list-button">发布技术服务</a>
+				 			</li>
+				 		</ul>
+
+				 		<ul class="line " style="text-align: center;">
+				 			<li>
+				 				<a href="index.php?moduleid=2&amp;action=logout" style="width: 70%;" class="btn-jd-darkred btn-large w10" >注销登录</a>
+				 			</li>
+				 		</ul>
+				 	</div>
+				 					 		 		
+			 	</div>	
+			</div>
+		</div>		
+	</header>
+
+
+	<!--页脚-->
+  	
+	{template 'footer', $TP}
+</body>
+</html>

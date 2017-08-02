@@ -1,0 +1,20 @@
+{php $sitemenu=$module;$listpage='list';}
+{template 'module-header'}
+<div class="webw" style="margin: 30px auto;width: 800px;">
+	<div class="center" >
+		<div style="background:url('{DT_SKIN}image/error.png') left center no-repeat; padding-left:150px;">
+			<h1>公司不存在(Not Found)</h1><br/>
+您正在访问的公司主页可能已经<span style="color:red;">删除</span>、<span style="color:red;">更名</span>或<span style="color:red;">尚未开通</span>。<br/>
+<hr size="1"/>
+&nbsp;<strong>请尝试以下操作：</strong><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; 确保浏览器的地址栏中显示的网站地址的拼写和格式正确无误。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; 如果通过单击链接而到达了该网页，请与网站管理员联系，通知他们该链接的格式不正确。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; 单击<a href="javascript:history.back(1)"><span style="color:red;">后退</span></a>按钮尝试另一个链接。<br/>
+			<form action="{$MOD[linkurl]}search.php">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="25" name="kw"/> 
+			<input type="submit" value="搜索" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'"/>
+			</form>
+		</div>
+	</div>
+</div>
+{template 'footer2017'}

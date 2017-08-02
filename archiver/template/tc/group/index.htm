@@ -1,0 +1,27 @@
+{template 'title'}		
+<body>
+<script type="text/javascript" src="{DT_PATH}file/script/arrowtree.js"></script> 
+<script type="text/javascript" src="{DT_PATH}file/script/miniDropdown.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#youcan").click(function(){$("#leftmenu").slideToggle("normal");});
+});
+</script>
+						<div class='topmenubg'><!--最顶部菜单-->
+						<script type="text/javascript">topmenu(	{if $moduleid>2}{$moduleid}{else}1{/if})</script>
+{if !$teceid}
+<script type="text/javascript">Dd('tece{$moduleid}').className='welcomey';</script>
+{else}
+<script type="text/javascript">Dd('tece{$teceid}').className='welcomey';</script>
+{/if}
+</div>
+<div class="center" style="background:url({DT_SKIN}image/yijian/bg.jpg) center top no-repeat;height:1800px;">
+<div class="webw autoheight tc" >
+<div style="padding-top:200px;position:fixed;z-index:10;padding-left:80px;">
+<img src="{DT_SKIN}image/yijian/yes.png" >
+</div>
+</div>
+</div>
+<br class="clear">
+{template 'footer'}
+

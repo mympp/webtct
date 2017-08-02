@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>品牌信息认证</title>
+<style type="text/css">
+body{margin:auto;margin-top:0px;padding:0px;font-size:12px;font-family: "微软雅黑", "宋体";}a{font-size:12px;color:#555;text-decoration:none;}
+h1{color:#fff;margin:0px;line-height:34px;height:34px;font-size:18px;}
+</style>
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/admin.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jsfunction.js"></script>
+</head>
+<body>
+<div style="padding-top:30px;padding-bottom:10px;">
+{php $r = $db->get_one("select * FROM {$db->pre}brand_13 WHERE itemid=$itemid");}
+{php $d = $db->get_one("select * FROM {$db->pre}message WHERE title='认证取回《".$r[title]."》' and status=2");}
+{if !$d}
+{if $r}
+<table align="center" cellspacing="1" cellpadding="5" bgcolor="#d3d7d8" width=850>
+<tr>
+  <td height="40" colspan="2" align="center" bgcolor="#5781a2"><h1>认证取回&quot;{$r[title]}&quot;</h1></td>
+  </tr>
+<tr>
+	<td width="150" height="40" align="center" bgcolor="#d0f0ef" style="font-size:16px;">品牌/厂商信息</td>
+	<td  bgcolor="#FFFFFF" width=400><div id="brands"><font  style="font-size:14px;">{$r[title]}</font><br>链接：<a href="{$r[linkurl]}" target="_blank">{$MODULE[13][linkurl]}{$r[linkurl]}</a><br>发布者：{$r[username]}<br></div>
+	</td>
+</tr>
+<tr>
+	<td height="40" align="center" bgcolor="#d0f0ef" style="font-size:16px;">旗舰网店信息</td>
+	<td bgcolor="#FFFFFF">
+	<style type="text/css">
+	ul li {list-style-type:none;}
+		.comp{margin:0px;padding:0px;}
+	</style>
+		<div  id="companys">
+	{php $c = $db->get_one("select * FROM {$db->pre}company WHERE company='".$r[title]."'");}
+	  {if $c[company]}
+
+	<ul class="comp">
+	<li>网店名称：{$c[company]}</li>
+	<li>网店展示：{if $c[closeshop]}关闭{else}开放{/if}</li>
+	<li>网店状态：{$c[company]}</li>
+	<li>网店链接：<a href="{$c[linkurl]}" target="_blank">{$c[linkurl]}</a></li>
+	<li>发布者：{$c[username]}</li>
+	{if $c[vip]}<li>级别：{VIP} {$c[vip]}</li>{/if}
+	{if $c[areaid]}<li>所在地区：{area_pos($c[areaid], '/')}</li>{/if}
+	{if $c[type]}<li>公司类型：{$c[type]}{if $c[mode]}({$c[mode]}){/if}</li>{/if}
+	{if $c[regyear]}<li>成立时间：{$c[regyear]}</li>{/if}
+	{if $c[capital]}<li>注册资本：{$c[capital]}万{$c[regunit]}</li>{/if}
+	{if $c[business]}<li>经营范围：{$c[business]}</li>{/if}	
+	{if $c[sell]}<li>经营内容：{$c[sell]}</li>{/if}	
+	{if $c[buy]}<li>求购内容：{$c[buy]}</li>{/if}	
+	{if $c[introduce]}<li>公司介绍：{$c[introduce]}</li>{/if}	
+	</ul>
+
+	{else}
+	  无任何网店或旗舰店信息
+	{/if}
+		</div>
+	</td>
+  </tr>
+  {if $c[company]}
+<tr>
+	<td height="40" align="center" bgcolor="#d0f0ef" style="font-size:16px;">产品相关信息</td>
+	<td bgcolor="#FFFFFF">
+	<div id="products">
+	<div>会员账号 {$c[username]} 拥有产品信息：{$c[pnum]}条。以下是部分信息！</div>
+		<!--{php $tags=tag("moduleid=16&condition=status=3 and username='".$c[username]."'&pagesize=10&length=$len&order=edittime desc&template=null");}-->
+		{if $tags}
+		{loop $tags $t}
+		<a href="{$t[linkurl]}" target="_blank"> · {$t[title]}</a><br/>
+		{/loop}
+		{else}
+		无相关产品信息
+		{/if}
+   </div>
+	</td>
+  </tr>
+  {/if}
+<tr>
+	<td width="150" height="40" align="center" bgcolor="#ffe1b5" style="font-size:16px;">填写取回表单<br><span style="font-size:14px;color:red">*所有项目必填！</span></td>
+	<td  bgcolor="#fff9f0">
+
+
+
+	{if $_username}
+<iframe src="" name="send" id="send" style="display:none;"></iframe>
+<form method="post" action="official.php" target="send" onsubmit="return check();">
+
+	<script type="text/javascript">
+	function getusername(stype){
+	if (stype==0){
+	Dd('tds0').style.display='none';
+	Dd('tds1').style.display='';
+	Dd('tds2').style.display='';
+	Dd('tds3').style.display='';
+	Dd('tds4').style.display='';
+	}
+	else if(stype==1){
+	Dd('tds0').style.display='';
+	Dd('tds1').style.display='none';
+	Dd('tds2').style.display='none';
+	Dd('tds3').style.display='none';
+	Dd('tds4').style.display='none';
+	}
+	else if(stype==2){
+	Dd('tds0').style.display='none';
+	Dd('tds1').style.display='none';
+	Dd('tds2').style.display='';
+	Dd('tds3').style.display='';
+	Dd('tds4').style.display='';
+	Dd('newuser').value="{$r[username]}";
+	}	
+	}
+	</script>
+	<div  id="dform">
+<table align="left" cellspacing="1" cellpadding="5" border=0>
+<tr>
+	<td width="60"><b style="color:red;;">取回项目</b></td>
+	<td width="600"><input type="checkbox" name="post[types]" value="品牌信息" id="tbrand">品牌信息   {if $c[company]} <input type="checkbox" name="post[types]" value="旗舰店管理"  id="tcompany">旗舰店管理  <input type="checkbox" name="post[types]" value="产品信息"  id="tproduct">产品信息 {/if}
+	<div  style="color:red;">必须选择其中一个项目取回！</div>
+	</td>
+</tr>
+<tr>
+	<td ><b>取回规则</b></td>
+	<td >
+	<label><input type="radio" name="post[getback]" value=0 checked=checked onclick="if(this.checked==true){getusername(0);}">转移所选取回项目到新账号！由新账号管理！</label><br>
+	<label><input type="radio" name="post[getback]" value=1 onclick="if(this.checked==true){getusername(1);}">用原邮箱：{$r[email]}取回原账号密码自行管理</label><br>
+	<label><input type="radio" name="post[getback]" value=2 onclick="if(this.checked==true){getusername(2);}">申诉取回原账号密码</label><br>
+	</td>
+</tr>
+<tr id="tds0" style="display:none">
+	<td ><b>取回密码</b></td>
+	<td >{if $r[username]==$c[username]}<a href="{$MODULE[2][linkurl]}send.php?useroremail={$c[username]}" target="_blank" style="font-size:14px;color:#b41414"><u>点击取回账号  {$c[username]}  密码</u></a>{else}
+	
+	
+	<ul>
+	{if $c[username]}<li><a href="{$MODULE[2][linkurl]}send.php?useroremail={$c[username]}" target="_blank" style="font-size:14px;color:#b41414"><u>点击取回账号  {$c[username]}  密码</u></a></li>{/if}
+	{if $r[username]}<li><a href="{$MODULE[2][linkurl]}send.php?useroremail={$r[username]}" target="_blank" style="font-size:14px;color:#b41414"><u>点击取回账号  {$r[username]}  密码</u></a></li>{/if}
+	</ul>{/if}</td>
+</tr>
+
+<tr id="tds1">
+	<td><b>账号信息</b></td>
+	<td >您的新账号信息 <input type="text" size="20" value="{$_username}" name="post[username]"></td>
+</tr>
+
+<tr id="tds2">
+	<td ><b>联系方式</b></td>
+	<td>QQ<input type="text" name="qq" value="{$_qq}" size=10>&nbsp;&nbsp;手机<input type="text" name="mobile" value="{$_mobile}" size=14>&nbsp;&nbsp;邮箱<input type="text" name="email" value="{$_email}" size=20></td>
+</tr>
+<tr id="tds3">
+	<td ><b>相关凭证</b></td>
+	<td >
+	请用复印件形式+加盖公章后，扫描或者用手机拍摄后，在此处上传！<br>注意！图片尺寸宽度不得超过1000PX，图片大小不得超过1M！<br>必须为JPG格式！
+	
+	<div style="padding-bottom:10px;">企业营业执照<input name="post[pics1]" type="text" size="40" id="pics1" value="" readonly="readonly" />&nbsp;&nbsp;<span onclick="Dthumb(0,0,0, Dd('pics1').value,'1','pics1');" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('pics1').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('pics1').value='';" class="jt">[删除]</a></div>
+	<div style="padding-bottom:10px;">组织结构代码证<input name="post[pics2]" type="text" size="38" id="pics2" value="" readonly="readonly" />&nbsp;&nbsp;<span onclick="Dthumb(0,0,0, Dd('pics2').value,'1','pics2');" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('pics2').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('pics2').value='';" class="jt">[删除]</a></div>
+	<div style="padding-bottom:10px;">国税地税证明<input name="post[pics3]" type="text" size="40" id="pics3" value=""readonly="readonly"  />&nbsp;&nbsp;<span onclick="Dthumb(0,0,0, Dd('pics3').value,'1','pics3');" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('pics3').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('pics3').value='';" class="jt">[删除]</a></div>
+	</td>
+</tr>
+<tr  id="tds4">
+	<td colspan=2 >
+	<input type="checkbox" name="agree" onclick="if(this.checked==true){
+if(Dd('tbrand').checked==false&&Dd('tcompany').checked==false&&Dd('tproduct').checked==false){alert('请选择您要取回的项目');}
+		{if $c[company]}
+	if(Dd('tproduct').checked==true){Dd('contents').value='<dl><dt><b>认领产品信息</b></dt><dd>'+Dd('products').innerHTML+'</dd></dl>'+Dd('contents').value;}
+	if(Dd('tcompany').checked==true){Dd('contents').value='<dl><dt><b>认领网店信息</b></dt><dd>'+Dd('companys').innerHTML+'</dd></dl>'+Dd('contents').value;}
+		{/if}
+	if(Dd('tbrand').checked==true){Dd('contents').value='<dl><dt><b>认领品牌信息</b></dt><dd>'+Dd('brands').innerHTML+'</dd></dl>'+Dd('contents').value;}
+
+	Dd('but').disabled=false;
+	if(Dd('pics1').value==''||Dd('pics2').value==''||Dd('pics3').value==''){Dd('but').disabled=true;Dd('contents').value='';alert('请补齐三证');this.checked=false;}
+	}else{Dd('but').disabled=true;Dd('contents').value='';}">确定无误，<a href="{DT_PATH}about/agreement.html" target="_blank">同意本站相关条款内容</a>
+	
+</td>
+</tr>
+</table>
+</div>
+<input type="hidden" name="post[action]" value="save">
+<input type="hidden" name="post[title]" value="认证取回《{$r[title]}》">
+<textarea name="post[content]" rows="20" cols="80" id="contents" style="display:none"></textarea>
+<input type="submit" id="but" disabled=true value="确认提交">
+</form>
+<script type="text/javascript">
+function  check(){
+if(Dd('contents').value==''){alert('必须同意本站条款才能提交'); return false;}
+if(Dd('tbrand').checked==false&&Dd('tcompany').checked==false&&Dd('tproduct').checked==false){alert('请选择转移的项目');return false;}
+return true;
+}
+</script>
+{else}
+要取回信息您需要登录本站！<br>请 <a href=/member/register.php style="color:#a61313;font-size:18px;" target="_parent">“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php  style="color:#a61313;font-size:18px;" target="_parent">“会员登录”</a>
+{/if}
+
+
+
+	</td>
+</tr>
+</table>
+{else}
+<div style="text-align:center;font-size:18px;height:34px;line-height:34px;">未能找到任何品牌信息</div>
+{/if}
+{else}
+<div style="text-align:center;font-size:18px;height:34px;line-height:34px;">你已提交了申请信息，<a href="{$MODULE[2][linkurl]}message.php?action=show&itemid={$d[itemid]}" target="_parent">点这查看</a></div>
+{/if}
+
+</div>
+<style type="text/css">
+	#Dtop {border-right:#CCCCCC 3px solid;border-bottom:#CCCCCC 3px solid;}
+#Dtop .dbody{border:#333333 1px solid;padding:1px;background:#EBF0F6;}
+#Dtop .dhead{background:#2875B9 url('/member/image/close.gif') no-repeat right 4px;padding:0 0 0 0;letter-spacing:1px;border-bottom:#333333 1px solid;color:#FFFFFF;line-height:20px;font-weight:bold;cursor:move;}
+#Dtop .dhead span{float:right;cursor:pointer;display:block;width:22px;height:19px;text-align:right;}
+#Dtop .dbox{padding:8px;line-height:200%;}
+</style>
+</body>
+</html>

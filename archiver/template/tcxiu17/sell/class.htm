@@ -1,0 +1,8 @@
+php $tagss = tag("moduleid=5&table=category&condition=moduleid=5 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+{loop $tagss $i $t}
+{$t[catname]}
+		{php $tagsk = tag("moduleid=5&table=category&condition=moduleid=5 and parentid=".$t[catid]."&pagesize=30&order=listorder ASC&template=null&debug=0")}
+		{loop $tagsk $z $k}
+		{$k[catname]}
+		{/loop}
+{/loop}

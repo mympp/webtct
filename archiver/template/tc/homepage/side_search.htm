@@ -1,0 +1,27 @@
+<div class="side_head side_vip_head_07"><div><strong>{$side_name[$HS]}</strong></div></div>
+<div class="side_body">
+<form action="/{if $file=='homepage'}mall{else}{$file}{/if}/index.php" onsubmit="return check_kw();" {if $file!='homepage'}method="get"{/if} id="form2">
+<input type="hidden" name="action" value="search"/>
+<input type="hidden" name="view" value="1"/>
+<input type="hidden" name="homepage" value="{$username}"/>
+<input type="text" name="kw" value="{if $kw}{$kw}{else}输入关键词{/if}" size="25" id="kw" class="inp" onfocus="if(this.value=='输入关键词')this.value='';"/>
+<div style="padding:10px 0 0 0;">
+<select name="file" id="files">
+{if $menu_show[12]}<option value="mall"{if $file=='mall'||$side_num[$HS]==1||$side_num[$HS]==10} selected{/if}>产品中心</option>{/if}
+{if $menu_show[1]}<option value="sell"{if $file=='sell'||$side_num[$HS]==2} selected{/if}>供应信息</option>{/if}
+{if $menu_show[2]}<option value="buy"{if $file=='buy'||$side_num[$HS]==3} selected{/if}>需求信息</option>{/if}
+{if $menu_show[3]}<option value="news"{if $file=='news'||$side_num[$HS]==4} selected{/if}>文章新闻</option>{/if}
+{if $menu_show[4]}<option value="credit"{if $file=='credit'||$side_num[$HS]==5} selected{/if}>荣誉信息</option>{/if}
+{if $menu_show[5]}<option value="job"{if $file=='job'||$side_num[$HS]==6} selected{/if}>服务信息</option>{/if}
+{if $menu_show[7]}<option value="photo"{if $file=='photo'||$side_num[$HS]==7} selected{/if}>图片信息</option>{/if}
+{if $menu_show[8]}<option value="info"{if $file=='info'||$side_num[$HS]==8} selected{/if}>单页内容</option>{/if}
+{if $menu_show[9]}<option value="brand"{if $file=='brand'||$side_num[$HS]==9} selected{/if}>品牌信息</option>{/if}
+{if $menu_show[10]}<option value="video"{if $file=='video'} selected{/if}>视频内容</option>{/if}
+</select>&nbsp;
+<script type="text/javascript">
+Dd('form2').action='/'+Dd('files').value+'/index.php';
+</script>
+<input type="submit" value=" 搜 索 " class="sbm"/>
+</div>
+</form>
+</div>

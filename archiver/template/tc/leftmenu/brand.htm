@@ -1,0 +1,47 @@
+<div id="{$module}sidebar" class="hd">
+							<dl class="sidelist">
+								<dt><span><h3 class="treeout">厂家品牌分类<font>></font></h3></span></dt>
+								<dd class="i-list autoheight">
+									<ul>
+                                      {php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=50&order=listorder ASC&template=null")}
+									{loop $tagss $i $t}
+									<li class="w120"><a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid])}">{$t[catname]}</a><i>[{$t[item]}]</i></li>
+									{/loop}
+									</ul>
+									<br class="clear">
+									<div class='searchtool'>
+									<form action="{$MOD[linkurl]}search.php">
+									 <input type="text" size="60" name="kw" value="输入关键词 品牌/厂家" class="inputkw nr fl" onblur="if(this.value==''){this.value='输入关键词 品牌/厂家'}" onfocus="this.value=''"/>
+									 <input type="submit" value="搜索品牌/厂家信息" class="subm fl" >
+									 </form></div><div class="divline"></div>
+								</dd>
+							</dl>
+							<dl class="sidelist">
+								<dt><span><h3 class="treeout">合作商家网店<font>></font></h3></span></dt>
+								<dd class="i-list autoheight">
+								{php $company = $db->count($DT_PRE.'company', "closeshop=0", 60);}
+								<h5 >共<font class='ocolor'>({$company})</font>家合作商家网店,以下是网店类型的统计</h5>
+									<ul>	
+									{php $tagss = tag("moduleid=4&table=category&condition=moduleid=4 and parentid=0&pagesize=50&order=listorder ASC&template=null")}
+											{loop $tagss $i $t}			
+									    	<li class="w120"><a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid])}">{$t[catname]}</a><i>[{$t[item]}]</i></li>
+											{/loop}
+									</ul>
+									<br class="clear">
+									<div class='searchtool'>
+									<form action="{$MODULE[4][linkurl]}search.php">
+									 <input type="text" size="60" name="kw" value="输入关键词 品牌/厂家" class="inputkw nr fl" onblur="if(this.value==''){this.value='输入关键词 品牌/厂家'}" onfocus="this.value=''"/>
+									 <input type="submit" value="搜索合作商家网店" class="subm fl" >
+									 </form>
+									 </div>
+									 <div class="divline"></div>
+								</dd>
+							</dl>
+                           <div class='tece'>快速发布信息</div>	
+							<ul class='leftadd'>
+<li class="ico" id="addwx" style="background-image:url('{DT_SKIN}image/png/2/4.png');" onmouseover="bgcolor('addwx','#f77602');bgimage('addwx','{DT_SKIN}image/png/4.png')" onmouseout="bgcolor('addwx','');bgimage('addwx','{DT_SKIN}image/png/2/4.png')"><a href="{$MODULE[2][linkurl]}my.php?mid=13&action=add"><p>发布厂商/品牌信息</p></a></li>	
+<li class="ico" id="addgcs" style="background-image:url('{DT_SKIN}image/png/2/home.png');" onmouseover="bgcolor('addgcs','#f77602');bgimage('addgcs','{DT_SKIN}image/png/home.png')" onmouseout="bgcolor('addgcs','');bgimage('addgcs','{DT_SKIN}image/png/2/home.png')"><a href="{$MODULE[2][linkurl]}grade.php?sj=yes&groupid=6#UP"><p>开设合作商家网店</p></a></li>	
+
+							</ul>	
+
+</div>

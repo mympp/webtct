@@ -1,0 +1,144 @@
+{template 'header'}
+<style type="text/css">
+.f_red{color:red}
+.h360{height:370px;}
+.regs {background:url('{DT_SKIN}image/logins.jpg') no-repeat;overflow:hidden;width:983px;height:50px;}
+.regs ul{padding-top:20px;margin:0px;width:983px;}.regs ul a{font-size:14px;color:#8a8a8a}
+.regs ul li{float:left;margin-left:40px;_margin-left:25px; width:200px;_width:210px;line-height:20px;}.regs ul li font{font-size:18px;color:#2e6496}
+.tl{width:150px;text-align:right;padding-right:20px;}
+.logins{border:solid 1px #efefef;}.logins td{height:30px;}
+.reg_inp,#username,#password {border:#bebebe 1px solid;padding:2px;width:120px;color:#8a8a8a}
+.reg_title {border-bottom:#ffae79 1px solid;font-weight:bold;padding:0px 0px 0px 10px;;font-size:14px;color:#FF6600;background:#fffbd2}
+.use_title {border-bottom:#71e100 1px solid;font-weight:bold;padding:0px 0px 0px 10px;;font-size:14px;color:#009900;background:#f3fee2}
+.user_bt{border:#ccff99 1px solid;color:#009900;background:#f3fee2;height:20px;padding:5px 5px 0px 5px;;}
+.tips {position:absolute;z-index:1000;width:300px;background:url('image/tips_bg.gif') no-repeat 0 bottom;overflow:hidden;margin:-5px 0 0 -10px;}
+.tips div{background:url('image/tips_top.gif') no-repeat;line-height:22px;padding:8px 10px 8px 35px;}
+.botton{background:url('{DT_SKIN}image/orangebg.jpg');line-height:16px;padding:5px 10px 5px 10px;border:#ffcc66 1px solid;font-size:14px;color:#cc2400;letter-spacing:3px;font-weight:bold;width:150px;}
+</style>
+<div class="regs">	
+<ul>
+  <li><a href="{$DT[file_register]}"><span style="margin-left:15px;">注册本站会员</span></a></li>
+  <li><a href="javascript:void(0)" ><font>请填写登录内容</font></a></li>
+  <li><a href="send.php" >忘记了密码？请点这里找回</a></li>
+  <li><a href="send.php?action=check" >请未收到验证信？点这里重发</a></li>
+</ul>
+</div>
+<div class="autoheight grayb nt pd10">
+		<div class="h360 w300 fl cut">
+		<table width="250" cellpadding="0" cellspacing="4" align="left" class="logins">
+		<form method="post" action="{$DT[file_login]}"  onsubmit="return Dcheck();">
+		<input name="forward" type="hidden" id="forward" value="{$forward}">
+		<tr>
+		<td colspan="2" class="reg_title">会员登录表单</td>
+		</tr>
+		<tr onmouseover="Ds('tusername');" onmouseout="Dh('tusername');">
+		<td align="right">
+		<select name="option">
+			<option value="username">用户名</option>
+			{if $MOD[passport]}<option value="passport">通行证</option>{/if}
+			<option value="email">Email</option>
+			<option value="mobile">手机号</option>
+			<option value="company">公司名</option>
+			<option value="userid">会员ID</option>
+		</select>
+		</td>
+		<td><input name="username" type="text" id="username" value="{$username}"/></td>
+		<td>
+			<div class="tips" id="tusername" style="display:none;">
+				<div>如果忘记了用户名，请在左侧选择其他登录名称<br/>例如Email、手机号、公司名等</div>
+			</div>
+		</td>
+		</tr>
+		<tr onmouseover="Ds('tpassword');" onmouseout="Dh('tpassword');">
+		<td align="right">密 码：</td>
+		<td>{template 'password', 'chip'}</td>
+		<td>
+			<div class="tips" id="tpassword" style="display:none;">
+				<div>如果忘记了密码，请<a href="send.php" class="f_b">点击这里</a>自主找回或联系本站工作人员协助找回</div>
+			</div>
+		</td>
+		</tr>
+		{if $MOD[captcha_login]}
+		<tr>
+		<td align="right">验证码：</td>
+		<td>{template 'captcha', 'chip'}</td>
+		<td></td>
+		</tr>
+		{/if}
+		<tr>
+		<td colspan="2" align="center"><span title="选中后 一月内不用再次登录 网吧或公共计算机请勿选"><input type="checkbox" name="cookietime" value="2592000" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">记住我</label></span>
+		<span title="选中后 将直接进入商务室 不返回登录前的页面"><input type="checkbox" name="goto" value="1" id="goto"{if $MOD[login_goto]} checked{/if}/><label for="goto">进入商务室</label></span>
+		</td>
+		<td></td>
+		</tr>
+		<tr>
+		<td colspan="2" align="center"><input type="submit" name="submit" value=" 确 定 登 录 " class="botton"/>
+		</td>
+		</tr>
+		{if $oa}
+		<tr>
+		<td align="right">其他方式：</td>
+		<td>
+		{loop $OAUTH $k $v}
+		{if $v[enable]}<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a> &nbsp;{/if}
+		{/loop}
+		</td>
+		<td></td>
+		</tr>
+		{else}
+			<tr><td colspan="2" align="center"><a href="send.php" class="color" >忘记了密码？请点这里找回</a></td></tr>
+		{/if}
+		</form>
+		<tr><td colspan="2" class="use_title">成为会员你能做什么？</td>
+		<tr><td colspan="2" ><table cellpadding="0" cellspacing="5" width="240" align="center">
+			<tr>
+			<td><div class="user_bt"><img src="{$MODULE[2][linkurl]}image/baozhan.gif" align="absmiddle"/> 发布设备报障</div></td>
+			<td><div class="user_bt"><img src="{$MODULE[2][linkurl]}image/userw.gif" align="absmiddle"/> 提供技术解决</div></td>
+			</tr>
+			<tr>
+			<td><div class="user_bt"><img src="{$MODULE[2][linkurl]}image/ico_edit.gif" align="absmiddle"/> 发布供求信息</div></td>
+			<td><div class="user_bt"><img src="{$MODULE[2][linkurl]}image/ico_product.gif" align="absmiddle"/> 推广企业产品</div></td>
+			</tr>
+			<tr>
+			<td><div class="user_bt"><img src="{$MODULE[2][linkurl]}image/ico_homepage.gif" align="absmiddle"/> 建立企业商铺</div></td>
+			<td><div class="user_bt"><img src="{$MODULE[2][linkurl]}image/ico_message.gif" align="absmiddle"/> 在线洽谈生意</div></td>
+			</tr>
+			</table>
+			<div class="divline"></div>
+		</td>
+		</tr>
+		</table>
+		<div class="divline"></div>
+		</div>
+		<div class="h360 w650 fl cut">
+            <img src="{DT_SKIN}image/login_say.jpg">
+			</div>
+		<div class="divline"></div>
+</div>
+<script type="text/javascript">
+if(Dd('username').value == '') {
+	Dd('username').focus();
+} else {
+	Dd('password').focus();
+}
+function Dcheck() {
+	if(Dd('username').value == '') {
+		confirm('请输入登录名称');
+		Dd('username').focus();
+		return false;
+	}
+	if(Dd('password').value == '') {
+		confirm('请输入密码');
+		Dd('password').focus();
+		return false;
+	}
+{if $MOD[captcha_login]}
+	if(!is_captcha(Dd('captcha').value)) {
+		confirm('请填写验证码');
+		Dd('captcha').focus();
+		return false;
+	}
+{/if}
+}
+</script>
+{template 'footer'}

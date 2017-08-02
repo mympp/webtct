@@ -1,0 +1,87 @@
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jsfunction.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>
+
+<iframe src="" name="send" id="send" style="display:none;"></iframe>
+<style type="text/css">
+.zdl{ color:#b2b2b2; width:1000px; margin:0 auto;}
+.zdl table tr td{color:#b2b2b2;}
+.zdl input{ font-size:12px; line-height:20px; background:#343432; border:#6c6b6a 1px solid; color:#b2b2b2;}
+.zdl textarea{ background:#343432; border:#6c6b6a 1px solid; color:#b2b2b2;}
+</style>
+   	  <div class="zdl">
+        <form method="post" action="{DT_PATH}page/message.php" id="dform" onsubmit="return check();"  target="send" >
+		<input type="hidden" name="post[action]" value="save">
+		<input type="hidden" name="post[title]" value="亿健口罩代理咨询{$DT_TIME}">
+        <table width="538" height="240" border="0">
+          <tr>
+            <td width="95" align="right">联系人：</td>
+            <td width="174"><input type="text" name="post[truename]" ID="truename" value=""  /></td>
+            <td width="86" align="right">联系电话：</td>
+            <td width="155"><input type="text" name="post[mobile]" id="mobile" value="" /></td>
+          </tr>
+          <tr>
+            <td align="right">联系邮箱：</td>
+            <td><input type="text" name="post[email]" value=""  /></td>
+            <td align="right">QQ：</td>
+            <td><input  type="text" name="post[qq]" value="" /></td>
+          </tr>
+          <tr>
+            <td height="94" align="right" valign="top">请留言：</td>
+            <td colspan="3" valign="top"><textarea name="post[content]" id="content" cols="54" rows="4"></textarea></td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">验证码：</td>
+            <td colspan="3" valign="top">{template 'captcha', 'chip'} <span id="dcaptcha" class="ocolor"></span></td>
+          </tr>
+          <tr>
+          	<td colspan="4" align="center" valign="middle"><input type="submit" value="确认提交" id="but"></td>
+          </tr>
+        </table>
+        </form>
+        </div>
+
+				<script type="text/javascript">
+				function check() {
+					var l;
+					var f;
+					f = 'content';
+					l = Dd(f).value.length;
+					if(l < 10 || l > 2000) {
+						alert('内容不得少于10个汉字或者多余2000个汉字');
+						return false;
+					}
+
+					f = 'truename';
+					l = Dd(f).value.length;
+					if(l < 2) {
+						alert('请填写联系人');
+						return false;
+					}
+					f = 'mobile';
+					l = Dd(f).value.length;
+					if(l < 7) {
+						alert('请填写联系电话');
+						return false;
+					}
+
+
+					f = 'captcha';
+					l = Dd(f).value;
+					if(!is_captcha(l)) {
+						alert('请填写正确的验证码');
+						return false;
+					}
+					if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+						Dd(f).focus();
+						return false;
+					}
+	
+				}
+				</script>
+</div>
+</div>

@@ -1,0 +1,399 @@
+﻿{php $sitemenu='mall';$mlogo='mall.gif';$listpage='search';$noleftmenu='yes';}
+{template 'header'}
+<style type="text/css">
+	.webmenulist{width:750px;}
+</style>
+{template 'lay','tag'}
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+{php $com=getsqldata("thumb,linkurl,company","{$db->pre}company","username='$username'",1,0);}
+
+<div class="p_ab moremall" >
+{php $similar_keyword=$title}
+{template 'list-similar-word','tag'}
+<div class="divline"></div>
+<dl class=" autoheight whitebg grayb"  id="moremall" style="display:none;margin-left:0px;">
+<dt class="f16 rcolor  tc mb10 b pt5">同类推荐产品！</dt>
+<dd>
+<ul>
+	{php $tagt = tag("moduleid=$moduleid&condition=status=3  and catid=$catid and thumb<>''&pagesize=5&order=level desc,hits desc&template=null&debug=0&showcat=1")}
+    {loop $tagt $z $t}
+	<li class="f12 w120 h150 tc cut "><a href="{$t[linkurl]}" title="{$t[alt]}"><img src='{$t[thumb]}' alt='{$t[alt]}' width="90" height="80" align="center" class="grayb pd2 whitebg"><br>{$t[alt]}</a></li>
+	{/loop}
+</ul>
+</dd>
+</dl>
+</div>
+
+<script type="text/javascript">
+if(screen.width>1210){
+Dd('moremall').style.display='block';
+}
+</script>
+
+{if $level}<div class="level p_ab"><i>{$level}</i></div>{/if}
+
+
+<div class="whitebg pd10 autoheight grayb">
+  {if $groupid=='1'}
+   <div class="validate"><img src="{DT_SKIN}image/tc.gif"></div>
+  {elseif $groupid=='7'||$groupid=='8'}
+   <div class="validate"><img src="{DT_SKIN}image/mall/tc.gif"></div>
+  {/if}
+<table width="100%" class=" f14">
+	<tr>
+		<td width="450" align="center" valign="top"  style="border:0px;">
+			<table  cellpadding="0" cellspacing="0">
+				<tr>
+				<td  valign="top"  style="border:0px;">
+				<div id="mid_pos"></div>
+				<style type="text/css">
+					#mid_div{height:345px;}
+					#mid_pic{border:1px solid #e8e8e8}
+				</style>
+			<div id="mid_div" onmouseover="SAlbum();" onmouseout="HAlbum();" onclick="PAlbum(Dd('mid_pic'));">
+				<img src="{$albums[0]}" width="445" height="345" id="mid_pic"/><span id="zoomer"></span>
+			</div>
+			</td>
+		</tr>
+	<tr>
+		<td style="border:0px;"  align="center">
+<div class="fl" style="width:28px;line-height:">
+{php $lists = tag("moduleid=$moduleid&condition=status=3 and addtime<$addtime&pagesize=1&order=addtime desc&template=null", -1);}
+{loop $lists $k $v}
+<a href="{$v[linkurl]}" title="上一个产品：{$v[title]}" style="float:left"><img src="{DT_SKIN}image/mall/s.gif" ></a>
+{/loop}
+</div>
+
+<div class="fl tc" style="width:395px;">{loop $thumbs $k $v}<img src="{$v}" width="85" height="80" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</div>
+
+<div class="fl" style="width:28px;">
+
+{php $lists = tag("moduleid=$moduleid&condition=status=3 and addtime>$addtime&pagesize=1&order=addtime asc&template=null", -1);}
+{loop $lists $k $v}
+<a href="{$v[linkurl]}" title="下一个产品：{$v[title]}" style="float:left"><img src="{DT_SKIN}image/mall/x.gif" ></a>
+{/loop}
+</div>
+					</td>
+					</tr>
+					<tr>
+					<td  align="left"  style="border:0px;"><div class="baidushare">{template 'baidu', 'chip'}</div></td>
+					</tr>
+					</table>
+					</td>
+			<td valign="top"  style="border:0px;">
+			<div id="big_div" style="display:none;"><img src="" id="big_pic"/></div>
+				<div id="imgshow" style="display:none;"></div>
+		<table width="100%" cellpadding="3" cellspacing="1">
+
+				<tr>
+				<td colspan=2 style="border:0px;" height=50><div class="f20 color"><font class="f12"><h1>{$title}</h1></font><font class="f12">【{if $stype==0}整机{elseif $stype==1}配件 {else}耗材 {/if}】</font></div><div class="hcolor f12  lh16">{$introduce}</div></td>
+				</tr>
+				<tr>
+				<td colspan=2 style="border:0px;">
+					<table style="background:url('{DT_SKIN}image/mall/download.png');width:510px;height:70px;"cellpadding="0" cellspacing="0">
+						<tr>
+						<td class="rcolor tc w80" align="center">单 价</td>
+						<td>{if $groupid==8||$groupid==1}<span class="f16 color b">¥询价</span>{else}{if $price>0}<b class="rcolor f24"><div id="price" class="fl">¥{$price}</div></b>{else}<span class="f16 color b">¥面议</span>{/if}{/if}  
+						<span  id="mall_inquiry"><a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}" class="rcolor f14" rel="nofollow"><img src="{DT_SKIN}image/web2.gif" class="mid">点击了解</a></span>  </td>
+						</tr>
+						<tr>
+						<td class="rcolor" align="center">销 量</td>
+						<td>{if $groupid!=8||$groupid!=1}库存 <span id="mall_amount" class="f_orange">{$amount}</span> 件  {/if}<a href="#content" onclick="Mshow('order');" rel="nofollow">累计出售 <span id="mall_sales" class="f_orange">{$sales}</span> 件，<span id="mall_orders">{$orders}</span> 个订单</a></td>
+						</tr>
+					</table>
+				</td>
+				</tr>
+				<tr>
+				<td class="rcolor"  height="120" ><div class="w80 tc">支 持</div></td>
+				<td valign="top" >
+				<ul class="mallcan">
+				{php $step=str_replace('li id=','li onmouseover="Dd(\'optionstitle\').innerText=this.innerText" id=',fieldstitle(74,'*'));}
+				{$step}
+				<script type="text/javascript">
+				for(i=0;i<5;i++){
+				Dd('options74-'+i).innerHTML='<img src="{DT_SKIN}image/blank.gif" id=mallcan'+i+' >'+Dd('options74-'+i).innerText;
+                var strs='-,{$options},';
+				if(strs.indexOf(','+i+',')>0){
+						Dd('mallcan'+i).className='mallcan'+i;
+						}else{
+						Dd('mallcan'+i).className='nomallcan'+i;
+						}
+
+				}
+				</script>
+				</ul>
+				<div id="optionstitle"></div>
+				<script type="text/javascript">
+				Dd('optionstitle').innerText=Dd('options74-0').innerText;
+				</script>
+				<div class="divline"></div>
+				</td>
+				</tr>
+				{if $issectionprice}
+					{template 'dingzhi_section_price_show','chip'}
+				{/if}
+				{template 'dingzhi_shuxing','chip'}
+				<tr>
+				<td class="rcolor tc"  height=35  width="80">所在地</td>
+				<td>{area_pos($areaid, ' ')}</td>
+				</tr>
+				<tr>
+				<td class="rcolor tc" height=35  width="80">评 价</td>
+				<td><a href="#comment" onclick="Mshow('comment');" rel="nofollow">已有 <span class="f_orange" id="mall_comments">{$comments}</span> 条评价</a></td>
+				</tr>
+				<tr>
+				<td class="rcolor tc" height=35  width="80">关 注</td>
+				<td>已有<span class="color"><span id="hits" class='f14 ocolor'>{$hits}</span></span> 次关注</td>
+				</tr>
+			  </table>
+{if $status == 3}
+<div class="divline"></div>
+<table cellpadding="0" cellspacing="1" width="100%" bgcolor="#ffffff" align="center" class="tc mt10 mb10" >
+<tr>
+<script>
+	function buyNow(){
+		var url='{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}';
+		if($('#sectionPriceBuyUrl').val()!=''&&$('#sectionPriceBuyUrl').val()!=undefined){url=$('#sectionPriceBuyUrl').val();}
+		if($('#shuxing1').val()!=''&&$('#shuxing1').val()!=undefined){url+="?s1="+$('#shuxing1').val();}
+		if($('#shuxing2').val()!=''&&$('#shuxing2').val()!=undefined){url+="&s2="+$('#shuxing2').val();}
+		if($('#shuxing3').val()!=''&&$('#shuxing3').val()!=undefined){url+="&s3="+$('#shuxing3').val();}
+		Go(url);
+	}
+	function addCart(){
+		var url='{$itemid}';
+		if($('#sectionPriceItemId').val()!=''&&$('#sectionPriceItemId').val()!=undefined){url=$('#sectionPriceItemId').val();}
+		if($('#shuxing1').val()!=''&&$('#shuxing1').val()!=undefined){url+="&s1="+$('#shuxing1').val();}
+		if($('#shuxing2').val()!=''&&$('#shuxing2').val()!=undefined){url+="&s2="+$('#shuxing2').val();}
+		if($('#shuxing3').val()!=''&&$('#shuxing3').val()!=undefined){url+="&s3="+$('#shuxing3').val();}
+		AddCart(url);Dd('shopcart').className='shopcart';
+	}
+</script>
+<td width=30% class="pl10" id="baomin"><img id="buyMall" src="{DT_SKIN}image/btn_tobuy.gif" alt="立即购买" class="c_p" onclick="buyNow()"/></td>
+<td width=30% class="pl10" id="addCartMall"><img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" class="c_p" onclick="addCart()"/></td>
+<td width=30% class="pl10">{if $_groupid>6}<a href="{$MOD[linkurl]}copy.php?itemid={$itemid}" target="caozuo" rel=nofollow><img src="{DT_SKIN}image/btn_zhuanzai.gif" alt="收藏"/></a>{/if}
+</td>
+</tr>
+</table>
+				<div id="cart_tip" style="display:none;">
+					<p><img src="{DT_SKIN}image/close.gif" alt="关闭" width="17" height="12" onclick="Dh('cart_tip');"/>提示信息</p>
+					<div>已成功添加到购物车！购物车里已有 <span id="cart_num">0</span> 种商品</div>
+					<center>
+					<input type="button" value="再逛逛" onclick="Dh('cart_tip');"/>
+					      
+					<input type="button" value="去结算" onclick="Go('{$MOD[linkurl]}cart.php');"/>
+					</center>
+				</div>
+{else}
+<div class='f16 ocolor'>该产品已经下架</div>
+{/if}
+				</td>
+			</tr>
+		</table>
+<script type="text/javascript" src="{DT_STATIC}file/script/album.js"></script>
+
+</div>
+<div class="divline"></div>
+<div class="whitebg autoheight pd5">
+<div class="fl w260 graybg">
+{template 'contentright', 'chip'}
+</div>
+<div class="contentleft autoheight ml10  whitebg pd5">
+<dl class="dllist">
+	<dd>
+		<div id="cart_tip" style="display:none;">
+			<p><img src="{DT_SKIN}image/close.gif" alt="关闭" width="17" height="12" onclick="Dh('cart_tip');"/>提示信息</p>
+			<div>已成功添加到购物车！购物车里已有 <span id="cart_num">0</span> 种商品</div>
+			<center>
+			<input type="button" value="再逛逛" onclick="Dh('cart_tip');"/>
+			      
+			<input type="button" value="去结算" onclick="Go('{$MOD[linkurl]}cart.php');"/>
+			</center>
+		</div>
+	</dd>
+<dt style="height:28px;border-color:#ddd">
+<style type="text/css">
+	#contents li{float:left;font-size:16px;padding:3px 8px 2px 8px;}
+	.bluey{color:#ad3d16;border-bottom:2px solid #ad3d16;background:#ffeed9}
+	.bluen{border-bottom:2px solid #919191;}
+	.bluey a{color:#ad3d16;}
+	.bluen a{color:#636363; font-size:14px;font-weight:normal;}
+</style>
+<ul id='contents' class="pl5">
+<li class="bluey" id="t_detail"><a href="#detail" onclick="Mshow('detail');" rel="nofollow">详细内容介绍</a></li>
+<li class="bluen" id="t_company"><a href="#company" onclick="Mshow('company');" rel="nofollow" >公司简介</a></li>
+<li class="bluen" id="t_comment"><a href="#comment" onclick="Mshow('comment');" rel="nofollow">买家评价({$comments})</a></li>
+<li class="bluen" id="t_order"><a href="#order" onclick="Mshow('order');" rel="nofollow" >交易记录({$orders})</a></li>
+</ul>
+</dt>
+<dd class='pd10 content' id="content">
+	<div id="c_company" style="min-height:40px;">
+		<div class="divline"></div>
+		{php $company_content=$db->get_one("select cd.content as content from {$db->pre}company as c join {$db->pre}company_data as cd on c.userid=cd.userid where c.company='".$factory."'");}
+		{$company_content['content']}
+		<div class="divline"></div>
+	</div>
+	<div style="display:;" id="c_detail">
+	<table width="100%" cellpadding="3" cellspacing="1" class="table grayb">
+		<tr>
+			<td class="rcolor graybg " >信息类别</td>
+			<td>{if $stype==0}整机{elseif $stype==1}配件 {else}耗材 {/if} </td>
+			<td class="rcolor  graybg w80">厂商/品牌</td>
+			<td class="color">{$factory}</td>
+		</tr>
+		<tr>
+			<td  class="rcolor  graybg w80">产品型号</td>
+			<td class="color">{$model} </td>
+			<td  class="rcolor  graybg w80">产品规格</td>
+			<td class="color">{$standard} </td>
+		</tr>
+		<tr {if $orders==0}style="display:none"{/if}>
+			<td  class="rcolor  graybg">产品销量</td>
+			<td><a href="#order" onclick="Mshow('order');" rel="nofollow">累计出售 <span class="f_orange">{$sales}</span> 件，{$orders} 个订单</a></td>
+			<td class="rcolor  graybg">买家评价</td>
+			<td><a href="#comment" onclick="Mshow('comment');" rel="nofollow">已有 <span class="f_orange">{$comments}</span> 条评价</a></td>
+		</tr>
+		<tr {if $groupid==8||$groupid==1}style="display:none"{/if}>
+			<td  class="rcolor  graybg">产品库存</td>
+			<td>还剩 <span class="f_orange">{$amount}</span> 件</td>
+			<td  class="rcolor  graybg">所在地：</td>
+			<td>{area_pos($areaid, ' ')}</td>
+		</tr>
+	</table>
+		{if $CP}{template 'property', 'chip'}{/if}
+		{if $factoryid && ($groupid==8||$groupid==1)}
+		<div class=" f16 bcolor graybg pd10">
+		厂商联系资料：{if $_userid}
+		{php $lists = tag("moduleid=13&condition=itemid=".$factoryid."&pagesize=1&order=edittime desc&template=null&debug=0")}
+		     {loop $lists $k $cu}
+			 {if $cu[shownotes]=='0'}
+				{if $cu[notes]}
+					{$cu[notes]}
+				{else}
+					发布者未完善厂商联系资料！请直接与发布者联系！
+				{/if}
+			 {else}
+			 厂商资料发布者未公开厂商资料！
+			 {/if}
+			 {/loop}
+	    {else}
+		会员登陆，可直接查看厂商直接联系方式！
+		{/if}
+	 以上信息{$title}为{$factory}相关负责发布，如需了解{$title}价格、型号、图片、售后等信息请联系厂家
+		</div>
+		{/if}
+		{$content}
+		<br class='clear'/>
+<dd style="background-color:#CCCCCC">以上信息<strong>{$title}</strong>为<strong>{$factory}</strong>相关负责发布，如需了解{$title}价格、型号、图片、售后等信息请联系厂家</dd>
+{template 'mall_relevant','chip'}
+<style>
+.nocontent{height:auto;}
+</style>
+{template 'comment', 'chip'}
+	</div>
+	<div style="display:none;" id="c_comment">
+		<center>正在载入评论详细..2.</center>
+	</div>
+	<div style="display:none;" id="c_order">
+		<center>正在载入交易记录..3.</center>
+	</div>
+{if $CP}{template 'property', 'chip'}{/if}
+</dd>
+</dl>
+</div>
+
+<br class="clear">
+</div>
+ <script type="text/javascript">
+function AddCart(i) {
+	makeRequest('action=ajax&itemid='+i, '{$MOD[linkurl]}cart.php', '_AddCart');
+}
+function _AddCart() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		if(xmlHttp.responseText == -3) {alert('商品不存在或已下架');return;}
+		if(xmlHttp.responseText == -4) {alert('不能添加自己的商品');return;}
+		var cart_num = get_cookie('cart');
+		Dd('cart_num').innerHTML = cart_num;
+		if(cart_num) Dd('destoon_cart').innerHTML = '<strong class="f_red">'+cart_num+'</strong>';
+		Ds('cart_tip');
+	}
+}
+var c_c = Dd('c_comment').innerHTML;
+var c_o = Dd('c_order').innerHTML;
+var n_c = {$comments};
+var n_o = {$orders};
+function Mshow(i) {
+	if(i == 'detail') {
+		Dd('t_detail').className = 'mall_tab_2';
+		Dd('t_comment').className = 'mall_tab_1';
+		Dd('t_order').className = 'mall_tab_1';
+		Dd('t_company').className='mall_tab_1';
+		Ds('c_detail');
+		Dh('c_comment');
+		Dh('c_order');
+		Dh('c_company');
+	} else if(i == 'comment') {
+		Dd('t_detail').className = 'mall_tab_1';
+		Dd('t_comment').className = 'mall_tab_2';
+		Dd('t_order').className = 'mall_tab_1';
+		Dd('t_company').className='mall_tab_1';
+		Dh('c_detail');
+		Ds('c_comment');
+		Dh('c_order');
+		Dh('c_company');
+		load_comment(0);
+	} else if(i == 'order') {
+		Dd('t_detail').className = 'mall_tab_1';
+		Dd('t_comment').className = 'mall_tab_1';
+		Dd('t_order').className = 'mall_tab_2';
+		Dd('t_company').className='mall_tab_1';
+		Dh('c_detail');
+		Dh('c_comment');
+		Ds('c_order');
+		Dh('c_company');
+		load_order(0);
+	}else if(i=='company'){
+		Dd('t_detail').className = 'mall_tab_1';
+		Dd('t_comment').className = 'mall_tab_1';
+		Dd('t_order').className = 'mall_tab_1';
+		Dd('t_company').className='mall_tab_2';
+		Dh('c_detail');
+		Dh('c_comment');
+		Dh('c_order');
+		Ds('c_company');
+	}
+}
+function load_comment(p) {
+	if(n_c == 0) {
+		Dd('c_comment').innerHTML = '<div class="nocontent">暂无评论记录</div>';
+		return;
+	}
+	if(p == 0 && Dd('c_comment').innerHTML != c_c) return;
+	makeRequest('action=comment&itemid={$itemid}&page='+p, '{$MOD[linkurl]}api.php', '_load_comment');
+}
+function _load_comment() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		Dd('c_comment').innerHTML= xmlHttp.responseText;
+	}
+}
+function load_order(p) {
+	if(n_o == 0) {
+		Dd('c_order').innerHTML = '<div class="nocontent">暂无交易记录</div>';
+		return;
+	}
+	if(p == 0 && Dd('c_order').innerHTML != c_o) return;
+	makeRequest('action=order&itemid={$itemid}&page='+p, '{$MOD[linkurl]}api.php', '_load_order');
+}
+function _load_order() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		Dd('c_order').innerHTML= xmlHttp.responseText;
+	}
+}
+
+if(window.location.href.indexOf('#') != -1) {
+	var t = window.location.href.split('#');
+	try {Mshow(t[1]);} catch(e) {}
+}
+Mshow('detail');
+</script>
+{template 'fav','chip'}
+{template 'footer'}

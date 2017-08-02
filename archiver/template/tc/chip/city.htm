@@ -1,0 +1,11 @@
+
+<ul class="pd10">
+{php $child = get_mainarea(0)}
+{loop $child $i $c}
+<li class="w180 fl mr10 bluebg" >
+<p>
+	<a href="{$MODULE[$mid][linkurl]}{rewrite('search.php?areaid='.$c['areaid'].$action)}"class="color lenstr"  target="_blank"><strong class=" ocolor  f14">{$c[areaname]}</strong><span>{$midname}</span></a>
+</p>
+</li>
+{/loop}
+</ul>

@@ -1,0 +1,195 @@
+{template 'module-header'}
+<script src="http://www.tecenet.com/file/script/config.js"></script>
+<script src="http://www.tecenet.com/file/script/common.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css"/>
+{template 'menu2017'}
+
+<div class="crumb box-center w1200">
+<div class="your cut">
+<font class="color f14 mr10">您所在的位置 </font>
+<a href="{DT_PATH}">网站首页&nbsp;</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a id="yourmdmore" href="#">留言板</a>
+</div>
+</div>
+
+<style type="text/css">
+	img{display:inline-block;}
+	#topkeyword{width: 310px;height: 22px;line-height: 22px;}
+	.w1200.box-center table{border-collapse: collapse;}
+	.w1200.box-center table td{padding: 10px;border: 1px solid #eaeaea;}
+	.webmenulist{width:750px;}
+	#ask textarea,#ask input[type='text']{border: 1px solid #eaeaea;padding: 5px;}
+</style>
+<script type="text/javascript">
+Dd('youcan').innerHTML="<a href=\"{DT_PATH}\" class='wcolor h4'>天成网首页</a>";
+</script>
+<div class="autoheight pd10 whitebg w1200 box-center">
+	<table cellpadding="0" cellspacing="0" width="100%">
+	<td valign="top">
+		<div class="left_box">		
+			<div>
+			{if $lists}
+			<form action="index.php"><div class="grayb pd10 graybg mb10 h35">
+			
+			<span class='f16 color fl pt5 mr10'>帮助关键词</span>
+			<input type="text" size="50" name="kw" value="{$kw}" class="inputkw fl"/> 
+			<input type="submit" value="立即搜索" class='subm fl'/>
+			<a href="#ask" class="suba w160 fl ml10"><img src="{DT_SKIN}image/019.gif" class="mid">&nbsp;我要发布留言/帮助</a>
+			
+			</div></form>
+			
+			{loop $lists $k $v}
+			<table width="100%" cellpadding="8" cellspacing="1" bgcolor="#E3EEF5">
+			<tr>
+			<td align="right" bgcolor="#F1F7FC" width="150">{if $v[hidden]}游客{else}{$v[truename]}{/if} 提问：&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF" class="lh18 f14 bcolor"><p class="f10">{$v[adddate]}</p>{$v[content]}</td>
+			</tr>
+			{if $v[reply]}
+			<tr>
+			<td align="right" bgcolor="#f6f6f6">客服  回复：&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF" ><div style="line-height:20px;">{$v[reply]}<span class="px11">{$v[editdate]}</span></div></td>
+			</tr>
+			{/if}
+			</table>
+			<div class="divline"></div>
+			{/loop}		
+			{if $pages}<div class="pages">{$pages}</div>{/if}
+			{/if}
+			<div class="divline"></div>
+			<form action="index.php" method="post" onsubmit="return check();">
+			<table width="100%" cellpadding="8" cellspacing="1" bgcolor="#fbdc8a" id="ask">
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color'  align="right">需帮助类型&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+
+			{loop $TYPE $k $v}
+			<label><input type="radio" name="post[type]"value="{$v}">{$v}</label>
+			{/loop}
+
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right"><span class="ocolor">*</span> 需帮助内容&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF" title="留言内容不支持任何语法，仅限文字"><textarea name="post[content]" rows="5" cols="70" id="contents" >{$content}</textarea><br/>
+			<span id="dcontent" class="ocolor"></span>
+			</td>
+			</tr>
+			<!-- <tr>
+			<td bgcolor="#fef7c2" class='f14 color'  align="right">客服与您联系&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="radio" name="my" value="1" id="my_1" onclick="Ds('gb_contact');"/> <label for="my_1">需要</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="my" value="0" id="my_0" checked onclick="Dh('gb_contact');"/> <label for="my_0">不需要</label>
+			</td>
+			</tr> -->
+			<tbody id="gb_contact" style="">
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right"><span class="ocolor">*</span>联系人&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[truename]"  size="10" id="truename" value="{$truename}"/>&nbsp;
+			<input type="checkbox" name="post[hidden]" value="1" id="hidden" checked/><label for="hidden" title="选择匿名后,联系人姓名仅网站工作人员可见"> 匿名留言</label>
+			<span id="dtruename" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right"><span class="ocolor">*</span>联系电话&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[telephone]"  size="30" id="telephone" value="{$telephone}"/>
+			<span id="dtelephone" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right">电子邮件&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[email]"  size="30" id="email" value="{$email}"/>
+			<span id="demail" class="ocolor"></span>
+			</td>
+			</tr>
+			{if $DT[im_qq]}
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right">QQ&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[qq]" id="qq" value="{$qq}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_ali]}
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right">阿里旺旺&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[ali]" id="ali" value="{$ali}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_msn]}
+			<tr>
+			<td bgcolor="#fef7c2" class='f16 color' align="right">MSN&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="30" name="post[msn]" id="msn" value="{$msn}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_skype]}
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right">Skype&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[skype]" id="skype" value="{$skype}"/></td>
+			</tr>
+			{/if}
+			</tbody>
+			{if $MOD[guestbook_captcha]}
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color' align="right"><span class="ocolor">*</span> 验证码&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			{template 'captcha', 'chip'}
+			<span id="dcaptcha" class="ocolor"></span>
+			</td>
+			</tr>
+			{/if}
+			<tr>
+			<td bgcolor="#fef7c2" class='f14 color'> </td>
+			<td bgcolor="#FFFFFF">
+			<input type="submit" name="submit" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" value=" 提交 "/>&nbsp;
+			<input type="reset" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" value=" 重写 "/>
+			</td>
+			</tr>
+			</table>
+			</form>
+		
+			</div>
+		</div>
+	</td>
+	</tr>
+	</table>
+</div>
+<script type="text/javascript">
+function check() {
+	var l;
+	var f;
+	var rE = 'my_1';
+	var name = 'truename';
+	var tel = 'telephone';
+	f = 'contents';
+	l = Dd(f).value.length;
+	if(l < 5 || l > 1000) {
+		alert('内容应为5-1000字，当前已输入'+l+'字。');
+		Dd(f).focus();
+		return false;
+	}
+	if(Dd(name).value == ""){
+		alert('联系人不能为空');
+		Dd(name).focus();
+		return false;
+	}
+	if(Dd(tel).value == ""){
+		alert('联系电话不能为空');
+		Dd(tel).focus();
+		return false;
+	}
+	{if $MOD[guestbook_captcha]}
+	f = 'captcha';
+	l = Dd(f).value;
+	if(!is_captcha(l)) {
+		Dmsg('请填写验证码', f);
+		Dd(f).focus();
+		return false;
+	}
+	{/if}
+	return true;
+}
+
+
+
+</script>
+{template 'footer2017'}

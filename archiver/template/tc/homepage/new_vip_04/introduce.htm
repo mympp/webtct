@@ -1,0 +1,11 @@
+{template 'header', $template}
+	<div class="crumbs">您的当前位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}">公司介绍</a></div>
+	<div class="list_introduce">
+		<div class="list_title"><span><b>公司简介</b></span></div>
+		<div class="list_introduce_content">
+			<div class="company_logo">{if $logo}<img src="{$logo}" width="186" height="186"/>{else}<img src="{$HSPATH}logo.jpg" width="186" height="186"/>{/if}</div>
+			{$content}
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+{template 'footer', $template}	

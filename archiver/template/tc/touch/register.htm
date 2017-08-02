@@ -1,0 +1,61 @@
+<form action="index.php?action=adduser" method="post">
+<div style="margin:0 auto 0 auto;width:300px">
+<table style="text-align:right">
+	<input type="hidden" name="member[truename]" value="">
+	<input type="hidden" name="member[passport]" value="">
+	<input type="hidden" name="member[gender]" value="1">
+	<input type="hidden" name="member[areaid]" value="1">
+	<input type="hidden" name="member[regid]" value="5">
+	<input type="hidden" name="member[department]">
+	<input type="hidden" name="member[career]">
+	<input type="hidden" name="member[mobile]">
+	<input type="hidden" name="member[qq]">
+	<input type="hidden" name="member[ali]">
+	<input type="hidden" name="member[msn]">
+	<input type="hidden" name="member[skype]">
+	<input type="hidden" name="member[company]">
+	<input type="hidden" name="member[type]">
+	<input type="hidden" name="member[thumb]">
+	<input type="hidden" name="member[catid]">
+	<input type="hidden" name="member[business]">
+	<input type="hidden" name="member[size]">
+	<input type="hidden" name="member[regunit]" value="人民币">
+	<input type="hidden" name="member[capital]">
+	<input type="hidden" name="member[regyear]">
+	<input type="hidden" name="member[address]">
+	<input type="hidden" name="member[postcode]">
+	<input type="hidden" name="member[telephone]">
+	<input type="hidden" name="member[fax]">
+	<input type="hidden" name="member[mail]">
+	<input type="hidden" name="member[homepage]">
+	<input type="hidden" name="member[sell]">
+	<input type="hidden" name="member[buy]">
+	<input type="hidden" name="member[introduce]" value="&nbsp;">
+	<input type="hidden" name="member[edittime]" value="1">
+	<input name="forward" type="hidden" value="<?php echo $MODULE[1]['linkurl'].'wap/index.php?moduleid=2';?>"/>
+	<tr>
+		<td>用户名:</td>
+		<td><input type="text" name="member[username]"></td>
+	</tr>
+	<tr>
+		<td>密码:</td>
+		<td><input type="password" name="member[password]"></td>
+	</tr>
+	<tr>
+		<td>确认密码:</td>
+		<td><input type="password" name="member[cpassword]"></td>
+	</tr>
+	<tr>
+		<td>邮箱:</td>
+		<td><input type="text" name="member[email]"></td>
+	</tr>
+	<tr>
+		<td>验证码:</td>
+		<td>{template 'captcha', 'chip'}</td>
+	</tr>
+	<tr>
+	</tr>	
+</table>
+	<input type="submit" value="注册" name="submit">
+</div>
+</form>

@@ -1,0 +1,86 @@
+
+					
+					<div id="downpage">
+						<form method="get" action="taoxinxi.php" target="getmessage">
+						<input type="hidden" name="kw" value="{$kw}">
+						<input type="hidden" name="areaid" value="{$_areaid}">
+						<input type="hidden" name="day" value="{$day}">
+						<input type="hidden" name="order" value="{$order}">
+						<input type="hidden" name="action" value="updatelist">
+						<input type="hidden" name="itemid" id="lastitemid" value="{$v[itemid]}">
+						{if $action!='show'}
+							<input type="image" src="{DT_STATIC}mobile/static/img/down_load.png" id="uploading" onclick="this.src='{DT_STATIC}mobile/static/img/loading.gif'">
+						{else}
+							<button><img  src="{DT_STATIC}mobile/static/img/morelist.png" onclick="Go('taoxinxi.php')"></button>
+						{/if}
+						</form>
+					</div>
+					
+					<div class="divline"></div>
+	</div>
+<!--  获得引用的内容和ID -->
+					<script type="text/javascript">function allowmessage(itemid,message){Dd('message').value=message;Dd('allowitemid').value=itemid;}</script>
+<!--  获得引用的内容和ID --------------------->
+					<footer id="footer" class="dir">
+					<div class="totop"><a href="javascript:void(0)"><img src="{DT_STATIC}mobile/static/img/totop.png"  id="totop"></a></div>
+					<div id="addtool">
+					<script type="text/javascript">
+					function nomessage()
+					{
+						if(!Dd('message').value)
+							{
+							Dd('message').className='orangey';
+							return false;
+							}
+						return true;
+					}
+					</script>
+					<form method="post" action="taoxinxi.php" target="getmessage" onsubmit="return nomessage();"><input type="hidden" name="action" value='addsave'>
+					<input type="hidden" name="post[allowitemid]" id="allowitemid" value="">
+					<input type="hidden" name="post[ip]" id="addip" value="{$DT_IP}">
+					<table width="100%" cellpadding="2" cellspacing="2"  align="center">
+					<tr  id="toolt">
+						<td width="25%" valign="top" align="center"><input type="button" onclick="showbox('searchbox',500,'{$kw}:信息筛选','taoxinxi.php?action=search&order={$order}&day={$day}&areaid={$areaid}&kw={$kw}')"  value="搜索"  class="botton"></td>
+						<td width="25%" valign="top" align="center" onclick="showbox('searchbox',500,'订阅','taoxinxi.php?action=subscibe&order={$order}&day={$day}&areaid={$areaid}&kw={$kw}')"><input type="button"  value="订阅"  class="botton"></td>
+						<td width="25%" valign="top" align="center" ><input type="button"  value="会员"  class="botton"></td>
+						<td width="25%" valign="top" align="center"><input type="button" value="发布" class="botton"          onclick="Dd('inputt').style.display='';Dd('toolt').style.display='none';"></td>
+					</tr>
+					<tr style="display:none" id="inputt">
+						<td width="75%" valign="top"  align="center" colspan=3>
+						<textarea name="post[content]"  id="message" class="grayb" 
+						onfocus="setTimeout('inputscroll()',100);" 
+
+						onblur="Dd('footer').className='dir';"></textarea>
+						</td>
+						<td width="25%" valign="top" align="center">
+							<input type="submit" value="发布" class="botton"><input type="button"  onclick="Dd('toolt').style.display='';Dd('inputt').style.display='none';"  value="返回"  class="botton">
+						</td>
+					</tr>
+					</table>
+					</form>
+					 </div>
+					</footer>
+					<div class="divline" id="laster"></div>
+			<script type="text/javascript">
+			function inputscroll(){
+			var wh;
+			wh=$(window).height()-100;
+			Dd('footer').style.top=wh;
+			Dd('message').className='grayb';
+			$("html,body").animate({scrollTop:$("#footer").offset().top-150},200);
+			}
+			function toscroll(id){
+			$("html,body").animate({scrollTop:$("#"+id).offset().top-200},200);
+			}
+			$('#totop').click(function() {
+				$("html, body").animate({scrollTop:0}, 200);
+			});
+			function godown(){$("html,body").animate({scrollTop:$("#laster").offset().top},1000);}
+
+			if($(document).scrollTop()<10){$("html,body").animate({scrollTop:$("#laster").offset().top+100},1000);}
+			</script>
+<span style="display:none">
+<script src="http://s4.cnzz.com/z_stat.php?id=1000496684&web_id=1000496684" language="JavaScript"></script>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/14914538.js"></script>
+<script src="http://s4.cnzz.com/z_stat.php?id=1257347142&web_id=1257347142" language="JavaScript"></script>
+</span>

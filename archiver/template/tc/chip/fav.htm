@@ -1,0 +1,10 @@
+		<form method="post" action="{$MODULE[2][linkurl]}favorite.php" name="info_favorite" id="info_favorite">
+		<input type="hidden" name="action" value="add"/>
+		<input type="hidden" name="title" value="{$title}"/>
+		<input type="hidden" name="url" value="{$linkurl}"/>
+		</form>
+		<form method="post" action="{$MODULE[2][linkurl]}sendmail.php" name="sendmail" id="sendmail" target="_blank">
+		<input type="hidden" name="itemid" value="{$itemid}"/> 
+		<input type="hidden" name="title" value="{$title}"/>
+		<input type="hidden" name="linkurl" value="{$linkurl}"/>
+		</form>

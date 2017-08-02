@@ -1,0 +1,236 @@
+{template 'header'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<script type="text/javascript" src="{DT_PATH}file/script/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+
+{template 'lay','tag'}
+<div class="autoheight pt5 grayb nt"><form action="{$MOD[linkurl]}search.php" id="fsearch">
+														{php $b=substr_count($CAT[arrparentid],",");$l=explode(',',$CAT[arrparentid]);}	
+														
+														<dl class="options">		
+														
+														<dt>产品行业分类：</dt>
+														<dd><ul><li><a {if $catid==''} class="opyes"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('index.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&typeid='.$typeid)}">不限</a></li>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=50&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<li><a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&tc=9&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[1]} class="opyes"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a></li>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+																	{/if}
+															{/loop}
+															
+															</ul>
+															</dd>
+															</dl>
+															{if $childa!=0}
+															<dl class="options">
+															<dt>{$parenta}的分类：</dt>
+															<dd><ul><li><a {if $catid==$catida} class="opyes"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catida)}">不限</a></li>
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catida&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<li><a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a></li>
+																	{if $t[catid]==$catid||$t[catid]==$l[2]}
+																	{php $childb=$t[child];$parentb=$t[catname];$catidb=$t[catid];} 
+																	{/if}
+															{/loop}
+															
+															<br class="clear">
+															</ul>
+															</dd>
+															</dl>{/if}
+															{if $childb!=0}
+															<dl class="options">
+															<dt>
+															{$parentb}的分类：
+															 </dt>
+															<dd><ul><li><a {if $catid==$catidb} class="opyes"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catidb)}">不限</a></li>
+
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catidb&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<li><a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[3]} class="opyes"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a></li>
+																	{if $t[catid]==$catid||$t[catid]==$l[3]}
+																	{php $childc=$t[child];$parentc=$t[catname];$catidc=$t[catid];} 
+																	{/if}
+															{/loop}
+															
+															<br class="clear">
+															</ul>
+															</dd>
+															</dl>{/if}
+
+															{if $childc!=0}
+															<dl class="options">
+															<dt>
+															{$parentc}的分类：
+															 </dt>
+															<dd><ul><li><a {if $catid==$catidc} class="opyes"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$catidc)}">不限</a></li>
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catidc&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<li><a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&tc=9&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[4]} class="opyes"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a></li>
+															{/loop}
+															
+															<br class="clear">
+															</ul>
+															</dd>
+															</dl>{/if}
+															
+															<dl class="options">
+															<dt>厂商分类：</dt>
+															<dd><ul><li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=9&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="opyes">不限</a></li>
+															{php $tagss = tag("moduleid=13&table=category&condition=moduleid=13 and parentid=0&pagesize=5&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<li><a 
+															{if $t[item]>0}
+															href="javascript:msgbox('{$t[catname]}的厂家','{DT_PATH}brand/tree.php?tree=1&id1={$t[catid]}&areaid={$areaid}&tc={$tc}&kw={urlencode($kw)}&list={$list}&order={$orderv}&day={$day}&vip={$vip}&catid={$catid}')" 
+															{else}
+															href="{$MOD[linkurl]}{rewrite('search.php?tc=9&bcatid='.$t[catid].'&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" 
+															{/if}
+															{if $t[catid]==$bcatid} class="opyes"{else}class="color"{/if}>{set_style($t[catname],$t[style])}{if $fid>0&&$t[catid]==$bcatid}&nbsp;〉{$fname}{/if}</a></li>
+															{/loop}
+															</ul>
+															</dd>
+															</dl>
+															<dl class="options">
+															<dt>产品属性：</dt>
+															<dd><ul><li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=9&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="opyes">不限</a></li>
+															<li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=9&catid='.$catid.'&stype=0&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="color">整机</a></li>
+															<li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=9&catid='.$catid.'&stype=1&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="color">配件</a></li>
+															<li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=9&catid='.$catid.'&stype=2&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="color">耗材</a></li>
+															</ul>
+															</dd>
+															</dl>
+<dl class="options">
+															<dt>数据来源：</dt>
+															<dd><ul><li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=9&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" class="opyes">不限</a></li>
+															
+															<li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=1&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" {if $tc=='1'}class="opyes"{else}class="color"{/if}>天成官方</a></li>
+															<li><a href="{$MOD[linkurl]}{rewrite('search.php?tc=0&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" {if $tc=='0'}class="opyes"{else}class="color"{/if}>第三方网店</a></li>
+														
+															<br class="clear">
+															</ul>
+															</dd>
+															</dl>
+														<dl class="options search">
+															
+															<dd>
+			<ul><li><select  name="fields" class="subm" ><option value="0" selected >模糊</option><option value="1"  >标题</option><option value="3"  >简介</option><option value="4"  >公司</option></select>
+            <input type="text" size="30" name="kw" value="{$kw}" class="subm" id="keywords"  onfocus="if(this.value=='输入关键词'){this.value=''}"/>
+			<input type="hidden" name="list" value="{$list}"><input type="hidden" name="areaid" value="{$areaid}"><input type="hidden" name="tc" value="{$tc}">
+			<input type="hidden" name="order" value="{$orderv}"><input type="hidden" name="catid" value="{$catid}"><input type="hidden" name="vip" value="{$vip}"><input type="hidden" name="thumb" value="{$thumb}"><input type="hidden" name="price" value="{$price}">
+			<script type="text/javascript">
+			document.getElementById('keywords').value='{if $kw!=''}{$kw}{else}输入关键词{/if}';
+			</script><input type="image" src="{DT_SKIN}image/search2.jpg" class="subm mr10"/>
+			热门关键词：<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=7 and status=3 and updatetime>$today_endtime-86400*30&pagesize=10&order=month_search desc&key=month_search&template=list-search_kw", -2)}-->
+			</li>
+			<br class="clear">
+															</ul>
+															</dd>
+													    </dl></form>
+														</div>
+															<div class="yinying"></div>
+
+
+
+
+
+
+
+
+
+
+<div class="w730 fl autoheight">
+<div class="blue"><div class="h4title">{$MOD[name]}信息列表</div></div>
+														<div class="autoheight grayb nt">
+
+															
+																<form method="post">
+		<div class="sell_tip" id="sell_tip" style="display:none;" title="双击关闭" ondblclick="Dh(this.id);">
+			<div>
+				<p>您可以</p>
+				<input type="submit" value="对比选中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>&nbsp;
+				<input type="submit" value="批量购买" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+			</div>
+		</div>
+		<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
+		<div class="tool">
+			<table>
+			<tr height="30">
+			<td width="25" align="center" title="全选/反选">&nbsp;<input type="checkbox" onclick="checkall(this.form);"/></td>
+			<td>
+				<input type="submit" value="对比选中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>&nbsp;
+				<input type="submit" value="批量购买" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+			</td>
+			<td align="right">
+			<input type="checkbox" name="price" id="price" {if $price==0}onclick="Go(sh+'&price=1');" {else}onclick="Go(sh+'&price=0');"checked{/if}/>标价
+			<input type="checkbox" name="thumb" id="thumb" {if $thumb==0}onclick="Go(sh+'&thumb=1');" {else}onclick="Go(sh+'&thumb=0');"checked{/if}/>图片
+			<input type="checkbox" name="vip" id="vip" {if $vip==0}onclick="Go(sh+'&vip=1');" {else}onclick="Go(sh+'&vip=0');"checked{/if}/>{VIP}
+			<select onchange="Go(sh+'&day='+this.value)">
+			<option value="0"{if $day==0}selected{/if} >更新时间</option>
+			<option value="1"{if $day==1}selected{/if}>1天内</option>
+			<option value="3"{if $day==3}selected{/if}>3天内</option>
+			<option value="7"{if $day==7}selected{/if}>7天内</option>
+			<option value="15"{if $day==15}selected{/if}>15天内</option>
+			<option value="30"{if $day==30}selected{/if}>30天内</option>
+			</select>&nbsp;
+				<select onchange="Go(sh+'&order='+this.value)">
+			<option value="0" {if $orderv==0}selected{/if}>显示顺序</option>
+			<option value="2" {if $orderv==2}selected{/if}>价格由高到低</option>
+			<option value="3" {if $orderv==3}selected{/if}>价格由低到高</option>
+			<option value="4" {if $orderv==4}selected{/if}>推荐级别由高到低</option>
+			<option value="5" {if $orderv==5}selected{/if}>推荐级别由低到高</option>
+			<option value="6" {if $orderv==6}selected{/if}>供货量由高到低</option>
+			<option value="7" {if $orderv==7}selected{/if}>供货量由低到高</option>
+			<option value="8" {if $orderv==8}selected{/if}>订购量由高到低</option>
+			<option value="9" {if $orderv==9}selected{/if}>订购量由低到高</option>
+			</select>&nbsp;		
+						{if $list == 2}
+			<img src="{DT_SKIN}image/list_txt_on.gif" width="16" height="16" alt="文字列表" align="absmiddle"/>&nbsp;
+			{else}
+			<img src="{DT_SKIN}image/list_txt.gif" width="16" height="16" alt="文字列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=2')"/>&nbsp;
+			{/if}
+			{if $list == 1}
+			<img src="{DT_SKIN}image/list_img_on.gif" width="16" height="16" alt="图片列表" align="absmiddle"/>&nbsp;
+			{else}
+			<img src="{DT_SKIN}image/list_img.gif" width="16" height="16" alt="图片列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=1')"/>&nbsp;
+			{/if}
+			{if $list == 0}
+			<img src="{DT_SKIN}image/list_mix_on.gif" width="16" height="16" alt="图文列表" align="absmiddle"/>&nbsp;
+			{else}
+			<img src="{DT_SKIN}image/list_mix.gif" width="16" height="16" alt="图文列表" align="absmiddle" class="c_p" onclick="Go(sh+'&list=0')"/>&nbsp;
+			{/if}
+			</td>
+			</tr>
+			</table>
+		</div>
+{if $tags}
+		{if $page == 1}{ad($moduleid,0,'',6)}{/if}	
+		
+		<!--{tag("moduleid=$moduleid&condition=$condition&areaid=$cityid&pagesize=".$MOD[pagesize]."&page=$page&showcat=1&showpage=1&order=".$MOD[order]."&fields=".$MOD[fields]."&template=thumb-mall&TYPE=".$MOD[type]."&debug=0")}-->
+
+
+		<div class="tool">
+			<table>
+			<tr height="30">
+			<td width="25"></td>
+			<td>
+				<input type="submit" value="对比选中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>&nbsp;
+				<input type="submit" value="批量购买" onclick="this.form.action='{$MOD[linkurl]}cart.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+			</td>
+			<td align="right"><img src="{DT_SKIN}image/arrow.gif" class="mid" alt=""/> <a href="javascript:window.scrollTo(0,0);">返回顶部</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="{DT_SKIN}image/arrow.gif" alt="" class="mid" /> <a href="{$MOD[linkurl]}search.php">重新搜索</a>&nbsp;</td>
+			</tr>
+			</table>
+		</div>
+		</form>
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+
+
+													
+														</div>
+
+</div>
+
+<div class="w240 fl ml10 autoheight">{template 'right', 'mall'}</div>
+<br class="clear">
+{template 'footer'}

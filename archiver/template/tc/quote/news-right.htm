@@ -1,0 +1,45 @@
+<div class="autoheight" style="padding:15px;">
+<style>
+	.top_news ul{padding-top:15px;}
+</style>
+	<br/>
+	<div class="top_news">
+		<span style="font-size:16px;color:#24917A;">今日头条</span>
+		<span style="color:#ccc"><img src="{DT_SKIN}image/quote/slash.png" width="145px" /><a href="news.php" style="color:black;">更多></a></span>
+		<br/>
+		<!-- {php $tags=tag("moduleid=$moduleid&table=article_21&condition=catid in('$news_keji_catid','$news_zhengce_catid','$news_hangye_catid','$new_xiangmu_catid') and thumb<>''&pagesize=4&template=null");} -->
+		{loop $tags $k $v}
+			{if $k==0}<ul>{/if}
+			<li class="fl" style="padding:5px;">
+				<a href="news-{$v[itemid]}-tech-news.html"><div style="background:url('{$v[thumb]}') no-repeat;width:115px;height:115px;">
+						<div style="height:95px;"></div>
+						<div style="height:20px;background:gray;line-height:20px;filter:alpha(opacity=88);-moz-opacity:0.88;opacity:0.88;">
+						<a style="color:white;margin-left:5px;" href="news-{$v[itemid]}.html" title="{$v[title]}">{dsubstr($v[title],18,'...')}</a>
+						</div>
+					</div></a>
+			</li>
+			{if $k==1}</ul><ul>{elseif $k==3}</ul>{/if}
+		{/loop}
+	</div>
+	<br/>
+	<br/>
+	<div class="divline" style="border-bottom:3px solid white;"></div>
+	<br/>
+	<div>
+		<span style="font-size:16px;color:#24917A;">点击排行榜</span>
+		<span style="color:#ccc"><img src="{DT_SKIN}image/quote/slash.png" width="135px" /><a href="news.php" style="color:black;">更多></a></span>
+		<!-- {php $tagt=tag("moduleid=$moduleid&table=article_21&condition=catid in('$news_keji_catid','$news_zhengce_catid','$news_hangye_catid','$news_xiangmu_catid')&pagesize=5&template=null");} -->
+		<br/>
+		<ul>
+			{loop $tagt $k $v}
+			<li style="height:120px;border-bottom:3px solid white;line-height:20px;">
+			<br/>
+				<a style="{if $k==0}color:red;{/if}font-weight:bold;font-size:16px;" href="news-{$v[itemid]}-tech-news.html">{dsubstr($v[title],30,'...')}</a>
+				<div class="divline"></div>
+				{dsubstr($v[introduce],80,'...')}<br/>
+				<div style="margin-top:5px;">资讯新闻&nbsp;&nbsp;&nbsp;发布于{php echo date('Y/m/d',$v[addtime]);}</div>
+			</li>
+			{/loop}
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,83 @@
+{php $sitemenu='sell';$listpage='list';}
+{template 'header'}	
+{php $MOD = cache_read('module-5.php');}
+{php $SELLTYPETITLE=$MOD['type'];}
+{php $SELLTYPE = explode('|', trim($MOD['type']));}
+{template 'lay','tag'}
+<div class="autoheight  grayb whitebg">
+<div class="seltype">
+						<ul>
+						<li {if $typeid==99}class="seltypey"{/if}><a href="{$MOD[linkurl]}{rewrite('search.php?typeid=99&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" >所有类型</a></li>
+						{loop $TYPE $k $v}
+						<li {if $typeid==$k}class="seltypey"{/if}><a href="{$MOD[linkurl]}{rewrite('search.php?typeid='.$k.'&catid='.$catid.'&kw='.urlencode($kw).'&list='.$list.'&order='.$orderv.'&day='.$day.'&vip='.$vip.'&areaid='.$areaid)}" >{$v}</a></li>
+						{/loop}
+						</ul>
+</div>					
+														<dl class="options">		
+														
+														<dt>{$MOD[name]}范围：</dt>
+														<dd class="autoheight"><a {if $catid==''} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$areaid.'&typeid=99')}">全部</a>
+														{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$t[catid].'&typeid=99')}" {if $t[catid]==$catid||$t[catid]==$l[1]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[1]}
+																	{php $childa=$t[child];$parenta=$t[catname];$catida=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+														</dl>
+															{if $childa!=0}
+															<dl class="options">
+															<dt>{$parenta}的分类：</dt>
+															<dd><a {if $catid==$catida} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&typeid=99&catid='.$catida)}">全部</a>
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=$catida&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('list.php?areaid='.$areaid.'&typeid=99&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>[{$t[item]}]</i></a>
+																	{if $t[catid]==$catid||$t[catid]==$l[2]}
+																	{php $childb=$t[child];$parentb=$t[catname];$catidb=$t[catid];} 
+																	{/if}
+															{/loop}
+															</dd>
+															</dl>
+															{/if}
+
+														<form action="{$MOD[linkurl]}search.php" id="fsearch">
+														<input type="hidden" name="typeid" value="{$typeid}">
+														<input type="hidden" name="areaid" value="{$areaid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="vip" value="{$vip}">
+			                                            <input type="hidden" name="thumb" value="{$thumb}">
+                                                        {template 'search', 'chip'}
+														</form>
+														</div>
+
+<div class="divline"></div>
+<ul class="webw h60 w980 center whitebg grayb pd5">
+<li class="fl grayb w490 h60 cut mr10 ml10">{ad(179)}</li>
+<li class="fl grayb w490 h60 cut mr10 ml10">{ad(180)}</li>
+</ul>
+<div class="autoheight whitebg pd10">
+			<div class="listleft autoheight">
+			{template 'listh4', 'chip'}
+				<div class="tool">
+				 {template 'form', $module}
+				</div>
+
+		<div class="autoheight intro">
+		{if $page == 1}{ad($moduleid,$catid,$kw,6)}{/if}
+        {if $tags}
+		{template 'list-'.$module, 'tag'}
+        {else}
+		{template 'noresult', 'message'}
+		{/if}
+		</div>
+		
+			</div>
+			<div class="listright autoheight">
+					{template 'right', $module}	
+			</div>
+			<div class="divline"></div>
+</div>
+
+<br class="clear">
+{template 'footer'}

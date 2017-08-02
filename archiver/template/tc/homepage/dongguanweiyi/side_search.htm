@@ -1,0 +1,24 @@
+<div class="side_head side_vip_head_07"><div><strong>{$side_name[$HS]}</strong></div></div>
+<div class="side_body">
+<form action="{$MODULE[4][linkurl]}home.php" onsubmit="return check_kw();">
+<input type="hidden" name="action" value="search"/>
+<input type="hidden" name="homepage" value="{$username}"/>
+<input type="text" name="kw" value="{if $kw}{$kw}{else}输入关键词{/if}" size="25" id="kw" class="inp" onfocus="if(this.value=='输入关键词')this.value='';"/>
+<div style="padding:10px 0 0 0;">
+<select name="file">
+{php print_r($menu_show);}
+{if $menu_show[12]}<option value="mall"{if $file=='mall'} selected{/if}>产品中心</option>{/if}
+{if $menu_show[1]}<option value="sell"{if $file=='sell'} selected{/if}>供应信息</option>{/if}
+{if $menu_show[2]}<option value="buy"{if $file=='buy'} selected{/if}>需求信息</option>{/if}
+{if $menu_show[3]}<option value="news"{if $file=='news'} selected{/if}>文章新闻</option>{/if}
+{if $menu_show[4]}<option value="credit"{if $file=='credit'} selected{/if}>荣誉信息</option>{/if}
+{if $menu_show[5]}<option value="job"{if $file=='job'} selected{/if}>服务信息</option>{/if}
+{if $menu_show[7]}<option value="photo"{if $file=='photo'} selected{/if}>图片信息</option>{/if}
+{if $menu_show[8]}<option value="info"{if $file=='info'} selected{/if}>单页内容</option>{/if}
+{if $menu_show[9]}<option value="brand"{if $file=='brand'} selected{/if}>品牌信息</option>{/if}
+{if $menu_show[10]}<option value="video"{if $file=='video'} selected{/if}>视频内容</option>{/if}
+</select>&nbsp;
+<input type="submit" value=" 搜 索 " class="sbm"/>
+</div>
+</form>
+</div>

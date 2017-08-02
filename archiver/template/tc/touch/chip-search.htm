@@ -1,0 +1,62 @@
+	<div id="nav-pop" class="close" style="display:none">
+		<div id="nav-pop-pnl" class="nav-top  close" style="top: 44px;">
+
+		</div>
+		<div id="nav-pop-mask" class="pop-layer " style="top: 44px;"></div>
+	</div>
+
+<div id="content">
+
+
+  <section class="topic">
+	 
+		<div class="search">
+		    <form id="search-form" method="POST" action="" class="search-form">
+
+				 <div id="search-hidden-params">
+					<input type="hidden">
+					<input type="hidden">
+				</div>
+				<select name="moduleid" style="font-size: 1em; font-weight: normal; line-height: 1.3; height: 39px; width:100px; margin-right:5px; cursor: pointer; color: #555;">
+					<option value="全站搜索">全站搜索</option>						
+					{loop $WAP_MODULE $i $m}
+					{if $m[moduleid] !=10  && $m[moduleid] != 12}
+						{if $m[action] == resume}
+							<option value="9&action=resume"{if $m[action]=='resume'} selected{/if}>工程师</option>
+						{elseif $m[moduleid] == 16&&$m[stype] == 1}						
+							<option value="16&stype=1"{if $m[stype]=='1'} selected{/if}>配件中心</option>
+						{else}
+							<option value="{$m[moduleid]}"{if $m[moduleid]==$moduleid} selected{/if}>{$m[name]}</option>
+						{/if}
+					{/if}
+											
+					{/loop}
+				</select>
+		        <input id="search-word" type="text" class="search-input" name="kw" value="热线：4000521617">
+		        <button type="submit" class="search-btn"></button>
+		    </form>
+		</div>		 
+
+  </section>
+
+  <script type="text/javascript">
+  	var firstTime = Date.now();
+  </script>
+  
+ 	
+ </div>
+
+   <div class="expand-mod">
+	    <div class="expand-mod-t">
+	      <h3></h3>
+		  <div class="page-nav">
+	        <span class="prev last"></span>
+	        <span class="next"></span>
+	      </div>
+	    </div>
+	    <div id="imgs-slide" class="expand-mod-c mask-layer" style="overflow: hidden;">
+	      <ul id="imgs-slide-list" class="image-list" style="width: 767px; -webkit-transition: -webkit-transform 0ms; transition: -webkit-transform 0ms; -webkit-transform-origin: 0px 0px; -webkit-transform: translate3d(0px, 0px, 0px);">
+
+	      </ul>
+	    </div>
+  </div>				

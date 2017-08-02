@@ -1,0 +1,4 @@
+<script type="text/javascript">
+var key_words = <?php echo json_encode($tags);?>
+</script>
+{loop $tags $i $t}<a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?catid='.$ccatid.'&kw='.$t['letter'].'&action='.$action)}" class="color" {if $target} target="{$target}"{/if}><font class="f12">{$t[word]}</font></a>&nbsp; {/loop}

@@ -1,0 +1,13 @@
+{template 'header', $template}
+	<div class="list_introduce">
+		<div class="list_title"><div class="title_content">&rarr;&nbsp;企业简介&nbsp;&larr;</div></div>
+		<div class="list_introduce_content">
+			<div class="list_introduce_content_cen">
+				<div class="company_logo">{if $COM[thumb]}<img src="{$COM[thumb]}" width="160" height="160"/>{else}<img src="{$HSPATH}/logo.jpg"/>{/if}</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{strip_tags($content)}
+			<div style="clear:both;"></div>
+			</div>
+		</div>
+	</div>
+	
+	{template 'footer', $template}

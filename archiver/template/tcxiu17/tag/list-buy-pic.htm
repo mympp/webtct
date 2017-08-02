@@ -1,0 +1,33 @@
+<table cellpadding="5" cellspacing="5" width="100%">
+{loop $tags $k $t}
+{if $k%5==0}<tr>{/if}
+<td valign="top" width="20%" id="item_{$t[itemid]}">
+	<table cellpadding="0" cellspacing="0" width="100%" class='mt10 mb10'>
+	<tr align="center">
+	<td class="thumb"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="80" height="80" alt="" onMouseOver="img_tip(this, this.src);" onMouseOut="img_tip(this, '');"/></a></td>
+	</tr>
+	<tr align="center">
+	<td class="thumb">
+	<ul>
+	<li>{timetodate($t[edittime],5)}</li>
+	</ul>
+	<ul>
+	<li>{if $t[vip]}<img src="{DT_SKIN}image/vip.gif" alt="级别：{$t[vip]}" style="border:none;" align="absmiddle"/>&nbsp;{/if}<a href="{userurl($t[username])}" target="_blank" class="ocolor">{$t[company]}</a></li>
+	</ul>
+	</td>
+	</tr>
+	<tr align="center">
+	<td>
+	{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+	{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+	{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+	{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+	{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}</a>&nbsp;{/if}
+	</td>
+	</tr>
+	</table>
+</td>
+{if $k%5==4}</tr>{/if}
+{/loop}
+</table>
+{if $pages}<div class="pages">{$pages}</div>{/if}

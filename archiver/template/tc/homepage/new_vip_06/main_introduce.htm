@@ -1,0 +1,12 @@
+<div class="about">
+		<div class="about_img"><span>关于我们</span><br/><br/><a href="{userurl($username, 'file=introduce', $domain)}"><img src="{$HSPATH}about.jpg"></a></div>
+		<div class="news">
+		<!--{php $tags=tag("table=news&condition=status=3 and username='$username'&pagesize=6&order=addtime desc&template=null");}-->
+			<ul>
+				{dsubstr(strip_tags($COM[intro]),540,'...')}
+			</ul>
+		</div>
+		<div class="about_right_img">
+			<div class="right_img">{if $COM[thumb]}<img src="{$COM[thumb]}" width="252" height="206"/>{else}<img src="{$HSPATH}about_img.jpg"/>{/if}</div>
+		</div>
+</div>

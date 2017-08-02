@@ -1,0 +1,87 @@
+{if $user_status == 3}
+	{if $member}
+
+		{if $member[truename]}<li>姓名： {$member[truename]}({gender($member[gender])})</li>{/if}
+
+		{if $member[telephone]}<li>电话： {$member[telephone]}</li>{/if}
+
+		{if $member[mobile]}<li>手机： {$member[mobile]}</li>{/if}
+
+		{if $member[fax]}<li>传真： {$member[fax]}</li>{/if}
+
+		{if $member[address]}<li>地址： {$member[address]}</li>{/if}
+
+		{if $member[postcode]}<li>邮编： {$member[postcode]}</li>{/if}
+
+		{if $member[mail]}<li>邮件： {$member[mail]}</li>{/if}
+
+		{if $member[msn]}<li>MSN： {$member[msn]}</li>{/if}
+
+		{if $member[qq]}<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$qq}&site=qq&menu=yes">QQ： {$member[qq]}<img style="float:left;" src="http://wpa.qq.com/pa?p=1:304087831:4" title="点击QQ交谈/留言"></a></li>{/if}
+
+		<li><a style="color:#487CCF;" href="index.php?moduleid=4&amp;username={$member[username]}">公司： {$member[company]}</a></li>
+
+		<li><a style="color:#487CCF;" href="index.php?moduleid=2&amp;action=message_send&amp;touser={$member[username]}">发信： 点此发送</a></li>
+	{else}
+		<li>公司： {$item[company]} [未注册]</li>
+
+		{if $item[truename]}<li>姓名： {$item[truename]}</li>{/if}
+
+		{if $item[telephone]}<li>电话： {$item[telephone]}</li>{/if}
+
+		{if $item[mobile]}<li>手机： {$item[mobile]}</li>{/if}
+
+		{if $item[address]}<li>地址： {$item[address]}</li>{/if}
+
+		{if $item[email]}<li>邮件： {$item[email]}</li>{/if}
+
+		{if $item[msn]}<li>MSN： {$item[msn]}</li>{/if}
+
+		{if $item[qq]}<li>QQ： {$item[qq]}</li>{/if}
+	{/if}
+
+{elseif $user_status == 2}
+	<div>
+		<li>查看联系方式需支付 <strong style="color:red;">{if $currency == 'money'}￥{/if}{$fee} </strong>{$fee_unit}</li>
+		{if $currency == 'money'}
+			<li>
+				{$fee_name}余额 ： <strong style="color:red;">￥{$_money} </strong>{$fee_unit}		
+			</li>
+			{if $_money < $fee}
+				<li>
+				余额不足，请<a href="index.php?moduleid=2&amp;action=charge" style="color:#487CCF; text-align: center; display: initial; margin-left:10px;">充值</a>
+				</li>
+			{/if}
+		{else}
+			<li>{$fee_name} ：{$_credit} {$fee_unit} <!-- <p style="font-size: 10px; color: #F6A824; text-indent: 20px; float: left;">积分不足</p> --></li>
+		{/if}
+		{if $_money >= $fee || $_credit >= $fee}
+			<form action="index.php" method="post" target="_self">
+				
+				<input type="hidden" name="moduleid" value="{$moduleid}"/>
+
+				<input type="hidden" name="itemid" value="{$itemid}"/>
+
+				<input type="hidden" name="action" value="pay"/>
+
+				{if $action == "resume"}
+					<input type="hidden" name="resume" value="resume"/>
+				{/if}
+
+				{if $currency == 'money'}
+					<li>支付密码：<input style="height:35px; font-size: 16px !important;" type="password" name="password"/></li>
+				{/if}
+				<li style="text-align:center;">
+					<button style="padding: 0px; border: none;" type="submit" name="submit" ><img src="{DT_SKIN}image/btn_tobuy.gif" ></button>
+				</li>
+			</form>
+		{/if}
+	</div>
+{elseif $user_status == 1}
+	<li>无权查看，请升级</li>
+	{if $DT[telephone]}
+		<li>咨询电话： {$DT[telephone]}</li>
+	{/if}
+{elseif $user_status == 0}
+	<li><a style="color:#487CCF;" href="index.php?moduleid=2&amp;action=login">请登录查看</a></li>
+{/if}

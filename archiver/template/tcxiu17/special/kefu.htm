@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>天成医疗网-客服中心</title>
+<style>
+html { overflow-x:hidden; }
+</style>
+</head>
+<body style="overflow-x:hidden;overflow-y:auto"> 
+{php $title=$_REQUEST['title'];$status=$_REQUEST['status'];$username=$_REQUEST['username'];$qq=$_REQUEST['qq'];$email=$_REQUEST['mail'];$mobile=$_REQUEST['mobile'];$telephone=$_REQUEST['telephone'];$truename=$_REQUEST['truename'];}
+<style type="text/css">
+body{ font-size:12px; margin:auto;margin-top:0px; padding-top:0px; background-color:#FFFFFF;color:#676767;width:250px;}
+td p{list-style-type:none;height:28px;line-height:28px;padding-left:10px;background:url('{DT_SKIN}image/arrow_r.gif') no-repeat center left;margin:0px;}
+#list p{width:115px;}
+td p a{display:block;display:-moz-inline-box; display:inline-block; white-space:nowrap;overflow: hidden; -o-text-overflow: ellipsis;text-overflow:ellipsis;word-break:keep-all;}
+img{border:none}
+a{text-decoration:none;}
+a:hover{color:#D50400}
+.color{color:#676767}
+.hcolor{color:#bbbbbb}
+.ocolor{color:#D50400}
+.bcolor{color:#4a74ac}
+.blueb{border:1px solid #CDD8E3;}
+.orangeb{border:1px solid #EFC494;}
+.grayb{border:1px solid #DdDDDD;}
+h1{line-height:24px;height:24px;text-align:center;font-size:14px;margin:0px;color:#346dad;background:#f0f8ff;font-weight:normal;clear:both;}
+</style>
+<h1>{if $title==''}本站各模块客服帮助指引<a href="{DT_PATH}special/kefu.php" title="返回上一层"><img src='{DT_SKIN}image/toback.gif'></a>{else}{$title}{/if}</h1>
+{if $title==''}
+<table width="100%" cellpadding="0" cellspacing="0" id="list" {if $catid>0}style="display:none"{/if}> 
+{php $tagsk = tag("moduleid=21&table=category&condition=parentid=1150&pagesize=10&order=listorder ASC&template=null&debug=0")}
+									{loop $tagsk $z $k}
+{if $z%2==0}<tr>{/if}
+	<td><p><a href="/special/kefu.php?catid={$k[catid]}" class="color">	{$k[catname]}</a></p></td>
+{if $z%2==1}</tr>{/if}
+{/loop}
+<tr>
+	<td><p><b>{if !$_userid}<a href="{DT_PATH}guestbook/"  target="_parent" class="ocolor">我需要客服帮助</a>{else}<a href="{DT_PATH}member/ask.php?action=add"  target="_parent" class="ocolor">我需要客服帮助</a>{/if}</b></p></td>
+	<td><p><a href="http://bbs.xiu17.net" target="_parent" class="color">到论坛去看看</a></p></td>
+</tr>
+</table>
+
+
+{if $catid>1}
+<table width="100%" cellpadding="0" cellspacing="0" > 
+{php $tagsk = tag("moduleid=21&condition=catid=$catid and status=3 and level>0&pagesize=10&order=addtime desc&template=null&debug=0")}
+{loop $tagsk $z $k}
+<tr>
+	<td><p><a href="{$k[linkurl]}" target="_parent" class="color">{$k[title]}</a></p></td>
+</tr>
+{/loop}
+<tr>
+	<td><p><b><a href="{if !$_userid}{DT_PATH}guestbook/{else}{DT_PATH}member/ask.php?action=add{/if}"  target="_parent" class="ocolor">我需要客服帮助</a></b></p></td>
+</tr>
+</table>
+{elseif $id>1}
+<a href="{DT_PATH}special/kefu.php" title="返回上一层"><img src='{DT_SKIN}image/toback.gif'>正在制作更多指引..</a>
+{/if}
+
+
+{else}
+<table width="100%" cellpadding="0" cellspacing="0" > 
+<tr>
+	<td width="50" height="23" align="right"><b class="ocolor">称呼：</b></td>
+	<td>{$truename}</td>
+</tr>
+<tr>
+	<td width="50" height="23" align="right"><b class="ocolor">通讯：</b></td>
+	<td>{$mobile}</td>
+</tr>
+<tr>
+	<td width="50" height="23" align="right"><b class="ocolor">手机：</b></td>
+	<td>{$telephone}</td>
+</tr>
+<tr>
+	<td width="50" height="23" align="right"><b class="ocolor">QQ：</b></td>
+	<td>{$qq}&nbsp;&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd??v=3&uin={$qq}&site=qq&menu=yes"><img src="http://wpa.qq.com/pa?p=1:{$qq}:4" title="点击QQ交谈/留言" align="absmiddle" onerror="this.src=DTPath+'file/image/qq-off.gif'"/></a></td>
+</tr>
+<tr>
+	<td width="50" height="23" align="right"><b class="ocolor">Email：</b></td>
+	<td>{$email}</td>
+</tr>
+</table>
+
+<div style="position:absolute;z-index:10;TOP:25PX;MARGIN-LEFT:200PX;">
+{if $status==1}
+<a href="{DT_PATH}member/chat.php?touser={$username}" target="_blank"><img src='{DT_SKIN}image/chatonline.gif'></a>
+{else}
+<a href="{DT_PATH}member/message.php?action=send&touser={$username}" target="_blank"><img src='{DT_SKIN}image/bookonline.gif'></a>
+{/if}
+</div>
+
+{/if}
+</body>
+</html>

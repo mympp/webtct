@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>医疗器械维修及在线交易信息发布</title>
+<meta name="keywords" content="医疗器械交易，医疗设备交易，维修技术服务，维修服务，医疗设备维修，技术工程师，维修工程师，工程师培训，医疗技术资料共享，医疗技术信息中心，医疗技术信息。"/>
+<meta name="description" content="天成医疗网是达安基因投资与卫生部医药生物工程技术研究中心合作的一个涉及“医疗设备维修/医疗器械维修，医疗设备/医疗器械交易，技术工程师培训”的平台。"/>
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<style type="text/css">
+	body{font-size:12px;}
+	.contentb{width:450px;height:200px;margin:5px;}
+	.contents{width:450px;height:100px;margin:5px;}
+	.input{margin:5px;}
+    .submit{padding:5px;font-size:14px;}
+	.f14{font-size:14px;text-align:center;color:#38832c}
+	.float{height:150px;width:430px;padding:3px;text-align:center;z-index:1000;position:absolute;font-size:12px;background:#e8e8e8;border:1px solid #bbbbbb;vertical-align:middle;left:200px;top:100px;}
+</style>
+</head>
+<body>
+<table border="1" bordercolor="#C7D2E2" bordercolorlight="#FFFFFF" bordercolordark="#C7D2E2" cellspacing="0">
+  <form method="post" action="announce_outside.php" onsubmit="return check();" id='form2'>
+  <input type="hidden" name="action" value='save'>
+  <tr>
+    <td width="100" height="80" align="right" bgcolor="#e2eaf3">信息内容：</td>
+    <td ><textarea name="content"  id="content" class="contentb" onmouseout="qqcontent()"></textarea></td>
+    <td width="300" rowspan="6"  bgcolor="#f1f5fa"><table width="300" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="35" bgcolor="#c8ee77" class='f14'>&nbsp;直接复制QQ聊天记录可自动完成填写(如下图)</td>
+      </tr>
+      <tr>
+        <td height="215"><img src="{DT_SKIN}image/copyqq.jpg"></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="35" align="right" bgcolor="#e2eaf3">标题简介：</td>
+    <td height="35"><input type="text" id="title" name="title" value="" size="70" maxlength="35" class='input'/></td>
+    </tr>
+  <tr>
+    <td height="35" align="right" bgcolor="#e2eaf3">联系方式：</td>
+    <td height="35"><span><input type="radio" name="contactType" id="typeqq" value=0>QQ&nbsp;&nbsp;<input type="radio" name="contactType" id="typetel" value=1>手机</span><input type="text" name="contact" id="contact" value="" maxlength="30" class='input'></td>
+    </tr> 
+  <tr>
+    <tr>
+    <td height="35" align="right" bgcolor="#e2eaf3">信息类型：</td>
+<td height="35">
+{php $type = tag("moduleid=2&table=type&condition=item='announce'&template=null&debug=0")}
+{loop $type $k $v}
+<input type="radio" value="{$v[typeid]}" id="typeid{$k}" name="typeid" />{$v[typename]}
+{/loop}</td>
+  </tr>
+    <td colspan="2" align="center" height="40"  bgcolor="#f1f5fa"><input type="submit" class='submit' name="submit" value=" 确 定 并 提 交 " /></td>
+    </tr>
+</form></table>
+
+<div class='float' id='float' {if $_userid}style="display:none"{/if}>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+  <td width="410" height=30 align='center' ><b style="font-size:16px;">发布信息提醒</b></td>
+  <td width="38" align='center'><a href="javascript:void(0)" onclick="Dd('float').style.display='none'"><img src="{DT_SKIN}image/del.gif" border=0></a></td>
+</tr><tr><td colspan="2" bgcolor="#f5f5f5" height=120 align="center"><table  border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td colspan="2" align="center" valign="middle" height='35' style='font-size:14px;color:red'>禁止发布与医疗行业无关的信息!</td>
+    </tr>
+  <tr>
+    <td width="180" align="left" valign="top" height="50"  style="line-height:20px;font-size:14px;">会员可以直接发布并通过！<br />
+      游客发布需要后台审核！</td>
+    <td width="140" align="left" style="line-height:20px;font-size:12px;" valign='top'>您还未登陆，请<a href='{DT_PATH}member/login.php' target='_blank'>先登陆</a><br />
+      如未注册，<a href='{DT_PATH}member/register.php' target='_blank'>点击这里注册</a></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" valign="middle" style='font-size:14px;'> <input type="button" value="我知道了！" onclick="Dd('float').style.display='none'" /></td>
+    </tr>
+</table>
+
+</td>
+</tr>
+</table>
+</div>
+<script language="javascript" type="text/javascript">
+function qqcontent(){
+if(Dd("content").value!=''&&Dd("contact").value=='')
+	{
+	var t1=Dd("content").value;
+    var y=t1.split('\r');
+	   if(y[0].length>18){var str=y[0];var title=y[1].substring(0,35);}else{var str=y[1];var title=y[2].substring(0,35);}	
+			var qq=str.substring(str.indexOf("(") + 1,str.indexOf(")"));
+			var reg = /^[0-9]\d{4,11}$/;
+				qq_Flag = reg.test(qq);
+				if(!qq_Flag){qq='';}
+			if (qq==''){qq=str.substring(str.indexOf("<") + 1,str.indexOf(">"));}
+    if (qq!=''){Dd("contact").value=qq;Dd("typeqq").checked = "checked";Dd("title").value=title;
+	Dd("content").value=Dd("content").value.replaceAll("　　","\r");
+	}
+	}
+}
+String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {   
+    if (!RegExp.prototype.isPrototypeOf(reallyDo)) {   
+        return this.replace(new RegExp(reallyDo, (ignoreCase ? "gi": "g")), replaceWith);   
+    } else {   
+        return this.replace(reallyDo, replaceWith);   
+    }   
+}  
+	function check(){
+		if(Dd("title").value == ''){
+			confirm("标题不能为空！");
+			return false;
+		}else if(Dd("title").value.length < 4){
+			confirm("信息标题请不要少于4个字");
+			return false;
+		}
+		if(Dd("content").value == ''){
+			confirm("内容不能为空！");
+			return false;
+		}else if(Dd("content").value.length < 16){
+			confirm("信息内容请不要少于16个字");
+			return false;
+		}
+		if(Dd("contact").value == ''){
+			confirm("联系方式不能为空！请填写您的联系方式！");
+			return false;
+		}
+
+		 var typeid = document.getElementsByName("typeid"); 
+		 for(var i=0;i<typeid.length;i++){  if(typeid[i].checked==true){   return true;  } }
+		 confirm("请选择一个信息的类型！");
+		 return false;
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- page-nav -->
+<div class="page-nav">
+    {php $tagss = tag("moduleid=$moduleid&table=category&fields=catname,catid,style,item&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+    <div class="w1200 box-center">
+        <ul class="page-nav-main clearfix">
+            <li class="page-sub-nav current">
+               <a href="{$MODULE[$moduleid][linkurl]}">厂商品牌平台首页</a>
+            </li>
+            <li class="page-sub-nav page-sub-nav-lg">
+                <a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?typeid=99')}">品牌信息分类<i class="arrow"></i></a>
+                <ul>
+				{loop $tagss $i $t}
+				<li><a href="{$MOD[linkurl]}{rewrite($listpage.'.php?catid='.$t[catid])}"> {set_style($t[catname],$t[style])} ({$t[item]})</a></li>
+				{/loop}
+				</ul>
+            </li>
+
+            <li class="page-sub-nav page-sub-nav-lg">
+                <a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?typeid=99')}">医疗器械厂商网店分类<i class="arrow"></i></a>
+                {php $tagss = tag("moduleid=4&table=category&fields=catname,catid,style,item&condition=moduleid=4 and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+				{if !$listpage}
+				{/if}
+				<ul>
+				{loop $tagss $i $t}
+				<li><a href="{$MODULE[4][linkurl]}{com_rewrite(['catid'=>$t[catid]])}"> {set_style($t[catname],$t[style])} ({$t[item]})</a></li>
+				{/loop}
+				</ul>
+            </li>
+
+			<li lass="page-sub-nav"><a  href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?validated=1&vip=1')}">推荐厂商品牌</a></li>
+			<li lass="page-sub-nav"><a  href="{$MODULE[4][linkurl]}{rewrite('search.php?validated=1&vip=1')}">推荐厂商网店</a></li>
+
+            <li class="page-sub-nav page-sub-nav-lg">
+            	<a href="{$MODULE[$moduleid][linkurl]}{rewrite('search.php?action=resume')}" target="_blank">发布厂商信息<i class="arrow"></i></a>
+            	<ul>
+					<li><a href="{$MODULE[2][linkurl]}my.php?mid=13&action=add" target="_blank" rel="nofollow">发布厂商品牌信息</a></li>
+					<li><a href="{$MODULE[2][linkurl]}{$DT[file_register]}?kd=1" target="_blank" rel="nofollow">注册开设网店</a></li></ul></li>
+				</ul>
+ 			</li>
+        </ul>
+    </div>
+</div>
+<!-- page-nav -->
+
+
+
+
+
+

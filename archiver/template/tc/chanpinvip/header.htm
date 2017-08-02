@@ -1,0 +1,251 @@
+{php $memberpath=$_COOKIE['memberpath'];}
+{template 'title',$memberpath}
+<script type="text/javascript" src="{DT_PATH}file/script/miniDropdown.js"></script>
+<div id="msgbox" style="display:none;" onclick="this.style.display='none'"></div>
+{dmsg()}
+<div class="head" id="head">
+	<div class="head_m">
+			<div class="head_logo" style="background:url('{DT_STATIC}{$MODULE[2][moduledir]}image/logo.png');">
+				<dl onmouseover="this.className='mpathy'" class="mpathn" onmouseout="this.className='mpathn'">
+				<dt id="memberpath" onclick="Go('/chanpinvip/');" class="mouse">产品服务中心 ∨</dt>
+					<dd><a href="/member/"> · 天成会员中心首页</a></dd>
+					<dd><a href="/chanpinvip/"> · 产品服务中心首页</a></dd>
+				</dl>
+			</div>
+		<div class="head_main"id="mini-dropdown-2">
+		<ul class="dropdown" id="nav">
+		{if $_userid}
+		<li class="menu_1" id="menu_0" onclick="c(0);" onmouseover="if(this.className=='menu_2')this.className='menu_3'" onmouseout="if(this.className=='menu_3')this.className='menu_2'">会员服务
+		<ul id="meminfo1"></ul>
+		</li>
+		<li class="menu_2" id="menu_1" onclick="c(1);" onmouseover="if(this.className=='menu_2')this.className='menu_3'" onmouseout="if(this.className=='menu_3')this.className='menu_2'">发布&管理
+		<ul id="meminfo2"></ul></li>
+		<li class="menu_2" id="menu_2" onclick="c(2);" onmouseover="if(this.className=='menu_2')this.className='menu_3'" onmouseout="if(this.className=='menu_3')this.className='menu_2'">交易管理
+		<ul id="meminfo3"></ul></li>
+		{if $_groupid>5}<li class="menu_2" onclick="c(3);" id="menu_3" onmouseover="if(this.className=='menu_2')this.className='menu_3'" onmouseout="if(this.className=='menu_3')this.className='menu_2'">网站管理
+		<ul id="meminfo4"></ul></li>
+		{elseif $_groupid==5}<li class="menu_3" id="menu_3"></li>
+		{/if}
+		{/if}
+		<li class="menu_2" onclick="Go('{DT_PATH}');">网站首页</li>
+		</ul>
+		</div>
+<script type="text/javascript">
+
+$(function(){
+    $('#mini-dropdown-2 .dropdown').miniDropdown({
+      animation: 'slide', 
+      show: 100,
+      hide: 100,
+      delayIn: 100,
+      delayOut: 100
+    });
+});
+
+</script>
+		<div class="head_user">
+		<p >产品服务热线：4009669717</p>
+			{if $_userid}
+			<ul>
+			<li onmouseover="Ds('profile');" onmouseout="Dh('profile');"><a href="avatar.php"><img src="{useravatar($_username, 'small')}" width="20" height="20" id="myavatar"/></a>
+			<div id="profile" style="display:none;">
+			<div>
+			<dl>
+			<dt><span class="f_r"><a href="edit.php"><img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/setting.gif" width="10" height="10" align="absmiddle" title="资料设置"/></a></span>{if !$_childusername}{$MG[groupname]}{else}子账号：{/if}<span class="f_black" title="{$_username}">{if $_childusername}{$_childusername}{else}{$_truename}{/if}</span> (<a href="line.php" title="{if $_online}点击隐身{else}点击上线{/if}">{if $_online}<span class="f_green">在线</span>{else}<span class="f_gray">隐身</span>{/if}</a>)</dt>
+			{if $_groupid>5}<dt><a href="{userurl($_username)}" target="_blank" title="{$_company}"><span class="f_black">{$_company}</span></a></dt>{/if}
+			<dt><a href="record.php"><span class="f_black">{$DT[money_name]}({$_money})</span></a> <span class="f_gray">|</span> 
+			<a href="credit.php"><span class="f_black">{$DT[credit_name]}({$_credit})</span></a>
+</dt>
+			</dl>
+			</div>
+			</div>
+			</li>
+			<li id="destoon_message"><a href="message.php">站内信</a>{if $_message}<font>{$_message}</font>{/if}</li>
+			{if $DT[im_web]}<li id="destoon_chat"><a href="chat.php">对话</a>{if $_chat}<font>{$_chat}</font>{/if}</li>{/if}
+			<li><a href="logout.php?forward=">退出</a></li>
+			{if $admin_user}<li><a href="index.php?action=logout">注销授权</a></li>{/if}
+			</ul>
+			{else}
+			<a href="{$DT[file_login]}">立即登录</a> | 
+			<a href="{$DT[file_register]}">注册会员</a>
+			{/if}		
+		</div>
+		<div class="c_b"></div>
+	</div>
+</div>
+<div class="head_s" id="destoon_space">&nbsp;</div>
+<div class="main_tb">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td valign="top" class="side" id="side">
+<div id="sub_0" style="display:{if $_userid}{else}none{/if}">
+{if $_userid || $show_menu}
+	<div class="side_head" id="h_0"><div>会员服务</div></div>
+	<div class="side_body" id="b_0">
+		<ul id="leftm1">
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='grade'><span class="f_r"><a href="validate.php?action=list" class="m">认证</a></span><a href="grade.php?action=grade" class="{if $_userid}n{else}f{/if}">会员升级</a></li>
+			{if $MG[inbox_limit]>-1 || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='message'><span class="f_r"><a href="message.php?action=send" class="m">发信</a></span><a href="message.php" class="{if $MG[inbox_limit]>-1}n{else}f{/if}">站内信件{if $_message}<font>{$_message}</font>{/if}</a></li>
+			{/if}
+
+			{if $MG[chat] || $show_menu}
+			{if $DT[im_web]}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='chats'><span class="f_r"><a href="chat.php?action=add" class="m">查看</a></span><a href="chat.php" class="{if $MG[inbox_limit]>-1}n{else}f{/if}">站内交谈{if $_chat}<font>{$_chat}</font>{/if}</a></li>
+			{/if}
+			{/if}
+			{if $_groupid>5}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='child'><span class="f_r"><a href="child.php?action=add" class="m">添加</a></span><a href="child.php" class="{if $MG[friend_limit]>-1}n{else}f{/if}">子账号管理</a></li>
+			{/if}
+			{if $MG[friend_limit]>-1 || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='friend'><span class="f_r"><a href="friend.php?action=add" class="m">添加</a></span><a href="friend.php" class="{if $MG[friend_limit]>-1}n{else}f{/if}">我的商友</a></li>
+			{/if}
+
+			{if $MG[favorite_limit]>-1 || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='favorite'><span class="f_r"><a href="favorite.php?action=add" class="m">添加</a></span><a href="favorite.php" class="{if $MG[favorite_limit]>-1}n{else}f{/if}">商机收藏</a></li>
+			{/if}
+
+			{if $MG[alert_limit]>-1 || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='alert'><span class="f_r"><a href="alert.php?action=add" class="m">添加</a></span><a href="alert.php" class="{if $MG[alert_limit]>-1}n{else}f{/if}">业务提醒</a></li>
+			{/if}
+
+			{if $MOD[vmobile]&&($MG[sms] || $show_menu)}
+			{if $DT[sms]}<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='sms'><span class="f_r"><a href="sms.php?action=add" class="m">发送</a></span><a href="sms.php" class="{if $MG[sms]}n{else}f{/if}">手机短信</a></li>{/if}
+			{/if}
+
+			{if $MG[mail] || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mail'><span class="f_r"><a href="sendmail.php" class="m">电邮</a></span><a href="mail.php" class="{if $MG[mail]}n{else}f{/if}">邮件订阅</a></li>
+			{/if}
+			{if $MG[spread] || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='spread'><span class="f_r"><a href="spread.php?action=add" class="m">购买</a></span><a href="spread.php" class="{if $MG[spread]}n{else}f{/if}">排名推广</a></li>
+			{/if}
+			{if $MG[ad] || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='ad'><span class="f_r"><a href="ad.php?action=add" class="m">购买</a></span><a href="ad.php" class="{if $MG[ad]}n{else}f{/if}">广告预定</a></li>
+			{/if}
+			{if $show_oauth}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='oauth'><span class="f_r"><a href="oauth.php" class="m">绑定</a></span><a href="oauth.php" class="{if $_userid}n{else}f{/if}">一键登录</a></li>
+			{/if}
+
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='edit'><span class="f_r"><a href="avatar.php" class="m">头像</a></span><a href="edit.php" class="{if $_userid}n{else}f{/if}">修改资料</a></li>
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='ask'><span class="f_r"><a href="ask.php?action=add" class="m">提问</a></span><a href="ask.php" class="{if $_userid}n{else}f{/if}">客服中心</a></li>
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='carriage'><span class="f_r"></span><a href="carriage.php" class="{if $_userid}n{else}f{/if}">运费设置</a></li>
+		</ul>
+	</div>
+{/if}
+</div>
+
+<div id="sub_1" style="display:{if $_userid}none{else}{/if}">
+{if $MYMODS || $show_menu}
+	<div class="side_head" id="h_1"><div>信息管理</div></div>
+	<div class="side_body" id="b_1">
+		<ul id="leftm2">
+		{loop $MENUMODS $k $v}
+			{if $v==9}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_job'><span class="f_r"><a href="{$DT[file_my]}?mid=9&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid=9" class="{if in_array($v, $MYMODS)}n{else}f{/if}">设备服务需求</a></li>
+			{elseif $v==-9}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_resume'><span class="f_r"><a href="{$DT[file_my]}?mid=9&action=add&resume=1" class="m">加入</a></span><a href="{$DT[file_my]}?mid=9&resume=1" class="{if in_array($v, $MYMODS)}n{else}f{/if}">技术工程师</a></li>
+			{elseif $v==28}
+			<li class="{if $mid==28 && $resume!=1}side_b{else}side_a{/if}" ID='mid_hrjob'><span class="f_r"><a href="{$DT[file_my]}?mid=28&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid=28" class="{if in_array($v, $MYMODS)}n{else}f{/if}">职位招聘信息</a></li>
+			{elseif $v==-28}
+			<li class="{if $mid==28 && $resume==1}side_b{else}side_a{/if}" ID='mid_hrresume'><span class="f_r"><a href="{$DT[file_my]}?mid=28&action=add&resume=1" class="m">创建</a></span><a href="{$DT[file_my]}?mid=28&resume=1" class="{if in_array($v, $MYMODS)}n{else}f{/if}">个人求职简历</a></li>
+			{else}
+				<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_{$v}'><span class="f_r"><a href="{$DT[file_my]}?mid={$v}&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid={$v}" class="{if in_array($v, $MYMODS)}n{else}f{/if}">{$MODULE[$v][name]}管理</a></li>
+			{/if}
+		{/loop}
+		{if $_groupid>5 || $_groupid ==1}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_vote'><span class="f_r"><a href="vote.php?action=add" class="m">发布</a></span><a href="vote.php" class="{if $_userid}n{else}f{/if}">投票调查管理</a></li>
+		{/if}	
+		</ul>
+	</div>
+{/if}
+</div>
+
+<div id="sub_2" style="display:none;">
+{if $_userid || $show_menu}
+	<div class="side_head" id="h_2"><div>交易管理</div></div>
+	<div class="side_body" id="b_2">
+		<ul id="leftm3">
+			{if isset($MODULE[16])}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='trade'><span class="f_r"><a href="trade.php?action=order" class="m">买家</a></span><a href="trade.php" class="{if $_userid}n{else}f{/if}">我的订单</a></li>
+			{/if}
+			{if isset($MODULE[6])}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='purchase'><span class="f_r"><a href="purchase.php?action=supply" class="m">应标</a></span><a href="purchase.php" class="{if $_userid}n{else}f{/if}">收到的采购清单</a></li>
+			{/if}
+			{if isset($MODULE[17])}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='group'><span class="f_r"><a href="group.php?action=order" class="m">买家</a></span><a href="group.php" class="{if $_userid}n{else}f{/if}">团购订单</a></li>
+			{/if}
+
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='record'><span class="f_r"><a href="record.php?action=pay" class="m">站内</a></span><a href="record.php" class="{if $_userid}n{else}f{/if}">{$DT[money_name]}流水</a></li>
+
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='charge'><span class="f_r"><a href="charge.php?action=pay" class="m">充值</a></span><a href="charge.php?action=record" class="{if $_userid}n{else}f{/if}">充值记录</a></li>		
+
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='cash'><span class="f_r"><a href="cash.php" class="m">提现</a></span><a href="cash.php?action=record" class="{if $_userid}n{else}f{/if}">{$DT[money_name]}提现</a></li>
+
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='credit'><span class="f_r"><a href="credit.php?action=buy" class="m">购买</a></span><a href="credit.php" class="{if $_userid}n{else}f{/if}">{$DT[credit_name]}管理</a></li>
+
+			{if $MG[address_limit]>-1 || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='addr'><span class="f_r"><a href="address.php?action=add" class="m">添加</a></span><a href="address.php" class="{if $MG[address_limit]>-1}n{else}f{/if}">收货地址</a></li>
+			{/if}
+		</ul>
+	</div>
+{/if}
+</div>
+
+<div id="sub_3" style="display:none;">
+{if $MG[homepage] || $show_menu}
+	<div class="side_head" id="h_3"><div>网站管理</div></div>
+	<div class="side_body" id="b_3">
+		<ul id="leftm4">
+			{if $MG[homepage] || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='homepage'><span class="f_r"><a href="home.php?tab=2" class="m">栏目</a></span><a href="home.php" class="{if $MG[homepage]}n{else}f{/if}">网站设置</a></li>
+			{/if}
+
+			{if $MG[homepage] || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='style'><span class="f_r"><a href="{DT_PATH}index.php?homepage={$_username}&update=1" target="_blank" class="m">更新</a></span><a href="style.php" class="{if $MG[homepage]}n{else}f{/if}">模板风格</a></li>
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='stylev'><span class="f_r"><a href="edit.php?tab=4" class="m">介绍</a></span><a href="edit.php?tab=2"  class="f">公司资料</a></li>
+			{/if}
+
+
+			{if ($MG[news_limit]>-1 && $MG[homepage]) || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='news'><span class="f_r"><a href="news.php?action=add" class="m">发布</a></span><a href="news.php" class="{if $MG[news_limit]>-1 && $MG[homepage]}n{else}f{/if}">公司新闻</a></li>
+			{/if}
+
+			{if ($MG[page_limit]>-1 && $MG[homepage]) || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='page'><span class="f_r"><a href="page.php?action=add" class="m">添加</a></span><a href="page.php" class="{if $MG[page_limit]>-1 && $MG[homepage]}n{else}f{/if}">公司单页</a></li>
+			{/if}
+
+			{if ($MG[honor_limit]>-1 && $MG[homepage]) || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='honor'><span class="f_r"><a href="honor.php?action=add" class="m">添加</a></span><a href="honor.php" class="{if $MG[honor_limit]>-1 && $MG[homepage]}n{else}f{/if}">荣誉资质</a></li>
+			{/if}
+
+			{if ($MG[link_limit]>-1 && $MG[homepage]) || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='link'><span class="f_r"><a href="link.php?action=add" class="m">添加</a></span><a href="link.php" class="{if $MG[link_limit]>-1 && $MG[homepage]}n{else}f{/if}">友情链接</a></li>
+			{/if}
+		</ul>
+	</div>
+{/if}
+</div>
+{if $_userid}
+<script type="text/javascript">
+Dd('meminfo1').innerHTML=strre('leftm1');
+Dd('meminfo2').innerHTML=strre('leftm2');
+Dd('meminfo3').innerHTML=strre('leftm3');
+{if $_groupid>5}
+Dd('meminfo4').innerHTML=strre('leftm4');
+{/if}
+{if $_groupid==5}
+Dd('menu_3').innerHTML="<a href='grade.php?action=grade&sj=yes&groupid=6&kd=1#UP'><font class='f_white'>免费升级建站</font></a>";
+{/if}
+function strre(str){
+var s="";
+var k=0;
+$("#"+str+" li").each(function() {
+        k=k+1;
+		s=s+'<li id="m'+str+k+'">'+$(this).html()+'</li>';
+           });
+return s;
+}
+</script>
+{/if}
+</td>
+<td class="side_h" onclick="oh(this);" title="点击展开/隐藏侧栏" id="side_oh">&nbsp;</td>
+<td valign="top" class="main" id="main">

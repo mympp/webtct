@@ -1,0 +1,16 @@
+
+{loop $tags $k $t}
+<li>
+<div>
+<span class="lenstr w420"><font class="ocolor f16">￥:[{if $t[minsalary] && $t[maxsalary]}{$t[minsalary]}-{$t[maxsalary]}{$DT[money_unit]}{elseif $t[minsalary]}{$t[minsalary]}{$DT[money_unit]}以上{elseif $t[maxsalary]}{$t[maxsalary]}{$DT[money_unit]}以内{else}面议{/if}]</font><a href="{$t[linkurl]}" target="_blank" class="color ml5" >{$t[title]}</a></span>
+<span class="ml10 w160 lenstr f12 hcolor">{$t[apply]}人报名 | {$t[hits]}人浏览</span><span class="ml10 tc f12 w80 hcolor">{timetodate($t[addtime], 3)}</span>
+<p>{if $t[validated]==1}
+<font class="gcolor f12">
+<img src="{DT_SKIN}image/png/yz1.png" class="mid" /> 已验证</font>
+{else}
+<font class="color f12">
+<img src="{DT_SKIN}image/png/wyz1.png" class="mid"/> 未验证
+</font>
+{/if}{area_pos($t[areaid], '/', 2)} {dsubstr($t[introduce],80,"..")}</p></div>
+</li>
+{/loop}		

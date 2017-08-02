@@ -1,0 +1,18 @@
+{loop $tags $mk $mv}
+
+<div class="itemProduct">
+		{if $mv['thumb']}
+		<a href="{so_rewrite('detail.php?itemid='.$mv['itemid'].'&infotype=1')}" title="{$mv['title']}" target="_blank">
+		<div class="itemImg">
+				<img src="{$mv['thumb']}" alt="{$mv['title']}" onerror="javascript:this.src='{SO_SKIN}/images/nopic.gif';">
+		</div>
+		</a>
+		{/if}
+		<div class="itemProductR"><a class="mt50" href="{so_rewrite('detail.php?itemid='.$mv['itemid'].'&infotype=1')}" title="{$mv['title']}" target="_blank">详情</a> </div>
+		<div class="itemProductC" {if $mv['thumb'] == ''}style="padding-left:8px;"{/if}>
+			<a href="{so_rewrite('detail.php?itemid='.$mv['itemid'].'&infotype=1')}" title="{$mv['title']}" target="_blank"><h4>{$mv['title']}</h4></a>
+			<p>厂商：{$mv['company']}</p>
+			<p>适用：{$mv['description']}</p>
+		</div>
+</div>
+{/loop}

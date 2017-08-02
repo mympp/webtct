@@ -1,0 +1,126 @@
+{php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'jquery-ui.min.css',DT_SKIN.'gongying.add.css']}
+{php $footer_js = [DT_PATH.'file/script/jquery-ui.min.js',DT_PATH.'file/script/datepicker-zh-CN.js.js',DT_PATH.'file/script/area.js',DT_PATH.'file/script/tecenet.notify.min.js',DT_PATH.'file/script/jquery.validator.min.js',DT_PATH.'file/script/zh-CN.js',DT_PATH.'file/script/sell/gongying.demand-add.js'];}
+{template 'module-header'}
+
+<!--container-->
+<div class="container">
+    <!--layout-->
+    <div class="default-layout gy-layout gy-add-layout mgt-20 mgb-20 clearfix">
+        <div class="gy-add-layout-hd">
+            <h2>发布求购信息</h2>
+            <p>天成医疗网供求信息平台，您身边免费的求购助手！</p>
+            <p>求购信息填写越详细（*为必填项），不止能吸引商家，还能提高信息的排名。</p>
+        </div>
+
+        <form id="frmWrap" class="frm-wrap" action="demandadd.php" method="post" onsubmit="_hmt.push(['_trackEvent', 'gongying', 'click', 'demandSubmit']);">
+            <div class="other-group">
+                <div class="input-group clearfix">
+                    <div class="input-group-addon"><i>*</i>信息分类：</div>
+                    <div class="form-controls">
+                        {loop $maincat $k $t}
+                        <label class="radio-label radio-label-sm">
+                            <input type="radio" name="post[catid]" value="{$t['catid']}" data-rule="checked">{$t['catname']}
+                        </label>
+                        {/loop}
+                    </div>
+                    <div class="msg-box" for="post[catid]" style="display:none;"></div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon"><i>*</i>求购产品：</div>
+                    <div class="frm-controls">
+                        <input class="frm-input frm-input-lg" name="post[title]" type="text" placeholder="请输入您要求购产品名称、品牌、型号" data-rule="required">
+                    </div>
+                    <div class="msg-box" for="post[title]" style="display:none;"></div>
+                </div>
+                
+                <div class="input-group clearfix">
+                    <div class="input-group-addon">产品品牌：</div>
+                    <div class="frm-controls">
+                        <input class="frm-input" name="post[brand]" type="text" >
+                    </div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon">产品规格：</div>
+                    <div class="frm-controls">
+                        <input class="frm-input" name="post[model]" type="text" >
+                    </div>
+                </div>
+
+
+                <div class="input-group input-num-group clearfix">
+                    <div class="input-group-addon"><i>*</i>采购数量：</div>
+                    <div class="frm-controls">
+                        <input class="frm-input frm-input-sm" type="number" name="post[amount]" min="1" value="1">
+                        <input class="frm-input frm-input-sm" type="text" name="post[unit]" value="台" onfocus="if(this.value == '台')this.value = ''" data-rule="required">
+                    </div>
+                    <div class="msg-box" for="mall[0][num]" style="display:none;"></div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon">终端地区：</div>
+                    <div class="frm-controls">
+                        <span id="load_area_1">
+                              {ajax_area_select('areaid', '请选择',0,'class="frm-select" name="areaid"')}      
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon"><i>*</i>联系姓名：</div>
+                    <div class="frm-controls">
+                        <input class="frm-input" type="text" name="post[truename]" value="{$member['truename']}" data-rule="required">
+                    </div>
+                    <div class="msg-box" for="post[truename]" style="display:none;"></div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon"><i>*</i>手机号码：</div>
+                    <div class="frm-controls clearfix">
+                        <input class="frm-input pull-left" type="text" name="post[mobile]" value="{$member['mobile']}" data-rule="required">
+                    </div>
+                    <div class="msg-box" for="post[mobile]" style="display:none;"></div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon">其他联系方式：</div>
+                    <div class="frm-controls clearfix">
+                        <select class="frm-input pull-left" name="contact[type]">
+                            <option value="qq">QQ</option>
+                            <option value="wechat">微信</option>
+                            <option value="email">邮箱</option>
+                        </select>
+                        <input class="frm-input pull-left bdln" type="text" name="contact[value]" >
+                    </div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon">截止时间：</div>
+                    <div class="frm-controls clearfix">
+                        <input class="frm-input" type="text" id="endDate" name="post[totime]">
+                    </div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon">备注：</div>
+                    <div class="frm-controls clearfix">
+                        <input class="frm-input frm-input-lg" type="text" name="content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="frm-submit">
+                <p>请确认您发的采购信息真实无误，否则不能发布！谢谢！</p>
+                <input type="hidden" name="submit" value="1" />
+                <input class="frm-submit-btn" type="submit" value="发布求购" />
+            </div>
+
+        </form>
+        <div class="gy-add-layout-ft"></div>
+    </div>
+
+
+</div>
+<!--container end-->
+{template 'footer2017'}

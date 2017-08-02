@@ -1,0 +1,11 @@
+<div class="product">
+		<span class="left">PRODUCT CLASSIFICATION&nbsp;<label>/产品分类</label></span><span class="right"><a href="{userurl($username, 'file=mall', $domain)}">查看更多>></a></span>
+		<!--{php $tags=tag("moduleid=16&condition=status>2 and username='$username'  and thumb<>''&pagesize=8&order=elite desc,edittime desc&fields=itemid,title,linkurl,thumb,edittime&template=null");}-->
+		<ul>
+			{loop $tags $i $t}
+			{if $i<=7}
+			<li><a href="{if $homeurl}{$t[linkurl]}{else}{userurl($username, 'file=mall&itemid='.$t['itemid'], $domain)}{/if}" title="{$t[title]}"><img src="{$t[thumb]}" width="224" height="158" style="margin-bottom:10px;"/><br/>{dsubstr($t[title],20,'...')}</a></li>
+			{/if}
+			{/loop}
+		</ul>
+</div>

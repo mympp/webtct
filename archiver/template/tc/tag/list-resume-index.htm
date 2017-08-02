@@ -1,0 +1,33 @@
+{loop $tags $k $t}
+<li class="autoheight fl" style="padding:20px 0px 20px 0px">
+<div class="resumepic fl grayb whitebg tc ml5"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">
+<script type="text/javascript">
+document.writeln("<img src=\"{if $t[thumb]}{imgurl($t[thumb],'')}{else}{useravatar($t[username], 'large')}{/if}\" onerror=\"this.src=\'{DT_SKIN}image/nopic.gif\'\"    class=\"h80 w80\"/>");
+</script>
+<br>{xname($t[truename],$t[baomi])}{if $t[validated]==1}<p class='f12 ocolor tl' title="本站客服已对其真实性进行验证" style="margin-top:-35px"><img src="{DT_SKIN}image/shield.gif" class="mid"/>验证</p>{/if}</a></div>
+<dl class="fl w200 cut f12">
+<dt>&nbsp;<span class="w190 lenstr"><a href="{$t[linkurl]}" target="_blank" class="bcolor f14" title="{$t[alt]}">{$t[title]}<em>(#{$t[itemid]})</em></a></span>
+</dt>
+	<dd class="resumedd1">
+	<p>
+	<span>参加过<font class="f14 bcolor">{$t[talent]}</font>个项目</span>
+	<span>获<font class="f14 bcolor">{$t[hits]}</font>人关注</span></p>
+	<p>
+	<span>{if $t[marriage]<=1}个人{elseif $t[marriage]==2}团体{elseif $t[marriage]==3}公司{/if}/{if $t[type]==1}全职{elseif $t[type]==2}兼职{/if}</span>
+    <span>{if $t[minsalary] && $t[maxsalary]}
+	{$t[minsalary]}-{$t[maxsalary]}{$DT[money_unit]}/次
+{elseif $t[minsalary]}
+	{$t[minsalary]}{$DT[money_unit]}/次以上
+{elseif $t[maxsalary]}
+	{$t[maxsalary]}{$DT[money_unit]}/次以内
+{else}
+	面议
+{/if}</span>
+		</p>
+		<p><b>服务项目</b> {strip_tags(cat_pos(get_cat($t[catid]), '/'))}</p>
+		<p><b>支持区域</b> {area_pos($t[areaid], '/', 2)}</p>
+	</dd>
+</dl>	
+<br class='clear' />
+</li>
+{/loop}	

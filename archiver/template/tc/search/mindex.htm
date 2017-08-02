@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>天成医搜_专·新·快，打造医疗器械产业专业搜索引擎</title>
+    <meta name="keywords" content="天成，医搜，天成医搜，医疗器械，医疗服务，医疗器械供应，医疗器械采购，医疗器械维修"/>
+    <meta name="description" content="国内领先的医疗产业垂直搜索服务平台，医疗产品、厂家、服务工程师、资讯等更多医疗产业相关信息尽在天成医搜_专·新·快，打造医疗器械产品专业搜索引擎。"/>
+	<link rel="apple-touch-icon" href="{SO_SKIN}/images/s_wechat_share_icon.png">
+	<link rel="shortcut icon" href="{SO_SKIN}/images/sogex.ico" />
+    <link rel="stylesheet" href="{SO_SKIN}/search-home.min.css?v20161108">
+    <link rel="stylesheet" href="{SO_SKIN}/swiper.min.css">
+	<style>
+
+	</style>
+</head>
+<body>
+{template 'guide-ad','search'}
+
+    <!--search-wrap-->
+    <div class="search-wrap">
+        <!--top-nav-->
+        <div class="top-nav">
+            <ul>
+                {if $_username}
+				<li><a href="{$EXT[mobile_url]}my.php" style="text-decoration:underline;">{$_username}</a></li>
+				{else}
+				<li><a href="{$EXT[mobile_url]}login.php">登录</a></li>
+				<li><a href="{$EXT[mobile_url]}register.php">注册</a></li>
+				{/if}
+                <li class="top-nav-menu">
+                    <a href="javascript:void(0);" target="_self">更多</a>
+                    <div class="sub-top-nav">
+                        <a href="{$EXT[mobile_url]}" target="_blank">天成医疗网</a>
+                        <a href="http://hao.tecenet.com/" target="_blank">医疗厂家导航</a>
+                        <div class="diver"></div>
+                        <a href="http://so.tecenet.com/feekback.php" target="_blank">意见反馈</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <!--top-nav end-->
+        <!--logo-->
+        <div class="logo">
+            <h1><img src="{SO_SKIN}/images/mhomeLogo.png?v20161108" width="250" height="82" alt="天成医搜"></h1>
+        </div>
+        <!--logo end-->
+
+        <!--search-->
+        <div class="search">
+            <form action="msearch.php" method="get">
+                <input type="text" autocomplete="off" name="keyword">
+                <input type="submit" value="搜医搜">
+            </form>
+        </div>
+        <!--search end-->
+
+        <!--main-->
+        <div class="main">
+            <!--menu-->
+            <div class="menu clearfix">
+                <ul >
+                	{loop $info_type_lists $k $v}
+                	<li {if $k == 1}class="active"{/if} data="{$v['catid']}"><a href="javascript:void(0);" hidefocus="true">{$v['name']}</a></li>
+                	{/loop}
+                </ul>
+            </div>
+            <!--menu end-->
+            <!--container-->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                {loop $info_type_lists $k $v}
+                {template 'mtab_'.$v['catname'],$module}
+                {/loop}
+				
+                </div>
+            </div>
+            <!--container end-->
+			<!--loading-->
+			<div class="loading hidden">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+				<div class="loading-txt">加载中</div>
+			</div>
+			<!--loading end-->
+        </div>
+        <!--main end-->
+    </div>
+    <!--search-wrap end-->
+
+    <!--回到顶部-->
+    <div class="tool">
+        <a href="javascript:;" class="go-to-top" style="display: none;"></a>
+        <a href="feekback.php" class="go-fankui" ></a>
+        <a href="http://wap.tecenet.com/" class="go-to-home"></a>
+    </div>
+    <!--回到顶部 end-->
+
+    <!--footer-->
+    <footer class="footer">
+        <img class="tel-400" width="147" height="34" src="http://www.tecenet.com/skin/sogex/images/tel-400.png" alt="">
+        <div class="links">
+            <a href="feekback.php">用户反馈</a>|
+            <a href="http://wap.tecenet.com/" target="_blank">天成医疗网</a>|
+            <a href="http://hao.tecenet.com/" target="_blank">医疗厂家导航</a>
+        </div>
+        <p>版权所有 ©广州天成医疗技术股份有限公司</p>
+        <p>CopyRight ©Guangzhou TianCheng Medical Technology Co.,Ltd.</p>
+    </footer>
+    <!--footer end-->
+
+<div style="display:none;">{template 'so_analytics','include'}</div>
+    <script src="{DT_PATH}file/script/sogex/zepto.min.js"></script>
+    <script src="{DT_PATH}file/script/sogex/swiper.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="{DT_PATH}file/script/sogex/addtohomescreen.min.js"></script>
+    <script>
+        var localUrl = encodeURIComponent(window.location.href.split("#")[0]);
+        $.ajax({
+            url: 'http://www.tecenet.com/api/weixin/jssdk.php?callback=cb&url='+localUrl,
+            dataType: 'jsonp',
+            error: function(){},
+            success: function(cb){
+                if ( typeof cb.timestamp != 'undefined' && typeof cb.nonceStr != 'undefined' && typeof cb.signature != 'undefined' ) {
+                    wx.config({
+                        debug: false,
+                        appId: cb.appId,
+                        timestamp: cb.timestamp,
+                        nonceStr: cb.nonceStr,
+                        signature: cb.signature,
+                        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo']
+                    });
+                    wx.ready(function () {
+                        wx.onMenuShareTimeline({
+                            title: "天成医搜_专·新·快，打造医疗器械产业专业搜索引擎",
+                            link: 'http://www.tecenet.com/search/',
+                            imgUrl: "http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png"
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: "天成医搜_专·新·快，打造医疗器械产业专业搜索引擎",
+                            desc: '国内领先的医疗产业垂直搜索服务平台',
+                            link: 'http://www.tecenet.com/search/',
+                            imgUrl: 'http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png',
+                            type: '',
+                            dataUrl: ''
+                        });
+                        wx.onMenuShareQQ({
+                            title: "天成医搜_专·新·快，打造医疗器械产业专业搜索引擎",
+                            desc: '国内领先的医疗产业垂直搜索服务平台',
+                            link: window.location.href,
+                            imgUrl: 'http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png'
+                        });
+                        wx.onMenuShareWeibo({
+                            title:"天成医搜_专·新·快，打造医疗器械产业专业搜索引擎",
+                            desc: '国内领先的医疗产业垂直搜索服务平台',
+                            link: 'http://www.tecenet.com/search/',
+                            imgUrl: 'http://www.tecenet.com/skin/sogex/images/s_wechat_share_icon.png'
+                        });
+                    });
+                }
+            }
+        });
+    </script>
+    <script>
+		addToHomescreen({
+            maxDisplayCount: 2 //最多出现次数
+        });
+        //滑动插件实例化
+        var mySwiper = new Swiper('.swiper-container',{
+            autoHeight: true,
+            lazyLoading : true,
+            lazyLoadingInPrevNext : true,
+            touchAngle : 10,
+            onSlideChangeStart: function(){
+                $(".menu .active").removeClass('active');
+                $(".menu li").eq(mySwiper.activeIndex).addClass('active');
+                $('body,html').scrollTop(0);
+            }
+        });
+        //导航位置跳转
+        $(".menu li").on('click',function(e){
+            e.preventDefault();
+            $(".menu .active").removeClass('active');
+            $(this).addClass('active');
+            mySwiper.slideTo($(this).index(), 500, false);
+        });
+        $(".menu li").click(function(e){
+            e.preventDefault();
+        });
+		//搜索悬浮
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 260) {
+                $(".search").addClass("fixed");
+				$(".logo").css("padding","30px 0 70px 0");
+            } else {
+                $(".search").removeClass("fixed");
+				$(".logo").css("padding","30px 0");
+            }
+        });
+		// 搜索失去焦点去背景
+		$(".search input[type='text']").blur(function(){
+			if($(".search input[type='text']").val() != ''){
+				$(".search input[type='text']").addClass("hide-bg");
+			}else{
+				$(".search input[type='text']").removeClass("hide-bg");
+			}
+		});
+		
+
+        //回到顶部
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 600) {
+                $(".tool .go-to-top").show();
+            } else {
+                $(".tool .go-to-top").hide();
+            }
+        });
+        $(".tool .go-to-top").click(function(){
+            $('body,html').scrollTop(0);
+            return false;
+        });
+        
+        //检测滚轮事件
+    		lock = true;//滑动更新的锁变量
+			$(function () {
+				var i = 4;
+				$(window).bind("scroll", function (event){
+					//滚动条到网页头部的 高度，兼容ie,ff,chrome
+					var top = document.documentElement.scrollTop + document.body.scrollTop;
+					//网页的高度
+					var textheight = $(document).height();
+					// 网页高度-top-当前窗口高度
+					if (textheight - top - $(window).height() <= 50) {
+						//$(".Contentbox").removeClass("overHidden");
+						 if (i >= 100) { return;
+						//控制最大只能加载到100
+						}
+						//i++;
+						//可以根据实际情况，获取动态数据加载 到 div1中
+						if(lock){		//锁解开状态才进行更新
+							lock = false;		//更新开始前关闭锁
+							i++;
+							//可以根据实际情况，获取动态数据加载 到 div1中
+							$(".loading").removeClass("hidden");
+							addData();
+						}
+					}
+				});
+
+			});
+			
+			//添加数据函数
+			function addData(){							
+				//判断当前显示的Tab
+				var boxdata = $(".menu .active").attr("data");
+				//var boxid = $(".Contentbox div").not(":hidden").attr("id");
+				var page = $("#page"+boxdata).val();
+
+				//根据不同的data值，请求不同
+				var page = $("#page"+boxdata).val();
+				$.ajax({
+					type : 'GET',
+					url: 'http://'+window.location.host+'/ajax.php',
+					data : 'action=info&infotype='+boxdata+"&page="+page+'&mobile=1',
+					cache:true,
+					success:function(data,status){
+						if(data == '-1'){
+							$('#tic').html('参数错误');
+						}else if(data == ''){
+							$('#tic').html('<span style="color:#D3251E">没有内容了</span>');				
+						}else{
+							$('#mtab'+boxdata).append(data);
+							$('#page'+boxdata).val(parseInt(page)+1);
+							mySwiper.update(); //更新Swiper
+						}
+						lock = true;	//更新完成解开锁
+                        // 重新实例化懒加载
+                        new Swiper('.swiper-container',{
+                            lazyLoading : true,
+                            lazyLoadingInPrevNext : true
+                        });
+						// 隐藏loading
+						$(".loading").addClass("hidden");
+
+                    },
+					error:function(XMLHttpRequest, textStatus, errorThrown) {
+                       	lock = true;	//更新失败也解开锁
+                    }		
+		});
+			}
+    </script>
+</body>
+</html>

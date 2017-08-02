@@ -1,0 +1,15 @@
+				{if $tags}
+				<ul class="autoheight">
+				{loop $tags $z $t}
+                 {if $z<2&&$t[thumb]!=''}
+				 <li class="cut grayb graybg"><a href="{$t[linkurl]}"  target="_blank"  title="{$t[alt]}" ><img src='{$t[thumb]}' width="90" height="100"  onerror="this.src='{DT_SKIN}image/nopic.gif'"  class="thumbs"></a><div class="fl f12 pt5"><a href="{$t[linkurl]}"  target="_blank"  title="{$t[alt]}" ><p class="f16 b">{$t[title]}</p></a> {if $t[downtype]==0}完全共享{/if}{if $t[downtype]==1}下载需{$t[djifen]}积分{/if}{if $t[downtype]==2}下载需{$t[dprice]}金币{/if}<br ><a href="{$t[linkurl]}"  target="_blank"  title="{$t[alt]}" ><img src="{DT_SKIN}image/down/look.png"></a></div></li>
+				 {else}
+				 <li class="sfile cut"><a href="{$t[linkurl]}"  target="_blank"  title="{$t[alt]}" ><img src="{DT_SKIN}image/down/file/{$t[fileext]}.jpg">{$t[title]}</a></li>
+				 {/if}
+				{/loop}
+				<li class="clear"></li>
+				</ul>
+				{else}
+				暂无任何与{$c[catname]}相关的图文信息
+				{/if}
+{if $pages}<div class="pages">{$pages}</div>{/if}

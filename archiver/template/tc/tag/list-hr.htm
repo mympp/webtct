@@ -1,0 +1,34 @@
+<ul class="fwxqlist">
+{php $farray=fieldsarray(101,'*');}
+{loop $tags $k $t}
+<?php $expired = $t[totime] && $t[totime] < $DT_TIME ? true : false;?>
+<li class="whitebg pb10">
+<div class="divline"></div>
+<dl>
+<dt class="f16 pd5" style="border-bottom:1px dotted #ccc">
+<a href="{$t[linkurl]}" target="_blank" class="color b" title="打开了解{$t[catname]}需求:{$t[alt]}" > {$t[title]}</a>&nbsp;<span class='f12 hcolor'>( {$t[company]} )</span>
+</dt>
+<dd class="autoheight fl mr10 w800 pl5">
+<p class="f14"><span class="mr10">{area_pos($t[areaid], '/', 2)} {$t[department]} </span><span>[{$t[pinpai]} {$t[xinghao]} {$CATEGORY[$t[catid]][catname]}需求]</span> {dsubstr($t[introduce],200,"..")}</p>
+<p class="f14"><span class="mr10">{if $t[validated]==1}<font class="ocolor f12"><img src="{DT_SKIN}image/png/yz1.png" class="mid" /> 已验证</font>{else}<font class="color f14"><img src="{DT_SKIN}image/png/wyz1.png" class="mid"/> 未验证</font>{/if}</span><span class="ml10">截止时间  {if $t[expired]}<span class="ocolor">已过期</span>{else}
+{if $t[totime]==0}长期有效{else}{timetodate($t[totime],3)}{/if}
+</p>
+<p class="f14 mt10">
+<span class=" bcolor"><b class='f14'>进展情况&nbsp;&nbsp;</b> <img src="{DT_SKIN}image/dot.gif" class="mid"> {$farray[$t[step]]}</span>
+{/if}</span>
+
+</p>
+</dd>
+<dd class="fl w140  grayb graybg tc h80 mt5 ">
+<p class="rcolor f16 mt10">￥:[{if $t[minsalary] && $t[maxsalary]}{$t[minsalary]}-{$t[maxsalary]}{$DT[money_unit]}{elseif $t[minsalary]}{$t[minsalary]}{$DT[money_unit]}以上{elseif $t[maxsalary]}{$t[maxsalary]}{$DT[money_unit]}以内{else}面议{/if}]</p>
+		<p class="mt5">获<font class="f18 ocolor">{$t[hits]}</font>人关注</p>
+</dd>
+<br class="clear"/>
+</dl>
+</li>
+{/loop}			
+</ul>
+<script type="text/javascript">
+$(".fwxqlist>li").hover(function () {$(this).removeClass("whitebg"); $(this).addClass("bluebg"); }, function () {$(this).removeClass("bluebg"); $(this).addClass("whitebg");});
+</script>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

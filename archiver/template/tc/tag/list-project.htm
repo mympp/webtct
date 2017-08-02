@@ -1,0 +1,38 @@
+
+<style>
+	#project_message li{float:left;font-size:14px;border-bottom:0px;min-width:38px;padding:0px;}
+</style>
+<ul class="{$css}ul" id="artlll">
+{loop $tags $k $t}
+<li style="min-height:120px;border-bottom:1px dashed #ccc;">
+	<div style="padding:2px;width:130px;height:130px;margin-left:5px;" class="fl">
+		<a href="{$t[linkurl]}"><img src="{$t[thumb]}" style="width:100%;height:100%;" onerror="this.src='{DT_SKIN}image/nopic.gif'" /></a>
+	</div>
+	<div class="fl pd10" style="margin-left:10px;width:560px;line-height: 22px;word-break: break-all;">
+		<b style="font-size:18px;"><a href="{$t[linkurl]}">{$t[title]}</a></b>
+		<div class="divline"></div>
+		<ul id="project_message">
+			<li style="width:165px;">
+			<i style="color:#1e7e6a;font-weight:bold;">
+			{php $catname=$db->get_one("select catname as c from {$db->pre}category where catid=".$t['catid']);}
+			应用领域：{$catname['c']}</i>
+			</li>
+			<li style="min-width:170px;height:22px;">
+			{if $t[level]}<i style="color:#1e7e6a;font-weight:bold;">所处阶段：{$level_arr[$t[level]]}</i>{/if}
+			</li>
+			<li style="width:135px;"><span style="color:red;">日期：</span>{date('Y/m/d',$t[addtime])}</li>
+			<li><span style="color:red;">浏览量：</span>{$t[hits]}</li>
+		</ul>
+		<br/>
+		<div class="divline"></div>
+		<span style="font-size:14px;">{dsubstr($t[introduce],120,'...')}</span>
+	</div>
+</li>	
+{/loop}
+</ul>
+<script type="text/javascript">
+$(".{$css}ul>li").hover(function () {$(this).removeClass("whitebg");$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg");$(this).addClass("whitebg"); });
+</script>
+
+{if $showpage && $pages}<div class="divline"></div>
+<div class="pages">{$pages}</div>{/if}

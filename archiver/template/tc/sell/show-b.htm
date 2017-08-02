@@ -1,0 +1,176 @@
+{template 'title'}
+{php $COM=userinfo($username);}
+<body>
+  <style type="text/css">
+				.userinfo li{border-bottom:1px dotted #eeeeee;}
+				.userinfo li span{width:80px;text-align:left;text-indent:10px;}
+				#contactinfo{width:430px;}
+				.opensite{position:fixed;right: 0px;top:0px;z-index:100;}
+				.blist{height:130px;background:#fff;padding-top:30px;border-bottom:2px solid #dddddd;}
+				#btitle{font-size:18px;line-height:36px;height:36px;padding-bottom:4px;
+				color:#38393a; width:100%;}
+				.bp{position: absolute;}
+				.bf{position:fixed;top:0px;}
+				.brand{;width:755px;margin:auto}
+				.brand ul{height:125px;}
+				.brand ul li{float:left;;padding-top:15px;width:115px;overflow:hidden;text-align:Center;margin-left:10px;}
+				.brand img{padding:1px;background:#fff;width:105px;height:74px;}
+				.brand a:link{color:#949494}
+				.brand a:link img,.brand a:visited img,.brand a:active img{border:1px solid #ddd;}
+				.brand a:hover img{border:1px solid #f59d0a;background:#fbda82}
+				.brand  div{ display:block; text-align:center; font-size:12px;width:100px;}
+				#botxf{ height:50px; width:100%;position:fixed; _position:absolute; right:0; bottom:0; background:#f68c1f url('{DT_SKIN}image/foot_kefu.gif') center no-repeat;}
+				.footbg2{ margin-bottom:50px;}
+
+  </style>
+
+<div class="opensite"><a href="{$COM[linkurl]}{if $jump == '1'}introduce/{/if}"><img src="{DT_SKIN}image/blank.gif" width="106" height="146" style="background:url('{DT_SKIN}image/opensite.png');"></a></div>
+
+						<div class='topmenubg'>
+						<!--最顶部菜单-->
+						<script type="text/javascript">topmenu(	{if $moduleid>2}{$moduleid}{else}1{/if})</script>
+							{if !$teceid}
+							<script type="text/javascript">Dd('tece{$moduleid}').className='welcomey';</script>
+							{else}
+							<script type="text/javascript">Dd('tece{$teceid}').className='welcomey';</script>
+							{/if}
+						</div>
+						<div class="blist">
+							<DIV CLASS="webw center">
+
+								<div class="brand pd5 fr">
+									<ul id="CSSContent">	
+										<li>
+												<a href="{$linkurl}" title="{$title}" target="_blank"><img src='{$thumb}' alt='{$title}'  align="center" style="border:1px solid #f59d0a;background:#fbda82"><div class="lenstr ocolor">{$title}</div></a>
+									   </li>
+									{php $n=substr($DT_TIME,-1);}
+										{php $tagt = tag("moduleid=$moduleid&condition=status=3  and thumb<>''  and level>0 and itemid<>$itemid &pagesize=5&order=rand($n)&template=null&debug=0&showcat=1")}			
+										{loop $tagt $z $t}															
+										<li>
+												<a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img src='{$t[thumb]}' alt='{$t[alt]}'  align="center" ><div class="lenstr">{$t[alt]}</div></a>
+									   </li>
+										{/loop}	
+									</ul>
+									</div>
+									<div style="padding-top:35px;"><img src="{DT_SKIN}image/logo.gif"></div>
+								</div>
+						</div>
+<div class="center autoheight"  id="webmid{$moduleid}">
+		<div>
+         {$content}
+		 </div>
+
+
+
+
+
+
+
+
+
+  <div class="autoheight center tc" id="contactus">
+  <div class="webw">
+  <div class="">我司是专业的推广服务平台，推广信息均得到广告方的合法授权</div>
+   <div class="infotable ">
+		<table cellpadding="0" cellspacing="0">
+				<tr><td colspan=2>  <h2 class="h2"><a href="{$COM[linkurl]}">{$title}</a></h2></td></tr>
+				<tr>
+               <td  rowspan="5" valign="top" align="center">
+			   <dl id="contactinfo">
+			   <dd class="tl">
+                   <ul class='userinfo'>
+				   <li><span class="lenstr">发 布 者</span>{$truename}</li>
+				   <!--
+{if $areaid}<li><span  class="lenstr">所 在 地</span>{area_pos($areaid, ' ')}</li>{/if}
+-->
+{if $brand}<li><span  class="lenstr">品牌信息</span>{$brand}</li>{/if}
+<li><span  class="lenstr">关注次数</span>{$hits}次</li>
+{if $share||$username==$_username}
+		{if $n1 && $v1}<li><span  class="lenstr">{$n1}</span>{$v1}</li>{/if}
+		{if $n2 && $v2}<li><span  class="lenstr">{$n2}</span>{$v2}</li>{/if}
+		{if $n3 && $v3}<li><span  class="lenstr">{$n3}</span>{$v3}</li>{/if}
+{/if}
+<li><span  class="lenstr">单价/价格</span>{if $price>0}{$price}{$DT[money_unit]}/{$unit}{else}面议{/if}</li>
+{if $minamount}<li><span  class="lenstr">起订基础</span>{$minamount} {$unit}</li>{/if}
+{if $amount}<li><span  class="lenstr">供货总量</span>{$amount} {$unit}</li>{/if}
+{if $days}<li><span  class="lenstr">发货期限</span>{$days}天</li>{/if}
+<!--
+<li><span  class="lenstr">品牌介绍</span><a href="{$COM[linkurl]}">{$COM[linkurl]}</a></li>
+-->
+				   </ul>
+            </dd>
+			<dd style="margin-top:50px;"><a href="{$COM[linkurl]}contact/"><img src="{DT_SKIN}image/sell/tel.png" /></a></dd>
+               </td>
+
+              <td   valign="top" ID="bookinfo">
+	<iframe src='{$MODULE[$moduleid][linkurl]}inquiry.php?itemid={$itemid}&stype=small' allowTransparency="true"  style="background-color:transparent" width=490 height="460" id='bookonline' frameborder=0 scrolling=no></iframe>	
+				</td></tr>
+</table>
+</div>
+</div>
+		</div>
+		<div class='divline'></div>
+		</div>
+
+
+<div id="botxf"></div>
+
+
+{if $groupid>6}
+<style type="text/css">
+#kefu{position:fixed;right: 5px;bottom: 10px;z-index:100;border: 5px solid #e1e1e1;display:none;
+    -moz-border-radius: 5px;      
+    -webkit-border-radius: 5px;   
+    border-radius:5px;}
+</style>
+<div id="kefu">
+
+<script type="text/javascript" src="{DT_PATH}file/script/base64.js"></script>
+<div style="width:200px;padding:2px 5px 2px 5px;background:#e1e1e1;height:38px;"><img src="{DT_SKIN}image/company/kefu.jpg"></div>
+<div style="width:200px;padding:10px 5px 5px 5px;background:#fff;line-height:24px;font-size:13px;">
+{if !$COM[contacts]}
+		{if $telephone}
+		{php $COM[contacts]='电话:'.$telephone.'<br>'.$COM[contacts];}
+		{/if}
+		{if $fax}
+		{php $COM[contacts]='传真:'.$fax.'<br>'.$COM[contacts];}
+		{/if}
+		{if $email}
+		{php $COM[contacts]='邮箱:'.$email.'<br>'.$COM[contacts];}
+		{/if}
+		{if $qq}
+		{php $COM[contacts]='QQ:'.$qq.'<br>'.$COM[contacts];}
+		{/if}
+		{if $mobile}
+		{php $COM[contacts]='手机:'.$mobile.'<br>'.$COM[contacts];}
+		{/if}
+{/if}
+<script type="text/javascript">
+document.write(utf8to16(base64decode('{php echo strencode(nl2br($COM[contacts]));}')));
+</script>
+	<div style="text-align:center"><input type="button" value="在线留言" 
+	onclick="Go(' {userurl($username, 'file=contact', $domain)} ')" style="width:100px;text-align:center;padding:5px;">
+	</div>
+</div>
+</div>
+{/if}
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?7366d5ce748c7a306307317faaf241ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  <script type="text/javascript">
+  Dd('siteinfos').innerHTML='天成医疗-VIP合作品牌推广专区';
+  </script>
+{php $nokefu='true';}
+{if !$nofooter}
+{template 'footer'}
+{/if}
+<span style="display:none">
+{template 'analytics','include'}
+</span>

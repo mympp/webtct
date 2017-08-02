@@ -1,0 +1,35 @@
+{php $sitemenu='photo';$mlogo='mall.gif';}
+{template 'header'}
+<div class="webw">
+{template 'lay','tag'}
+	<div class="whitebg fl">
+		<dl class="ks_list">{php $catCount = $db->count($DT_PRE.'category', "moduleid=$moduleid and level = 2", 60);}
+			<dt class="ks_1 fl"><p>医院主要科室产品解决方案<span>（共{$catCount}个主要科室）</span></p></dt>
+			<dd class="tjks fl">
+				<ul>
+{php $cat = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and level = 2&pagesize=15&template=null")}
+{loop $cat $c $t}
+					<li>
+					<a href='{$MODULE[$moduleid][linkurl]}{rewrite("list.php?catid=$t[catid]")}' target="_blank" title="{$t[catname]}产品方案"{if $t[otheritem]==0}onmouseover="this.style.color='black';" onclick="return false" disabled
+					{else} {/if} >
+						<div style=" width:110px; height:0px; padding-top:130px; margin:0 auto;{if $t[otheritem]==0} background:url({DT_SKIN}image/photo/{$t[catid]}.png) no-repeat center"{else}background:url({DT_SKIN}image/photo/{$t[catid]}o.png) no-repeat center" onmouseover="this.style.background='url({DT_SKIN}image/photo/{$t[catid]}o.png) no-repeat center'" {/if}>{$t[catname]}产品方案</div>
+					</a>
+					</li>
+{/loop}
+
+				</ul>
+			</dd>{php $catsCount = $db->count($DT_PRE.'category', "moduleid=$moduleid and level = 1 and parentid = 0", 60);}
+			<dt class="ks_2 fl"><p>医院其他科室产品解决方案<span>（共{$catsCount}个主要科室）</span></p></dt>
+			<dd class="ptks fl">
+				<ul>
+{php $cats = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and level = 1 and parentid = 0&pagesize=29&template=null&debug=0")}
+{loop $cats $c $s}
+					<li><a href="{$MODULE[$moduleid][linkurl]}list.php?catid={$s[catid]}" target="_blank" title="" {if $s[otheritem]==0}onmouseover="this.style.color='black';" onclick="return false" disabled{else} style="color: #FF0000" {/if}>{$s[catname]}产品方案</a></li>
+{/loop}<li>……</li>
+				</ul>
+			</dd>
+			<dd class="mrks"><a href="{$MODULE[16][linkurl]}search.php?stype=9&list=1&tc=9">更多科室产品解决方案</a></dd>
+		</dl>
+	</div>
+</div>
+{template 'footer'}

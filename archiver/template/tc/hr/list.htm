@@ -1,0 +1,65 @@
+{php $sitemenu='hr';$listpage='list';$mlogo=$DT_SKIN.'hr/blogo.png';}
+{template 'header'}
+{template 'lay','tag'}
+<script type="text/javascript">Dd('catsl').className='menuy';</script>
+<div class="autoheight pt5 whitebg">													
+														<dl class="options">		
+														
+															<dt>招聘职位分类：</dt>
+															<dd><a {if $catid==$catida} class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$catida)}">全部</a>
+															{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=30&order=listorder ASC&template=null")}
+															{loop $tagss $i $t}
+															<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$kstep.'&action='.$action.'&areaid='.$areaid.'&catid='.$t[catid])}" {if $t[catid]==$catid||$t[catid]==$l[2]} class="opyes wcolor"{else}class="color"{/if}>{set_style($t[catname],$t[style])}<i>
+															{if $action=="resume"}
+																[{$t[otheritem]}]
+															{else}
+																[{$t[item]}]
+															{/if}
+															</i></a>
+															{/loop}
+															</dd>
+															</dl>
+										
+															<dl class="options">
+															<dt>招聘状态筛选：</dt>
+															<dd><a {if $kstep==0}class="opyes wcolor"{else}class="color"{/if} href="{$MOD[linkurl]}{rewrite('search.php?areaid=0&catid='.$catid)}">全部</a>
+															<?$fields=fieldsarray(101,'*',0);?>
+															{loop $fields $i $t}
+															{if $i>0}
+															<a href="{$MOD[linkurl]}{rewrite('search.php?kstep='.$i.'&catid='.$catid)}" {if $kstep==$i}class="opyes wcolor"{else}class="color"{/if}>{$t}</a>
+															{/if}
+															 {/loop}
+															</dd>
+															</dl>
+											
+														<form action="{$MOD[linkurl]}search.php" id="fsearch">
+														<input type="hidden" name="typeid" value="{$typeid}">
+														<input type="hidden" name="areaid" value="{$areaid}">
+			                                            <input type="hidden" name="catid" value="{$catid}">
+														<input type="hidden" name="vip" value="{$vip}">
+			                                            <input type="hidden" name="thumb" value="{$thumb}">
+                                                        {template 'search', 'chip'}
+														</form>
+														</div>
+															<div class="divline"></div>
+<div class="autoheight whitebg pd10">
+			<div class="listleft autoheight"  style="width:970px;">
+			{template 'listh4', 'chip'}
+				<div class="tool">
+				 {template 'form0', 'hr'}
+				</div>
+					{if $tags}
+							<div class="autoheight">
+							{template 'list-hr', 'tag'}
+							</div>
+					{else}
+							{template 'noresult', 'message'}
+					{/if}
+			</div>
+
+
+			<div class="divline"></div>
+
+</div>
+<div class="divline"></div>
+{template 'footer'}

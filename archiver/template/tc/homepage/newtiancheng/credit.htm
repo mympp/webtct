@@ -1,0 +1,45 @@
+{template 'header', $template}
+<div class="right">
+	<div class="right_top">
+		<img src="{$HSPATH}ico_6.jpg"/>&nbsp;&nbsp;您当前的位置：<a style="color:#9d1b5f" href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$COM[linkurl]}" style="color:#9d1b5f">{$MENU[$menuid][name]}</a>
+		<span><script type="text/javascript">show_date();</script></span>
+	</div>
+			<div class="list_record">
+				<!--{php $catCount = $db->count($DT_PRE.'category', "moduleid=12 and level = 2", 60);}-->
+				<div class="list_title"><span>医院主要科室产品解决方案<span>（共{$catCount}个主要科室）</span></div>
+				<div class="list_record_content">
+					<table cellpadding="3" cellspacing="1" align="left" width="100%">
+					<!--{php $cat = tag("moduleid=12&table=category&condition=moduleid=12 and level = 2&pagesize=15&template=null")}-->
+					{loop $cat $c $t}
+					{if $c%5==0}<tr align="center">{/if}
+					<td valign="top" width="20%" height="180">
+					<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
+						<a href="{$t[linkurl]}"><img src="{DT_SKIN}image/photo/{$t[catid]}.png" width="130" height="100" alt="{$t[catname]}产品方案"/></a>
+					<div><a href="{$t[linkurl]}" title="{$t[catname]}产品方案">{$t[catname]}产品方案</a></div>
+					</div>
+					</td>
+					{if $c%5==4}</tr>{/if}
+					{/loop}
+					</table>
+				</div>
+			</div>
+			<div class="list_record">
+				<!--{php $catsCount = $db->count($DT_PRE.'category', "moduleid=12 and level = 1 and parentid = 0", 60);}-->
+				<div class="list_title"><span>医院其他科室产品解决方案<span>（共{$catsCount}个主要科室）</span></div>
+				<div class="list_record_content">
+					<table cellpadding="3" cellspacing="1" align="left" width="100%">
+					<!--{php $cat = tag("moduleid=12&table=category&condition=moduleid=12 and level = 2&pagesize=15&template=null")}-->
+					{loop $cat $c $t}
+					{if $c%5==0}<tr align="center">{/if}
+					<td valign="top" width="20%" height="180">
+					<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
+						<a href="{$t[linkurl]}"><img src="{DT_SKIN}image/photo/{$t[catid]}.png" width="130" height="100" alt="{$t[catname]}产品方案"/></a>
+					<div><a href="{$t[linkurl]}" title="{$t[catname]}产品方案">{$t[catname]}产品方案</a></div>
+					</div>
+					</td>
+					{if $c%5==4}</tr>{/if}
+					{/loop}
+					</table>
+				</div>
+			</div>
+{template 'footer', $template}

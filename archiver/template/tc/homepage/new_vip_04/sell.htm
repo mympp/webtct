@@ -1,0 +1,85 @@
+{template 'header', $template}
+{if $itemid}
+<div class="crumbs">您的当前位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}sell">供应信息</a>&nbsp;>&nbsp;<a href="#">供应详情</a></div>
+<div class="product_main">
+ <script type="text/javascript" src="{DT_STATIC}file/script/showlist.js"></script>
+		<div class="product_main_left">
+			<div class="operate">
+				<h3> 热门商品 </h3>
+				<ul id="J_navlist">
+				<!--{php $list=tag("table=mall&condition=username='$username'&pagesize=10&order=hits desc&template=null");}-->
+				{loop $list $k $v}
+				  <li>
+					<h4><a href="{$v[linkurl]}" title="{$v[title]}">{dsubstr($v[title],20,'...')}</a></h4>
+				  </li>	 
+				{/loop}
+				  <li>
+					<h4><a href="{$COM[linkurl]}mall">更多</a></h4>
+				  </li>
+				</ul>
+				 <script type="text/javascript" language="javascript">
+					navList(12);
+				 </script>
+			 </div>
+		</div>
+		<div class="product_main_right">
+			<div class="product_main_right_title">{$title}</div>
+			<div class="details_content">
+				<div class="de_img">
+					<div class="big_img" onMouseOver="SAlbum();" onMouseOut="HAlbum();" onClick="PAlbum(Dd('mid_pic'));">
+						<img src="{$albums[0]}" width="90%" height="90%"/>
+					</div>
+					<ul>
+						{loop $thumbs $k $v}
+						<li><a href="#"><img src="{$v}" width="90%" height="90%"/></a></li>
+						{/loop}
+					</ul>
+				</div>
+				<div class="de_right">
+					<table border="0">
+						<tr><td width="100" class="s" style="boeder-top:0px">产&nbsp;&nbsp;&nbsp;品：</td><td>{$title}</td></tr>
+						<tr><td class="s">型&nbsp;&nbsp;&nbsp;号：</td><td><span style="color:#FF0000">&nbsp;{$model}</span></td></tr>
+						<tr><td class="s">规&nbsp;&nbsp;&nbsp;格：</td><td>{if $standard}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$standard}</a>{else}未填写{/if}</td></tr>
+						<tr><td class="s">品&nbsp;&nbsp;&nbsp;牌：</td><td>{$brand}</td></tr>
+						<tr><td class="s">单&nbsp;&nbsp;&nbsp;价：</td><td>{if $price>0}{$price}{$DT[money_unit]}/{$unit}{else}面议{/if}</td></tr>
+						<tr><td class="s">最小起订量：</td><td>已有出<span style="color:#FF9900;">{if $minamount}{$minamount} {$unit}{/if}</td></tr>
+						<tr><td class="s">供货总量：</td><td>还剩出<span style="color:#FF9900;">{if $amount}{$amount} {$unit}{/if}</td></tr>
+						<tr><td class="s">发货期限：</td><td>自买家付款之日起  <span style="color:#FF9900;">{if $days}{$days}{/if}</span> 天内发货</td></tr>
+						<tr><td class="s">更新日期：</td><td>有效期至：{if $todate}{$todate}{else}长期有效{/if}{if $expired} <span style="color:red;">[已过期]</span>{/if}</td></tr>
+						</table>
+					<table style="margin-top:20px;">
+						<tr><td class="s"></td><td width="150"><a href="#message"><img src="{DT_SKIN}image/btn_inquiry.gif" alt="询价"/></a></td></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="details_parameter">
+			<div class="product_main_right_title">详细参数</div>
+			<div class="parameter_content">
+				{$content}
+			</div>
+		</div>
+		<div class="details_parameter">
+			<div class="product_main_right_title">询价单<a name="message"></a></div>
+			<div class="parameter_content">
+				<iframe src="{$inquiry_url}" name="fra" id="fra" style="width:98%;height:488px;padding-top:15px;" scrolling="no" frameborder="0"></iframe>
+			</div>
+		</div>
+	</div>
+{else}
+	<div class="crumbs">您的当前位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;供应信息</div>
+	<div class="list_product">
+		<div class="list_title">供应信息</div>
+		<div class="list_product_content">
+		<ul>
+			{loop $lists $k $v}
+			{if $k<16}
+			<li><a href="{$v[linkurl]}" title="{$v[title]}"><img src="{imgurl($v[thumb], 1)}" width="226" height="159" style="margin-bottom:10px;"/><br/>{dsubstr($v[title],20,'...')}<br/><span>￥{$v[price]}</span></a></li>
+			{/if}
+			{/loop}
+		</ul>
+		</div>
+	</div>
+	<div class="pages">{$pages}</div>
+{/if}
+{template 'footer', $template}		

@@ -1,0 +1,26 @@
+<div class="list_s_a">
+
+				<h3>
+					<span><p>合作单位</p></span>
+					<a href="{userurl($username, 'file=brand', $domain)}" title="合作单位">更多</a>
+				</h3>
+				<ul class="list_box">
+					<!--{php $tags = tag("table=brand_13&fields=itemid,title,thumb,homepage&condition=status=3 and username='$username'&pagesize=8&order=edittime desc&template=null")}-->
+					{php $i=0;}
+					{loop $tags $v}
+					{if $v[title]}
+					{if $i<=5}
+					{php $id=$v[itemid]}
+					<li>
+						<a href="{$v[homepage]}"><img src="{$v[thumb]}" width="70" height="70" style="float:left;margin-top:12px;"/></a>
+						<p style="padding:10px 0 0 90px;display:block;"><a href="{$v[homepage]}" target="_blank">{$v[title]}</a></p>
+						<!--{php $introduce = tag("table=brand_data_13&fields=content&condition=itemid='$id'&template=null")}-->
+						<p style="padding-left:90px;display:block;">{dsubstr(strip_tags($introduce[0][content]),120,'...')}</p>
+					</li>
+					{php $i=$i+1}
+					{/if}
+					{/if}
+					{/loop}
+				</ul>
+			</div>	
+		</div>

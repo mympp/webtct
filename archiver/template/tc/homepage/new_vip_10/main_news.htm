@@ -1,0 +1,30 @@
+<section class="s3">
+	
+
+		<div class="s3_l" >
+
+
+			<div class="list_s">
+
+				<h3>
+					<span><p>新闻中心</p></span>
+					<a href="{userurl($username, 'file=news', $domain)}" title="新闻中心">更多</a>
+				</h3>
+				<ul class="list_box">
+				<!--{php $tags=tag("table=news&condition=status=3 and username='$username'&pagesize=6&order=addtime desc&template=null");}-->
+				{if $tags}
+					{php $i=0}
+					{loop $tags $t}
+					{if $i<=5}
+					<li>
+					<a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">{dsubstr($t[title],65,'...')}</a>
+					<span>{timetodate($t[addtime], 2)}</span>
+					</li>
+					{/if}
+					{php $i=$i+1}
+					{/loop}
+				{else}
+				<li>暂无新闻</li>
+				{/if}
+				</ul>
+			</div>

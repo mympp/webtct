@@ -1,0 +1,77 @@
+{php $sitemenu='xinxi';$listpage='list';}
+{template 'header'}
+</div></div>
+<style type="text/css">
+	#webbodycontent{display:none}
+</style>
+<div class="autoheight" style="background: url('{DT_SKIN}/image/quote/bg.png');">
+<div class="webw">
+{template 'lay','tag'}			
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?thumb={$thumb}&catid={$catid}&kw={$kw}';</script>	
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+
+<div class="whitebg autoheight">
+<div class="contentleft autoheight pd10"> 
+			<div class="w500 mid" style="line-height:16px;height:16px;">{template 'baidu', 'chip'}</div>	
+<h1 class="tc">{$title}</h1>
+<div class="graybg pd5">主题 <a href="{$MOD[linkurl]}{rewrite('list.php?catid='.$catid)}">{strip_tags(cat_pos(get_cat($catid), '/'))}</a></span><span class="ml20">发于[{timetodate($edittime,4)}]&nbsp;</span>
+{if $copyfrom}&nbsp;&nbsp;<span class="ml20">来源：{if $fromurl}<a href="{$fromurl}" target="_blank">{/if}{$copyfrom}{if $fromurl}</a>{/if}{else}信息来源：{if $item['groupid']=='1'||$item['groupid']=='8'}<a href="{DT_PATH}">天成医疗网</a>{else}{$username} 发布{/if}{/if}</span>{if $author}<span class="ml20">&nbsp;&nbsp;作者：{$author}{/if}&nbsp;&nbsp;浏览次数：<span id="hits">{$hits}</span>	</span>
+</div>
+<div class="divline"></div>
+{if $introduce}
+<div class="introduce" style="width:690px;"><div class="f14">核心提示 {$introduce}</div></div>
+<div class="divline"></div>{/if}
+
+			<div class="divline"></div>
+{if $CP}{template 'property', 'chip'}{/if}
+		<div class="content">
+{if $thumb}<div class="tc"><img src="{$thumb}" align="center" alt="{$title}"></div>{/if}
+		<div class="divline"></div>
+		{$content}
+		<div class="divline"></div>
+		<div class="autoheight">{ad(129)}</div>
+		<div class="divline"></div>
+		<table cellpadding="0" cellspacing="1" width="60%" bgcolor="#ffffff" align="center" class="tc" >	
+<tr>
+{if $fileurl}<td width=30% class="pl10" id="baomin"><a href="{$fileurl}" class="suby" id="baomin">点击下载</a></td>{/if}
+<td width=30% class="pl10"><a href="javascript:Dd('info_favorite').submit();" class="suba">点这收藏信息</a></td>
+<td width=30% class="pl10"><a href="#commet" class="suba">点这给它评论</a></td>
+</tr>
+</table>
+
+<div class="divline"></div>
+
+		<div class="np f14">
+		<ul>
+		<li><strong>下一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$addtime&areaid=$cityid&pagesize=1&order=addtime asc&template=list-np", -1)}--></li>
+		<li><strong>上一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime<$addtime&areaid=$cityid&pagesize=1&order=addtime desc&template=list-np", -1)}--></li>
+		</ul>
+		</div>
+		<div class="divline"></div>
+		{if $pages}<div class="divline"></div><div class="pages">{$pages}</div>{/if}
+		</div>
+
+		<div class="divline"></div>
+		<dl class="graybg pd10">
+
+		<dt class="f18"><a href="{$MOD[linkurl]}{$CAT[linkurl]}" rel="nofollow" class="bcolor">同类{$MOD[name]}</a></dt>
+		<dd class="related"><!--{tag("moduleid=$moduleid&length=44&catid=$catid&condition=status=3 and itemid!=$itemid&areaid=$cityid&pagesize=10&order=edittime desc&cols=2&template=list-table", -2)}--></dd>
+
+		</dl>
+<div class="divline"></div>
+<dl style="width:700px;">{template 'comment', 'chip'}</dl>
+</div>
+			<div class="listright autoheight ">
+				{template 'contentright', 'chip'}
+			</div>
+<br class="clear">
+</div>
+{template 'fav','chip'}
+{template 'footer'}
+<script type="text/javascript">
+Dd('online_qq_layer').innerHTML='<table height="190" style="width:190px;background:url(http://www.loc_tecenet.com/skin/teceskin/image/quote/kefu.png) top center no-repeat;" cellpadding=0 cellspacing=0 border=0><tr><td height=50>&nbsp;</td></tr><tr><td height=50><div style="padding-left:50px;font-size:16px;width:135px;overflow:hidden;font-weight:bold;color:#407bb0;">02032029221</div></td></tr><tr><td height=40><div style="padding-left:50px;font-size:16px;;;width:135px;overflow:hidden;font-weight:bold;"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2302409150&site=qq&menu=yes"  rel="nofollow" style="color:#bf0000">2302409150</a></div></td></tr><tr><td height=45><div style="padding-left:50px;font-size:16px;;;width:135px;overflow:hidden;font-weight:bold;"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=741728461&site=qq&menu=yes"  rel="nofollow" style="color:#bf0000">741728461</a></div></td></tr></table>';
+$(document).ready(function(){
+var dheight=$(document).height()-1000;
+$("#ico6").bind("click",function(){$("html, body").animate({scrollTop:dheight}, 800);});
+});
+</script>

@@ -1,0 +1,230 @@
+{template 'header'}
+<script type="text/javascript">var tagbg;tagbg=document.getElementById('tt7').src;document.getElementById('tt7').src=allmenu(tagbg)</script>
+{php $ztitle="询价信息";}
+{template 'lay','tag'}
+<div class="autoheight pt5 grayb nt ">
+				<form method="post" action="{$MOD[linkurl]}inquiry.php" id="dform" onsubmit="return check();">
+				<input type="hidden" name="forward" value="{$forward}"/>
+				<input type="hidden" name="itemids" value="{$itemids}"/>
+				<table cellpadding="6" cellspacing="1" width="98%" align="center" class="zixun">
+				<tr>
+				<td  width="200" class="zixunbg"><b>产品/服务：</b></td>
+				<td bgcolor="#FFFFFF">
+				{loop $list $v}
+				<div>&raquo; <a href="{$MOD[linkurl]}{$v[linkurl]}" target="_blank" class="color f14">{$v[title]}</a> <a href="{userurl($v[username])}" target="_blank" class="color">({$v[company]})</a>{if $v[vip]} <img src="{DT_SKIN}image/vip.gif"/>{/if}</div>
+				<div class="b10"></div>
+				{/loop}
+				</td>
+				</tr>
+				
+				<tr>
+				<td  class="zixunbg"><b><span class="ocolor">*</span> 询价标题：</b></td>
+				<td bgcolor="#FFFFFF"><input type="text" name="title" value="{$title}" size="60" id="title" class="pd3"/>&nbsp;&nbsp;<span class="ocolor">建议您修改主题，吸引对方注意,得到优先回复!</span> <br/><span class="ocolor" id="dtitle"></span></td>
+				</tr>
+
+				<tr>
+				<td  class="zixunbg"><b>我想了解：</b></td>
+				<td bgcolor="#FFFFFF">
+				
+					<table cellpadding="2" cellspacing="2">
+								<tr>				<td><input type="checkbox" name="type[]" value="单价" id="type_0" checked/><label for="type_0"> 单价</label></td>
+																<td><input type="checkbox" name="type[]" value="产品规格" id="type_1" checked/><label for="type_1"> 产品规格</label></td>
+																<td><input type="checkbox" name="type[]" value="型号" id="type_2" checked/><label for="type_2"> 型号</label></td>
+																<td><input type="checkbox" name="type[]" value="价格条款" id="type_3" checked/><label for="type_3"> 价格条款</label></td>
+																<td><input type="checkbox" name="type[]" value="原产地" id="type_4" checked/><label for="type_4"> 原产地</label></td>
+				</tr>								<tr>				<td><input type="checkbox" name="type[]" value="能否提供样品" id="type_5"/><label for="type_5"> 能否提供样品</label></td>
+																<td><input type="checkbox" name="type[]" value="最小订货量" id="type_6"/><label for="type_6"> 最小订货量</label></td>
+																<td><input type="checkbox" name="type[]" value="交货期" id="type_7"/><label for="type_7"> 交货期</label></td>
+																<td><input type="checkbox" name="type[]" value="供货能力" id="type_8"/><label for="type_8"> 供货能力</label></td>
+																<td><input type="checkbox" name="type[]" value="销售条款及附加条件" id="type_9"/><label for="type_9"> 销售条款及附加条件</label></td>
+				</tr>								<tr>				<td><input type="checkbox" name="type[]" value="包装方式" id="type_10"/><label for="type_10"> 包装方式</label></td>
+																<td><input type="checkbox" name="type[]" value="质量/安全认证" id="type_11"/><label for="type_11"> 质量/安全认证</label></td>
+												</table>
+
+				</td>
+				</tr>
+
+				<tr>
+				<td  class="zixunbg"><b>快捷提问：</b></td>
+				<td bgcolor="#FFFFFF">
+				<select onchange="if(this.value)Dd('content').value+=this.value+'\n';">
+				<option value="">请选择常用问题</option>
+								<option value="我对贵公司的产品非常感兴趣，能否发一些详细资料给我参考？">我对贵公司的产品非常感兴趣，能否发一些详细资料给我参考？</option>
+								<option value="请您发一份比较详细的产品规格说明，谢谢！">请您发一份比较详细的产品规格说明，谢谢！</option>
+								<option value="请问贵公司产品是否可以代理？代理条件是什么？">请问贵公司产品是否可以代理？代理条件是什么？</option>
+								<option value="我公司有意购买此产品，可否提供此产品的报价单和最小起订量？">我公司有意购买此产品，可否提供此产品的报价单和最小起订量？</option>
+								</select>
+				<span class="ocolor">(不用打字 “快捷提问”帮您忙！) </span>
+				</td>
+				</tr>
+
+				<tr>
+				<td  class="zixunbg"><b><span class="ocolor">*</span> 主要内容：</b></td>
+				<td bgcolor="#FFFFFF"><textarea rows="8" cols="80" name="content" id="content" class="pd3"></textarea><br/>
+				我希望在 {dcalendar('date', $date)} 日前回复 <span class="ocolor" id="dcontent"></span>
+				</td>
+				</tr>
+
+				<tr>
+				<td  class="zixunbg"><b>我的联系方式：</b></td>
+				<td >
+				{if $_userid}
+				<table cellpadding="5" cellspacing="5">
+				<tr>
+				<td>联系人：</b></td>
+				<td>{$truename}</td>
+				<td>公司名：</b></td>
+				<td>{$company}</td>
+				</tr>
+				<tr>
+				<td>电子邮件：</b></td>
+				<td>{$email}</td>
+				<td>联系电话：</b></td>
+				<td>{$telephone}</td>
+				</tr>
+				<tr>
+				<td>联系QQ：</b></td>
+				<td>{$qq}</td>
+				<td>联系MSN：</b></td>
+				<td>{$msn}</td>
+				</tr>
+				</table>
+				{else}
+				<table cellpadding="5" cellspacing="5">
+				<tr>
+				<td colspan="2">还不是会员，请 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b">注册</a> 或 请留下您的联系方式(有 <span class="ocolor">*</span> 的是必填项)：</b>已经是会员？请 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b">登录</a></td>
+				</tr>
+				<tr>
+				<td>公司名</td>
+				<td><input type="text" name="company" size="30" id="company"/></td>
+				</tr>
+				<tr>
+				<td>联系人<span class="ocolor">*</span></td>
+				<td><input type="text" name="truename" size="30" id="truename"/><br/><span class="ocolor" id="dtruename"></span></td>
+				</tr>
+				<tr>
+				<td>联系电话<span class="ocolor">*</span></td>
+				<td><input type="text" name="telephone" size="30" id="telephone"/><br/><span class="ocolor" id="dtelephone"></span></td>
+				</tr>
+				<tr>
+				<td>电子邮箱</td>
+				<td><input type="text" name="email" size="30" id="email"/></td>
+				</tr>
+				{if $DT[im_qq]}
+				<tr>
+				<td>QQ </td>
+				<td><input type="text" size="20" name="qq" id="qq"/></td>
+				</tr>
+				{/if}
+				{if $DT[im_ali]}
+				<tr>
+				<td>阿里旺旺 </td>
+				<td><input type="text" size="20" name="ali" id="ali"/></td>
+				</tr>
+				{/if}
+				{if $DT[im_msn]}
+				<tr>
+				<td>MSN </td>
+				<td><input type="text" size="30" name="msn" id="msn"/></td>
+				</tr>
+				{/if}
+				{if $DT[im_skype]}
+				<tr>
+				<td>Skype </td>
+				<td><input type="text" size="20" name="skype" id="skype"/></td>
+				</tr>
+				{/if}
+				</table>
+				{/if}
+				</td>
+				</tr>
+				{if $need_captcha}
+				<tr>
+				<td  class="zixunbg"><b> 验证码<span class="ocolor">*</span></td>
+				<td bgcolor="#FFFFFF">{template 'captcha', 'chip'} <span id="dcaptcha" class="ocolor"></span></td>
+				</tr>
+				{/if}
+				{if $need_question}
+				<tr>
+				<td  class="zixunbg"><b> 验证问题<span class="ocolor">*</span></td>
+				<td bgcolor="#FFFFFF">{template 'question', 'chip'} <span id="danswer" class="ocolor"></span></td>
+				</tr>
+				{/if}
+				{if $_userid && $DT[sms]}
+				<tr>
+				<td  class="zixunbg"><b>短信通知：</b></td>
+				<td bgcolor="#FFFFFF"><input type="checkbox" name="sendsms" value="1"/> 发送短信通知至接收人手机 (<a href="{$MODULE[2][linkurl]}sms.php" target="_blank">我的可用短信 <strong class="f_blue">{$_sms}</strong> 条</a>)</td>
+				</tr>
+				{/if}
+				<tr>
+				<td > </td>
+				<td bgcolor="#FFFFFF"><input type="submit" name="submit" value=" 发送{if $total==1}询价单{else}批量询价{/if} " class="pd3 px14 f_b"/>
+
+				{if $MG[inquiry_limit]}
+				&nbsp;&nbsp;&nbsp;今日可询价 <span class="f_b ocolor">{$MG[inquiry_limit]}</span> 次
+				&nbsp;&nbsp;&nbsp;当前已询价 <span class="f_b">{$limit_used}</span> 次
+				&nbsp;&nbsp;&nbsp;还可以询价 <span class="f_b f_blue">{$limit_free}</span> 次
+				{/if}
+				
+				</td>
+				</tr>
+				</table>
+				</form>
+				<script type="text/javascript">
+				function check() {
+					var l;
+					var f;
+					f = 'title';
+					l = Dd(f).value.length;
+					if(l < 5 || l > 50) {
+						Dmsg('标题应为5-50字，当前已输入'+l+'字', f);
+						return false;
+					}
+					f = 'content';
+					l = Dd(f).value.length;
+					if(l < 10 || l > 2000) {
+						Dmsg('内容应为10-2000字，当前已输入'+l+'字', f);
+						return false;
+					}
+					{if !$_userid}
+					f = 'truename';
+					l = Dd(f).value.length;
+					if(l < 2) {
+						Dmsg('请填写联系人', f);
+						return false;
+					}
+					f = 'telephone';
+					l = Dd(f).value.length;
+					if(l < 7) {
+						Dmsg('请填写联系电话', f);
+						return false;
+					}
+					{/if}
+					{if $need_captcha}
+					f = 'captcha';
+					l = Dd(f).value;
+					if(!is_captcha(l)) {
+						Dmsg('请填写正确的验证码', f);
+						return false;
+					}
+					if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+						Dd(f).focus();
+						return false;
+					}
+					{/if}
+					{if $need_question}
+					f = 'answer';
+					l = Dd(f).value.length;
+					if(l < 1) {
+						Dmsg('请填写验证问题', f);
+						return false;
+					}
+					if(Dd('c'+f).innerHTML.indexOf('error') != -1) {
+						Dd(f).focus();
+						return false;
+					}
+					{/if}
+				}
+				</script>
+		</div>
+{template 'footer'}

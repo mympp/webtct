@@ -1,0 +1,23 @@
+
+<table cellpadding="5" cellspacing="5" width="100%">
+{loop $tags $k $t}
+{if $k%5==0}<tr>{/if}
+<td valign="top" width="20%" id="item_{$t[itemid]}" onmouseover="this.className='list2'" onmouseout="this.className='list'"class="list">
+<div>
+	<table cellpadding="0" cellspacing="0" width="100%" class='mt10 mb10'>
+	<tr align="center" height="75">
+	<td class="thumb"><a href="javascript:msgbox('{$t[alt]}','{$t[linkurl]}')" title="{$t[alt]}"><img src="{$t[thumb]}" width="90" height="75" class="grayb"/></a>
+	<p class="price"><span>{$t[pnum]}件产品</span></p>
+	</td>
+	</tr>
+	<tr align="center">
+	<td><a href="javascript:msgbox('{$t[alt]}','{$t[linkurl]}')" title="{$t[alt]}"><img src="{DT_SKIN}image/dot.gif" class="mid" />&nbsp;{$t[title]}</a>
+	</td>
+	</tr>
+	</table>
+</div>
+</td>
+{if $k%5==4}</tr>{/if}
+{/loop}
+</table>
+{if $pages}<div class="pages">{$pages}</div>{/if}

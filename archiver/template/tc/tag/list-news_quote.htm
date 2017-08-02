@@ -1,0 +1,61 @@
+<script>
+$(document).ready(function(){
+	$("#quotenewslist>li").hover(function () {$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg"); });
+	$(".news_share").hover(function(){
+		$(this).attr("src","{DT_SKIN}image/quote/share_red.png");
+	},function(){
+		$(this).attr("src","{DT_SKIN}image/quote/share_gray.png");
+	});
+	$(".news_comment").hover(function(){
+		$(this).attr("src","{DT_SKIN}image/quote/message_red.png");
+	},function(){
+		$(this).attr("src","{DT_SKIN}image/quote/message_gray.png");
+	});
+});
+function show_share(v){
+	//$('#share'+v).css('display','block');
+	$('#share'+v).slideDown();
+}
+function hidden_share(v){
+	//$('#share'+v).css('display','none');
+	$('#share'+v).slideUp();
+}
+</script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"{$bdfx}"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","tqq","qzone"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<style>
+	.newsbuttonul li{float:left;width:35px;}
+	.bdsc a{margin:3px 3px 3px 0;}
+</style>
+<ul id="quotenewslist">
+{loop $tags $z $t}
+{if !$width}
+{php $width='215';}
+{/if}
+<li style="border-bottom:1px solid #ccc;padding:10px;height:105px;"">
+	<div class="fl" style="border:1px solid #ccc;">
+		<a href="news-{$t[itemid]}-tech-news.html"><img style="width:115px;height:80px;padding:5px;" src="{$t[thumb]}"  onerror="this.src='{DT_SKIN}image/nopic.gif'" /></a>
+	</div>
+	<div class="fl" style="padding:10px;width:450px;line-height: 18px;">
+		<b style="font-size:16px;"><a href="news-{$t[itemid]}-tech-news.html" title="{$t[title]}">{dsubstr($t[title],58,'...')}</a></b>
+		<div class="divline"></div>
+		{dsubstr($t[introduce],180,'...')}
+	</div>
+	<div class="fr" style="padding:10px;">
+	<ul class="newsbuttonul">
+		<li  onmouseover="show_share({$z})" onmouseleave="hidden_share({$z})" style="width:22px; cursor: pointer;">
+			<a href=""><img class="news_share" src="{DT_SKIN}image/quote/share_gray.png" /></a>&nbsp;&nbsp;
+		<br/>
+		<div id="share{$z}" class="whitebg" style="display:none;width:75px;border:1px solid #ccc;padding:5px;z-index: 10">
+			<div class="bdsc">
+<div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></div>
+	</div>
+		</div>
+		</li>
+		<li style="width:45px;">
+			<a href="{$CFG['url']}comment/index.php?mid=21&itemid={$t['itemid']}&from=tech" class="fl"><img class="news_comment" src="{DT_SKIN}image/quote/message_gray.png" /></a><p class="fl" style="padding-left:8px;margin-top:-2px;">{$t[hits]}</p>
+		</li>
+	</ul>
+	</div>
+</li>
+{/loop}
+</ul>

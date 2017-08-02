@@ -1,0 +1,162 @@
+{php defined('IN_DESTOON') or exit('Access Denied');}
+{php $sitemenu='quote';$listpage='list';$onmenu='quote-news';}
+{template 'module-header'}
+<div class="your cut box-center" style="width:995px;"><font class="color f14 mr10">您所在的位置 </font>
+{php $catname=$db->get_one("select catname as c from {$db->pre}category where catid=".$catid);}
+<a href="{$MODULE[1][linkurl]}">网站首页&nbsp;</a>&nbsp;&nbsp;>&nbsp;&nbsp;{if $moduleid<>3}<a href="{$MOD[linkurl]}" id="yourmdid">{$MOD[name]}</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="{rewrite('news.php?catid='.$catid)}">{$catname[c]}</a>{else}{$ztitle}{/if}<a id="yourmdmore"></a>&nbsp;&nbsp;>&nbsp;&nbsp;{$title}</div>
+<link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_16.css" />
+<script type="text/javascript" src="http://www.tecenet.com/file/script/config.js"></script>
+<script src="http://www.tecenet.com/file/script/common.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css?v20161208"/>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/quote.css?v20161208"/>
+<style>
+img{display: inline-block;}
+#topkeyword{width:310px;height:22px;line-height:22px}
+.page-header .logo h1{font-weight: normal;}
+.tc-footer {margin-top: 20px;}
+.tc-footer .copyright{width: 100%;}
+#topkeyword{width:310px;height:22px;line-height:22px}
+</style>
+<script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=400997"></script>
+<script type="text/javascript">var module_id= 21,item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<script>
+	$(document).ready(function(){
+		$('#share_li').mouseenter(function(){
+			$('#share_span').css({"border-top":"1px solid #ccc","border-right":"1px solid #ccc","border-bottom":"1px solid white"});
+			$("#triangle").removeClass("triangle-up");
+			$("#triangle").addClass("triangle-down");
+			$("#share_div").slideDown();
+		});
+		$('#share_li').mouseleave(function(){
+			$('#share_span').css({"border-top":"0px","border-right":"0px","border-bottom":"0px"});
+			$("#triangle").removeClass("triangle-down");
+			$("#triangle").addClass("triangle-up");
+			$("#share_div").slideUp();
+		});
+		$(".share_button>li").hover(function () {$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg"); });
+	});
+	
+	function gotoLogin(){
+		window.location.href="{$CFG[url]}member/login.php";
+	}
+</script>
+<style>
+	#webbodycontent{display:block;}
+</style>
+<div class="autoheight webw clearfix" style="padding-left:0px;">
+	<div class="contentleft whitebg" style="padding:15px 5px 5px 5px;width:700px;">
+	<div style="padding:10px 20px 10px 20px;">
+		<span style="font-size:22px;font-weight: bold;color:black;">{$title}</span>
+		<ul class="news_share_ul">
+			<li><span style="color:#1895b5">资讯新闻</span></li>
+			{if $copyfrom}<li><span class="ml20">来源：{$copyfrom}</span></li>{/if}
+			<li style="width:120px;">{date('Y-m-d   H:i:s',$addtime)}</li>
+			<li><span id="hits" class="fr" style="margin-right:8px;">浏览数：{$hits}</span></li>
+			<li id="share_li" style="width:75px;">
+			<div id="share_span" style="border-left: 1px solid #ccc;width: 75px;border-left:1px solid #ccc;position: absolute;z-index: 20;"><span id="share" class="fl" style="margin-left:8px; cursor: pointer;">我要分享</span><div id="triangle" class="triangle-up fl"></div></div>
+			<div style="clear:both;height:17px;"></div>
+			<div id="share_div" class="whitebg" style="display: none;width: 75px;border: 1px solid #ccc;padding: 5px;z-index: 10;position: absolute;">
+				<div class="bdsc">
+				<div class="bdsharebuttonbox">
+				<ul class="share_button">
+					<li style="width:75px;"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a></li>
+					<li style="width:75px;"><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a></li>
+					<li style="width:75px;"><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a></li>
+					<li style="width:75px;"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></li>
+				</ul>
+				</div>
+		</div>
+			</div>
+			</li>
+			<li style="float:right;"><span class="fr">总评论:
+			{php $comment_count=$db->get_one("select count(*) as c from {$db->pre}comment where item_mid=21 and itemid=".$itemid);}
+			{$comment_count[c]}
+			</span></li>
+		</ul>
+
+		<div class="divline" style="border-bottom:1px dashed #ccc;"></div>
+		<br/>
+{if $introduce && $daodu}
+<div style="width:660px;"><div class="f14 graybg" style="padding:10px;"><span style="font-weight:bold;">[摘要]</span> {$introduce}</div></div>
+{/if}
+	</div>
+<div class="divline"></div>
+{if $CP}{template 'property', 'chip'}{/if}
+<div class="content">
+
+<div class="divline"></div>
+		{$content}
+		</div>
+		<div class="f14" style="padding:10px 20px;">
+		<style>
+			.nextpage{color:#1895b5;}
+			.nextpage a:link{color:#1895b5;}
+			.news_ul li{line-height:28px;}
+			.xiangguang_ul li{font-size:14px;}
+		</style>
+		<ul class="news_ul">
+		<li class="nextpage"><strong>下一篇：</strong>
+		<!--{php $next_news=tag("moduleid=21&condition=status=3 and addtime>$addtime&areaid=$cityid&pagesize=1&order=addtime asc&template=null")}-->
+		<a href="news-{$next_news[0][itemid]}-tech-news.html">{$next_news[0]['title']}</a>
+		</li>
+		<li><strong>上一篇：</strong>
+		<!--{php $last_news=tag("moduleid=21&condition=status=3 and addtime<$addtime&areaid=$cityid&pagesize=1&order=addtime desc&template=null")}-->
+		<a href="news-{$last_news[0][itemid]}-tech-news.html">{$last_news[0]['title']}</a>
+		</li>
+		</ul>
+		</div>
+		<div class="divline"></div>
+		
+		<div class="divline"></div>
+		<dl style="padding:10px 20px;">
+		<dt class="f16" style="font-weight:bold;">相关阅读:</dt>
+		<dd class="related">
+			<!--{php $xiangguang=tag("moduleid=21&condition=catid=$catid and areaid=$cityid and status=3 and itemid<>$itemid &pagesize=4&order=addtime desc&template=null");}-->
+			{if $xiangguang}
+			<div class="divline"></div>
+			<ul class="news_ul xiangguang_ul">
+				{loop $xiangguang $k $v}
+				<li><img src="{DT_SKIN}image/dian.gif" />&nbsp;<a href="news-{$v[itemid]}-tech-news.html">{$v[title]}&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ccc;">{date('Y.m.d',$v[addtime])}</span></a></li>
+				{/loop}
+			</ul>
+			{/if}
+		</dd>
+
+		</dl>
+<div class="divline"></div>
+<div style="margin-left:22px;float:left;"><span>分享到：</span>{template 'baidu','chip'}</div>
+<div class="divline"></div>
+<dl style="width:700px;">
+
+<dt id="comment" style="padding-left:15px;font-size:16px;font-weight:bold;"><p class="fl">网友评论</p><p class="fr" style="font-size:14px;margin-right:15px;"><a href="{$CFG[url]}comment/index.php?mid=21&itemid={$itemid}&from=tech" style="color:#1a7cc4;font-weight:normal;">{$comment_count[c]}条评论</a></p></dt>
+<dt style="clear:both;"></dt>
+<dt id="comment_div">
+	<div class="comment_form">
+	<link href="{DT_SKIN}comment.css" rel="stylesheet" />
+	<div style="border: 1px solid #24917a;height: 160px;width: 670px;">
+		<form method="post" action="{$CFG[url]}extend/comment.php" target="send" onsubmit="return C()">
+			<input type="hidden" name="mid" value="21" />
+			<input type="hidden" name="itemid" value="{$itemid}" />
+			<input type="hidden" name="items" value="0" />
+			<input type="hidden" name="page" value="1"/>
+			<input type="hidden" name="qid" value="0" />
+			<input type="hidden" name="submit" value="1" />
+			<textarea class="comment_area" style="border-top:0px;" onfocus="F();" onkeyup="S();" name="content" id="content" style="resize:none;"></textarea>
+			<style type="text/css">#content{padding:5px;width:658px;}</style>
+			{if $_username==''}<input type="button" class="comment_btn" style="margin-left:25px;float:left;" onclick="gotoLogin()" value="登录" />{/if}
+			<input type="submit" class="comment_btn" style="margin-right:25px;float:right;" value="发表评论" />
+		</form>
+	</div>
+	</div>
+</dt>
+</dl>
+<div class="divline"></div>
+	</div>
+	<div class="contentright graybg" style="width:285px;">
+		{template 'news-right','quote'}
+	</div>
+</div>
+
+
+</div></div>
+{template 'footer2017'}

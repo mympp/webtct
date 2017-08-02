@@ -1,0 +1,24 @@
+{php $c=1;}
+{loop $tags $k $t}
+{php if($c==3){$c=1;}}
+<div onmouseover="this.className='list2'" {if fmod($c,2)==0}onmouseout="this.className='list1'"class="list1"{else}onmouseout="this.className='list'"class="list"{/if}>
+	<table border="0" cellpadding="0" cellspacing="0">
+	<tr align="center">
+		<td width="30">&nbsp;<input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip(this, {$t[itemid]});"/> </td>
+		<td width="442" align="left" >
+		{if $t[vip]}<span class='fr mr10'><img src="{DT_SKIN}image/yz.gif"  class="mid" alt="官方认证"/><img  alt="推荐级别" src="{DT_SKIN}image/level/{$t[vip]}.gif"class="mid" />&nbsp;&nbsp;</span>{/if}
+		
+		<a href="{$t[linkurl]}" target="_blank" class="lenstr w280" title="{$t[alt]}"><font class="f16"><img src="{DT_SKIN}image/jt1.jpg" class="mid" />&nbsp;{$t[title]}</font></a><span><span class="ocolor">{if $t[groupid]==8||$t[groupid]==1}询价{else}{if $t[price]>0}¥{$t[price]}{else}面议{/if}{/if}</span></span>		</td>
+		<td width="180" align="left" > {if $t[groupid]!=8&&$t[groupid]!=1}
+      <a href="{userurl($t[username])}" target="_blank">{area_pos($t[areaid], ' ')}-{$t[company]}</a>
+      {else}
+      <span class="b ocolor">天成医疗官方发布</span>
+      {/if}</td>
+	  <td width="58"> 
+        <a href="{$t[linkurl]}" target="_blank"><img src="{DT_SKIN}image/read.gif" /></a></td>
+	</tr>
+	</table>
+</div>
+{php $c=$c+1;}
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

@@ -1,0 +1,668 @@
+{php $sitemenu='quote';$listpage='list';$JS=array('jquery.jslides');$onmenu='quote-solution';$head_title='项目解决方案_医疗科技网';}
+{php $head_description='天成医疗科技网为你提供科研项目转化，质量体系辅导，生产经营许可证，产品注册，临床咨询，政府资金项目申报等整套的项目解决方案。';}
+{php $head_keywords='项目解决方案,科研项目转化，质量体系辅导，生产经营许可证，产品注册，临床咨询，政府资金项目申报,医疗科技网，天成医疗网';}
+{template 'module-header'}
+<script src="http://www.tecenet.com/file/script/common.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/style.css?v20161208"/>
+<link rel="stylesheet" type="text/css" href="http://www.tecenet.com/skin/teceskin/quote.css?v20161208"/>
+<style>
+img{display: inline-block;}
+#topkeyword{width:310px;height:22px;line-height:22px}
+.page-header .logo h1{font-weight: normal;}
+.tc-footer {margin-top: 20px;}
+.tc-footer .copyright{width: 100%;}
+</style>
+</div></div>
+<style type="text/css">
+	#webbodycontent{display:none}
+	.listright{width:263px;margin-left:0px;margin-top:10px;}
+	.small_frame{width:260px;min-height:420px;}
+	.anli{width:160px;height:120px;}
+	.anli .anli_title{width: 162px;height: 35px;background: #c7c6c6;z-index: 100;position: relative;margin-top: -35px;font-size: 12px;text-align: center;line-height: 18px;display:none;color:black;}
+</style>
+<script>
+$(document).ready(function(){
+	var show='{$action}';
+	if(show!==''){
+		detail(show);
+	}
+	
+});
+function detail(name){
+	var li='#'+name;
+	var img='#'+name+'_img';
+	var span='#'+name+'_span';
+	var li_div='#'+name+'_div';
+	var display_value=$(li).css('display');
+	var brief='#'+name+'_brief';
+	if(display_value=='none'){
+		$(li).css('display','block');
+		var up_path="{DT_SKIN}"+'image/quote/uppointer.png';
+		$(img).attr('src',up_path);
+		$(li_div).removeClass('whitebg');
+		$(li_div).addClass('graybg');
+		$(brief).css('display','none');
+		$(span).html('点击收缩');
+		
+	}else{
+		$(li).css('display','none');
+		var down_path="{DT_SKIN}"+'image/quote/downpointer.png';
+		$(img).attr('src',down_path);
+		$(li_div).removeClass('grayby');
+		$(li_div).addClass('whitebg');
+		$(brief).css('display','block');
+		$(span).html('点击展开');
+	}
+}
+function show_anli_title(name){
+	$('#'+name).css('display','block');
+}
+function hidden_anli_title(name){
+	$('#'+name).css('display','none');
+}
+</script>
+<div class="autoheight" style="background:white">
+<div class="webw">
+<div class="autoheight whitebg">
+<div class="autoheight whitebg">
+<ul class="{$css}ul" id="artlll">
+	<li id="kyxmzh_div" class="pt10 whitebg h100 cut">
+		<div class="fl solution_img">
+			<img src="{DT_SKIN}image/quote/keyan.jpg" style="width:100%;height:100%;" />
+		</div>
+		<div class="fl solution_middle">
+			<b style="font-weight:bold;color:#1e7e6a;font-size:16px;">科研项目转化</b>
+			<div class="divline"></div>
+			<b style="margin-right:30px;">分析产品/项目，并提供个性化解决方案</b>
+			<b style="margin-right:30px;">信息发布和合作方式筛选</b>
+			<b style="margin-right:30px;">协调促进双方合作</b>
+			<b style="margin-right:30px;">项目完成跟进</b>
+			<br/>
+			<span id="kyxmzh_brief">为客户提供科技成果转化撮合服务，为广大企业、高校、科研机构提供科技成果的转让咨询和代理、工程化中试企业推荐、技术招标等服务。为高校、科研机构的医疗类科技成果筛选合适的医疗器械生产企业</span>
+		</div>
+		<div class="fr" style="text-align: center;margin-left:auto;margin-right:auto;height:102px;width:100px;margin-top:27px;">
+			<div style="cursor: pointer;" onclick="detail('kyxmzh')"><img id="kyxmzh_img" src="{DT_SKIN}image/quote/downpointer.png" /><br/>
+			<span id="kyxmzh_span" style="color:#1e7e6a;">点击展开</span>
+			</div>
+		</div>
+	</li>
+	<li id="kyxmzh" style="border:1px solid #ccc;display:none;" class="graybg">
+		<div style="padding:15px;" class="solution">
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务内容</div>
+				<div class="small_title">Service</div>
+			</div>
+			<div class="solution_content">科琅医疗科技公司致力于为客户提供科技成果转化撮合服务，为广大企业、高校、科研机构提供科技成果的转让咨询和代理、工程化中试企业推荐、技术招标等服务。为高校、科研机构的医疗类科技成果筛选合适的医疗器械生产企业，将新成果、技术转化为切实的产品或应用服务，促进科技成果向现实生产力转化并产生切实的经济效益。</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">我们的优势</div>
+				<div class="small_title">Our advantage</div>
+			</div>
+			<div class="solution_content">
+			广州天成医疗技术有限公司是中山大学达安基因股份有限公司的成员企业，科琅公司是天成医疗全资的子公司，我们的科技成果转化服务有达安基因的专业技术团队作为强大的技术支撑，同时，通过具备丰富市场经验的团队人员进行市场调研，能够对科技成果的价值和市场潜力作出最客观中立的判断。<br/>
+			同时，目前天成医疗网在线厂商已达1.6万多家，产品种类18万多种，占到国内医疗器械生产企业总数的90%以上；使得我们能够在最短时间内为科研团队筛选出匹配度最高、最合适的合作企业接收技术成果。<br/>
+			对于达成意向的合作项目，天成医疗还可以提供丰富的增值服务，包括项目落地所需的医学工程设计、产品注册及报证、政府资金扶持项目申报、产品线上推广等。
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务流程</div>
+				<div class="small_title">Service precess</div>
+			</div>
+			<div class="solution_content" style="text-align: center;">
+			<br/>
+				<img src="{DT_SKIN}image/quote/liucheng.png" />
+				<div style="width:100%;">
+				<ul class="solution_ul">
+				<li style="width:120px;border-bottom:0px;"></li>
+				<li style="width:740px;border-bottom:0px;padding:0px;">
+					<span class="fl" style="width:160px;">1.分析产品/项目，并提供个性化解决方案</span>
+					<span class="fl" style="width:210px;">2.信息发布和合作方式筛选</span>
+					<span class="fl" style="width:200px;">3.协调促进双方合作</span>
+					<span class="fl" style="width:160px;">4.项目完成跟进</span>
+				</li>
+				<li style="width:120px;border-bottom:0px;padding:0px;"></li>
+				</ul>
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">成功案例</div>
+				<div class="small_title">Success case</div>
+			</div>
+			<br/>
+			<div class="solution_content fl">
+				<div style="margin-left:125px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_1_1')" onmouseleave="hidden_anli_title('title_1_1')">
+					<img src="{DT_SKIN}image/quote/keyan_anli1.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_1_1" class="anli_title" style="">
+						<span>中山大学达安基因股份有限公司</span>
+					</div>
+					</a>
+				</div>
+				<div style="margin-left:20px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_1_2')" onmouseleave="hidden_anli_title('title_1_2')">
+					<img src="{DT_SKIN}image/quote/keyan_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_1_2" class="anli_title" style="line-height:32px;">
+						<span>广州天成医疗技术有限公司</span>
+					</div>
+					</a> 
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+		</div>
+	</li>
+	<li id="zltxfd_div" class="pt10 whitebg h100 cut">
+		<div class="fl solution_img">
+			<img src="{DT_SKIN}image/quote/zhiliang.jpg" style="width:100%;height:100%;" />
+		</div>
+		<div class="fl solution_middle" >
+			<b style="font-weight:bold;color:#1e7e6a;font-size:16px;">质量体系辅导</b>
+			<div class="divline"></div>
+			<b style="margin-right:30px;">无菌、植入医疗器械生产实施咨询</b>
+			<b style="margin-right:30px;">医疗器械GMP咨询</b>
+			<b style="margin-right:30px;">医疗器械注册质量管理体系核查辅导</b>
+			<b style="margin-right:30px;">ISO13485医疗器械质量体系建立的咨询、辅导</b>
+			<b style="margin-right:30px;">医疗器械生产企业质量管理体系日常运作维护辅导</b>
+			<br/>
+			<span id="zltxfd_brief">为医疗器械生产企业，提供质量管理体系构建，ISO13485质量管理体系认证，医疗器械生产质量管理完善等服务，通过结合企业实际情况，制定完整的质量管理体系完善工作，辅导生产企业</span>
+		</div>
+		<div class="fr" style="text-align: center;margin-left:auto;margin-right:auto;height:102px;width:100px;margin-top:27px;">
+			<div style="cursor: pointer;" onclick="detail('zltxfd')"><img id="zltxfd_img" src="{DT_SKIN}image/quote/downpointer.png" /><br/>
+			<span id="zltxfd_span"  style="color:#1e7e6a;">点击展开</span>
+			</div>
+		</div>
+		</li>
+		<li id="zltxfd" style="display:none;border:1px solid #ccc;" class="graybg">
+		<div style="padding:15px;" class="solution">
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务内容</div>
+				<div class="small_title">Service</div>
+			</div>
+			<div class="solution_content">我们致力于为医疗器械生产企业，提供质量管理体系构建，ISO13485质量管理体系认证，医疗器械生产质量管理完善等服务，通过结合企业实际情况，制定完整的质量管理体系完善工作，辅导生产企业可以实现科学有效的质量管理体系，并符合国家，及国际法规的要求。</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">我们的优势</div>
+				<div class="small_title">Our advantage</div>
+			</div>
+			<div class="solution_content">
+			我们拥有强大体系辅导专家队伍，均有多年的生产企业体系管理经验，及体系构建完善经验，能结合国内医疗器械生产管理法规和国际ISO13485的要求，为企业提供全方位的质量管理体系服务评估，能帮助企业搭建实用有效的质量管理体系。
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务流程</div>
+				<div class="small_title">Service precess</div>
+			</div>
+			<div class="solution_content" style="text-align: center;">
+			<br/>
+				<img src="{DT_SKIN}image/quote/liucheng.png" />
+				<div style="width:100%;">
+				<ul class="solution_ul">
+				<li style="width:120px;border-bottom:0px;"></li>
+				<li style="width:740px;border-bottom:0px;padding:0px;">
+					<span class="fl" style="width:160px;">1.体系情况考察分析，确定服务内容</span>
+					<span class="fl" style="width:210px;">2.合同签订，制定辅导计划</span>
+					<span class="fl" style="width:200px;">3.项目启动及跟踪</span>
+					<span class="fl" style="width:160px;">4.项目完成</span>
+				</li>
+				<li style="width:120px;border-bottom:0px;padding:0px;"></li>
+				</ul>
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">成功案例</div>
+				<div class="small_title">Success case</div>
+			</div>
+			<br/>
+			<div class="solution_content">
+				<div style="margin-left:125px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_2_1')" onmouseleave="hidden_anli_title('title_2_1')">
+					<img src="{DT_SKIN}image/quote/zhiliang_anli1.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_2_1" class="anli_title" style="line-height:32px;">
+						<span>广州健福医疗科技有限公司</span>
+					</div>
+					</a> 
+				</div>
+				<div style="margin-left:20px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_2_2')" onmouseleave="hidden_anli_title('title_2_2')">
+					<img src="{DT_SKIN}image/quote/zhiliang_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_2_2" class="anli_title" style="line-height:32px;">
+						<span>安徽康宁实业集团有限公司</span>
+					</div>
+					</a> 
+				</div>
+				<div style="margin-left:20px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_2_3')" onmouseleave="hidden_anli_title('title_2_3')">
+					<img src="{DT_SKIN}image/quote/zhiliang_anli3.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_2_3" class="anli_title" style="line-height:32px;">
+						<span>广州迪澳生物科技有限公司</span>
+					</div>
+					</a> 
+				</div>
+				<div style="margin-left:20px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_2_4')" onmouseleave="hidden_anli_title('title_2_4')">
+					<img src="{DT_SKIN}image/quote/zhiliang_anli4.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_2_4" class="anli_title" style="line-height:32px;">
+						<span>深圳市恒冠电子有限公司</span>
+					</div>
+					</a> 
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+		</div>
+		</li>
+		<li id="sczyxk_div" class="pt10 whitebg h100 cut">
+		<div class="fl solution_img">
+			<img src="{DT_SKIN}image/quote/shengchan.jpg" style="width:100%;height:100%;" />
+		</div>
+		<div class="fl solution_middle" >
+			<b style="font-weight:bold;color:#1e7e6a;font-size:16px;">生产经营许可证</b>
+			<div class="divline"></div>
+			<b style="margin-right:30px;">Ⅱ类医疗器械经营许可备案办理咨询</b>
+			<b style="margin-right:30px;">Ⅲ类医疗器械（含体外试剂)经营许可证办理咨询</b>
+			<b style="margin-right:30px;">药品经营许可证办理咨询</b>
+			<b style="margin-right:30px;">药品零售企业GSP认证辅导</b>
+			<b style="margin-right:30px;">互联网药品信息服务资格证书办理咨询</b>
+			<br/>
+			<span id="sczyxk_brief">为广大医疗器械生产经营企业，提供生产经营许可事项咨询辅导服务；帮助企业在生产经营许可事项申报过程中，提高申报通过率。并能为客户制定企业日常管理方案，帮助企业提高许可证到期的延续办理效率</span>
+		</div>
+		<div class="fr" style="text-align: center;margin-left:auto;margin-right:auto;height:102px;width:100px;margin-top:27px;">
+			<div style="cursor: pointer;" onclick="detail('sczyxk')"><img id="sczyxk_img" src="{DT_SKIN}image/quote/downpointer.png" /><br/>
+			<span id="sczyxk_span" style="color:#1e7e6a;">点击展开</span>
+			</div>
+			</div>
+		</li>
+		<li id="sczyxk" style="display:none;border:1px solid #ccc;" class="graybg">
+			<div style="padding:15px;" class="solution">
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务内容</div>
+				<div class="small_title">Service</div>
+			</div>
+			<div class="solution_content">为广大医疗器械生产经营企业，提供生产经营许可事项咨询辅导服务；帮助企业在生产经营许可事项申报过程中，提高申报通过率。同时能根据客户需求，制定企业日常管理方案，帮助企业提高许可证到期的延续办理效率。</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">我们的优势</div>
+				<div class="small_title">Our advantage</div>
+			</div>
+			<div class="solution_content">
+			我们的服务团队熟悉药监部门各项许可事项的申报流程及要点。有丰富的申报经验，可以根据客户的实际情况，制定符合法规要求的申报计划。帮助企业以最快的速度取得许可。
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务流程</div>
+				<div class="small_title">Service precess</div>
+			</div>
+			<div class="solution_content" style="text-align: center;">
+			<br/>
+				<img src="{DT_SKIN}image/quote/liucheng.png" />
+				<div style="width:100%;">
+				<ul class="solution_ul">
+				<li style="width:120px;border-bottom:0px;"></li>
+				<li style="width:740px;border-bottom:0px;padding:0px;">
+					<span class="fl" style="width:160px;">1.分析客户情况，制定初步方案</span>
+					<span class="fl" style="width:210px;">2.签订合同，确定最终方案</span>
+					<span class="fl" style="width:200px;">3.项目启动及跟踪</span>
+					<span class="fl" style="width:160px;">4.项目完成</span>
+				</li>
+				<li style="width:120px;border-bottom:0px;padding:0px;"></li>
+				</ul>
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">成功案例</div>
+				<div class="small_title">Success case</div>
+			</div>
+			<br/>
+			<div class="solution_content">
+				<div style="margin-left:125px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_3_1')" onmouseleave="hidden_anli_title('title_3_1')">
+					<img src="{DT_SKIN}image/quote/shengchan_anli1.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_3_1" class="anli_title" style="">
+						<span>广东科艺普实验室设备研制有限公司</span>
+					</div>
+					</a> 
+				</div>
+				<div style="margin-left:20px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_3_2')" onmouseleave="hidden_anli_title('title_3_2')">
+					<img src="{DT_SKIN}image/quote/shengchan_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_3_2" class="anli_title" style="">
+						<span>中山大学达安基因股份有限公司</span>
+					</div>
+					</a> 
+				</div>
+				<div style="margin-left:20px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_3_3')" onmouseleave="hidden_anli_title('title_3_3')">
+					<img src="{DT_SKIN}image/quote/shengchan_anli3.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_3_3" class="anli_title" style="line-height:32px;">
+						<span>广州市泛美实业有限公司</span>
+					</div>
+					</a> 
+				</div>
+				<div style="margin-left:20px;" class="fl anli">
+					<a onmouseenter="show_anli_title('title_3_4')" onmouseleave="hidden_anli_title('title_3_4')">
+					<img src="{DT_SKIN}image/quote/shengchan_anli4.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_3_4" class="anli_title" style="line-height:32px;">
+						<span>广州健佰氏医药科技有限公司</span>
+					</div>
+					</a> 
+				</div>
+				
+				
+			</div>
+			<div class="divline solution_line"></div>
+		</div>
+		</li>
+	<li id="cpzc_div" class="pt10 whitebg h100 cut">
+		<div class="fl solution_img">
+			<img src="{DT_SKIN}image/quote/chanpin.jpg" style="width:100%;height:100%;" />
+		</div>
+		<div class="fl solution_middle" >
+			<b style="font-weight:bold;color:#1e7e6a;font-size:16px;">开放实验室</b>
+			<div class="divline"></div>
+			<b style="margin-right:30px;">实验需求评估</b>
+			<b style="margin-right:30px;">实验方案设计制定</b>
+			<b style="margin-right:30px;">实验技术支持及辅导</b>
+			<b style="margin-right:30px;">实验室及实验设备租赁</b>
+			<br/>
+			<span id="cpzc_brief">我们致力于为广大创客团队、创业型公司、研发企业提供实验评估、实验技术支持辅导、仪器设备租赁等服务，减少客户所需研发成本，促进团队成功孵化项目。</span>
+		</div>
+		<div class="fr" style="text-align: center;margin-left:auto;margin-right:auto;height:102px;width:100px;margin-top:27px;">
+			<div style="cursor: pointer;" onclick="detail('cpzc')"><img id="cpzc_img" src="{DT_SKIN}image/quote/downpointer.png" /><br/>
+			<span id="cpzc_span" style="color:#1e7e6a;">点击展开</span>
+			</div>
+			</div>
+		</li>
+		<li id="cpzc" style="display:none;border:1px solid #ccc;" class="graybg">
+		<div style="padding:15px;" class="solution">
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务内容</div>
+				<div class="small_title">Service</div>
+			</div>
+			<div class="solution_content">我们致力于为广大创客团队、创业型公司、研发企业提供实验评估、实验技术支持辅导、仪器设备租赁等服务，减少客户所需研发成本，促进团队成功孵化项目。</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">我们的优势</div>
+				<div class="small_title">Our advantage</div>
+			</div>
+			<div class="solution_content">
+			我们以共享经济模式运营开放实验室，拥有以达安基因为基础的研发实验设备以及专业的团队作为技术指导，从根本上解决客户项目成本及技术问题。<br/>
+对于达成意向的客户，我们还可以提供丰富的增值服务，包括项目落地所需的产品注册及报证、政府资金扶持项目申报、产品线上推广等。
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务流程</div>
+				<div class="small_title">Service precess</div>
+			</div>
+			<div class="solution_content" style="text-align: center;">
+			<br/>
+				<img src="{DT_SKIN}image/quote/liucheng.png" />
+				<div style="width:100%;">
+				<ul class="solution_ul">
+				<li style="width:120px;border-bottom:0px;"></li>
+				<li style="width:740px;border-bottom:0px;padding:0px;">
+					<span class="fl" style="width:160px;">1.客户提供实验方案，确定服务内容</span>
+					<span class="fl" style="width:210px;">2.选择需要租赁的设备/时间</span>
+					<span class="fl" style="width:200px;">3.签订合作协议</span>
+					<span class="fl" style="width:160px;">4.项目跟进完成</span>
+				</li>
+				<li style="width:120px;border-bottom:0px;padding:0px;"></li>
+				</ul>
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">成功案例</div>
+				<div class="small_title">Success case</div>
+			</div>
+			<br/>
+			<div class="solution_content">
+			<div style="margin-left:125px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_4_1')" onmouseleave="hidden_anli_title('title_4_1')">
+					<img src="{DT_SKIN}image/quote/shengchan_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_4_1" class="anli_title" style="">
+						<span>中山大学达安基因股份有限公司</span>
+					</div>
+				</a> 
+			</div>
+			<div style="margin-left:20px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_4_2')" onmouseleave="hidden_anli_title('title_4_2')">
+					<img src="{DT_SKIN}image/quote/keyan_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_4_2" class="anli_title" style="line-height:32px;">
+						<span>广州天成医疗技术有限公司</span>
+					</div>
+				</a> 
+			</div>
+			
+			</div>
+			<div class="divline solution_line"></div>
+		</div>
+	</li>
+	<li id="lczx_div" class="pt10 whitebg h100 cut">
+		<div class="fl solution_img">
+			<img src="{DT_SKIN}image/quote/linchuang.jpg" style="width:100%;height:100%;" />
+		</div>
+		<div class="fl solution_middle">
+			<b style="font-weight:bold;color:#1e7e6a;font-size:16px;">注册临床咨询</b>
+			<div class="divline"></div>
+			<b style="margin-right:30px;">境内器械注册咨询</b>
+			<b style="margin-right:30px;">进出口器械注册咨询</b>
+			<b style="margin-right:30px;">器械临床评价资询</b>
+			<b style="margin-right:30px;">器械临床试验服务</b>
+			<br/>
+			<span id="lczx_brief">我们致力于为帮助广大医疗器械厂家，进出口企业提供产品注册咨询服务，包括境内二三类医疗器械（体外诊断试剂）首次注册、变更、延续，进口医疗器械落地注册，出口器械CE认证，FDA注册等咨询服务，并且能提供高效的临床试验(CRO)服务，包括：临床试验项目整体服务、临床试验方案设计、注册临床评价资料辅导等。</span>
+		</div>
+		<div class="fr" style="text-align: center;margin-left:auto;margin-right:auto;height:102px;width:100px;margin-top:27px;">
+			<div style="cursor: pointer;" onclick="detail('lczx')"><img id="lczx_img" src="{DT_SKIN}image/quote/downpointer.png" /><br/>
+			<span id="lczx_span" style="color:#1e7e6a;">点击展开</span>
+			</div>
+		</div>
+	</li>
+		<li id="lczx" style="display:none;border:1px solid #ccc;" class="graybg">
+		<div style="padding:15px;" class="solution">
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务内容</div>
+				<div class="small_title">Service</div>
+			</div>
+			<div class="solution_content">我们致力于为帮助广大医疗器械厂家，进出口企业提供产品注册咨询服务，包括境内二三类医疗器械（体外诊断试剂）首次注册、变更、延续，进口医疗器械落地注册，出口器械CE认证，FDA注册等咨询服务，并且能提供高效的临床试验(CRO)服务，包括：临床试验项目整体服务、临床试验方案设计、注册临床评价资料辅导等。</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">我们的优势</div>
+				<div class="small_title">Our advantage</div>
+			</div>
+			<div class="solution_content">
+			我们的团队在注册不同种类的医疗器械（包括：有源、无源、植入产品、体外诊断试剂等）拥有丰富经验，我们可以为您力争安排有同类产品注册经验的专家提供针对性的产品注册咨询服务。在临床方面，我们与全国多家药物临床机构建立良好的合作关系，能全面结合户的需求、产品实际情况及法规的要求，制定有效临床试验整体服务解决方案，为客户产品临床试验保驾护航。
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务流程</div>
+				<div class="small_title">Service precess</div>
+			</div>
+			<div class="solution_content" style="text-align: center;">
+			<br/>
+				<img src="{DT_SKIN}image/quote/liucheng.png" />
+				<div style="width:100%;">
+				<ul class="solution_ul">
+				<li style="width:120px;border-bottom:0px;"></li>
+				<li style="width:740px;border-bottom:0px;padding:0px;">
+					<span class="fl" style="width:160px;">1.产品信息调查分析，制定初步方案</span>
+					<span class="fl" style="width:210px;">2.合同签订，确定最终方案</span>
+					<span class="fl" style="width:200px;">3.项目启动及跟踪</span>
+					<span class="fl" style="width:160px;">4.项目完成</span>
+				</li>
+				<li style="width:120px;border-bottom:0px;padding:0px;"></li>
+				</ul>
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">成功案例</div>
+				<div class="small_title">Success case</div>
+			</div>
+			<br/>
+			<div class="solution_content">
+			<div style="margin-left:125px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_5_1')" onmouseleave="hidden_anli_title('title_5_1')">
+					<img src="{DT_SKIN}image/quote/linchuang_anli1.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_5_1" class="anli_title" style="line-height:32px;">
+						<span>广州迪澳生物科技有限公司</span>
+					</div>
+				</a> 
+			</div>
+			<div style="margin-left:20px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_5_2')" onmouseleave="hidden_anli_title('title_5_2')">
+					<img src="{DT_SKIN}image/quote/linchuang_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_5_2" class="anli_title" style="">
+						<span>深圳市阳光之路生物材料科技有限公司</span>
+					</div>
+				</a> 
+			</div>
+			<div style="margin-left:20px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_5_3')" onmouseleave="hidden_anli_title('title_5_3')">
+					<img src="{DT_SKIN}image/quote/chanpin_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_5_3" class="anli_title" style="line-height:32px;">
+						<span>广州安德生物科技有限公司</span>
+					</div>
+				</a> 
+			</div>
+			<div style="margin-left:20px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_5_4')" onmouseleave="hidden_anli_title('title_5_4')">
+					<img src="{DT_SKIN}image/quote/chanpin_anli3.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_5_4" class="anli_title" style="line-height:32px;">
+						<span>安徽康宁实业集团有限公司</span>
+					</div>
+				</a> 
+			</div>
+			</div>
+			<div class="divline solution_line"></div>
+		</div>
+	</li>
+	<li id="zfzjxmsb_div" class="pt10 whitebg h100 cut">
+		<div class="fl solution_img">
+			<img src="{DT_SKIN}image/quote/zhengfu.jpg" style="width:100%;height:100%;" />
+		</div>
+		<div class="fl solution_middle">
+			<b style="font-weight:bold;color:#1e7e6a;font-size:16px;">政府资金项目申报</b>
+			<div class="divline"></div>
+			<b style="margin-right:30px;">技术合同认定登记</b>
+			<b style="margin-right:30px;">政府扶持资金项目申报</b>
+			<b style="margin-right:30px;">政府科技项目立项咨询</b>
+			<b style="margin-right:30px;">高新技术企业认定辅导</b>
+			<br/>
+			<span id="zfzjxmsb_brief">为客户提供政府政策、资金扶持项目咨询服务,针对性地就具体政策或资金扶持项目分析企业或其项目的申报条件符合情况，为客户办理高新技术企业、瞪羚企业、科技小巨人企业等认定事项</span>
+		</div>
+		<div class="fr" style="text-align: center;margin-left:auto;margin-right:auto;height:102px;width:100px;margin-top:27px;">
+			<div style="cursor: pointer;" onclick="detail('zfzjxmsb')"><img id="zfzjxmsb_img" src="{DT_SKIN}image/quote/downpointer.png" /><br/>
+			<span id="zfzjxmsb_span" style="color:#1e7e6a;">点击展开</span>
+			</div>
+	</li>
+		<li id="zfzjxmsb" style="display:none;border:1px solid #ccc;" class="graybg">
+		<div style="padding:15px;" class="solution">
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务内容</div>
+				<div class="small_title">Service</div>
+			</div>
+			<div class="solution_content">为客户提供政府政策、资金扶持项目咨询服务；针对性地就具体政策或资金扶持项目分析企业或其项目的申报条件符合情况，代办申报材料整理、撰写并递交至相关政府主管部门，协助后期扶持资金申请拨付、项目验收及资金使用绩效考核。为客户办理高新技术企业、瞪羚企业、科技小巨人企业等认定事项。</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">我们的优势</div>
+				<div class="small_title">Our advantage</div>
+			</div>
+			<div class="solution_content">
+			申报团队熟悉政府部门申报流程，有专业的财务、税务团队为客户进行财税情况分析，有丰富项目申报经验的人员为客户进行申报方案策划、撰写各类商业计划、可行性研究报告、申报书，已有多次申报成功案例，为客户争取到政府资金支持。
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">服务流程</div>
+				<div class="small_title">Service precess</div>
+			</div>
+			<div class="solution_content" style="text-align: center;">
+			<br/>
+				<img src="{DT_SKIN}image/quote/liucheng.png" />
+				<div style="width:100%;">
+				<ul class="solution_ul">
+				<li style="width:120px;border-bottom:0px;"></li>
+				<li style="width:740px;border-bottom:0px;padding:0px;">
+					<span class="fl" style="width:160px;">1.签订合作协议，收集基础资料</span>
+					<span class="fl" style="width:210px;">2.编写及制作申报材料</span>
+					<span class="fl" style="width:200px;">3.递交申报材料</span>
+					<span class="fl" style="width:160px;">4.申报结果后续跟进</span>
+				</li>
+				<li style="width:120px;border-bottom:0px;padding:0px;"></li>
+				</ul>
+				</div>
+			</div>
+			<div class="divline solution_line"></div>
+			<div class="solution_top">
+				<div class="tip"></div>
+				<div class="title">成功案例</div>
+				<div class="small_title">Success case</div>
+			</div>
+			<br/>
+			<div class="solution_content">
+			<div style="margin-left:125px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_6_1')" onmouseleave="hidden_anli_title('title_6_1')">
+					<img src="{DT_SKIN}image/quote/zhengfu_anli1.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_6_1" class="anli_title" style="">
+						<span>中山大学达安基因股份有限公司 </span>
+					</div>
+				</a> 
+			</div>
+			<div style="margin-left:20px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_6_2')" onmouseleave="hidden_anli_title('title_6_2')">
+					<img src="{DT_SKIN}image/quote/zhengfu_anli2.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_6_2" class="anli_title" style="line-height:32px;">
+						<span>广州天成医疗技术有限公司</span>
+					</div>
+				</a> 
+			</div>
+			<div style="margin-left:20px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_6_3')" onmouseleave="hidden_anli_title('title_6_3')">
+					<img src="{DT_SKIN}image/quote/zhengfu_anli3.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_6_3" class="anli_title" style="line-height:32px;">
+						<span>广州市行心信息科技有限公司</span>
+					</div>
+				</a> 
+			</div>
+			<div style="margin-left:20px;" class="fl anli">
+				<a onmouseenter="show_anli_title('title_6_4')" onmouseleave="hidden_anli_title('title_6_4')">
+					<img src="{DT_SKIN}image/quote/zhengfu_anli4.jpg" width="160px" height="120px" style="border:1px solid #ccc;" />
+					<div id="title_6_4" class="anli_title" style="line-height:32px;">
+						<span>瞪羚企业申报</span>
+					</div>
+				</a> 
+			</div>
+				
+			</div>
+			<div class="divline solution_line"></div>
+		</div>
+	</li>
+</ul>
+
+</div>
+
+</div></div>
+{template 'footer2017'}

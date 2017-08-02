@@ -1,0 +1,13 @@
+{template 'header', $template}
+<div class="location"><img src="{$HSPATH}ico_4.jpg"/><span>您现在的位置：<a href="{$COM[linkurl]}">首页</a>&nbsp;>&nbsp;<a href="{$COM[linkurl]}link">友情链接</a>{if $itemid} &raquo; {$title}{/if}</span></div>
+
+	<div class="list_link">
+		<div class="list_title"><img src="{$HSPATH}ico_6.jpg"><div class="list_title_font"><span>&nbsp;&nbsp;友情链接</span></div></div>
+		<ul class="u">
+			{loop $lists $k $v}
+					<li><a href="{$v[linkurl]}">{$v[title]}</a></li>
+			{/loop}
+		</ul>
+		<div class="pages">{$pages}</div>
+	</div>
+{template 'footer', $template}	

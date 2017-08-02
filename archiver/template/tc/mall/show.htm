@@ -1,0 +1,289 @@
+{php $head_css = [DT_SKIN.'tc.chanpin.base.css',DT_SKIN.'tc.chanpin.detail.css?v=04.07.01',DT_SKIN.'jquery.fancybox.css']}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/jquery.lazyload.min.js',DT_PATH.'file/script/jquery.fancybox.min.js',DT_PATH.'file/script/mall/mall.show.js?v=04.07.01'];}
+{template 'module-header'}
+
+<!--product-wrap-->
+<div class="product-wrap">
+    <div class="w1200 box-center">
+        <!--crumb-->
+        <!-- bread nav -->
+        <div class="crumb">
+            <a href="{$MODULE[1][linkurl]}">网站首页</a><span>&gt;</span>
+            <a href="{$MOD[linkurl]}">产品中心</a><span>&gt;</span>
+            <a href="{$MOD[linkurl]}{mall_rewrite(['catid'=>$catid])}">{$CATEGORY[$catid]}</a><span>&gt;</span>
+            <a id="yourmdmore"></a>{$title}
+        </div>
+        <!--crumb end-->
+    </div>
+    <div class="w1200 box-center clearfix">
+        <!--preview-->
+        <div class="preview pull-left">
+            <!--产品图片-->
+            <div class="preview-slider">
+                <div class="bd">
+                    <ul>
+                        {if $thumb}<li><a class="fancybox" href="{$thumbs[0]}" target="_blank"><img src="{$thumbs[0]}" /></a></li>{/if}
+                        {if $thumb1}<li><a class="fancybox" href="{$thumbs[1]}" target="_blank"><img src="{$thumbs[1]}" /></a></li>{/if}
+                        {if $thumb2}<li><a class="fancybox" href="{$thumbs[2]}" target="_blank"><img src="{$thumbs[2]}" /></a></li>{/if}
+                    </ul>
+                </div>
+                <div class="hd"><ul></ul></div>
+                <a href="javascript:;" class="next"></a>
+                <a href="javascript:;" class="prev"></a>
+            </div>
+            <!--产品图片 end-->
+
+            <div class="social clearfix">
+                <p class="social-msg pull-left"><i class="cp-i"></i>点击图片查看原图</p>
+                <span class="social-mark pull-right mgl-10">
+                <form action="{$MODULE[2]['linkurl']}favorite.php" method="get">
+					<input type="hidden" name="action" value="add">
+					<input type="hidden" name="title" value="{$title}">
+					<input type="hidden" name="url" value="{$linkurl}">
+                    <input type="submit" value="收藏" class="mark-btn pull-right p-i">
+                </form>
+                </span>
+                <span class="social-share pull-right bdsharebuttonbox">
+                <a href="javascript:;" class="bds_more share" data-cmd="more">分享</a>
+                </span>
+            </div>
+        </div>
+        <!--preview end-->
+
+        <!--product-info-->
+        <div class="product-info pull-left mgl-30">
+            <div class="product-info-title">
+                <h1>{$title}</h1>
+            </div>
+            <ul class="product-info-param">
+                <li class="product-price">
+                    <span>参考报价：</span>
+                    <div class="product-price-val">
+                        <div class="mall-item">
+                            <p class="mall-name">天成医疗网</p>
+                            <p class="mall-price">
+                                {if $groupid==8||$groupid==1}
+                                    ¥询价
+                                {else}
+                                    {if $price>0}
+                                        ¥{$price}
+                                    {else}
+                                       ¥面议
+                                    {/if}
+                                {/if}
+                            </p>
+                            <a class="mall-buy-btn" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136&s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);" target="_blank"><i class="cp-i buy"></i>联系客服</a>
+                        </div>
+
+                    </div>
+                </li>
+                {php $lists = tag("moduleid=13&condition=itemid=".$factoryid."&pagesize=1&order=edittime desc&template=null&debug=0")}
+                <li><span>产品品牌：</span><em class="text-overflow">{$standard}</em></li>
+                <li><span>产品型号：</span><em class="text-overflow">{$model}</em></li>
+                <li><span>产品分类：</span><em class="text-overflow"><a href="{$MODULE[16]['linkurl']}{mall_rewrite(['catid'=>$catid])}" target="_blank" title="{$CAT['catname']}医疗器械">{$CAT['catname']}</a></em></li>
+                <li><span>生产厂商：</span><em class="text-overflow"><a href="{str_replace('www',$username,DT_PATH)}" target="_blank" title="{$company['company']}">{$company['company']}</a></em></li>
+                <li><span>所在地区：</span><em class="text-overflow"><a href="{$MODULE[16]['linkurl']}{mall_rewrite(['areaid'=>$areaid])}" target="_blank" title="{area_pos($areaid, '')}医疗器械">{area_pos($areaid, '/')}</a></em></li>
+                <li><span>相关科室：</span><em class="text-overflow">
+                {php $kcatid = explode(',',$kcatids)}
+                {loop $kcatid $k $v}
+                <?php if(empty($v)) continue; ?>
+                <a href="{$MODULE[16]['linkurl']}{keshi_rewrite(['kcatid'=>$v])}" target="_blank" title="{$KESHI[$v]}医疗器械">{$KESHI[$v]}</a>
+                {/loop}
+                </em></li>
+            </ul>
+        </div>
+        <!--product-info end-->
+
+
+        <!--company-info-->
+        <div class="company-info">
+            <a class="company-info-hd" href="{$company['linkurl']}" target="_blank">
+                <img src="{useravatar($member['username'],'large')}" alt="{$company}">
+                <p>{$company['company']}</p>
+            </a>
+            <div class="tags">
+                {if $groupid == 7}<i class="grade">VIP</i>{/if}
+                {if $company['mode']}<i class="type">{$company['mode']}</i>{/if}
+            </div>
+            
+            	{if $_username}
+                    <ul class="contact">
+                	{if $company['telephone']}<li><i class="cp-i tel"></i>{$company['telephone']}</li>{/if}
+                	{if $company['mail']}<li><i class="cp-i phone"></i>{$company['mail']}</li>{/if}
+                    </ul>
+                {else}
+                    <ul class="contact">
+                	{if $company['telephone']}<li><i class="cp-i tel"></i>{substr($company['telephone'],0,3)}******</li>{/if}
+                	{if $company['mail']}<li><i class="cp-i phone"></i>{substr($company['mail'],0,3)}******</li>{/if}
+                    </ul>
+                    <div class="login-btn-area">
+                        <a href="{$MODULE[2]['linkurl']}login.php" onclick="_hmt.push(['_trackEvent', 'chanpin', 'click', 'loginSeeContact']);" rel="nofollow">登录查看联系方式</a>
+                    </div>
+                {/if}
+           
+            <div class="btn-area clearfix mgt-20">
+                <a href="{$company['linkurl']}" onclick="_hmt.push(['_trackEvent', 'chanpin', 'click', 'ToCompanyPage']);" target="_blank"><i class="cp-i enter"></i>进入企业</a>
+                <a href="{$MODULE[2]['linkurl']}message.php?action=send&touser={$username}" onclick="_hmt.push(['_trackEvent', 'chanpin', 'click', 'ToCompanyMessage']);" target="_blank" rel="nofollow"><i class="cp-i message"></i>给他留言</a>
+            </div>
+        </div>
+        <!--company-info end-->
+    </div>
+
+    <div class="w1200 box-center clearfix mgt-30">
+        <!--main-->
+        <div class="main pull-left">
+            <!--产品详情-->
+            <div class="product-detail module">
+                <div class="module-hd">
+                    <span>产品详情</span>
+                </div>
+                <div class="module-bd">
+                    <div class="product-detail-content">
+                        {$content}
+                    </div>
+                    <div class="msg-box">
+                        以上信息<strong>{$title}</strong>为<strong>{$company['company']}</strong>相关负责发布，如需了解{$title}价格、型号、图片、售后等信息请联系厂家；天成医疗网存在海量产品，如您发现产品内有任何违法/侵权信息，请立即向天成医疗网举报并提供有效线索。
+                    </div>
+                </div>
+            </div>
+            <!--产品详情 end-->
+
+			{if $malldata}
+            <!--相关产品信息-->
+            <div class="module relate-product mgt-20">
+                <div class="module-hd">
+                    <span><em>{$title}</em>相关产品信息</span>
+                </div>
+                <div class="module-bd clearfix">
+                    {loop $malldata $k $v}
+                        <div class="item">
+                            <div class="img">
+                                <a href="{$MOD['linkurl']}{$v['linkurl']}" target="_blank" title="{$v['title']}"><img src="{$v['thumb']}" alt="{$v['title']}" onerror="this.src='{DT_SKIN}image/tip/nopic-md-4-3.png'"></a>
+                            </div>
+                            <div class="txt">
+                                <p class="name text-overflow"><a href="{$MOD['linkurl']}{$v['linkurl']}" target="_blank" title="{$v['title']}">{$v['title']}</a></p>
+                                <p class="company text-overflow">{$v['company']}</p>
+                            </div>
+                        </div>
+                    {/loop}
+                </div>
+            </div>
+            <!--相关产品信息 end-->
+            {/if}
+
+			{if $selldata}
+            <!--相关求购信息-->
+            <div class="module relate-purchase mgt-20">
+                <div class="module-hd">
+                    <span><em>{$title}</em>相关供应/求购信息</span>
+                </div>
+                <div class="module-bd clearfix">
+                    
+                    {loop $selldata $k $v}
+                    <div class="item">
+                        <p class="title text-overflow"><a href="{$MODULE[5][linkurl]}{$v[linkurl]}" target="_blank" title="{$v['title']}">{$v[title]}</a></p>
+                        <ul>
+                            <li>发布时间： {date('Y-m-d',$v['addtime'])}</li>
+                            <li>所在地区： {area_pos($v['areaid'],'/')}</li>
+                        </ul>
+                    </div>
+                    {/loop}
+                </div>
+            </div>
+            <!--相关求购信息 end-->
+            {/if}
+
+
+            <!--网友点评-->
+            <!--
+            <div class="module  mgt-20">
+                <div class="module-hd">
+                    <span>网友点评</span>
+                </div>
+                <div class="module-bd clearfix">
+                    <form class="comment-form clearfix" method="post" onsubmit="return false">
+                        <textarea class="comment-area" name=""></textarea>
+                        <label class="anonymous pull-left"><input type="checkbox" name="">匿名发表</label>
+                        <p class="comment-msg pull-left">还可以输入<span id="commentNum">500</span>个字</p>
+                        <button class="btn btn-primary pull-right">评论</button>
+                    </form>
+                </div>
+            </div>
+            -->
+            <!--网友点评 end-->
+            
+        </div>
+        <!--main end-->
+
+        <!--side-->
+        <div class="side pull-right">
+            <!--纠错提示-->
+            <div class="msg-box">
+                <dl>
+                    <dt><i class="cp-i info"></i>发现参数有误？信息不全？</dt>
+                    <dd>
+                        <p>请您联系天成医疗网官方客服提交正确信息。</p>
+                        <a href="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);" >联系客服</a>
+                    </dd>
+                </dl>
+            </div>
+            <!--推广 end-->
+
+            <!--您可能在找-->
+            <div class="module  mgt-20">
+                <div class="module-hd clearfix">
+                    <span class="pull-left">您可能在找</span>
+                </div>
+                <div class="module-bd keyword-show clearfix">
+                    {if $simword}
+                        {loop $simword $k $v}
+                            <a href="{$MODULE[16]['linkurl']}{keyword_rewrite(['kwid'=>$v['itemid']])}">{$v['word']}</a>
+                        {/loop}
+                    {/if}
+                </div>
+            </div>
+            <!--您可能在找 end-->
+
+            <!--猜您喜欢-->
+            <div class="module slide-show mgt-20">
+                <div class="module-hd clearfix">
+                    <span class="pull-left">猜您喜欢</span>
+                    <a href="javascript:;" class="next refresh pull-right cp-i" title="换一批"></a>
+                    <ul class="hidden"></ul>
+                </div>
+                <div class="module-bd vertical-show">
+                    <ul>
+                       
+                        {loop $likemall $z $t}
+                        <li class="vertical-show-item">
+                            <div class="vertical-show-img">
+                                <a href="{$MODULE[16]['linkurl']}{$t[linkurl]}" target="_blank"><img src="{$t[thumb]}" alt="{$t['title']}"></a>
+                            </div>
+                            <div class="vertical-show-info">
+                                <p class="vertical-show-name text-overflow" title="{$t['title']}"><a href="{$MODULE[16]['linkurl']}{$t[linkurl]}" target="_blank">{$t[title]}</a></p>
+                                <p class="vertical-show-company text-overflow"><a href="{str_replace('www',$t['username'],DT_PATH)}" target="_blank">{$t['company']}</a></p>
+                                <p class="vertical-show-cate">
+                                {if $t['kcatids']}
+                                {php $kcatid = explode(',',$t['kcatids']);}
+                                {loop $kcatid $kk $kt}
+                                <?php if(empty($kt)) continue; ?>
+                                <a href="{$MODULE[16]['linkurl']}{keshi_rewrite(['kcatid'=>$kt])}" target="_blank">{$KESHI[$kt]}</a>
+                                {/loop}
+                                {/if}
+                                </p>
+                            </div>
+                        </li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+            <!--猜您喜欢 end-->
+
+        </div>
+        <!--side end-->
+    </div>
+
+</div>
+<!--product-wrap end-->
+
+{template 'footer2017'}

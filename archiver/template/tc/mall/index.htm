@@ -1,0 +1,505 @@
+{php $head_css = [DT_SKIN.'tc.chanpin.index.css?v=04.17.02']}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/jquery.lazyload.min.js',DT_PATH.'file/script/GETxiu17.js',DT_PATH.'file/script/mall/mall.index.js'];}
+{template 'module-header'}
+
+<!--cp-wrap-->
+<div class="cp-wrap clearfix">
+    <!-- 首屏 -->
+    <div class="layout clearfix">
+        <div class="main pull-left">
+            <div class="focus-slide">
+                <div class="bd">
+                    <ul>
+                        {loop $ads $k $t}
+                        <li><a href="{$t['image_url']}" target="_blank"><img src="{imgurl($t['image_src'], 1)}" alt="{$t['image_alt']}"></a></li>
+                        {/loop}
+                    </ul>
+                </div>
+                <div class="hd"><ul></ul></div>
+            </div>
+            <div class="recommend-box">
+                <div class="bd">
+                    <ul>
+                    	{loop $top_malls $k $t}
+                        <li>
+                            <a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" class="recommend-item">
+                                <p class="recommend-item-name text-overflow" title="{$t['title']}">{$t['title']}</p>
+                                <i class="recommend-item-cate">{$CATEGORY[$t['catid']]}</i>
+                                <img class="lazy-img" src="{DT_SKIN}image/blank.gif" _src="{$t['thumb']}" alt="{$t['title']}">
+                            </a>
+                        </li>
+                        {/loop}
+                    </ul>
+                </div>
+                <div class="hd" style="display: none;"><ul></ul></div>
+                <div class="arrows">
+                    <a href="javascript:;" class="prev"><i class="cp-i"></i></a>
+                    <a href="javascript:;" class="next"><i class="cp-i"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="aside pull-right">
+            <ul class="product-data">
+                <style>
+                    .product-data li{padding: 28px 20px 27px 20px;}
+                </style>
+                <!-- <li class="product-data-1"><p>订单金额</p><em id="span_num"></em><i class="cp-i"></i></li> -->
+                <li class="product-data-2"><p>招标采购信息</p><em id="span_buy"></em><i class="cp-i"></i></li>
+                <li class="product-data-3"><p>供应商</p><em id="span_company"></em><i class="cp-i"></i></li>
+                <li class="product-data-4"><p>产品信息</p><em id="span_product"></em><i class="cp-i"></i></li>
+            </ul>
+            <div class="release-btn">
+                <a class="btn-1" href="{$MODULE[2]['linkurl']}my.php?mid=16&action=add" target="_blank" rel="nofollow"><i class="cp-i"></i>发布产品</a>
+                <a class="btn-2" href="{$MODULE[2]['linkurl']}my.php?mid=6&action=add" target="_blank" rel="nofollow"><i class="cp-i"></i>发布招投标</a>
+                <a class="btn-3" href="{$MODULE[2]['linkurl']}trade.php" target="_blank" rel="nofollow"><i class="cp-i"></i>订单管理</a>
+                <a class="btn-4" href="{$MODULE[2]['linkurl']}register.php" target="_blank" rel="nofollow"><i class="cp-i"></i>供应商入住</a>
+            </div>
+        </div>
+    </div>
+    <!-- 首屏  end-->
+
+    <!-- 平台保障 -->
+    <div class="guarantee">
+        <ul class="section">
+            <li class="item item-1">
+                <i class="cp-i"></i>
+                <strong>上市公司投资支持</strong>
+                <p>达安基因投资与天成共同协办</p>
+            </li>
+            <li class="item item-2">
+                <i class="cp-i"></i>
+                <strong>认证资质的颁发</strong>
+                <p>卫生部医药生物工程技术研究中心授权</p>
+            </li>
+            <li class="item item-3">
+                <i class="cp-i"></i>
+                <strong>百度合作平台</strong>
+                <p>专家队伍全程协调跟进服务</p>
+            </li>
+            <li class="item item-4">
+                <i class="cp-i"></i>
+                <strong>资金周转融资服务</strong>
+                <p>固定资产抵押形式，让您的项目运作更灵活</p>
+            </li>
+        </ul>
+    </div>
+    <!-- 平台保障  end-->
+    
+    <!-- floor-1 -->
+    <div class="section floor-1">
+        <div class="section-header clearfix">
+            <h2 class="pull-left"><i class="cp-i"></i><strong>手术器械</strong></h2>
+        </div>
+        <div class="section-content clearfix">
+            <div class="main pull-right">
+                <ul class="goods-list pull-left">
+                	{php $lists = $floor[0]['malls']}
+                    {template 'index-list-malls',$module}
+                </ul>
+                <div class="rank-list pull-left">
+                    <div class="rank-list-hd">
+                        <span>热门排行版</span>
+                    </div>
+                    <ul class="rank-list-bd">
+                    	{php $lists = $floor[0]['hits']}
+                    	{template 'index-list-hits',$module}
+                    </ul>
+                </div>
+            </div>
+            <div class="side pull-left">
+                <div class="sub-cate">
+                    <div class="sub-cate-hd">
+                        <span>分类筛选</span>
+                    </div>
+                    <div class="sub-cate-bd">
+                        <a href="{$MODULE[16]['linkurl']}jichu/" title="基础外科手术器械" target="_blank">基础外科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}xianwei/" title="显微外科手术器械" target="_blank">显微外科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}shenjing/" title="神经外科手术器械" target="_blank">神经外科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}yanke/" title="眼科手术器械" target="_blank">眼科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}erbihou/" title="耳鼻喉科手术器械" target="_blank">耳鼻喉科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}kouqiang/" title="口腔科手术器械" target="_blank">口腔科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}xinxueguan/" title="胸腔心血管外科手术器械" target="_blank">胸腔心血管外科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}fubu/" title="腹部外科手术器械" target="_blank">腹部外科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}miniao/" title="泌尿肛肠外科手术器械" target="_blank">泌尿肛肠外科手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}fuchan/" title="妇产科用手术器械" target="_blank">妇产科用手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}jiaoxing/" title="矫形外科（骨科）手术器械" target="_blank">矫形外科（骨科）手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}jisheng/" title="计划生育手术器械" target="_blank">计划生育手术器械</a>
+                        <a href="{$MODULE[16]['linkurl']}shaoshang/" title="烧伤(整形)科手术器械" target="_blank">烧伤(整形)科手术器械</a>
+                    </div>
+                    <div class="sub-cate-more-link">
+                        <a href="{$MODULE[16]['linkurl']}{mall_rewrite([])}">查看更多分类&gt;&gt;</a>
+                    </div>
+                </div>
+                <div class="hot-search">
+                    <div class="hot-search-hd">
+                        <span>热门搜索</span>
+                    </div>
+                    <div class="hot-search-bd">
+                    	<?php for($i =0 ;$i < 10; $i++) { ?>
+                    		<a href="{keyword_rewrite(['kwid'=>$keywords[$i]['itemid']])}" title="{$keywords[$i]['word']}">{$keywords[$i]['word']}</a>
+                    	<?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- floor-1 end-->
+
+    <!-- floor-2 -->
+    <div class="section floor-2">
+        <div class="section-header clearfix">
+            <h2 class="pull-left"><i class="cp-i"></i><strong>常规医用试剂/仪器</strong></h2>
+        </div>
+        <div class="section-content clearfix">
+            <div class="main pull-right">
+                <ul class="goods-list pull-left">
+                    {php $lists = $floor[1]['malls']}
+                    {template 'index-list-malls',$module}
+                </ul>
+                <div class="rank-list pull-left">
+                    <div class="rank-list-hd">
+                        <span>热门排行版</span>
+                    </div>
+                    <ul class="rank-list-bd">
+                        {php $lists = $floor[1]['hits']}
+                    	{template 'index-list-hits',$module}
+                    </ul>
+                </div>
+            </div>
+            <div class="side pull-left">
+                <div class="sub-cate">
+                    <div class="sub-cate-hd">
+                        <span>分类筛选</span>
+                    </div>
+                    <div class="sub-cate-bd">
+                                    <a href="{$MODULE[16]['linkurl']}zhencha/" title="普通诊察器械" target="_blank">普通诊察器械</a>
+                                    <a href="{$MODULE[16]['linkurl']}jianyan/" title="临床检验分析仪器" target="_blank">临床检验分析仪器</a>
+                                    <a href="{$MODULE[16]['linkurl']}huayan/" title="医用化验和基础设备器具" target="_blank">医用化验和基础设备器具</a>
+                                    <a href="{$MODULE[16]['linkurl']}xueyi/" title="体外循环及血液处理设备" target="_blank">体外循环及血液处理设备</a>
+                                    <a href="{$MODULE[16]['linkurl']}huli/" title="病房护理设备及器具" target="_blank">病房护理设备及器具</a>
+                                    <a href="{$MODULE[16]['linkurl']}xiaodu/" title="消毒和灭菌设备及器具" target="_blank">消毒和灭菌设备及器具</a>
+                                    <a href="{$MODULE[16]['linkurl']}lengliao/" title="医用冷疗、低温、冷藏设备及器具" target="_blank">医用冷疗、低温、冷藏设备及器具</a>
+                                    <a href="{$MODULE[16]['linkurl']}kqcl/" title="口腔科设备及器具" target="_blank">口腔科设备及器具</a>
+                                    <a href="{$MODULE[16]['linkurl']}jijiu/" title="手术室、急救室、诊疗室设备及器具" target="_blank">手术室、急救室、诊疗室设备及器具</a>
+                                    <a href="{$MODULE[16]['linkurl']}zhushe/" title="注射穿刺器械" target="_blank">注射穿刺器械</a>
+                                    <a href="{$MODULE[16]['linkurl']}yixueshiji/" title="医学试剂" target="_blank">医学试剂</a>
+                    </div>
+                    <div class="sub-cate-more-link">
+                        <a href="{$MODULE[16]['linkurl']}{mall_rewrite([])}">查看更多分类&gt;&gt;</a>
+                    </div>
+                </div>
+                <div class="hot-search">
+                    <div class="hot-search-hd">
+                        <span>热门搜索</span>
+                    </div>
+                    <div class="hot-search-bd">
+                        <?php for($i =10 ;$i < 20; $i++) { ?>
+                    		<a href="{keyword_rewrite(['kwid'=>$keywords[$i]['itemid']])}" title="{$keywords[$i]['word']}">{$keywords[$i]['word']}</a>
+                    	<?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- floor-2 end-->
+
+    <!-- floor-3 -->
+    <div class="section floor-3">
+        <div class="section-header clearfix">
+            <h2 class="pull-left"><i class="cp-i"></i><strong>医用高能设备</strong></h2>
+        </div>
+        <div class="section-content clearfix">
+            <div class="main pull-right">
+                <ul class="goods-list pull-left">
+                    {php $lists = $floor[2]['malls']}
+                    {template 'index-list-malls',$module}
+                </ul>
+                <div class="rank-list pull-left">
+                    <div class="rank-list-hd">
+                        <span>热门排行版</span>
+                    </div>
+                    <ul class="rank-list-bd">
+                        {php $lists = $floor[2]['hits']}
+                    	{template 'index-list-hits',$module}
+                    </ul>
+                </div>
+            </div>
+            <div class="side pull-left">
+                <div class="sub-cate">
+                    <div class="sub-cate-hd">
+                        <span>分类筛选</span>
+                    </div>
+                    <div class="sub-cate-bd">
+                                    <a href="{$MODULE[16]['linkurl']}chaosheng/" title="医用超声仪器及有关设备" target="_blank">医用超声仪器及有关设备</a>
+                                    <a href="{$MODULE[16]['linkurl']}jiguang/" title="医用激光仪器设备" target="_blank">医用激光仪器设备</a>
+                                    <a href="{$MODULE[16]['linkurl']}gaopin/" title="医用高频仪器设备" target="_blank">医用高频仪器设备</a>
+                                    <a href="{$MODULE[16]['linkurl']}Xshexian/" title="医用X射线设备" target="_blank">医用X射线设备</a>
+                                    <a href="{$MODULE[16]['linkurl']}xfushu/" title="医用X射线附属设备及部件" target="_blank">医用X射线附属设备及部件</a>
+                                    <a href="{$MODULE[16]['linkurl']}gaoneng/" title="医用高能射线设备" target="_blank">医用高能射线设备</a>
+                                    <a href="{$MODULE[16]['linkurl']}shexian/" title="医用射线防护用品、装置" target="_blank">医用射线防护用品、装置</a>
+                                    <a href="{$MODULE[16]['linkurl']}hesu/" title="医用核素设备" target="_blank">医用核素设备</a>
+                                    <a href="{$MODULE[16]['linkurl']}cigongzhen/" title="医用磁共振设备" target="_blank">医用磁共振设备</a>
+                    </div>
+                    <div class="sub-cate-more-link">
+                        <a href="{$MODULE[16]['linkurl']}{mall_rewrite([])}">查看更多分类&gt;&gt;</a>
+                    </div>
+                </div>
+                <div class="hot-search">
+                    <div class="hot-search-hd">
+                        <span>热门搜索</span>
+                    </div>
+                    <div class="hot-search-bd">
+                        <?php for($i =20 ;$i < 30; $i++) { ?>
+                    		<a href="{keyword_rewrite(['kwid'=>$keywords[$i]['itemid']])}" title="{$keywords[$i]['word']}">{$keywords[$i]['word']}</a>
+                    	<?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- floor-3 end-->
+
+    <!-- floor-4 -->
+    <div class="section floor-4">
+        <div class="section-header clearfix">
+            <h2 class="pull-left"><i class="cp-i"></i><strong>医用材料</strong></h2>
+        </div>
+        <div class="section-content clearfix">
+            <div class="main pull-right">
+                <ul class="goods-list pull-left">
+                    {php $lists = $floor[3]['malls']}
+                    {template 'index-list-malls',$module}
+                </ul>
+                <div class="rank-list pull-left">
+                    <div class="rank-list-hd">
+                        <span>热门排行版</span>
+                    </div>
+                    <ul class="rank-list-bd">
+                        {php $lists = $floor[3]['hits']}
+                    	{template 'index-list-hits',$module}
+                    </ul>
+                </div>
+            </div>
+            <div class="side pull-left">
+                <div class="sub-cate">
+                    <div class="sub-cate-hd">
+                        <span>分类筛选</span>
+                    </div>
+                    <div class="sub-cate-bd">
+                                    <a href="{$MODULE[16]['linkurl']}kqcl/" title="口腔科材料" target="_blank">口腔科材料</a>
+                                    <a href="{$MODULE[16]['linkurl']}wscl/" title="医用卫生材料及敷料" target="_blank">医用卫生材料及敷料</a>
+                                    <a href="{$MODULE[16]['linkurl']}fenghe/" title="医用缝合材料及粘合剂" target="_blank">医用缝合材料及粘合剂</a>
+                                    <a href="{$MODULE[16]['linkurl']}gaofenzi/" title="医用高分子材料及制品" target="_blank">医用高分子材料及制品</a>
+                                    <a href="{$MODULE[16]['linkurl']}zhiru/" title="植入材料和人工器官" target="_blank">植入材料和人工器官</a>
+                    </div>
+                    <div class="sub-cate-more-link">
+                        <a href="{$MODULE[16]['linkurl']}{mall_rewrite([])}">查看更多分类&gt;&gt;</a>
+                    </div>
+                </div>
+                <div class="hot-search">
+                    <div class="hot-search-hd">
+                        <span>热门搜索</span>
+                    </div>
+                    <div class="hot-search-bd">
+                        <?php for($i =30 ;$i < 40; $i++) { ?>
+                    		<a href="{keyword_rewrite(['kwid'=>$keywords[$i]['itemid']])}" title="{$keywords[$i]['word']}">{$keywords[$i]['word']}</a>
+                    	<?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- floor-4 end-->
+
+     <!--floor-5-->
+    <div class="section floor-5">
+        <div class="section-header clearfix">
+            <h2 class="pull-left"><i class="cp-i"></i><strong>供应商中心</strong></h2>
+        </div>
+        <div class="section-content clearfix">
+            <div class="main pull-right">
+                <div class="company-list pull-left">
+                	{loop $companys $k $t}
+                    <a href="{$t['linkurl']}" class="company-show-item" target="_blank">
+                        <img class="company-show-img" src="{$t['thumb']}" alt="{$t['compnay']}"  onerror="javascript:this.src='{DT_SKIN}image/tip/nopic-md-1-1.png';">
+                        <p class="company-show-name">{$t['company']}</p>
+                    </a>
+                    {/loop}
+                </div>
+                <div class="rank-list pull-left">
+                    <div class="rank-list-hd">
+                        <span>新增供应商</span>
+                    </div>
+                    <ul class="rank-list-bd">
+                    	{loop $companys_new $k $t}
+                        <li class="rank-item-cmp">
+                            <i class="rank-num">{$k+1}</i>
+                            <div class="rank-item-name text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['company']}">{$t['company']}</a></div>
+                        </li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+            <div class="side pull-left">
+                <div class="sub-cate">
+                    <div class="sub-cate-hd">
+                        <span>地区分类筛选</span>
+                    </div>
+                    <div class="sub-cate-bd">
+                    	{loop $mainarea $k $t}
+                        <a target="_blank" href="{$MODULE[4]['linkurl']}{com_rewrite(['areaid'=>$t['areaid']])}" title="{$t['areaname']}医疗器械公司" target="_blank">{$t['areaname']}</a>
+                        {/loop}
+                    </div>
+                    <div class="sub-cate-more-link">
+                        <a href="{$MODULE[4]['linkurl']}" target="_blank">查看更多地区分类&gt;&gt;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--floor-5 end-->
+
+
+
+
+
+    <!-- floor-6 -->
+    <div class="section floor-6">
+        <div class="section-header clearfix">
+            <h2 class="pull-left"><i class="cp-i"></i><strong>行业资讯及招标采购信息</strong></h2>
+        </div>
+        <div class="section-content clearfix">
+            <div class="main pull-right">
+                <div class="news-area pull-left">
+                    <div class="news-col">
+                        <div class="news-col-hd">
+                            <h3><a href="{$MODULE[21]['linkurl']}" target="_blank">最新行业资讯</a></h3>
+                        </div>
+                        <div class="news-col-bd">
+                            <ul class="news-list clearfix">
+                            {loop $articles $z $t}
+                            	<?php if($z < 3) continue; ?>
+                                <li class="text-overflow"><a href="{$MODULE[21]['linkurl']}{$t[linkurl]}" title="{$t[title]}" target="_blank" title="{$t['title']}">{$t[title]}</a></li>
+                            {/loop}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="news-col">
+                        <div class="news-col-hd">
+                            <h3><a href="{$MODULE[6]['linkurl']}" target="_blank">最新招标采购信息</a></h3>
+                        </div>
+                        <div class="news-col-bd">
+                            <ul class="news-list clearfix">
+                            {loop $buys $z $k}
+                                <li class="text-overflow"><a href="{$MODULE[6]['linkurl']}{$k[linkurl]}" target="_blank" title="{$k['title']}">{$k[title]}</a></li>
+                            {/loop}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="side pull-left">
+                <div class="img-change">
+                    <div class="bd">
+                        <ul>
+                        	{loop $articles $k $t}
+                        	<?php if($k > 2) break; ?>
+                            <li>
+                                <a href="{$MODULE[21]['linkurl']}{$t[linkurl]}" target="_blank" title=""><img src="{$t['thumb']}" alt="{$t['title']}"></a>
+                                <p class="text-overflow"><a href="{$MODULE[21]['linkurl']}{$t[linkurl]}" target="_blank" title="{$t['title']}">{$t['title']}</a></p>
+                            </li>
+                            {/loop}
+                        </ul>
+                    </div>
+                    <div class="hd"><ul></ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- floor-4 end-->
+
+    <!--cate-tabs-->
+    <div class="cate-tabs">
+        <div class="cate-tabs-hd">
+            <ul class="clearfix">
+                <li class="cate-tabs-hd-2">
+                    <i class="cp-i"></i>
+                    <p class="cate-tabs-name">科室分类</p>
+                    <p class="cate-tabs-decs">医院科室产品分类</p>
+                </li>
+                <li class="cate-tabs-hd-1">
+                    <i class="cp-i"></i>
+                    <p class="cate-tabs-name">器械分类</p>
+                    <p class="cate-tabs-decs">医疗器械产品分类</p>
+                </li>
+                <li class="cate-tabs-hd-3">
+                    <i class="cp-i"></i>
+                    <p class="cate-tabs-name">目录分类</p>
+                    <p class="cate-tabs-decs">医疗器械标准目录分类</p>
+                </li>
+            </ul>
+        </div>
+        <div class="cate-tabs-bd">
+            <div class="keshi-cate">
+                <div class="top clearfix">
+                	{loop $KESHI $k $t}
+                	<?php if($k > 5) break; ?>
+                    <a href="{$MODULE[16]['linkurl']}{keshi_rewrite(['kcatid'=>$t['catid']])}" target="_blank" class="item" title="{$t['catname']}医疗器械">
+                        <img src="{DT_SKIN}image/keshi-cate-{$k+1}.jpg" width="162" alt="{$t['catname']}">
+                        <p>{$t['catname']}</p>
+                    </a>
+                    {/loop}
+                </div>
+                <div class="other">
+                	{loop $KESHI $k $t}
+                		<?php if($k < 6) continue; ?>
+                		<a href="{$MODULE[16]['linkurl']}{keshi_rewrite(['kcatid'=>$t['catid']])}" target="_blank" title="{$t['catname']}医疗器械">{$t['catname']}</a>
+                	{/loop}
+                </div>
+            </div>
+            <div class="keyword-cate clearfix">
+            		<dl class="keyword-cate-item">
+                    <dt>热门分类</dt>
+                    <dd>
+            		<?php for($j = 40 ; $j < 80; $j++){?>
+            			<a href="{$MODULE[16]['linkurl']}{keyword_rewrite(['kwid'=>$keywords[$j]['itemid']])}"  title="{$keywords[$i]['word']}">{$keywords[$j]['word']}</a>
+            		<?php } ?>
+            		</dd>
+            		</dl>
+            		<dl class="keyword-cate-item">
+                    <dt>最新分类</dt>
+                    <dd>
+            		<?php for($j = 80 ; $j < 120; $j++){?>
+            			<a href="{$MODULE[16]['linkurl']}{keyword_rewrite(['kwid'=>$keywords[$j]['itemid']])}"  title="{$keywords[$i]['word']}">{$keywords[$j]['word']}</a>
+            		<?php } ?>
+            		</dd>
+            		</dl>
+            </div>
+            <div class="mulu-cate">
+            	{loop $maincat $k $t}
+                <a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['catname']}"><i><?php echo 6801+(int)$k; ?></i>{$t['catname']}</a>
+                {/loop}
+                
+            </div>
+        </div>
+    </div>
+    <!--cate-tabs end-->
+
+    <!--friend-links-->
+    <div class="friend-links">
+        <div class="layout links-layout clearfix">
+            <div class="links-hd pull-left">友情链接：</div>
+            <div class="links-bd pull-right" style="width:1130px;">
+            	{loop $links $k $t}
+                <a href="{$t['linkurl']}" title="{$t['title']}" target="_blank">{$t['title']}</a>
+                {/loop}
+				<a href="{DT_PATH}link/index-htm-action-reg.html" class="apply-to" rel="nofollow">申请加入&gt;&gt;</a>
+            </div>
+        </div>
+    </div>
+    <!--friend-links end-->
+</div>
+<!--cp-wrap-->
+
+{template 'footer2017'}

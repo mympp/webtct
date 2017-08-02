@@ -1,0 +1,197 @@
+{template 'header', $template}
+<!--{php $tags=tag("table=type&condition=item='mall-".$userid."' and parentid = '0'&pagesize=40&order=listorder asc,typeid desc&template=null&debug=0");}-->
+<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} &raquo; {$title}{/if}</div>
+{if $itemid}
+<div class="main_head"><div><strong>{$title}</strong></div></div>
+<div class="main_body">	
+		<table width="100%" align="center">
+		<tr>
+		<td width="270" valign="top">
+			<div class="album">
+				<table width="100%" cellpadding="0" cellspacing="0">
+				<tr align="center">
+				<td width="250" valign="top"><div><span id="abm" title="点击图片查看大图"><img src="{$albums[0]}" onload="if(this.width>240){this.width=240;}" onmouseover="SAlbum(this.src);" onmouseout="HAlbum();" onclick="PAlbum(this);" id="mid_pic"/></span></div></td>
+				</tr>
+				<tr>
+				<td>
+				{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');"class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
+				</tr>
+				<tr align="center">
+				<td height="30" onclick="PAlbum(Dd('mid_pic'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 点击图片查看大图</td>
+				</tr>
+				</table>
+			</div>
+		</td>
+		<td valign="top">
+			<div id="imgshow" style="display:none;"></div>
+			<table width="100%" cellpadding="4" cellspacing="4">
+			<tr>
+			<td width="80" class="f_dblue">商品：</td>
+			<td><strong>{$title}</strong>&nbsp;</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">单 价：</td>
+			<td class="f_gray">{if $price>0}￥<span class="f_price px16">{$price}</span>{else}面议{/if}</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">品 牌：</td>
+			<td>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank">{$brand}</a>{else}未填写{/if}</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">所在地：</td>
+			<td>{area_pos($areaid, '')}</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">评 价：</td>
+			<td><a href="{$linkurl}#comment" target="_blank">已有 <span class="f_orange">{$comments}</span> 条评价</a></td>
+			</tr>
+			<tr>
+			<td class="f_dblue">人 气：</td>
+			<td>已有 <span class="f_orange"><span id="hits">{$hits}</span></span> 人关注</td>
+			</tr>
+			<tr>
+			<td class="f_dblue">更 新：</td>
+			<td>{$editdate}</td>
+			</tr>
+			{if $status == 4}
+			<tr>
+			<td></td>
+			<td><strong class="f_red">该商品已下架</strong></td>
+			</tr>
+			{/if}
+			</table>
+			{if $status == 3}
+			<div>
+			<img src="{DT_SKIN}image/btn-service.png" alt="在线咨询" class="c_p" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136&s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);"/>
+			&nbsp;
+			<!-- <img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('cart.php?itemid='.$itemid)}');"/> -->
+			</div>
+			{/if}
+		</td>
+		</tr>
+		</table>
+	</div>
+
+	<div class="main_head"><div><strong>详细信息</strong></div></div>
+	<div class="main_body">
+		{if $CP}{template 'property', 'chip'}{/if}
+		 {php $content=str_replace('width','widthd',$content);}
+		<div class="content" id="content">{$content}</div>
+	</div>
+	<script type="text/javascript">
+	var content_id = 'content';
+	var img_max_width = {$MOD[max_width]};
+	</script>
+	<script type="text/javascript" src="{DT_PATH}file/script/content.js"></script>
+{else}
+<div class="main_head"><div><strong>商品分类</strong></div></div>
+<div class="main_body">
+	<div class="px13 lh18">
+	<style type="text/css">
+		.sely{background:#ff6600;color:#fff;font-weight:bold;font-size:14px;margin-left:20px;padding:2px 5px 2px 5px;line-height:20px;height:20px;}
+		.sely a{color:#Ffffff;}
+		.seln{font-size:12px;margin-left:20px;padding:2px 5px 2px 5px;line-height:20px;height:20px;}
+	</style>
+
+	<dl><dt><strong>我公司主营以下几类商品，请查看： </strong></dt>
+	<dd style="height:auto;margin-left:20px;">
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+		{loop $tags $i $t}
+		{if $i%3==0}<tr>{/if}
+		<td><span  id="name_{$t[typeid]}" class="seln"><a href="{userurl($username, 'file=mall&typeid='.$t['typeid'], $domain)}" title="{$t[typename]}"> · {set_style($t[typename], $t[style])}</a></span>
+		{if $t[typeid]==$typeid}
+		{php $typename=$t[typename];}
+		<script>Dd('name_{$typeid}').className='sely';</script></td>
+		{/if}
+	{if $i%3==2}</tr>{/if}
+		{/loop}	
+	</table>
+	</dd>
+	</dl>
+
+    {if $typeid}
+   	<!--{php $ltags = tag("table=type&condition=item='mall-".$userid."' and parentid =".$typeid."&pagesize=40&order=listorder asc,typeid desc&template=null&debug=0")}-->
+	{if $ltags}
+   <dl><dt>{$typename}</dt><dd style="height:auto;margin-left:20px;">
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+	{loop $ltags $k $v}
+		{if $k%3==0}<tr>{/if}
+	<td><span id="name_{$v[typeid]}"class="{if $v[typeid]==$typeid}sely{else}seln{/if}"><a href="{userurl($username, 'file=mall&typeid='.$v['typeid'], $domain)}" title="{$v[typename]}">{set_style($v[typename], $v[style])}</a></span>
+	<script>Dd('name_{$typeid}').className='sely';</script></td>
+	{if $k%3==2}</tr>{/if}
+	{/loop}
+	<div style="clear:both;height:1px;overflow:hidden;"></div>
+	</dd>
+	</dl>
+	{/if}
+	{/if}
+
+		
+		
+		<!--{php $ltags = tag("table=type&condition=item='mall-".$userid."' and parentid =".$t['typeid']."&pagesize=40&order=listorder asc,typeid desc&template=null&debug=0")}-->
+			{loop $ltags $k $v}
+			<dt style="padding-left:10px;">├&nbsp;<a href="{userurl($username, 'file=mall&typeid='.$v['typeid'], $domain)}" title="{$v[typename]}" id="name_{$v[typeid]}">{set_style($v[typename], $v[style])}</a></dt>
+			{/loop}
+
+
+	</div>
+	</div>
+</div>
+<div class="main_head">
+<div>
+<span class="f_r f_n px12">
+{if $view}
+<a href="{userurl($username, 'file=mall&typeid='.$typeid, $domain)}">以橱窗方式浏览</a> | <strong>以目录方式浏览</strong>
+{else}
+<strong>以橱窗方式浏览</strong> | <a href="{userurl($username, 'file=mall&view=1&typeid='.$typeid, $domain)}">以目录方式浏览</a>
+{/if}
+</span>
+<strong>商品列表</strong>
+</div>
+</div>
+<div class="main_body">
+{if $view}
+	<table cellpadding="5" cellspacing="1" width="100%" align="center">
+	<tr bgcolor="#F1F1F1">
+	<th width="100">图片</th>
+	<th>标 题</th>
+	<th width="110">更新时间</th>
+	</tr>
+	{loop $lists $k $v}
+	<tr align="center"{if $k%2==1} bgcolor="#FBFBFB"{/if}>
+	<td height="100"><a href="{$v[linkurl]}"><img src="{imgurl($v[thumb], 1)}" width="80" height="80" alt="" style="border:#C0C0C0 1px solid;"/></a></td>
+	<td align="left" class="lh18" valign="top"><a href="{$v[linkurl]}" class="px13">{$v[title]}</a><br/><span class="f_gray">{$v[introduce]}</span>
+	</td>
+	<td>{timetodate($v[edittime], 3)}</td>
+	</tr>
+	{/loop}
+	</table>
+{else}
+	<table cellpadding="0" cellspacing="0" width="100%">
+	{loop $lists $k $v}
+	{if $k%4==0}<tr align="center">{/if}
+	<td valign="top" width="25%" height="180">
+	<div class="thumb" onmouseover="this.className='thumb thumb_on';" onmouseout="this.className='thumb';">
+		<a href="{$v[linkurl]}"><img src="{imgurl($v[thumb], 1)}" width="100" height="100" alt="{$v[alt]}"/></a>
+		<div><a href="{$v[linkurl]}">{$v[title]}</a></div>
+			<span class="f_price">{if $v[price]>0}￥{$v[price]}{else}面议{/if}</span>
+	</div>
+	</td>
+	{if $k%4==3}</tr>{/if}
+	{/loop}
+	</table>
+{/if}
+	<div class="pages">{$pages}</div>
+</div>
+
+<script type="text/javascript">
+try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
+</script>
+{/if}
+<div class="main_head"><div><strong>内容声明</strong></div></div>
+<div class="main_body">
+<p style="font-size:12px;line-height:1.5;color:#666;">
+天成医疗网为互联网信息服务提供者，天成医疗网（含网站、客户端等）所展示的商品/服务的标题、价格、详情等信息内容系由店铺经营者发布，其真实性、准确性和合法性均由店铺经营者负责。天成医疗网提醒您购买商品/服务前注意谨慎核实，如您对商品/服务的标题、价格、详情等任何信息有任何疑问的，请在购买前通过网页提供咨询方式与店铺经营者沟通确认；天成医疗网存在海量店铺，如您发现店铺内有任何违法/侵权信息，请立即向天成医疗网举报并提供有效线索。
+</p>
+</div>
+{template 'footer', $template}

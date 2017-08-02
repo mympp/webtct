@@ -1,0 +1,41 @@
+{template 'header'}
+{template 'lay','tag'}
+	<div class="autoheight grayb nt">
+	<div class="divline"></div>
+		<h1 class="title">{$title}</h1>
+		<div class="info"><span class="fr"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="放大字体" class="c_p" onclick="fontZoom('+', 'article');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="缩小字体" class="c_p" onclick="fontZoom('-', 'article');"/></span>
+		<font>发布日期：{$adddate}</font>
+		<font>浏览次数：<span id="hits">{$hits}</span></font>	
+		{if $copyfrom}<font>信息来源：{$copyfrom}</font>{/if}
+		</div>
+		{if $daodu}{if $introduce && $user_status == 3 && $page == 1}<div class="introduce"><div>{$introduce}</div></div>{/if}{/if}
+
+		{if $CP}{template 'property', 'chip'}{/if}
+		<div id="content" class="bpic">{template 'content', 'chip'}</div>
+		{if $voteid}<div class="pd20">{loop $voteid $v}
+		{load('vote_'.$v.'.htm')}{/loop}</div>
+		{/if}
+		{if $pages}<div class="pages">{$pages}</div>{/if}
+		
+		{if $MOD[show_np]}
+		<div class="divline"></div>
+		<div class="np">
+		<ul>
+		<li><strong>下一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$addtime&areaid=$cityid&pagesize=1&order=addtime asc&template=list-np", -1)}--></li>
+		<li><strong>上一篇：</strong><!--{tag("moduleid=$moduleid&condition=status=3 and addtime<$addtime&areaid=$cityid&pagesize=1&order=addtime desc&template=list-np", -1)}--></li>
+		</div>
+
+		{/if}
+			<div class="divline"></div>
+
+			{template 'comment', 'chip'}
+			 
+	</div>
+			
+{template 'footer'}
+
+
+
+
+
+

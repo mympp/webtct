@@ -1,0 +1,7 @@
+{loop $tags $i $t}
+	{if $i==0}
+		<div class="hdtitle"><a href="{$t[linkurl]}" target="_blank">{$t[alt]}</a><i>[{timetodate($t[edittime],$datetype)}]</i></div><div class="graybg pd5">{$t[introduce]}<a  href="{$t[linkurl]}" target="_blank">[查看详细]</a></div>
+	{else}
+		<div class="hdtitles"><span class="fr mr10 f12 hcolor">[{timetodate($t[edittime],$datetype)}]</span> · <a href="{$t[linkurl]}" target="_blank">{$t[alt]}{if $t[thumb]}&nbsp;<img src="{DT_SKIN}image/photo.gif" class="mid">{/if}</a></div>
+	{/if}
+{/loop}

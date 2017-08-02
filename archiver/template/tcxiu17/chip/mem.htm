@@ -1,0 +1,16 @@
+{if $_username==''}
+document.writeln("<li onmouseover=\"dakai(\'memtips\');guanbi(\'toptip\')\" onclick=\"dakai(\'memtips\')\"><a title=\"注册\/登录面板\" href=\"javascript:void(0)\">");
+document.writeln("<img  src=\"{DT_SKIN}image\/tmem0.jpg\" onmouseover=\"this.src=allmenu(this.src)\" id=\"memtip\" onmouseout=\"this.src=allmenu(this.src)\">");
+document.writeln("<\/a><\/li>");
+document.writeln("<div id=\"memtips\" style=\"display:none\" onmouseover=\"Dd(\'memtip\').src=\'{DT_SKIN}image\/tmem1.jpg\';\" onmouseout=\"guanbi(\'memtips\');Dd(\'memtip\').src=\'{DT_SKIN}image\/tmem0.jpg\'\"\/>	");
+document.writeln("<ul class=\"tipul\"><li onmouseover=\"this.className=\'toptipy\'\" onmouseout=\"this.className=\'toptipn\'\" class=\'toptipn\'><a href=\"{$MODULE[1][linkurl]}/member/register.php\" >注册<\/a><\/li>");
+document.writeln("<li onmouseover=\"this.className=\'toptipy\'\" onmouseout=\"this.className=\'toptipn\'\" class=\'toptipn\'><a href=\"{$MODULE[1][linkurl]}/member/login.php\">登陆<\/a><\/li><\/ul><\/div>");
+{elseif $_groupid==5||$_groupid==8||$_groupid==1}
+document.writeln("<li><a title=\"会员中心\" href=\"{$MODULE[2][linkurl]}\">");
+document.writeln("<img  src=\"{DT_SKIN}image\/tcenter0.jpg\" onmouseover=\"this.src=allmenu(this.src)\" onmouseout=\"this.src=allmenu(this.src)\">");
+document.writeln("<\/a><\/li>")
+{else}
+document.writeln("<li><a title=\"我的网店\" href=\"{userurl($_username)}\">");
+document.writeln("<img  src=\"{DT_SKIN}image\/tshop0.jpg\" onmouseover=\"this.src=allmenu(this.src)\" onmouseout=\"this.src=allmenu(this.src)\">");
+document.writeln("<\/a><\/li>")
+{/if}

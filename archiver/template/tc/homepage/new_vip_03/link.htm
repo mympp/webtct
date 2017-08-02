@@ -1,0 +1,17 @@
+{template 'header', $template}
+	<div class="list_link">
+		<div class="list_title"><span><b>友情链接</b></span><div class="list_bottom"></div></div>
+		<div class="list_link_con">
+			<ul>
+				{loop $lists $k $v}
+					{if $k<=10}
+					<li><a href="{$v[linkurl]}">{$v[title]}</a></li>
+					{/if}
+				{/loop}
+			</ul>
+		</div>
+	</div>
+	<div class="pages">
+	  {$pages}
+	</div>
+{template 'footer', $template}

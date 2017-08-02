@@ -1,0 +1,118 @@
+<script>
+$(document).ready(function(){
+	$('#cat_pos>a').removeAttr('href');
+});
+</script>
+<style type="text/css">
+	#webbodycontent{display:none}
+	.listright{width:263px;margin-left:0px;margin-top:10px;}
+	.small_frame{width:262px;}
+</style>
+<div class="autoheight" style="background:white;">
+<div class="webw">
+<div class="your cut">
+<font class="color f14 mr10">您所在的位置</font>
+<a href="{$MODULE[1][linkurl]}">网站首页&nbsp;</a>&nbsp;&nbsp;>&nbsp;&nbsp;{if $moduleid<>3}<a href="{$MOD[linkurl]}" id="yourmdid">{$MOD[name]}</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span id="cat_pos">{cat_pos($CAT, '&nbsp;&nbsp;>&nbsp;&nbsp;')}</span>{else}{$ztitle}{/if}<a id="yourmdmore"></a>&nbsp;&nbsp;>&nbsp;&nbsp;{$title}{if $stype=='1'}技术成果{else}技术需求{/if}
+</div>
+<div class="autoheight grayb whitebg" style="border-bottom:2px solid #ccc;">
+<dl class="options">
+<dt style="line-height:14px;">应用领域分类：</dt>
+<dd>
+{php $tagss = tag("moduleid=$moduleid&table=category&condition=parentid=$project_catid&order=listorder ASC&pagesize=50&template=null")}
+<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&qixie='.$qixie.'&cooperate='.$cooperate.'&stype='.$stype)}" style="font-size:14px;" class=" {if $catid==$project_catid}opyes wcolor{else}color{/if}">全部</a>&nbsp;
+{loop $tagss $i $t}
+<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$t[catid].'&qixie='.$qixie.'&cooperate='.$cooperate.'&stype='.$stype)}" style="font-size:14px;" class=" {if $catid==$t[catid]}opyes wcolor{else}color{/if}">{set_style($t[catname],$t[style])} <span style="color:#ccc;">
+{php $count=$db->get_one("select count(*) as c from $table where catid =".$t[catid]." and stype=$stype and status=3");}
+[{$count[c]}]
+</span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+{/loop}	
+</dd>
+</dl>
+<dl class="options">
+<dt>器械分类：</dt>
+<dd>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie=0&cooperate='.$cooperate.'&stype='.$stype)}" class=" {if $qixie==0}opyes wcolor{else}color{/if}">全部</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie=1&cooperate='.$cooperate.'&stype='.$stype)}" class=" {if $qixie=='1'}opyes wcolor{else}color{/if}">I类</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie=2&cooperate='.$cooperate.'&stype='.$stype)}" class=" {if $qixie=='2'}opyes wcolor{else}color{/if}">II类</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie=3&cooperate='.$cooperate.'&stype='.$stype)}" class=" {if $qixie=='3'}opyes wcolor{else}color{/if}">III类</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie=4&cooperate='.$cooperate.'&stype='.$stype)}" class=" {if $qixie=='4'}opyes wcolor{else}color{/if}">其他</a>
+</dd>
+</dl>
+<dl class="options">
+<dt>合作方式：</dt>
+<dd>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie='.$qixie.'&cooperate=0&stype='.$stype)}" class=" {if $cooperate==0}opyes wcolor{else}color{/if}">全部</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie='.$qixie.'&cooperate=1&stype='.$stype)}" class=" {if $cooperate=='1'}opyes wcolor{else}color{/if}">技术转让</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie='.$qixie.'&cooperate=2&stype='.$stype)}" class=" {if $cooperate=='2'}opyes wcolor{else}color{/if}">技术许可</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie='.$qixie.'&cooperate=3&stype='.$stype)}" class=" {if $cooperate=='3'}opyes wcolor{else}color{/if}">合作开发</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie='.$qixie.'&cooperate=4&stype='.$stype)}" class=" {if $cooperate=='4'}opyes wcolor{else}color{/if}">合作生产</a>
+<a href="{$MOD['linkurl']}{rewrite('search.php?catid='.$catid.'&qixie='.$qixie.'&cooperate=5&stype='.$stype)}" class=" {if $cooperate=='5'}opyes wcolor{else}color{/if}">融资</a>
+</dd>
+</dl>
+<form action="{$MOD[linkurl]}search.php" method="get">
+<input type="hidden" name="catid" value="{$project_catid}" />
+<input type="hidden" name="stype" value="{$stype}" />
+{template 'form',$module}
+</form>
+</div>
+
+<div class="divline whitebg"></div>
+<div class="autoheight whitebg">
+<div class="listleft autoheight " style="margin-top: 10px;">
+	<div class="listleft-title graybg" style="height:35px;line-height:35px;text-align:center;border-left:1px solid #ccc;">
+		<span style="font-size:18px;color:#1e7e6a;font-weight:bold;">科技项目信息</span>
+	</div>
+	<div class="listleft-content">
+		{if $tags}
+		{template 'list-project','tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+	</div>
+</div>
+<div class="listright graybg" style="border:1px solid #ccc;">
+<div class="small_frame graybg" style="height:auto;">
+<br/>
+{php $tag_grade_project=tag("moduleid=$moduleid&table=quote&condition=catid in (".$project_child_catid['child'].") and status=3 and stype=1&pagesize=10&order=addtime desc&template=null");} 
+<!--优秀项目推荐-->
+	<span>优秀项目推荐</span>
+	<br/><br/>
+	<ul>
+	{loop $tag_grade_project $k $v}
+		<li><a href="{$v['linkurl']}">{$k+1}.{dsubstr($v['title'],28,'...')}</a></li>
+	{/loop}
+	</ul>
+	<a href="{$MOD[linkurl]}{rewrite('search.php?catid'.$project_catid.'&qixie=0&cooperate=0&stype=1')}"><img src="{DT_SKIN}image/quote/downpointer.png" style="margin-top:10px;" /></a>
+</div>
+<div class="divline" style="height:26px;"></div>
+<div class="small_frame graybg" style="height:auto;">
+<br/>
+{php $tag_hot_need=tag("moduleid=$moduleid&table=quote&condition=catid in (".$project_child_catid['child'].") and status=3 and stype=0&pagesize=10&order=hits desc&template=null");}
+<!-- 热门技术需求-->
+	<span>热门技术需求</span>
+	<br/><br/>
+	<ul>
+		{loop $tag_hot_need $k $v}
+		<li><a href="{$v['linkurl']}" style="cursor:pointer;"><p class="fl">{$k+1}.{dsubstr($v['title'],24,'...')}</p><p style="float:right;font-size:14px;color:#444;font-weight:normal;">{$v['hits']}</p></a></li>
+		{/loop}
+	</ul>
+	<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$project_catid.'&qixie=0&cooperate=0&stype=0')}"><img src="{DT_SKIN}image/quote/downpointer.png" style="margin-top:10px;" /></a>
+</div>
+<div class="divline" style="height:26px;"></div>
+<div class="small_frame graybg" style="height:auto;">
+<br/>
+{php $tag_new_clinic_need=tag("moduleid=7&table=quote&condition=catid in (".$clinic_child_catid['child'].") and status=3 and stype=1&pagesize=10&order=addtime desc&template=null");}
+<!-- 最新注册临床资讯需求 -->
+	<span>最新注册临床资讯需求</span>
+	<br/><br/>
+	<ul>
+		{loop $tag_new_clinic_need $k $v}
+		<li><a href="{$v['linkurl']}">{$k+1}.{dsubstr($v['title'],28,'...')}</a></li>
+		{/loop}
+	</ul>
+	<a href="{$MOD[linkurl]}{rewrite('search.php?catid='.$clinic_catid.'&qixie=0&cooperate=0&stype=0')}"><img src="{DT_SKIN}image/quote/downpointer.png" style="margin-top:10px;" /></a>
+</div>	
+<div class="divline" style="height:26px;"></div>
+</div>
+</div>
+</div>

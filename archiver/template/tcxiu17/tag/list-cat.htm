@@ -1,0 +1,9 @@
+{php $c=1;}
+{loop $tags $k $t}
+{php if($c==3){$c=1;}}
+<li onmouseover="this.className='gs9'" 
+	{if fmod($c,2)==0}onmouseout="this.className='gs7'"class="gs7"{else}onmouseout="this.className='gs8'"class="gs8"{/if}>{if $datetype}<span class="fr mr10">{timetodate($t[addtime], $datetype)}</span>{/if}<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{DT_SKIN}image/tag_blue.gif" class="mid mr10">{$t[title]}</a></li>
+{php $c=$c+1;}
+{/loop}
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

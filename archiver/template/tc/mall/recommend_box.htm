@@ -1,0 +1,30 @@
+
+{if $recommends}
+<dl id="recommend_box">
+	<dt>{$recommend_title}</dt>
+	<dd>
+		{loop $recommends $k $v}
+			{if ($k+2)%2 == 0}<ul>{/if}
+			<li class="recommend_li" style="{if ($k+2)%2 == 0}border-right:1px solid #ccc;{/if}{if $k != 4 || $k != 5}border-bottom:1px solid #ccc;{/if}">
+				<a href="{$v['linkurl']}" title="{$v['title']}">
+					<div>
+						<img src="{$v['thumb']}" onerror="this.src='{DT_SKIN}image/nopic.gif'" alt="{$v['title']}" />
+						<div class="mall_title">{dsubstr($v['title'],16,'...')}</div>
+					</div>
+				</a>
+			</li>
+			{if ($k+1)%2 == 0}</ul>{/if}
+		{/loop}
+	</dd>
+</dl>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.recommend_li').mouseenter(function(){
+			$(this).find('.mall_title').css('display','block');
+		});
+		$('.recommend_li').mouseleave(function(){
+			$(this).find('.mall_title').css('display','none');
+		});
+	});
+</script>
+{/if}

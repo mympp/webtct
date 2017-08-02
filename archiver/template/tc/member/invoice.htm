@@ -1,0 +1,273 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link id="lhgdialoglink" rel="stylesheet" href="{$CFG['url']}file/script/skins/idialog.css">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>发出的订单_商务中心_天成医疗网_Powered By Tecenet</title>
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<link rel="shortcut icon" href="{$CFG['url']}favicon.ico">
+<link rel="bookmark" href="{$CFG['url']}favicon.ico">
+<link rel="stylesheet" type="text/css" href="{$CFG['url']}member/image/style.css">
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{$CFG['url']}skin/teceskin/ie6.css"/>
+<![endif]-->
+<!--[if IE]>
+<style type="text/css">
+.head_user em {margin:-4px 0 0 -4px;}
+#profile {margin:20px 0 0 -140px;}
+</style>
+<![endif]-->
+<script type="text/javascript" src="{$CFG['url']}lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="{$CFG['url']}file/script/config.js"></script>
+<script type="text/javascript" src="{$CFG['url']}file/script/common.js"></script>
+<script type="text/javascript" src="{$CFG['url']}file/script/member.js"></script>
+<script type="text/javascript" src="{$CFG['url']}file/script/jquery.js"></script>
+</head>
+<body style="min-height: 350px;">
+{if $action=="success"}
+<br/>
+<table class="tb" cellpadding="1" cellspacing="0">
+<tr>
+	<th>填写发票信息成功</th>
+</tr>
+</table>
+{elseif $action=="add"}
+<!-- 填写发票信息  -->
+<br/>
+<style>
+.nav{width:100%;height:35px;}
+.nav ul{border-bottom:1px solid #ccc;height:35px;}
+.nav ul li{float:left;list-style-type:none;font-size:16px;line-height: 30px;margin-top:4px;text-align:center;}
+.nav_tab_on{height:30px;border-left:1px solid #ccc;border-top:1px solid #ccc;border-right:1px solid #ccc;min-width:130px;border-bottom:1px solid white;}
+.nav_tab{height:30px;border-left:1px solid #ccc;border-top:1px solid #ccc;border-right:1px solid #ccc;min-width:130px;}
+.clear{clear:both;}
+.red{color:red;}
+</style>
+<script>
+	$(document).ready(function(){
+		$('#putong_li').mouseover(function(){
+			$('#putong').css('display','block');
+			$('#putong_li').attr('class','nav_tab_on');
+			$('#zengzhi').css('display','none');
+			$('#zengzhi_li').attr('class','nav_tab');
+		});
+		$('#zengzhi_li').mouseover(function(){
+			$('#putong').css('display','none');
+			$('#putong_li').attr('class','nav_tab');
+			$('#zengzhi').css('display','block');
+			$('#zengzhi_li').attr('class','nav_tab_on');
+		});
+	});
+	
+	function check_putong_submit(){
+		if(Dd('title').value==''){
+			Dmsg('请填写发票抬头','title');
+			return false;
+		}
+		return true;
+	}
+	
+	function check_zengzhi_submit(){
+		var check=['company_name','company_code','company_address','company_phone','company_bank_type','company_bank_account','buyer_name','buyer_phone','buyer_city','buyer_address'];
+		for(var i in check){
+			if(Dd(check[i]).value==''){
+				Dmsg('不可为空',check[i]);
+				return false;
+			}
+		}
+		return true;
+	}
+</script>
+<div class="nav">
+	<ul class="">
+		<li style="width:8px;"></li>
+		<li class="nav_tab_on" id="putong_li">普通发票</li>
+		<li style="width:8px;"></li>
+		<li class="nav_tab" id="zengzhi_li">增值发票</li>
+	</ul>
+</div>
+<div class="clear"></div>
+<br/>
+<div id="putong" class="db" style="display:block;min-height:500px;">
+<form action="invoice.php" method="post" onsubmit="return check_putong_submit()"> 
+<input type="hidden" name="submit" value="1" />
+<input type="hidden" name="post[type]" value="1" />
+<input type="hidden" name="post[orderid]" value="{$itemid}" />
+	<table class="tb" cellpadding="1" cellspacing="0">
+		<tr>
+			<th colspan="2" align="left">填写普通发票</th>
+			
+		</tr>
+		<tr>
+			<td class="tl">订单号</td>
+			<td class="tr">T{$itemid}</td>
+		</tr>
+		<tr>
+			<td class="tl">发票抬头</td>
+			<td class="tr"><input type="text" id="title" name="post[title]" value="" />&nbsp;<span class="red">*</span><br/>
+			<span id="dtitle" class="f_red"></span></td>
+		</tr>
+		<tr>
+			<td class="tl">备注</td>
+			<td class="tr"><textarea name="post[remark]"></textarea></td>
+		</tr>
+		<tr>
+			<td class="tl"></td>
+			<td class="tr"><input type="submit" value="确定发票" class="btn"/></td>
+		</tr>
+	</table>
+</form>
+</div>
+<div id="zengzhi" style="display:none;">
+<form action="" method="post" onsubmit="return check_zengzhi_submit()">
+<input type="hidden" name="submit" value="1" />
+<input type="hidden" name="post[type]" value="2" />
+<input type="hidden" name="post[orderid]" value="{$itemid}" />
+<table class="tb" cellpadding="1" cellspacing="0">
+		<tr>
+			<th colspan="4" align="left">填写增值发票</th>
+			
+		</tr>
+		<tr>
+			<td class="tl">订单号</td>
+			<td class="tr" colspan="3">T{$itemid}</td>
+		</tr>
+		<tr>
+			<td class="tl">填写企业信息
+			</td>
+			<td class="tr"></td>
+			<td class="tr"></td>
+			<td class="tr"></td>
+		</tr>
+		<tr>
+			<td class="tl">单位名称</td>
+			<td class="tr"><input type="text" id="company_name" name="post[company_name]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dcompany_name" class="f_red"></span></td>
+			<td class="tl">纳税人识别码</td>
+			<td class="tr"><input type="text" id="company_code" name="post[company_code]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dcompany_code" class="f_red"></span></td>
+		</tr>
+		<tr>
+			<td class="tl">注册地址</td>
+			<td class="tr"><input type="text" id="company_address" name="post[company_address]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dcompany_address" class="f_red"></span></td>
+			<td class="tl">注册电话</td>
+			<td class="tr"><input type="text" id="company_phone" name="post[company_phone]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dcompany_phone" class="f_red"></span></td>
+		</tr>
+		<tr>
+			<td class="tl">开户银行</td>
+			<td class="tr"><input type="text" id="company_bank_type" name="post[company_bank_type]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dcompany_bank_type" class="f_red"></span></td>
+			<td class="tl">银行账号</td>
+			<td class="tr"><input type="text" id="company_bank_account" name="post[company_bank_account]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dcompany_bank_account" class="f_red"></span></td>
+		</tr>
+		<tr>
+			<td class="tl">填写收票人信息</td>
+			<td class="tr"></td>
+			<td class="tr"></td>
+			<td class="tr"></td>
+		</tr>
+		<tr>
+			<td class="tl">收票人姓名</td>
+			<td class="tr"><input type="text" id="buyer_name" name="post[buyer_name]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dbuyer_name" class="f_red"></span></td>
+			<td class="tl">收票人手机</td>
+			<td class="tr"><input type="text" id="buyer_phone" name="post[buyer_phone]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dbuyer_phone" class="f_red"></span></td>
+		</tr>
+		<tr>
+			<td class="tl">收票人省份</td>
+			<td class="tr"><input type="text" id="buyer_city" name="post[buyer_city]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dbuyer_city" class="f_red"></span></td>
+			<td class="tl">详细地址</td>
+			<td class="tr"><input type="text" id="buyer_address" name="post[buyer_address]" value="" />&nbsp;<span class="red">*</span>
+			<br/><span id="dbuyer_address" class="f_red"></span></td>
+		</tr>
+		<tr>
+			<td class="tl">备注</td>
+			<td class="tr">
+				<textarea name="post[remark]"></textarea>
+			</td>
+			<td class="tr"></td>
+			<td class="tr"></td>
+		</tr>
+		<tr>
+			<td class="tl"></td>
+			<td class="tr"><input type="submit" value="确定发票" class="btn" /></td>
+			<td class="tr"></td>
+			<td class="tr"></td>
+		</tr>
+	</table>
+</form>
+</div>
+{elseif $action=="show"}
+<!-- 查看发票信息 -->
+<br/>
+<table class="tb" cellpadding="1" cellspacing="0">
+<tr>
+	<th colspan="2" align="left">发票信息</th>
+</tr>
+<tr>
+	<td class="tl">订单号</td>
+	<td class="tr">T{$invoice['orderid']}</td>
+</tr>
+<tr>
+	<td class="tl">发票类型</td>
+	<td class="tr">{if $invoice['type']==1}普通发票{else}增值发票{/if}</td>
+</tr>
+{if $invoice['type']==1}
+<tr>
+	<td class="tl">发票抬头</td>
+	<td class="tr">{$invoice['title']}</td>
+</tr>
+{else}
+<tr>
+	<td class="tl">单位名称</td>
+	<td class="tr">{$invoice['company_name']}</td>
+</tr>
+<tr>
+	<td class="tl">纳税人识别码</td>
+	<td class="tr">{$invoice['company_code']}</td>
+</tr>
+<tr>
+	<td class="tl">注册地址</td>
+	<td class="tr">{$invoice['company_address']}</td>
+</tr>
+<tr>
+	<td class="tl">注册电话</td>
+	<td class="tr">{$invoice['company_phone']}</td>
+</tr>
+<tr>
+	<td class="tl">开户银行</td>
+	<td class="tr">{$invoice['company_bank_type']}</td>
+</tr>
+<tr>
+	<td class="tl">银行账号</td>
+	<td class="tr">{$invoice['company_bank_account']}</td>
+</tr>
+<tr>
+	<td class="tl">收票人姓名</td>
+	<td class="tr">{$invoice['buyer_name']}</td>
+</tr>
+<tr>
+	<td class="tl">收票人手机</td>
+	<td class="tr">{$invoice['buyer_phone']}</td>
+</tr>
+<tr>
+	<td class="tl">收票人省份</td>
+	<td class="tr">{$invoice['buyer_city']}</td>
+</tr>
+<tr>
+	<td class="tl">收票人地址</td>
+	<td class="tr">{$invoice['buyer_address']}</td>
+</tr>
+{/if}
+<tr>
+	<td class="tl">备注</td>
+	<td class="tr">{$invoice['remark']}</td>
+</tr>
+</table>
+{/if}
+</body>
+</html>

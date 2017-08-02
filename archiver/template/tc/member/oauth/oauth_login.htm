@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>天成医疗网安全登录</title>
+    <meta name="keywords" content="天成医疗网登录、安全登录、网站接入">
+    <meta name="description" content="接入天成医疗网，可实现与天成医疗网各项服务的无缝连接，安全帐号登录体系，调用天成医疗网各业务服务。">
+    <style>
+        *{margin:0;padding:0}
+        body{font-family:"Microsoft YaHei","微软雅黑","Hiragino Sans GB",STHeiti,simsun,sans-serif,Arial;background-color:#fff;font-size:85%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+        .clearfix:after{display:table;content:'';clear:both}
+        .pull-left{float:left}
+        .pull-right{float:right}
+        .container{width:680px;margin-left:auto;margin-right:auto}
+        .top-nav{height:35px;padding:8px 0;background-color:#ffae44;border-bottom:1px solid #ff9c00}
+        .top-nav .logo,.top-nav .logo img{display:block;width:135px;height:35px}
+        .top-nav .other{padding:12px 0}
+        .top-nav .other a{float:left;font-size:12px;line-height:1;color:#fff;text-decoration:none;border-left:1px solid #fff;padding:0 10px;text-shadow:1px 1px 1px #cd7400}
+        .top-nav .other a:first-child{border-left:none}
+        .main{width:640px;overflow:hidden;margin-left:auto;margin-right:auto}
+        .login-area{width:340px;padding:30px 20px}
+        .login-area .login-title{font-size:20px;text-align:center;color:#333}
+        .login-area .login-msg{font-size:14px;text-align:center;color:#666;padding:10px 0}
+        .login-box{text-align:center;margin-top:10px}
+        .login-box .face{display:inline-block;height:120px;width:100px;text-align:center;position:relative;cursor:pointer;outline:0}
+        .login-box .face:hover img{border-color:#ff9c00;background-color:#ffeace}
+        .login-box .face:hover .nick{color:#cd7400}
+        .login-box .face input{display:block;width:80px;height:80px;position:absolute;top:10px;left:6px;padding:3px;border:1px solid #eaeaea;background-color:#fff;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-transition:all .3s ease;-moz-transition:all .3s ease;transition:all .3s ease}
+        .login-box .face .nick{position:absolute;color:#555;font-size:12px;top:100px;left:0;height:20px;line-height:18px;vertical-align:middle;width:100%}
+        .login-btn{text-align:center;marign-top:10px;}
+        .btn{display:inline-block;padding:5px 15px;margin:10px 0;font-size:12px;line-height:1.5;border-width:1px;border-style:solid;text-decoration:none;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
+        .btn.btn-lg{font-size:15px;padding:8px 16px}
+        .btn-default{background-color:#c72721;color:#fff;border-color:#820500;-webkit-transition:all .3s ease;-moz-transition:all .3s ease;transition:all .3s ease}
+        .btn-default:hover{background-color:#ab221a}
+        .btn-primary{background-color:#f77602;color:#fff;border-color:#db4500;-webkit-transition:all .3s ease;-moz-transition:all .3s ease;transition:all .3s ease}
+        .btn-primary:hover{background-color:#d86b09}
+        .info-area{width:219px;min-height:250px;padding:20px 0 20px 20px;border-left:1px dotted #eaeaea}
+        .accredit-box>*{padding:15px 0;border-bottom:1px dotted #eaeaea;font-size:12px;color:#333}
+        .accredit-box a{color:#c72721;text-decoration:none}
+        .accredit-info{padding:10px 0}
+        .accredit-info li{line-height:2.5;list-style:none}
+        .accredit-info input[type=checkbox]{vertical-align:middle;margin-right:4px}
+        .footer{padding:0 10px;margin-top:80px}
+        .footer a,.footer p{font-size:12px;color:#666;line-height:1.8;text-align:center;text-decoration:none}
+        @media screen and (max-width:640px){.container{width:auto;padding:0 0 0 15px}
+            .main{width:auto}
+            .main .info-area,.main .login-area{float:none;width:auto}
+            .info-area{padding:20px}
+        }
+        @media screen and (max-width:400px){.container{padding-left:8px}
+            .top-nav .other a{padding:0 5px}
+            .top-nav .logo{margin-top:3px}
+            .top-nav .logo,.top-nav .logo img{width:108px;height:28px}
+        }
+        @media screen and (max-width:320px){.top-nav .logo{margin-top:6px}
+            .top-nav .logo,.top-nav .logo img{width:93px;height:24px}
+        }
+    </style>
+</head>
+<body>
+
+<!--top-nav-->
+<div class="top-nav">
+    <div class="container clearfix">
+        <h1 class="logo pull-left">
+            <a href="http://www.tecenet.com/" target="_blank"><img src="{DT_PATH}skin/teceskin/image/oauth_login_logo.png" alt="天成登录"></a>
+        </h1>
+        <div class="other pull-right">
+            <a href="#" target="_blank" title="什么是天成登录">什么是天成登录</a>
+            <a href="#" target="_blank" title="申请接入天成登录">申请接入</a>
+            <a href="#" target="_blank" title="您对我们产品有什么意见">意见反馈</a>
+        </div>
+    </div>
+</div>
+<!--top-nav end-->
+<!--main-->
+<div class="main clearfix">
+    <!--login-area-->
+    <form method="post">
+    <div class="login-area pull-left" >
+        {if get_cookie('auth')}
+        <div id="backBox">
+            <div class="login-title">快速安全登录</div>
+            <div class="login-msg">点击头像授权登录</div>
+            <div class="login-box">
+                <a href="javascript:void(0);" class="face">
+                    <input type="hidden" name="authorized" value="yes"/>
+                    <input type="image" src="{useravatar($_username, 'large')}" />
+                    <span class="nick">{$_username}</span>
+                </a>
+            </div>
+            <div class="login-btn">
+                <a href="{DT_PATH}member/login.php?other=otheruser" class="btn btn-default" id="back">使用其他账号登录</a>
+            </div>
+        </div>
+        {else}
+        <div id="goBox">
+            <div class="login-title">快速安全登录</div>
+            <div class="login-msg">点击按钮前往天成登录</div>
+            <div class="login-btn">
+                <a href="{DT_PATH}member/login.php" class="btn btn-default btn-lg" id="go">前往天成医疗网登录</a>
+                <a href="{DT_PATH}member/register.php?response_type={$response_type}&client_id={$client_id}&redirect_uri={$redirect_uri}&state={$state}&scope={$scope}&register=1" target="_blank"  class="btn btn-primary btn-lg">注册天成医疗网账号</a>
+            </div>
+        </div>
+        {/if}
+    </div>
+    <!--login-area end-->
+    <!--info-area-->
+    <div class="info-area pull-right">
+        <div class="accredit-box">
+            <!--<p>该网站已有超过10万用户使用天成登录</p>-->
+            <p><a href="{$clientUrl}" target="_blank">{$clientName}</a>将获得以下权限：</p>
+            <ul class="accredit-info">
+                <li>
+                    <label><input type="checkbox" title="默认授权 不可更改" name="get_user_info" value="get_user_info" checked="" disabled="">获得您的昵称、头像</label>
+                </li>
+                {if in_array('validate',$scopearr)}
+                <li>
+                    <label><input type="checkbox" title="读取您的认证信息" name="validate" value="validate" checked="">读取您的认证状态</label>
+                </li>
+                {/if}
+            </ul>
+            <p class="oauth_tips">授权后表明你已同意 <a href="" target="_blank">天成登录服务协议</a></p>
+        </div>
+    </div>
+    </form>
+    <!--info-area end-->
+</div>
+<!--main end-->
+
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <p>版权所有 ©广州天成医疗技术股份有限公司</p><p> CopyRight ©Guangzhou TianCheng Medical Technology Co.,Ltd.</p>
+        <p><a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" rel="nofollow">粤ICP备13045514号</a></p>
+    </div>
+</div>
+<!--footer end-->
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+</body>
+</html>

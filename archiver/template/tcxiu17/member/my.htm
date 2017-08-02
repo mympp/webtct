@@ -1,0 +1,74 @@
+{template 'header', $module}
+<script type="text/javascript">c(0);</script>
+{if $MYMODS}
+{if $_userid}
+<div class="warn">尊敬的<strong>{$MG[groupname]}</strong>，您目前拥有以下栏目的发布权限，请选择发布</div>
+{else}
+<div class="warn">您还没有登录，目前仅拥有以下栏目的发布权限，建议您 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">立即登录</a> 或 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">注册会员</a><br><b>友情提醒：游客每天只能发布6条且无法修改，注册会员后可自由管理信息并不受限制！</b></div>
+{/if}
+{if $qun}
+<form method="POST" action="my.php">
+<input type="hidden" name="action" value="add">
+<input type="hidden" name="aitemid" value="{$itemid}">
+<input type="hidden" name="mid" value="7" id="mid">
+<input type="hidden" name="catid" value="7" id="catid">
+<input type="hidden" name="resumes" value="" id="resume">
+<table cellspacing="1" cellpadding="10" class="tb" align="center">
+<tr>
+	<th>你要完善行情信息内容</th>
+	<th>完善后推荐哪个模块</th>
+	<th>确定操作</th>
+</tr>
+<tr>
+	<td align="center"><textarea name="content" rows="5" cols="45" style="display:none">{php $cu = $db->get_one("SELECT content AS content FROM ".$DT_PRE."announce where itemid=".$itemid." ORDER BY itemid desc LIMIT 0,1");}
+	{$cu['content']}</textarea>
+	<textarea rows="5" cols="50">{php $cu = $db->get_one("SELECT content AS content FROM ".$DT_PRE."announce where itemid=".$itemid." ORDER BY itemid desc LIMIT 0,1");}
+	{php $content=str_replace('<br />','',$cu['content']);}
+	{$content}</textarea></td>
+	<td align="left"><input name="ck" type="radio" onclick="Dd('mid').value=7;Dd('catid').value=1168;">供应/二手信息&nbsp;&nbsp;<input name="ck" type="radio" onclick="Dd('mid').value=7;Dd('catid').value=1169;">求购/收购信息&nbsp;&nbsp;<input  name="ck" type="radio" onclick="Dd('mid').value=9;Dd('resume').name='resumes';">服务需求信息&nbsp;&nbsp;<input type="radio"  name="ck" onclick="Dd('mid').value=9;Dd('resume').name='resume';Dd('resume').value=1;">工程师技术供应&nbsp;&nbsp;<input type="radio" onclick="Dd('mid').value=21;"  name="ck">行业文章资讯</td>
+
+	<td align="center"><input type="submit"></td>
+</tr>
+</table>
+	
+</form>
+{else}
+<table cellspacing="1" cellpadding="10" class="tb">
+{loop $MYMODS $v}
+{if $v == 9}
+<tr>
+<td class="tl"><a href="{$MODULE[$v][linkurl]}" target="_blank">服务需求信息</a></td>
+<td class="tr">
+{if $_userid}<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$v}" class="b">管理</a>&nbsp;&nbsp;{/if}
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$v}&action=add" class="b">发布</a>
+</td>
+</tr>
+{elseif $v==-9}
+<tr>
+<td class="tl"><a href="{$MODULE[9][linkurl]}" target="_blank">工程师技术服务</a></td>
+<td class="tr">
+{if $_userid}<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=9&resume=1" class="b">管理</a>&nbsp;&nbsp;{/if}
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=9&action=add&resume=1" class="b">发布</a>
+</td>
+</tr>
+{else}
+<tr>
+<td class="tl"><a href="{$MODULE[$v][linkurl]}" target="_blank">{$MODULE[$v][name]}中心</a></td>
+<td class="tr">
+{if $_userid}<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$v}" class="b">管理</a>&nbsp;&nbsp;{/if}
+<a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$v}&action=add" class="b">发布</a>
+</td>
+</tr>
+{/if}
+{/loop}
+</table>
+{/if}
+{else}
+
+	{if $_userid}
+	<div class="warn">尊敬的<strong>{$MG[groupname]}</strong>，您的会员组没有在本站发布信息的权限，请返回。&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}" class="t f_b">点击返回商务中心首页</a></div>
+	{else}
+	<div class="warn">您还没有登录，目前没有信息发布权限，建议您 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b t">立即登录</a> 或 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b t">注册会员</a></div>
+	{/if}
+{/if}
+{template 'footer', $module}

@@ -1,0 +1,42 @@
+{php $c=1;}
+{loop $tags $k $t}
+{php if($c==3){$c=1;}}
+<div onmouseover="this.className='list2'" {if fmod($c,2)==0}onmouseout="this.className='list1'"class="list1"{else}onmouseout="this.className='list'"class="list"{/if}>
+	<table>
+	<tr align="center">
+	  <td width="25" rowspan="3"><input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip(this, {$t[itemid]});"/> </td>
+	  <td width="100" rowspan="3"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="80" height="70" alt="{$t[alt]}" onmouseover="img_tip(this, this.src);" onmouseout="img_tip(this, '');" class="grayb"/></a></td>
+	  <td width="300" id="titles"  align="left" valign="top"><a href="{$t[linkurl]}" class="lenstr w280" title="{$t[alt]}" target="_blank">&nbsp;	<img src="{DT_SKIN}image/jt1.jpg"  class="mid"/>&nbsp;	<b>{$t[title]}</b></a></td>
+	  <td width="20%" align="left"  class="list_price" id="titles"><strong class="ocolor">{if $t[groupid]==8||$t[groupid]==1}询价{else}{if $t[price]>0}¥{$t[price]}{else}面议{/if}{/if}</strong></td>
+	  <td width="20%" align="left"  class="f_gray"  id="titles">更新：[{timetodate($t[edittime],3)}]</td>
+	  <td width="15%" rowspan="3">总共成交{$t[orders]}笔
+	  <br/>		<a href="{$t[linkurl]}#comment" target="_blank"><span>{$t[comments]}条评价</span></a></td>
+	  </tr>
+	
+	<tr align="center">
+	  <td  align="left" valign="top">&nbsp;品牌：{$t[brand]}	</td>
+	  <td  align="left" valign="top">&nbsp;型号：{$t[model]}</td>
+	  <td  align="left" valign="top">&nbsp;规格：{$t[standard]}</td>
+	  </tr>
+	<tr align="center">
+	  <td  align="left" valign="top">
+      {if $t[groupid]!=8&&$t[groupid]!=1}
+      <a href="{userurl($t[username])}" target="_blank">{area_pos($t[areaid], ' ')}-{$t[company]}</a>
+      {else}
+      <span class="ocolor"><img src="{DT_SKIN}image/shield.gif"  class="mid"/>天成医疗官方发布</span>
+      {/if}
+      </td>
+	  <td colspan="2"  align="left" valign="top"><a href="{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$t[itemid])}" title="在线咨询"><img src="/file/image/web.gif">&nbsp;</a>
+			{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+			{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+			{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+			{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}&nbsp;{/if}
+			&nbsp;&nbsp;
+	  {if $t[vip]&&$t[groupid]!=8&&$t[groupid]!=1} <img src="{DT_SKIN}image/vip.gif"/> <img src="{DT_SKIN}image/vip_{$t[vip]}.gif"/>{/if}</td>
+	  </tr>
+	</table>
+</div>
+{php $c=$c+1;}
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>
+{/if}

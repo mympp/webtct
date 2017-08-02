@@ -1,0 +1,78 @@
+<style type="text/css">
+body{background:#fff}
+	.member .bgcolor{background:#fff;}
+	.info{text-align:center;padding:10px;color:#777;}
+	.info img{padding:1px;background:#fff;border:1px solid #ddd;}
+	.subl{font-size:16px;padding:4px 15px 4px 15px;background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#335788), to(#387dbc));border:0px solid #325ba7;color:#fff;height:38px;}
+</style>
+
+
+				<div style="height:30px;">&nbsp;<div>
+						<table cellpadding="0" cellspacing="1"  align="center" class="member"  id="member" width="320">
+						<tr>
+							<td   valign="top" colspan="2" class="bgcolor" align="center" >
+							<div class="info">
+									<img src="{useravatar($member[username], 'large')}"  width="98" height="98" /><br>
+									{$member[truename]}&nbsp;&nbsp;{if $_groupid>6}<img src="image/vip.png">{/if}
+							</div>			
+							</td>
+						</tr>
+						<tr>
+							<td   valign="middle" height="30" colspan="2" bgcolor="#ffcc00" align="center" class="color f12">
+								积分：	{$member[credit]}&nbsp;&nbsp;天成币：{$member[money]}&nbsp;&nbsp;锁定：{$member[locking]}
+							</td>
+						</tr>
+						<tr>
+							<td   valign="top" colspan="2" class="bgcolor" align="left" >
+<style type="text/css">
+	.memberinfo{padding:10px;}
+	.memberinfo li{border-bottom:1px dashed #ddd;line-height:40px;height:40px;}
+	.memberinfo li span{margin-right:20px;margin-left:20px;width:60px;text-align:Center;}
+</style>
+							<ul class="memberinfo">
+								{if $member[company]||$member[department]}<li><span >公司</span>
+								{if $member[company]!=$member[truename]&&$member[company]!=$member[department]}
+								{$member[company]}
+								{/if}
+								{$member[department]}{$member[career]}</li>{/if}
+								{if $member[areaid]}<li><span >地区</span>{area_pos($member[areaid], '/', 2)}</li>{/if}
+<script type="text/javascript" src="{DT_PATH}file/script/base64.js"></script>
+		{php $member[contacts]='';}
+		{if $member[telephone]}
+		{php $member[contacts]='<li><span>电话</span><a href="tel:'.$member[telephone].'">'.$member[telephone].'</a></li>'.$member[contacts];}
+		{/if}
+		{if $member[email]}
+		{php $member[contacts]='<li><span>邮箱</span><a href="mailto:'.$member[email].'">'.$member[email].'</a></li>'.$member[contacts];}
+		{/if}
+		{if $member[qq]}
+		{php $member[contacts]='<li><span>QQ</span><a href="http://wpa.qq.com/msgrd?v=3&uin='.$member[qq].'&site=qq&menu=yes">'.$member[qq].'</a></li>'.$member[contacts];}
+		{/if}
+		{if $member[mobile]}
+		{php $member[contacts]='<li><span>手机</span><a href="tel:'.$member[mobile].'">'.$member[mobile].'</a></li>'.$member[contacts];}
+		{/if}
+<script type="text/javascript">
+document.write(utf8to16(base64decode('{php echo strencode(nl2br($member[contacts]));}')));
+</script>
+
+
+
+
+					{if $member[validated] || $member[vcompany] || $member[vtruename] || $member[vbank] || $member[vmobile] || $member[vemail]}
+					<li><span>认证</span>
+					{if $member[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="通过工商认证"/>{/if}
+					{if $member[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="通过实名认证"/>{/if}
+					{if $member[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="通过银行帐号认证"/>{/if}
+					{if $member[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="通过手机认证"/>{/if}
+					{if $member[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="通过邮件认证"/>{/if}
+					{if $member[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle" alt="通过{$member[validator]}认证"/> {/if}
+				{/if}
+							</ul>
+							</td>
+						</tr>
+						<tr><td align="center" height="50" valign="middle">
+						<input type="button" value=" 加为好友 " class="subl"  onclick="alert('开发中，敬请关注')"></td><td align="center"  valign="middle">
+						<input 	type="submit" value=" 私下对聊  " class="sub"  onclick="alert('开发中，敬请关注')"></td></tr>
+						</table>
+<div class="divline"></div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=yes">
+        <meta name="MobileOptimized" content="320">
+        <meta name="author" content="paul">
+        <meta name="shenma-site-verification" content="f28da5e2e3fb6e2afd372a3eedfda998">
+        <meta name="copyright" content="Copyright (c) 2013-2015 TECENET.">
+        <meta name="keywords" content="医疗器械网，医疗器械信息网，医疗器械维修，医疗网，天成医疗网，">
+        <meta name="description" content="天成医疗网-医疗器械网专业医疗器械供求信息与医疗器械供应、采购、招标；医疗器械维修、保养、调试等技术服务；国内、国外进口医疗器械厂家品牌招商推广平台。为医疗器械企业、医院等机构提供全方位技术与产品服务！">
+        <link rel="stylesheet" type="text/css" href="../mobile/static/vote.css" />
+        <script type="text/javascript" src="../mobile/static/lib/jquery/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../mobile/static/js/vote.js"></script>
+        <title>{$head_title}_天成医疗网</title>
+        <style type="text/css">
+            .input {
+                line-height: 24px;
+                height: 24px;
+                font-size: 14px;
+                color: #888;
+                text-indent: 5px;
+                width: 140px;
+                border: solid 1px #ccc;
+                }
+                .vote_show_n {
+                width: 18px;
+                height: 18px;
+                line-height: 18px;
+                font-size: 11px;
+                background: #0172B6;
+                color: #FFFFFF;
+                text-align: center;
+                }   
+                table tr td {height: 32px;padding-left: 3px;}    
+                .pages {
+            padding: 10px 0 10px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #666666;
+            }
+            .pages a:link, .pages a:visited, .pages a:active {
+            color: #004499;
+            background: #FFFFFF;
+            border: #9AAFE5 1px solid;
+            padding: 1px;
+            text-decoration: none;
+            }
+            .pages strong {
+            background: #2E6AB1;
+            padding: 1px;
+            border: #1D589E 1px solid;
+            color: #FFFFFF;
+            }
+            .pages cite {
+            font-style: normal;
+            }
+            .pages_inp {
+            border: #2E6AB1 1px solid;
+            padding: 1px;
+            width: 30px;
+            text-align: center;
+            color: #666666;
+            }
+            .pages_btn {
+            width: 26px;
+            background: #F1F7FC;
+            border: #2E6AB1 1px solid;
+            color: #004499;
+            font-weight: bold;
+            font-size: 11px;
+            }    
+            .art-back {
+            background-image: url(../mobile/static/img/images/news_sprites.png);
+            background-repeat: no-repeat;
+            -webkit-background-size: 160px auto;
+            background-position: 0 0;
+            display: inline-block;
+            height: 45px;
+            width: 45px;
+            text-indent: -99em;
+            overflow: hidden;
+            margin: 4px 0 0 6px;
+            vertical-align: 0;
+            }  
+            .font20{font-size: 18px;}
+            .thumb{height:auto; width:100%;}     
+             {if !$v_show && !$r}.main{margin-top: 18px;}{/if} 
+        </style>
+
+    </head>
+    <body>
+
+        <div class="box">
+        <!-- 头部 -->
+            <header class="header">
+                <a href="javascript:history.go(-1)" class="art-back"></a>
+                <div class="title">{if $itemid}{$title}{else}投 票{/if}</div>
+                <nav class="headline">
+                    <a href="{$EXT['mobile_url']}my.php" class="login"></a>
+                    <a href="{$EXT['mobile_url']}" class="meun"></a>
+                </nav>
+            </header>
+            {if $itemid}
+                {if $thumb}
+                    <div  style="display:none;margin:auto;text-align:center;width:94%;top:-500px;position:absolute;z-index:10">
+                        <img src="{if $thumb}{$thumb}{else}http://wap.tecenet.com/static/img/images/logo.jpg{/if}"  width="490" height="390"  align="center" onerror="this.src='http://wap.tecenet.com/static/img/images/logo.jpg'">
+                    </div>
+                    <!-- <div class="thumb" style="background: url('{$thumb}') center no-repeat;"></div> -->
+                    <img src="{$thumb}" class="thumb"/>
+                {/if}
+                <!-- 投票说明 -->                
+                {if $content}<div class="mean"><span>投票说明:</span><p>{$content}</p></div>{/if}
+                <div class="grayb color" style="padding: 10px 0px 0px 20px;height: 80px;">
+                    <span class="font20">活动时间：<span class="ocolor">{$fromdate}</span> 至 <span class="ocolor">{$todate}</span></span></br>
+                    <span class="fr">
+                        总票数：<span class="ocolor">{$item[votes]}</span>&nbsp;&nbsp;
+                        浏览：<span class="ocolor">{$item[hits]}</span>&nbsp;&nbsp;&nbsp;
+                    </span></br>
+                    <span style="float:left;">
+                        {if $item['choose']}最少选<span class="ocolor"> {$vote_min} </span>项，{/if}
+                        最多选<span id="vote_max" class="ocolor">{if $item['choose']} {$vote_max} {else} 1 {/if}</span>项&nbsp;&nbsp;&nbsp;
+                    </span><img style="float:left;" src="{DT_PATH}file/image/process_{get_process($fromtime, $totime)}.gif" align="absmiddle" alt="有效期：{$fromdate} 至 {$todate}"/>          
+                </div>
+                <!-- 主题内容 -->
+                <form action="{$MODULE[1][linkurl]}vote/index.php" method="post">
+                    <input type="hidden" name="itemid" value="{$itemid}"/>
+                    <input type="hidden" name="submit" value="{$itemid}"/>
+                    {loop $votes $k $v}
+                    	<div class="main">
+        	                <ul class="hui" style="{if $v[p]}min-height:80px;{else}min-height: 50px;{/if}">
+        	                    <input style="display:none;" type="checkbox" name="vote[]" value="{$v[number]}"/>
+        	                    {if $v[p]}<li><img src="{$v[p]}" alt="" /></li>{/if}                        
+        	                    <li>
+        		                    {$v[title]}<p> {$v[e]}</p>
+        		                    <span class="dui" {if !$v_show && !$r}style="bottom:11px;"{/if}></span>
+        	                    </li>                     
+        	                </ul>
+                            {if $v_show || $r}
+                                <div style="margin:12px 0px;">  
+                                    <span style="float:right;">票数({$v[votes]}) {$v[percent]}</span>
+                                    <div class="vote_show_p" style="float:left;width:50%;">
+                                        <div class="vote_show_{$v[number]}" style="width:{$v[percent]};"></div>
+                                    </div>                           
+                                </div>
+                            {/if}
+        	            </div>
+        			{/loop}
+
+                    <!-- 按钮 -->
+                    <div class="btn"><input type="submit" value="投 票"/></div>
+                </form>
+                <!-- 奖项 -->
+                <div class="mean" style="background-color: rgb(13, 100, 13);color:white;margin-top:20px;">
+                    <span>奖项说明:</span>
+                    <ul style="margin-left:30px;line-height: 24px;font-size:13px;">
+                        {if $j_arr}{loop $j_arr $k $v}
+                            {if $v}<li>★.&nbsp;{$v}：{$x_arr[$k]}<li>{/if}
+                        {/loop}{/if}
+                            <li>★.&nbsp;活动时间：<span class="ocolor font20">{$fromdate}</span> 至 <span class="ocolor font20">{$todate}</span></li>
+                            <li>★.&nbsp;{if $j_explain}{$j_explain}{else}该活动解析权归天成医疗网所有。{/if}</li>
+                            <li onclick="alert('手机暂不能发起投票，请用电脑登录到天成医疗网会员中心发起投票调查！');">★.&nbsp;我要发起投票</li>
+                    </ul>
+                </div>                
+            {else}
+                <div style="margin:12px 0px">
+                    <div style="text-align:right;margin-right:20px;">
+                    <select class="input" onchange="self.location.href=options[selectedIndex].value">
+                        <option value="index.php">全部分类</option>
+                        {loop $TYPE $t}
+                        <option value="{rewrite('index.php?typeid='.$t['typeid'])}" {if $t['typeid']==$typeid} selected{/if}>{$t[typename]}</option>
+                        {/loop}
+                    </select>
+                    </div>
+                    {if $lists}
+                        {loop $lists $k $v}
+                            <div class="list-img" style="line-height:30px;">
+                                {if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+                                <ul style="line-height:30px;">
+                                    <li><a href="{$v[linkurl]}"><strong>{$v[title]}</strong></a></li>
+                                    <li><span>{$v[content]}</span></li>
+                                    <li>
+                                        <span>总票数 {$v[votes]}</span>
+                                        <img style="float:right;" src="{DT_PATH}file/image/process_{get_process($v[fromtime], $v[totime])}.gif" align="absmiddle" alt="有效期：{$v[fromdate]} 至 {$v[todate]}"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        {/loop}
+                        <script type="text/javascript">
+                        var k={$k};
+                        if(k==0){document.location='{$lists[0][linkurl]}';}
+                        </script>                      
+                    {else}
+                        {template 'chip-empty', 'mobile'}
+                    {/if}                    
+                </div>
+                <div class="pages">{$pages}</div>
+            {/if}
+        </div>
+        <div style="display:none;">
+            {template 'analytics','include'}
+        </div>
+    </body>
+</html>

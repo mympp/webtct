@@ -1,0 +1,28 @@
+var destoon_userid = {$_userid};
+var destoon_username = '{$_username}';
+var destoon_message = {$_message};
+var destoon_chat = {$_chat};
+var destoon_stip = '';
+var destoon_member = '';
+{if $_userid}
+destoon_member += '<a href="{$MODULE[2][linkurl]}" title="{if $_online}点击隐身{else}点击上线{/if}"><span class="ocolor" title="{$MG[groupname]}-{$_truename}-{$DT[credit_name]}:{$_credit}-{$DT[money_name]}:{$_money}">{dsubstr($_truename,12,'..')}</span> ({if $_online}<span class="gcolor">在线</span>{else}<span class="hcolor">隐身</span>{/if})</a> | <a href="{$MODULE[2][linkurl]}message.php">站内信(<span id="destoon_message">0</span>)</a> | <a href="{$MODULE[2][linkurl]}chat.php">对话(<span id="destoon_chat">0</span>)</a> | <a href="{$MODULE[2][linkurl]}logout.php">退出</a>';
+{else}
+destoon_member += '<span class="f_red">您是游客</span> | &nbsp;<a href="{$MODULE[2][linkurl]}{$DT[file_register]}">请先注册</a> |&nbsp; <a href="{$MODULE[2][linkurl]}{$DT[file_login]}">直接登录</a>';
+{/if}
+try{Dd('destoon_member').innerHTML=destoon_member;}catch(e){}
+{if $DT[city]}
+try{Dd('destoon_city').innerHTML='{$city_name}';}catch(e){}
+{/if}
+{if $_message}
+Dd('destoon_message').innerHTML='<strong class="f_red">{$_message}</strong>';
+{if $_sound}destoon_stip += sound('message_{$_sound}');{/if}
+{/if}
+{if $_chat && $DT[im_web]}
+Dd('destoon_chat').innerHTML='<strong class="f_red">{$_chat}</strong>';
+destoon_stip += sound('chat_new');
+{/if}
+var destoon_cart = substr_count(get_cookie('cart'), ',');
+Dd('shopcart').style.display='block';
+if(destoon_cart > 0){Dd('destoon_cart').innerHTML='<strong class="f_red">'+destoon_cart+'</strong>';}else{Dd('shopcart').className='nocart';}
+if(destoon_stip) Dd('tb_c').innerHTML = destoon_stip;
+{if $push && $DT[pushtime]}window.setInterval('PushNew()',{$DT[pushtime]}*1000);{/if}

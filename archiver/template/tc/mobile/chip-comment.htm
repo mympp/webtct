@@ -1,0 +1,72 @@
+{if in_array($moduleid, explode(',', $EXT['comment_module']))}
+<?php 
+	if ($action == 'resume') {
+		$moduleid=24;
+		$c_url = 'comment.php?mid='.$moduleid.'&itemid='.$itemid.'&r_action='.$action;
+	}else {
+		$c_url = 'comment.php?mid='.$moduleid.'&itemid='.$itemid;
+	}
+?>
+<div class="foot-bar-fix"></div>
+<div class="foot-bar">
+	<ul style="width:83%">
+		<li class="icon-home{if $foot=='home'}-on{/if}"><a href="index.php" data-transition="none"><span>首页</span></a></li>
+		<li class="icon-channel{if $foot=='channel'}-on{/if}"><a href="channel.php" data-transition="none"><span>频道</span></a></li>
+		<li class="icon-my{if $foot=='my'}-on{/if}"><a href="my.php" data-transition="none"><span>我的</span></a>{if $_message || $_chat || $_cart}<em></em>{/if}</li>
+		<li class="icon-more{if $foot=='more'}-on{/if}"><a href="more.php" data-transition="none"><span>更多</span></a></li>		
+	</ul>
+	<div class="foot-comment so-tecenet">
+		<!-- <div class="bd-t bd-r bd-b bd-l" onclick="Go('{$c_url}');">发表评论</div> -->		
+		<!-- <a href="{$c_url}" class="b" id="comment-count">0评</a> -->
+		<a href="http://so.tecenet.com/mindex.php"><span>医搜</span></a>
+	</div>
+</div>
+
+<style>
+.foot-bar{
+    overflow: visible;
+}
+.so-tecenet{
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #eee;
+    border: 1px solid #B2B2B2;
+    border-right: 0;
+    border-bottom: 0;
+}
+.so-tecenet:after{
+    content: '';
+    position: absolute;
+    left: -13px;
+    bottom:48px;
+    width: 0px;
+    height: 0px;
+    border: 6px solid transparent;
+    border-right-color: #aaa;
+    border-bottom-color: #aaa;
+}
+.so-tecenet > a{
+    display: block;
+    background: url("http://wap.tecenet.com/static/img/so-logo.png") no-repeat center 3px;
+    -webkit-background-size: 40px auto;
+    background-size: 40px auto;
+}
+.so-tecenet span{
+    padding-top: 24px;
+    font-size: 14px;
+    color: #d3251e;
+}
+</style>
+
+<script type="text/javascript">
+$(document).on('pageinit', function(event) {	
+	$.get('{$c_url}&action=count', function(data) {
+		data = parseInt(data);
+		if(!data) data = 0;
+		$('#comment-count').html(data+'评');
+	});
+});
+</script>
+{/if}

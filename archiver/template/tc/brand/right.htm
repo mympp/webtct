@@ -1,0 +1,34 @@
+
+
+											{if $ztitle!=''}
+											<div class="blue"><div class="h4title b">全站推荐网店</div></div>
+													<div class="grayb nt autoheight pt10">
+														<ul class="rank_list">
+														<!--{tag("moduleid=4&fields=areaid,linkurl,company&condition=level>0&pagesize=15&order=vip desc&template=list-com&debug=0")}-->
+														</ul>
+											</div>
+											<div class="divline"></div>
+											{/if}
+
+
+											{if $catida!=''}
+											<div class="orange"><div class="h4title b">{$parenta}热门排行</div></div>
+													<div class="grayb nt autoheight pt10">
+														<ul class="rank_list">
+														<!--{tag("moduleid=$moduleid&catid=$catida&fields=groupid,price,hits,title,linkurl&condition=status=3 and vip>0&child=1&pagesize=15&order=hits desc&showcat=0&template=list-trade&debug=0")}-->
+														</ul>
+											</div>
+											<div class="divline"></div>
+											{/if}
+
+
+
+
+											<div class="orange"><div class="h4title b">{$MOD[name]}推荐排行</div></div>
+													<div class="grayb nt autoheight pt10">
+														<ul class="rank_list">
+														<!--{tag("moduleid=$moduleid&fields=groupid,price,hits,title,linkurl&condition=status=3 and vip>0&pagesize=15&order=hits desc&showcat=0&template=list-trade&debug=0")}-->				
+														</ul>
+											</div>
+
+											{ad($moduleid,$catid,$kw,7)}

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $ztitle==''}{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}{else}{$ztitle}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<link rel="shortcut icon" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+{if $moduleid>3}<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$module}.css"/>{/if}
+{if $CSS}
+{loop $CSS $css}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$css}.css"/>
+{/loop}
+{/if}
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+<![endif]-->
+{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
+{if $itemid && $DT[anticopy]}
+<script type="text/javascript">
+document.oncontextmenu1=function(e){return false;};
+document.onselectstart=function(e){return false;};
+</script>
+{/if}
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+<script src="{DT_PATH}file/script/jsfunction.js" type="text/javascript"></script>
+</head>
+<body class='webbg'> 
+						<div class='topmenubg cut'><!--最顶部菜单-->
+						<script type="text/javascript">topmenu()</script>
+						</div>
+						<div class='topbg cut'><!--背景和LOGO -->
+						<div class="webw" >
+						<table border=0 width=100%>
+						<tr>
+							<td align='left' valign='bottom'><a href="http://www.daangene.com" target="_blank"><img src='{DT_SKIN}image/leftad.gif' class='ml10'></a></td>
+							<td align='left' valign='bottom'><a href="{$MODULE[1][linkurl]}" title="{$DT[sitename]}"><img src='{DT_SKIN}image/logo.gif' class='mb10'></a></td>
+							<td align='right' valign='bottom'><img src='{DT_SKIN}image/rightad.gif' class='mr10'></td>
+						</tr>
+						</table>
+						</div>
+						</div>
+
+<div class="webw" ><!-- 网页以1003的固定宽度开始 -->
+               <div class="webmenu">
+			   <div class="webmenulist">
+						<div class="{if $moduleid!=1}allmenu mod{else}allmenu index{/if}">
+						<ul>
+						{php $menuy='class="webmenuy"';}
+						{php $menun='onmouseover="this.className=\'webmenun\'" onmouseout="this.className=\'webmenuo\'" class="webmenuo"';}
+						{if $moduleid!=1}
+						    <li {$menun}><a href='{$MODULE[1][linkurl]}'><b>网站首页</b></a></li>
+						{/if}
+<li id='quotes'{if $moduleid==7}{$menuy}{else}{$menun}{/if}><a title="医疗设备-行情信息" href="{$MODULE[1][linkurl]}quote"
+><b>供求中心</b></a></li>
+<li id="mjob" {if $moduleid==9&&$action=='job'}{$menuy}{else}{$menun}{/if}><a title="医疗设备-技术服务需求" href="{$MODULE[1][linkurl]}job/search-htm-action-job.html"
+><b>技术服务需求</b></a></li>
+<li id="mresume" {if $moduleid==9&&$action=='resume'}{$menuy}{else}{$menun}{/if}><a title="医疗设备-工程师目录" href="{$MODULE[1][linkurl]}job/search-htm-action-resume.html"
+><b>工程师目录</b></a></li>
+<li {if $moduleid==13}{$menuy}{else}{$menun}{/if}><a title="医疗设备-厂家目录" href="{$MODULE[1][linkurl]}brand"
+><b>厂家目录</b></a></li>
+<li {if $moduleid==16}{$menuy}{else}{$menun}{/if}><a title="医疗设备-产品目录" href="{$MODULE[1][linkurl]}mall"
+><b>产品目录</b></a></li>
+<li {if $moduleid==4}{$menuy}{else}{$menun}{/if}><a title="医疗设备-第三方网店" href="{$MODULE[1][linkurl]}company"
+><b>第三方网店</b></a></li>
+<li {if $moduleid==21}{$menuy}{else}{$menun}{/if}><a title="医疗设备-行业资讯" href="{$MODULE[1][linkurl]}article"
+><b>行业资讯</b></a></li>
+<li {if $moduleid==15}{$menuy}{else}{$menun}{/if}><a title="医疗设备-技术共享" href="{$MODULE[1][linkurl]}down"
+><b>技术共享</b></a></li>
+<li {$menun}><a title="医疗设备-论坛交流" href="http://bbs.tecenet.com"
+><b>论坛交流</b></a></li>
+                       <script type="text/javascript">
+                       {if $action=='job'}Dd('webmenuid24').className='webmenuy';{/if}
+                       </script>
+						</ul>
+						</div>
+						<div class="topsearch center"><!-- 搜索引擎 -->
+							<table><form id="destoon_search" action="{DT_PATH}search.php" onsubmit="return Dsearch();">	
+							<input type="hidden" name="moduleid" value="{if $moduleid<2}16{else}{$moduleid}{/if}" id="destoon_moduleid"/>
+							<input type="hidden" name="spread" value="0" id="destoon_spread"/>
+							<input type="hidden" name="action" value="" id="sresume"/>
+							<tr>
+								<td width="400"><input type="text" size="30" name="kw" value="{$kw}" id="topkeyword"  onfocus="if(this.value=='输入关键词'){this.value=''}"/></td>
+								<td width="70"><input type="image" src="{DT_SKIN}image/spacer.gif" width="70" height="30"/></td>
+								<td width="410" ><div class="hotkey">搜索排行：<!--{tag("moduleid=16&table=keyword&condition=moduleid=16 and status=3 and updatetime>$today_endtime-86400*30&pagesize=18&order=month_search desc&key=month_search&template=list-search_kw", -2)}--></div></td>
+							</tr></form>
+							</table>
+							<script type="text/javascript">
+							document.getElementById('topkeyword').value='{if $kw!=''}{$kw}{else}输入关键词{/if}';
+							</script>
+						</div>
+				</div>
+				<div class="webmem"><ul>
+						<script type="text/javascript" src="{DT_PATH}special/mem.php"></script>
+						</ul>
+				</div>
+               </div>
+
+
+<div class="center bgw autoheight pd10" onmouseout="guanbi('head_search')" >
+

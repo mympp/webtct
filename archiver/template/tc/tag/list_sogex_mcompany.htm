@@ -1,0 +1,9 @@
+{loop $tags $ck $cv} 
+    <a href="{so_rewrite('mdetail.php?itemid='.$cv['itemid'].'&infotype=2')}" class="item">
+    <div class="img-area">
+    <img class="swiper-lazy" data-src="{$cv['thumb']}" alt="{$cv['title']}" onerror="javascript:this.src='{DT_SKIN}image/nopic.gif';">
+    <p>{$cv['title']}</p>
+    </div>
+    {if $vip}<i class="vip-icon"></i>{/if}
+    </a>
+{/loop}

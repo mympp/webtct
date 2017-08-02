@@ -1,0 +1,8 @@
+{loop $lists $k $t}
+                        <li class="rank-item clearfix">
+                            <i class="rank-num">{$k+1}</i>
+                            <div class="rank-item-img"><a href="{$MOUDLE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['title']}"><img class="lazy" src="{DT_PATH}skin/teceskin/image/blank.gif" data-original="{$t['thumb']}" alt="{$t['title']}"></a></div>
+                            <div class="rank-item-name"><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></div>
+                            <div class="rank-item-num"><i class="cp-i"></i>{$t['hits']}</div>
+                        </li>
+{/loop}

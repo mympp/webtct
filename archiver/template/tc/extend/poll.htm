@@ -1,0 +1,56 @@
+{php $CSS = array('poll');}
+{template 'header'}
+<style type="text/css">
+.left_menu li{margin-top:5px;padding:5px;}
+.leftn{background:#d9dfea;border:1px solid #bfcfdd;}
+.leftn a{color:#3865a9}
+.lefty{background:#fef9c5;border:1px solid #fabc56;}
+.lefty a{color:#cc4315;font-weight:bold}
+</style>
+{template 'lay','tag'}
+
+<div class="autoheight pd10 whitebg">
+	<table cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+	<td valign="top" class="left_menu">
+		<ul>
+		{loop $TYPE $t}
+		<li class="leftn" id="type_{$t[typeid]}"><a href="{rewrite('index.php?typeid='.$t['typeid'])}">{$t[typename]}</a></li>
+		{/loop}
+		</ul>
+	</td>
+	<td valign="top">
+		<div class="left_box">		
+			{if $itemid}
+			<div style="margin:5px 15px 5px 15px;line-height:36px;text-align:center" class="f14"><strong>{$title}</strong></div>
+			<div class="info color">
+			<span class="fr">票数：<span class="ocolor">{$item[polls]}</span>&nbsp;&nbsp;浏览：<span class="ocolor">{$item[hits]}</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.location.reload();">[刷新]</a>&nbsp;<script type="text/javascript">addFav('[收藏]');</script></span>
+			添加时间：{$adddate}&nbsp;&nbsp;&nbsp;<img src="{DT_PATH}file/image/process_{get_process($fromtime, $totime)}.gif" align="absmiddle" alt="有效期：{$fromdate} 至 {$todate}"/>
+			</div>
+			{if $content}
+			<div class="pd10 lh18 f14">{$content}</div>
+			{else}
+			<div class="b10"></div>
+			{/if}
+			<script type="text/javascript" src="index.php?action=js&itemid={$itemid}"></script>
+			{else}
+			<div class="b10">&nbsp;</div>
+			<table cellpadding="3" cellspacing="3" width="98%" align="center">
+			{loop $lists $k $v}
+			<tr>
+			<td>&middot; {if !$typeid}<a href="{rewrite('index.php?typeid='.$v['typeid'])}" class="color">[{$v[typename]}]</a>&nbsp;{/if}<a href="{$v[linkurl]}" class="color">{$v[title]}</a></td>
+			<td class="color" width="120">浏览:{$v[hits]}</td>
+			<td class="color" width="120" align="center">{$v[adddate]}</td>
+			</tr>
+			{/loop}
+			</table>
+			<div class="pages">{$pages}</div>
+			{/if}
+		<br/>
+		</div>
+	</td>
+	</tr>
+	</table>
+</div>
+<script type="text/javascript">try{Dd('type_{$typeid}').className='lefty';}catch(e){}</script>
+{template 'footer'}

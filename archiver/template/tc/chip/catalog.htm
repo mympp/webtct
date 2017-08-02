@@ -1,0 +1,26 @@
+
+<table width="100%" cellpadding="0" cellspacing="0">
+{php $child = get_maincat(0,$moduleid, 1);}
+{php $l=1;$k=1;}
+{loop $child $i $c}
+{if $l==4||$l==1}<tr{if $k==4} class="line2"{else} class="line1"{/if}>{/if}
+<td valign="top" width="30%" class="catalog_tds">
+<p>
+	<a href="{$MODULE[$moduleid][linkurl]}{$c[linkurl]}" title="{$moduleidname}-{$c[catname]}\n数量共：{$c[item]}条" target="_blank" class="px15"><strong class="cat">{set_style($c[catname], $c[style])}</strong><i class='ocolor'>共[{$c[item]}]个</i></a>
+	{if $c[child]}
+	{php $sub = get_maincat($c[catid], $moduleid, 2);}
+	{loop $sub $j $s}{if $j < 5} <a href="{$MODULE[$moduleid][linkurl]}{$s[linkurl]}" title="{$moduleidname}-{$c[catname]}" target="_blank"><strong>{set_style($s[catname], $s[style])}</strong><i class='ocolor'>共[{$c[item]}]个</i></a>{/if}{/loop}
+	{/if}
+</p>
+
+</td>
+{if $l==3}</tr>{/if}
+{php $l=$l+1;$k=$k+1;}
+{if $l==4}
+{php $l=1;}
+{/if}
+{if $k==7}
+{php $k=1;}
+{/if}
+{/loop}
+</table>

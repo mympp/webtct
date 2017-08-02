@@ -1,0 +1,22 @@
+{loop $tags $k $t}
+<div class="list" id="item_{$t[itemid]}" onmouseover="this.className='list_on';" onMouseOut="this.className='list';">
+	<table border="0" cellpadding="0" cellspacing="0">
+	<tr align="center">
+		<td width="30">&nbsp;<input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip(this, {$t[itemid]});"/> </td>
+		<td width="380" align="left" >
+		{if $t[vip]}<span class='fr mr10'><img src="{DT_SKIN}image/vip.gif"class="mid" /> <img src="{DT_SKIN}image/vip_{$t[vip]}.gif"class="mid" />&nbsp;&nbsp;价格：{if $t[unit] && $t[price]>0}<span class="ocolor"><strong>{$t[price]}</strong>/{$t[unit]}</span>{$t[minamount]}{$t[unit]}起订
+		{else}
+		<span class="color">面议</span>
+		{/if}</span>{/if}<a href="{$t[linkurl]}" target="_blank" ><font class="f14 bcolor"><img src="{DT_SKIN}image/jt1.jpg" class="mid" /> &nbsp;{$t[title]}</font></a>
+			
+    
+		</td>
+		<td width="200" align="left" ><img src="{DT_SKIN}image/ico_home.gif" class="mid"/>&nbsp;<a href="{userurl($t[username])}" target="_blank">{$t[company]}</a></td>
+		<td width="100"> 
+        <a href="javascript:void(0)" onclick="Go('{$MODULE[$moduleid][linkurl]}{rewrite('inquiry.php?itemid='.$t['itemid'])}');"><img src="{DT_SKIN}image/inquiry.gif" alt="询价"/></a></td>
+	</tr>
+	</table>
+</div>
+
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

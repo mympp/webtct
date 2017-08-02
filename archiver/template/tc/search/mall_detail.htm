@@ -1,0 +1,67 @@
+<div style="float:left;margin-right:-220px;width:100%;">
+<div id="mall_detail" {if $thumb}style="margin-right:220px;"{/if}>
+
+<div id="mall_title">
+	<h1>{$title}</h1>
+</div>
+<dl id="mall_parameter">
+	<dt>
+		<div class="red_bolck"></div>产品技术参数及特征
+	</dt>
+	<dd>
+		<ul class="mall_content_ul">
+			<li class="li_title"><b class="gray_block">厂商/品牌</b></li>
+			<li class="li_content"><a href="search.php?keyword={$company}&type=2" style="color:#08c;">{$company}</a>&nbsp;&nbsp;</li>
+			<li class="li_title"><b class="gray_block">点击数</b></li>
+			<li class="li_content">{$hits}</li>
+		</ul>
+		<ul class="mall_content_ul">
+			<li class="li_title"><b class="gray_block">产品型号</b></li>
+			<li class="li_content">{if !$model} 未填 {else} {$model} {/if} </li>
+			<li class="li_title"><b class="gray_block">产品规格</b></li>
+			<li class="li_content">{if !$format} 未填 {else} {$format} {/if}</li>
+		</ul>
+		<ul class="mall_content_ul">
+			<li class="li_title"><b class="gray_block">价格</b></li>
+			<li class="li_content">{if !$price || $price == 0} 未填 {else} {$price} {/if}</li>
+			<li class="li_title"><b class="gray_block">所在地</b></li>
+			<li class="li_content">{if !$place} 未填 {else} {$place} {/if}</li>
+		</ul>
+	</dd>
+</dl>
+
+<!--客服-->
+<div class="c-service clearfix detail-c-service" >
+	{if $infotype > 0}
+	<div class="c-contact">
+		<div class="hd">想对该信息了解更深？您可转入人工服务</div>
+		<ul class="bd clearfix">
+			{php $qq_arr = array(1=>'786466321',2=>'2300379865',3=>'657911476',4=>'1928771453',5=>'1928771453',6=>'657911476',7=>'657911476');}
+			{php $telephone_arr = array(1=>'020-22017986',2=>'020-22017985',3=>'4006173599',4=>'020-22017982',5=>'020-22017982',6=>'4006173599',7=>'020-22017996');}
+			<li><a href="http://wpa.qq.com/msgrd?v=3&uin={$qq_arr[$infotype]}&site=qq&menu=yes&s=tecenet.com" target="_blank"><i class="qq"></i><span>{$info_type_lists[$infotype]['name']}在线QQ客服</span></a></li>
+			<li><i class="tel"></i><span>{$info_type_lists[$infotype]['name']}热线：{$telephone_arr[$infotype]}</span></li>
+		</ul>
+	</div>
+	{/if}
+	<a class="pull-right" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&amp;userId=6452136&amp;s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);"><img src="{SO_SKIN}/images/detail-c-service.png" alt=""></a>
+</div>
+<!--客服 end-->
+
+<dl id="mall_content" style="border-bottom:0px;">
+	<dt>
+		<div class="red_bolck"></div>产品描述
+	</dt>
+	<dd>
+
+<pre>{$content}</pre>
+<div style="clear:both;height:8px;"></div>
+	</dd>
+</dl>
+</div>
+</div>
+{if $thumb}
+<div id="mall_image">
+	<img src="{$thumb}" onerror="javascript:this.src='{SO_SKIN}/images/nopic.gif';" />
+</div>
+{/if}
+

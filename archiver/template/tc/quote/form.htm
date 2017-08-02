@@ -1,0 +1,15 @@
+<dl class="options search" style="border:0px;">
+															<dt>关键词搜索：</dt>
+															<dd>
+		  
+		   <input type="text" size="30" name="kw" value="{$kw}"  style="width:380px;" id="keywordss"  class="inputkw nr fl ml5" onblur="if(this.value==''){this.value='输入关键词'}" onfocus="this.value=''"/>
+
+			<script type="text/javascript">document.getElementById('keywordss').value='{if $kw!=''}{$kw}{else}输入关键词{/if}';</script>
+			<input type="image" src="{DT_SKIN}image/search2.jpg" class="fl ml-5" onmouseover="if(document.getElementById('keywordss').value=='输入关键词'){document.getElementById('keywordss').value=''}" value="搜索"/>
+			<div class="" style="clear:both;"></div>
+			{if !$kwnum}
+			{php $kwnum=7;}
+			{/if}
+			&nbsp;&nbsp;<b>热门关键词</b>：<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and length(word)>4&pagesize=$kwnum&order=total_search  desc&key=month_search&action=$action&ccatid=$catid&template=list-search_kw", -2)}-->
+															</dd>
+													    </dl>

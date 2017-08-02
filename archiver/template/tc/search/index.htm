@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>天成医搜_专·新·快，打造医疗器械产业专业搜索引擎</title>
+	<meta name="keywords" content="天成，医搜，天成医搜，医疗器械，医疗服务，医疗器械供应，医疗器械采购，医疗器械维修"/>
+    <meta name="description" content="国内领先的医疗产业垂直搜索服务平台，医疗产品、厂家、服务工程师、资讯等更多医疗产业相关信息尽在天成医搜_专·新·快，打造医疗器械产品专业搜索引擎。"/>
+	<link rel="shortcut icon" href="{SO_SKIN}/images/sogex.ico" />
+	<!-- Bootstrap -->
+    <link href="{SO_SKIN}/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="lib/js/respond.js"></script>
+    <![endif]-->
+    <link href="{SO_SKIN}/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="layout">
+<!-- 头部搜索 -->
+	<div id="topSearch" >
+		<div class="topLogo">
+			<img src="{SO_SKIN}/images/homeLogo.png" alt="天成医搜">
+		</div>
+		
+		<form action="search.php" method="post">
+			<div class="homeSearch">
+				<div class="homeSearchIpt">
+					<input type="hidden" name="type" value="0" />
+					<input type="text" name="keyword" autocomplete="off">
+					<span class="ipt_del" style="display:none;"></span>
+				</div>
+				<input class="searchBtn" type="submit" value="搜医搜">
+			</div>
+		</form>
+	</div>
+
+	<!--头部nav-->
+	<div id="topNav" class="container-fluid">
+		<div class="indexHdNav clearfix">
+			<a href="http://www.tecenet.com/" target="_blank">天成医疗网</a>|
+			<a href="http://hao.tecenet.com/" target="_blank">医疗厂家导航</a>|
+			{if $_username}
+			<a href="{DT_PATH}member/" style="text-decoration:underline;">{$_username}</a>|
+			{else}
+			<a href="{DT_PATH}member/login.php">登录</a>|
+			<a href="{DT_PATH}member/register.php">注册</a>|
+			{/if}
+			<a href="http://so.tecenet.com/feekback.php" target="_blank">意见反馈</a>
+		</div>
+	</div>
+	<!--END  头部nav-->
+
+	<!-- Logo -->
+	<div class="homeLogo">
+		<img src="{SO_SKIN}/images/homeLogo.png" alt="天成医搜">
+	</div>
+	<!-- Logo -->
+	<!-- Search -->
+	<div class="container-fluid">
+		<form action="search.php" method="get">
+			<div class="homeSearch">
+				<div class="homeSearchIpt">
+					<input type="hidden" name="type" value="0" />
+					<input type="text" name="keyword" autocomplete="off">
+					<span class="ipt_del" style="display:none;"></span>
+				</div>
+				<input class="searchBtn" type="submit" value="搜医搜">
+			</div>
+		</form>
+	</div>
+	<!-- Search -->
+
+	<!--tab栏目 begin-->
+	  	<div id="autoTab">
+			<div class="Menubox">
+				<ul>
+					{php $typec = count($info_type_lists);}
+					{loop $info_type_lists $k $v}
+					<li id="two{$v[catid]}" onclick="setTab('two',{$v[catid]},{$typec});_hmt.push(['_trackEvent', 'soTecenet', 'click', 'indexTabItem']);" {if $k==1}class="hover"{/if} >{$v['name']}</li>
+					{/loop}
+				</ul>
+			</div>
+			<div class="Contentbox container overHidden clearfix">
+				{loop $info_type_lists $k $v}
+				{template 'tab_'.$v['catname'],'search'}
+				{/loop}
+
+				
+				
+			</div>
+			<div style="width:100px;background: #FFF;margin: 0 auto; padding: 10px 0; text-align: center;cursor: pointer;"><span style="display:block; background: url({SO_SKIN}/images/mores.png) center no-repeat; width: 100px; height: 13px;"></span><span style="color:#999;">滚动查看更多</span></div>
+		</div>
+		<!-- tabs-btn -->
+		<a href="javascript:;" class="tabs-prev" style="display:none;" onclick="_hmt.push(['_trackEvent', 'soTecenet', 'click', 'indexTabArrowBtn']);">
+			<span></span>
+			<div class="tabs-name">科研</div>
+		</a>
+		<a href="javascript:;" class="tabs-next" onclick="_hmt.push(['_trackEvent', 'soTecenet', 'click', 'indexTabArrowBtn']);">
+			<span></span>
+			<div class="tabs-name">商家</div>
+		</a>
+		<!-- tabs-btn end-->
+
+		<!-- side-tool -->
+		<div class="side-tool">
+			<a href="javascript:;" class="side-tool-tel">
+				<div><p>天成医疗网客服热线</p><p>400-617-3599</p></div>
+			</a>
+			<a href="javascript:;" class="side-tool-android">
+				<div class="side-tool-img"><img src="{SO_SKIN}/images/app-qrcode.png" alt="天成安卓应用二维码"></div>
+			</a>
+			<a href="javascript:;" class="side-tool-qrcode">
+				<div class="side-tool-img"><img src="{SO_SKIN}/images/so-qrcode.png" alt="医搜二维码"></div>
+			</a>
+			<a href="feekback.php" class="side-tool-feekback"></a>
+			<a href="javascript:;" class="to-top"></a>
+		</div>
+		<!-- side-tool end -->
+
+
+		<!--/tab栏目 END-->
+
+	<div class="footer">
+		<div class="foot clearfix">
+			<div class="copyright pull-left">
+				<div class="link">
+					<a href="feekback.php">用户反馈</a>|<a href="http://hao.tecenet.com/" target="_blank">医疗厂家导航</a>
+				</div>
+				<p>版权所有©广州天成医疗技术股份有限公司 / CopyRight © Guangzhou TianCheng Medical Technology Co.,Ltd. / 粤ICP备13045514号</p>
+			</div>
+			<div class="tel-400 pull-right">
+				<img src="{SO_SKIN}/images/tel-400.png" alt="">
+			</div>
+		</div>
+	</div>
+
+</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<div style="display:none;">{template 'so_analytics','include'}</div>
+    <script src="{DT_PATH}file/script/sogex/jquery.min.js"></script>
+    <script src="{DT_PATH}file/script/sogex/bootstrap.min.js"></script>
+    <script src="{DT_PATH}file/script/sogex/jquery.toTop.min.js"></script>
+    <script src="{DT_PATH}file/script/sogex/posfixed.js"></script>
+    <script src="{DT_PATH}file/script/sogex/sogex_common.js"></script>
+    <script>
+
+    	$(document).ready(function(){
+    		
+    		//新闻tab固定显示
+			$(".sidebar").posfixed({
+				distance:88,
+				pos:"top",
+				type:"while",
+				hide:false
+			});	
+			
+			//to-top
+			$('.to-top').toTop({
+			    //options with default values
+			    autohide: true,
+			    offset: 420,
+			    speed: 500,
+			    right: 15,
+			    bottom: 78
+			});
+			
+    		//顶部出现搜索框
+			var prevTop = 0,currTop =0;
+			window.onscroll = function(){
+				var t = document.documentElement.scrollTop || document.body.scrollTop;
+				var top_div = document.getElementById( "topSearch" );
+				if( t >= 350 ) {
+					top_div.style.display = "block";
+					prevTop = $(this).scrollTop();  
+					if(currTop <=prevTop){
+						//下滚  
+						$("#autoTab,.homeSearch").removeClass("fixed");
+					}  
+					else{
+						//上滚  
+						$("#autoTab,.homeSearch").addClass("fixed");
+					}  
+					setTimeout(function(){currTop  = prevTop;},0);   
+				} else {
+					top_div.style.display = "none";
+					$("#autoTab,.homeSearch").removeClass("fixed");
+				}
+			}
+
+    		//清除输入内容
+			if($("input[name='keyword']").val().length > 0){
+				$(".ipt_del").show();
+			}
+			//显示清除input按钮
+			$("input[name='keyword']").keydown(function(){
+				if($("input[name='keyword']").val().length > 0){
+					$(".ipt_del").show();
+				}else{
+					$(".ipt_del").hide();
+				}
+			});
+			//清除文本框该内容
+			$(".ipt_del").click(function(){
+				$("input[name='keyword']").val("");
+				$(".ipt_del").hide();
+			});
+			//鼠标移入
+			$(".ipt_del").mouseover(function(){
+				$(this).css('background-position','-22px 0px');
+			});
+			//移除鼠标
+			$(".ipt_del").mouseout(function(){
+				$(this).css('background-position','0px 0px');
+			});
+
+
+			
+    		//检测滚轮事件
+    		lock = true;		//滑动更新的锁变量
+			$(function () {
+				var i = 4;
+				$(window).bind("scroll", function (event){
+					//滚动条到网页头部的 高度，兼容ie,ff,chrome
+					var top = document.documentElement.scrollTop + document.body.scrollTop;
+					//网页的高度
+					var textheight = $(document).height();
+					// 网页高度-top-当前窗口高度
+					if (textheight - top - $(window).height() <= 500) {
+						$(".Contentbox").removeClass("overHidden");
+						 if (i >= 100) { return;
+						//控制最大只能加载到100
+						}
+						//i++;
+						//可以根据实际情况，获取动态数据加载 到 div1中
+						if(lock){		//锁解开状态才进行更新
+							lock = false;		//更新开始前关闭锁
+							i++;
+							//可以根据实际情况，获取动态数据加载 到 div1中
+							addData();
+						}
+					}
+				});
+
+			});
+
+    		//添加数据函数
+			function addData(){							
+				//判断当前显示的Tab
+				var boxdata = $(".Contentbox div").not(":hidden").attr("data");
+				var boxid = $(".Contentbox div").not(":hidden").attr("id");
+				var page = $("#page"+boxdata).val();
+
+				//根据不同的data值，请求不同
+
+				var page = $("#page"+boxdata).val();
+				$.ajax({
+					type : 'GET',
+					url: 'http://'+window.location.host+'/ajax.php',
+					data : 'action=info&infotype='+boxdata+"&page="+page,
+					cache:true,
+					success:function(data,status){
+						if(data == '-1'){
+							$('#tic').html('参数错误');
+						}else if(data == ''){
+							$('#tic').html('<span style="color:#D3251E">没有内容了</span>');				
+						}else{
+							$('#'+boxid + " .span8").append(data);
+							$('#page'+boxdata).val(parseInt(page)+1);
+						}
+						lock = true;	//更新完成解开锁
+					},
+					error:function(XMLHttpRequest, textStatus, errorThrown) {
+                       	lock = true;	//更新失败也解开锁
+                    }		
+		});
+			}
+
+    	});
+
+    	//自动切换tab
+		function setTab(name,cursel,n){
+			for(i=1;i<=n;i++){
+				var menu=document.getElementById(name+i);
+				var con=document.getElementById("con_"+name+"_"+i);
+				menu.className=i==cursel?"hover":"";
+				con.style.display=i==cursel?"block":"none";
+			}
+			tabsSwitch();
+		}
+
+		//tab按钮切换
+		$(".tabs-prev").click(function(){
+			$('body,html').scrollTop(350);
+			$(".Menubox ul li.hover").prev().click();
+		});
+		$(".tabs-next").click(function(){
+			$('body,html').scrollTop(350);
+			$(".Menubox ul li.hover").next().click();
+		});
+		function tabsSwitch(){
+			var tabsPrevEle = $(".Menubox ul li.hover").prev().html();
+			var tabsNextEle = $(".Menubox ul li.hover").next().html();
+			var tabsPrevBtn = $(".tabs-prev");
+			var tabsNextbtn = $(".tabs-next");
+			if( tabsPrevEle != undefined ){
+				tabsPrevBtn.show();
+				tabsPrevBtn.find(".tabs-name").html(tabsPrevEle);
+			}else{
+				tabsPrevBtn.hide();
+			}
+			if( tabsNextEle != undefined){
+				tabsNextbtn.show();
+				tabsNextbtn.find(".tabs-name").html(tabsNextEle);
+			}else{
+				tabsNextbtn.hide();	
+			}
+		}
+		tabsSwitch();
+    </script>
+</body>
+</html>

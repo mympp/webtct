@@ -1,0 +1,61 @@
+<div class="ls">
+{php $tag_type_daili=tag("moduleid=$moduleid&table=type_daili&condition=username='$_username'&template=null");}
+<script>
+	function check_number(v){
+		if(v.value!=''){
+			if(isNaN(v.value)){
+				alert('折扣值必须为数字');
+				v.value='';
+			}else if(v.value>1||v.value<0.01){
+				alert('折扣值需在0.01到1之间');
+				v.value='';
+			}			
+		}
+	}
+</script>
+<form method="post" action="type_daili.php">
+<input type="hidden" name="action" value="add" />
+<input type="hidden" name="post[username]" value="{$_username}" />
+<input type="hidden" name="post[userid]" value="{$_userid}" />
+<input type="hidden" name="submit" value="1" />
+<div class="ls">
+<table cellpadding="0" cellspacing="0" class="tb">
+<tr>
+	<th width="60">删</th>
+	<th width="80">排序</th>
+	<th>名称</th>
+	<th>折扣</th>
+</tr>
+<tr>
+	<td width="60" align="center"><input type="submit" value="添加" class="btn" /></td>
+	<td width="80" align="center"><input type="text" name="post[level]" value="" style="width:38px;" /></td>
+	<td align="center"><input type="text" name="post[title]" value="" /></td>
+	<td align="center"><input type="text" name="post[discount]" value="" onblur="check_number(this)" /></td>
+</tr>
+</table>
+</div>
+</form> 
+<form method="post" action="type_daili.php" onsubmit="return confirm('确定修改?')">
+<div class="ls">
+<input type="hidden" name="action" value="edit" /> 
+<input type="hidden" name="post[0][username]" value="{$_username}" />
+<input type="hidden" name="post[0][userid]" value="{$_userid}" />
+<input type="hidden" name="submit" value="1" />
+<table cellpadding="0" cellspacing="0" class="tb" style="border-top:0px;">
+{loop $tag_type_daili $k $v}
+<tr>
+	<td width="75" align="center"><input type="checkbox" name="post[{$v[itemid]}][delete]" value="1" /></td>
+	<td width="90" align="center"><input type="text" name="post[{$v[itemid]}][level]" value="{$v[level]}" style="width:38px;" /></td>
+	<td align="center"><input type="text" name="post[{$v[itemid]}][title]" value="{$v[title]}" /></td>	
+	<td align="center"><input type="text" name="post[{$v[itemid]}][discount]" value="{$v[discount]}" onblur="check_number(this)" /></td>
+</tr>
+{/loop}
+<tr>
+	<td></td>
+	<td><input type="submit" name="" value="提交" class="btn" /></td>
+	<td></td>
+	<td></td>
+</tr>
+</table>
+</div>
+</form>

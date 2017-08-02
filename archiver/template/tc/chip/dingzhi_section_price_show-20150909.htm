@@ -1,0 +1,49 @@
+<script src="{DT_PATH}file/script/json2.js" type="text/javascript"></script>
+<script>
+function section_price(v){
+	var ajax_url='{$CFG[url]}ajax.php';
+	$.ajax({
+		type:'POST',
+		url:ajax_url,
+		//dataType:'json',
+		data:"action=chanpin&mallid="+v,
+		success:function(data,status){
+			var mall=JSON.parse(data);
+			if(mall['wrong']!=undefined){
+				alert(mall['wrong']);
+			}else{
+				$('#price').html('￥'+mall['price']);            //修改显示价格
+				$("#section_price_td input[type='button']").each(function(i,e){
+					$(this).css('border','0px');        
+				});
+				$('#sectionP'+v).css('border','1px solid #ccc');
+				//alert(mall['buyurl']);
+				$('#buyMall').attr('onclick',"Go('"+mall['buyurl']+"');");          //修改提交购买地址
+				$('#addCartMall').attr('onclick',"AddCart("+v+");Dd('shopcart').className='shopcart';");  //修改添加购物车地址
+				$('#mall_inquiry').attr('href',mall['inquiry']);           //修改点击了解地址
+				$('#mall_amount').html(mall['amount']);                         //修改库存
+				$('#mall_sales').html(mall['sales']);						//修改出售数量
+				$('#mall_orders').html(mall['orders']);                //修改订单数量
+				$('#mall_comments').html(mall['comments']);            //修改评论数目
+				$('#hits').html(mall['hits']);                       //修改关注数目
+			}
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			//alert(XMLHttpRequest.status);
+			//alert(XMLHttpRequest.readyState);
+			//alert(textStatus);
+			alert('无法连接');
+		}
+	});
+	
+}
+</script>
+<tr>
+	<td class="rcolor tc" height=35 width="80">规格分类</td>
+	<td id="section_price_td">
+	{php $tag_section_price=tag("moduleid=$moduleid&table=mall&condition=username='$username' and issectionprice=1 and title='$title'&fields=itemid,sectionprice&order=itemid asc&template=null");}
+		{loop $tag_section_price $k $v}
+			<input id="sectionP{$v[itemid]}" type="button" onclick="section_price('{$v[itemid]}')" style="background:white;cursor:pointer;{if $itemid==$v[itemid]}border:1px solid #ccc;{else}border:0px;{/if}" value="{$v[sectionprice]}" />&nbsp;&nbsp;
+	{/loop}
+	</td>
+</tr>

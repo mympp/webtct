@@ -1,0 +1,44 @@
+		{template 'member','tag'}
+														<div class="divline"></div>
+
+											{if $ztitle!=''}
+											<div class="blue"><div class="h4title">全站推荐厂商</div></div>
+													<div class="grayb nt autoheight pt10">
+														<ul class="rank_list">
+														<!--{tag("moduleid=4&condition=username!='gztc' and groupid>5  &pagesize=20&order=pnum desc&template=list-com&debug=0")}-->
+														</ul>
+											</div>
+											<div class="divline"></div>
+											{/if}
+
+
+											{if $catida!=''}
+											<div class="blue"><div class="h4title">全站推荐厂商</div></div>
+													<div class="grayb nt autoheight pt10">
+														<ul class="rank_list">
+														<!--{tag("moduleid=4&condition=username!='gztc' and groupid>5  &pagesize=20&order=pnum desc&template=list-com&debug=0")}-->
+														</ul>
+											</div>
+											<div class="divline"></div>
+											<div class="orange"><div class="h4title">{$parenta}热门排行</div></div>
+													<div class="grayb nt autoheight pt10">
+														<ul class="rank_list">
+														<!--{tag("moduleid=$moduleid&catid=$catida&condition=username!='gztc' and groupid>5 and catids<>''&areaid=$cityid&pagesize=20&order=hits desc&template=list-com&debug=0&showcat=1")}-->
+														</ul>
+											</div>
+											<div class="divline"></div>
+
+											{else}
+
+
+
+
+											<div class="orange"><div class="h4title">{$MOD[name]}推荐排行</div></div>
+													<div class="grayb nt autoheight pt10">
+														<ul class="rank_list">
+														<!--{tag("moduleid=$moduleid&condition=username!='gztc' and groupid>5 and catids<>''&areaid=$cityid&pagesize=20&order=level desc&template=list-com&debug=0&showcat=1")}-->				
+														</ul>
+											</div>
+											{/if}
+
+											{ad($moduleid,$catid,$kw,7)}

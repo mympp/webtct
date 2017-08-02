@@ -1,0 +1,91 @@
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=contact', $domain)}"><img src="{$MODULE[4][linkurl]}image/more.gif" title="更多"/></a></span><strong>{$main_name[$HM]}</strong></div></div>
+<div class="main_body">
+<div class="px13 lh18">
+	<table width="98%" cellpadding="3" cellspacing="3" align="center">
+	<tr>
+	<td width="100">主体名称：</td>
+	<td>{$COM[company]}</td>
+	</tr>
+	<tr>
+	<td>联系地址：</td>
+	<td>{$COM[address]}</td>
+	</tr>
+	{if $COM[postcode]}
+	<tr>
+	<td>邮政编码：</td>
+	<td>{$COM[postcode]}</td>
+	</tr>
+	{/if}
+{if $_username}
+	<tr>
+	<td>服务电话：</td>
+	<td>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</td>
+	</tr>
+	{if $COM[fax]}
+	<tr>
+	<td>服务传真：</td>
+	<td>{if $domain}{$COM[fax]}{else}{anti_spam($COM[fax])}{/if}</td>
+	</tr>
+	{/if}
+	{if $COM[mail]}
+	<tr>
+	<td>电子邮件：</td>
+	<td>{if $domain}{$COM[mail]}{else}{anti_spam($COM[mail])}{/if}</td>
+	</tr>
+	{/if}
+	<tr>
+	<td>相关网址：</td>
+	<td>{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank">{$COM[homepage]}</a><br/>{/if}
+	<a href="{$COM[linkurl]}" target="_blank">{$COM[linkurl]}</a></td>
+	</tr>
+	{if $COM[truename]}
+	<tr>
+	<td>联 系 人：</td>
+	<td>{$COM[truename]} （{if $COM[gender]==1}先生{else}女士{/if}）</td>
+	</tr>
+	{/if}
+	{if $COM[department]}
+	<tr>
+	<td>部门(职位)：</td>
+	<td>{$COM[department]}{if $COM[career]} （{$COM[career]}）{/if}</td>
+	</tr>
+	{/if}
+	{if $COM[mobile]}
+	<tr>
+	<td>手机号码：</td>
+	<td>{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}{if $DT[sms] && $COM[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($COM[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="发送短信" alt=""/></a>{/if}</td>
+	</tr>
+	{/if}
+	<tr>
+	<td>即时通讯：</td>
+	<td>
+	{if $COM[username] && $DT[im_web]}{im_web($COM[username])}&nbsp;{/if}
+	{if $COM[qq] && $DT[im_qq]}
+		{if check_dingzhi_member($COM[username],'qq_kefu')}
+		{php $qq_array=explode(';',$COM[qq]);}
+		{loop $qq_array $k $v}
+			{php $qq_message=explode('|',$v);}
+			{$qq_message[1]}&nbsp;:{im_qq($qq_message[0])}&nbsp;&nbsp;
+		{/loop}
+		{else}
+			{im_qq($COM[qq])}&nbsp;
+		{/if}
+	{/if}
+	{if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
+	{if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
+	{if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}
+	</td>
+	</tr>
+{else}
+	<tr>
+	<td>联系方式：</td>
+	<td bgcolor="#F7F7F7">只有本站会员才能看到联系方式！<br>请 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b" target="_top">注册</a> 或 请留下您的联系方式&nbsp;&nbsp;已经是会员？请 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b" target="_top">登录</a><br>或可咨询本站客服热线：4000521617  &nbsp;&nbsp;&nbsp;在线招商推广热线：4006175399</td>
+	</tr>
+{/if}
+	<tr>
+	<td>在线状态：</td>
+	<td>{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}</td>
+	</tr>
+	</table>
+	</div>
+</div>

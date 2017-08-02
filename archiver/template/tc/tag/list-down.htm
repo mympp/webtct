@@ -1,0 +1,37 @@
+
+<ul id='downlist'>
+{loop $tags $k $t}
+<li class='autoheight pt10 pb10' style="border-top:1px dotted #ddd">
+<table >
+<tr>
+	<td width="90" align="center"  valign="top"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img  src="{DT_SKIN}image/blank.gif" style="background:#fff url('{if $t[thumb]!=''}{$t[thumb]}{else}{DT_SKIN}image/down/file/{$t[fileext]}.png{/if}') center center no-repeat;" width="80" height="100" class="smallpic grayb"/></a></td>
+	<td width="660" valign="top">
+<div class=' f18 color'><img src="{DT_SKIN}image/down/file/{$t[fileext]}.jpg" class="mid mr10"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}" class="b">{$t[title]}</a><em class='f12'>(#{$t[itemid]})</em>
+{if $t[level]}<span class='f12 ocolor'><img src="{DT_SKIN}image/shield.gif" class="mid"/>获<img src="{DT_SKIN}image/vip_{$t[level]}.gif" class="mid" alt="推荐{$t[level]}级"/>推荐</span>{/if}
+</div>
+<div class="pt5">
+<p class="pt5">{dsubstr($t[introduce], 180, '..')}</p>
+<p class="pt5">
+	<span class="lenstr w160">条件 {if $t[downtype]==0}完全共享{/if}{if $t[downtype]==1}下载需{$t[djifen]}积分{/if}{if $t[downtype]==2}下载需{$t[dprice]}金币{/if}</span>
+	<span class="lenstr w120">大小 {$t[filesize]}{$t[unit]}</span><span class="lenstr w120">日期 {timetodate($t[edittime],4)}</span>
+</p>
+
+</div>
+</td>
+	<td width="200" valign="middle">
+			<ul>
+		 <li><a href="{$MOD[linkurl]}search.php?kw={$t[username]}"><img src="{useravatar($t[username], 'large')}" width="38" height=38 class="mid mr10 smallpic grayb"><font class="f12">{$t[username]}发布</font></a></li>
+		<li><font class="f14">{$t[hits]}</font>人已阅读&nbsp;&nbsp;共下载<font class="f14">{$t[download]}</font>次</li>
+        </ul>
+	</td>
+</tr>
+</table>
+</li>
+{/loop}		
+</ul>
+
+<br class='clear'>
+<script type="text/javascript">
+$("#downlist>li").hover(function () {$(this).addClass("graybg"); }, function () {$(this).removeClass("graybg"); });
+</script>
+		{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

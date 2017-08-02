@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+	  <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$COM[company]}{/if}</title>
+	  {if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
+	  {if $head_description}<meta name="description" content="{$head_description}"/>{/if}
+	  <meta name="generator" content="Tecenet B2B,www.tecenet.com"/>
+	  <meta name="template" content="{$template}"/>
+	  <link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
+	  <link href="favicon.ico" rel="shortcut icon" />
+	  {if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
+	  <script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+	  <script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+	  <script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+	  <script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+	  <script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+	  <script src="{DT_STATIC}file/script/jquery-1.4a2.min.js" type="text/javascript"></script>
+	  <script src="{DT_STATIC}file/script/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+	  <script type="text/javascript">
+		  var DTPath = '{DT_PATH}';
+		  var SKPath = '{DT_SKIN}';
+		  var EXPath = '{$MODULE[3][linkurl]}';
+		  var DTTour = '{$MODULE[4][linkurl]}tour.php';
+		  {if $itemid && $DT[anticopy]}
+		  document.oncontextmenu=function(e){return false;};
+		  document.onselectstart=function(e){return false;};
+		  {/if}
+		  {if !$domain && DT_DOMAIN}
+		  if(window.location.href.indexOf('{DT_DOMAIN}') != -1){document.domain = '{DT_DOMAIN}';}
+		  {/if}
+		  $(function(){
+			 $("#KinSlideshow").KinSlideshow();
+		  })
+		 $(function(){setInterval(function(){
+			 var top=$(".txtScroll-top").find(".infoList").val();
+			 if(top>-70){
+				top=top-35;
+				$(".infoList").val(top);
+			 }else{
+				top=0;
+				$(".infoList").val(top);
+			 }
+			$(".infoList").attr("style","top: "+top+"px; position: relative; padding: 0px; margin: 0px;");
+		  },5000)
+		  })
+	  </script>
+	  <script type="text/javascript" src="{DT_PATH}file/script/homepage.js"></script>
+	  {if $css}<style type="text/css">{$css}</style>{/if}
+</head>
+<body style="background-color:; background-image:url({$HSPATH}/1431310244.png);">
+    <header>
+		<section>
+			<div class="m-fixed m-h-top" style="height:160px;">
+				
+
+
+			<h1>
+				<a href="#" title="{$COM[company]}">
+					<img {if $logo}src="{$logo}"{else}src="{$HSPATH}logo.png"{/if} title="{$COM[company]}" data-logo-offset="50|0" style="margin-top: 15px; margin-left: 0px; visibility: visible;float:left;" width="130" height="130"/>
+				</a>
+				<span style="float:left;height:90px;width:800px;line-height:130px;display:block;font-size:30px;color:rgb(195, 45, 45)">{$COM[company]}</span><br/>
+				<span style="float:left;height:60px;display:block;font-size:16px;color:#222;font-weight:lighter;">{if $COM[encompany]}{$COM[encompany]}{else}{dsubstr($COM['business'], $logo ? 60 : 80, '...')}{/if}</span>
+			</h1>
+</div>	
+		
+
+
+		</section>
+		
+		<div class="m-fixed m-h-nav tem_head">			
+		<ul id="nav" class="navdh clearfix" value="0">
+		<li class="nLi"><h3><a href="{$COM[linkurl]}">网站首页</a></h3></li>
+				{php $i=0;}
+				{loop $MENU $k $v}
+				{if $i<8}
+				<li class="nLi"><h3><a href="{$v[linkurl]}">{$v[name]}</a></h3></li>
+				{/if}
+				{php $i=$i+1;}
+				{/loop}
+				{php $pagenum=8-$i;}
+				{if $pagenum>0}
+					{php $tagss = tag("table=page&fields=itemid,title,style,url&condition=status=3 AND username='$username' and elite=1&pagesize=$pagenum&order=listorder ASC&template=null")}
+					{if $tagss>0}
+						{loop $tagss $t}
+						{if $itemid==$t[itemid]}<script type="text/javascript">Dd('{$file}').className='menu_li';</script>{/if}
+						{/loop}
+					{/if}
+			{/if}
+
+		</ul>	
+		</div>
+
+	</header>
+
+

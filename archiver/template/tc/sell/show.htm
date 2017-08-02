@@ -1,0 +1,132 @@
+{php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'qiugou.detail.css',DT_SKIN.'jquery.fancybox.css']}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/sell/gongying.share.js',DT_PATH.'file/script/internalLink.js'];}
+{template 'module-header'}
+<!--detail-wrap-->
+<div class="detail-wrap">
+    <!--crumb-->
+    <div class="crumb container">
+        <a href="{DT_PATH}" title="天成医疗网">天成医疗网首页</a><span>></span>
+        <a href="{$MODULE[5]['linkurl']}{sell_rewrite(['typeid'=>$typeid])}" title="求购信息">求购行情</a><span>></span>
+        <a href="{$MODULE[5]['linkurl']}{sell_rewrite(['typeid'=>$typeid,'catid'=>$catid])}" title="{$CAT['catname']}">{$CAT['catname']}</a><span>></span>
+        <em>{$title}</em>
+    </div>
+    <!--crumb end-->
+    <!--container-->
+    <div class="container clearfix">
+        <!--main-->
+        <div class="main pull-left">
+            <div class="demand-box box-shadow">
+            	{if $validated}
+                <!--认证推荐-->
+                <div class="star-tag"></div>
+                <!--认证推荐 end-->
+                {/if}
+
+                <!--demand-title-->
+                <div class="demand-title">
+                    <h1>{$title}</h1>
+                    <div class="desc">
+                    	{if $_userid}
+	            			{$content}	
+						{else}
+							{xcontent($content,'*','1,3,5,7,9')}
+						{/if}
+                    </div>
+                </div>
+                <!--demand-title end-->
+
+                <!--demand-param-->
+                <div class="demand-param">
+                    <ul class="clearfix">
+                        <li><span>信息分类：</span><em><a href="{sell_rewrite(['catid'=>$CAT['catid'],'typeid'=>1])}" title="{$CAT['catname']}需求">{$CAT['catname']}</a></em></li>
+                        <li><span>产品品牌：</span><em>{if $brand}{$brand}{else}不限{/if}</em></li>
+                        <li><span>规格要求：</span><em>{if $standard}{$standard}{else}不限{/if}</em></li>
+                        <li><span>采购数量：</span><em>{if $amount}{$amount}{else}详谈{/if}</em></li>
+                        <li><span>终端地区：</span><em><a href="{sell_rewrite(['areaid'=>$areaid,'typeid'=>1])}" title="{$AREA[$t['areaid']]['areaname']}需求">{$AREA[$t['areaid']]['areaname']}</a></em></li>
+                    </ul>
+                </div>
+                <!--demand-param end-->
+
+                <!--demand-date-->
+                <div class="demand-date clearfix">
+                    <ul class="pull-left">
+                        <li>
+                            <em>{date('Y-m-d H:i',$addtime)}</em>
+                            <p><i class="p-i start"></i>求购发布时间</p>
+                        </li>
+                        <li>
+                            <em>{if $totime}{date('Y-m-d H:i',$totime)}{else}长期有效{/if}</em>
+                            <p><i class="p-i end"></i>求购截止时间</p>
+                        </li>
+                    </ul>
+                    {if $username}<a href="{$MODULE[5]['linkurl']}inquiry.php?itemid={$itemid}" title="立即咨询" rel="nofollow" class="btn btn-primary pull-right" onclick="_hmt.push(['_trackEvent', 'gongying', 'click', 'inquiry']);">立即咨询</a>{/if}
+                </div>
+                <!--demand-date end-->
+
+                {template 'comment2017','chip'}
+            </div>
+
+            <!--相关求购-->
+            <div class="demand-related box-shadow mgt-20">
+                <div class="demand-related-hd">
+                    <span>{$CAT['catname']}最新求购信息</span>
+                </div>
+                <div class="demand-related-bd clearfix">
+                {php $new_type1 = tag("moduleid=5&condition=status=3 and typeid=1&pagesize=6&order=itemid desc&template=null");}
+                {loop $new_type1 $k $t}
+                    <div class="item">
+                        <div class="title">
+                            <h3 class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}" onclick="_hmt.push(['_trackEvent', 'gongying', 'click', 'recommendDetail']);">{$t['title']}</a></h3>
+                        </div>
+                        <ul class="param-list">
+                            <li><span class="key">发布时间：</span><span class="val">{date('Y-m-d',$t['addtime'])}</span></li>
+                            <li><span class="key">所在地区：</span><span class="val">{$AREA[$t['areaid']]['areaname']}</span></li>
+                        </ul>
+                        <a href="{$MODULE[5]['linkurl']}inquiry.php?itemid={$t['itemid']}" class="btn btn-default" onclick="_hmt.push(['_trackEvent', 'gongying', 'click', 'recommendInquiry']);">立即报价</a>
+                    </div>
+                {/loop}
+                    
+                </div>
+            </div>
+            <!--相关求购 end-->
+
+
+        </div>
+        <!--main end-->
+         <!--side-->
+        <div class="side pull-right">
+            <div class="user-mod box-shadow">
+				<div class="user-mod-hd">联系方式</div>
+					{if !$_userid}
+					<ul class="contact">
+					<li class="clearfix"><span class="pull-left"><i class="p-i name"></i>姓名：</span><em class="pull-left text-overflow">{mb_substr($truename,0,1,'UTF-8')}**</em></li>
+					{if $mobile}<li class="clearfix"><span class="pull-left"><i class="p-i phone"></i>手机：</span><em class="pull-left text-overflow">{substr($mobile,0,5)}******</em></li>{/if}
+					{if $telephone}<li class="clearfix"><span class="pull-left"><i class="p-i tel"></i>电话：</span><em class="pull-left text-overflow">{substr($telephone,0,3)}******</em></li>{/if}
+					{if $qq}<li class="clearfix"><span class="pull-left"><i class="p-i qq"></i>Q&nbsp;Q：</span><em class="pull-left text-overflow">{substr($qq,0,3)}*******</em></li>{/if}
+					{if $wechat}<li class="clearfix"><span class="pull-left"><i class="p-i qq"></i>微信：</span><em class="pull-left text-overflow">{substr($wechat,0,3)}******</em></li>{/if}
+					</ul>
+					<a href="{$MODULE[2]['linkurl']}login.php" class="btn btn-success" onclick="_hmt.push(['_trackEvent', 'gongying', 'click', 'loginSeeContact']);" rel="nofollow">登录查看联系方式</a>
+				{else}
+					<ul class="contact">
+					<li class="clearfix"><span class="pull-left"><i class="p-i name"></i>姓名：</span><em class="pull-left text-overflow">{$truename}</em></li>
+					{if $mobile}<li class="clearfix"><span class="pull-left"><i class="p-i phone"></i>手机：</span><em class="pull-left text-overflow">{$mobile}</em></li>{/if}
+					{if $telephone}<li class="clearfix"><span class="pull-left"><i class="p-i phone"></i>电话：</span><em class="pull-left text-overflow">{$telephone}</em></li>{/if}
+					{if $qq}<li class="clearfix"><span class="pull-left"><i class="p-i qq"></i>Q&nbsp;Q：</span><em class="pull-left text-overflow">{$qq}</em></li>{/if}
+					{if $wechat}<li class="clearfix"><span class="pull-left"><i class="p-i qq"></i>微信：</span><em class="pull-left text-overflow">{$wechat}</em></li>{/if}
+					</ul>
+				{/if}
+			</div>
+
+            <div class="release box-shadow mgt-20">
+                <a href="{$MODULE[5]['linkurl']}demandadd.php" onclick="_hmt.push(['_trackEvent', 'gongying', 'click', 'addDemand']);"><img src="{DT_SKIN}image/sell/qiu-detail-2.png" alt=""></a>
+            </div>
+        </div>
+        <!--side end-->
+    </div>
+    <!--container end-->
+</div>
+<!--detail-wrap end-->
+<!--channel-class-->
+{$iLink}
+<!--channel-class end -->
+{template 'footer2017'}
