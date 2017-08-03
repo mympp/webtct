@@ -1,8 +1,0 @@
-<!--工具条tab-->
-<div class="h-tabs">
-	<a class="{if !$type}visiable{else}disable{/if}" href="search.php?keyword={$keyword}&type=0">全网</a>
-	{loop $info_type_lists $ik $iv}
-	<a class="{if $type == $iv[catid]}visiable{else}disable{/if}" href="search.php?keyword={$keyword}&type={$iv['catid']}">{$iv['name']}</a>
-	{/loop}
-</div>
-<!--END工具条tab-->

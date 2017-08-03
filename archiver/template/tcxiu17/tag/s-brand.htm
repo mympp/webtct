@@ -1,8 +1,0 @@
- <table cellpadding="5" cellspacing="0" id='cj'>
-{loop $tags $i $t}
-{if $i%3==0}<tr>{/if}
-		<td align="left" height="25"><input type="radio" id="f{$t[itemid]}" name="f" onclick="yesbrand({$t[catid]},'{$t[title]}',{$t[itemid]})">{$t[title]}<i>[{$t[pnum]}]</i></td>
-{if $i%3==2}</tr>{/if}
-{/loop}
-</table>
-{if $pages}<div class="pages">{$pages}</div>{/if}

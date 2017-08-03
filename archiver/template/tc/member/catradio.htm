@@ -1,7 +1,0 @@
-{php $tagss = tag("moduleid=$moduleid&table=category&condition=moduleid=$moduleid and parentid=0&pagesize=60&order=listorder ASC&template=null&postname=.$postname")}
-{if !$postname}
-{php $postname="post";}
-{/if}								
-															{loop $tagss $i $t}
-															 <label id="label{$cat}{$t[catid]}"><input title="{$t[catname]}" type="radio" id="{$cat}{$t[catid]}" name="{$postname}[{$cat}]" value="{$t[catid]}" {$onclick} {if $t[catid]==$catid}checked=checked{/if}>{$t[catname]}</label>
-															{/loop}

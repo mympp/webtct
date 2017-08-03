@@ -1,8 +1,0 @@
-{php $c=1;}
-{loop $tags $k $t}
-{php if($c==3){$c=1;}}
-<li class="w240">
-<span>[{$t[hits]}°C]</span>
-<i class="lenstr">{area_pos($t[areaid], '/', 2)}</i><a class="color lenstr" href="{$t[linkurl]}" target='{$target}' title="{$t[alt]}">{$t[truename]}</a></li>
-{php $c=$c+1;}
-{/loop}

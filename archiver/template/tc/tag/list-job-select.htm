@@ -1,6 +1,0 @@
-<ul>
-{loop $tags $k $t}
-<li><input type="radio" name="jobid" value="{$t[itemid]}"><a href="{$t[linkurl]}" target="_blank" class="color">{$t[title]}</a>{$t[apply]}人报名</li>
-{/loop}
-</ul>
-{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

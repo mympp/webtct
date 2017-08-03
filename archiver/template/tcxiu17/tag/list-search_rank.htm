@@ -1,4 +1,0 @@
-{php isset($file) or $file='search';}
-{loop $tags $i $t}
-<dd title="搜索{$t[$key]}次 约{$t[items]}条结果"><span>&nbsp;{$t[items]}条</span><a href="{$MODULE[$moduleid][linkurl]}{rewrite($file.'.php?kw='.urlencode($t['word']))}"{if $target} target="{$target}"{/if} class="color lenstr">{$t[word]}</a></dd>
-{/loop}
