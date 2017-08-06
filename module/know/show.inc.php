@@ -1,5 +1,8 @@
 <?php 
+use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
+
 $itemid or dheader($MOD['linkurl']);
 if(!check_group($_groupid, $MOD['group_show'])) include load('403.inc');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
@@ -62,5 +65,14 @@ if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].mobileurl($moduleid,
 $seo_file = 'show';
 include DT_ROOT.'/include/seo.inc.php';
 $template = $item['template'] ? $item['template'] : ($CAT['show_template'] ? $CAT['show_template'] : 'show');
+
+$internalLink = new internalLink();
+$internalLink->setModule(['mall','article','company']);
+$iLink = $internalLink->build($catid,$areaid,[
+	'mall' => ['name'=>'产品','titleName' => '产品'],
+	'article' => ['name' => '资讯','titleName' => '资讯','closeArea' => true],
+	'company' => ['name'=>'企业','url'=>['typeid'=>0],'titleName'=>'企业'],
+]);
+
 include template($template, $module);
 ?>

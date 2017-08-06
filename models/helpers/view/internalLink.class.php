@@ -4,12 +4,15 @@ namespace models\helpers\view;
 use models\helpers\data\category;
 use models\helpers\data\area;
 use models\module\baseModule;
+use models\helpers\adt\cartesianProduct;
 
 //内部链接推荐
 class internalLink{
 	
 	private $module;
 	private $extend;
+	private $catid_key = true;
+	private $area_key = true;
 	
 	/**
 	* 设置要推荐的模块
@@ -26,64 +29,109 @@ class internalLink{
 		}
 	}
 	
+	//获取推荐分类
+	private function getLinkCategory($catid,$moduleid,$num = false){
+		$cateData = [];
+		
+		if($num !== false && $num == 0) return [];
+		
+		$category = new category();
+		$check = $category->checkCatidInModule($catid,$moduleid);
+		if(empty($catid) || !$check){		//不提供分类id，或分类id与当前模块不一致时获取该模块下的主分类
+			$cateData = $category->getMainCate($moduleid);
+		}else{
+			$cateData = $category->getChildCate($catid);	//优先取子分类
+			if(empty($cateData)){	$cateData = $category->getBroCate($catid);}		//取兄弟分类
+		}
+		
+		$result = [];
+		foreach($cateData as $v){
+			array_push($result,['catid'=>$v['catid']]);
+		}
+		
+		shuffle($result);
+		if($num !== false && is_numeric($num)){
+			return array_slice($result,0,$num);
+		}else{
+			return $result;
+		}
+	}
+	
+	//获取推荐地区
+	private function getLinkArea($areaid,$num = false){
+		if($num !== false && $num == 0) return [];
+		
+		$area = new area();
+		if(empty($areaid)){
+			$areaData = $area->getMainArea();
+		}else{
+			$areaData = $area->getChildArea($areaid);
+			if(empty($areaData)) $areaData = $area->getBroArea($areaid);
+		}
+		
+		$result = [];
+		foreach($areaData as $v){
+			array_push($result,['areaid'=>$v['areaid']]);
+		}
+		
+		shuffle($result);
+		if($num !== false && is_numeric($num)){
+			return array_slice($result,0,$num);
+		}else{
+			return $result;
+		}
+	}
+
+	
 	//根据分类id和地区id进行推荐板块书写
 	public function build($catid = 0,$areaid = 0,$extend = null){
 		if(empty($this->module)) return false;
 
 		$this->extend = $extend;
-		$dataLimitNum = 5;	//每组最多去5个内容 
+		$dataLimitNum = 5;	//每组取5个内容 
 		shuffle($this->module);		//打乱显示顺序
-		$category = new category();
-		$area = new area();
 		
 		$templateData = [];
 		$templateData['modulename'] = [];
 		$templateData['data'] = [];
 		
+		$cartesian = new cartesianProduct();
+		
 		foreach($this->module as $v){
+			if(isset($extend[$v]['closeArea']) && isset($extend[$v]['closeCate'])) continue;
+			
 			$data = [];
-			$m = str_replace('1','',$v);
+			$m = str_replace(array(1,2,3),'',$v);
 			$module = baseModule::moduleInstance($m);
-			if(isset($extend[$v]['name'])){
-				array_push($templateData['modulename'],$extend[$v]['name']);
+			if(isset($extend[$v]['titleName'])){
+				array_push($templateData['modulename'],$extend[$v]['titleName']);
 			}else{
 				array_push($templateData['modulename'],$module->modulename);
 			}
 			
-			
 			if(empty($module)) continue;	
 			
-			$cateData = [];
-			$check = $category->checkCatidInModule($catid,$module->moduleid);
-			if(empty($catid) || !$check){		//不提供分类id，或分类id与当前模块不一致时获取该模块下的主分类
-				$cateData = $category->getMainCate($module->moduleid);
-			}else{
-				$cateData = $category->getChildCate($catid);		//优先取子分类
-				if(empty($cateData))	$cateData = $category->getBroCate($catid);		//取兄弟分类
-			}
-			shuffle($cateData);
-
-			$areaData = [];
-			if(empty($areaid)){
-				$areaData = $area->getMainArea();
-			}else{
-				$areaData = $area->getChildArea($areaid);
-				if(empty($areaData)) $areaData = $area->getBroArea($areaid);
-			}
-			shuffle($areaData);
+			$cat_num = isset($extend[$v]['closeArea']) ? 
+						($dataLimitNum*$dataLimitNum) : ( isset($extend[$v]['closeCate']) ? 0 : $dataLimitNum);
+			$area_num = isset($extend[$v]['closeCate']) ? 
+						($dataLimitNum*$dataLimitNum) : (isset($extend[$v]['closeArea']) ? 0 : $dataLimitNum);
 			
-			$i = 0;
-			$j = 0;
-			foreach($cateData as $c){
-				$j = 0;
-				foreach($areaData as $a){
-					$url = isset($extend[$v]['url']) ? $extend[$v]['url'] : [];
-					$url['catid'] = $c['catid'];
-					$url['areaid'] = $a['areaid'];
-					array_push($data,$url);
-					if(($dataLimitNum - 2) < $j++) break;
+			$cateData = $this->getLinkCategory($catid,$module->moduleid,$cat_num);
+			$areaData = $this->getLinkArea($areaid,$area_num);
+			
+			$build = [];
+			if(!empty($cateData)) array_push($build,$cateData);
+			if(!empty($areaData)) array_push($build,$areaData);
+			$cartesianArr = $cartesian->build($build);
+
+			foreach($cartesianArr as $v1){
+				$url = isset($extend[$v]['url']) ? $extend[$v]['url'] : [];
+				foreach($v1 as $v2){
+					foreach($v2 as $k3=>$v3){
+						$url[$k3] = $v3;
+					}
 				}
-				if(($dataLimitNum - 2) < $i++) break;
+				array_push($data,$url);
 			}
 			array_push($templateData['data'],$data);
 		}
@@ -106,7 +154,7 @@ class internalLink{
 		foreach($data['data'] as $k => $v){
 			$display = $k == 0 ? '' : 'style="display:none;"';
 			$back .= "<div $display>";
-			$m = str_replace('1','',$this->module[$k]);
+			$m = str_replace(array(1,2,3),'',$this->module[$k]);
 			$module = baseModule::moduleInstance($m);
 			foreach($v as $num => $s){
 				if($num > 20) break;

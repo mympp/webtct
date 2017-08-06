@@ -1,5 +1,8 @@
 <?php 
+use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
+
 $itemid or dheader($MOD['linkurl']);
 if(!check_group($_groupid, $MOD['group_show'])) include load('403.inc');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
@@ -70,5 +73,14 @@ $template = 'show';
 if($MOD['template_show']) $template = $MOD['template_show'];
 if($CAT['show_template']) $template = $CAT['show_template'];
 if($item['template']) $template = $item['template'];
+
+$internalLink = new internalLink();
+$internalLink->setModule(['mall','sell','sell1']);
+$iLink = $internalLink->build($catid,$areaid,[
+	'mall' => ['name'=>'产品','titleName' => '产品'],
+	'sell' => ['name' => '求购','titleName' => '求购','url'=>['typeid'=>1]],
+	'sell1' => ['name'=>'供应','url'=>['typeid'=>0],'titleName'=>'供应'],
+]);
+
 include template('show', $module);
 ?>

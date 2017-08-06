@@ -1,5 +1,5 @@
 ﻿{php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'tc.chanpin.base.css',DT_SKIN.'tc.chanpin.list.css']}
-{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/mall/tc.chanpin.list.js'];}
+{php $footer_js = [DT_PATH.'file/script/jquery.SuperSlide.2.1.1.source.js',DT_PATH.'file/script/mall/tc.chanpin.list.js',DT_PATH.'file/script/internalLink.js'];}
 <?php
 $areaname = area_pos($areaid,'');
 $ztitle = "【".$keyword[word]."】".$areaname.$keyword['word']."医疗器械大全-医疗器械产品库-天成医疗器械网";
@@ -111,5 +111,5 @@ $zdescription = '天成医疗器械网为你找到'.$items['c'].'件'.$areaname.
     </div>
 </div>
 <!--对比框 end-->
-
+{$iLink}
 {template 'footer2017'}

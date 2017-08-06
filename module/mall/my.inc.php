@@ -96,14 +96,7 @@ switch($action) {
 				$post['status'] = get_status(3, $need_check);
 				$post['hits'] = 0;
 				$post['username'] = $_username;
-				//屏蔽代码，不出现产品添加时多添加一条 //--chentao/2016/8/12/start--
-				/*		
-				if($FD) fields_check($post_fields);
-				if($CP) property_check($post_ppt);
-				$do->add($post);
-				if($FD) fields_update($post_fields, $table, $do->itemid);
-				if($CP) property_update($post_ppt, $moduleid, $post['catid'], $do->itemid);
-				*/		//--chentao/2016/8/12/end--
+
 				if($could_elite && isset($elite) && $post['thumb'] && $_credit > $MOD['credit_elite']) {
 					$post['level'] = 1;
 					credit_add($_username, -$MOD['credit_elite']);
@@ -173,6 +166,8 @@ switch($action) {
 				if(isset($post['sync_sina']) && $post['sync_sina']) $js .= sync_weibo('sina', $moduleid, $do->itemid);
 				if(isset($post['sync_qq']) && $post['sync_qq']) $js .= sync_weibo('qq', $moduleid, $do->itemid);
 				}//--2015/9/1/chentao--end
+
+				
 				if($_userid) {
 					set_cookie('dmsg', $msg);
 					$forward = $MODULE[2]['linkurl'].$DT['file_my'].'?mid='.$mid.'&status='.$post['status'];
@@ -259,7 +254,7 @@ switch($action) {
 				dalert($do->errmsg);
 			}
 		} else {
-			extract($item,EXTR_SKIP);
+			extract($item);
 			if($step) {
 				extract(unserialize($step),EXTR_SKIP);
 				$a2 > 0 or $a2 = '';

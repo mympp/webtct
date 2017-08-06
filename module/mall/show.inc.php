@@ -1,5 +1,9 @@
 <?php 
+use models\helpers\view\internalLink;
+
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
+
 $itemid or dheader($MOD['linkurl']);
 if(!check_group($_groupid, $MOD['group_show'])) include load('403.inc');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
@@ -82,15 +86,19 @@ if(!empty($item['kcatids'])){
 //企业信息
 $company_db = new tcdb('company');
 $company = $company_db->field('mode,linkurl,telephone,mail,company')->where(['username'=>$username])->one();
-//相关产品信息
-//$malldata=getRelevant(array('status'=>3,'moduleid'=>16),array(1,9,9),'title,thumb,linkurl,username',$title.' '.area_pos($areaid, ' '),'mall',true);
-//相关求购信息
-//$selldata=getRelevant(array('status'=>3,'moduleid'=>5),array(1,10,10),'title,linkurl,addtime,areaid',$title.' '.area_pos($areaid,' '),'sell_5');
+
 //相关搜索词
 $keyword_data_db = new tcdb('keyword_data');
 $simword = $keyword_data_db->field('itemid,word')->order('itemid asc')->limit(rand(0,90),10)->select();
 //猜你喜欢产品
 $likemall = $mall_db->field('title,thumb,linkurl,kcatids,company,username')->where(['status'=>3,'catid'=>$catid])->where(['thumb'=>''],'<>')->order('itemid desc')->limit(0,6)->select();
+
+$internalLink = new internalLink();
+$internalLink->setModule(['mall','keshi','buy']);
+$iLink = $internalLink->build($catid,$areaid,[
+	'mall' => ['name'=>'产品','titleName' => '产品'],
+	'keshi' => ['name' => '医疗器械','titleName' => '科室']
+]);
 
 $seo_file = 'show';
 include DT_ROOT.'/include/seo.inc.php';
@@ -98,43 +106,5 @@ if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].mobileurl($moduleid,
 $template = $item['template'] ? $item['template'] : ($CAT['show_template'] ? $CAT['show_template'] : 'show');
 include template($template, $module);
 
-function getRelevant($condition,$limit,$selected,$keyword,$tablename,$search_mysql=false){
-	//$condition为搜索条件数组格式,$limit为三个值到数组控制匹配数量，$selected返回数据到字段，$keyword搜索匹配到关键字,$tablename搜索到表名称不带前缀
-	global $db;
-	$sphinx=new SphinxClient();
-	$sphinx->setServer('121.14.195.22',9312);
-	$sphinx->setArrayResult(true);
-	$sphinx->setMatchMode(SPH_MATCH_ANY);
-	foreach($condition as $k=>$v){
-		$sphinx->setFilter($k,array($v));
-	}
-	if(!$search_mysql){
-		$sphinx->setSelect($selected);
-	}else{
-		$sphinx->setSelect('itemid');
-	}
-	$sphinx->setLimits($limit[0],$limit[1],$limit[2]);   //取匹配商品的第2到9个，第1个多为当前页面商品
-	$spresult=$sphinx->query($keyword,"data");
-	$spdata=$spresult['matches'];
-	if(!$search_mysql){
-		$backdata=array();
-		foreach($spdata as $k=>$v){
-			array_push($backdata,$v['attrs']);
-		}
-
-		return $backdata;
-	}
-	$id_str='';
-	foreach($spdata as $k=>$v){
-		$id_str.=$v['attrs']['itemid'].',';
-	}
-	$id_str=substr($id_str,0,-1);
-	$mysql_result=$db->query("select $selected from {$db->pre}$tablename where itemid in ($id_str)");
-	$backdata=array();
-	while($m=mysql_fetch_array($mysql_result,MYSQL_ASSOC)){
-		array_push($backdata,$m);
-	}
-	return $backdata;
-}
 
 ?>

@@ -1,20 +1,5 @@
 <?php
-/*
-*time:2014-03-25
-*who:tcdahe
-*修改：
-*	添加：是否有分科室
-*
-*关联：
-*	mall\admin\index.inc.php
-*
-*/
-/*
-time:2015-5-11
-who:陈韬
-修改：批量上传商品
-关联：/module/mall/admin/upload.inc.php、/module/mall/admin/download.inc.php
-*/
+
 defined('DT_ADMIN') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
@@ -79,13 +64,12 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 <th width="14"> </th>
 <th width="70">图片</th>
 <th>商品</th>
+<th>厂家名称</th>
+<th>批准文号</th>
 <th>会员</th>
 <th>价格</th>
 <th>订单</th>
-<th>销量</th>
 <th>库存</th>
-<th>评论</th>
-<th>人气</th>
 <th width="70">操作</th>
 </tr>
 <?php foreach($lists as $k=>$v) {?>
@@ -101,6 +85,20 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 </span>
 </td>
 <td>
+<?php echo $v['company']; ?>&nbsp;
+	<a href="javascript:void();" onclick="Dwidget('http://www.tecenet.com/file/game/bis/product-search.html?ID=<?php echo $v['company']; ?>&from=domestic', '搜索BIS库内容')">[bis]</a>
+</td>
+<td>
+	<?php echo $v['batchnum']; ?>&nbsp;
+	<?php
+	 $batchnum = str_replace('（','(',$v['batchnum']);
+	 $batchnum = str_replace('）',')',$batchnum);
+	?>
+	<a href="javascript:void();" onclick="Dwidget('http://www.tecenet.com/file/game/bis/product-search.html?ID=<?php echo $batchnum; ?>&from=domestic', '搜索BIS库内容')">[bis]</a>
+	&nbsp;
+	<a href="https://db.yaozh.com/Search?typeid=8455&content=<?php echo $batchnum; ?>" target="_blank">[药智]</a>
+	</td>
+<td>
 <?php if($v['username']) { ?>
 <a href="javascript:_user('<?php echo $v['username'];?>');"><?php echo $v['username'];?></a>
 <?php } else { ?>
@@ -109,10 +107,7 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 </td>
 <td class="f_price"><?php echo $v['price'];?></td>
 <td class="px11"><a href="javascript:Dwidget('?moduleid=<?php echo $moduleid;?>&file=order&mallid=<?php echo $v['itemid'];?>', '[<?php echo $v['alt'];?>] 订单列表');"><?php echo $v['orders'];?></a></td>
-<td class="px11"><?php echo $v['sales'];?></td>
 <td class="px11"><?php echo $v['amount'];?></td>
-<td class="px11"><?php echo $v['comments'];?></td>
-<td class="px11"><?php echo $v['hits'];?></td>
 <td>
 <a href="javascript:Dwidget('?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=relate&itemid=<?php echo $v['itemid'];?>', '[<?php echo $v['alt'];?>] 关联商品');"><img src="admin/image/child.png" width="16" height="16" title="关联商品" alt=""/></a>&nbsp;
 <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=edit&itemid=<?php echo $v['itemid'];?>"><img src="admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;

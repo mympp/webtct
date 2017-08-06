@@ -1,6 +1,7 @@
 <?php 
-
+use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
 //if($DT_BOT || $_POST) dhttp(403);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');
@@ -48,6 +49,14 @@ $start = ($page - 1)*$pagesize;
 $article_db = new tcdb('article_21');
 $lists = $article_db->field('itemid,title,introduce,addtime,linkurl,thumb,copyfrom,hits')->where($condition)->likeWhere($likeCondition)->order('itemid desc')->limit($start,$pagesize)->select();
 $items = $article_db->where($article_db->getCondition())->count('c');
+
+$internalLink = new internalLink();
+$internalLink->setModule(['mall','article','company']);
+$iLink = $internalLink->build($catid,$areaid,[
+	'mall' => ['name'=>'产品','titleName' => '产品'],
+	'article' => ['name' => '资讯','titleName' => '资讯','closeArea' => true],
+	'company' => ['name'=>'企业','url'=>['typeid'=>0],'titleName'=>'企业'],
+]);
 
 //页面右侧内容
 $recommendArticles = getRecommendArticles();

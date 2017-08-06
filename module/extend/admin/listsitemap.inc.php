@@ -153,7 +153,6 @@ function buildSoSitemap($arr,$url,$modulename,$linkname = 'so'){
 /**
 * 笛卡尔乘积处理，将所有数组元素的组合计算汇总
 * @param array $arr	,包含所有参数的数组
-* @param int size , 数组的大小
 * @return array
 */
 function CartesianProduct($arr){

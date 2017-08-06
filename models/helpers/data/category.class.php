@@ -61,14 +61,13 @@ class category{
 	//获取兄弟分类
 	public function getBroCate($catid){
 		$cate = $this->getCate($catid);
-		if(!isset($cate['parentid'])){
+		if(!empty($cate['parentid'])){
 			return $this->getChildCate($cate['parentid']);
 		}elseif($cate['parentid'] == 0){
 			return $this->getMainCate($cate['moduleid']);
 		}else{
 			return false;
 		}
-		
 	}
 	
 	//检查catid是否在该module下

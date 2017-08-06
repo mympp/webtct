@@ -61,7 +61,6 @@
 <tr>
 <td class="tl"><span class="f_red">*</span> 所属分类</td>
 <td class="tr">
-<<<<<<< .mine
 <input type="hidden" name="post[catid]" id="catid" value="{$catid}">
 <div id="catid_div"></div>
 <script>
@@ -77,18 +76,6 @@
 		},
 	});
 	}
-=======
-<!-- 高级挑选法开始 -->
-<div class="moresel fl" id="openDialog">
-<span id="cat68" class="lenstr moretitle" title="" onmouseover="this.title=this.innerText;">{if $catidname}{$catidname}{else}请选医疗器械分类(68分类){/if}</span>
-<span class="lenstr morecount">共<font id="catcount"></font>个</span>
-</div>
-<input type="hidden" name="post_fields[cates]" id="catessel" value="{if $cates}{$cates}{else}{if $catid},{$catid}{/if},{/if}">
-<input type="hidden" name="post_fields[catidname]"  id="catestitle" value="{if $catidname}{$catidname}{else},{/if}">
-<input type="hidden" name="catcz" id="catcz" value="0"><!-- 判断是否已经选择了，如果已经选择点击立刻打开已选择 -->
-<script type="text/javascript">var catcount=strcount(Dd('catessel').value,",");Dd('catcount').innerText=catcount-1;
-if(catcount-1>0){Dd('catcz').value='1';}
->>>>>>> .r2225
 </script>
 <span id="dcatid" class="f_red"></span>
 </td>
@@ -161,7 +148,7 @@ Dd('stype_{$_REQUEST['stype']}').checked=true;
 <textarea name="post[content]" id="content" class="dsn">{$content}</textarea>
 {deditor($moduleid, 'content', $group_editor, '98%', 350)}<span id="dcontent" class="f_red"></span>
 <script type="text/javascript">
-//fck_stop();
+fck_stop(); 
 </script>
 </td>
 </tr>
@@ -425,21 +412,6 @@ mored(6);
 <script type="text/javascript">s('mid_{$mid}');m('s{$status}');</script>
 {/if}
 {if $action == 'add' || $action == 'edit'}
-
-<script type="text/javascript" src="{DT_PATH}file/script/popwin.js"></script>
-<script>
-	$("#openDialog").on('click' , function(){
-		var catessel = Dd('catessel').value;
-		var catcount = Dd('catcount').value;
-		var catcz    = Dd('catcz').value;
-		var url      = 'catselect.php?moduleid=16&catessel='+catessel+'&catcount='+catcount+'&catcz='+catcz;
-		popWin.showWin("860","540","产品涉及的医疗器械分类",url);
-	});
-	function closedialog(){
-		$("#popWinClose").click();
-	}
-</script>
-
 <script type="text/javascript">
 function _p() {
 	if(Dd('tag').value) {
@@ -453,7 +425,7 @@ function check() {
 	var l;
 	var f;
 	var k;
-	f = 'catcz';
+	f = 'catid';
 	if(Dd(f).value == 0) {
 		Dmsg('请选择产品分类', 'catid', 1);
 		return false;

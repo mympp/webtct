@@ -13,7 +13,7 @@ class sellModule extends baseModule{
 		$this->linkurl = $MODULE[$this->moduleid]['linkurl'];
 	}
 	
-	//企业模块伪静态地址重写
+	//供需模块伪静态地址重写
 	public function searchRewrite($selector){
 		//存在以下参数的地址使用动态地址
 		if(isset($selector['kw']) || isset($selector['day']) || isset($selector['order'])){

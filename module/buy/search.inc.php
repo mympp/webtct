@@ -1,5 +1,8 @@
 <?php 
+use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
+
 //if($DT_BOT || $_POST) dhttp(403);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');
@@ -49,6 +52,14 @@ $condition_str = $buy_db->getCondition();
 $count = $buy_db->where($condition_str)->count('c');
 
 $seo_file = 'list';
+
+$internalLink = new internalLink();
+$internalLink->setModule(['mall','sell','sell1']);
+$iLink = $internalLink->build($catid,$areaid,[
+	'mall' => ['name'=>'产品','titleName' => '产品'],
+	'sell' => ['name' => '求购','titleName' => '求购','url'=>['typeid'=>1]],
+	'sell1' => ['name'=>'供应','url'=>['typeid'=>0],'titleName'=>'供应'],
+]);
 
 include DT_ROOT.'/include/seo.inc.php';
 include template($MOD['template_search'] ? $MOD['template_search'] : 'search', $module);

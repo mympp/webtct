@@ -47,9 +47,9 @@ $rcompanys = $company_db->field('linkurl,company,thumb')->where(['groupid'=>7])-
 $internalLink = new internalLink();
 $internalLink->setModule(['mall','keshi','sell']);
 $iLink = $internalLink->build($catid,$areaid,[
-	'company' => ['name'=>'企业'],
-	'sell' => ['name'=>'供应'],
-	'mall' => ['name'=>'产品'],
+	'mall' => ['name'=>'产品','titleName' => '产品'],
+	'keshi' => ['name' => '医疗器械','titleName' => '科室'],
+	'sell' => ['name'=>'供应','url'=>['typeid'=>0],'titleName'=>'供应'],
 ]);
 
 $seo_file = 'list';

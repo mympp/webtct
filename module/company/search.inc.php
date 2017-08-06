@@ -1,6 +1,8 @@
 <?php 
-
+use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
+
 //if($DT_BOT || $_POST) dhttp(403);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');
@@ -76,6 +78,15 @@ $seo_file = 'list';			//使用后台设置列表seo信息作为seo内容
 $modes[0] = '公司';			//seo参数
 include DT_ROOT.'/include/seo.inc.php';
 $modes[0] = '不限';
+
+$internalLink = new internalLink();
+$internalLink->setModule(['mall','sell','sell1']);
+$iLink = $internalLink->build($catid,$areaid,[
+	'mall' => ['name'=>'产品','titleName' => '产品'],
+	'sell' => ['name' => '求购','titleName' => '求购','url'=>['typeid'=>1]],
+	'sell1' => ['name'=>'供应','url'=>['typeid'=>0],'titleName'=>'供应'],
+]);
+
 include template('search', $module);
 
 

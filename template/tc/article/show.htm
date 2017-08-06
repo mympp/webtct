@@ -1,5 +1,5 @@
 {php $head_css = [DT_SKIN.'tc.page.header.css',DT_SKIN.'tc.news.detail.css']}
-{php $footer_js = [DT_PATH.'file/script/article/tc.news.detail.js']}
+{php $footer_js = [DT_PATH.'file/script/article/tc.news.detail.js',DT_PATH.'file/script/internalLink.js']}
 {template 'module-header'}
 
 <!--news-wrap-->
@@ -100,12 +100,7 @@
                 </div>
                 <!--相关文章 end-->
 
-
-
-
-
             </div>
-
 
         </div>
         <!--post-content-main end-->
@@ -115,5 +110,5 @@
     </div>
 </div>
 <!--news-wrap end-->
-
+{$iLink}
 {template 'footer2017'}

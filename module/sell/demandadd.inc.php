@@ -16,6 +16,7 @@ if($_userid){
 }
 
 if($submit){
+		
 	if(empty($post['title'])) message('请填写需求产品信息','demandadd.php');
 	//$content = '';	//需求详细内容
 	$post['areaid'] = $areaid;	//地区id
@@ -63,7 +64,7 @@ if($submit){
 	$do = new sell();
 	$sell_db = new tcdb('sell_5');
 	$sell_db->add($post);
-	$itemid = $sell_db->insert_id();
+	$itemid = $sell_db->getInsertId();
 	$sell_data_db = new tcdb('sell_data_5');
 	$sell_data_db->add(['itemid'=>$itemid,'content'=>$content]);
 	$do->update($itemid);
