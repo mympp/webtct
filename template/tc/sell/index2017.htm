@@ -69,7 +69,7 @@
         <div class="gy-module-bd clearfix">
             <div class="main pull-right">
             {php $nowtime = strtotime(date('Y-m-d',time())); //当日0时时间戳}
-            {php $hot_type1 = $sell->field('itemid,title,linkurl,catid,addtime,areaid,amount')->where(['typeid'=>1,'status'=>3])->where(['addtime'=>($nowtime-(3600*24*30))],'>')->limit(0,6)->order('hits desc')->select();}
+            {php $hot_type1 = $sell->field('itemid,title,linkurl,catid,addtime,areaid,amount')->where(['typeid'=>1,'status'=>3])->where(['addtime'=>($nowtime-(3600*24*60))],'>')->limit(0,6)->order('hits desc')->select();}
             {loop $hot_type1 $k $t}
                 <div class="item">
                     <div class="title">

@@ -1,10 +1,20 @@
 <?php 
+//2017.8.7，流程修改：每次提交询价单，只对一个供求信息，不再是同时多个,暂时停止发送短信
+
+use models\helpers\data\dataFilter;
+use models\helpers\data\tcdb;
+
 defined('IN_DESTOON') or exit('Access Denied');
+require_once DT_ROOT.'/models/autoload.php';
+
 if($DT_BOT) dhttp(403);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 $MG['inquiry_limit'] > -1 or dalert(lang('message->without_permission'), 'goback');
+
 include load('misc.lang');
 $limit_used = $limit_free = 0;
+
+//验证用户询价限制
 if($MG['inquiry_limit']) {
 	if(is_array($itemid) && count($itemid) > $MG['inquiry_limit']) dalert(lang($L['inquiry_limit'], array($MG['inquiry_limit'])), 'goback');
 	$today = $today_endtime - 86400;
@@ -14,73 +24,52 @@ if($MG['inquiry_limit']) {
 	$limit_used < $MG['inquiry_limit'] or dalert(lang($L['message_limit'], array($MG['inquiry_limit'], $limit_used)), 'goback');
 	$limit_free = $MG['inquiry_limit'] > $limit_used ? $MG['inquiry_limit'] - $limit_used : 0;
 }
+
 require DT_ROOT.'/include/post.func.php';
 $need_captcha = $MOD['captcha_inquiry'] == 2 ? $MG['captcha'] : $MOD['captcha_inquiry'];
 $need_question = $MOD['question_inquiry'] == 2 ? $MG['question'] : $MOD['question_inquiry'];
 if($submit) {
-	preg_match("/^[0-9\,]{1,}$/", $itemids) or dalert($L['inquiry_itemid'], 'goback');
+	$dataFilter = new dataFilter();
+	$post = $dataFilter->getFilterHtml($_POST);
+	
+	if(empty($post['itemid'])) dalert($L['inquiry_itemid'], 'goback');
+	
+	$sell_db = new tcdb('sell_5');
+	$sell_result = $sell_db->where(['status'=>3,'itemid'=>$itemid])->one();
+	if(empty($sell_result)) dalert($L['inquiry_itemid'], 'goback');
+	
+	if(empty($post['title'])) message($L['msg_type_title']);
+	if(empty($post['content'])) message($L['msg_type_content']);
+	if(empty($post['truename'])) message($L['msg_type_truename']);
+	if(empty($post['telephone'])) message($L['msg_type_telephone']);
+
 	captcha($captcha, $need_captcha);
 	question($answer, $need_question);
-	$title = dhtmlspecialchars(trim($title));
-	if(!$title) message($L['msg_type_title']);
-	$content = dhtmlspecialchars(trim($content));
-	if(!$content) message($L['msg_type_content']);
-		$truename = dhtmlspecialchars(trim($truename));
-		if(!$truename) message($L['msg_type_truename']);
-		$telephone = dhtmlspecialchars(trim($telephone));
-		if(!$telephone) message($L['msg_type_telephone']);
-		$email = dhtmlspecialchars(trim($email));
-		$company = dhtmlspecialchars(trim($company));
-		$qq = dhtmlspecialchars(trim($qq));
-		$msn = dhtmlspecialchars(trim($msn));
-	$type = dhtmlspecialchars(implode(',', $type));
-	$content = nl2br($content);
+	
+	$type = dhtmlspecialchars(implode(',', $post['type']));
+	$content = nl2br($post['content']);
 	if($type) $content = $L['content_type'].$type.'<br/>'.$content;
-	if($company) $content .= '<br/>'.$L['content_company'].$company;
-	if($truename) $content .= '<br/>'.$L['content_truename'].$truename;
-	if($telephone) $content .= '<br/>'.$L['content_telephone'].$telephone;
-	if(is_email($email)) $content .= '<br/>'.$L['content_email'].$email;
-	if(is_numeric($qq)) $content .= '<br/>'.$L['content_qq'].' '.im_qq($qq).' '.$qq;
-	if($ali) $content .= '<br/>'.$L['content_ali'].' '.im_ali($ali).' '.$ali;
-	if(is_email($msn)) $content .= '<br/>'.$L['content_msn'].' '.im_msn($msn).' '.$msn;
-	if($skype) $content .= '<br/>'.$L['content_skype'].' '.im_skype($skype).' '.$skype;
-	if(is_date($date)) $content .= '<hr size="1"/>'.lang($L['content_date'], array($date));	
-	$result = $db->query("SELECT * FROM {$table} WHERE itemid IN ($itemids) AND status=3 LIMIT 30");
-	$i = $j = 0;
-	while($r = $db->fetch_array($result)) {
-		if($_username && $_username == $r['username']) continue;
-		if($stype=='small'){
-		$linkurl = $MOD['linkurl'].rewrite('inquiry.php?stype=small&itemid='.$r['itemid']);}
-		else{
-		$linkurl = $MOD['linkurl'].rewrite('inquiry.php?itemid='.$r['itemid']);}
-		$message = $L['content_product'].'<a href="'.$linkurl.'"><strong>'.$r['title'].'</strong></a><br/>'.$content;
-		++$i;
-		if(send_message($r['username'], $title, $message, 1, $_username)) ++$j;
-		//send sms
-		if($DT['sms'] && $_sms && $r['username'] && isset($sendsms)) {
-			$touser = userinfo($r['username']);
-			if($touser['mobile']) {
-				$message = lang('sms->sms_inquiry', array($r['tag'], $r['itemid'], $truename, $telephone));
-				$message = strip_sms($message);
-				$word = word_count($message);
-				$sms_num = ceil($word/$DT['sms_len']);
-				if($sms_num <= $_sms) {
-					$sms_code = send_sms($touser['mobile'], $message, $word);
-					if(strpos($sms_code, $DT['sms_ok']) !== false) {
-						$tmp = explode('/', $sms_code);
-						if(is_numeric($tmp[1])) $sms_num = $tmp[1];
-						if($sms_num) sms_add($_username, -$sms_num);
-						if($sms_num) sms_record($_username, -$sms_num, $_username, $L['sms_inquiry'], 'ID:'.$r['itemid']);
-						$_sms = $_sms - $sms_num;
-					}
-				}
-			}
-		}
-		//send sms
-	}
-	if($i == 1) $forward = $linkurl;
+	if($post['company']) $content .= '<br/>'.$L['content_company'].$post['company'];
+	if($post['truename']) $content .= '<br/>'.$L['content_truename'].$post['truename'];
+	if($post['telephone']) $content .= '<br/>'.$L['content_telephone'].$post['telephone'];
+	if(is_email($post['email'])) $content .= '<br/>'.$L['content_email'].$post['email'];
+	if(is_numeric($post['qq'])) $content .= '<br/>'.$L['content_qq'].' '.im_qq($post['qq']).' '.$post['qq'];
+	if($post['ali']) $content .= '<br/>'.$L['content_ali'].' '.im_ali($post['ali']).' '.$post['ali'];
+	if(is_email($post['msn'])) $content .= '<br/>'.$L['content_msn'].' '.im_msn($post['msn']).' '.$post['msn'];
+	if($post['skype']) $content .= '<br/>'.$L['content_skype'].' '.im_skype($post['skype']).' '.$post['skype'];
+	if(is_date($post['date'])) $content .= '<hr size="1"/>'.lang($L['content_date'], array($post['date']));	
+	
+	$post['type'] = $type;
+	$post['content'] = $content;
+	
+	if($_username && $_username == $sell_result['username']) message('不能对自己发送询价');
+	$linkurl = $MOD['linkurl'].rewrite('inquiry.php?itemid='.$sell_result['itemid']);
+	$message = $L['content_product'].'<a href="'.$linkurl.'"><strong>'.$sell_result['title'].'</strong></a><br/>'.$content;
+
+	send_message($sell_result['username'], $title, $message, 1, $_username);
+	
 	if($urls){$forward = $urls;}
-	dalert(lang($L['inquiry_result'], array($i, $j)), $forward);
+	dalert('发送完成', $forward);
 } else {
 $user = array();
 if($_userid) {

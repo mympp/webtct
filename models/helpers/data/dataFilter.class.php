@@ -46,6 +46,16 @@ class dataFilter {
 		}
 		
 	}
+	
+	//过滤html格式内容
+	public function getFilterHtml($data){
+		$result = [];
+		foreach($data as $k => $v){
+			$result[$k] = dhtmlspecialchars(trim($v));
+		}
+		return $result;
+	}
+
 
 }
 ?>

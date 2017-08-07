@@ -22,10 +22,11 @@
         </div>
         <div class="inquiry-bd">
             <form method="post" action="{$MOD[linkurl]}inquiry.php" onsubmit="return check();">
+            	<input type="hidden" name="itemid" value="{$itemid}" />
                 <div class="form-group clearfix">
                     <label for="title" class="form-name"><i>*</i>询价标题：</label>
                     <div class="form-control">
-                        <input type="text" name="title" value="我对您发布的“{$title}”很感兴趣" id="title" >
+                        <input type="text" name="title" value="{$title}" id="title" >
                         <div class="help-block"><i class="info"></i>建议您修改主题，吸引对方注意,得到优先回复! </div>
                     </div>
                     <span class="alert" id="dtitle"></span>
