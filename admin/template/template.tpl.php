@@ -16,15 +16,15 @@ show_menu($menus);
 </tr>
 <?php foreach($dirs as $k=>$v) {?>
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
-<td align="left">&nbsp;<img src="admin/image/folder.gif" alt="" align="absmiddle"/> <a href="?file=<?php echo $file;?>&dir=<?php echo $v['dirname'];?>" title="修改"><?php echo $v['dirname'];?></a></td>
-<td><input type="text" style="width:130px;" value="<?php echo $v['name'];?>" onblur="template_name('<?php echo $v['dirname'];?>', this.value);"/></td>
+<td align="left">&nbsp;<img src="admin/image/folder.gif" alt="" align="absmiddle"/> <a href="?file=<?php echo $file;?>&dir=<?php echo ($dir ? $dir.'/' : '').$v['dirname'];?>" title="修改"><?php echo $v['dirname'];?></a></td>
+<td><input type="text" style="width:130px;" value="<?php echo $v['name'];?>" onblur="template_name('<?php echo ($dir ? $dir.'/' : '').$v['dirname'];?>', this.value);"/></td>
 <td>&lt;目录&gt;</td>
 <td>&lt;目录&gt;</td>
 <td><?php echo $v['mtime'];?></td>
 <td><?php echo $v['mod'];?></td>
 <td>
-<a href="?file=<?php echo $file;?>&action=add&dir=<?php echo $v['dirname'];?>"><img src="admin/image/new.png" width="16" height="16" title="新建" alt=""/></a>&nbsp;
-<a href="?file=<?php echo $file;?>&dir=<?php echo $v['dirname'];?>"><img src="admin/image/edit.png" width="16" height="16" title="管理" alt=""/></a>
+<a href="?file=<?php echo $file;?>&action=add&dir=<?php echo ($dir ? $dir.'/' : '').$v['dirname'];?>"><img src="admin/image/new.png" width="16" height="16" title="新建" alt=""/></a>&nbsp;
+<a href="?file=<?php echo $file;?>&dir=<?php echo ($dir ? $dir.'/' : '').$v['dirname'];?>"><img src="admin/image/edit.png" width="16" height="16" title="管理" alt=""/></a>
 </td>
 </tr>
 <?php }?>

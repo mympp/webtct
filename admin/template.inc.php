@@ -3,6 +3,10 @@
 	[Destoon B2B System] Copyright (c) 2008-2015 www.destoon.com
 	This is NOT a freeware, use is subject to license.txt
 */
+use models\helpers\widget\simFile;
+
+require_once DT_ROOT.'/models/autoload.php';
+
 defined('DT_ADMIN') or exit('Access Denied');
 if(!isset($CFG['edittpl']) || !$CFG['edittpl']) msg('系统禁止了在线修改模板，请FTP修改根目录config.inc.php<br/>$CFG[\'edittpl\'] = \'0\'; 修改为 $CFG[\'edittpl\'] = \'1\';');
 isset($dir) or $dir = '';
@@ -11,7 +15,8 @@ $menus = array (
     array('模板管理', '?file='.$file),
 	array('重建缓存', '?file='.$file.'&action=cache'),
     array('风格管理', '?file=skin'),
-    array('标签向导', '?file=tag'),
+    array('标签向导', '?file=tag'),  
+    array('模板上传', '?file='.$file.'&action=upload'),
 );
 isset($bakid) or $bakid = '';
 isset($fileid) or $fileid = '';
@@ -128,6 +133,16 @@ switch($action) {
 	case 'cache':
 		cache_clear('php', 'dir', 'tpl');
 		dmsg('更新成功', $this_forward);	
+	break;
+	case 'upload':
+		$simFile = new simFile();
+		$templatePath = DT_ROOT.'/template/tc/homepage';
+		$templateDir = $simFile->getSubDir($templatePath);
+		
+		$skinPath = DT_ROOT.'/gongsi/skin';
+		$skinDir = $simFile->getSubDir($skinPath);
+		
+		include tpl('template_upload');
 	break;
 	default:
 		$dirs = $files = $templates = $baks = array();
