@@ -11,7 +11,7 @@ class dlink {
 		global $db, $DT_PRE;
 		$this->table = $DT_PRE.'link';
 		$this->db = &$db;
-		$this->fields = array('typeid','areaid','level','title','style','thumb','introduce','addtime','editor','edittime','template', 'status', 'linkurl', 'link_moduleid');
+		$this->fields = array('typeid','areaid','level','title','style','thumb','introduce','addtime','editor','edittime','template', 'status', 'linkurl', 'link_moduleid','contact');
     }
 
 	function pass($post) {

@@ -129,7 +129,7 @@ function delinfo($module,$moduleid,$itemid){//删除数据
 
 
 function msg($msg,$title,$itemid,$moduleid=29){
-	return "<div style='text-align:center;padding:10px'><h2>".$msg."</h2>点击以下地址打开或者直接扫描一下二维码！<br><a href='http://wap.tecenet.com/index.php?moduleid=29&itemid=".$itemid."' ><u style='color:red;font-size:18px;'>".$title."-</u></a><br><br><br><br><input type=\"button\" onclick=\"location.href='index.php?action=addnew&itemid=".$itemid."'\" value='修改'>&nbsp;&nbsp;&nbsp;<input type=\"button\" onclick=\"location.href='index.php?action=del&itemid=".$itemid."'\" value='删除'><br><img src='../ewm.php?size=6&dz=".urlencode('http://wap.tecenet.com/index.php?moduleid='.$moduleid.'&itemid='.$itemid)."'><br><br><input type='button' value=' 继续发布 ' class=\"sub\"  onclick=\"location.href='index.php'\">";
+	return "<div style='text-align:center;padding:10px'><h2>".$msg."</h2>点击以下地址打开或者直接扫描一下二维码！<br><a href='http://wap2.tecenet.com/index.php?moduleid=29&itemid=".$itemid."' ><u style='color:red;font-size:18px;'>".$title."-</u></a><br><br><br><br><input type=\"button\" onclick=\"location.href='index.php?action=addnew&itemid=".$itemid."'\" value='修改'>&nbsp;&nbsp;&nbsp;<input type=\"button\" onclick=\"location.href='index.php?action=del&itemid=".$itemid."'\" value='删除'><br><img src='../ewm.php?size=6&dz=".urlencode('http://wap2.tecenet.com/index.php?moduleid='.$moduleid.'&itemid='.$itemid)."'><br><br><input type='button' value=' 继续发布 ' class=\"sub\"  onclick=\"location.href='index.php'\">";
 }
 
 

@@ -52,9 +52,9 @@
 	{if $action != 'ajax'}{template 'search-tool', 'mobile'}{/if}
 	{loop $lists $v}
 	<div class="list-img">
-	{if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+	{if $v[thumb]}<a href="{$v[linkurl]}" target="_blank"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
 	<ul>
-	<li><a href="{$v[linkurl]}"><strong>{$v[title]}</strong></a></li>
+	<li><a href="{$v[linkurl]}"  target="_blank"><strong>{$v[title]}</strong></a></li>
 	<div><em>{$v[introduce]}-{$v[date]}</em></div>
 	<li{if $v[vip]} class="vip" title="{VIP}:{$v[vip]}"{/if}><a href="index.php?moduleid=4&username={$v[username]}"><span>{$v[company]}</span></a></li>
 	</ul>

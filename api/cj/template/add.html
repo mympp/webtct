@@ -46,12 +46,20 @@
 					<dl id="thumblist">
 						<dt style='font-size:16px;font-weight:bold'>主题缩略图(获取内容的相关图片)&nbsp;&nbsp;<input type="button" value="获取主题图" onclick="cgimg('thumbb');"></dt>
 						<div id="thumbb">
-							<?
+							<?php
 							preg_match_all('/http:\/\/(.*?)(#"|"|\);)/', $content, $match);
 							$match = array_unique($match[1]);
 							foreach($match as $v){
 							echo "<dd><img src='http://".$v."' onclick=\"Dd('thumb').value=this.src;chimg('thumbb');this.className='redb'\" class='grayb' onerror=\"this.style.display='none'\" onload=\"if(this.src==Dd('thumb').value){this.className='redb'}\"></dd>";
-							}?>
+							}
+							
+							preg_match_all('/https:\/\/(.*?)(#"|"|\);)/', $content, $match);
+							$match = array_unique($match[1]);
+							foreach($match as $v){
+							echo "<dd><img src='http://".$v."' onclick=\"Dd('thumb').value=this.src;chimg('thumbb');this.className='redb'\" class='grayb' onerror=\"this.style.display='none'\" onload=\"if(this.src==Dd('thumb').value){this.className='redb'}\"></dd>";
+							}
+							
+							?>
 						</div>
 					</dl>
 				<?}else{?>

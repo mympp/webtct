@@ -77,6 +77,10 @@ Dd('yourmdmore').href='{$MODULE[1][linkurl]}link';
 			<td><textarea name="post[introduce]" style="width:300px;height:40px;"></textarea></td>
 			</tr>
 			<tr bgcolor="#FFFFFF">
+				<td bgcolor="#F1F7FC">联系方式 <span class="f_red">*</span></td>
+				<td><input name="post[contact]" type="text" id="contact" size="40" placeholder="请填写你的联系手机号码或qq" /> <span id="dcontact" class="f_red"></span></td>
+			</tr>
+			<tr bgcolor="#FFFFFF">
 			<td bgcolor="#F1F7FC">验证码 <span class="f_red">*</span></td>
 			<td>{template 'captcha', 'chip'} <span id="dcaptcha" class="f_red"></span></td>
 			</tr>
@@ -115,8 +119,15 @@ Dd('yourmdmore').href='{$MODULE[1][linkurl]}link';
 					Dmsg('请填写验证码', f);
 					return false;
 				}
+				
+				f = 'contact';
+				l = Dd(f).value.length;
+				if(l < 2){
+					Dmsg('请填写联系方式', f);
+					return false;
+				}
+
 			}
-			}catch(e){}
 			</script>
 		{else}
 		    

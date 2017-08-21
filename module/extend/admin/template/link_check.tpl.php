@@ -36,6 +36,7 @@ show_menu($menus);
 <th>网站名称</th>
 <th>网站LOGO</th>
 <th>链接类型</th>
+<th>联系方式</th>
 <th>申请时间</th>
 <th width="50">操作</th>
 </tr>
@@ -46,6 +47,7 @@ show_menu($menus);
 <td><a href="<?php echo DT_PATH;?>api/redirect.php?url=<?php echo urlencode($v['linkurl']);?>" target="_blank"><?php echo $v['title'];?></td>
 <td><?php if($v['thumb']) {?><img src="<?php echo $v['thumb'];?>" width="88" /><?php } ?></td>
 <td><?php echo $v['thumb'] ? 'LOGO' : '文字';?></td>
+<td><?php echo $v['contact']; ?></td>
 <td><?php echo $v['adddate'];?></td>
 <td>
 <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=edit&itemid=<?php echo $v['itemid'];?>"><img src="admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;

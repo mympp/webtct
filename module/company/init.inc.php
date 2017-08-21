@@ -39,13 +39,15 @@ if($domain) {
 	$DT['rewrite'] = intval($CFG['com_rewrite']);
 }
 $userid = $COM['userid'];
-$linkurl = userurl($username, '', $domain);
+//$linkurl = userurl($username, '', $domain);
+$linkurl = $COM['linkurl'];
 $clean = 0;
+/*
 if($COM['linkurl'] != $linkurl) {
 	$COM['linkurl'] = $linkurl;
 	$db->query("UPDATE LOW_PRIORITY {$table} SET linkurl='$linkurl' WHERE userid=$userid", 'UNBUFFERED');
 	$clean = 1;
-}
+}*/
 if($MOD['delvip'] && $COM['vip'] && $COM['totime'] && $COM['totime'] < $DT_TIME) {//VIP Expired
 	$COM['vip'] = 0;
 	$COM['groupid'] = $gid = $COM['regid'] == 5 ? 5 : 6;
@@ -149,7 +151,8 @@ $menuid = 0;
 foreach($HMENU as $k=>$v) {
 	if($menu_show[$k] && in_array($menu_file[$k], $MFILE)) {
 		$MENU[$k]['name'] = $menu_name[$k];
-		$MENU[$k]['linkurl'] = userurl($username, 'file='.$menu_file[$k], $domain);
+		//$MENU[$k]['linkurl'] = userurl($username, 'file='.$menu_file[$k], $domain);
+		$MENU[$k]['linkurl'] = userurl($username, 'file='.$menu_file[$k],'');
 	}
 	if($file == $menu_file[$k]) $menuid = $k;
 	if($menu_num[$k] < 1 || $menu_num[$k] > 50) $menu_num[$k] = 10;

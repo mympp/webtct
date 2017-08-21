@@ -1,9 +1,11 @@
 <?php
-/*
-	[Destoon B2B System] Copyright (c) 2008-2015 www.destoon.com
-	This is NOT a freeware, use is subject to license.txt
-*/
+use models\helpers\widget\wap2_to_wap;
+
 require 'common.inc.php';
+require_once '../models/autoload.php';
+
+wap2_to_wap::forword($_GET);
+
 if(in_array($module, $mobile_modules)) {
 	$pages = '';
 	if($cityid && !$areaid) {

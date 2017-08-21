@@ -29,9 +29,9 @@
 	{if $action != 'ajax'}{template 'search-tool', 'mobile'}{/if}
 	{loop $lists $v}
 		<div class="list-img">
-			{if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+			{if $v[thumb]}<a href="{$v[linkurl]}" target="_blank"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
 			<ul>
-				<li{if $v[vip]} class="vip" title="{VIP}:{$v[vip]}"{/if}><a href="{$v[linkurl]}" rel="external"><strong>{$v[company]}</strong></a></li>
+				<li{if $v[vip]} class="vip" title="{VIP}:{$v[vip]}"{/if}><a href="{$v[linkurl]}" rel="external" target="_blank"><strong>{$v[company]}</strong></a></li>
 				<li><span>主营：{$v[business]}</span></li>
 				<li><span>{area_pos($v[areaid], '', 2)}{if $v[mode]}&nbsp;&nbsp;({$v[mode]}){/if}&nbsp;&nbsp;{if $v[validated]}[已核实]{/if}</span></li>
 			</ul>

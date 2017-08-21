@@ -1,9 +1,9 @@
 {if $lists}
 	{loop $lists $v}
 		<div class="list-img">
-			{if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+			{if $v[thumb]}<a href="{$v[linkurl]}" target="_blank"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
 			<ul>
-				<li{if $v[vip]} class="vip" title="{VIP}:{$v[vip]}"{/if}><a href="{$v[linkurl]}"><strong>{$v[title]}</strong></a></li>
+				<li{if $v[vip]} class="vip" title="{VIP}:{$v[vip]}"{/if}><a href="{$v[linkurl]}" target="_blank"><strong>{$v[title]}</strong></a></li>
 				{if $v[moduleid] == 9 || $v[moduleid] == 24}
 					<li class="f_orange px12">￥[
 						{if $v[minsalary] && $v[maxsalary]}

@@ -68,7 +68,7 @@ $page = isset($page)? $page : 1;
 $start = ($page - 1)*$pagesize;
 $sell->where($condition)->where($inCondition,'in')->where($gtCondition,'>')->likeWhere($likeCondition);
 $condition_str = $sell->condition;
-$lists = $sell->field('itemid,linkurl,thumb,title,price,unit,amount,hits,areaid,validated,vip,email,mobile,addtime,catid')->limit($start,$pagesize)->order($order_str)->select();
+$lists = $sell->field('itemid,linkurl,thumb,title,price,unit,amount,hits,areaid,validated,vip,email,mobile,addtime,catid,totime')->limit($start,$pagesize)->order($order_str)->select();
 $items = $sell->field('count(*) as c')->where(str_replace('where','',$condition_str))->one();
 
 $internalLink = new internalLink();

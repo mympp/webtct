@@ -51,10 +51,10 @@
 	{if $action != 'ajax'}{template 'search-tool', 'mobile'}{/if}
 	{loop $lists $v}
 		<div class="list-img">
-			{if $v[thumb]}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
+			{if $v[thumb]}<a href="{$v[linkurl]}" target="_blank"><img src="{$v[thumb]}" width="80" height="60" alt="" onerror="this.parentNode.style.display='none';"/></a>{/if}
 			<ul>
 				<li>
-					<a href="{$v[linkurl]}" rel="external"><strong>{$v[title]}</strong></a>
+					<a href="{$v[linkurl]}" target="_blank" rel="external"><strong>{$v[title]}</strong></a>
 				</li>
 				<li><span>{$v[introduce]}</span></li>
 				<li>

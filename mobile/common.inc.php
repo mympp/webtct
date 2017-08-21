@@ -39,5 +39,5 @@ $foot = 'channel';
 //自定义
 $EXT['comment_module'].=',24,29';//新增微信分享，工程师评论
 //获取微信接口配置--2016/2/2
-require_once DT_ROOT.'/api/weixin/init.inc.php';
+//require_once DT_ROOT.'/api/weixin/init.inc.php';
 ?>

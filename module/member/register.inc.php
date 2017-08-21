@@ -37,7 +37,7 @@ if($submit){
 		if($post['password'] !== $post['password_second'] && !isMobile()) errorMessage('两次密码不相同','register.php');	//非移动端判断两次密码是否相同
 		if($do->mobile_exists($post['mobile'])) errorMessage('手机号码已存在','register.php');		//判断手机号码是否存在
 		if(empty($post['password'])) errorMessage('用户密码不能为空','register.php');
-		if(!$reg->check_sms_code($post['sms_code'],$post['username'],$post['mobile'])) errorMessage($reg->msg,'register.php');		//验证短信验证码
+		//if(!$reg->check_sms_code($post['sms_code'],$post['username'],$post['mobile'])) errorMessage($reg->msg,'register.php');		//验证短信验证码
 		unset($post['password_second']);
 		unset($post['captcha']);
 		unset($post['sms_code']);
@@ -45,6 +45,7 @@ if($submit){
 		$company['username'] = $post['username'];
 		$userid = $db->get_one("select userid from {$db->pre}member where username = '$post[username]'");
 		$post['userid'] = $userid['userid'];
+
 		$company_result = $reg->add_company($company,$post);
 		
 		if($result){
@@ -171,7 +172,7 @@ class register
 		$company['userid'] = $member['userid'];
 		$company['areaid'] = $member['areaid'];
 		$company['regyear'] = date('Y',time());
-		$company['linkurl'] = str_replace('www',$company['domain'],DT_PATH);
+		$company['linkurl'] = str_replace('www',$company['username'],DT_PATH);
 		unset($company['domain']);
 		$company['catid'] = $company['catids'] = $company['mode'] = $company['regunit'] = $company['size'] = $company['regcity'] = $company['sell'] = $company['buy'] =
 $company['business'] = $company['fax'] = $company['mail'] = $company['address'] = $company['postcode'] = $company['homepage'] = $company['thumb'] = $company['introduce'] = $company['keyword'] = $company['template'] = $company['skin'] = $company['m_template'] = $company['m_skin'] = $company['domain'] = $company['icp'] = $company['encompany'] = $company['validator'] = $company['contacts'] = $company['baidusqnum'] = $company['btitle'] = '';

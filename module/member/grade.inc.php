@@ -51,7 +51,7 @@ if($submit && $could_up) {
 	else
 	{
 		$r = $db->get_one("SELECT * FROM {$DT_PRE}company WHERE company='$company' ORDER BY userid DESC");
-		if($r['userid'] != $_userid )message($L['member_company_reg']);
+		if(isset($r['userid']) && ($r['userid'] != $_userid) ) message($L['member_company_reg']);
 	}
 	if(strlen($truename) < 2) message($L['grade_pass_truename']);
 	if(strlen($telephone) < 6) message($L['grade_pass_telephone']);

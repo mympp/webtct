@@ -226,12 +226,15 @@ switch($action) {
 #动作：DT原代码修改
 #行：199至207；220至235 PS：当错误输入$MOD['login_times']次$userORemail后会在file\cache\ban生成$DT_IP.php文件（228行），$MOD['lock_hour']小时后删除该文件（231行）
 				captcha($captcha);
+				$error_message = $L['send_password_error'];
 				if(strpos($userORemail,'@')){
+					$error_message = '不存在的邮箱';
 					$email = $userORemail;
 					$email = trim($email);
 					if(!is_email($email)) message($L['member_email_null']);
 					$r = $db->get_one("SELECT username,groupid,passsalt FROM {$DT_PRE}member WHERE email='$email'");
 				}else{
+					$error_message = '不存在的用户名';
 					$username = $userORemail;
 					$r = $db->get_one("SELECT username,groupid,email,passsalt FROM {$DT_PRE}member WHERE username='$username'");
 				}
@@ -265,7 +268,7 @@ switch($action) {
 						}
 					}
 					$do->lock($login_lock, $LOCK, $DT_IP, $DT_TIME);
-					message($L['send_password_error']);
+					message($error_message);
 				}
 			} else {
 				$head_title = $L['send_password_title'];

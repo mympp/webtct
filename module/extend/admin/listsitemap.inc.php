@@ -1,6 +1,10 @@
 <?php
+use models\helpers\data\tcdb;
+use models\helpers\adt\cartesianProduct;
+
 defined('DT_ADMIN') or exit('Access Denied');
-require DT_ROOT.'/include/tcdb.class.php';
+//require DT_ROOT.'/include/tcdb.class.php';
+require_once DT_ROOT.'/models/autoload.php';
 
 $category = new tcdb('category');
 $area = new tcdb('area');
@@ -108,6 +112,9 @@ switch($m){
 		$sell[3] = $vip;
 		$c = CartesianProduct($sell);
 		buildSoSitemap($c,$MODULE[5]['linkurl'],'Sell');
+	break;
+	case 'mall_keyword':
+	
 	break;
 }
 
