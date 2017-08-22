@@ -9,7 +9,7 @@ class cartesianProduct{
 	* @param 多维数组 $arr
 	* @return array
 	*/
-	function build($arr){
+	public function build($arr){
 		if(empty($arr)) return $arr;
 		
 		if(count($arr) == 1){	//当前数组只有一个元素时，将数组值拆分为数组返回

@@ -550,6 +550,10 @@ show_menu($menus);
 <a href="?moduleid=3&file=listsitemap&action=list&m=mall_keshi" class="t" onclick="this.style.color='red'">产品科室</a>
 &nbsp;&nbsp;
 <a href="?moduleid=3&file=listsitemap&action=list&m=sell" class="t" onclick="this.style.color='red'">供需</a>
+&nbsp;&nbsp;
+<a href="?moduleid=3&file=listsitemap&action=list&m=mall_keyword" class="t" onclick="this.style.color='red'">产品关键词</a>
+&nbsp;&nbsp;
+<a href="?moduleid=3&file=listsitemap&action=list&m=buy" class="t" onclick="this.style.color='red'">招标</a>
 <br/>
 <iframe src="" name="send" id="send" style="display:none;" scrolling="no" frameborder="0"></iframe>
 <?php foreach($mods as $md){?>
