@@ -38,7 +38,7 @@ show_menu($menus);
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td><input type="checkbox" name="itemid[]" value="<?php echo $v['itemid'];?>"/></td>
 <td><?php if($v['level']) {?><a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=<?php echo $action;?>&level=<?php echo $v['level'];?>"><img src="admin/image/level_<?php echo $v['level'];?>.gif" title="<?php echo $v['level'];?>级" alt=""/></a><?php } ?></td>
-<td align="left">&nbsp;<a href="http://wap.tecenet.com/29-0-<?php echo $v['itemid'];?>-1-0.html" target="_blank"><?php echo $v['title'];?></a></td>
+<td align="left">&nbsp;<a href="http://wap2.tecenet.com/29-0-<?php echo $v['itemid'];?>-1-0.html" target="_blank"><?php echo $v['title'];?></a></td>
 <td><a href="javascript:_user('<?php echo $v['username'];?>');"><?php echo $v['username'];?></a></td>
 <td class="px11" title="更新时间 <?php echo $v['editdate'];?>"><?php echo $v['adddate'];?></td>
 <td class="px11"><?php echo $v['hits'];?></td>

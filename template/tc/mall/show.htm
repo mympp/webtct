@@ -147,6 +147,22 @@
                 </div>
             </div>
             <!--产品详情 end-->
+            
+            {if !empty($comany_introduce)}
+            <!--公司介绍-->
+            <div class="product-detail module mgt-20">
+                <div class="module-hd">
+                    <span>公司介绍</span>
+                </div>
+                <div class="module-bd">
+                    <div class="product-detail-content">
+                        {$comany_introduce['content']}
+                    </div>
+                </div>
+            </div>
+            <!--公司介绍 end-->
+            {/if}
+            
 
 			{if $malldata}
             <!--相关产品信息-->
@@ -158,10 +174,10 @@
                     {loop $malldata $k $v}
                         <div class="item">
                             <div class="img">
-                                <a href="{$MOD['linkurl']}{$v['linkurl']}" target="_blank" title="{$v['title']}"><img src="{$v['thumb']}" alt="{$v['title']}" onerror="this.src='{DT_SKIN}image/tip/nopic-md-4-3.png'"></a>
+                                <a href="{$v['linkurl']}" target="_blank" title="{$v['title']}"><img src="{$v['thumb']}" alt="{$v['title']}" onerror="this.src='{DT_SKIN}image/tip/nopic-md-4-3.png'"></a>
                             </div>
                             <div class="txt">
-                                <p class="name text-overflow"><a href="{$MOD['linkurl']}{$v['linkurl']}" target="_blank" title="{$v['title']}">{$v['title']}</a></p>
+                                <p class="name text-overflow"><a href="{$v['linkurl']}" target="_blank" title="{$v['title']}">{$v['title']}</a></p>
                                 <p class="company text-overflow">{$v['company']}</p>
                             </div>
                         </div>

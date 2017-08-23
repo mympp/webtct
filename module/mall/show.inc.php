@@ -1,8 +1,10 @@
 <?php 
 use models\helpers\view\internalLink;
+use models\helpers\widget\nlp\scws;
 
 defined('IN_DESTOON') or exit('Access Denied');
 require_once DT_ROOT.'/models/autoload.php';
+require DT_ROOT.'/models/opensearch/cloudSearch.class.php';
 
 $itemid or dheader($MOD['linkurl']);
 if(!check_group($_groupid, $MOD['group_show'])) include load('403.inc');
@@ -85,7 +87,31 @@ if(!empty($item['kcatids'])){
 }
 //企业信息
 $company_db = new tcdb('company');
-$company = $company_db->field('mode,linkurl,telephone,mail,company')->where(['username'=>$username])->one();
+$company = $company_db->field('userid,mode,linkurl,telephone,mail,company')->where(['username'=>$username])->one();
+$company_data_db = new tcdb('company_data');
+$comany_introduce = $company_data_db->field('content')->where(['userid'=>$company['userid']])->one();
+
+$word = $title;
+$scws = new scws($title);
+if(!empty($scws)){
+        $word_arr = $scws->getSegByAttr('n');
+        $word = implode(' ',$word_arr);
+}
+
+
+$cSearch = new cloudSearch('tecenet');
+$cSearch->setFilter(['moduleid'=>$moduleid]);
+$cSearch->setField(['itemid','linkurl','thumb','title']);
+$cSearch->setPageSize(8);
+$malldata = $cSearch->search($word);
+
+if(count($malldata) < 2){
+	if(!empty($word_arr[0])){
+		$malldata = $cSearch->search($word_arr[0]);
+	}else{
+		unset($malldata);
+	}
+}
 
 //相关搜索词
 $keyword_data_db = new tcdb('keyword_data');
