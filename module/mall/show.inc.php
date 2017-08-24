@@ -1,9 +1,12 @@
 <?php 
 use models\helpers\view\internalLink;
 use models\helpers\widget\nlp\scws;
+use models\helpers\widget\redirect\pc_to_wap;
 
 defined('IN_DESTOON') or exit('Access Denied');
 require_once DT_ROOT.'/models/autoload.php';
+$wapurl = pc_to_wap::forword('chanpin/show-'.$itemid.'.html');
+
 require DT_ROOT.'/models/opensearch/cloudSearch.class.php';
 
 $itemid or dheader($MOD['linkurl']);
@@ -93,11 +96,10 @@ $comany_introduce = $company_data_db->field('content')->where(['userid'=>$compan
 
 $word = $title;
 $scws = new scws($title);
-if(!empty($scws)){
-        $word_arr = $scws->getSegByAttr('n');
-        $word = implode(' ',$word_arr);
+if($scws->checkScwsExist()){
+	$word_arr = $scws->getSegByAttr('n');
+	$word = implode(' ',$word_arr);
 }
-
 
 $cSearch = new cloudSearch('tecenet');
 $cSearch->setFilter(['moduleid'=>$moduleid]);

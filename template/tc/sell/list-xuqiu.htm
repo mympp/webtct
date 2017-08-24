@@ -1,20 +1,20 @@
 {loop $lists $k $t}
 <div class="qiu-card transition">
-                    <div class="card-hd">
-                        <h3><a href="{$MODULE[5]['linkurl']}{$t['linkurl']}">{$t['title']}</a></h3>
-                    </div>
-                    <div class="card-bd">
-                        <ul class="card-info">
-                            <li><span>信息分类:</span><em><a href="{$MODULE[5]['linkurl']}{sell_rewrite(['catid'=>$t['catid'],'typeid'=>1])}" title="{$CATEGORY[$t['catid']]}需求">{$CATEGORY[$t['catid']]}</a></em></li>
-                            <li><span>所在地区:</span><em><a href="{$MODULE[5]['linkurl']}{sell_rewrite(['areaid'=>$t['areaid'],'typeid'=>1])}" title="{$AREA[$t['areaid']]['areaname']}医疗器械需求">{$AREA[$t['areaid']]['areaname']}</a></em></li>
-                            <li><span>采购数量:</span>{if $t['amount']}{$t['amount']}{else}详谈{/if}</li>
-                            <!--<li><span>买家类型:</span>个人</li>-->
-                            <li><span>发布时间:</span><em>{date('Y-m-d H:i',$t['addtime'])}</em></li>
-                            <li><span>截止时间:</span><em>{if $t['totime']}{date('Y-m-d H:i',$t['totime'])}{else}长期有效{/if}</em></li>
-                        </ul>
-                        <div class="card-contact">
-                            <a href="{$MODULE[5]['linkurl']}{$t['linkurl']}" class="btn transition"><i class="p-i"></i>查看联系方式</a>
-                        </div>
-                    </div>
+    <div class="card-hd">
+        <h3><a href="{$MODULE[5]['linkurl']}{$t['linkurl']}">{$t['title']}</a></h3>
+    </div>
+    <div class="card-bd">
+        <ul class="card-info">
+            <li><span>信息分类:</span><em><a href="{$MODULE[5]['linkurl']}{sell_rewrite(['catid'=>$t['catid'],'typeid'=>1])}" title="{$CATEGORY[$t['catid']]}需求">{$CATEGORY[$t['catid']]}</a></em></li>
+            <li><span>所在地区:</span><em class="text-overflow"><a href="{$MODULE[5]['linkurl']}{sell_rewrite(['areaid'=>$t['areaid'],'typeid'=>1])}" title="{$AREA[$t['areaid']]['areaname']}医疗器械需求">{$AREA[$t['areaid']]['areaname']}</a></em></li>
+            <li><span>采购数量:</span>{if $t['amount']}{$t['amount']}{else}详谈{/if}</li>
+            <!--<li><span>买家类型:</span>个人</li>-->
+            <li><span>发布时间:</span><em>{date('Y-m-d H:i',$t['addtime'])}</em></li>
+            <li><span>截止时间:</span><em>{if $t['totime']}{date('Y-m-d H:i',$t['totime'])}{else}长期有效{/if}</em></li>
+        </ul>
+        <div class="card-contact">
+            <a href="{$MODULE[5]['linkurl']}{$t['linkurl']}" class="btn transition"><i class="p-i"></i>查看联系方式</a>
+        </div>
+    </div>
 </div>
 {/loop}

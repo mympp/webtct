@@ -1,6 +1,12 @@
 <?php
+use models\helpers\widget\redirect\pc_to_wap;
+
 defined('IN_DESTOON') or exit('Access Denied');
+require DT_ROOT.'/models/autoload.php';
+$wapurl = pc_to_wap::forword('chanpin');
+
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
+
 if(!check_group($_groupid, $MOD['group_index'])) include load('403.inc');
 $tc=8;
 $maincat = get_maincat(0, $moduleid, 1);

@@ -1,5 +1,5 @@
 <?php
-use models\helpers\widget\wap2_to_wap;
+use models\helpers\widget\redirect\wap2_to_wap;
 
 require 'common.inc.php';
 require_once '../models/autoload.php';

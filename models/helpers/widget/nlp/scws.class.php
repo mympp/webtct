@@ -2,6 +2,7 @@
 namespace models\helpers\widget\nlp;
 
 defined('IN_DESTOON') or exit('Access Denied');
+//scws分词处理工具，使用需要开启scws拓展
 class scws {
 	protected $scws;
 	public $word;
@@ -10,6 +11,14 @@ class scws {
 		if(!function_exists('scws_new'))	return false;  //scws扩展未开启
 		$this->scws = scws_new();
 		$this->scws->set_charset($charset);
+		$this->word = $str;
+	}
+	
+	public function checkScwsExist(){
+		return is_null($this->scws) ? false : true;
+	}
+	
+	public function setWord($str = ''){
 		$this->word = $str;
 	}
 	
@@ -44,9 +53,6 @@ class scws {
 	function __destruct(){
 		if(!empty($this->scws)) $this->scws->close();
 	}
-	
-	public function setWord($str = ''){
-		$this->word = $str;
-	}
+
 }
 ?>
