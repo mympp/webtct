@@ -21,12 +21,7 @@ show_menu($menus);
 
 <tr>
 <td class="tl"><span class="f_red">*</span> 商品名称</td>
-<td>
-<input name="post[title]" type="text" id="title" size="60" value="<?php echo $title;?>"/> 
-<?php echo level_select('post[level]', '级别', $level);?> <?php echo dstyle('post[style]', $style);?> 
-<br/>
-<span id="dtitle" class="f_red"></span>
-</td>
+<td><input name="post[title]" type="text" id="title" size="60" value="<?php echo $title;?>"/> <?php echo level_select('post[level]', '级别', $level);?> <?php echo dstyle('post[style]', $style);?> <br/><span id="dtitle" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> 商品市场价</td>
@@ -88,14 +83,8 @@ var property_admin = 1;
 <td class="tl"><span class="f_hid">*</span> 商品品牌</td>
 <td><input name="post[brand]" type="text" size="30" value="<?php echo $brand;?>"/></td>
 </tr>
-<?php if($action != 'add'){ ?>
-<tr>
-<td class="tl"><span class="f_hid"></span>匹对监督局信息</td>
-<td><input type="button" onclick="Dwidget('?moduleid=16&file=supersive&itemid=<?php echo $itemid; ?>', '监督局匹对信息')" value="查找" class="btn" /></td>
-</tr>
-<?php } ?>
-
 <?php echo $FD ? fields_html('<td class="tl">', '<td>', $item) : '';?>
+
 <tr>
 <td class="tl"><span class="f_red">*</span> 商品图片</td>
 <td>

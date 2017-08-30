@@ -85,8 +85,8 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 </span>
 </td>
 <td>
-<?php echo $v['company']; ?>&nbsp;
-	<a href="javascript:void();" onclick="Dwidget('http://www.tecenet.com/file/game/bis/product-search.html?ID=<?php echo $v['company']; ?>&from=domestic', '搜索BIS库内容')">[bis]</a>
+<?php echo $v['manufacturer']; ?>&nbsp;
+	<a href="javascript:void();" onclick="Dwidget('http://www.tecenet.com/file/game/bis/product-search.html?ID=<?php echo $v['manufacturer']; ?>&from=domestic', '搜索BIS库内容')">[bis]</a>
 </td>
 <td>
 	<?php echo $v['batchnum']; ?>&nbsp;

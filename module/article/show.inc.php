@@ -1,7 +1,10 @@
 <?php 
+use models\helpers\widget\redirect\pc_to_wap;
 use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
 require_once DT_ROOT.'/models/autoload.php';
+
+$wapurl = pc_to_wap::forword('zixun/show-'.$itemid.'.html');
 
 $itemid or dheader($MOD['linkurl']);
 if(!check_group($_groupid, $MOD['group_show'])) include load('403.inc');
