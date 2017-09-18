@@ -229,7 +229,7 @@ td, th, caption { padding: 0; }
     display: block;
     padding-left:18px;
     color: #555;
-    background:url("./image/tc.base.icons.png") no-repeat left 0;
+    background:url("./image/tc.base.icons.png?v2") no-repeat left 0;
 }
 .tc-top-nav .wap-qrcode a:after{
     content: '';
@@ -508,7 +508,7 @@ td, th, caption { padding: 0; }
     width: 14px;
     height: 14px;
     margin-right:5px;
-    background-image: url("./image/tc.base.icons.png");
+    background-image: url("./image/tc.base.icons.png?v2");
     background-repeat: no-repeat;
 }
 .help-list li .ft-icon-tel{
@@ -549,12 +549,15 @@ td, th, caption { padding: 0; }
 .help-list li>a:hover,.help-list li>a:active,.tc-links a:hover,.tc-links a:active{
     color: #c72721;
 }
+
+
+
 .help-list .qq-group li{
     width:80px;
     line-height: 20px;
     margin-bottom:5px;
     padding-left:30px;
-    background: url("./image/tc.base.icons.png") no-repeat -40px -560px ;
+    background: url("./image/tc.base.icons.png?v2") no-repeat -40px -560px ;
     border:1px solid #ccc;
 }
 .help-list .qq-group li:hover{
@@ -567,6 +570,43 @@ td, th, caption { padding: 0; }
     color: #007dd4;
 }
 
+.help-list .qq-group li.wechat-group{
+    position: relative;
+    background-position: -40px -640px;
+}
+.help-list .qq-group li.wechat-group:hover{
+    border-color: #44b549;
+    background-color: #fff;
+    background-position: -40px -680px;
+}
+.help-list .qq-group li.wechat-group:hover>a{
+    cursor: default;
+    color: #44b549;
+}
+.help-list li.wechat-group:hover .wechat-group-dialog{
+    display: block;
+}
+
+.help-list .wechat-group-dialog{
+    display: none;
+    position: absolute;
+    top: -2px;
+    left: -108px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+}
+
+.help-list .wechat-group-dialog img{
+    width: 90px;
+    height: 90px;
+    position: 4px;
+}
+.help-list .wechat-group-dialog p{
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
 .help-list .app img{
     padding:5px;
     background: #fff;
@@ -585,11 +625,11 @@ td, th, caption { padding: 0; }
     padding:5px;
     border:1px solid #eaeaea;
     background-color: #fff;
+    z-index: 9;
 }
 .help-list .wechat-qrcode:hover img{
     display: block;
 }
-
 
 
 .tc-footer .tc-links{

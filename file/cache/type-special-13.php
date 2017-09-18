@@ -1,1 +1,0 @@
-<?php defined('IN_DESTOON') or exit('Access Denied'); return array (968 => array ('typeid' => '968','parentid' => '0','typename' => '招标采购信息','style' => '',),); ?>

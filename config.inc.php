@@ -17,13 +17,17 @@ $CFG['db_ori_host'] = 'localhost';
 $CFG['db_port'] = '3306';
 $CFG['db_name'] = 'tianchengdata';
 $CFG['db_user'] = 'root';
-$CFG['db_pass'] = '123456';
+$CFG['db_pass'] = '';
 $CFG['db_charset'] = 'utf8';
 $CFG['db_expires'] = '600';
 $CFG['tb_pre'] = 'tc_';
 $CFG['charset'] = 'utf-8';
+
 $CFG['url'] = 'http://www.ltecenet.com/';
 $CFG['com_domain'] = '.ltecenet.com';
+$CFG['wap_url'] = 'http://wap.tecenet.com/';
+$CFG['old_wap_url'] = 'http://wap2.tecenet.com/';
+
 $CFG['com_dir'] = '1';
 $CFG['com_rewrite'] = '0';
 $CFG['com_vip'] = 'VIP';

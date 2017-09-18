@@ -1,0 +1,22 @@
+<?php exit;?>2017-06-30 13:53:35<p class="p15" style="text-indent:27pt;">
+	<span style="font-size:9pt;font-family:'宋体';">淄博罗麦真空设备</span><span style="font-size:9pt;font-family:'Times New Roman';">有限公司是一家集研发、制造、销售、服务于一体的现代</span><span style="font-size:9pt;font-family:'宋体';">化</span><span style="font-size:9pt;font-family:'Times New Roman';">科技型企业。</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">公司坐落于历史悠久的齐鲁</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">文化</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">名城--淄博</span><span style="font-size:12pt;font-family:'宋体';color:#000000;"> </span><span style="font-size:9pt;font-family:'Times New Roman';">，</span><span style="font-size:9pt;font-family:'宋体';">本公司专业生产</span><span style="font-size:9pt;font-family:'Times New Roman';">包括：</span><span style="font-size:9pt;font-family:'宋体';">2BV<span>系列、</span><span>2BE</span><span>系列、</span><span>2SK</span><span>系列、</span><span>SK</span><span>系列等水环真空泵，</span><span>JZJ2BV</span><span>系列、</span><span>JZJ2SK</span><span>系列罗茨水环真空机组，</span><span>ZF</span><span>系列真空负压站和</span><span>LG</span><span>系列螺杆真空泵等。</span></span><span style="font-size:9pt;font-family:'宋体';"></span>
+</p>
+<p class="p15" style="text-indent:27pt;">
+	<span style="font-size:9pt;font-family:'宋体';">淄博罗麦真空泵设备有限公司经过多年不断的科技创新和广大客户的大力支持已发展成为国内</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">生产水环真空泵、罗茨水环真空泵机组及真空成套</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">应用</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">设备的</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">优秀</span><span style="font-size:10pt;font-family:'宋体';color:#000000;">骨干企业。</span><span style="font-size:9pt;font-family:'Times New Roman';">产品凭借可靠的质量、稳定的性能和周到</span><span style="font-size:9pt;font-family:'宋体';">及时</span><span style="font-size:9pt;font-family:'Times New Roman';">的售后服务</span><span style="font-size:9pt;font-family:'宋体';">赢得了市场的认可和好评。</span><span style="font-size:9pt;font-family:'Times New Roman';">销售网络遍布全国各省市自治区</span><span style="font-size:9pt;font-family:'宋体';">，长年出口美国</span><span style="font-size:9pt;font-family:'Times New Roman';">、</span><span style="font-size:9pt;font-family:'宋体';">韩国</span><span style="font-size:9pt;font-family:'Times New Roman';">、</span><span style="font-size:9pt;font-family:'宋体';">印度</span><span style="font-size:9pt;font-family:'Times New Roman';">、</span><span style="font-size:9pt;font-family:'宋体';">朝鲜等</span><span style="font-size:9pt;font-family:'Times New Roman';">多个国家和地区。</span><span style="font-size:9pt;font-family:'宋体';"> 罗麦真空&nbsp;助你成功！选择“罗麦”品牌，共创美好未来！</span><span style="font-size:9pt;font-family:'宋体';"></span>
+</p>
+<p class="p15">
+	<span style="font-size:9pt;font-family:'Verdana';background:#FFFFFF;color:#000000;">公司宗旨：以人为本、</span><span style="font-size:9pt;font-family:'宋体';background:#FFFFFF;color:#000000;">科技兴厂</span><span style="font-size:9pt;font-family:'Verdana';background:#FFFFFF;color:#000000;">。</span><span style="font-size:9pt;font-family:'宋体';background:#FFFFFF;color:#000000;"> 罗菲 <span>18353369297</span></span><span style="font-size:9pt;font-family:'Verdana';background:#FFFFFF;color:#000000;"></span>
+</p>
+<p class="p15">
+	<span style="font-size:9pt;font-family:'Verdana';background:#FFFFFF;color:#000000;">经营理念</span><span style="font-size:9pt;font-family:'宋体';background:#FFFFFF;color:#000000;">：</span><span style="font-size:12pt;font-family:'Microsoft YaHei 微软雅黑 黑体 宋体';background:#FCFCFC;">诚信、创新、服务、共赢</span><span style="font-size:12pt;font-family:'Times New Roman';"></span>
+</p>
+<p class="p15">
+	<span style="font-size:9pt;font-family:'宋体';background:#FFFFFF;color:#000000;">企业优势：品质、价格、服务。</span><span style="font-size:9pt;font-family:'宋体';background:#FFFFFF;color:#000000;"></span>
+</p>
+<p class="p15">
+	<span style="font-size:9pt;font-family:'Verdana';background:#FFFFFF;color:#000000;">目标追求：</span><span style="font-size:9pt;font-family:'宋体';background:#FFFFFF;color:#000000;">树企业形象，做高端品牌。</span><span style="font-size:12pt;font-family:'Times New Roman';"></span>
+</p>
+<p class="p15">
+	<span style="font-size:9pt;font-family:'Times New Roman';"></span>
+</p>
+<br />

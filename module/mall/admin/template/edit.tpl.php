@@ -36,27 +36,27 @@ show_menu($menus);
 </tr>
 <tr bgcolor="#FFFFFF" align="center">
 <td><input name="post[step][a1]" type="text" size="10" value="<?php echo $a1;?>" id="a1"/></td>
-<td><input name="post[step][p1]" type="text" size="10" value="<?php echo $p1;?>" id="p1" onblur="Dstep();"/></td>
+<td><input name="post[step][p1]" type="text" size="10" value="<?php echo $p1;?>" id="p1" /></td>
 <td></td>
 <td id="p_a_1"></td>
 <td id="p_p_1"></td>
 </tr>
 <tr bgcolor="#FFFFFF" align="center">
 <td><input name="post[step][a2]" type="text" size="10" value="<?php echo $a2;?>" id="a2"/></td>
-<td><input name="post[step][p2]" type="text" size="10" value="<?php echo $p2;?>" id="p2" onblur="Dstep();"/></td>
-<td class="jt" onclick="Dstep()">点击预览</td>
+<td><input name="post[step][p2]" type="text" size="10" value="<?php echo $p2;?>" id="p2" /></td>
+<td class="jt">点击预览</td>
 <td id="p_a_2"></td>
 <td id="p_p_2"></td>
 </tr>
 <tr bgcolor="#FFFFFF" align="center">
 <td><input name="post[step][a3]" type="text" size="10" value="<?php echo $a3;?>" id="a3"/></td>
-<td><input name="post[step][p3]" type="text" size="10" value="<?php echo $p3;?>" id="p3" onblur="Dstep();"/></td>
+<td><input name="post[step][p3]" type="text" size="10" value="<?php echo $p3;?>" id="p3" /></td>
 <td></td>
 <td id="p_a_3"></td>
 <td id="p_p_3"></td>
 </tr>
 </table>
-<span class="f_gray">&nbsp;填写示例：<span class="c_p" title="点击观看" onclick="Dd('a1').value=1;Dd('p1').value=1000;Dd('a2').value=100;Dd('p2').value=900;Dd('a3').value=500;Dd('p3').value=800;Dstep();">阶梯价格</span> / <span class="c_p" title="点击观看" onclick="Dd('a1').value=1;Dd('p1').value=1000;Dd('a2').value=Dd('p2').value=Dd('a3').value=Dd('p3').value='';Dstep();">非阶梯价格</span></span>
+<span class="f_gray">&nbsp;填写示例：<span class="c_p" title="点击观看" onclick="Dd('a1').value=1;Dd('p1').value=1000;Dd('a2').value=100;Dd('p2').value=900;Dd('a3').value=500;Dd('p3').value=800;">阶梯价格</span> / <span class="c_p" title="点击观看" onclick="Dd('a1').value=1;Dd('p1').value=1000;Dd('a2').value=Dd('p2').value=Dd('a3').value=Dd('p3').value='';">非阶梯价格</span></span>
 </td>
 </tr>
 <tr>
@@ -417,7 +417,7 @@ function check() {
 	
 	<?php echo $FD ? fields_js() : '';?>
 	<?php echo $CP ? property_js() : '';?>
-	return Dstep();
+	return true;
 }
 function Dexpress(i, s) {
 	if(Dd('express_'+i).value > 0) {
@@ -448,69 +448,6 @@ function Nexpress(i, s) {
 	$('#express_3').val(0);
 }
 
-function Dstep() {
-	Dd('p_a_1').innerHTML=Dd('p_p_1').innerHTML=Dd('p_a_2').innerHTML=Dd('p_p_2').innerHTML=Dd('p_a_3').innerHTML=Dd('p_p_3').innerHTML='';
-	var a1 = parseInt(Dd('a1').value);
-	var p1 = parseFloat(Dd('p1').value);
-	var a2 = parseInt(Dd('a2').value);
-	var p2 = parseFloat(Dd('p2').value);
-	var a3 = parseInt(Dd('a3').value);
-	var p3 = parseFloat(Dd('p3').value);
-	var u = Dd('unit').value;
-	if(u.length < 1) Dd('unit').value = u = '件';
-	var m = '<?php echo $DT['money_unit'];?>';
-	if(!a1 || a1 < 1) {
-		alert('起订量必须大于0');
-		Dd('a1').value = '1';
-		Dd('a1').focus();
-		return false;
-	}
-	if(p1 < 0) {
-		alert('请填写商品价格');
-		Dd('p1').value = '';
-		Dd('p1').focus();
-		return false;
-	}
-	Dd('p_a_1').innerHTML = a1+u+'以上';
-	Dd('p_p_1').innerHTML = p1+m+'/'+u;
-	if(a2 > 1 && p2 > 0.01) {
-		if(a2 <= a1) {
-			alert('数量必须大于'+a1);
-			Dd('a2').value = '';
-			Dd('a2').focus();
-			return false;
-		}
-		if(p2 >= p1) {
-			alert('价格必须小于'+p1);
-			Dd('p2').value = '';
-			Dd('p2').focus();
-			return false;
-		}
-		Dd('p_a_1').innerHTML = a1+'-'+a2+u;
-		Dd('p_p_1').innerHTML = p1+m+'/'+u;
-		Dd('p_a_2').innerHTML = '>'+a2+u;
-		Dd('p_p_2').innerHTML = p2+m+'/'+u;
-	}
-	if(a3 > 1 && p3 > 0.01) {
-		if(a3 <= a2) {
-			alert('数量必须大于'+a2);
-			Dd('a3').value = '';
-			Dd('a3').focus();
-			return false;
-		}
-		if(p3 >= p2) {
-			alert('价格必须小于'+p2);
-			Dd('p3').value = '';
-			Dd('p3').focus();
-			return false;
-		}
-		Dd('p_a_2').innerHTML = (a2+1)+'-'+a3+u;
-		Dd('p_p_2').innerHTML = p2+m+'/'+u;
-		Dd('p_a_3').innerHTML = '>'+a3+u;
-		Dd('p_p_3').innerHTML = p3+m+'/'+u;
-	}
-	return true;
-}
 //V5.0 升级 V6.0 添加
 </script>
 <script type="text/javascript">Menuon(<?php echo $menuid;?>);</script>

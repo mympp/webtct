@@ -1,1 +1,0 @@
-<option value="858">国内厂家</option><option value="1955">&nbsp;&#9500;厂家</option><option value="1956">&nbsp;&#9500;代理</option><option value="1993">&nbsp;&#9500;服务</option><option value="2079">&nbsp;&#9492;药品</option><option value="859">国外厂家</option></select>

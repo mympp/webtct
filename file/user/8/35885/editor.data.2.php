@@ -1,0 +1,45 @@
+<?php exit;?>2015-08-14 15:17:23<p style="white-space: normal"><span style="line-height: 1em">&nbsp;&ldquo;便民办税春风&rdquo;是一股吹遍全国无死角、吹动四季全天候的惠民之风，各地的税务机关为了这习习春风，都拿出了很多新招、妙招，也是够拼的了！这些贴心举措背后，是心系纳税人、一心干工作的满腔热忱，目的就是让群众得到实实在在的便利。看看这几个地方的税务人是怎么&ldquo;挖空心思&rdquo;改进工作的吧！</span><br />
+&nbsp;</p>
+<p><br />
+&nbsp;</p>
+<section style="box-sizing: border-box; border-bottom: 0px; border-left: 0px; padding-bottom: 0px; margin: 1em 0px 0.5em; padding-left: 0px; padding-right: 0px; clear: both; border-top: 0px; border-right: 0px; padding-top: 0px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box; border-bottom-color: rgb(95,156,239); font-family: inherit; color: rgb(255,255,255); border-right-color: rgb(95,156,239); font-size: 1em; border-left-color: rgb(95,156,239); border-top: rgb(95,156,239) 2px solid; text-decoration: ; padding-top: 3px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box; padding-bottom: 0px; line-height: 2em; background-color: rgb(95,156,239); padding-left: 0.5em; padding-right: 0.5em; display: inline-block; font-family: inherit; height: 2em; font-size: 1em; vertical-align: top; padding-top: 0px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box" class="tn-Powered-by-XIUMI"></section><strong>山东：有了自助终端发票立等可取</strong><section style="box-sizing: border-box; border-bottom: transparent 1em solid; border-left: rgb(95,156,239) 0.8em solid; width: 0px; display: inline-block; font-family: inherit; font-size: 1em; vertical-align: top; border-top: rgb(95,156,239) 1em solid; border-right: transparent 0.8em solid" class="tn-Powered-by-XIUMI"></section><section style="width: 0px; height: 0px; clear: both"></section>
+<p><br />
+&nbsp;</p>
+<p>最近，山东省济南市山大路科技市场的业户张会计发现，市场的三楼大厅多了两台自动取款机样子的机器。有人告诉他，这是普通发票自助服务终端。市场的业户可以用它购买发票，两三分钟搞定，又快又方便，再不用跑到税务局的办税窗口排队购票了。</p>
+<p>张会计的公司主要经营电脑配件批发、耗材销售，一个月需要开具六七张一到两万元的发票。&ldquo;以前我去税务局领发票，骑电动车要1个多小时，不仅来回路上耽误时间，而且每次都得早去，不然就要排很长时间队。有了自助服务终端，领发票只要上个楼就可以了。&rdquo;张会计高兴地说。</p>
+<p>据了解，普通发票自助服务终端是以山东省国税局网络发票系统为后台支撑，借鉴银行ATM理念，集普通发票的领购、开具和验旧、开具红字发票、发票作废等服务于一体。今年5月，济南市国税局率先在历下国税局辖区试点推广发票自助服务终端，共安装了7台，分别设置在纳税人集中的济南市科技市场、济南市科技市场二期、济南华强电子世界商业管理有限公司和建筑新村街道办事处发票发售点等地。截至目前，共有128户纳税人使用该终端，自助开具发票232份。</p>
+<p>在试用自助服务终端后，张会计表示：&ldquo;过去到国税局购买发票时，一张发票只能填写一个项目，每个项目需要逐个打印发票，而自助服务系统可以在一张表上打印3个项目，比之前方便很多。不仅如此，自助服务终端操作简单，易于掌握，还可以随时查询以前开具的发票，项目信息一目了然，用起来很方便，就像把税务局的服务窗口搬到了我们楼上。&rdquo;</p>
+<p><br />
+&nbsp;</p>
+<section style="box-sizing: border-box; border-bottom: 0px; border-left: 0px; padding-bottom: 0px; margin: 1em 0px 0.5em; padding-left: 0px; padding-right: 0px; clear: both; border-top: 0px; border-right: 0px; padding-top: 0px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box; border-bottom-color: rgb(95,156,239); font-family: inherit; color: rgb(255,255,255); border-right-color: rgb(95,156,239); font-size: 1em; border-left-color: rgb(95,156,239); border-top: rgb(95,156,239) 2px solid; text-decoration: ; padding-top: 3px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box; padding-bottom: 0px; line-height: 2em; background-color: rgb(95,156,239); padding-left: 0.5em; padding-right: 0.5em; display: inline-block; font-family: inherit; height: 2em; font-size: 1em; vertical-align: top; padding-top: 0px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box" class="tn-Powered-by-XIUMI"></section><strong>河南：&ldquo;千人万户&rdquo;让户户都有服务员</strong><section style="box-sizing: border-box; border-bottom: transparent 1em solid; border-left: rgb(95,156,239) 0.8em solid; width: 0px; display: inline-block; font-family: inherit; font-size: 1em; vertical-align: top; border-top: rgb(95,156,239) 1em solid; border-right: transparent 0.8em solid" class="tn-Powered-by-XIUMI"></section><section style="width: 0px; height: 0px; clear: both"></section>
+<p><br />
+&nbsp;</p>
+<p>7月28日，河南省濮阳市友助重工科技有限公司负责人张连友，将一面写着&ldquo;税企架起连心桥优质服务心连心&rdquo;的锦旗送到了濮阳市国税局大企业和国际税收管理科科长王凤喜的手上，并对他说：&ldquo;你的提醒让我们公司避免了3.6万元的损失，真的非常感谢！&rdquo;</p>
+<p>原来，濮阳市国税局于今年初推行了&ldquo;千人万户&rdquo;税企联系制度，全市近千名税务人员分别联系辖区内近万户纳税人，以确保人人都有&ldquo;关系户&rdquo;、户户都有&ldquo;服务员&rdquo;。张连友的公司正是王凤喜的&ldquo;关系户&rdquo;。不久前，王凤喜到该公司调研了解到，公司刚从德国进口了一批生产设备，外方技术人员已完成机器安装。于是，王凤喜提醒公司财务人员，在支付外方技术服务费时要记得代扣代缴税款。听到这里，公司会计王宁惊出了一身冷汗。他们确实疏漏了，外方技术人员后天就要回国，如果没有王凤喜的提醒，这笔税款可能得由企业自己出了。</p>
+<p>　　据悉，自&ldquo;千人万户&rdquo;税企联系制度推行以来，濮阳市国税局发放了近万张&ldquo;税企连心卡&rdquo;，开展咨询服务2770余户次，征求意见建议300余条，解决纳税人反映集中的问题，得到社会各界的普遍好评。</p>
+<p><br />
+&nbsp;</p>
+<section style="box-sizing: border-box; border-bottom: 0px; border-left: 0px; padding-bottom: 0px; margin: 1em 0px 0.5em; padding-left: 0px; padding-right: 0px; clear: both; border-top: 0px; border-right: 0px; padding-top: 0px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box; border-bottom-color: rgb(95,156,239); font-family: inherit; color: rgb(255,255,255); border-right-color: rgb(95,156,239); font-size: 1em; border-left-color: rgb(95,156,239); border-top: rgb(95,156,239) 2px solid; text-decoration: ; padding-top: 3px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box; padding-bottom: 0px; line-height: 2em; background-color: rgb(95,156,239); padding-left: 0.5em; padding-right: 0.5em; display: inline-block; font-family: inherit; height: 2em; font-size: 1em; vertical-align: top; padding-top: 0px" class="tn-Powered-by-XIUMI"></section><section style="box-sizing: border-box" class="tn-Powered-by-XIUMI"></section><strong>河北：&ldquo;国税30分&rdquo;成&ldquo;热词&rdquo;</strong><section style="box-sizing: border-box; border-bottom: transparent 1em solid; border-left: rgb(95,156,239) 0.8em solid; width: 0px; display: inline-block; font-family: inherit; font-size: 1em; vertical-align: top; border-top: rgb(95,156,239) 1em solid; border-right: transparent 0.8em solid" class="tn-Powered-by-XIUMI"></section><section style="width: 0px; height: 0px; clear: both"></section>
+<p><br />
+&nbsp;</p>
+<p>　　近日，&ldquo;国税30分&rdquo;成为河北省保定市满城区纳税人之间传播最快的&ldquo;热词&rdquo;。30分钟内办结延期申报业务、30分钟内完成防伪税控系统升级、30分钟内完成增值税税控系统发行&hellip;&hellip;该局95%以上行政许可审批业务实现30分钟内办结。</p>
+<p>　　今年5月，满城区国税局在规范办税流程过程中，提出审批前置。该局将征收管理科和政策法规科前移到办税服务厅，通过设置内部办理窗口，使涉税业务在完成办税服务厅环节后，现场传递到业务科室审核审批。</p>
+<p>　　&ldquo;以前办业务除了到办税服务厅，还要找分局、跑业务科室，楼上楼下好几趟。现在好了，在办税服务厅交齐材料，立等可取。&rdquo;刚刚办结延期申报业务的满城区电力公司会计方萌萌边说边竖起了大拇指。</p>
+<p>　　据该局相关负责人介绍，原来，办理这类业务要在办税服务厅登记后，再分别由分局局长、业务科长、分管副局长核实签字，方能录入内部系统，进行机内流转，纳税人最少也要花上一天时间才能办完。现在，业务科室前移至办税服务厅，除税务登记注销、出口退税等5项业务外，其他事项不出30分钟就能办结。</p>
+<p>　　同时，为防止授权后相关人员职责不清，满城区国税局在办税服务厅设置了《赋权审核审批事项登统台账》，业务科室驻厅人员每周要将统计情况交付业务科长及分管局长审阅，确保发现问题能够及时纠正。</p>
+<p>　　截至目前，满城区国税局共受理业务40多笔，办理时间全部控制在了30分钟内，其中简单业务几分钟就办完。</p>
+<p><br />
+&nbsp;</p>
+<hr />
+<p><span style="color: rgb(127,127,127); font-size: 14px">来源：中国税务报</span></p>
+<blockquote style="border-bottom: rgb(80,130,189) 3px dotted; padding-bottom: 10px; border-left-style: dotted; padding-left: 10px; padding-right: 10px; white-space: normal; font-size: 17px; border-left-color: rgb(80,130,189); border-top: rgb(80,130,189) 3px dotted; border-right: rgb(80,130,189) 3px dotted; padding-top: 10px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" class="brcolor">
+<h3 style="margin: 0px; color: rgb(89,89,89); font-size: 14px"><span style="padding-bottom: 2px; background-color: rgb(80,130,189); padding-left: 5px; padding-right: 5px; color: rgb(255,255,255); font-size: 16px; margin-right: 15px; padding-top: 2px; border-radius: 5px">天成医疗-金融服务部</span></h3>
+<p><span style="font-size: 16px">天成金融服务事业部依托母公司中山大学达安基因股份有限公司和广州天成医疗技术有限公司的资源、技术、人才优势，为<span style="color: red">医疗机构、生产厂商、经销商</span>提供资金结算、财税咨询等服务。<span style="color: red">高效、快捷、专业、优质</span>。</span></p>
+<p><span style="font-size: 16px">服务热线：<span style="box-sizing: border-box !important; padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%; word-wrap: break-word !important; color: rgb(0,176,240); font-size: 16px; padding-top: 0px"><br />
+邱小姐：18819806287<br />
+刘小姐：15920471723<br />
+邮箱：459779403@qq.com</span></span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 16px">更多服务内容请登录<br />
+天成医疗网：<strong style="box-sizing: border-box !important; padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%; word-wrap: break-word !important; padding-top: 0px"><span style="box-sizing: border-box !important; padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%; word-wrap: break-word !important; color: rgb(0,176,240); font-size: 16px; padding-top: 0px">www.tecenet.com</span></strong></span></p>
+微信公众号：<strong style="box-sizing: border-box !important; padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%; word-wrap: break-word !important; padding-top: 0px"><span style="box-sizing: border-box !important; padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%; word-wrap: break-word !important; color: rgb(0,176,240); font-size: 16px; padding-top: 0px">tianchengyiliao</span></strong><span style="line-height: 1em; font-size: 16px">&nbsp;&nbsp;</span></blockquote>

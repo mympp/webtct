@@ -1,1 +1,0 @@
-<?php exit;?>1466367304a:2:{i:0;a:4:{s:5:"catid";s:4:"1963";s:8:"moduleid";s:2:"12";s:7:"catname";s:12:"传染病科";s:7:"linkurl";s:15:"chuanranbingke/";}i:1;a:4:{s:5:"catid";s:4:"1965";s:8:"moduleid";s:2:"12";s:7:"catname";s:12:"艾滋病科";s:7:"linkurl";s:11:"aizibingke/";}}

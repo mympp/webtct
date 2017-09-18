@@ -1,1 +1,0 @@
-<?php exit;?>1466396820a:1:{i:0;a:3:{s:5:"thumb";s:0:"";s:7:"linkurl";s:27:"http://01dsy02.tecenet.com/";s:7:"company";s:33:"西安金龙医疗器械加工厂";}}

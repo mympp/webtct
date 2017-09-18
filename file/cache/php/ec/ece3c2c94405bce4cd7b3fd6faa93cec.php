@@ -1,1 +1,0 @@
-<?php exit;?>1501771647a:9:{s:6:"areaid";s:3:"314";s:8:"areaname";s:9:"昆明市";s:8:"parentid";s:2:"25";s:11:"arrparentid";s:4:"0,25";s:5:"child";s:1:"0";s:10:"arrchildid";s:3:"314";s:9:"listorder";s:3:"314";s:11:"resumecount";s:2:"46";s:8:"jobcount";s:2:"12";}

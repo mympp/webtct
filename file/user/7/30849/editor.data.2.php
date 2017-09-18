@@ -1,0 +1,3 @@
+<?php exit;?>2014-12-22 11:37:07<span style="color: rgb(0, 0, 0);">&nbsp;<span style="font-family: Arial, Tahoma, Helvetica, SimSun, sans-serif;">热烈祝贺我司最新网站改版开通上线，新网址：www.gdosen.com &nbsp;新网站更加侧重于空气质量监测，无尘室环境监测，空气污染治理三大模块，产品更为细分，解决方案更为专业深度，方便广大客户浏览，内容通俗易懂，主题颜色为绿色，突出我司立足环保行业 欢迎全国广大同行及客户朋友对网站提建设性建议，我司将竭力完善。</span><span style="font-family: Arial, Tahoma, Helvetica, SimSun, sans-serif;">&nbsp;新网站：http://www.gdosen.com/欢迎大家访问咨询<br />
+<img src="http://www.tecenet.com/file/upload/201412/22/11-26-19-70-16439.jpg" alt="QQ图片20140930174701" /><br type="_moz" />
+</span></span><span style="font-family: Arial, Tahoma, Helvetica, SimSun, sans-serif; color: rgb(0, 153, 0);"> </span>

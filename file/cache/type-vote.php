@@ -1,1 +1,0 @@
-<?php defined('IN_DESTOON') or exit('Access Denied'); return array (1484 => array ('typeid' => '1484','parentid' => '0','typename' => '投票调查','style' => '',),4 => array ('typeid' => '4','parentid' => '0','typename' => '建议意见','style' => '',),); ?>

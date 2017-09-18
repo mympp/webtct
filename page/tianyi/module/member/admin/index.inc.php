@@ -26,8 +26,8 @@ if($_catids || $_areaids) {
 }
 
 if(in_array($action, array('', 'check'))) {
-	$sfields = array('按条件', '公司名', '会员名', '昵称','姓名', '手机号码', '部门', '职位', 'Email', 'QQ', 'MSN', '阿里旺旺', 'Skype', '注册IP', '登录IP', '客服专员', '开户银行', '银行帐号', $DT['trade_nm'], '推荐人', '备注');
-	$dfields = array('username', 'company', 'username', 'passport', 'truename', 'mobile', 'department', 'career', 'email', 'qq', 'msn', 'ali', 'skype', 'regip', 'loginip', 'support', 'bank', 'account', 'trade', 'inviter', 'note');
+	$sfields = array('按条件', '公司名', '会员名', '昵称','姓名', '手机号码', '部门', '来源', '职位', 'Email', 'QQ', 'MSN', '阿里旺旺', 'Skype', '注册IP', '登录IP', '客服专员', '开户银行', '银行帐号', $DT['trade_nm'], '推荐人', '备注');
+	$dfields = array('username', 'company', 'username', 'passport', 'truename', 'mobile', 'department', 'comefrom', 'career', 'email', 'qq', 'msn', 'ali', 'skype', 'regip', 'loginip', 'support', 'bank', 'account', 'trade', 'inviter', 'note');
 	$sorder  = array('结果排序方式', '注册时间降序', '注册时间升序', '修改时间降序', '修改时间升序', '登录时间降序', '登录时间升序', '登录次数降序', '登录次数升序', '账户'.$DT['money_name'].'降序', '账户'.$DT['money_name'].'升序', '会员'.$DT['credit_name'].'降序', '会员'.$DT['credit_name'].'升序', '短信余额降序', '短信余额升序');
 	$dorder  = array('userid DESC', 'regtime DESC', 'regtime ASC', 'edittime DESC', 'edittime ASC', 'logintime DESC', 'logintime ASC', 'logintimes DESC', 'logintimes ASC', 'money DESC', 'money ASC', 'credit DESC', 'credit ASC', 'sms DESC', 'sms ASC');
 	$sgender = array('性别', '先生' , '女士');

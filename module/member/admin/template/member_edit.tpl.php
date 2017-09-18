@@ -163,8 +163,16 @@ load('profile.js');
 </tr>
 <tr>
 <td class="tl"><span class="f_hid">*</span> 形象图片</td>
-<td><input name="member[thumb]" type="text" size="60" id="thumb" value="<?php echo $thumb;?>"/>&nbsp;&nbsp;<span onclick="Dthumb(<?php echo $moduleid;?>,<?php echo $MOD['thumb_width'];?>,<?php echo $MOD['thumb_height'];?>, Dd('thumb').value);" class="jt">[上传]</span>&nbsp;&nbsp;<span onclick="_preview(Dd('thumb').value);" class="jt">[预览]</span>&nbsp;&nbsp;<span onclick="Dd('thumb').value='';" class="jt">[删除]</span> &nbsp;&nbsp;<a href='http://image.baidu.com/i?tn=baiduimage&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&word=<?php echo $company?>' target="_blank" title="找相关图">搜图</a><br/>
-<span class="f_gray">建议使用LOGO、办公环境等标志性图片，最佳大小为<?php echo $MOD['thumb_width'];?>px*<?php echo $MOD['thumb_height'];?>px</span></td>
+<td>
+	<?php if($thumb){ ?> <img src="<?php echo $thumb;?>" width="200px" height="120px" />  <?php } ?>
+	<br/>
+	<input name="member[thumb]" type="text" size="60" id="thumb" value="<?php echo $thumb;?>"/>&nbsp;&nbsp;
+	<span onclick="Dthumb(<?php echo $moduleid;?>,<?php echo $MOD['thumb_width'];?>,<?php echo $MOD['thumb_height'];?>, Dd('thumb').value);" class="jt">[上传]</span>&nbsp;&nbsp;
+	<span onclick="_preview(Dd('thumb').value);" class="jt">[预览]</span>&nbsp;&nbsp;
+	<span onclick="Dd('thumb').value='';" class="jt">[删除]</span> &nbsp;&nbsp;
+	<a href='http://image.baidu.com/i?tn=baiduimage&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&word=<?php echo $company?>' target="_blank" title="找相关图">搜图</a>
+	<br/>
+	<span class="f_gray">建议使用LOGO、办公环境等标志性图片，最佳大小为<?php echo $MOD['thumb_width'];?>px*<?php echo $MOD['thumb_height'];?>px</span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> 主营行业</td>

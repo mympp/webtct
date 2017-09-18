@@ -1,5 +1,13 @@
 {php $head_css = [DT_SKIN.'tc.list.base.css',DT_SKIN.'jquery-ui.min.css',DT_SKIN.'gongying.add.css']}
-{php $footer_js = [DT_PATH.'file/script/jquery-ui.min.js',DT_PATH.'file/script/datepicker-zh-CN.js.js',DT_PATH.'file/script/area.js',DT_PATH.'file/script/tecenet.notify.min.js',DT_PATH.'file/script/jquery.validator.min.js',DT_PATH.'file/script/zh-CN.js',DT_PATH.'file/script/sell/gongying.demand-add.js'];}
+<?php
+$footer_js = [DT_PATH.'file/script/jquery-ui.min.js',
+DT_PATH.'file/script/datepicker-zh-CN.js.js',
+DT_PATH.'file/script/area.js',
+DT_PATH.'file/script/tecenet.notify.min.js',
+DT_PATH.'file/script/jquery.validator.min.js',
+DT_PATH.'file/script/zh-CN.js',
+DT_PATH.'file/script/sell/gongying.demand-add.js'];
+?>
 {template 'module-header'}
 
 <!--container-->
@@ -12,7 +20,8 @@
             <p>求购信息填写越详细（*为必填项），不止能吸引商家，还能提高信息的排名。</p>
         </div>
 
-        <form id="frmWrap" class="frm-wrap" action="demandadd.php" method="post" onsubmit="_hmt.push(['_trackEvent', 'gongying', 'click', 'demandSubmit']);">
+        <form id="frmWrap" class="frm-wrap" action="demandadd.php" method="post" enctype="multipart/form-data"
+              onsubmit="_hmt.push(['_trackEvent', 'gongying', 'click', 'demandSubmit']);">
             <div class="other-group">
                 <div class="input-group clearfix">
                     <div class="input-group-addon"><i>*</i>信息分类：</div>
@@ -29,7 +38,8 @@
                 <div class="input-group clearfix">
                     <div class="input-group-addon"><i>*</i>求购产品：</div>
                     <div class="frm-controls">
-                        <input class="frm-input frm-input-lg" name="post[title]" type="text" placeholder="请输入您要求购产品名称、品牌、型号" data-rule="required">
+                        <input class="frm-input frm-input-lg" name="post[title]" type="text"
+                               placeholder="请输入您要求购产品名称、品牌、型号" data-rule="required">
                     </div>
                     <div class="msg-box" for="post[title]" style="display:none;"></div>
                 </div>
@@ -53,7 +63,8 @@
                     <div class="input-group-addon"><i>*</i>采购数量：</div>
                     <div class="frm-controls">
                         <input class="frm-input frm-input-sm" type="number" name="post[amount]" min="1" value="1">
-                        <input class="frm-input frm-input-sm" type="text" name="post[unit]" value="台" onfocus="if(this.value == '台')this.value = ''" data-rule="required">
+                        <input class="frm-input frm-input-sm" type="text" name="post[unit]"
+                               value="台" onfocus="if(this.value == '台')this.value = ''" data-rule="required">
                     </div>
                     <div class="msg-box" for="mall[0][num]" style="display:none;"></div>
                 </div>
@@ -70,7 +81,8 @@
                 <div class="input-group clearfix">
                     <div class="input-group-addon"><i>*</i>联系姓名：</div>
                     <div class="frm-controls">
-                        <input class="frm-input" type="text" name="post[truename]" value="{$member['truename']}" data-rule="required">
+                        <input class="frm-input" type="text" name="post[truename]"
+                               value="{$member['truename']}" data-rule="required">
                     </div>
                     <div class="msg-box" for="post[truename]" style="display:none;"></div>
                 </div>
@@ -78,9 +90,18 @@
                 <div class="input-group clearfix">
                     <div class="input-group-addon"><i>*</i>手机号码：</div>
                     <div class="frm-controls clearfix">
-                        <input class="frm-input pull-left" type="text" name="post[mobile]" value="{$member['mobile']}" data-rule="required">
+                        <input class="frm-input pull-left" type="text" name="post[mobile]"
+                               value="{$member['mobile']}" data-rule="required">
                     </div>
                     <div class="msg-box" for="post[mobile]" style="display:none;"></div>
+                </div>
+
+                <div class="input-group clearfix">
+                    <div class="input-group-addon">上传图片：</div>
+                    <div class="frm-controls clearfix">
+                            <input class="frm-input pull-left" type="file" name="image" />
+                            &nbsp;&nbsp;只允许png，jpg，gif格式图片
+                    </div>
                 </div>
 
                 <div class="input-group clearfix">

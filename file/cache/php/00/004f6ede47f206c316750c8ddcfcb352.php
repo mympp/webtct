@@ -1,1 +1,0 @@
-<?php exit;?>1466432298a:1:{i:0;a:3:{s:5:"thumb";s:0:"";s:7:"linkurl";s:30:"http://a474053393.tecenet.com/";s:7:"company";s:60:"中美之光国际医疗投资管理（北京）有限公司";}}

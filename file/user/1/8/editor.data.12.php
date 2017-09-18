@@ -1,0 +1,11 @@
+<?php exit;?>2016-02-16 17:10:39<span style="font-family:SimSun, serif;line-height:28px;">昨日，一位面带笑容的女士走进了我院办公室，今天她带来了自己丈夫亲笔书写的一封感谢信呢，想通过办公室找到之前为她诊治的医师和护士，表达自己的谢意。</span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> </span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> 故事回放：据了解，此女士名叫王英，4月10日下午6点左右，腹部剧烈疼痛，面色苍白的她被家人送到了安贞医院。为其接诊的是长沙安贞妇产医院妇科专家李福珍。据王英丈夫介绍：十天前，王英在湘雅附二医院做了一次检查，"疑似宫外孕，建议住院观察"，考虑到自己的家庭条件，王英谢绝了医生的建议，已经育有两个小孩的她认为怀孕不是什么大事……</span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> </span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> 听完其丈夫的讲述，加上王英的种种症状，李主任建议先做B超检查。十分钟后，做完B超室检查的她，被转送长沙安贞妇产医院5.3+腔镜微创直播手术室。经腔镜中心主任金雁确诊为宫外孕。情况紧急，必须马上手术，当时夫妻两身上没有多少现金，正当其丈夫愁眉不展时，"先救人，救人要紧"的声音传到了他的耳中，接下来，她看见妻子被推进了手术室，这一切是那么迅速，留下他在手术室外，不停的说着"谢谢，谢谢，有了你们我就放心了"。</span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> </span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> 感动服务彰显人文关怀宫腹腔镜微创联合治疗宫外孕</span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> </span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> 晚上8点25分，金雁主任为其进行了腹腔镜下联合微创手术治疗宫外孕，在腹腔镜的指引下，手术历时一个小时，成功完成。术后，金主任告诉记者，王英腹腔内大出血，积血达一千毫升，左侧输卵管破裂，当时情况非常危急，如果不及时手术，造成大出血，后果将不堪设想。</span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> </span><br />
+<span style="font-family:SimSun, serif;line-height:28px;"> 同时，金主任介绍，采用国际上先进的宫腹腔镜微创联合术治疗宫外孕，是目前对女性身体伤害最小的治疗方法。腹腔镜治疗风险相对较小，治疗宫外孕的技术含量高、手术创伤小、痛苦少、恢复更快，3毫米小切口即可轻松完成手术，对女性健康意义重大。据悉，安贞医院积极创新，引进"人文医疗，透明手术"的概念，通过连接手术室传来的数字化信号--5.3+腔镜微创直播手术室荣耀上线，家属可在室外同步观摩手术过程，真正实现让患者放心，家属更放心。</span><br />

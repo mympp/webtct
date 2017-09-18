@@ -1,0 +1,3 @@
+<?php exit;?>2014-08-06 15:16:55<div style="padding:10px;word-break: break-all; word-wrap:break-word;width:700px;">
+<p>21世纪是生命科学的时代，在以美国生命产业为引擎的引领下，中国的生命科技产业也迎来蓬勃发展的春天。在医学研究、疾病防治、食品安全、动植物育种、生物材料和能源等领域无不体现生命科技的强大力量。晶美生物是提供科研、食品安全和临床疾病诊断整体解决方案的高科技公司，包括各种技术服务咨询，分子生物学、免疫学、细胞学、蛋白学、食品安全、疾病诊断试剂和仪器，课题外包承接等。我们秉承&ldquo;专业精美&rdquo;的服务理念，零距离解您之需之困，使您的精力致力于您的研究和实验，我们将与您携手共同迈向生物产业的广阔美好未来。晶美生物供应：Sigma、Invitrogen（Gibco）、Bio-Rad、GE、Roche、abcam、CST、RD、eBioscience、CWBIO（康为）、四季青、Bioworld、Amresco、Novagen、Millipore等品牌产品，实验离心管、吸头等耗材，食品安全检测ELISA试剂盒、快速金标检测卡；晶美生物提供：DNA合成、测序，实验项目外包承接等。</p>
+</div>

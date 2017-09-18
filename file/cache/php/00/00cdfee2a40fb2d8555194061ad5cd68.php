@@ -1,1 +1,0 @@
-<?php exit;?>1466281288a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201404/23/10-17-45-21-8.jpg";s:7:"linkurl";s:27:"http://kejyl00.tecenet.com/";s:7:"company";s:39:"曲阜康尔健医疗科技有限公司";}}

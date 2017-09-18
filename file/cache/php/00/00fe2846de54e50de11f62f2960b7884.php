@@ -1,1 +1,0 @@
-<?php exit;?>1466365441a:1:{i:0;a:10:{s:7:"applyid";s:4:"2047";s:5:"jobid";s:3:"493";s:8:"resumeid";s:3:"200";s:12:"job_username";s:9:"youki2012";s:14:"apply_username";s:9:"116814937";s:9:"applytime";s:10:"1398762528";s:10:"updatetime";s:1:"0";s:6:"status";s:1:"3";s:9:"adminnote";s:9:"已跟进";s:5:"admin";s:1:"1";}}

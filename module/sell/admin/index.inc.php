@@ -44,7 +44,7 @@ if(in_array($action, array('', 'check', 'expire', 'reject', 'recycle'))) {
 	$fromtime = $fromdate ? strtotime($fromdate.' 0:0:0') : 0;
 	$todate = isset($todate) && is_date($todate) ? $todate : '';
 	$totime = $todate ? strtotime($todate.' 23:59:59') : 0;
-	
+
 	$minprice = isset($minprice) ? dround($minprice) : '';
 	$minprice or $minprice = '';
 	$maxprice = isset($maxprice) ? dround($maxprice) : '';
@@ -184,13 +184,13 @@ switch($action) {
 		}
 		dmsg('生成成功', $forward);
 	break;
-	case 'taoxinxi':		
+	case 'taoxinxi':
 		if(is_array($itemid)) {
-			foreach($itemid as $v) { 
+			foreach($itemid as $v) {
 			$ftb = $DT_PRE.'sell_5';
 			$ftb_data = $DT_PRE.'sell_data_5';
 			$ttb = $DT_PRE.'taoxinxi';
-	
+
 			$fs = array();
 			$result = $db->query("SHOW COLUMNS FROM `$ttb`");
 			while($r = $db->fetch_array($result)) {
@@ -203,10 +203,10 @@ switch($action) {
 				$r['catid'] = $catid;
 				$r = daddslashes($r);
 				$d = $db->get_one("SELECT content FROM {$ftb_data} WHERE itemid=$fid");
-				$content = strip_tags($d['content']);	
+				$content = strip_tags($d['content']);
 				if(!empty($r['truename'])) $content .= ' 联系人：'.$r['truename'].' ';
 				if(!empty($r['mobile']) ) $content .= ' 联系手机：'.$r['mobile'].' ';
-				if(!empty($r['telephone']))	$content .= ' 联系电话：'.$r['telephone'].' ';	
+				if(!empty($r['telephone']))	$content .= ' 联系电话：'.$r['telephone'].' ';
 				if(!empty($r['qq'])) $content .= ' QQ：'.$r['qq'].' ';
 				$sqlk = $sqlv = '';
 						$i = 1;
@@ -229,7 +229,7 @@ switch($action) {
 				if(!$k){
 					$db->query("INSERT INTO {$ttb} ($sqlk,content) VALUES ($sqlv,'$content')");
 				}
-				
+
 			}
 		}
 		}

@@ -1,0 +1,27 @@
+<?php exit;?>2013-09-27 16:11:37&nbsp;广州志恒提供现货MEDISON&nbsp;PB-C15H-35D探头
+<div>
+<p>广州志恒医疗器械维修服务有限公司提供各大品牌探头及维修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>探头型号：MEDISON&nbsp;PB-C15H-35D产品描述3.5&nbsp;MHz&nbsp;Convex&nbsp;适用机型：SA-1500/4500/4800</p>
+<p>广州志恒医疗器械维修服务有限公司专注于做国内专业的医疗设备第三方服务公司，我司主营超声和内窥镜的维修、检测、升级、保养、租赁、搬迁、销售等服务。</p>
+<p>公司专业维修各种B超探头,、电源、电路板、显示器、探头、主板、主机等。&nbsp;维修B超品牌:GE&nbsp;、东芝、西门子、飞利浦、阿洛卡、麦迪逊、&nbsp;百胜、&nbsp;HP、&nbsp;ATL&nbsp;等。&nbsp;维修服务范围包括：B超更换、匹配层、声透镜、外壳、护套、线缆维修、探头电路板、晶体、电路干扰等问题。</p>
+<p>超声/&nbsp;B超/&nbsp;彩超维修的服务内容：</p>
+<p>1、&nbsp;B超探头维修服务内容包括：检测判断，更换维修阵元声头（晶体）、声透镜、外壳、电缆、护套、芯片、匹配层、马达、电路干扰等。另可以选配全新兼容探头，增加客户的选择性。</p>
+<p>2、&nbsp;维修B超电路板&nbsp;</p>
+<p>3、&nbsp;维修B超电源&nbsp;&nbsp;</p>
+<p>4、&nbsp;维修B超显示器&nbsp;&nbsp;</p>
+<p>5、&nbsp;彩超整机服务内容包括：故障判断及维修、彩超保养、彩超升级、彩超租赁、彩超保修、包修等服务。</p>
+<p>维修各系列电子及纤维内镜，包括：胃镜、结肠镜、十二指肠镜、支气管镜、鼻咽喉镜、胆道镜等；维修硬镜及摄像系统，包括：电切镜、腹腔镜、关节镜、鼻窦镜、咽喉镜、输尿管镜及摄像主机、摄像头、冷光源等</p>
+<p>联系方式：</p>
+<p>地址：广州市天河区东圃镇黄村大道福元中路5号D508室&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请致电咨询公司400电话</p>
+<p>24小时服务热线：4000-813-989</p>
+<p>企业QQ：800026893</p>
+<p>电话：020-22191289</p>
+<p>传真：020-22191290</p>
+<p>E-MAIL：800026893@b.qq.com</p>
+<p>网址：http://www.zhihengmed.com&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.zhiheng-med.com&nbsp;</p>
+<p>阿里巴巴：http://www.zhihengmedical.com&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.zhiheng-medical.com&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://gzzhyl99.cn.alibaba.com/</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://gzzhyl66.cn.alibaba.com&nbsp;</p>
+</div>

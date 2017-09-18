@@ -39,7 +39,7 @@
 </div>
 <!--slider-wrap end-->
 
-<!--announce--->
+<!--announce-->
 <div class="announce">
     <div class="w1200 box-center clearfix">
         <h2 class="pull-left"><i class="tc-gy-i"></i>最新发布</h2>
@@ -49,7 +49,7 @@
                 <ul>
                 {php $sell_new_type1 = $sell->where(['status'=>3,'typeid'=>1])->order('itemid desc')->limit(0,6)->select();}
                 {loop $sell_new_type1 $k $t}
-                <li class="text-overflow"><span><i class="tc-gy-i user"></i>{$t['username']}</span>刚刚发布了<a href="{$MODULE[5]['linurl']}{$t['linkurl']}" target="_blank">{$t['title']}</a>的需求</li>
+                <li class="text-overflow">刚刚发布了<a href="{$MODULE[5]['linurl']}{$t['linkurl']}" target="_blank">{$t['title']}</a>的需求</li>
                 {/loop}
                 </ul>
             </div>
@@ -57,9 +57,9 @@
         </div>
     </div>
 </div>
-<!--announce end--->
+<!-- announce end -->
 
-<!--gy-wrap-->
+<!-- gy-wrap-->
 <div class="gy-wrap">
     <!--热门需求-->
     <div class="hot-demand gy-module w1200 box-center">

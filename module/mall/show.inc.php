@@ -2,12 +2,12 @@
 use models\helpers\view\internalLink;
 use models\helpers\widget\nlp\scws;
 use models\helpers\widget\redirect\pc_to_wap;
+use models\extensions\opensearch\CloudSearch;
 
 defined('IN_DESTOON') or exit('Access Denied');
 require_once DT_ROOT.'/models/autoload.php';
-$wapurl = pc_to_wap::forword('chanpin/show-'.$itemid.'.html');
 
-require DT_ROOT.'/models/opensearch/cloudSearch.class.php';
+$wapurl = pc_to_wap::forword('chanpin/show-'.$itemid.'.html');
 
 $itemid or dheader($MOD['linkurl']);
 if(!check_group($_groupid, $MOD['group_show'])) include load('403.inc');
@@ -101,7 +101,7 @@ if($scws->checkScwsExist()){
 	$word = implode(' ',$word_arr);
 }
 
-$cSearch = new cloudSearch('tecenet');
+$cSearch = new CloudSearch('tecenet');
 $cSearch->setFilter(['moduleid'=>$moduleid]);
 $cSearch->setField(['itemid','linkurl','thumb','title']);
 $cSearch->setPageSize(8);

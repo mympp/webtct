@@ -1,1 +1,0 @@
-<?php exit;?>1466265166a:1:{i:0;a:5:{s:6:"itemid";s:6:"530669";s:5:"title";s:42:"智能高端制氧机当属海龟氧气机";s:7:"linkurl";s:16:"show-530669.html";s:5:"thumb";s:72:"http://www.tecenet.com/file/upload/201605/11/1121147938253.jpg.thumb.jpg";s:8:"edittime";s:10:"1466062416";}}

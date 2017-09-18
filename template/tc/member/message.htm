@@ -32,7 +32,7 @@
 <table cellspacing="1" cellpadding="6" class="tb">
 <tr>
 <td class="tl"><span class="f_red">*</span> 收件人</td>
-<td class="tr f_gray"><input type="text" size="45" name="message[touser]" id="touser" value="{$touser}"/>&nbsp;&nbsp;<a href="friend.php?action=my" class="t">[我的商友]</a> <span id="dtouser" class="f_red"></span>
+<td class="tr f_gray"><input type="text" size="45" name="message[touser]" id="touser" value="{$touser}"/>&nbsp;&nbsp;<a href="javascript:void(0);" id="myFriendDialog" class="t">[我的商友]</a> <span id="dtouser" class="f_red"></span>
 <br/>多个收件人请按空格键隔开 最多同时发送给{$MOD[maxtouser]}个收件人</td>
 </tr>
 <tr>
@@ -474,4 +474,17 @@ function check() {
 <div class="pages">{$pages}</div>
 {/if}
 <script type="text/javascript">s('message');m('{$action}');</script>
+
+
+<script type="text/javascript" src="http://www.tecenet.com/file/script/popwin.js"></script>
+<script>
+$("#myFriendDialog").on('click' , function(){
+	var url      = 'friend.php?action=my';
+	popWin.showWin("800","500","我的商友",url);
+});
+function closedialog(){
+	$("#popWinClose").click();
+}
+</script>
+
 {template 'footer',$module}

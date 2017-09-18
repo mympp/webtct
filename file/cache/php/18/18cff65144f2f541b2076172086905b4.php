@@ -1,1 +1,0 @@
-<?php exit;?>1498464304a:1:{i:0;a:5:{s:6:"itemid";s:3:"534";s:5:"title";s:36:"Dsh-50型电子水份快速测定仪";s:7:"linkurl";s:13:"show-534.html";s:5:"thumb";s:72:"http://www.tecenet.com/file/upload/201305/03/11-47-34-54-8.jpg.thumb.jpg";s:8:"edittime";s:10:"1367552921";}}

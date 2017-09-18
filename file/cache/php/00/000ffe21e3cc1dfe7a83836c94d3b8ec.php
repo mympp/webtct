@@ -1,1 +1,0 @@
-<?php exit;?>1466428334a:1:{i:0;a:5:{s:6:"itemid";s:5:"36850";s:5:"title";s:22:" 供应护士服面料";s:7:"linkurl";s:15:"show-36850.html";s:5:"thumb";s:22:"http://www.tecenet.com";s:8:"edittime";s:10:"1394604655";}}

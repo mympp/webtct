@@ -597,11 +597,36 @@
 }
 
 
-
-
-
-
-
+.demand-detail{
+    padding: 20px 30px 10px 30px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+}
+.demand-detail-hd{
+    position: relative;
+    font-size: 18px;
+    color: #e56639;
+    padding-left: 16px;
+}
+.demand-detail-hd:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 3px;
+    height: 18px;
+    background-color: #e56639;
+}
+.demand-detail-bd{
+    margin-top: 10px;
+}
+.demand-detail img{
+    max-width: 100%;
+    padding: 5px;
+    margin-top: 15px;
+    border: 1px solid #eaeaea;
+}
 
 
 

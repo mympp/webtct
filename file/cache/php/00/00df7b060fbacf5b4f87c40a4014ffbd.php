@@ -1,1 +1,0 @@
-<?php exit;?>1466224326a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201403/12/15-16-47-91-8.jpg";s:7:"linkurl";s:28:"http://cj_szddi.tecenet.com/";s:7:"company";s:51:"深圳市东大精密仪器技术开发有限公司";}}

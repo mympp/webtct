@@ -1,1 +1,0 @@
-<?php exit;?>1466429150a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201502/06/11-23-09-70-8.jpg";s:7:"linkurl";s:26:"http://shaqyl.tecenet.com/";s:7:"company";s:36:"上海全安医疗器械有限公司";}}

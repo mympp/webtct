@@ -28,14 +28,18 @@ if($MG['inquiry_limit']) {
 require DT_ROOT.'/include/post.func.php';
 $need_captcha = $MOD['captcha_inquiry'] == 2 ? $MG['captcha'] : $MOD['captcha_inquiry'];
 $need_question = $MOD['question_inquiry'] == 2 ? $MG['question'] : $MOD['question_inquiry'];
+
+$sell_db = new tcdb('sell_5');
+$sell_result = $sell_db->where(['status'=>3,'itemid'=>$itemid])->one();
+$linkurl = $MOD['linkurl'].$sell_result['linkurl'];
+
 if($submit) {
 	$dataFilter = new dataFilter();
 	$post = $dataFilter->getFilterHtml($_POST);
 	
 	if(empty($post['itemid'])) dalert($L['inquiry_itemid'], 'goback');
 	
-	$sell_db = new tcdb('sell_5');
-	$sell_result = $sell_db->where(['status'=>3,'itemid'=>$itemid])->one();
+
 	if(empty($sell_result)) dalert($L['inquiry_itemid'], 'goback');
 	
 	if(empty($post['title'])) message($L['msg_type_title']);
@@ -63,11 +67,8 @@ if($submit) {
 	$post['content'] = $content;
 	
 	if($_username && $_username == $sell_result['username']) message('不能对自己发送询价');
-	$linkurl = $MOD['linkurl'].rewrite('inquiry.php?itemid='.$sell_result['itemid']);
 	$message = $L['content_product'].'<a href="'.$linkurl.'"><strong>'.$sell_result['title'].'</strong></a><br/>'.$content;
-
-	send_message($sell_result['username'], $title, $message, 1, $_username);
-	
+	$result = send_message($sell_result['username'], $title, $message, 1, $_username,$linkurl);
 	if($urls){$forward = $urls;}
 	dalert('发送完成', $forward);
 } else {

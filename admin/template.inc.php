@@ -142,7 +142,47 @@ switch($action) {
 		$skinPath = DT_ROOT.'/gongsi/skin';
 		$skinDir = $simFile->getSubDir($skinPath);
 		
-		include tpl('template_upload');
+		if($doSubmit){
+			if(empty($_FILES)) msg('请上传文件');
+			if(empty($uploadDir) && empty($newDir))	msg('请填写要新建的文件夹名');
+			if($type == 'template'){
+				$savePath = $templatePath;
+				$saveFormat = 'text/html';
+			}else{
+				$savePath = $skinPath;
+				$saveFormat = '';
+			}
+			
+			if(empty($uploadDir)){
+				if(!$simFile->createDir($savePath,$newDir)) msg('文件夹创建失败');
+				$uploadPath = $savePath.'/'.$newDir;
+			}else{
+				$uploadPath = $savePath.'/'.$uploadDir;
+			}
+			
+			$uploadFiles = $_FILES['uploadFiles'];
+			$message = '';
+			foreach($uploadFiles['name'] as $k => $file_name){
+				 if($uploadFiles['type'][$k] != $saveFormat && !empty($saveFormat)){
+				 	$message .= "$file_name 格式错误 <br/>";
+				 	continue;
+				 }
+				 if(file_exists($uploadPath.'/'.$file_name)){
+				 	$message .= "$file_name 已存在，不允许覆盖 <br/>";
+				 	continue;
+				 }
+				 if(move_uploaded_file($uploadFiles['tmp_name'][$k],$uploadPath.'/'.$file_name)){
+				 	$message .= "$file_name 上传成功 <br/>";
+				 }else{
+				 	$message .= "$file_name 上传失败 <br/>";
+				 }	 
+			}
+
+			msg($message,'?file=template&action=upload');
+			
+		}else{
+			include tpl('template_upload');
+		}
 	break;
 	default:
 		$dirs = $files = $templates = $baks = array();

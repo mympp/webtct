@@ -1,1 +1,0 @@
-<?php exit;?>1466268500a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201405/04/11-32-11-26-8.gif";s:7:"linkurl";s:31:"http://bjhengchang.tecenet.com/";s:7:"company";s:42:"北京恒昌高科科学技术有限公司";}}

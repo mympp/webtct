@@ -1,0 +1,4 @@
+<?php exit;?>2014-11-26 17:09:02<div id="tb1" style="height: 100%">
+<p>&nbsp;<span lang="EN-US" style="font-size: 9pt; font-family: " new="" times="">GB11944 (</span><span style="font-size: 9pt; font-family: 宋体; mso-ascii-font-family: " new="" times="">新国标附录</span><span lang="EN-US" style="font-size: 9pt; font-family: " new="" times="">A</span><span lang="EN-US" style="font-size: 9pt; font-family: " new="" times="">)</span><span style="font-size: 9pt; font-family: 宋体; mso-ascii-font-family: " new="" times="">、</span><span lang="EN-US" style="font-size: 9pt; font-family: " new="" times="">EN1279-4:2002 <st1:chsdate year="1899" month="12" w:st="on" day="30" islunardate="False" isrocdate="False">5.1.3</st1:chsdate></span><span style="font-size: 9pt; font-family: 宋体; mso-ascii-font-family: " new="" times="">和附录</span><span lang="EN-US" style="font-size: 9pt; font-family: " new="" times="">FJC/T 485-2007 5.12</span></p>
+<p>详细参数请来电或访问www.cbmr.ac.cn</p>
+</div>
