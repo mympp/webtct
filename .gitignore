@@ -4,3 +4,5 @@ file/cache/ban/127.0.0.1.php
 file/cache/php/12/12a838d964a68fd15f7ff36a28f82fc4.php
 file/cache/php/12/12a838d964a68fd15f7ff36a28f82fc4.php
 file/cache/php/12/12a838d964a68fd15f7ff36a28f82fc4.php
+*.bin
+*.data
