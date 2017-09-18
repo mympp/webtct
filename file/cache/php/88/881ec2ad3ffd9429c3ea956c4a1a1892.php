@@ -1,1 +1,0 @@
-<?php exit;?>1499135827a:2:{i:0;a:6:{s:5:"catid";s:3:"858";s:7:"catname";s:12:"国内厂家";s:5:"child";s:1:"1";s:5:"style";s:0:"";s:7:"linkurl";s:7:"guonei/";s:4:"item";s:5:"14444";}i:1;a:6:{s:5:"catid";s:3:"859";s:7:"catname";s:12:"国外厂家";s:5:"child";s:1:"0";s:5:"style";s:0:"";s:7:"linkurl";s:7:"guowai/";s:4:"item";s:3:"199";}}

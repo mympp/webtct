@@ -184,10 +184,13 @@
     line-height:30px;
 }
 .qiu-card .card-info li > span{
+    float: left;
     color: #888;
     margin-right:10px;
 }
 .qiu-card .card-info li > em{
+    float: left;
+    width: 120px;
     color: #555;
     font-style: normal;
 }

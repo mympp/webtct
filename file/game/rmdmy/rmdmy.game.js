@@ -41,6 +41,8 @@ function getRandom(x, y) {
     return r;
 }
 
+//addMoreGameLink
+$(".result").append("<a class='more-game-link' href='http://tc08.tecenet.com/game/index.html?open=g_rmdmy'>更多游戏</a>")
 
 // wechat-share
 var wechatShareDialogClose = function () {

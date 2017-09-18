@@ -1,8 +1,10 @@
-<?php 
+<?php
+use models\helpers\data\tcdb;
+use models\extensions\opensearch\CloudSearch;
+
 require_once '../common.inc.php';
-require_once '../include/tcdb.class.php';
-require_once '../models/opensearch/cloudSearch.class.php';
 require_once 'common.inc.php';
+require_once DT_ROOT.'/models/autoload.php';
 
 $keyword_db = new tcdb('keyword');
 $keyword = $keyword_db->where(['itemid'=>$itemid])->one();		//关键词内容
@@ -57,9 +59,9 @@ $ztitle=$keyword['word'].'产品价格报价及售后维修_优质'.$keyword['wo
 $zdescription='天成医疗网为您提供最全面，丰富的'.$keyword['word'].'相关商品详细参数信息，包括'.$keyword['word'].'价格、'.$keyword['word'].'维修、'.$keyword['word'].'厂家；涵盖了'.$keyword['word'].'招标、品牌型号、规格参数、所在地区、相关资讯等内容。';
 $zkeywords=$keyword['word'].','.$keyword['word'].'价格,'.$keyword['word'].'批发,'.$keyword['word'].'厂家,'.$keyword['word'].'供应,'.$keyword['word'].'招标,天成医疗热词榜';
 
-
 include DT_ROOT.'/hot/template/show.php';
 
+//处理关键词推荐内容
 class relevant{
 	
 	private $keyword;
@@ -104,7 +106,7 @@ class relevant{
 	}
 	
 	public function getRelevant($moduleid,$pagesize){
-		$cSearch = new cloudSearch($this->searchIndex);
+		$cSearch = new CloudSearch($this->searchIndex);
 		//$cSearch->setIndex($this->searchIndex);
 		$cSearch->setPageSize($pagesize);
 		$cSearch->setFilter(['moduleid'=>$moduleid]);

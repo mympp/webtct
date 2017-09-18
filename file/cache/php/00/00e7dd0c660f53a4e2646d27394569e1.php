@@ -1,1 +1,0 @@
-<?php exit;?>1466428632a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201406/13/15-13-07-63-8.png";s:7:"linkurl";s:28:"http://scbit-wx.tecenet.com/";s:7:"company";s:30:"无锡众信科技有限公司";}}

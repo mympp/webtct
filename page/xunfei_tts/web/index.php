@@ -4,10 +4,11 @@
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
-require(__DIR__ . '/../extensions/mdm/yii2-admin-2/vendor/autoload.php');
-require(__DIR__ . '/../vendor/autoload.php');
-require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/../source/extensions/mdm/yii2-admin-2/vendor/autoload.php');
 
-$config = require(__DIR__ . '/../config/web.php');
+require(__DIR__ . '/../../../../tcyiisource/vendor/autoload.php');
+require(__DIR__ . '/../../../../tcyiisource/vendor/yiisoft/yii2/Yii.php');
+
+$config = require(__DIR__ . '/../source/config/web.php');
 
 (new yii\web\Application($config))->run();

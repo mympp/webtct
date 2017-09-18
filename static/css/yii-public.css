@@ -1,0 +1,28 @@
+.wrap > .container {
+    padding: 0 0 20px;
+}
+
+.table-valign-middle td {
+    vertical-align: middle!important;
+}
+
+.panel-danger {
+    border-color: #a94442;
+}
+
+.panel-danger > .panel-heading {
+    color: #ffffff;
+    background-color: #a94442;
+    border-color: #a94442;
+}
+
+ .panel-warning {
+    border-color: #8a6d3b;
+}
+
+.panel-warning > .panel-heading {
+    color: #ffffff;
+    background-color: #8a6d3b;
+    border-color: #8a6d3b;
+}
+

@@ -1,1 +1,0 @@
-<?php exit;?>1499235171a:2:{i:0;a:4:{s:5:"catid";s:4:"1170";s:8:"moduleid";s:2:"16";s:7:"catname";s:24:"基础外科手术器械";s:7:"linkurl";s:6:"jichu/";}i:1;a:4:{s:5:"catid";s:4:"1214";s:8:"moduleid";s:2:"16";s:7:"catname";s:18:"基础外科用刀";s:7:"linkurl";s:5:"1214/";}}

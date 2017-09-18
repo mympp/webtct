@@ -1,0 +1,10 @@
+<?php exit;?>2014-04-03 17:20:54<span style="color: rgb(0,0,0)">&nbsp;<span style="line-height: 25px; font-family: KaiTi_GB2312; font-size: 16px">&nbsp;</span><span style="line-height: 25px; font-family: KaiTi_GB2312; font-size: 16px"><br />
+</span></span>
+<p style="padding-bottom: 0px; line-height: 25px; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font-family: 宋体; letter-spacing: 1px; color: rgb(51,51,51); padding-top: 0px"><span style="color: rgb(0,0,0)"><span style="font-size: 12px">由优质材料制作。主要用途是；医务人员.患者及接触X射线工作人员用于保护自己，免受X射线辐射。</span></span></p>
+<p style="padding-bottom: 0px; line-height: 25px; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font-family: 宋体; letter-spacing: 1px; color: rgb(51,51,51); padding-top: 0px"><span style="color: rgb(0,0,0)"><span style="font-size: 12px">于抵挡X射线对人体头部的伤害</span></span></p>
+<p style="padding-bottom: 0px; line-height: 25px; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font-family: 宋体; letter-spacing: 1px; color: rgb(51,51,51); padding-top: 0px"><span style="color: rgb(0,0,0)"><span style="font-size: 12px">&rarr;&nbsp;</span><strong><span style="font-size: 12px">X射线防护帽的作用</span></strong><span style="font-size: 12px">：用于抵挡X射线对人体头部的伤害</span><br />
+<span style="font-size: 12px">&rarr;&nbsp;</span><strong><span style="font-size: 12px">X射线防护帽的分类</span></strong><span style="font-size: 12px">：标准型防护帽与围脖连体型</span><br />
+<span style="font-size: 12px">&rarr;&nbsp;</span><strong><span style="font-size: 12px">X射线防护帽的尺码</span></strong><span style="font-size: 12px">：分大、中、小号三种尺码</span><br />
+<span style="font-size: 12px">&rarr;&nbsp;</span><strong><span style="font-size: 12px">X射线防护帽的颜色</span></strong><span style="font-size: 12px">：12种标准颜色可</span></span></p>
+<p style="padding-bottom: 0px; line-height: 25px; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font-family: 宋体; letter-spacing: 1px; color: rgb(51,51,51); padding-top: 0px"><span style="color: rgb(0,0,0)"><span style="font-size: 12px"><br />
+</span></span></p>

@@ -46,7 +46,10 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {
 }
 
 function uploadSuccess(file, serverData) {
+	console.log("file:"+file);
 	try {
+		console.log("serverData:"+serverData);
+
 		updateDisplay.call(this, file);
 		//DT ADD 2011-9-20
 		if (serverData.substring(0, 7) === "FILEID:") {
@@ -67,7 +70,8 @@ function uploadSuccess(file, serverData) {
 				Dd('tdPercentUploaded').innerHTML = '上传失败，未知错误';
 			} else {
 				Dd('tdPercentUploaded').innerHTML = '上传失败，请重试';
-				//alert('上传失败'+serverData);
+
+				alert('上传失败'+serverData);
 			}
 		}
 		progress.toggleCancel(false);

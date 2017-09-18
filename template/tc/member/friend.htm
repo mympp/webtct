@@ -47,8 +47,8 @@
 </div>
 {if $page}<div class="pages">{$pages}</div>{/if}
 <div style="text-align:center;">
-<input type="button" value=" 确 定 " class="btn" onclick="window.parent.cDialog();"/>&nbsp;&nbsp;
-<input type="button" value=" 关 闭 " class="btn" onclick="window.parent.cDialog();"/>
+<input type="button" value=" 确 定 " class="btn" onclick="window.parent.closedialog();"/>&nbsp;&nbsp;
+<input type="button" value=" 关 闭 " class="btn" onclick="window.parent.closedialog();"/>
 </div>
 <script type="text/javascript">
 var itemids = [{loop $lists $i $t}{if $i},{/if}'{$t[itemid]}'{/loop}];

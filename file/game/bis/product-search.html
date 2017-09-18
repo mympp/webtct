@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>找产品</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+</head>
+<body onload="">
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <h1 class="title">找产品</h1>
+            <a class="icon icon-search pull-right open-category"></a>
+        </header>
+
+        <!--content-->
+        <div class="content" id="">
+            <h3 class="content-keyword" style="padding:0 1rem">关键字：<span></span></h3>
+            <div class="hidden">
+                <input type="hidden" name="">
+            </div>
+            <div class="content-block">
+                <p class="buttons-row">
+                    <a href="javascript:;" class="button domestic-btn active">国内产品</a>
+                    <a href="javascript:;" class="button import-btn">国外产品</a>
+                </p>
+            </div>
+
+
+            <div id="productWrap">
+                <div id="productWrap-result"></div>
+                <div class="loading"></div>
+            </div>
+            <div id="pagebutton">
+
+            </div>
+        </div>
+        <!--content end-->
+
+    </div>
+</div>
+
+<!-- Category Popup -->
+<div class="popup popup-category">
+    <!--search-->
+    <header class="bar bar-nav">
+        <h1 class='title'>搜索栏</h1>
+        <a class="icon icon-left pull-left close-popup"></a>
+    </header>
+    <div class="bar bar-header-secondary">
+        <div class="searchbar">
+            <input type="submit" name="" id="search" class="searchbar-submit button button-fill close-popup" value="搜索">
+            <div class="search-input">
+                <label class="icon icon-search" for="simple-input"></label>
+                <input type="search" id="simple-input" placeholder='请输入关键词...'/>
+            </div>
+        </div>
+    </div>
+    <!--search end-->
+
+    <!--category-->
+    <div class="content category-layout" id="table-selector">
+        <select style="display: none;" name="" id="select-type">
+            <option value="0" selected="selected">普通搜索</option>
+            <option value="1">高级搜索</option>
+        </select>
+        <input type="hidden" id="pagesize" value="20">
+    </div>
+    <!--category end-->
+</div>
+
+
+<!-- Detail Popup -->
+<div class="popup popup-detail">
+    <header class="bar bar-nav">
+        <h1 class="title">产品详情</h1>
+        <a class="icon icon-left pull-left close-popup"></a>
+    </header>
+    <div class="content">
+        <div class="popup-detail-title"></div>
+        <div class="popup-detail-content"></div>
+    </div>
+</div>
+
+
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>var Zepto = jQuery</script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='./js/jquery.highlight.js' charset='utf-8'></script>
+<script type='text/javascript' src='./js/device-table.js' charset='utf-8'></script>
+<script>
+    $.init();
+    $(document).on('click', '.open-category', function () {
+        $.popup('.popup-category');
+    });
+    $(document).on('click', '.open-detail', function () {
+        $.popup('.popup-detail');
+    });
+
+    /*
+    * 获取url里参数值
+    * $name 键值
+    */
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]);
+        return null;
+    }
+    var searchResult = function () {
+        var $ID       = GetQueryString("ID");
+        var $from     = GetQueryString("from");
+        var $keyword  = $("#simple-input");
+        var $title    = $(".content-keyword span");
+        var $domestic = $("input[name='from']")[0];
+        var $import   = $("input[name='from']")[1];
+
+
+        $title.html($ID);
+        $keyword.val($ID);
+        $keyword.on( "change ", function() {
+            $title.html($(this).val());
+        });
+
+        if( $from == "domestic" ){
+            $(".buttons-row .button").removeClass("active");
+            $(".domestic-btn").addClass("active");
+            $domestic.click();
+            $("#search").click();
+            $("")
+        }else if( $from == "import"){
+            $(".buttons-row .button").removeClass("active");
+            $(".import-btn").addClass("active");
+            $import.click();
+            $("#search").click();
+        }else{
+            return;
+        }
+
+        $(document).on("click",".buttons-row .button",function(){
+            $(".buttons-row .button").removeClass("active");
+            $(this).addClass("active");
+            if( $(this).hasClass("import-btn") ){
+                $domestic.click();
+                $import.click();
+                $("#search").click();
+            }
+            if( $(this).hasClass("domestic-btn") ){
+                $import.click();
+                $domestic.click();
+                $("#search").click();
+            }
+        });
+    };
+
+    $(document).ready(function(){
+        setTimeout(function () {
+            searchResult();
+        }, 1000);
+    });
+</script>
+
+</body>
+</html>

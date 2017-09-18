@@ -1,1 +1,0 @@
-<?php exit;?>1466429398a:1:{i:0;a:3:{s:5:"thumb";s:62:"http://www.tecenet.com/file/upload/201412/16/11-18-50-39-8.jpg";s:7:"linkurl";s:24:"http://tpyl.tecenet.com/";s:7:"company";s:36:"杭州坦帕医疗科技有限公司";}}

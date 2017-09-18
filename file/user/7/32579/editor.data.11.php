@@ -1,0 +1,1 @@
+<?php exit;?>2015-05-06 13:50:47&nbsp;<span class="b green" style="margin: 0px; padding: 0px; font-family: Simsun; font-size: medium;">中山大学达安基因股份有限公司</span><span style="font-family: Simsun; font-size: medium;">依托中山大学雄厚的科研平台，是以分子诊断技术为主导的，集临床检验试剂和仪器的研发、生产、销售以及全国连锁医学独立实验室临床检验服务为一体的生物医药高科技企业。</span>

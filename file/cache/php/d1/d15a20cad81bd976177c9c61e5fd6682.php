@@ -1,1 +1,0 @@
-<?php exit;?>1501771658a:9:{s:6:"areaid";s:2:"22";s:8:"areaname";s:6:"海南";s:8:"parentid";s:1:"0";s:11:"arrparentid";s:1:"0";s:5:"child";s:1:"1";s:10:"arrchildid";s:74:"22,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283";s:9:"listorder";s:2:"22";s:11:"resumecount";s:3:"759";s:8:"jobcount";s:2:"57";}

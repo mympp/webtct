@@ -1,0 +1,1 @@
+<?php exit;?>2015-05-06 14:52:33&nbsp;<span style="color: rgb(102, 102, 102); font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 12px; line-height: 24px; orphans: 2; text-indent: 24px; widows: 2;">中山大学达安基因股份有限公司依托中山大学雄厚的科研平台, 是以分子诊断技术为主导的，集临床检验试剂和仪器的研发、生产、销售以及全国连锁医学独立实验室临床检验服务为一体的生物医药高科技企业。公司于2004 年8 月在深圳证券交易所挂牌上市，成为广东省高校校办产业中第一家上市公司。</span>

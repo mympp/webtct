@@ -153,12 +153,23 @@ html,body{height:100%;}
     margin: 0rem auto;
 }
 .result{
+    position: relative;
     margin: 0 0.5rem;
     padding: 0.5rem;
     background: #fff;
     box-shadow: 0 0 0.25rem rgba(77,0,0,0.5);
     border-radius: 0.15rem;
 
+}
+.more-game-link{
+    position: absolute;
+    right: 0;
+    bottom:0;
+    background-color: #d13f3c;
+    color: #fff;
+    border-bottom-right-radius: 0.15rem;
+    font-size: 0.3rem;
+    padding: 0.1rem 0.25rem;
 }
 .result-msg{
     position: relative;

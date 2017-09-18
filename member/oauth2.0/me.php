@@ -27,7 +27,7 @@ $returnInfo = array();
 global $db;
 $userInfo = $db->get_one("select client_id,user_id,access_token,expires from oauth_access_tokens where access_token = '{$token}'");
 if($userInfo){
-    if(strtotime($userInfo['expires'] - time()) <= 3600){
+    if(strtotime($userInfo['expires']) - time() <= 3600){
         //token未过期
         $returnInfo['access_token'] = $userInfo['access_token'];
         $returnInfo['client_id']    = $userInfo['client_id'];

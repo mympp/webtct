@@ -1,1 +1,0 @@
-<option value="403">教育培训</option><option value="404">技术资料</option><option value="405">介绍说明</option><option value="406">软件程序</option><option value="407">项目方案</option><option value="1991">研究报告</option><option value="1992">其他分类</option></select>

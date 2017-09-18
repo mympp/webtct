@@ -1,0 +1,3 @@
+<?php exit;?>2014-04-08 13:49:21&nbsp;<span style="color: rgb(102, 102, 102); font-family: 宋体; font-size: 12px; line-height: 24px; ">我司于2013年9月获得日本厚生劳动省医疗器械外国制造业者认定证，认定番号为BG10500811。<br />
+<img src="http://www.tecenet.com/file/upload/201404/08/13-37-19-50-14277.jpg" width="980" height="1347" alt="" /><br type="_moz" />
+</span><a href="http://www.huadafuzhao.com/editor/attached/image/20140326/20140326111738073807.jpg"><img src="http://www.tecenet.com/file/upload/201404/08/13-38-29-59-14277.jpg" width="980" height="1347" alt="" /></a>

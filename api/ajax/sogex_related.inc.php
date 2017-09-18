@@ -1,6 +1,9 @@
 <?php
 defined('IN_DESTOON') or exit('Access Denied');
 
+header('Access-Control-Allow-Origin: http://so.tecenet.com ');
+header('Access-Control-Allow-Origin: http://so2.tecenet.com ');
+
 //isset($keyword) or exit;
 //isset($type) or exit;
 $keyword = $_GET['keyword'];

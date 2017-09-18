@@ -1,4 +1,4 @@
-<?php 
+<?php
 use models\helpers\view\internalLink;
 defined('IN_DESTOON') or exit('Access Denied');
 require_once DT_ROOT.'/models/autoload.php';

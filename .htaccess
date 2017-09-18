@@ -76,7 +76,7 @@ RewriteRule ^(.*)/([a-z]+)/(.*)\.shtml$ $1/$2/index.php?rewrite=$3
 RewriteRule ^(com)/([a-z0-9_\-]+)/([a-z]+)/(.*)\.html$ index.php?homepage=$2&file=$3&rewrite=$4
 RewriteRule ^(com)/([a-z0-9_\-]+)/([a-z]+)([/])?$ index.php?homepage=$2&file=$3
 RewriteRule ^(com)/([a-z0-9_\-]+)([/])?$ index.php?homepage=$2
-RewriteRule ^(.*)/([a-z0-9_\-]+)$ $1/index.php?my_letter=$2
+#RewriteRule ^(.*)/([a-z0-9_\-]+)$ $1/index.php?my_letter=$2
 RewriteRule ^(.*)\/([0-9]+)\.htm$ $1/search.php?areaid=0&tc=9&kw=&stype=9&list=1&order=0&day=0&vip=0&catid=0&kcatid=$2
 RewriteRule ^(.*)\/([0-9]+)-([0-9]+)\.htm$ $1/search.php?areaid=0&tc=9&kw=&stype=9&list=1&order=0&day=0&vip=0&catid=0&kcatid=$2&page=$3
 RewriteRule ^(.*)\/peijian/$ $1/search.php?tc=9&bcatid=0&fid=0&kcatid=0&catid=0&stype=1&kw=&list=0&order=0&day=0&vip=0&areaid=0
@@ -92,6 +92,7 @@ RewriteRule ^(.*)/([a-z0-9_\-]+)-([0-9]+)/$ $1/search.php?catid=&kw=$2&keyid=$3&
 #RewriteRule ^(.*)/search/([0-9]+)([\-])?([0-9]+)?(.*?)?$ $1/search.php?moduleid=$2&spread=$3&action=&topkw=$4&kw=$5
 
 ##新版企业搜索伪静态地址##
+RewriteRule ^gongsi\/search.html$ /gongsi\/search.php
 RewriteRule ^gongsi\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /gongsi\/search.php?catid=$1&areaid=$2&mode=$3&type=$4
 RewriteRule ^gongsi\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)-([0-9]+)\.html$ /gongsi\/search.php?catid=$1&areaid=$2&mode=$3&type=$4&page=$5
 RewriteRule ^gongsi\/so\-([0-9]+)\-0\-0\-0\.html$ /gongsi\/list\-htm\-catid\-$1\.html [L,R=301]
@@ -99,10 +100,12 @@ RewriteRule ^gongsi\/so\-([0-9]+)\-0\-0\-0\.html$ /gongsi/search\-htm\-catid\-$1
 RewriteRule ^gongsi\/so\-0\-([0-9]+)\-0\-0\.html$ /gongsi/search\-htm\-areaid\-([0-9]+)\-catid\-0\.html [L,R=301]
 
 ##新版供需模块搜索伪静态地址##
+RewriteRule ^gongying\/search.html$ /gongying\/search.php
 RewriteRule ^gongying\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /gongying\/search.php?catid=$1&typeid=$2&areaid=$3&validated=$4
 RewriteRule ^gongying\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)-([0-9]+)\.html$ /gongying\/search.php?catid=$1&typeid=$2&areaid=$3&validated=$4&page=$5
 
 ##新版产品模块伪静态地址
+RewriteRule ^chanpin\/search.html$ /chanpin\/search.php
 RewriteRule ^chanpin\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/search.php?catid=$1&stype=$2&areaid=$3&validated=$4&page=$5
 RewriteRule ^chanpin\/ks-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keshi.php?kcatid=$1&stype=$2&areaid=$3&validated=$4&page=$5
 RewriteRule ^chanpin\/kw-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keyword.php?kwid=$1&areaid=$2&page=$3
@@ -112,10 +115,12 @@ RewriteRule ^chanpin\/kw-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keyword.php?kwid=$1
 RewriteRule ^chanpin\/(.*)\/$ /chanpin\/category.php?u=$1
 
 ##新版资讯模块伪静态地址
+RewriteRule ^zixun\/search.html$ /zixun\/search.php
 RewriteRule ^zixun\/(.*)\/$ /zixun\/search.php?u=$1
 RewriteRule ^zixun\/(.*)\/([0-9]+)\.html$ /zixun\/search.php?u=$1&page=$2
 
 ##新版招标模块伪静态地址
+RewriteRule ^zhaobiao\/search.html$ /zhaobiao\/search.php
 RewriteRule ^zhaobiao\/so-([0-9]+)\-([0-9]+)\.html$ /zhaobiao\/search.php?catid=$1&areaid=$2
 RewriteRule ^zhaobiao\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /zhaobiao\/search.php?catid=$1&areaid=$2&page=$3
 
@@ -124,10 +129,12 @@ RewriteRule ^gongxiang\/so-([0-9]+)\.html$ /gongxiang\/search.php?catid=$1
 RewriteRule ^gongxiang\/so-([0-9]+)\-([0-9]+)\.html$ /gongxiang\/search.php?catid=$1&page=$2
 RewriteRule ^gongxiang\/so-([0-9]+)\-([0-9]+)\-(.*)\.html$ /gongxiang\/search.php?catid=$1&page=$2&fileext=$3
 
-
-# if a directory or a file exists, use it directly
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-
-# otherwise forward it to index.php
-#RewriteRule . index-yii.php
+##Yii模块地址重写
+RewriteRule ^article(/.+)?$ index-yii.php
+RewriteRule ^article-gather(/.+)?$ index-yii.php
+RewriteRule ^debug(/.+)?$ index-yii.php
+RewriteRule ^gather(/.+)?$ index-yii.php
+RewriteRule ^gather-node(/.+)?$ index-yii.php
+RewriteRule ^site(/.+)?$ index-yii.php
+RewriteRule ^tcoauth(/.+)?$ index-yii.php
+RewriteRule ^yadmin(/.+)?$ index-yii.php

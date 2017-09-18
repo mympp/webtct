@@ -6,6 +6,7 @@ $config = [
     'id'          => 'basic',
     'basePath'    => dirname(__DIR__),
     'runtimePath' => dirname(__DIR__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'runtime',
+    'vendorPath'  => dirname(__DIR__) . '/../../../../tcyiisource/vendor',
     'bootstrap'   => ['log'],
     'components'  => [
         'request'      => [
@@ -48,7 +49,7 @@ $config = [
         ],*/
 
     ],
-    'modules' => [
+    'modules'     => [
         'moguu' => [
             'class' => 'app\modules\moguu\Module',
         ],

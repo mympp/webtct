@@ -244,7 +244,9 @@ class message {
 		}
 		$this->db->query("UPDATE {$this->pre}message SET isread=1 WHERE itemid IN($itemids)");
 		foreach ($read_users as $key => $user) {
-			$this->db->query("UPDATE {$this->pre}member SET message=message-1 WHERE username='$user'");
+			$not_read = $this->db->get_one("select count(*) as c from {$this->pre}message where touser = '$user' and isread = 0");
+			$num = $not_read['c'];
+			$this->db->query("UPDATE {$this->pre}member SET message=$num WHERE username='$user'");
 		}
 	}
 

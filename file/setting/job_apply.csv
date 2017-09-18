@@ -1,0 +1,8 @@
+applyid,ID,
+jobid,报障ID,
+resumeid,简历ID,
+job_username,报障会员,
+apply_username,应聘会员,
+applytime,应聘时间,
+updatetime,更新时间,
+status,状态,

@@ -1,1 +1,0 @@
-<?php exit;?>1501769380a:9:{s:6:"areaid";s:1:"2";s:8:"areaname";s:6:"上海";s:8:"parentid";s:1:"0";s:11:"arrparentid";s:1:"0";s:5:"child";s:1:"0";s:10:"arrchildid";s:1:"2";s:9:"listorder";s:1:"2";s:11:"resumecount";s:3:"430";s:8:"jobcount";s:3:"344";}

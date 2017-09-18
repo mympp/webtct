@@ -1,0 +1,1 @@
+<?php exit;?>2016-02-26 15:34:16&nbsp;<span style="font-size:12px;font-family:Arial, Helvetica, sans-serif;color:#404040;line-height:20px;">江苏德丰医疗设备有限公司，位于江苏省张家港市东福公路。德丰拥有国内先进的加工设备、齐全的检测手段、完善的管理体系，通过了GB/T19001-2008 idt ISO9001:2008和YY/T0287-2003 idt ISO13485:2003质量管理体系认证。德丰将以可靠的质量、合理的价格、优势的服务、卓越的信誉，期盼着您的关心与支持！</span>
