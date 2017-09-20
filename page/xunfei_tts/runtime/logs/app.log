@@ -1,0 +1,1573 @@
+2017-04-28 10:15:46 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:15:46 [221.4.60.132][-][-][info][application] $_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '57614'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493345746.2343
+    'REQUEST_TIME' => 1493345746
+]
+2017-04-28 10:17:54 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:17:54 [221.4.60.132][-][-][info][application] $_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '57837'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493345874.6565
+    'REQUEST_TIME' => 1493345874
+]
+2017-04-28 10:29:46 [221.4.60.132][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "index".' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('index', Array)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#2 {main}
+2017-04-28 10:29:45 [221.4.60.132][-][-][info][application] $_GET = [
+    'my_letter' => 'index'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'my_letter=index'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58895'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346585.9825
+    'REQUEST_TIME' => 1493346585
+]
+2017-04-28 10:29:56 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:29:56 [221.4.60.132][-][-][info][application] $_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58895'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346596.8277
+    'REQUEST_TIME' => 1493346596
+]
+2017-04-28 10:30:00 [221.4.60.132][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "index".' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php:532
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('index', Array)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message '页面未找到。' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php:114
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#2 {main}
+2017-04-28 10:30:00 [221.4.60.132][-][-][info][application] $_GET = [
+    'my_letter' => 'index'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'my_letter=index'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58895'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346600.3933
+    'REQUEST_TIME' => 1493346600
+]
+2017-04-28 10:31:18 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:18 [221.4.60.132][-][-][info][application] $_GET = [
+    'my_letter' => 'index'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'my_letter=index'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58914'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346678.1441
+    'REQUEST_TIME' => 1493346678
+]
+2017-04-28 10:31:21 [221.4.60.132][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=188....', 'root', 'tece218', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 10:31:21 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:21 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:18 [221.4.60.132][-][-][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58914'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346678.3341
+    'REQUEST_TIME' => 1493346678
+]
+2017-04-28 10:31:21 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:19 [221.4.60.132][-][-][info][application] $_GET = [
+    'my_letter' => 'index'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'my_letter=index'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58915'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346679.0129
+    'REQUEST_TIME' => 1493346679
+]
+2017-04-28 10:31:24 [221.4.60.132][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=188....', 'root', 'tece218', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 10:31:24 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:24 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:21 [221.4.60.132][-][-][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58915'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346681.6256
+    'REQUEST_TIME' => 1493346681
+]
+2017-04-28 10:31:25 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:25 [221.4.60.132][-][-][info][application] $_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58916'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346685.4793
+    'REQUEST_TIME' => 1493346685
+]
+2017-04-28 10:31:28 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=188....', 'root', 'tece218', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 10:31:28 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:28 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:31:25 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '58916'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493346685.506
+    'REQUEST_TIME' => 1493346685
+]
+2017-04-28 10:42:55 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:42:55 [221.4.60.132][-][-][info][application] $_GET = [
+    'my_letter' => 'index'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'my_letter=index'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59085'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493347374.8172
+    'REQUEST_TIME' => 1493347374
+]
+2017-04-28 10:42:58 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:42:58 [221.4.60.132][-][-][info][application] $_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59094'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493347378.4168
+    'REQUEST_TIME' => 1493347378
+]
+2017-04-28 10:42:58 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:42:58 [221.4.60.132][-][-][info][application] $_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59093'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493347378.2561
+    'REQUEST_TIME' => 1493347378
+]
+2017-04-28 10:42:58 [221.4.60.132][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=188....', 'root', 'tece218', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 10:42:58 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:42:58 [221.4.60.132][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:42:55 [221.4.60.132][-][-][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59085'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493347375.3384
+    'REQUEST_TIME' => 1493347375
+]
+2017-04-28 10:43:01 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=188....', 'root', 'tece218', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2003] Can't connect to MySQL server on '188.188.1.218' (110)' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 10:43:01 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:43:01 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:42:58 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59094'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493347378.6112
+    'REQUEST_TIME' => 1493347378
+]
+2017-04-28 10:44:43 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[RDS00] [2811] Authentication Failed For RDS backend' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=rm-w...', 'tecedb', 'tiAncHenGnet!21...', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[RDS00] [2811] Authentication Failed For RDS backend' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare('<span class="ke...')
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('<span class="st...')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('<span class="st...')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('<span class="st...')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('<span class="st...')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('<span class="st...', '[<span class="s...')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('<span class="st...', '[<span class="s...', Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<span class="st...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('<span class="st...', '[<span class="s...')
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 10:44:43 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:44:43 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 221.4.60.132
+2017-04-28 10:44:43 [221.4.60.132][-][tkst3h3458bbrg02t788574a80][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59114'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493347483.1796
+    'REQUEST_TIME' => 1493347483
+]
+2017-04-28 10:57:26 [221.4.60.132][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42000] [1044] Access denied for user 'tecedb'@'%' to database 'xunfei_tts'' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=rm-w...', 'tecedb', 'tiAncHenGnet!21...', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare(true)
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('xt_user')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('{{%user}}')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('menus')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('menus')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/data/tcsftp/ww...', Array)
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('/data/tcsftp/ww...', Array, Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<div class="sit...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('login', Array)
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('login', Array)
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('admin/user/logi...', Array)
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42000] [1044] Access denied for user 'tecedb'@'%' to database 'xunfei_tts'' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare(true)
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('xt_user')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('{{%user}}')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('menus')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('menus')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/data/tcsftp/ww...', Array)
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('/data/tcsftp/ww...', Array, Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<div class="sit...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('login', Array)
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('login', Array)
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('admin/user/logi...', Array)
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 10:57:26 [221.4.60.132][-][-][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59359'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493348245.8483
+    'REQUEST_TIME' => 1493348245
+]
+2017-04-28 11:02:30 [221.4.60.132][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42000] [1044] Access denied for user 'tecedb'@'%' to database 'xunfei_tts'' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:630
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(630): PDO->__construct('mysql:host=rm-w...', 'tecedb', 'tiAncHenGnet!21...', NULL)
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare(true)
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#8 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('xt_user')
+#10 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('{{%user}}')
+#11 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('menus')
+#13 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('menus')
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/data/tcsftp/ww...', Array)
+#16 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('/data/tcsftp/ww...', Array, Object(mdm\admin\controllers\UserController))
+#17 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<div class="sit...')
+#18 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('login', Array)
+#19 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('login', Array)
+#23 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('admin/user/logi...', Array)
+#24 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42000] [1044] Access denied for user 'tecedb'@'%' to database 'xunfei_tts'' in /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php:568
+Stack trace:
+#0 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(896): yii\db\Connection->open()
+#1 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(896): yii\db\Command->prepare(true)
+#4 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(199): yii\db\Command->queryAll()
+#6 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/mysql/Schema.php(98): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/db/Schema.php(152): yii\db\mysql\Schema->loadTableSchema('xt_user')
+#8 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/Module.php(135): yii\db\Schema->getTableSchema('{{%user}}')
+#9 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Component.php(132): mdm\admin\Module->getMenus()
+#10 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/di/ServiceLocator.php(75): yii\base\Component->__get('menus')
+#11 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/views/layouts/top-menu.php(6): yii\di\ServiceLocator->__get('menus')
+#12 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(328): require('/data/tcsftp/ww...')
+#13 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/data/tcsftp/ww...', Array)
+#14 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(396): yii\base\View->renderFile('/data/tcsftp/ww...', Array, Object(mdm\admin\controllers\UserController))
+#15 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(382): yii\base\Controller->renderContent('<div class="sit...')
+#16 /data/tcsftp/www/html/page/xunfei_tts/extensions/mdm/yii2-admin-2/controllers/UserController.php(140): yii\base\Controller->render('login', Array)
+#17 [internal function]: mdm\admin\controllers\UserController->actionLogin()
+#18 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#19 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#20 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('login', Array)
+#21 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('admin/user/logi...', Array)
+#22 /data/tcsftp/www/html/page/xunfei_tts/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 /data/tcsftp/www/html/page/xunfei_tts/web/index.php(13): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2017-04-28 11:02:30 [221.4.60.132][-][-][info][application] $_GET = [
+    'r' => 'admin/user/login'
+]
+
+$_COOKIE = [
+    'UM_distinctid' => '15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c'
+    'AJSTAT_ok_times' => '6'
+    'a4877_times' => '6'
+    '_ga' => 'GA1.2.213696563.1492159799'
+    'Hm_lvt_2b363fb3d03ff9991c4971afddf8731d' => '1492159800,1492571378,1493282610,1493341576'
+    'Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d' => '1493341598'
+    'PHPSESSID' => 'tkst3h3458bbrg02t788574a80'
+    '_csrf' => '2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => 'r=admin%2Fuser%2Flogin'
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php?r=admin%2Fuser%2Flogin'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.10.2'
+    'REMOTE_ADDR' => '221.4.60.132'
+    'REMOTE_PORT' => '59509'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => 'UM_distinctid=15b6ba7c1975eb-0b68c2c7097b7d-8373f6a-1fa400-15b6ba7c19862c; AJSTAT_ok_times=6; a4877_times=6; _ga=GA1.2.213696563.1492159799; Hm_lvt_2b363fb3d03ff9991c4971afddf8731d=1492159800,1492571378,1493282610,1493341576; Hm_lpvt_2b363fb3d03ff9991c4971afddf8731d=1493341598; PHPSESSID=tkst3h3458bbrg02t788574a80; _csrf=2737f4c27472356ea86b282c37a2d609a116fe7eb1ef87dd9a60e9e3c818b16fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22KuUVyOtTyD3Kj8e7eRbWsYdn_1TFJXvj%22%3B%7D'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1493348550.4812
+    'REQUEST_TIME' => 1493348550
+]
+2017-08-23 15:27:35 [113.108.21.80][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 113.108.21.80
+2017-08-23 15:27:35 [113.108.21.80][-][-][info][application] $_SESSION = [
+    '__flash' => []
+    '__returnUrl' => '/page/xunfei_tts/web/index.php'
+]
+
+$_SERVER = [
+    'USER' => 'apache'
+    'HOME' => '/var/www'
+    'FCGI_ROLE' => 'RESPONDER'
+    'SCRIPT_FILENAME' => '/data/tcsftp/www/html/page/xunfei_tts/web/index.php'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'CONTENT_TYPE' => ''
+    'CONTENT_LENGTH' => ''
+    'SCRIPT_NAME' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_URI' => '/page/xunfei_tts/web/index.php'
+    'DOCUMENT_ROOT' => '/data/tcsftp/www/html'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_SOFTWARE' => 'nginx/1.12.1'
+    'REMOTE_ADDR' => '113.108.21.80'
+    'REMOTE_PORT' => '52151'
+    'SERVER_ADDR' => '172.18.3.40'
+    'SERVER_PORT' => '80'
+    'SERVER_NAME' => 'www.tecenet.com'
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.tecenet.com'
+    'HTTP_ACCEPT_ENCODING' => 'deflate, gzip'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-cn'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_4 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13G35 QQ/6.5.3.410 V1_IPH_SQ_6.5.3_1_APP_A Pixel/750 Core/UIWebView NetType/2G Mem/117'
+    'HTTP_CONNECTION' => 'Close'
+    'PHP_SELF' => '/page/xunfei_tts/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1503473254.5289
+    'REQUEST_TIME' => 1503473254
+]
