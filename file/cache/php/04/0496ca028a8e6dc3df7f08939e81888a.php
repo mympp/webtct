@@ -1,0 +1,1 @@
+<?php exit;?>1506044249a:2:{i:0;a:4:{s:5:"catid";s:4:"1186";s:8:"moduleid";s:2:"16";s:7:"catname";s:45:"医用光学器具、仪器及内窥镜设备";s:7:"linkurl";s:9:"guangxue/";}i:1;a:4:{s:5:"catid";s:4:"1311";s:8:"moduleid";s:2:"16";s:7:"catname";s:54:"植入体内或长期接触体内的眼科光学器具";s:7:"linkurl";s:5:"1311/";}}

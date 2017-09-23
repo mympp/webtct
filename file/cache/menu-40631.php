@@ -1,0 +1,1 @@
+<?php defined('IN_DESTOON') or exit('Access Denied'); return array (0 => array ('title' => '招聘管理','style' => '','url' => '?moduleid=28',),1 => array ('title' => '简历管理','style' => '','url' => '?moduleid=28&file=resume',),); ?>
