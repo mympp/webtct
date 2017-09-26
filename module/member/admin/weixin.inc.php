@@ -122,6 +122,7 @@ switch($action) {
 		$word = trim(strip_tags($word));
 		$word or dalert('发送内容不能为空', '', 'window.parent.chat_show();');
 		require DT_ROOT.'/api/weixin/init.inc.php';
+
 		$str = substr($word, 0, 4);
 		$ext = substr($word, -3);
 		$file = '';
@@ -469,6 +470,7 @@ switch($action) {
 			$lists[] = $r;
 		}
 		include tpl('weixin', $module);
+
 	break;
 }
 

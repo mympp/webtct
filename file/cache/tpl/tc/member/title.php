@@ -7,7 +7,7 @@
 <?php echo $DT['seo_delimiter'];?>Powered By Tecenet</title>
 <link rel="shortcut icon" href="<?php echo DT_STATIC;?>favicon.ico"/>
 <link rel="bookmark" href="<?php echo DT_STATIC;?>favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="<?php echo DT_SKIN;?>style_v6.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo DT_SKIN;?>style_v6.css?v20170925"/>
 <!--[if lte IE 6]>
 <link rel="stylesheet" type="text/css" href="<?php echo DT_SKIN;?>ie6.css"/>
 <![endif]-->

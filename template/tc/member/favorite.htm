@@ -20,15 +20,15 @@
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> 标题</td>
-<td class="tr"><input type="text" size="45" name="post[title]" id="title" value="{$title}"/> {dstyle('post[style]')} <span id="dtitle" class="f_red"></span></td>
+<td class="tr"><input type="text" size="45" name="post[title]" class="inputtext" id="title" value="{$title}"/> {dstyle('post[style]')} <span id="dtitle" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> 网址</td>
-<td class="tr"><input type="text" size="60" name="post[url]" id="url" value="{$url}"/> <span id="durl" class="f_red"></span></td>
+<td class="tr"><input type="text" size="60" name="post[url]" class="inputtext" id="url" value="{$url}"/> <span id="durl" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl">备注</td>
-<td class="tr"><input type="text" size="60" name="post[note]" id="note"/></td>
+<td class="tr"><input type="text" size="60" name="post[note]" class="inputtext" id="note"/></td>
 </tr>
 <tr>
 <td class="tl"> </td>
@@ -74,7 +74,7 @@
 <form action="favorite.php">
 <div class="tt">
 &nbsp;{$fields_select}&nbsp;
-<input type="text" size="50" name="kw" value="{$kw}" title="关键词"/>&nbsp;
+<input type="text" size="50" name="kw" value="{$kw}" class="inputtext" title="关键词"/>&nbsp;
 {$type_select}&nbsp;
 <input type="submit" value=" 搜 索 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" />&nbsp;
 <input type="button" value=" 重 置 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'"  onclick="window.location='favorite.php';"/>

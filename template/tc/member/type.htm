@@ -66,8 +66,8 @@ var _del = 0;
 {loop $bigtypes $k $v}
 <tr onmouseover="this.className='on';" onmouseout="this.className='';">
 <td align="center"><input name="type[{$v[typeid]}][delete]" type="checkbox" value="1" onclick="if(this.checked){_del++;}else{_del--;}"/></td>
-<td align="center"><input name="type[{$v[typeid]}][listorder]" type="text" size="5" value="{$v[listorder]}" maxlength="3"/></td>
-<td>&nbsp;&nbsp;<input name="type[{$v[typeid]}][typename]" type="text" size="20" value="{$v[typename]}" maxlength="50" style="width:200px;color:{$v[style]}"/></td>
+<td align="center"><input class="inputtext" name="type[{$v[typeid]}][listorder]" type="text" size="5" value="{$v[listorder]}" maxlength="3"/></td>
+<td>&nbsp;&nbsp;<input class="inputtext" name="type[{$v[typeid]}][typename]" type="text" size="20" value="{$v[typename]}" maxlength="50" style="width:200px;color:{$v[style]}"/></td>
 <!--商品分类列表-->
 </tr>
 	{loop $littletypes $y $z}
@@ -94,14 +94,14 @@ var _del = 0;
 		{/if}
 	</select>
 </td>
-<td align="center"><input name="type[0][listorder]" type="text" size="5" value="" maxlength="3"/></td>
+<td align="center"><input name="type[0][listorder]" class="inputtext" type="text" size="5" value="" maxlength="3"/></td>
 <td><select name="type[0][parentid]" id="selectClass" style="display:none">
 <option value="0">所属大类</option>
 	{loop $bigtypes $k $v}
 	<option value="{$v[typeid]}">{$v[typename]}</option>
 	{/loop}
 </select>
-&nbsp;<input name="type[0][typename]" type="text" size="20" value="" maxlength="50" style="width:200px;"/>
+&nbsp;<input name="type[0][typename]" type="text" size="20" class="inputtext" value="" maxlength="50" style="width:200px;"/>
 </tr>
 
 <tr>

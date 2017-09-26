@@ -1,0 +1,1 @@
+<?php exit;?>1506398200a:1:{i:0;a:4:{s:5:"catid";s:3:"715";s:8:"moduleid";s:1:"4";s:7:"catname";s:19:"医疗器械/设备";s:7:"linkurl";s:13:"list-715.html";}}

@@ -1,18 +1,9 @@
-<?php 
-/*
-date:2015-9-1
-who:chentao
-what:批量添加价格区间商品
-where:见--2015/9/1/chentao--
-relation:
+<?php
+use models\helpers\data\tcdb;
 
-date:2016-3-14
-who:chentao
-what:产品添加强制将用户为tiancheng 的商品level属性设置为1
-where:见--2016/3/14/chentao--
-*/
 defined('IN_DESTOON') or exit('Access Denied');
 login();
+require_once DT_ROOT.'/models/autoload.php';
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 $MG['mall_limit'] > -1 or dalert(lang('message->without_permission_and_upgrade'), 'goback');
 $MTYPE = get_type('mall-'.$_userid);
@@ -211,6 +202,8 @@ switch($action) {
 				$mycatid = 0;
 			}
 			$item = array();
+            $company_db = new tcdb('company');
+            $companyMessage = $company_db->field('validated')->where(['userid'=>$_userid])->one();
 			$mycatid_select = type_select('mall-'.$_userid, 0, 'post[mycatid]', $L['type_default']);
 		}
 	break;
@@ -329,7 +322,6 @@ switch($action) {
 		}
 		dmsg($L['success_unsale'], $forward);
 	break;
-	default:
 	case 'relate_del':
 		$itemid or message($L['select_goods']);
 		$do->itemid = $itemid;

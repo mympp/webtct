@@ -9,19 +9,19 @@
 {php $kws=str_replace(' ','%',$kw);}
 {php $replacef = explode(' ', $kw);}
 {php $replacet = array_map('highlight', $replacef);}
-{php $pro = $db->count($DT_PRE.'mall', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $peijian = $db->count($DT_PRE.'mall', "status=3 and stype=1 and (keyword like '%$kws%' )", 18000);}
-{php $brand = $db->count($DT_PRE.'brand_13', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $comp = $db->count($DT_PRE.'company', "business<>'' and catids<>'' and closeshop=0 and keyword like '%$kws%' ", 18000);}
-{php $sell0 = $db->count($DT_PRE.'sell_5', "status=3 and (keyword like '%$kws%') and typeid=0", 18000);}
-{php $sell1 = $db->count($DT_PRE.'sell_5', "status=3 and (keyword like '%$kws%') and typeid=1", 18000);}
-{php $buy = $db->count($DT_PRE.'buy_6', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $job = $db->count($DT_PRE.'job', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $resume = $db->count($DT_PRE.'resume', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $article = $db->count($DT_PRE.'article_21', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $down = $db->count($DT_PRE.'down_15', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $know = $db->count($DT_PRE.'know', "status=3 and (keyword like '%$kws%' )", 18000);}
-{php $quote = $db->count($DT_PRE.'quote', "status=3 and (keyword like '%$kws%' )", 18000);}
+{php $pro = $db->count($DT_PRE.'mall', "status=3 and (keyword like '%$kws%' )");}
+{php $peijian = $db->count($DT_PRE.'mall', "status=3 and stype=1 and (keyword like '%$kws%' )");}
+{php $brand = $db->count($DT_PRE.'brand_13', "status=3 and (keyword like '%$kws%' )");}
+{php $comp = $db->count($DT_PRE.'company', "business<>'' and catids<>'' and closeshop=0 and keyword like '%$kws%' ");}
+{php $sell0 = $db->count($DT_PRE.'sell_5', "status=3 and (keyword like '%$kws%') and typeid=0");}
+{php $sell1 = $db->count($DT_PRE.'sell_5', "status=3 and (keyword like '%$kws%') and typeid=1");}
+{php $buy = $db->count($DT_PRE.'buy_6', "status=3 and (keyword like '%$kws%' )");}
+{php $job = $db->count($DT_PRE.'job', "status=3 and (keyword like '%$kws%' )");}
+{php $resume = $db->count($DT_PRE.'resume', "status=3 and (keyword like '%$kws%' )");}
+{php $article = $db->count($DT_PRE.'article_21', "status=3 and (keyword like '%$kws%' )");}
+{php $down = $db->count($DT_PRE.'down_15', "status=3 and (keyword like '%$kws%' )");}
+{php $know = $db->count($DT_PRE.'know', "status=3 and (keyword like '%$kws%' )");}
+{php $quote = $db->count($DT_PRE.'quote', "status=3 and (keyword like '%$kws%' )");}
 {php $ztitle='天成医疗网_符合关键词：'.$kws.' 的相关信息统计';}
 
 {template 'module-header'}
