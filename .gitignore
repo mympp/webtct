@@ -10,3 +10,5 @@ file/cache/php/12/12a838d964a68fd15f7ff36a28f82fc4.php
 *.db
 .svn/wc.db
 file/cache/area.php
+*.db
+*.db

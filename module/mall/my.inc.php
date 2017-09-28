@@ -1,5 +1,6 @@
 <?php
 use models\helpers\data\tcdb;
+use models\module\baseModule;
 
 defined('IN_DESTOON') or exit('Access Denied');
 login();
@@ -202,8 +203,8 @@ switch($action) {
 				$mycatid = 0;
 			}
 			$item = array();
-            $company_db = new tcdb('company');
-            $companyMessage = $company_db->field('validated')->where(['userid'=>$_userid])->one();
+            $companyModule = baseModule::moduleInstance('company');
+            $isCompanyValidated = $companyModule->checkValidate($_userid,$_username);
 			$mycatid_select = type_select('mall-'.$_userid, 0, 'post[mycatid]', $L['type_default']);
 		}
 	break;

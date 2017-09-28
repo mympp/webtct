@@ -1,7 +1,11 @@
-<?php 
+<?php
+use models\module\baseModule;
+
 defined('IN_DESTOON') or exit('Access Denied');
 login();
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
+require_once DT_ROOT.'/models/autoload.php';
+
 $MOD['vmember'] or dheader($MOD['linkurl']);
 require MD_ROOT.'/member.class.php';
 require DT_ROOT.'/include/post.func.php';
@@ -114,22 +118,35 @@ switch($action) {
 	case 'company':
 		$MOD['vcompany'] or dheader($MOD['linkurl']);
 		$head_title = $L['validate_company_title'];
-		$va = $db->get_one("SELECT * FROM {$DT_PRE}validate WHERE type='$action' AND username='$username'");
-		if($user['vcompany'] || $va) {
+
+        $companyModule = baseModule::moduleInstance('company');
+
+        $isValidated = $companyModule->isValidated($_userid,$_username);
+        $isWaitValidate = $companyModule->isWaitValidated($_userid,$_username);
+		if($isValidated || $isWaitValidate) {
 			$action = 'v'.$action;
+            $validateData = $companyModule->getValidateData($_userid);
 			include template('validate', $module);
 			exit;
 		}
 		if($submit) {
-			if(!$company) message($L['validate_company_name']);
-			if(!$thumb) message($L['validate_company_image']);
-			clear_upload($thumb.$thumb1.$thumb2);
-			$company = dhtmlspecialchars($company);
-			$thumb = dhtmlspecialchars($thumb);
-			$thumb1 = dhtmlspecialchars($thumb1);
-			$thumb2 = dhtmlspecialchars($thumb2);
-			$db->query("INSERT INTO {$DT_PRE}validate (type,username,ip,addtime,status,editor,edittime,title,thumb,thumb1,thumb2) VALUES ('$action','$username','$DT_IP','$DT_TIME','2','system','$DT_TIME','$company','$thumb','$thumb1','$thumb2')");
-			dmsg($L['validate_company_success'], '?action='.$action);
+			if(!$post['business_license']) message('请上传营业执照');
+			if(!$post['product_license']) message('请上传生产/经营许可证');
+			clear_upload($post['business_license'].$post['product_license']);
+
+            $post['business_license'] = dhtmlspecialchars($post['business_license']);
+            $post['product_license'] = dhtmlspecialchars($post['product_license']);
+
+            if(!empty($post['business_license_totime']))
+                $post['business_license_totime'] = strtotime($post['business_license_totime']);
+            if(!empty($post['product_license_totime']))
+                $post['product_license_totime'] = strtotime($post['product_license_totime']);
+
+			if($companyModule->sendValidate($_userid,$post)){
+                dmsg($L['validate_company_success'], '?action='.$action);
+            }else{
+                message('证件上传失败，可联系网站客服跟进！');
+            }
 		} else {
 			include template('validate', $module);
 		}

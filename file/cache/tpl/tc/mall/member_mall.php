@@ -24,7 +24,7 @@
     </table>
 </div>
 <?php if($action=='add' || $action=='edit') { ?>
-        <?php if($action == 'add' && empty($companyMessage['validated'])) { ?>
+        <?php if($action == 'add' && $isCompanyValidated != true ) { ?>
             <?php $authLinkUrl = DT_PATH.'member/validate.php?action=company';?>
             <?php $authLinkTitle = '资质材料上传';?>
             <?php $authTip = "尊敬的<em>".$_username."</em>，您的商家未通过资质认证！";?>

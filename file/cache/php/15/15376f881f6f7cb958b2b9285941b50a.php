@@ -1,1 +1,0 @@
-<?php exit;?>1506044225a:1:{i:0;a:4:{s:5:"catid";s:4:"1810";s:8:"moduleid";s:1:"5";s:7:"catname";s:12:"配件耗材";s:7:"linkurl";s:7:"haocai/";}}

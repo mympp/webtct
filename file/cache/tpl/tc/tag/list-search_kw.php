@@ -1,0 +1,2 @@
+<?php defined('IN_DESTOON') or exit('Access Denied');?><?php if(is_array($tags)) { foreach($tags as $i => $t) { ?><a href="<?php echo $MODULE[$moduleid]['linkurl'];?><?php echo $t['letter'];?>-<?php echo $t['itemid'];?>/" class="color" <?php if($target) { ?> target="<?php echo $target;?>"<?php } ?>
+><font class="f12"><?php echo $t['word'];?></font></a>&nbsp; <?php } } ?><a href="<?php echo $MODULE['1']['linkurl'];?>hot/" class="color" target="<?php echo $target;?>"><font class="f12">更多</font></a>&nbsp; 

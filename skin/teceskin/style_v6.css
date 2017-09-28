@@ -143,7 +143,7 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
 }
 
 .head_main {
-    width: 500px;
+    width: 560px;
     float: left
 }
 
@@ -1025,7 +1025,7 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
     outline:none;
     transition-duration: .3s;
 }
-input[type="radio"]{
+input[type="radio"],input[type="checkbox"]{
     vertical-align: middle;
     margin: 0 4px 0 10px;
     position: relative;
