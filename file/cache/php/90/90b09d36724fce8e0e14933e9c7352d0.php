@@ -1,1 +1,0 @@
-<?php exit;?>1506044223a:1:{i:0;a:4:{s:5:"catid";s:4:"1811";s:8:"moduleid";s:1:"5";s:7:"catname";s:12:"诊断试剂";s:7:"linkurl";s:6:"shiji/";}}

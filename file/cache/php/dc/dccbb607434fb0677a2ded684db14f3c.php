@@ -1,1 +1,0 @@
-<?php exit;?>1506065236a:1:{i:0;a:4:{s:6:"itemid";s:3:"287";s:8:"username";s:8:"cthought";s:8:"truename";s:6:"陈韬";s:8:"homepage";s:27:"http://cthought.tc308c.com/";}}

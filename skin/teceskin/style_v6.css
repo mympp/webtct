@@ -116,7 +116,7 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
     width: 100%;
     height: 50px;
     color: #FFF;
-    background: #2388F9 url(./image/member/head_bg.png) repeat-x;
+    background: #333742 url(./image/member/head_bg.png) repeat-x;
     position: fixed;
     z-index: 2;
     left: 0
@@ -143,7 +143,7 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
 }
 
 .head_main {
-    width: 500px;
+    width: 560px;
     float: left
 }
 
@@ -1025,7 +1025,7 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
     outline:none;
     transition-duration: .3s;
 }
-input[type="radio"]{
+input[type="radio"],input[type="checkbox"]{
     vertical-align: middle;
     margin: 0 4px 0 10px;
     position: relative;
@@ -1039,3 +1039,22 @@ input[type="radio"]{
 }
 
 
+/*简历新增*/
+.calender{ width:255px; margin:50px auto; top:0; left:0; border:4px #D6D6D6 solid; background:#EBEBEB; position:absolute; display:none; z-index:999;}
+.calendertb{width:100%;}
+.calendertb td{width:35px; height:35px;border:1px #CCCCCC solid; text-align:center; vertical-align:middle; cursor:pointer; font-size:14px; font-weight:bold;}
+.calendertb td.hover,.calendertb td.weekendhover{background:#D6D6D6;}
+.calendertb th{width:35px; height:30px;border:1px #CCCCCC solid; text-align:center; vertical-align:middle; cursor:pointer; color:#979797; }
+.tdtoday{ background:#0080FF;color:#fff;width:35px; height:35px;border:1px #CCCCCC solid; text-align:center; vertical-align:middle; cursor:pointer; font-size:14px; font-weight:bold;}
+.getyear{ height:35px; line-height:35px; width:100%; text-align:center;}
+.preMonth{ font-size:14px; font-weight:bold; cursor:pointer; margin-right:18px;color:#0080FF;}
+.nextMonth{ font-size:14px; font-weight:bold; cursor:pointer; margin-left:18px;color:#0080FF;}
+#mh_date_1,#mh_date_2,#mh_date_3,#mh_date_4{width:165px; height:12px; line-height:20px; padding:5px; border:1px #abadb3 solid; cursor:pointer; background:url("dateIco.png") no-repeat right center;}
+.zhezhao{width:100%; height:100%; position:fixed; z-index:998;  background:#fff;filter:alpha(opacity=10);opacity:0.1; display:none; }
+#tabA{line-height:40px;}
+/*订单中心新增*/
+.nav {margin:0 0 15px 0;background:url('nav_bg.gif') #E8E8E8 repeat-x 0 bottom;}
+.nav td {padding:10px 15px;font-size:14px;}
+.nav span {font-size:12px;}
+.nav_1 {border-bottom:#E8E8E8 2px solid;}
+.nav_2 {border-bottom:#3D95E5 2px solid;}

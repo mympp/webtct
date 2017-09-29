@@ -260,7 +260,7 @@ class tcdb{
     }
 
     //结果处理
-    protected function restart(){
+    public function restart(){
         $this->field = '*';
         $this->backup_condition = $this->condition;
         $this->condition = '';

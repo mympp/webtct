@@ -373,7 +373,7 @@ function check() {
 </form>
 {else}
 <div class="tt">
-<div class="mr">
+<div class="mr" style="margin:15px 0">
 <a href="?action={$action}" class="{if $typeid==-1}f_b{/if}">全部</a>
 {loop $NAME $k $v}
  | <a href="?action={$action}&typeid={$k}" class="{if $typeid==$k}f_b{/if}">{$v}</a>
@@ -398,7 +398,7 @@ function check() {
 <option value="title"{if $fields=='title'} selected{/if}>标题</option>
 <option value="content"{if $fields=='content'} selected{/if}>全文</option>
 </select>
-<input type="text" name="kw" value="{$kw}" size="30" title="关键词"/>&nbsp;
+<input class="inputtext" type="text" name="kw" value="{$kw}" size="30" title="关键词"/>&nbsp;
 <input type="submit" value=" 搜 索 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" />
 <input type="button" value=" 重 置 " class="btn" onclick="Go('?action={$action}');"/>
 </form>
@@ -453,7 +453,7 @@ function check() {
 <input type="submit" value=" 彻底删除 " class="btn" onclick="if(confirm('确定要删除选中信件吗？此操作不可撤销')){this.form.action='?action=delete';}else{return false;}"/>
 {elseif $status==3}
 <span class="f_r">
-<input type="text" value="输入编号,如135" size="15" id="m_id" onfocus="if(this.value=='输入编号,如135')this.value='';"/>
+<input class="inputtext" type="text" value="输入编号,如135" size="15" id="m_id" onfocus="if(this.value=='输入编号,如135')this.value='';"/>
 <input type="button" value=" 查 看 " class="btn" onclick="if(Dd('m_id').value.match(/^[0-9]{1,}$/)){Go('?action=show&itemid='+Dd('m_id').value);return;}Dd('m_id').value='';Dd('m_id').focus();"/>
 </span>
 <input type="submit" value=" 标记已读 " class="btn" onclick="this.form.action='?action=mark';"/>

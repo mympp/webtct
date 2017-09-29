@@ -10,5 +10,10 @@ file/cache/php/12/12a838d964a68fd15f7ff36a28f82fc4.php
 *.db
 .svn/wc.db
 file/cache/area.php
+<<<<<<< HEAD
 *.bin
 *.data
+=======
+*.db
+*.db
+>>>>>>> 6be996487e61d7191b7ac4df711ddc77fd214904

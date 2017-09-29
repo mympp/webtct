@@ -244,11 +244,11 @@ class weixin {
 	}
 }
 $wx = new weixin();
-$access_token = $dc->get('weixin_access_token');//access_token
-if(!$access_token) {
+//$access_token = $dc->get('weixin_access_token');//access_token
+//if(!$access_token) {
 	$access_token = $wx->get_token();
-	$dc->set('weixin_access_token', $access_token, 3600);
-}
+//	$dc->set('weixin_access_token', $access_token, 3600);
+//}
 $wx->access_token = $access_token;
 //获取ticket--吕保成--2016/1/26
 $ticket = $dc->get('weixin_ticket');//ticket
