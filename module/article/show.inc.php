@@ -27,6 +27,7 @@ $content = $t['content'];
 
 $qiniu = new QiniuCdn();
 $content = $qiniu->waterMark($content);
+
 if($lazy) $content = img_lazy($content);
 $CP = $MOD['cat_property'] && $CAT['property'];
 if($CP) {

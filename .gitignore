@@ -17,3 +17,5 @@ file/cache/area.php
 *.db
 *.db
 >>>>>>> 6be996487e61d7191b7ac4df711ddc77fd214904
+*.iml
+config.inc.php

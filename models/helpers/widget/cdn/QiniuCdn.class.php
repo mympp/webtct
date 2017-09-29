@@ -1,11 +1,22 @@
 <?php
 namespace models\helpers\widget\cdn;
 
+use models\config\Config;
+
 class QiniuCdn
 {
-    private $_cdnUrl = 'http://img.tecenet.com/';
-    private $_baseUrl = 'http://www.tecenet.com/';
-    private $_watermarkPic = 'http://www.tecenet.com/skin/teceskin/images/watermark.JPG';
+    private $_cdnUrl;
+    private $_baseUrl;
+    private $_watermarkPic;
+    private $_watermarkParams;
+
+    public function __construct()
+    {
+        $this->_cdnUrl = Config::getConfig('cdn','Qiniu','baseUrl');
+        $this->_baseUrl = Config::getConfig('baseUrl');
+        $this->_watermarkPic = Config::getConfig('cdn','watermarkPic');
+        $this->_watermarkParams = Config::getConfig('cdn','Qiniu','watermark');
+    }
 
     public function waterMark($html)
     {
@@ -15,6 +26,13 @@ class QiniuCdn
         $domXpath = new \DOMXPath($dom);
 
         $imgNodes = $domXpath->query('//img');
+
+        //水印配置
+        $paramsStr = '';
+        foreach($this->_watermarkParams as $key => $value){
+            $paramsStr .= "/$key/$value";
+        }
+
         if ($imgNodes->length) {
             foreach ($imgNodes as $imgNode) {
                 /* @var $imgNode \DOMElement */
@@ -22,13 +40,12 @@ class QiniuCdn
                 if ($src) {
                     $newSrc = $src . '';
                     $newSrc = str_replace($this->_baseUrl,$this->_cdnUrl,$newSrc);
-                    $newSrc .= '?watermark/1/image/'.base64_encode($this->_watermarkPic).'/gravity/SouthEast/dx/2/dy/2';
+                    $newSrc .= '?watermark/1/image/'.base64_encode($this->_watermarkPic).$paramsStr;
 
                     $imgNode->setAttribute('src', $newSrc);
                 }
             }
         }
-
         return $dom->saveHTML();
 
     }
