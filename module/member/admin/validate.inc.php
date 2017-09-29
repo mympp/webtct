@@ -2,7 +2,7 @@
 defined('DT_ADMIN') or exit('Access Denied');
 $menus = array (
     array('资料审核', '?moduleid='.$moduleid.'&file='.$file.'&action=member'),
-    array('公司认证', '?moduleid='.$moduleid.'&file='.$file.'&action=company'),
+    array('公司认证', '?moduleid='.$moduleid.'&file=company_validate&action=company'),
     array('实名认证', '?moduleid='.$moduleid.'&file='.$file.'&action=truename'),
     array('手机认证', '?moduleid='.$moduleid.'&file='.$file.'&action=mobile'),
     array('邮件认证', '?moduleid='.$moduleid.'&file='.$file.'&action=email'),

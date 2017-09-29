@@ -114,5 +114,19 @@ class CompanyValidateQuery
         return $companyValidateDb->field($field)->where(['userid'=>$userid])->one();
     }
 
+    /**
+     * 获取多个商家审核信息
+     * @param $condition
+     * @param int $page
+     * @param int $pagesize
+     * @param string $order
+     * @return array|bool
+     */
+    public function getListData($condition = [], $page = 1, $pagesize = 20, $order = '')
+    {
+        $start = ($page - 1) * $pagesize;
+        return $this->getCompanyValidateDb()->where($condition)->order($order)->limit($start, $pagesize)->select();
+    }
+
 }
 ?>
