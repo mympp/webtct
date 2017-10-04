@@ -1,7 +1,8 @@
 <?php 
 use models\helpers\view\internalLink;
+
 defined('IN_DESTOON') or exit('Access Denied');
-require_once DT_ROOT.'/models/autoload.php';
+
 //if($DT_BOT || $_POST) dhttp(403);
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');

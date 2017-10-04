@@ -19,6 +19,7 @@ if($DT['city']) {
 } else {
 	$_aid < 1 or dalert('系统未开启分站功能，您的分站管理帐号暂不可用', $MODULE[2]['linkurl'].'logout.php');
 }
+require_once DT_ROOT.'/models/autoload.php';
 require DT_ROOT.'/admin/global.func.php';
 require DT_ROOT.'/admin/license.func.php';
 require DT_ROOT.'/include/post.func.php';

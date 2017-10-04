@@ -23,6 +23,7 @@ class tcdb{
     var $table;
     var $tb_pre ;
     var $errmsg;
+    var $join;
     protected $query_str;
 
     /**
@@ -39,6 +40,7 @@ class tcdb{
         $this->pagesize = 10;
         $this->order = '';
         $this->errmsg = '';
+        $this->join = '';
         //$this->con = mysql_connect($CFG['db_host'],$CFG['db_user'],$CFG['db_pass']);
         $this->con = $tcdbcon;
         if(!$this->con) return false;
@@ -81,12 +83,32 @@ class tcdb{
         return $this;
     }
 
-    public function field($field){
-        if($field == '') return $this;
-        if(is_array($field)){
-            $this->field = implode(',',$field);
-        }else{
+    public function field($field)
+    {
+        if ($field == '') return $this;
+        if (is_array($field)) {
+            $this->field = implode(',', $field);
+        } else {
             $this->field = $field;
+        }
+        return $this;
+    }
+
+    /**
+     * join查询拼接
+     * @param $join     join查询表
+     * @param string $with 连接字段
+     * @param string $type  值为left或right
+     * @return $this
+     */
+    public function join($join, $with = '', $type = '')
+    {
+        if (in_array($type, ['left', 'right'])) {
+            $this->join = $type;
+        }
+        $this->join .= ' join ' . $join . ' ';
+        if (!empty($with)) {
+            $this->join .= ' on ' . $with . ' ';
         }
         return $this;
     }
@@ -165,19 +187,19 @@ class tcdb{
 
     //逻辑操作方法
     public function all(){
-        $str = 'select '.$this->field.' from '.$this->table.' '.$this->condition.$this->order;
+        $str = 'select '.$this->field.' from '.$this->table.' '.$this->join.' '.$this->condition.$this->order;
         $this->result = $this->query($str);
         return $this->result();
     }
 
     public function select(){
-        $str = 'select '.$this->field.' from '.$this->table.' '.$this->condition.$this->order.' limit '.$this->start.','.$this->pagesize;
+        $str = 'select '.$this->field.' from '.$this->table.' '.$this->join.' '.$this->condition.$this->order.' limit '.$this->start.','.$this->pagesize;
         $this->result = $this->query($str);
         return $this->result();
     }
 
     public function one(){
-        $str = 'select '.$this->field.' from '.$this->table.' '.$this->condition.$this->order.' limit 0,1';
+        $str = 'select '.$this->field.' from '.$this->table.' '.$this->join.' '.$this->condition.$this->order.' limit 0,1';
         $this->result = $this->query($str);
         if($this->result == false) return '';
         $result = $this->result();
@@ -267,6 +289,7 @@ class tcdb{
         $this->start = 0;
         $this->pagesize = 10;
         $this->order = '';
+        $this->join = '';
     }
 
     protected function result(){

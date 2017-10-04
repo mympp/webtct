@@ -2,10 +2,9 @@
 use models\helpers\widget\redirect\pc_to_wap;
 
 defined('IN_DESTOON') or exit('Access Denied');
-require DT_ROOT.'/models/autoload.php';
-$wapurl = pc_to_wap::forword('zixun');
 
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
+$wapurl = pc_to_wap::forword('zixun');
 
 
 /*
