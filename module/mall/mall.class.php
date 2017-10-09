@@ -161,6 +161,7 @@ class mall {
 
 	function add($post) {
 		global $MOD;
+		
 		$post = $this->set($post);
 		$sqlk = $sqlv = '';
 		foreach($post as $k=>$v) {

@@ -95,6 +95,8 @@ class CompanyValidateQuery
                 return self::VALIDATED_STATUS;
             } elseif ($companyValidate['status'] == self::CHECK_STATUS) {
                 return self::CHECK_STATUS;
+            } elseif ($companyValidate['status'] == self::FORBID_STATUS){
+                return self::FORBID_STATUS;
             }
         }
         return self::UNVALIDATE_STATUS;
@@ -137,7 +139,7 @@ class CompanyValidateQuery
             $conditionType = '=';
         }
         $condition['itemid'] = $idStr;
-        $data['editime'] = time();
+        $data['edittime'] = time();
         return $this->_getCompanyValidateDb()->where($condition, $conditionType)->edit($data);
     }
 

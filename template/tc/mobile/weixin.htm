@@ -28,18 +28,18 @@
 		}
 	});
 </script>
-	
+
 <!--mark-tecenet-->
 {template 'guide-ad','search'}
 <!--mark-tecenet end-->
 
 
 	<div class="main">
-		<div class="title" style="{if $status==2}color:red;{/if}{if $status==1}text-decoration:line-through;{/if}"><strong style="color:{$style};">{$title}</strong></div>
+		<div class="title" style="{if $status==2}color:red;{/if}{if $status==1}text-decoration:line-through;{/if}"><strong id="title" style="color:{$style};">{$title}</strong></div>
 		<div class="info">
 			{$editdate}&nbsp;&nbsp;
 			<span ><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODg2MTExMg==&mid=223574755&idx=1&sn=1fcdce2c9c8e4b7a3eb1a998b2aa8e4f#rd" style="color:#459ae9;">一键关注：天成医疗</a></span>
-			<span style="float:right;"   onclick="clearhtml('.content');">简洁版 | 阅读:{$hits}</span>
+			<span style="float:right;"   onclick="clearhtml('.content');">简洁版 | 阅读:<font id="hits">{$hits}</font></span>
 			<div style="font-size:16px;text-align:center;padding-top:10px;">
 				{if $_groupid==1||$_groupid==8||get_cookie('pwd')}
 					<span style="padding-right: 10px;"><a href="{DT_PATH}api/cj/index.php?action=addnew&itemid={$itemid}">修改</a></span>

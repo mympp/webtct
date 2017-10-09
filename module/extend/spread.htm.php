@@ -28,7 +28,6 @@ $pages = '';
 $datetype = 5;
 $showpage = 0;
 $tags = $tag = array();
-if(get_table($moduleid) == $DT_PRE) return false;
 $result = $db->query("SELECT * FROM ".get_table($moduleid)." WHERE `{$id}` IN ($spread_itemids)");
 while($r = $db->fetch_array($result)) {
 	if(strpos($r['linkurl'], '://') === false) $r['linkurl'] = $MODULE[$spread_moduleid]['linkurl'].$r['linkurl'];

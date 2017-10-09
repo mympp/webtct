@@ -1,0 +1,18 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}aboutus.css"/>
+<div class="abouttop">
+<div class="aboutmenu">
+<ul>
+		<!--{php $tags=tag("table=webpage&condition=item='$_item' and level>1&areaid=$cityid&pagesize=10&order=listorder&template=null");}-->
+		{loop $tags $k $t}
+		<li {if $t['itemid']==$itemid}class="abouty"{else}class="aboutn"{/if}><a href="{if $t[domain]}{$t[domain]}{else}{DT_PATH}{$t[linkurl]}{/if}" >{$t[title]}</a></li>
+		{/loop}
+		</ul>
+</div>
+<div class="titles"><h1>{$title}</h1></div>
+</div>
+<div class="aboutbody">
+<div class="aboutcontent" id="content">{$content}</div>
+</div>
+
+{template 'footer'}

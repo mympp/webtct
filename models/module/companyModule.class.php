@@ -78,7 +78,10 @@ class companyModule extends baseModule
      */
     public function isValidated($userid,$username = '')
     {
-        if($this->getValidateStatus($userid,$username) == CompanyValidateQuery::COMPANY_VALIDATED_STATUS) {
+        $status = $this->getValidateStatus($userid,$username);
+        if($status == CompanyValidateQuery::VALIDATED_STATUS) {
+            return true;
+        }elseif($status == CompanyValidateQuery::COMPANY_VALIDATED_STATUS){
             return true;
         }else{
             return false;
@@ -96,6 +99,19 @@ class companyModule extends baseModule
         if ($this->getValidateStatus($userid, $username) == CompanyValidateQuery::CHECK_STATUS) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    /**
+     * 判断商家资质审核是否处于拒绝状态
+     * @param $userid
+     * @param string $username
+     */
+    public function isRejectValidated($userid,$username = ''){
+        if($this->getValidateStatus($userid,$username) == CompanyValidateQuery::FORBID_STATUS){
+            return true;
+        }else{
             return false;
         }
     }

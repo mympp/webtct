@@ -882,8 +882,8 @@
 				<!--设备服务需求-->
 				<div class="col equipment-col">
 					<div class="col-hd pd-10 clearfix">
-						<h3 class="pull-left"><a href="{$MODULE[9]['linkurl']}" target="_blank">设备服务需求</a></h3>
-						<a class="more pull-right" href="{$MODULE[9]['linkurl']}" target="_blank">更多</a>
+						<h3 class="pull-left"><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?type=99')}" target="_blank">设备服务需求</a></h3>
+						<a class="more pull-right" href="{$MODULE[9]['linkurl']}{rewrite('search.php?type=99')}" target="_blank">更多</a>
 					</div>
 					<div class="col-bd">
 						{php $job_new_tags=tag("moduleid=9&fields=catid,linkurl,title,areaid,hits&condition=status=3 and step<4 &pagesize=8&order=itemid desc&debug=0&showcat=1&template=null")}

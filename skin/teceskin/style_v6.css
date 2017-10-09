@@ -250,12 +250,13 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
 }
 
 .side_body em {
+    display: block;
     font-style: normal;
     color: #FFF;
     font-size: 10px;
+    line-height: 1.2;
     z-index: 1;
     position: absolute;
-    display: block;
     margin: -16px 0 0 60px;
     padding: 0 2px 0 2px;
     background: #F60;
@@ -263,6 +264,9 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
     border-radius: 10px
 }
 
+#message em ,#destoon_message em{
+    display: none;
+}
 .side_a {
     height:40px;
     line-height:40px;
@@ -929,14 +933,19 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
 #msgbox {
     z-index: 5;
     position: absolute;
-    background: #F40;
-    top: 16px;
-    left: 660px;
+    background: #333742;
+    top: 50%;
+    left: 50%;
+    margin: -26px 0 0 -90px;
     color: #FFF;
-    padding: 3px 6px 3px 6px;
-    line-height: 15px;
+    width: 100px;
+    padding: 20px 40px;
+    text-align: center;
+    line-height: 1;
     letter-spacing: 1px;
-    cursor: pointer
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 2px;
 }
 
 .dropdown>li{
@@ -1036,6 +1045,21 @@ input[type="radio"],input[type="checkbox"]{
     display: inline-block;
     padding:8px 10px;
     border:1px solid #ddd;
+}
+
+#destoon_message font,#message font{
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-left: 6px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+    color: #fff;
+    background-color: #e56639;
+    border-radius: 50%;
 }
 
 

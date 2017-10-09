@@ -6,9 +6,16 @@
  * Time: 下午4:51
  */
 
-$dsn      = 'mysql:host=188.188.1.218;port=53306;dbname=tctedata2';
-$username = 'root';
-$password = 'tece218';
+//$dsn = 'mysql:dbname=tianchengdata;host=localhos';
+////$username = 'root';
+$password = '';
+
+$dsn      = 'mysql:dbname=tecedata3;host=rm-wz9n33j6yi1265k8x.mysql.rds.aliyuncs.com';
+$username = 'tecedb';
+$password = 'tiAncHenGnet!213%1514';
+//$dsn      = 'mysql:dbname=tianjiao;host=127.0.0.1:3306';
+//$username = 'root';
+//$password = 'root';
 // error reporting (this is a demo, after all!)
 ini_set('display_errors',1);error_reporting(E_ALL);
 

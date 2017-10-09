@@ -1,7 +1,6 @@
 ErrorDocument 404 /404.php
 RewriteEngine on
 RewriteBase /
-
 RewriteRule ^index.html$ /index.php
 
 RewriteCond %{QUERY_STRING} (^|&)type=([0-9]+)($|&)

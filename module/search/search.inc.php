@@ -1,4 +1,5 @@
 <?php 
+
 defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 require DT_ROOT.'/include/post.func.php';
@@ -21,7 +22,7 @@ if($keyword==''){
 }
 
 $sword=getSegmentation($keyword);   //对搜索字符词进行分词
-$sword_str=implode("','",$sword);     //分词数组组成字符词
+$sword_str=implode("','",$sword);     //分词数组组成字符�?
 if(empty($sword_str)) $sword_str = trim($keyword);
 
 //匹配内容
@@ -42,7 +43,7 @@ $cSearch->setPageSize(6);
 $cSearch->setFilter(['status'=>3,'info_type'=>1]);
 $malls = $cSearch->search($keyword);
 if($malls == false){
-	//缓存中的最新产品
+	//缓存中的最新产�?
 	$malls = get_cache('recom_malls');
 }
 

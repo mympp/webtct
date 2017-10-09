@@ -95,6 +95,10 @@ switch($action) {
 		$num = $num ? '<strong class=\"f_red\">'.$num.'</strong>' : 0;
 		echo 'try{document.getElementById("spread").innerHTML="'.$num.'";}catch(e){}';
 
+        $num = $db->count($DT_PRE.'company_validate', "status=2");
+        $num = $num ? '<strong class=\"f_red\">'.$num.'</strong>' : 0;
+        echo 'try{document.getElementById("company_validate").innerHTML="'.$num.'";}catch(e){}';
+
 		$num = $db->count($DT_PRE.'club_group', "status=2");//商圈 V6.0 新增
 		$num = $num ? '<strong class=\"f_red\">'.$num.'</strong>' : 0;
 		echo 'try{document.getElementById("club_group").innerHTML="'.$num.'";}catch(e){}';

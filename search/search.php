@@ -9,5 +9,6 @@ if(isMobile()){
 	exit;
 }
 $module='search';
-require DT_ROOT.'/module/'.$module.'/search.inc.php';
+$template = 'search';
+require DT_ROOT.'/module/search/search.inc.php';
 ?>

@@ -133,14 +133,3 @@
 
 </body>
 </html>
-<?php 
-if(isset($tcdbcon)){
-	if(is_a($tcdbcon,'mysqli')) mysqli_close($tcdbcon);
-	if(is_a($tcdbcon,'mysql')) mysqli_close($tcdbcon);
-}
-$db->close();
-echo 'mem:'.round(memory_get_usage()/1024/1024, 2)."MB ";
-echo '<br/>';
-$mic_end_time = microtime(true);
-echo 'usetime:'.($mic_end_time - $mic_start_time);
-?>

@@ -17,7 +17,6 @@
 </head>
 <body>
 {template 'guide-ad','search'}
-
     <!--search-wrap-->
     <div class="search-wrap">
         <!--top-nav-->
@@ -220,6 +219,21 @@
         $(".tool .go-to-top").click(function(){
             $('body,html').scrollTop(0);
             return false;
+        });
+        
+        $.ajax({
+        	type:'GET',
+			url:'http://'+window.location.host+'/ajax.php',
+			data:'action=info&infotype=2&vip=1&mobile=1',
+			cache:true,
+			success:function(data,status){
+				if(data != ''){
+					$('#vip_company').append(data);
+				}
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				
+			}	
         });
         
         //检测滚轮事件

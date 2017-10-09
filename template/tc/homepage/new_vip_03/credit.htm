@@ -60,10 +60,7 @@
 				<table cellpadding="2" cellspacing="2" width="100%" style="float:left;text-align:left;">
 				{loop $catids $i $c}
 				{if $i%3==0}<tr>{/if}
-				<td width="33%">
-				{php $cate = get_cat($c);}
-				<a href="{$MODULE[4]['linkurl']}{com_rewrite(['catid'=>$c])}" target="_blank">{$cate['catname']}</a>
-				</td>
+				<td width="33%">{cat_pos(get_cat($c), ' / ', '_blank')}</td>
 				{if $i%3==2}</tr>{/if}
 				{/loop}
 				</table>

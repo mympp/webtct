@@ -24,20 +24,5 @@ var tree1;var tree2;
 	//},80);
 	}
 	);
-	
-	$('.catlist').mouseenter(function(){
-		var _dd = $(this).find('dd');
-		_dd.css('display','block');
-		var _span = $(this).find('.cattitle');
-		_span.css('color','white');
-		$(this).css('background','#9e1e00');
-	});
-	$('.catlist').mouseleave(function(){
-		var _dd = $(this).find('dd');
-		var _span = $(this).find('.cattitle');
-		_span.css('color','black');
-		_dd.css('display','none');
-		$(this).css('background','#f5f5f5');
-	});
 });
-
+//开发者:93645493 欢迎咨询网站技术问题//

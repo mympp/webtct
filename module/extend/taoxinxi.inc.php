@@ -109,11 +109,7 @@ if($action=='list'||!$action){
 }
 
 if($wap){
-	if ( $DT_URL == "http://wap.tecenet.com/taoxinxi.php") {
-		header("location: ".DT_PATH. "mobile/taoxinxi.php");exit;
-	} else {
-		include template('taoxinxi2', 'touch');
-	}
+	include template('taoxinxi2', 'touch');
 	//include template('taoxinxi', 'touch');
 }else{
 	include template('taoxinxi', $module);

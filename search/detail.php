@@ -10,5 +10,6 @@ if(isMobile()){
 }
 
 $module='search';
+$page_template = 'detail';
 require DT_ROOT.'/module/'.$module.'/detail.inc.php';
 ?>

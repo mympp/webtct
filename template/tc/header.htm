@@ -16,8 +16,14 @@
 		<script type="text/javascript">topmenu(	{if $moduleid>2}{$moduleid}{else}1{/if})</script>
 		{if !$teceid}
 			<script type="text/javascript">Dd('tece{$moduleid}').className='welcomey';</script>
+			<style>
+				#webmid1 .topmenu li{margin-right: 74px;}
+				#webmid1 .go-new{display: block;}
+				.go-new{display: none;position: absolute;left: 50%;margin-left: 430px;}
+				.go-new a{color: #ff8800;}
+			</style>
+			<div class="go-new">&nbsp;|&nbsp;<a href="http://www.tecenet.com/nindex.php" target="_self">新版首页</a></div>
 		{else}
-			<div style="display:none;"><a href="http://www.tecenet.com/nindex.php" target="_blank">新版首页</a></div>
 			<script type="text/javascript">Dd('tece{$teceid}').className='welcomey';</script>
 		{/if}
 	</div>

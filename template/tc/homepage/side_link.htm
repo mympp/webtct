@@ -20,14 +20,13 @@
 <div class="side_body">
 {php $link_data = $db->query("select c.linkurl as linkurl,c.company as company from {$db->pre}company as c join {$db->pre}member as m on c.userid = m.userid where c.userid > $userid and c.closeshop = 0 and m.edittime <> 0 order by c.userid limit 0,10");}
 <?php 
-$companys = [];
 while($r=$db->fetch_array($link_data)){
-	$companys[] = $r; 
+	$tags[] = $r; 
 }
 ?>
 <ul>
-{if $companys}
-{loop $companys $t}
+{if $tags}
+{loop $tags $t}
 <li><a href="{$t[linkurl]}" target="_blank" title="{$t[company]}">{$t[company]}</a></li>
 {/loop}
 {else}

@@ -19,28 +19,29 @@
         <meta charset="utf-8">
          <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 			<link rel="stylesheet" type="text/css" href="{DT_STATIC}mobile/static/taoxinxi.css" />
-			<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
-			<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
-			<script type="text/javascript" src="{DT_STATIC}file/script/jsfunction.js"></script>
-			<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=iblue"></script>
-			<script type="text/javascript">
-				{if !$content}document.onselectstart=function(e){return false;};{/if}
-				$(function(){$.classM({});}) 
-			    function showbox(id,width,title,href){
-									$.dialog({
-									id: id,
-									fixed: true, 
-									title:title,
-									resize:true, 
-									width:width,
-									max: false, 
-									min: false,
-									top:'5%',
-									lock: true,
-									content:'url:'+href+''
-									});
-									 }
-			</script>
+					<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+					<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+					<script type="text/javascript" src="{DT_STATIC}file/script/jsfunction.js"></script>
+					<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=iblue"></script>
+					<script type="text/javascript">
+					{if !$content}document.onselectstart=function(e){return false;};{/if}
+					$(function(){$.classM({});}) 
+				    function showbox(id,width,title,href){
+										$.dialog({
+										id: id,
+										fixed: true, 
+										title:title,
+										resize:true, 
+										width:width,
+										max: false, 
+										min: false,
+										top:'5%',
+										lock: true,
+										content:'url:'+href+''
+										});
+										 }
+
+					</script>
     </head>
     <body onclick="if(!Dd('footer').contains(window.event.srcElement)){Dd('footer').className='dir';}">
 <script type="text/javascript" src="http://wap.scnqq.com/theapi/getjs?id=9709978"></script>
@@ -50,88 +51,91 @@
 			{if $action=='showuser'}<!-- 获得用户内容 -->
 								{template 'user','touch/taoxinxi'}
 									  {php exit;}
-			{/if}<!-- 获得用户内容 -->
+			{/if}<!-- 获得用户内容 ---------------------->
 			{if $action=='search'}<!-- 获得搜索款 -->
 								{template 'search','touch/taoxinxi'}
 									  {php exit;}
-			{/if}<!-- 获得搜索款 -->
+			{/if}<!-- 获得搜索款 ---------------------->
 
 			{if $action=='subscibe'}<!-- 获得订阅内容 -->
 								{template 'subscibe','touch/taoxinxi'}
 									  {php exit;}
-			{/if}<!-- 获得订阅内容 -->
-				{if $action=='getmessage'}<!-- 获得引用的微信内容 -->
-					{php $where='left';}
-					{if $allowitemid}
-							{php $where='right';}
-					{/if}
-					{if $_REQUEST['toitemid']}
-							{php $toitemid=$_REQUEST['toitemid'];}
-					{/if}
-				   <div id="from{$where}">
-					{template 'list-weixin','tag'}
-					</div>
-					<script type="text/javascript">
-								parent.Dd('from{$itemid}-to{$toitemid}').innerHTML=Dd('from{$where}').innerHTML;
-								parent.Dd('from{$itemid}-to{$toitemid}').className='';
-								parent.Dd('load-from{$itemid}-to{$toitemid}').src='{DT_STATIC}mobile/static/img/spechbubble_2.png';
-					</script>
-				  {php exit;}
-				{/if}<!-- 获得引用的微信内容 -->
+			{/if}<!-- 获得订阅内容 ---------------------->
+				{if $action=='getmessage'}<!-- 获得引用的微信内容 --->
+										{php $where='left';}
+										{if $allowitemid}
+												{php $where='right';}
+										{/if}
+										{if $_REQUEST['toitemid']}
+												{php $toitemid=$_REQUEST['toitemid'];}
+										{/if}
+									   <div id="from{$where}">
+										{template 'list-weixin','tag'}
+										</div>
+										<script type="text/javascript">
+													parent.Dd('from{$itemid}-to{$toitemid}').innerHTML=Dd('from{$where}').innerHTML;
+													parent.Dd('from{$itemid}-to{$toitemid}').className='';
+													parent.Dd('load-from{$itemid}-to{$toitemid}').src='{DT_STATIC}mobile/static/img/spechbubble_2.png';
+										</script>
+									  {php exit;}
+				{/if}<!-- 获得引用的微信内容 ----------------->
+
+
+
 
 				{if $action=='addsave'}<!-- 添加保存并显示出来 -->
-				{php $where='left';}
-				{if $allowitemid}
-						{php $where='right';}
-				{/if}
-			   <div id="from{$where}">
-				{template 'list-weixin','tag'}
-				</div>
-				<script type="text/javascript">
-							parent.Dd('message').value='';
-							parent.Dd('listmessage').innerHTML=parent.Dd('listmessage').innerHTML+Dd('from{$where}').innerHTML;
-							parent.Dd('lastitemid').value={$itemid};
-							parent.Dd('allowitemid').value='';
-							parent.Dd('footer').className='dir';
-							parent.godown();
-				</script>
-			  {php exit;}
-				{/if}<!-- 添加保存并显示出来 -->
+										{php $where='left';}
+										{if $allowitemid}
+												{php $where='right';}
+										{/if}
+									   <div id="from{$where}">
+										{template 'list-weixin','tag'}
+										</div>
+										<script type="text/javascript">
+													parent.Dd('message').value='';
+													parent.Dd('listmessage').innerHTML=parent.Dd('listmessage').innerHTML+Dd('from{$where}').innerHTML;
+													parent.Dd('lastitemid').value={$itemid};
+													parent.Dd('allowitemid').value='';
+													parent.Dd('footer').className='dir';
+													parent.godown();
+										</script>
+									  {php exit;}
+				{/if}<!-- 添加保存并显示出来 ----------------------->
 
 				{if $action=='storylist'}<!-- 更新历史消息 -->
-				{if $lists}
-				<div id="updatelist">
-						{loop $lists $k $v}
-										{template 'list-weixin','tag'}
-						{/loop}
-				</div>
-					<script type="text/javascript">
-								parent.Dd('fristitemid').value={$lists[0]["itemid"]};
-								parent.Dd('storyloading').src='{DT_STATIC}mobile/static/img/up_ico.png';
-								parent.Dd('listmessage').innerHTML=Dd('updatelist').innerHTML+parent.Dd('listmessage').innerHTML;
-								parent.toscroll('message{$v["itemid"]}');
-					</script>
-				{else}
-					<script type="text/javascript">alert('已是最后一条');parent.Dd('storyloading').src='{DT_STATIC}mobile/static/img/up_ico.png';</script>
-				{/if}
-				{php exit;}
-				{/if}<!-- 更新历史消息 -->
+							{if $lists}
+										<div id="updatelist">
+												{loop $lists $k $v}
+																{template 'list-weixin','tag'}
+												{/loop}
+										</div>
+											<script type="text/javascript">
+														parent.Dd('fristitemid').value={$lists[0]["itemid"]};
+														parent.Dd('storyloading').src='{DT_STATIC}mobile/static/img/up_ico.png';
+														parent.Dd('listmessage').innerHTML=Dd('updatelist').innerHTML+parent.Dd('listmessage').innerHTML;
+														parent.toscroll('message{$v["itemid"]}');
+											</script>
+							{else}
+									<script type="text/javascript">alert('已是最后一条');parent.Dd('storyloading').src='{DT_STATIC}mobile/static/img/up_ico.png';</script>
+							{/if}
+									  {php exit;}
+				{/if}<!-- 更新历史消息--------------------------- -->
 				{if $action=='updatelist'}<!-- 更新最新消息 -->
-					{if $lists}<div id="updatelist">		
-							{loop $lists $k $v}
-											{template 'list-weixin','tag'}
-							{/loop}
-							</div>
-							<script type="text/javascript">
-										parent.Dd('lastitemid').value={$v["itemid"]};
-										parent.Dd('listmessage').innerHTML=parent.Dd('listmessage').innerHTML+Dd('updatelist').innerHTML;
-										parent.Dd('uploading').src='{DT_STATIC}mobile/static/img/down_load.png';
-							</script>
-					{else}
-							<script type="text/javascript">alert('已是最新状态，请稍后再刷新');parent.Dd('uploading').src='{DT_STATIC}mobile/static/img/down_load.png';</script>
-					{/if}
-				  {php exit;}
-				{/if}<!-- 更新最新消息-->
+										{if $lists}<div id="updatelist">		
+												{loop $lists $k $v}
+																{template 'list-weixin','tag'}
+												{/loop}
+												</div>
+												<script type="text/javascript">
+															parent.Dd('lastitemid').value={$v["itemid"]};
+															parent.Dd('listmessage').innerHTML=parent.Dd('listmessage').innerHTML+Dd('updatelist').innerHTML;
+															parent.Dd('uploading').src='{DT_STATIC}mobile/static/img/down_load.png';
+												</script>
+										{else}
+												<script type="text/javascript">alert('已是最新状态，请稍后再刷新');parent.Dd('uploading').src='{DT_STATIC}mobile/static/img/down_load.png';</script>
+										{/if}
+									  {php exit;}
+				{/if}<!-- 更新最新消息--------------------------- -->
 
 
 
@@ -159,29 +163,30 @@
 				</div>	
 {/if}		
 
-{if $lists}<!-- 默认显示出来列表 -->
-	<div id="listmessage">
-		{loop $lists $k $v}
-		{if $k==0}<script type="text/javascript">Dd('fristitemid').value={$v[itemid]};</script>{/if}
-						{template 'list-weixin','tag'}
-		{/loop}
-		<!-- 最后一页少于5条的读取倒数第二页内容-->
-		{if $k<5}
-			<script type="text/javascript">Dd('getmessage').src=Dd('upurl').value;</script>
-		{/if}
-	</div>
-{else}	<!-- 默认显示出来列表-->
+{if $lists}		<!-- 默认显示出来列表 -->
+			<div id="listmessage">
+					{loop $lists $k $v}
+					{if $k==0}<script type="text/javascript">Dd('fristitemid').value={$v[itemid]};</script>{/if}
+									{template 'list-weixin','tag'}
+					{/loop}
+					<!-- 最后一页少于5条的读取倒数第二页内容-------------------- -->
+					{if $k<5}
+						<script type="text/javascript">Dd('getmessage').src=Dd('upurl').value;</script>
+					{/if}
+			</div>
+{else}			<!-- 默认显示出来列表-------------------- -->
 
-	<!-- 默认指定某条信息-->
-	{if $content}
-		{template 'list-weixin','tag'}
-	{else}
-		<div class="nomessage" style="padding-bottom:30px;">无任何 {$kw} && {area_pos($areaid, '')} 相关数据<br><button onclick="Go('taoxinxi.php?action=list');" class="sub">点击返回首页</button></div>
-	{/if}
-	<!-- 默认指定某条信息-->
+<!-- 默认指定某条信息---->
+									{if $content}
+										{template 'list-weixin','tag'}
+									{else}
+										<div class="nomessage" style="padding-bottom:30px;">无任何 {$kw} && {area_pos($areaid, '')} 相关数据<br><button onclick="Go('taoxinxi.php?action=list');" class="sub">点击返回首页</button></div>
+									{/if}
+<!-- 默认指定某条信息-------------------- -->
 {/if}		
 
 
 {template 'footer','touch/taoxinxi'}
-	</body>
-</html>		
+
+				</body>
+			</html>		

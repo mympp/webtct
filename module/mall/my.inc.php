@@ -204,9 +204,10 @@ switch($action) {
 			}
 			$item = array();
             $companyModule = baseModule::moduleInstance('company');
-            $isCompanyValidated = $companyModule->checkValidate($_userid,$_username);
+            $isCompanyValidated = $companyModule->isValidated($_userid,$_username);
 			$mycatid_select = type_select('mall-'.$_userid, 0, 'post[mycatid]', $L['type_default']);
 		}
+
 	break;
 	case 'edit':
 		$itemid or message();

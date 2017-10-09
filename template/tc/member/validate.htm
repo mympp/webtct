@@ -393,6 +393,10 @@
             <td class="tab_on" id="Tab0"><a href="?action={$action}"><span>1、提交证件</span></a></td>
             <td class="tab_nav">&nbsp;</td>
             <td class="tab" id="Tab1"><a href="?action={$action}"><span>2、通过认证</span></a></td>
+            {if $isRejectValidate}
+            <td class="tab_nav">&nbsp;</td>
+            <td class="tab" id="Tab2"><a href="?action=vcompany"><span>过往申请</span></a></td>
+            {/if}
         </tr>
     </table>
 </div>
@@ -568,7 +572,13 @@
     {/if}
     <tr>
         <td class="tl">认证状态</td>
-        <td class="tr f_green">{if $isWaitValidate}审核中{else}已通过{/if}</td>
+        <td class="tr f_green">
+            {if $isWaitValidate}
+            审核中
+            {elseif $isRejectValidate}
+            已拒绝  {$validateData['note']}
+            {else}
+            已通过{/if}</td>
     </tr>
 
 </table>

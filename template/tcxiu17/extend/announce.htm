@@ -1,0 +1,128 @@
+{if $title}
+{php $ztitle=$title."|医疗相关行业最新行情信息";}
+{else}
+{php $ztitle="医疗相关行业最新行情信息";}
+{/if}
+{template 'header'}
+<style type="text/css">
+b span{font-weight:bold}
+.search{background:url('image/memberinfo.jpg');height:30px;padding-top:5px;border:#bbd2dd 1px solid;}
+</style>
+<?$TYPE = get_type('announce', 1);?>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}quote.css"/>
+<script type="text/javascript" src="{DT_PATH}file/script/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
+{php $ztitle="24小时天成群业务滚动行情";}
+<div class="your grayb nt nb"><div><a href="{$MODULE[1][linkurl]}">
+	网站首页&nbsp;</a>&nbsp;&nbsp;〉&nbsp;&nbsp;<a href="{$MODULE[1][linkurl]}announce/index.php?islink=9">群内信息</a>&nbsp;&nbsp;〉{cat_pos($CAT, '&nbsp;&nbsp;〉&nbsp;&nbsp;')}{$ztitle}</div></div>
+{if !$itemid}<div class="autoheight pt5 grayb nt">
+<form action="index.php">
+
+<dl class="options">
+		<dt><span>供求分类：</span></dt>
+		<dd><ul>
+			<li><a href="{rewrite('index.php?islink='.$islink.'&typeid=')}"  class="{if !$typeid}opyes{else}color{/if}">不限</a></li>
+{loop $TYPE $t}
+<li><a href="{rewrite('index.php?islink='.$islink.'&typeid='.$t['typeid'])}" class="{if $t['typeid']==$typeid}opyes{else}color{/if}">{$t[typename]}</a></li>
+{/loop}
+		<br class="clear">
+		</ul>
+		</dd>
+</dl>
+				
+<dl class="options">
+		<dt><span>完善程度：</span></dt>
+		<dd><ul>
+		<li><a href="{rewrite('index.php?islink=9&typeid='.$typeid)}" class="{if $islink==9||$islink==''}opyes{else}color{/if}">不限</a></li>
+		<li><a href="{rewrite('index.php?islink=1&typeid='.$typeid)}"  class="{if $islink==1}opyes{else}color{/if}">发布者已完善</a></li>	
+		<li><a href="{rewrite('index.php?islink=0&typeid='.$typeid)}" class="{if $islink==0}opyes{else}color{/if}">信息未完善</a></li>
+		<br class="clear">
+		</ul>
+		</dd>
+</dl>
+<dl class="options search">											
+			<dd>
+			<ul><li>
+            <input type="text" size="30" name="kw" value="{$kw}" class="subm" id="keywords"  onfocus="if(this.value=='输入关键词'){this.value=''}"/>
+			<input type="hidden" name="typeid" value="{$typeid}"><input type="hidden" name="areaid" value="{$areaid}">
+			<script type="text/javascript">
+			document.getElementById('keywords').value='{if $kw!=''}{$kw}{else}输入关键词{/if}';
+			</script><input type="image" src="{DT_SKIN}image/search2.jpg" class="subm mr10"/>
+			热门关键词：<!--{tag("moduleid=7&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*30&pagesize=10&order=month_search desc&key=month_search&template=list-search_kw", -2)}-->
+			</li>
+															</ul>
+															</dd>
+													    </dl>
+</form>		
+		</div><div class="divline"></div>	{/if}
+
+<div class="autoheight">
+{if !$itemid}<div class="blue"><div class="h4title"> {if !$itemid}行情信息列表{else}行情详细内容{/if}</div></div>{/if}
+		<div class="autoheight grayb nt">
+    {if !$itemid}
+				<div class="tool color b">
+		<table cellpadding="0" cellspacing="0" align="center">
+	<tr align="center">
+	 <td width="5" height=30 align="left">&nbsp;</td>
+		<td width="450" align="left">
+行情基本资料</td> 
+	    <td width="135" align="left">所属分类</td>
+	    <td width="100" align="left">发布者是否完善</td>
+	    <td width="70" align="left">状态</td>
+	    <td width="70" align="left">发布时间</td>
+	</tr>
+	</table>
+		</div>
+     {/if}
+		<div class="divline"></div>
+			{if $itemid}
+			<h1 class="title">{$title}</h1>
+			<div class="fr mr10" style="margin-top:-30px;">
+			{if $islink}
+			{else}
+			<input type="button" value="点击完善信息" onclick="document.location='{DT_PATH}member/my.php?qun=yes&itemid={$itemid}'">
+			{/if}
+			</div>
+			<div class="info">
+			<table cellpadding="0" cellspacing="0" border=0 width=100%>
+			<tr>
+				<td>{template 'baidu', 'chip'}</td>
+				<td><span class="jt" onclick="Print();">[打印]</span></td>
+				<td>发布：{$adddate}&nbsp;</td>
+				<td>有效期：{$fromdate} 至 {$todate}&nbsp;</td>
+				<td>关注：<span id="hits">{$hits}</span></td>
+			</tr>
+			</table>
+			</div>
+			<div class="content" id="content">{$content}
+			{if $islink}
+			<br><center><a href="{$linkurl}" class='ocolor'>查看更多》》</a></center>
+			{/if}</div>
+			{else}
+{loop $lists $k $v}
+<table cellpadding="0" cellspacing="0" align="center"  class="grayb nb nl nr mb10">
+<tr class="graybg">
+<td width="5"  align="left">&nbsp;</td>
+<td width="450" height=30 align="left"><a href="{if $v[islink]}{$v[linkurl]}{else}{$MODULE[1][linkurl]}announce/index.php?itemid={$v[itemid]}{/if}" {if !$v[islink]}title="点击完善该行情"{/if}target="_blank" class="{if $v[islink]}ocolor{else}bcolor{/if}"><img src="{DT_SKIN}image/msg.gif" valign="middle">&nbsp;<b class='f14'>{$v[title]}</b></a></td>
+<td width="135" align="left"><a href="{rewrite('index.php?typeid='.$v['typeid'])}" class="color">[{$v[typename]}]</a>&nbsp;</td>
+<td width="110" align="left">			{if $v[islink]}
+			<a href="{$v[linkurl]}" target='_blank' class='f14 b ocolor'>查看更完善信息</a>
+			{else}
+			<input type="button" value="点击完善信息" onclick="document.location='{DT_PATH}member/my.php?qun=yes&itemid={$v[itemid]}'">
+			{/if}</td>
+<td width="70"  align="left"><img src="{DT_PATH}file/image/process_{get_process($v['fromtime'], $v['totime'])}.gif"/> </td>
+<td width="70" align="left">{timetodate($v[edittime], 3)}</td>
+</tr>
+<tr>
+<td colspan="6" width='970' height=20><div style="padding-left:20px;">{$v[content]}</div></td>
+</tr>
+</table>
+{/loop}
+			
+			
+			<div class="pages">{$pages}</div>
+			{/if}
+		</div>
+</div>
+{template 'footer'}
+		

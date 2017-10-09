@@ -14,6 +14,9 @@ $do->userid = $_userid;
 $user = $do->get_one();
 $username = $_username;
 $auth = isset($auth) ? trim($auth) : '';
+
+$companyModule = baseModule::moduleInstance('company');
+
 switch($action) {
 	case 'email':
 		$MOD['vemail'] or dheader($MOD['linkurl']);
@@ -115,14 +118,20 @@ switch($action) {
 			include template('validate', $module);
 		}
 	break;
+    case 'vcompany':
+        $validateData = $companyModule->getValidateData($_userid);
+        $isRejectValidate = $companyModule->isRejectValidated($_userid,$_username);
+        include template('validate', $module);
+        exit;
+        break;
 	case 'company':
 		$MOD['vcompany'] or dheader($MOD['linkurl']);
 		$head_title = $L['validate_company_title'];
 
-        $companyModule = baseModule::moduleInstance('company');
-
         $isValidated = $companyModule->isValidated($_userid,$_username);
         $isWaitValidate = $companyModule->isWaitValidated($_userid,$_username);
+        $isRejectValidate = $companyModule->isRejectValidated($_userid,$_username);
+
 		if($isValidated || $isWaitValidate) {
 			$action = 'v'.$action;
             $validateData = $companyModule->getValidateData($_userid);

@@ -259,6 +259,9 @@ if(!$_REQUEST['type']){?>
 &nbsp;待审实名认证<a href="?moduleid=2&file=validate&status=2"><span id="validate"><img src="admin/image/count.gif" width="10" height="10" alt="正在统计"/></span></a>
 &nbsp;待审广告购买<a href="?moduleid=3&file=ad&action=list&job=check"><span id="ad"><img src="admin/image/count.gif" width="10" height="10" alt="正在统计"/></span></a>
 &nbsp;待审核排名推广<a href="?moduleid=3&file=spread&action=check"><span id="spread"><img src="admin/image/count.gif" width="10" height="10" alt="正在统计"/></span></a>
+	&nbsp;待审核公司资质 <a href="?moduleid=2&file=company_validate">
+		<span id="company_validate"><img src="admin/image/count.gif" width="10" height="10" alt="正在统计"/></span>
+	</a>
 </td>
 </tr>
 </table>

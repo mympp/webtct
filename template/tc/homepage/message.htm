@@ -115,7 +115,7 @@ function check() {
 	var f;
 	f = 'title';
 	l = Dd(f).value.length;
-	if(l < 2 || l > 2) {
+	if(l < 2 || l > 50) {
 		alert('主题应为2-50字，当前已输入'+l+'字');
 		Dd(f).focus();
 		return false;

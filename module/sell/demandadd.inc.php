@@ -15,7 +15,7 @@ if($_userid){
 	$member_db = new tcdb('member');
 	$member = $member_db->field('truename,mobile')->where(['userid'=>$_userid])->one();
 }
-var_dump($member);
+
 if($submit){
     $imagePath = '';
     if(!empty($_FILES['image']['name'])){

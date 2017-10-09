@@ -72,9 +72,7 @@
 						<li><b>主营行业：</b>
 						{php $catids = explode(',', substr($COM['catid'], 1, -1));}				
 						{loop $catids $i $c}
-						{php $cate = get_cat($c);}
-						<a href="{$MODULE[4]['linkurl']}{com_rewrite(['catid'=>$c])}" target="_blank">{$cate['catname']}</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;
+						{cat_pos(get_cat($c), ' / ', '_blank')}&nbsp;&nbsp;&nbsp;&nbsp;
 						{/loop}
 						</li>
 						{/if}

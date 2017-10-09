@@ -7,11 +7,11 @@
 <table cellpadding="0" cellspacing="0">
 <tr>
 <td class="tab" id="add"><a href="alert.php?action=add"><span>添加提醒</span></a></td>
-<td class="tab_nav">&nbsp;</td>
+<td class="tab_nav"> </td>
 <td class="tab" id="s3"><a href="alert.php"><span>已通过<span class="px10">({$nums[3]})</span></span></a></td>
-<td class="tab_nav">&nbsp;</td>
+<td class="tab_nav"> </td>
 <td class="tab" id="s2"><a href="alert.php?status=2"><span>审核中<span class="px10">({$nums[2]})</span></span></a></td>
-<td class="tab_nav">&nbsp;</td>
+<td class="tab_nav"> </td>
 <td class="tab" id="s4"><a href="{DT_PATH}taoxinxi/"><span>进入抢单平台</span></a></td>
 </tr>
 </table>
@@ -28,7 +28,7 @@
 <tr>
 <td class="tl">商机类型</td>
 <td class="tr">
-{loop $mids $k $v}<label><input type="radio" name="post[mid]" value="{$v}"  onclick="Dd('mids').value=this.value;" {if $v==$mid&&$mid}checked=checked{else} {if !$k}checked=checked{/if}{/if} /> {$MODULE[$v][name]}</label>&nbsp;&nbsp;{/loop}
+{loop $mids $k $v}<label><input type="radio" name="post[mid]" value="{$v}"  onclick="Dd('mids').value=this.value;" {if $v==$mid&&$mid}checked=checked{else} {if !$k}checked=checked{/if}{/if} /> {$MODULE[$v][name]}</label>  {/loop}
 </td>
 </tr>
 <tr>
@@ -37,7 +37,7 @@
 
 {/if}
 <td class="tl"><span class="f_red">*</span>关键词</td>
-<td class="tr"><input type="text" name="post[word]" id="word" size="20" value="{$word}" maxlength="20"/>&nbsp;<span class="px12">请填写您关心的业务的简洁关键词，例如:B超</span><span id="dword" class="f_red"></span></td>
+<td class="tr"><input type="text" name="post[word]" id="word" size="20" value="{$word}" maxlength="20"/> <span class="px12">请填写您关心的业务的简洁关键词，例如:B超</span><span id="dword" class="f_red"></span></td>
 </tr>
 <tr style="display:none">
 <td class="tl">行业分类</td>
@@ -62,8 +62,8 @@
 </td>
 </tr>
 <tr>
-<td class="tl">&nbsp;</td>
-<td class="tr" height="50"><input type="submit" name="submit" value=" 确 定 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" /></td>
+<td class="tl"> </td>
+<td class="tr" height="50"><input type="submit" name="submit" value=" 确 定 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" />    <input type="reset" name="reset" value=" 重 置 " class="btn" onmouseover="this.className='btny'" onmouseout="this.className='btn'" /></td>
 </tr>
 </table>
 </form>
@@ -101,10 +101,10 @@
 </table>
 </div>
 {if $MG[alert_limit]}
-<div class="limit">总共可添加 <span class="f_b f_red">{$MG[alert_limit]}</span> 条&nbsp;&nbsp;&nbsp;当前已添加 <span class="f_b">{$limit_used}</span> 条&nbsp;&nbsp;&nbsp;还可以添加 <span class="f_b f_blue">{$limit_free}</span> 条</div>
+<div class="limit">总共可添加 <span class="f_b f_red">{$MG[alert_limit]}</span> 条   当前已添加 <span class="f_b">{$limit_used}</span> 条   还可以添加 <span class="f_b f_blue">{$limit_free}</span> 条</div>
 {/if}
 <br/>
-<span class="f_gray">&nbsp;&nbsp;<strong>提示</strong>：如果无法正常收到邮件，请将 <span class="f_blue">{$DT[mail_sender]}</span> 加入您的邮件白名单。</span>
+<span class="f_gray">  <strong>提示</strong>：如果无法正常收到邮件，请将 <span class="f_blue">{$DT[mail_sender]}</span> 加入您的邮件白名单。</span>
 <br/>
 <div class="pages">{$pages}</div>
 <script type="text/javascript">s('alert');m('s{$status}');</script>

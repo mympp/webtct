@@ -49,7 +49,6 @@ jQuery(".slide-show").slide({
                 alert('最多只能选择4个产品');
                 $(this).removeAttr("checked");
                 $(this).parent().removeClass("checked");
-                
                 return;
             }
         } else {

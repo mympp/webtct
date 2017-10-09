@@ -396,6 +396,10 @@ $dateInput.attr("disabled",false);
             <td class="tab_on" id="Tab0"><a href="?action=<?php echo $action;?>"><span>1、提交证件</span></a></td>
             <td class="tab_nav">&nbsp;</td>
             <td class="tab" id="Tab1"><a href="?action=<?php echo $action;?>"><span>2、通过认证</span></a></td>
+            <?php if($isRejectValidate) { ?>
+            <td class="tab_nav">&nbsp;</td>
+            <td class="tab" id="Tab2"><a href="?action=vcompany"><span>过往申请</span></a></td>
+            <?php } ?>
         </tr>
     </table>
 </div>
@@ -564,7 +568,13 @@ $dateInput.attr("disabled",false);
     <?php } ?>
     <tr>
         <td class="tl">认证状态</td>
-        <td class="tr f_green"><?php if($isWaitValidate) { ?>审核中<?php } else { ?>已通过<?php } ?>
+        <td class="tr f_green">
+            <?php if($isWaitValidate) { ?>
+            审核中
+            <?php } else if($isRejectValidate) { ?>
+            已拒绝  <?php echo $validateData['note'];?>
+            <?php } else { ?>
+            已通过<?php } ?>
 </td>
     </tr>
 </table>

@@ -1,30 +1,54 @@
-
+<script type="text/javascript" src="{DT_PATH}file/script/base64.js"></script>
 {if $user_status == 3}
 {if $member}
 公司:<a href="index.php?moduleid=4&username={$member[username]}">{$member[company]}</a><br/>
 状态:{if online($member[userid])==1}<span class="f_red">在线</span>{else}<span class="f_gray">离线</span>{/if} <a href="message.php?action=send&touser={$member[username]}" data-transition="slideup" class="b">发送信件</a>{if $DT[im_web]} <a href="chat.php?touser={$member[username]}" data-transition="slideup" class="b">在线交谈</a>{/if}<br/>
 {if $member[truename]}姓名:{$member[truename]}({gender($member[gender])})<br/>{/if}
 {if $member[career]}职位:{$member[career]}<br/>{/if}
-{if $member[telephone]}电话:<a href="tel:{$member[telephone]}">{$member[telephone]}</a><br/>{/if}
-{if $member[mobile]}手机:<a href="tel:{$member[mobile]}">{$member[mobile]}</a><br/>{/if}
-{if $member[fax]}传真:{$member[fax]}<br/>{/if}
+		{if $member[telephone]}
+		{php $contacts='电话:<a href="tel:'.$member[telephone].'">'.$member[telephone].'</a><br>'.$contacts;}
+		{/if}
+		{if $member[fax]}
+		{php $contacts='传真:'.$member[fax].'<br>'.$contacts;}
+		{/if}
+		{if $member[email]}
+		{php $contacts='邮箱:'.$member[email].'<br>'.$contacts;}
+		{/if}
+		{if $member[qq]}
+		{php $contacts='QQ:<a href="http://wpa.qq.com/msgrd?v=3&uin='.$member[qq].'&site=qq&menu=yes" target="_blank" rel="external">'.$member[qq].'</a><br>'.$contacts;}
+		{/if}
+		{if $member[mobile]}
+		{php $contacts='手机:<a href="tel:'.$member[mobile].'">'.$member[mobile].'</a><br>'.$contacts;}
+		{/if}
+
+	{php echo $contacts;}
+
 {if $member[areaid]}地区:{area_pos($member[areaid], '-')}<br/>{/if}
 {if $member[address]}地址:<a href="map.php?auth={encrypt($member[address], DT_KEY.'MAP')}" rel="external">{$member[address]}</a><br/>{/if}
 {if $member[postcode]}邮编:{$member[postcode]}<br/>{/if}
 {if $member[mail]}邮件:<a href="mailto:{$member[mail]}">{$member[mail]}</a><br/>{/if}
-{if $member[qq] && $DT[im_qq]}QQ:<a href="http://wpa.qq.com/msgrd?v=3&uin={$member[qq]}&site=qq&menu=yes" target="_blank" rel="external">{$member[qq]}</a><br/>{/if}
 {if $member[ali] && $DT[im_ali]}阿里旺旺:<a href="http://amos.alicdn.com/msg.aw?v=2&uid={$member[ali]}&site=cnalichn&s=6&charset=UTF-8" target="_blank" rel="external">{$member[ali]}</a><br/>{/if}
 {if $member[msn] && $DT[im_msn]}MSN:{$member[msn]}<br/>{/if}
 {if $member[skype] && $DT[im_skype]}Skype:{$member[skype]}{/if}
 {else}
 公司:{$item[company]} （未注册）<br/>
 {if $item[truename]}姓名:{$item[truename]}<br/>{/if}
-{if $item[telephone]}电话:<a href="tel:{$item[telephone]}">{$item[telephone]}</a><br/>{/if}
-{if $item[mobile]}手机:<a href="tel:{$item[mobile]}">{$item[mobile]}</a><br/>{/if}
-{if $item[areaid]}地区:{area_pos($item[areaid], '-')}<br/>{/if}
-{if $item[address]}地址:<a href="map.php?auth={encrypt($item[address], DT_KEY.'MAP')}" rel="external">{$item[address]}</a><br/>{/if}
-{if $item[email]}邮件:<a href="mailto:{$item[email]}">{$item[email]}</a><br/>{/if}
-{if $item[qq] && $DT[im_qq]}QQ:<a href="http://wpa.qq.com/msgrd?v=3&uin={$item[qq]}&site=qq&menu=yes" target="_blank" rel="external">{$item[qq]}</a><br/>{/if}
+		{if $item[telephone]}
+		{php $contacts='电话:<a href="tel:'.$item[telephone].'">'.$item[telephone].'</a><br>'.$contacts;}
+		{/if}
+		{if $item[fax]}
+		{php $contacts='传真:'.$item[fax].'<br>'.$contacts;}
+		{/if}
+		{if $item[email]}
+		{php $contacts='邮箱:'.$item[email].'<br>'.$contacts;}
+		{/if}
+		{if $item[qq]}
+		{php $contacts='QQ:<a href="http://wpa.qq.com/msgrd?v=3&uin='.$item[qq].'&site=qq&menu=yes" target="_blank" rel="external">'.$item[qq].'</a><br>'.$contacts;}
+		{/if}
+		{if $item[mobile]}
+		{php $contacts='手机:<a href="tel:'.$item[mobile].'">'.$item[mobile].'</a><br>'.$contacts;}
+		{/if}
+	{php echo $contacts;}
 {if $item[ali] && $DT[im_ali]}阿里旺旺:<a href="http://amos.alicdn.com/msg.aw?v=2&uid={$item[ali]}&site=cnalichn&s=6&charset=UTF-8" target="_blank" rel="external">{$item[ali]}</a><br/>{/if}
 {if $item[msn] && $DT[im_msn]}MSN:{$item[msn]}<br/>{/if}
 {if $item[skype] && $DT[im_skype]}Skype:{$item[skype]}{/if}

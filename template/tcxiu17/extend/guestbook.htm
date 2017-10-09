@@ -1,0 +1,158 @@
+{template 'header'}
+<div class="your grayb nt nb"><div><a href="{$MODULE[1][linkurl]}">
+														网站首页&nbsp;</a>&nbsp;&nbsp;〉&nbsp;&nbsp;客服中心</div></div>
+<div class="autoheight pd10 grayb nt">
+	<table cellpadding="0" cellspacing="0" width="100%">
+	<td valign="top">
+		<div class="left_box">		
+			<div class="pd10">
+			{if $lists}
+			<div class="grayb pd10 graybg mb10">
+			<form action="index.php">
+			<strong>帮助关键词：</strong>
+			<input type="text" size="50" name="kw" value="{$kw}"/> 
+			<input type="submit" value="搜索" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'"/>
+			<input type="button" value="重置" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" onclick="window.location='./';"/>
+			<a href="#ask" class="bcolor ml10  blueb bluebg f14 b" style="padding:5px"><img src="{DT_SKIN}image/019.gif" class="mid">&nbsp;&nbsp;我要发布留言/帮助</a>
+			</form>
+			</div>
+			
+			{loop $lists $k $v}
+			<table width="100%" cellpadding="8" cellspacing="1" bgcolor="#E3EEF5">
+			<tr>
+			<td align="right" bgcolor="#F1F7FC" width="200">{if $v[hidden]}游客{else}{$v[truename]}{/if} <span class="px11">{$v[adddate]}</span> 提问：&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF" class="lh18">{$v[content]}</td>
+			</tr>
+			{if $v[reply]}
+			<tr>
+			<td align="right" bgcolor="#F1F7FC">客服 <span class="px11">{$v[editdate]}</span> 回复：&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF" style="color:#D9251D;"><div style="line-height:20px;">{$v[reply]}</div><DIV class="grayb nl nr nb pt5 pl10 color graybg pb10">天成医疗网-国内最大医疗设备及品牌推广平台www.tecenet.com</DIV></td>
+			</tr>
+			{/if}
+			</table>
+			{/loop}		
+			{if $pages}<div class="pages">{$pages}</div>{/if}
+			{/if}
+			<div class="divline"></div>
+			<form action="index.php" method="post" onsubmit="return check();">
+			<table width="100%" cellpadding="8" cellspacing="1" bgcolor="#cae2b4" id="ask">
+			<tr>
+			<td bgcolor="#f3fdd9" width="90" align="right">需帮助类型&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<select name="post[type]">
+			{loop $TYPE $k $v}
+			<option value="{$v}">{$v}</option>
+			{/loop}
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#f3fdd9" align="right"><span class="ocolor">*</span> 需帮助内容&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF" title="留言内容不支持任何语法，仅限文字"><textarea name="post[content]" rows="5" cols="70" id="content">{$content}</textarea><br/>
+			<span id="dcontent" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#f3fdd9" width="90" align="right">客服与您联系&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="radio" name="my" value="1" id="my_1" onclick="Ds('gb_contact');"/> <label for="my_1">需要</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="radio" name="my" value="0" id="my_0" checked onclick="Dh('gb_contact');"/> <label for="my_0">不需要</label>
+			</td>
+			</tr>
+			<tbody id="gb_contact" style="display:none;">
+			<tr>
+			<td bgcolor="#f3fdd9" align="right">联系人&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[truename]"  size="10" id="truename" value="{$truename}"/>&nbsp;
+			<input type="checkbox" name="post[hidden]" value="1" id="hidden" checked/><label for="hidden" title="选择匿名后,联系人姓名仅网站工作人员可见"> 匿名留言</label>
+			<span id="dtruename" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#f3fdd9" align="right">联系电话&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[telephone]"  size="30" id="telephone" value="{$telephone}"/>
+			<span id="dtelephone" class="ocolor"></span>
+			</td>
+			</tr>
+			<tr>
+			<td bgcolor="#f3fdd9" align="right">电子邮件&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			<input type="text" name="post[email]"  size="30" id="email" value="{$email}"/>
+			<span id="demail" class="ocolor"></span>
+			</td>
+			</tr>
+			{if $DT[im_qq]}
+			<tr>
+			<td bgcolor="#f3fdd9" align="right">QQ&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[qq]" id="qq" value="{$qq}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_ali]}
+			<tr>
+			<td bgcolor="#f3fdd9" align="right">阿里旺旺&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[ali]" id="ali" value="{$ali}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_msn]}
+			<tr>
+			<td bgcolor="#f3fdd9" align="right">MSN&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="30" name="post[msn]" id="msn" value="{$msn}"/></td>
+			</tr>
+			{/if}
+			{if $DT[im_skype]}
+			<tr>
+			<td bgcolor="#f3fdd9" align="right">Skype&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF"><input type="text" size="20" name="post[skype]" id="skype" value="{$skype}"/></td>
+			</tr>
+			{/if}
+			</tbody>
+			{if $MOD[guestbook_captcha]}
+			<tr>
+			<td bgcolor="#f3fdd9" align="right"><span class="ocolor">*</span> 验证码&nbsp;&nbsp;</td>
+			<td bgcolor="#FFFFFF">
+			{template 'captcha', 'chip'}
+			<span id="dcaptcha" class="ocolor"></span>
+			</td>
+			</tr>
+			{/if}
+			<tr>
+			<td bgcolor="#f3fdd9"> </td>
+			<td bgcolor="#FFFFFF">
+			<input type="submit" name="submit" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" value=" 提交 "/>&nbsp;
+			<input type="reset" class="btn" onmouseover="this.clasName='btny'" onmouseout="this.clasName='btn'" value=" 重写 "/>
+			</td>
+			</tr>
+			</table>
+			</form>
+		
+			</div>
+		</div>
+	</td>
+	</tr>
+	</table>
+</div>
+<script type="text/javascript">
+function check() {
+	var l;
+	var f;
+	f = 'content';
+	l = Dd(f).value.length;
+	if(l < 5 || l > 1000) {
+		Dmsg('内容应为5-1000字，当前已输入'+l+'字', f);
+		Dd(f).focus();
+		return false;
+	}
+	{if $MOD[guestbook_captcha]}
+	f = 'captcha';
+	l = Dd(f).value;
+	if(!is_captcha(l)) {
+		Dmsg('请填写验证码', f);
+		Dd(f).focus();
+		return false;
+	}
+	{/if}
+	return true;
+}
+</script>
+{template 'footer'}

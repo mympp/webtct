@@ -63,7 +63,7 @@ Dd('menubgs').className="hd";
 	#but{padding:10px;font-size:16px;}
 </style>
 <iframe src="" name="send" id="send" style="display:none;"></iframe>
-<form method="post" action="{DT_PATH}api/tecenet/message.php" id="dform" onsubmit="return check();"  target="send" >
+<form method="post" action="{DT_PATH}page/message.php" id="dform" onsubmit="return check();"  target="send" >
 <input type="hidden" name="post[action]" value="save">
 <input type="hidden" name="post[touser]" value="youki2012">
 <table cellspacing="1" cellpadding=2 border=0 class="table" align="center">
@@ -92,7 +92,10 @@ Dd('menubgs').className="hd";
 	
 	</td>
 </tr>
-
+<tr>
+	<td class="graybg w80 tc">在线验证</td>
+	<td>{template 'captcha', 'chip'} <span id="dcaptcha" class="ocolor"></span><font style="color:#ff3300">*</font></td>
+</tr>
 <tr>
 	<td colspan=2 style='border:0px;text-align:center'><input type="submit" value="确认提交" id="but"></td>
 </tr>

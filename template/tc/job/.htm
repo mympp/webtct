@@ -1,0 +1,78 @@
+{template 'title'}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}search_fuwu.css"/>
+<body id="webmid{$moduleid}">
+<!--[if lte IE 6]>
+<div class="pd10 tc gcolor f18">您的浏览器IE6是最低级别的浏览器！为了您更好的体验本站和您电脑/账号安全请尽快升级您的浏览器！<br>强烈建议您立即 <a href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank">升级IE浏览器</a> 或者用更快更安全的 <a href="https://www.google.com/intl/zh-CN/chrome/browser/?hl=zh-CN" target="_blank">谷歌浏览器Chrome</a></div>
+<![endif]-->
+{if !$headertp}
+<script type="text/javascript" src="{DT_PATH}file/script/arrowtree.js"></script> 
+<script type="text/javascript" src="{DT_PATH}file/script/miniDropdown.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#youcan").click(function(){$("#leftmenu").slideToggle("normal");});
+});
+</script>
+						<div class='topmenubg'>
+						<!--最顶部菜单-->
+						<script type="text/javascript">topmenu(	{if $moduleid>2}{$moduleid}{else}1{/if})</script>
+{if !$teceid}
+<script type="text/javascript">Dd('tece{$moduleid}').className='welcomey';</script>
+{else}
+<script type="text/javascript">Dd('tece{$teceid}').className='welcomey';</script>
+{/if}
+						</div>
+						<div class='topbg cut'><!--背景和LOGO -->
+						<div class="webw siteinfo">
+                           <div class="logo fl cut">
+						   {if $mlogo}
+								 <a href="{$MODULE[$moduleid][linkurl]}" title="回到{{$MODULE[$moduleid][title]}}"><img src="{DT_SKIN}image/{$mlogo}"></a>
+						   {else}
+								 <a href="http://www.tecenet.com" title="回到天成医疗网首页"><img src="{DT_SKIN}image/logo.gif"></a>
+						   {/if}
+						   <h1>天成医疗网<br>www.tecenet.com</h1></div>
+							<div class="topsearch fl">
+							<table cellpadding="0" cellspacing="0" border=0 onmouseover="Dd('hotkey').className=''" onmouseout="Dd('hotkey').className='hotkey'"><form id="destoon_search" action="{DT_PATH}search.php" onsubmit="return Dsearch();">	
+							<tr>
+								<td ><input type="hidden" name="moduleid" value="{$moduleid}" id="destoon_moduleid"/>
+							<input type="hidden" name="from" value="{$moduleid}" />
+							<input type="hidden" name="spread" value="0" id="destoon_spread"/>
+							<input type="hidden" name="action" value="" id="sresume"/>		
+		   <input type="text" name="kw" value="{$kw}" id="topkeyword" class='tokw'  style="border-color:#006ca6"/>
+			<div class='searchs'>
+			<div onclick="chulai('sellists')"><span class='lenstr' id='topkws'>{if $moduleid>2}{$MODULE[$moduleid]['name']}{else}默认全站{/if}</span> <font class='f16'>∨</font></div>
+			<ul id='sellists' class='hd'>
+			<li ><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',0);guanbi('sellists');"  rel="nofollow">默认全站</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',9);guanbi('sellists');"  rel="nofollow">服务需求</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',9);guanbi('sellists');Dd('sresume').value='resume'" class='f12'  rel="nofollow">技术工程师</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',13);guanbi('sellists');"  rel="nofollow">厂商品牌</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',4);guanbi('sellists');"  rel="nofollow">厂商网店</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',16);guanbi('sellists');"  rel="nofollow">产品平台</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',5);guanbi('sellists');"  rel="nofollow">供应信息</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',6);guanbi('sellists');"  rel="nofollow">求购信息</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',21);guanbi('sellists');"  rel="nofollow">文章中心</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',10);guanbi('sellists');"  rel="nofollow">问答平台</a></li>
+			<li><a href='javascript:void(0)' onclick="selectlist('topkws',this.innerText,'destoon_moduleid',15);guanbi('sellists');"  rel="nofollow">共享下载</a></li>
+			</ul>
+		   </div> 
+		   </td><td><input type="image" src="{DT_SKIN}image/blank.gif" width="44" height=30 class='seasubmit' style="background-color:#006ca6;border-color:#006ca6"></td>							</tr>
+							<Tr><td colspan=2><div class="hotkey" id="hotkey"><!--{tag("moduleid=1&table=keyword&condition=moduleid=16 and length(word)>4   and length(word)<10 and status=3 &pagesize=20&order=total_search desc&key=month_search&template=list-search_kw&debug=0", -2)}--></div></td></tr>
+							</form>
+							</table>	
+							</div>
+							<div class="T4000 fl">
+							{if !$tel400&&$moduleid>2}
+									{php $tel400=DT_SKIN.'image/'.$module.'/400.gif';}
+							{/if}
+										<img src="{$tel400}" >
+							</div>
+						</div>
+						</div>
+<div {if $moduleid==1}class='webbg'{else}class='webbg2'{/if} id='modulebg' style="background: #ffffff url('{DT_SKIN}image/job/bg2.gif') repeat-x scroll center top;">
+<div class="webw">
+<div id="shopcart" class="shopcart"><a href='{$MODULE[16][linkurl]}cart.php'  rel="nofollow">购物车(<span id='destoon_cart'>0</span>)</a></div>
+{template 'menu','job'}
+<div class="divline" id="menubgs"></div>
+<div class="center autoheight"  id="webbodycontent" >
+{else}
+	{template 'header',$headertp}
+{/if}

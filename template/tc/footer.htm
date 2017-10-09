@@ -259,7 +259,13 @@ show_task('{$destoon_task}');
 </span>
 </body>
 </html>
-
+<?php 
+if(isset($tcdbcon)){
+	if(is_a($tcdbcon,'mysqli')) mysqli_close($tcdbcon);
+	if(is_a($tcdbcon,'mysql')) mysqli_close($tcdbcon);
+}
+$db->close();
+?>
 
 
 

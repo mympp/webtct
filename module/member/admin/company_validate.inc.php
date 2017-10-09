@@ -40,7 +40,7 @@ if (!empty($action) && !empty($itemid)) {
 $page = isset($page) ? $page : 1;
 $pagesize = 20;
 $companyValidate = new CompanyValidateQuery();
-$lists = $companyValidate->getListData();
+$lists = $companyValidate->getListData([],$page,$pagesize);
 $pages = pages($companyValidate->getListDataCount(),$page,$pagesize);
 
 include tpl('company_validate','member');

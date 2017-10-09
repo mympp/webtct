@@ -120,53 +120,152 @@
     width: 200px;
     /*height:480px;*/
 }
-.post-relate .hm-t-container{
-    height: 460px !important;
-    border: none;
-    border-bottom: 1px solid #eaeaea;
+.post-relate .wumii-hook{
+    position: relative;
+    padding-bottom:60px;
 }
-.post-relate .hm-t-header{
-    font-size: 14px;
-    border-bottom: none;
-    background-color: #e53935;
-}
-.post-relate .hm-t-body{
-    border-top: none;
-    border: 1px solid #eaeaea;
-}
-.post-relate .hm-t-footer{
+.post-relate .wumii-footer,#wumiiRecImageMode>div:last-child{
     display: none;
 }
-.post-relate .hm-t-list-txt{
-    padding: 0 12px 12px 12px;
+.post-relate #wumiiBtnDiv{
+    position: absolute !important;
+    bottom:0 !important;
+    top: auto !important;
 }
-
-.post-relate .hm-t-item{
-    padding: 8px 0;
-    border-bottom: 1px solid #f1f1f1;
+.post-relate .wumii-widget-title{
+    height:46px;
+    padding:0 13px !important;
+    font-size:16px;
+    line-height:38px;
+    color: #fff;
+    background:url("./image/article/hotNews-hd-bg.png") no-repeat 0 0;
 }
-.post-relate .hm-t-txt-wrapper{
-    background: none;
-    padding-left: 0;
-    height: 44px;
+.post-relate .wumii-text-ul{
+    margin:0 !important;
+    overflow: hidden;
+    border:1px solid #eaeaea;
+    border-top:none;
 }
-.post-relate .hm-t-txt{
-    font-size: 14px;
-    -webkit-line-clamp:2;
-    color: #666;
+.post-relate .wumii-text-li{
+    padding:10px 8px !important;;
+    margin-top:-1px !important;
+    border-top:1px solid #eaeaea;
+    background-color: #fff;
+    list-style: none !important;
 }
-
-.post-relate .hm-t-txt:hover,.post-relate .hm-t-img-title:hover{
-    color: #e53935;
+.post-relate .wumii-text-li a:hover{
+    color: #f34540 !important;
+    text-decoration: none !important;
 }
-.post-relate .hm-t-item-img{
-    margin-top: 2px;
+.post-relate .wumii-text-li span{
+    display: -webkit-box;
+    display: -moz-box;
+    line-height:1.5;
+    height:42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
-.post-relate .hm-t-img-title{
+.post-relate #wumiiBtnDiv{
+    height: auto !important;
+}
+.post-relate #wumiiLikeBtnDiv,.post-relate #wumiiRecommendBtnDiv{
+    position: relative !important;
+    float: none !important;
+    display: inline-block !important;
+    width:auto !important;
+    height:auto !important;
+    overflow: hidden;
+    padding:0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border-radius: 2px;
+}
+.post-relate #wumiiLikeBtnDiv{
+    width:auto !important;
+    border: 1px solid #50c87e;
+    color: #50c87e !important;
+    background-color: #fff !important;
+}
+.post-relate #wumiiLikeBtn{
+    float: none !important;
+    position: absolute;
+    left:0;
+    top:0;
+    display: inline-block;
+    width:20px !important;
+    height:34px !important;
+    padding: 0 46px 0 16px !important;
+}
+.post-relate #wumiiLikeBtn:before{
+    content: '';
+    position: absolute;
+    top: 6px;
+    width: 20px !important;
+    height: 20px !important;
+    background: url(./image/article/tc-news-icons.png) no-repeat -100px 0;
+}
+.post-relate #wumiiNumLikes{
+    float: none !important;
+    display: inline-block !important;
+    width: auto !important;
+    height: auto !important;
+    margin:0 16px 0 0 !important;
+    padding: 0 0 0 44px !important;
+    font-size:14px !important;
+    color: #50c87e !important;
+    line-height:34px !important;
+}
+.post-relate #wumiiRecommendBtnDiv{
+    position: relative;
+    width:86px !important;
+    margin-left:10px !important;
+    border: 1px solid #e56639;
+    color: #e56639;
+    line-height:34px;
+}
+.post-relate #wumiiRecommendBtnDiv:before{
+    content: '';
+    position: absolute;
+    right:0;
+    top:0;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-right-color: #e56639;
+    border-top-color: #e56639;
+}
+.post-relate #wumiiRecommendBtnDiv:after{
+    content: '+';
+    position: absolute;
+    right:0;
+    top: -3px;
     font-size: 12px;
-    color: #666;
+    color: #fff;
+    line-height: 1;
 }
-
+.post-relate #wumiiRecommendBtn{
+    width:56px !important;
+    height:34px !important;
+    margin:0 !important;
+    padding:0 18px 0 15px!important;
+    background: #fff !important;
+}
+.post-relate #wumiiRecommendBtn:before{
+    content: '推荐';
+    position: absolute;
+    top: 6px;
+    padding-left:26px;
+    height: 20px;
+    line-height:22px;
+    background: url(./image/article/tc-news-icons.png) no-repeat -120px 0;
+}
+.post-relate #wumiiLoading{
+    display: none !important;
+}
 .post-comment#SOHUCS #SOHU_MAIN .module-cmt-notice,.post-comment#SOHUCS #SOHU_MAIN .global-clear-spacing .click-prop-gw{
     display: none;
 }
