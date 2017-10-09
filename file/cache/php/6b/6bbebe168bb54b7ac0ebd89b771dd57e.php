@@ -1,1 +1,0 @@
-<?php exit;?>1506752596a:1:{i:0;a:4:{s:5:"catid";s:3:"820";s:8:"moduleid";s:1:"4";s:7:"catname";s:19:"试剂耗材/配件";s:7:"linkurl";s:13:"list-820.html";}}

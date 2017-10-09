@@ -1,3 +1,0 @@
-<?php defined('IN_DESTOON') or exit('Access Denied');?><div class="your cut"><font class="color f14 mr10">您所在的位置 </font><a href="<?php echo $MODULE['1']['linkurl'];?>">
-网站首页&nbsp;</a>&nbsp;&nbsp;>&nbsp;&nbsp;<?php if($moduleid<>3) { ?><a href="<?php echo $MOD['linkurl'];?>" id="yourmdid"><?php echo $MOD['name'];?></a>&nbsp;&nbsp;>&nbsp;&nbsp;<?php echo cat_pos($CAT, '&nbsp;&nbsp;>&nbsp;&nbsp;');?><?php } else { ?><?php echo $ztitle;?><?php } ?>
-<a id="yourmdmore"></a>&nbsp;&nbsp;>&nbsp;&nbsp;<?php echo $title;?></div>

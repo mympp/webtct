@@ -1,1 +1,0 @@
-<?php defined('IN_DESTOON') or exit('Access Denied'); return array (0 => array ('title' => '站内信','style' => '','url' => '?moduleid=2&file=message',),); ?>

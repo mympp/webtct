@@ -1,1 +1,0 @@
-<?php defined('IN_DESTOON') or exit('Access Denied'); return array (28 => array ('resume' => array ('action' => array (0 => 'add',1 => 'check',2 => 'edit',3 => 'derive',4 => 'add_all',5 => 'download',),'catid' => '',),'index' => array ('action' => array (0 => 'add',1 => 'check',2 => 'edit',3 => 'download',),'catid' => '',),),); ?>

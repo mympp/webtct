@@ -1,1 +1,0 @@
-<?php exit;?>1506825839a:9:{s:6:"areaid";s:1:"9";s:8:"areaname";s:6:"吉林";s:8:"parentid";s:1:"0";s:11:"arrparentid";s:1:"0";s:5:"child";s:1:"1";s:10:"arrchildid";s:28:"9,83,84,85,86,87,88,89,90,91";s:9:"listorder";s:1:"9";s:11:"resumecount";s:2:"80";s:8:"jobcount";s:3:"107";}

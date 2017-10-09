@@ -1,1 +1,0 @@
-<option value="1816">设备类</option><option value="1817">服务类</option><option value="2077">试剂类</option><option value="1818">药品类</option><option value="2149">耗材类</option><option value="2150">其他类</option></select>
