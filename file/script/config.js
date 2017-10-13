@@ -1,1 +1,1 @@
-var DTPath = "http://www.tecenet.com/";var SKPath = "http://www.tecenet.com/skin/teceskin/";var MEPath = "http://www.tecenet.com/member/";var DTEditor = "kindeditor";var CKDomain = ".tecenet.com";var CKPath = "/";var CKPrex = "DmN_";
+var DTPath = "http://www.ltecenet.com/";var SKPath = "http://www.ltecenet.com/skin/teceskin/";var MEPath = "http://www.ltecenet.com/member/";var DTEditor = "kindeditor";var CKDomain = ".ltecenet.com";var CKPath = "/";var CKPrex = "Dy1_";

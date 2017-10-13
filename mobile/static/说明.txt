@@ -1,0 +1,2 @@
+/img，/js，/lib文件夹和member.css,style.css,style_mb.css,taoxinxi.css,vote.css
+为旧版资源文件，后续可根据改版情况删除内容

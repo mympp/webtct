@@ -1,0 +1,105 @@
+.wrap{
+    background-color: #f0eff5;
+}
+.container{
+    max-width:750px;
+    margin:0 auto;
+    background-color: #061422;
+    color: #fff;
+}
+.container a{
+	color: #fff;
+}
+.banner img{
+    max-width:100%;
+    height: auto;
+}
+
+
+.wechat-item{
+	position: relative;
+	overflow: hidden;
+	padding: 0.375rem;
+	border-bottom: 1px solid #0f2235;
+}
+
+.wechat-avatar{
+	width: 1.8rem;
+	height: 1.8rem;
+	margin-right: 0.375rem;
+	border-radius: 0.1rem;
+}
+.wechat-head-right{
+    display: table-cell;
+    vertical-align: top;
+    float: none;
+    width: auto;
+}
+.wechat-name{
+    font-size:0.45rem;
+    font-weight: bold;
+    color: #ffae00;
+}
+a.wechat-btn{
+	display: inline-block;
+	margin: 0.25rem 0 0 0;
+	padding: 0.15rem 0.375rem;
+	border: 1px solid #ffae00;
+	color: #ffae00;
+	text-decoration: none;
+}
+a.wechat-btn:hover{
+	background-color: #ffae00;
+	color: #fff;
+}
+
+.wechat-info{
+	margin-top: 0.2rem;
+    font-size: 0.35rem;
+}
+.wechat-info li{
+    padding: 0.125rem 0;
+}
+.wechat-info span{
+	width: 2.0rem;
+    float: left;
+    text-align: right;
+    color: #fff;
+}
+.wechat-info em{
+    display: table-cell;
+    vertical-align: top;
+    width: auto;
+    color: #aaa;
+}
+.footer{
+    padding:0.5rem 0;
+    text-align: center;
+    background-color: #000d19;
+}
+.footer-links{
+	margin-bottom: 0.3rem;
+}
+a.footer-link{
+	position: relative;
+	color: #586c94;
+	font-size: 0.35rem;
+	padding: 0 0.25rem;
+	line-height: 1;
+}
+a.footer-link:before{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.05rem;
+	width: 1px;
+	height: 0.35rem;
+	background-color: #888;
+}
+a.footer-link:first-child:before{
+	display: none;
+}
+
+.footer-text{
+	color: #888;
+}

@@ -220,55 +220,90 @@
         var l;
         var f;
         var k;
-        f = 'catcz';
-        if(Dd(f).value == 0) {
-            Dmsg('请选择产品分类', 'catid', 1);
-            return false;
-        }
         f = 'title';
         l = Dd(f).value.length;
         if(l < 2) {
             Dmsg('产品名称最少2字，当前已输入'+l+'字', f);
             return false;
         }
-        f = 'price';
-        l = Dd(f).value;
-        if(l < 0) {
-            Dmsg('请填写产品价格', f);
+
+        f='certName';
+        l = Dd(f).value.length;
+        if(l < 3) {
+            Dmsg('证件名称最少3字，当前已输入'+l+'字', f);
             return false;
         }
-        f = 'amount';
-        l = Dd(f).value;
+
+        f = 'document';
+        l = Dd(f).value.length;
         if(l < 1) {
-            Dmsg('请填写库存', f);
+            Dmsg('请上传证件图片', f);
+            return false;
+        }
+
+        f = 'validDate';
+        l = Dd(f).value.length;
+        if(l < 8) {
+            Dmsg('请选择证件有效期', f);
             return false;
         }
 
         f = 'manufacturer';
         l = Dd(f).value.length;
         if(l < 1){
-            Dmsg('请填写生成厂家',f);
-            return false;
-        }
-        f = 'batchnum';
-        l = Dd(f).value.length;
-        if(l < 1){
-            Dmsg('请填写批准文号',f);
+            Dmsg('请填写生产厂商',f);
             return false;
         }
 
+        f = 'batchnum';
+        l = Dd(f).value.length;
+        if(l < 1){
+            Dmsg('请填写批准文号或注册证编号',f);
+            return false;
+        }
+
+        f = 'catcz';
+        if(Dd(f).value == 0) {
+            Dmsg('请选择产品分类', 'catid', 1);
+            return false;
+        }
+        
+        f = 'price';
+        l = Dd(f).value.length;
+        if(l < 1) {
+            Dmsg('请填写产品价格，0为面议', f);
+            return false;
+        }
+
+        // f = 'amount';
+        // l = Dd(f).value;
+        // if(l < 1) {
+        //     Dmsg('请填写产品库存', f);
+        //     return false;
+        // }
+
         f = 'thumb';
         l = Dd(f).value.length;
-        if(l < 0) {
+        if(l < 1) {
             Dmsg('请上传第一张产品图片', f);
             return false;
         }
+
         f = 'content';
         l = FCKLen();
         if(l < 25 || l > 50000) {
             Dmsg('详细说明应为25-50000字，当前已输入'+l+'字', f);
             return false;
         }
+
+        f = 'areaid_1';
+        l = Dd(f).value;
+        if(l == 0) {
+            Dmsg('请选择所在地区', f);
+            return false;
+        }
+
+
         if(Dd('v1').value) {
             if(!Dd('n1').value) {
                 alert('请填写属性名称');
@@ -424,4 +459,4 @@
     var destoon_oauth = '{$EXT[oauth]}';
 </script>
 {/if}
-{if $action=='add' && strlen($EXT[oauth]) > 1}{load('weibo.js')}{/if}
+<!-- {if $action=='add' && strlen($EXT[oauth]) > 1}{load('weibo.js')}{/if} -->

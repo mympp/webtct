@@ -361,8 +361,8 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 <select name="config[cache]" onchange="if(this.options[this.selectedIndex].innerHTML.indexOf('不')!=-1){alert('系统不支持 '+this.value);$('#ccf').val('<?php echo $cache;?>');}" id="ccf">
 <option value="file"<?php echo $cache == 'file' ? ' selected' : '';?>>文件 (支持)</option>
 <option value="eaccelerator"<?php echo $cache == 'eaccelerator' ? ' selected' : '';?>>eAccelerator (<?php echo function_exists('eaccelerator_get') ? '支持' : '不支持'?>)</option>
-<option value="memcache"<?php echo $cache == 'memcache' ? ' selected' : '';?>>Memcache (<?php echo class_exists('Memcache') ? '支持' : '不支持'?>)</option>
-<option value="redis"<?php echo $cache == 'redis' ? ' selected' : '';?>>Redis (<?php echo class_exists('Redis') ? '支持' : '不支持'?>)</option>
+<option value="memcache"<?php echo $cache == 'memcache' ? ' selected' : '';?>>Memcache (<?php echo class_exists('/Memcache') ? '支持' : '不支持'?>)</option>
+<option value="redis"<?php echo $cache == 'redis' ? ' selected' : '';?>>Redis (<?php echo class_exists('/Redis') ? '支持' : '不支持'?>)</option>
 <option value="xcache"<?php echo $cache == 'xcache' ? ' selected' : '';?>>Xcache (<?php echo function_exists('xcache_get') ? '支持' : '不支持'?>)</option>
 <option value="wincache"<?php echo $cache == 'wincache' ? ' selected' : '';?>>WinCache (<?php echo function_exists('wincache_ucache_get') ? '支持' : '不支持'?>)</option>
 <option value="shmop"<?php echo $cache == 'shmop' ? ' selected' : '';?>>shmop (<?php echo (function_exists('shmop_open') && function_exists('ftok')) ? '支持' : '不支持'?>)</option>

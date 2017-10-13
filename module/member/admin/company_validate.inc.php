@@ -38,10 +38,12 @@ if (!empty($action) && !empty($itemid)) {
 }
 
 $page = isset($page) ? $page : 1;
+$status = isset($status) ? $status : 2;
+$condition = ['status'=>$status];
 $pagesize = 20;
 $companyValidate = new CompanyValidateQuery();
-$lists = $companyValidate->getListData([],$page,$pagesize);
-$pages = pages($companyValidate->getListDataCount(),$page,$pagesize);
+$lists = $companyValidate->getListData($condition,$page,$pagesize);
+$pages = pages($companyValidate->getListDataCount($condition),$page,$pagesize);
 
 include tpl('company_validate','member');
 

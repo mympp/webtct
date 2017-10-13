@@ -104,13 +104,6 @@ $(function(){
 			{if $DT[sms]}<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='sms'><span class="f_r"><a href="sms.php?action=add" class="m">发送</a></span><a href="sms.php" class="{if $MG[sms]}n{else}f{/if}">手机短信</a></li>{/if}
 			{/if}
 
-			{if $MG[mail] || $show_menu}
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mail'><span class="f_r"><a href="sendmail.php" class="m">电邮</a></span><a href="mail.php" class="{if $MG[mail]}n{else}f{/if}">邮件订阅</a></li>
-			{/if}
-			{if $MG[spread] || $show_menu}
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='spread'><span class="f_r"><a href="spread.php?action=add" class="m">购买</a></span><a href="spread.php" class="{if $MG[spread]}n{else}f{/if}">排名推广</a></li>
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID="ideas"><span class="f_r"><a href="ideas.php?action=add" class="m">申请</a></span><a href="ideas.php" class="{if $MG[spread]}n{else}f{/if}">创意推广</a></li>
-			{/if}
 			{if $MG[ad] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='ad'><span class="f_r"><a href="ad.php?action=add" class="m">购买</a></span><a href="ad.php" class="{if $MG[ad]}n{else}f{/if}">广告预定</a></li>
 			{/if}
@@ -120,7 +113,6 @@ $(function(){
 
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='edit'><span class="f_r"><a href="avatar.php" class="m">头像</a></span><a href="edit.php" class="{if $_userid}n{else}f{/if}">修改资料</a></li>
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='ask'><span class="f_r"><a href="ask.php?action=add" class="m">提问</a></span><a href="ask.php" class="{if $_userid}n{else}f{/if}">客服中心</a></li>
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='carriage'><span class="f_r"></span><a href="carriage.php" class="{if $_userid}n{else}f{/if}">运费设置</a></li>
 		</ul>
 	</div>
 {/if}
@@ -136,17 +128,16 @@ $(function(){
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_job'><span class="f_r"><a href="{$DT[file_my]}?mid=9&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid=9" class="{if in_array($v, $MYMODS)}n{else}f{/if}">设备服务需求</a></li>
 			{elseif $v==-9}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_resume'><span class="f_r"><a href="{$DT[file_my]}?mid=9&action=add&resume=1" class="m">加入</a></span><a href="{$DT[file_my]}?mid=9&resume=1" class="{if in_array($v, $MYMODS)}n{else}f{/if}">技术工程师</a></li>
-			{elseif $v==28}
-			<li class="{if $mid==28 && $resume!=1}side_b{else}side_a{/if}" ID='mid_hrjob'><span class="f_r"><a href="{$DT[file_my]}?mid=28&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid=28" class="{if in_array($v, $MYMODS)}n{else}f{/if}">职位招聘信息</a></li>
-			{elseif $v==-28}
-			<li class="{if $mid==28 && $resume==1}side_b{else}side_a{/if}" ID='mid_hrresume'><span class="f_r"><a href="{$DT[file_my]}?mid=28&action=add&resume=1" class="m">创建</a></span><a href="{$DT[file_my]}?mid=28&resume=1" class="{if in_array($v, $MYMODS)}n{else}f{/if}">个人求职简历</a></li>
+
 			{else}
 				<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_{$v}'><span class="f_r"><a href="{$DT[file_my]}?mid={$v}&action=add" class="m">发布</a></span><a href="{$DT[file_my]}?mid={$v}" class="{if in_array($v, $MYMODS)}n{else}f{/if}">{$MODULE[$v][name]}管理</a></li>
 			{/if}
+
 		{/loop}
-		{if $_groupid>5 || $_groupid ==1}
-			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_vote'><span class="f_r"><a href="vote.php?action=add" class="m">发布</a></span><a href="vote.php" class="{if $_userid}n{else}f{/if}">投票调查管理</a></li>
-		{/if}	
+
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='mid_job'>
+				<a style="width:180px;" href="http://www.tecejob.com/" target="_blank" class="{if in_array($v, $MYMODS)}n{else}f{/if}">求职招聘<span style="color: #fff;font-size: 10px;padding: 0 4px 0 4px;background: #FF6600;border: 1px solid #FF4400;margin-left:5px;">天成医疗人才网</span></a>
+			</li>
 		</ul>
 	</div>
 {/if}

@@ -6,7 +6,6 @@ defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 $wapurl = pc_to_wap::forword('zixun');
 
-
 /*
 if($MOD['index_html']) {	
 	$html_file = DT_ROOT.'/'.$MOD['moduledir'].'/'.$DT['index'].'.'.$DT['file_ext'];

@@ -3,12 +3,26 @@ defined('DT_ADMIN') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
+<div class="tt">帅选内容</div>
+<div class="btns">
+    &nbsp;&nbsp;
+    <input type="button" value="已通过"
+           onclick="window.location.href='?moduleid=2&file=company_validate&status=3'" class="btn" />
+    &nbsp;&nbsp;
+    <input type="button" value="待审核"
+           onclick="window.location.href='?moduleid=2&file=company_validate&status=2'" class="btn" />
+    &nbsp;&nbsp;
+    <input type="button" value="已拒绝"
+           onclick="window.location.href='?moduleid=2&file=company_validate&status=4'" class="btn" />
+</div>
+
 <form method="post" >
     <div class="tt">公司资质审核</div>
     <table cellpadding="2" cellspacing="1" class="tb">
         <tr>
             <th width="25"><input type="checkbox" onclick="checkall(this.form);"/></th>
             <th>用户名</th>
+            <th>公司名</th>
             <th>营业执照</th>
             <th>到期时间</th>
             <th>是否长期有效</th>
@@ -23,6 +37,7 @@ show_menu($menus);
             <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
                 <td><input type="checkbox" name="itemid[]" value="<?php echo $v['itemid'];?>"/></td>
                 <td><a href="javascript:_user('<?php echo $v['username']; ?>');" ><?php echo $v['username'];?></a></td>
+                <td><?php echo $v['company']; ?></td>
                 <td>
                     <?php if($v['business_license']) {?>
                     <a href="javascript:_preview('<?php echo $v['business_license'];?>');">

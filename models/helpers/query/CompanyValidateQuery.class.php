@@ -169,7 +169,7 @@ class CompanyValidateQuery
         $count = $this->_getCompanyValidateDb()->where($condition)->count('c');
         if(!empty($count['c'])){
             $this->_listCount = $count['c'];
-            return $this->_getCompanyValidateDb()->field('tc_member.username,tc_company_validate.*')
+            return $this->_getCompanyValidateDb()->field('tc_member.username,tc_member.company,tc_company_validate.*')
                 ->join('tc_member','tc_member.userid = tc_company_validate.userid')
                 ->where($condition)->order($order)->limit($start, $pagesize)->select();
         }else{

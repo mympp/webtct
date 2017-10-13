@@ -9,6 +9,6 @@ $MemServer = array(
 );
 */
 $MemServer = array(
-	array('host'=>'127.0.0.1', 'port'=>'11211'),
+	array('host'=>'192.168.159.130', 'port'=>'12000'),
 );
 ?>
