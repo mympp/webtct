@@ -13,7 +13,7 @@ class news {
 		$this->table = $db->pre.'news';
 		$this->table_data = $db->pre.'news_data';
 		$this->db = &$db;
-		$this->fields = array('title','typeid','level','style','status','username','addtime','editor','edittime','linkurl','note','catid','keyword','hits','author','fromurl','thumb','ip','introduce','copyfrom');
+		$this->fields = array('title','typeid','level','style','status','username','addtime','editor','edittime','linkurl','note','catid','keyword','hits','author','fromurl','thumb','ip','introduce','copyfrom','isOriginal');
     }
 
 	function pass($post) {
