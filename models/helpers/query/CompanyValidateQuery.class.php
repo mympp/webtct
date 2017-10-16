@@ -4,7 +4,7 @@ namespace models\helpers\query;
 use models\helpers\data\tcdb;
 
 //商家资质申请验证处理类
-class CompanyValidateQuery
+class CompanyValidateQuery extends BaseQuery
 {
     const COMPANY_VALIDATED_STATUS = 1;
     const VALIDATED_STATUS = 3;
@@ -60,22 +60,21 @@ class CompanyValidateQuery
      */
     public function getValidateStatus($userid, $username = '')
     {
-        $company = $this->_getCompanyDb()->field('validated')
+        $company = $this->getDb('company')->field('validated')
             ->where(['userid' => $userid])->one();
         //原始destoon判断商家验证的条件1：判断tc_company表的validated值是否为1
         if ($company['validated'] == self::COMPANY_VALIDATED_STATUS) {
             return self::COMPANY_VALIDATED_STATUS;
         }
 
-        $member = $this->_getMemberDb()->field('username,vcompany')
+        $member = $this->getDb('member')->field('username,vcompany')
             ->where(['userid' => $userid])->one();
         if ($member['vcompany'] == self::COMPANY_VALIDATED_STATUS) {
             //原始destoon判断商家验证条件2：判断tc_member表vcompany是否为1
             return self::COMPANY_VALIDATED_STATUS;
         }
 
-        $validateDb = new tcdb('validate');
-        $validate = $validateDb->field('status')
+        $validate = $this->getDb('validate')->field('status')
             ->where(['username' => $username, 'type' => 'company', 'status' => self::VALIDATED_STATUS])->one();
         if (!empty($validate)) {
             if ($validate['status'] == self::VALIDATED_STATUS) {
@@ -87,7 +86,7 @@ class CompanyValidateQuery
             }
         }
 
-        $companyValidateDb = $this->_getCompanyValidateDb();
+        $companyValidateDb = $this->getDb('company_validate');
         $companyValidate = $companyValidateDb->field('status')->where(['userid' => $userid])->one();
         if (!empty($companyValidate)) {
             if ($companyValidate['status'] == self::VALIDATED_STATUS) {
@@ -110,7 +109,7 @@ class CompanyValidateQuery
      */
     public function sendValidate($userid, $data)
     {
-        $companyValidateDb = $this->_getCompanyValidateDb();
+        $companyValidateDb = $this->getDb('company_validate');
         $data['userid'] = $userid;
         $data['status'] = self::CHECK_STATUS;
         $data['addtime'] = time();
@@ -140,7 +139,7 @@ class CompanyValidateQuery
         }
         $condition['itemid'] = $idStr;
         $data['edittime'] = time();
-        return $this->_getCompanyValidateDb()->where($condition, $conditionType)->edit($data);
+        return $this->getDb('company_validate')->where($condition, $conditionType)->edit($data);
     }
 
     /**
@@ -151,7 +150,7 @@ class CompanyValidateQuery
      */
     public function getData($userid,$field = '*')
     {
-        $companyValidateDb = $this->_getCompanyValidateDb();
+        $companyValidateDb = $this->getDb('company_validate');
         return $companyValidateDb->field($field)->where(['userid'=>$userid])->one();
     }
 
@@ -166,10 +165,10 @@ class CompanyValidateQuery
     public function getListData($condition = [], $page = 1, $pagesize = 20, $order = 'edittime desc')
     {
         $start = ($page - 1) * $pagesize;
-        $count = $this->_getCompanyValidateDb()->where($condition)->count('c');
+        $count = $this->getDb('company_validate')->where($condition)->count('c');
         if(!empty($count['c'])){
             $this->_listCount = $count['c'];
-            return $this->_getCompanyValidateDb()->field('tc_member.username,tc_member.company,tc_company_validate.*')
+            return $this->getDb('company_validate')->field('tc_member.username,tc_member.company,tc_company_validate.*')
                 ->join('tc_member','tc_member.userid = tc_company_validate.userid')
                 ->where($condition)->order($order)->limit($start, $pagesize)->select();
         }else{

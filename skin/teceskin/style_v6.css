@@ -955,7 +955,7 @@ a.f:active,a.f:hover,a.f:link,a.f:visited {
     position:absolute;
     left:-1px;
     top:50px;
-    z-index:1000;width:180px;_width:195px;padding:2px 0;
+    z-index:1000;width:200px;_width:205px;padding:2px 0;
     background-color: #fff;
     box-shadow:0 2px 6px 0 rgba(0,0,0,.15);
     border: 1px solid #888;

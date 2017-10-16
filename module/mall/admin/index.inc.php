@@ -46,7 +46,8 @@ $menus = array (
     array('未通过商品', '?moduleid='.$moduleid.'&action=reject'),
     array('回收站', '?moduleid='.$moduleid.'&action=recycle'),
     array('移动分类', '?moduleid='.$moduleid.'&action=move'),
-);
+    array('证书审核', '?moduleid='.$moduleid.'&file=validate'),
+    );
 
 if(in_array($action, array('add', 'edit'))) {
 	$FD = cache_read('fields-'.substr($table, strlen($DT_PRE)).'.php');

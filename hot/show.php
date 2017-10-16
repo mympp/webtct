@@ -1,6 +1,7 @@
 <?php
 use models\helpers\data\tcdb;
 use models\extensions\opensearch\CloudSearch;
+use models\helpers\widget\redirect\pc_to_wap;
 
 require_once '../common.inc.php';
 require_once 'common.inc.php';
@@ -10,6 +11,8 @@ $keyword_db = new tcdb('keyword');
 $keyword = $keyword_db->where(['itemid'=>$itemid])->one();		//关键词内容
 
 $module_arr=array(16=>'产品',9=>'维修',6=>'招标',7=>'科技',5=>'供求',13=>'品牌',4=>'网店',21=>'资讯',15=>'共享',10=>'问答');
+
+$wapurl = pc_to_wap::forword('hot/show-'.$itemid.'.html');        //跳转到对应移动端
 
 $relevant = new relevant();
 $relevant->setKeyword($keyword['word']);
@@ -56,8 +59,11 @@ $know_relevant = $relevant->getRelevant(10,6);
 
 //seo设置
 $ztitle=$keyword['word'].'产品价格报价及售后维修_优质'.$keyword['word'].'厂家/招标/供求 - 天成医疗网';
-$zdescription='天成医疗网为您提供最全面，丰富的'.$keyword['word'].'相关商品详细参数信息，包括'.$keyword['word'].'价格、'.$keyword['word'].'维修、'.$keyword['word'].'厂家；涵盖了'.$keyword['word'].'招标、品牌型号、规格参数、所在地区、相关资讯等内容。';
-$zkeywords=$keyword['word'].','.$keyword['word'].'价格,'.$keyword['word'].'批发,'.$keyword['word'].'厂家,'.$keyword['word'].'供应,'.$keyword['word'].'招标,天成医疗热词榜';
+$zdescription='天成医疗网为您提供最全面，丰富的'.$keyword['word'].'相关商品详细参数信息，包括'.$keyword['word'].
+	'价格、'.$keyword['word'].'维修、'.$keyword['word'].'厂家；涵盖了'.$keyword['word'].'招标、品牌型号、规格参数、
+	所在地区、相关资讯等内容。';
+$zkeywords=$keyword['word'].','.$keyword['word'].'价格,'.$keyword['word'].'批发,'.$keyword['word'].'厂家,'
+	.$keyword['word'].'供应,'.$keyword['word'].'招标,天成医疗热词榜';
 
 include DT_ROOT.'/hot/template/show.php';
 

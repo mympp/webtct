@@ -55,15 +55,15 @@
                 <div class="upload-area">
                     <div class="upload-area-bd">
                         <div class="upload-item">
-                            <input class="inputtext" type="text" name="certName" id="certName" placeholder="请输入证件名称" />
-                            <input class="inputtext" type="text" name="document" id="document" placeholder="请上传证件图片" readonly />
+                            <input class="inputtext" type="text" name="cert[0][certName]" id="certName" value="注册证" disabled="disabled" />
+                            <input class="inputtext" type="text" name="cert[0][document]" id="document" placeholder="请上传证件图片" readonly />
                             <span class="upload-btn-area">
                                 <a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('document').value, true,'document');" class="t">[上传]</a>
                                 <a href="javascript:void(0);" onclick=" _preview(Dd('document').value);" class="t">[预览]</a>
                                 <a href="javascript:void(0);" onclick="Dd('document').value='';" class="t">[删除]</a>
                             </span>
 
-                            <input class="inputtext" type="text" name="validDate" id="validDate" placeholder="请选择证件有效期" onfocus="ca_show('validDate', this, '-');" readonly="" ondblclick="this.value='';">
+                            <input class="inputtext" type="text" name="cert[0][validDate]" id="validDate" placeholder="请选择证件有效期" onfocus="ca_show('validDate', this, '-');" readonly="" ondblclick="this.value='';">
                             
                             <div class="upload-msg">
                                 <span id="dcertName" class="f_red"></span>
@@ -74,6 +74,9 @@
                     </div>
                     <div class="upload-area-ft">
                         <a href="javascript:;" class="upload-item-add">添加</a>
+                    </div>
+                    <div class="upload-area-hd">
+                        是否在产品详情页展示：<label><input type="radio" name="show" checked>是</label><label><input type="radio" name="show">否</label>
                     </div>
                     <div class="upload-area-hd">
                         请上传产品相关证件如：注册证、授权销售委托书、厂家营业执照、厂家生产许可证、品牌授权证书、进口品牌商品请上传报关单证书、正规部门提供的质检检疫报告等。
@@ -98,14 +101,14 @@
                         FieldCount++; //text box added increment
                         //add input box
                         $(InputsWrapper).append('<div class="upload-item">'+
-                            '<input class="inputtext" type="text" name="certName'+x+'" id="certName'+x+'" placeholder="请输入证件名称" />'+
-                            '<input class="inputtext" type="text" name="document'+x+'" id="document'+x+'" placeholder="请上传证件图片" readonly />'+
+                            '<input class="inputtext" type="text" name="cert['+x+'][certName]" id="certName'+x+'" placeholder="请输入证件名称" />'+
+                            '<input class="inputtext" type="text" name="cert['+x+'][document]" id="document'+x+'" placeholder="请上传证件图片" readonly />'+
                             '<span class="upload-btn-area">'+
                             '<a href="javascript:void(0);" onclick="Dthumb(16,0,0, Dd(\'document'+x+'\').value, true,\'document'+x+'\');" class="t">[上传]</a>'+
                             '<a href="javascript:void(0);" onclick=" _preview(Dd(\'document'+x+'\').value);" class="t">[预览]</a>'+
                             '<a href="javascript:void(0);" onclick="Dd(\'document'+x+'\').value=\'\';" class="t">[删除]</a>'+
                             '</span>'+
-                            '<input class="inputtext" type="text" name="validDate'+x+'" id="validDate'+x+'" placeholder="请选择证件有效期" onfocus="ca_show(\'validDate'+x+'\', this, \'-\');" readonly="" ondblclick="this.value=\'\';">'+
+                            '<input class="inputtext" type="text" name="cert['+x+'][validDate]" id="validDate'+x+'" placeholder="请选择证件有效期" onfocus="ca_show(\'validDate'+x+'\', this, \'-\');" readonly="" ondblclick="this.value=\'\';">'+
                             '<a href="javascript:;" class="upload-item-remove">删除</a>'+
                             '<div class="upload-msg">'+
                             '<span id="dcertName'+x+'" class="f_red"></span>'+

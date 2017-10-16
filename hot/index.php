@@ -1,18 +1,32 @@
-<?php 
+<?php
+use models\helpers\data\tcdb;
+use models\helpers\widget\redirect\pc_to_wap;
+
 require_once '../common.inc.php';
-require_once '../include/tcdb.class.php';
+require_once '../models/autoload.php';
 require_once 'common.inc.php';
+
+$forwordModule = [
+    '16' => 'mall',
+    '6' => 'buy',
+    '5' => 'sell',
+    '4' => 'company',
+    '21' => 'article',
+];
 
 $module_arr=array(16=>'产品',9=>'维修',6=>'招标',7=>'科技',5=>'供求',13=>'品牌',4=>'网店',21=>'资讯',15=>'共享',10=>'问答');
 $page =isset($page)?$page:1;
 
 $mid = empty($mid) ? 16 : $mid; 	//默认mid为16
+if(in_array($mid,array_keys($forwordModule))){
+    $wapurl = pc_to_wap::forword('hot-'.$forwordModule[$mid].'.html');        //跳转到对应移动端
+}
 
 $keyword_db = new tcdb('keyword');
 $count = $keyword_db->where(['moduleid'=>$mid,'status'=>3])->count('c');
 $pagesize=80;
 if($page){
-	$start=$pagesize*$page;
+    $start=$pagesize*$page;
 }
 $start=$page==0?0:($pagesize*($page-1));
 
@@ -27,9 +41,9 @@ $zdescription="天成 $module_word 热搜词是医疗搜索的风向标，它统
 $zkeywords=" $module_word 热门关键词大全, $module_word 热搜词排行榜, $module_word 热搜词查询";
 
 function hot_rewrite($selector){
-	$mid = isset($selector['mid']) ? $selector['mid'] : '16';
-	$page = isset($selector['page']) ? '-'.$selector['page'] : '';
-	return 'category-'.$mid.$page;
+    $mid = isset($selector['mid']) ? $selector['mid'] : '16';
+    $page = isset($selector['page']) ? '-'.$selector['page'] : '';
+    return 'category-'.$mid.$page;
 }
 
 include DT_ROOT.'/hot/template/index.php';

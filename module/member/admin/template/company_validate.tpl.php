@@ -15,6 +15,10 @@ show_menu($menus);
     <input type="button" value="已拒绝"
            onclick="window.location.href='?moduleid=2&file=company_validate&status=4'" class="btn" />
 </div>
+<style>
+	#Dtop{width: auto !important;max-width: 1000px;}
+	#Dtop .dbox img{max-width: 100%;}
+</style>
 
 <form method="post" >
     <div class="tt">公司资质审核</div>

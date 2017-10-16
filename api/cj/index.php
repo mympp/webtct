@@ -1,7 +1,11 @@
 <?php
+use models\helpers\data\tcdb;
+
 require '../../common.inc.php';
 require '../../include/post.func.php';
 require 'downloadImageFromQzone.php';
+require_once '../../models/autoload.php';   //引入类库自动加载器
+
 $moduleid='29';
 $module='weixin';
 $files='index.php';
@@ -59,6 +63,7 @@ if($action==''){
 					$catid = $j['catid'];
 					$itemid = $_GET['itemid'];
 					$thumb=$j['thumb'];
+                    $isOriginal = $j['isOriginal'];
 				}else{
 					$title='请输入标题';
 					$content='请输入内容';
@@ -68,6 +73,7 @@ if($action==''){
 				include 'template/add.html';
 
 			}elseif ($action=='addsave') {
+                global $DT_IP ;
 				$itemid = $_POST['itemid'];
 				$thumb = $_POST['thumb'];
 				$title = $_POST['title'];
@@ -87,7 +93,41 @@ if($action==''){
 					$status=3;
 				}
 				if($_groupid==1||$_groupid==8||get_cookie('pwd')){$status=3;}
-				infoadd($module,$moduleid,$title,$catid,$content,$username,$status,$thumb,$fromurl,$itemid,$author);
+
+				$isOriginal = isset($_POST['isOriginal']) ? 1 : 0;
+
+                //原处理流程，放弃
+				//infoadd($module,$moduleid,$title,$catid,$content,$username,$status,$thumb,$fromurl,$itemid,$author);
+
+                $content=str_replace('width="320" widthd=','width=',$content);
+                $content=str_replace('width:_','width:',$content);
+                $content=str_replace(' height="auto" heightd=','height=',$content);
+                $introduce = trim(strip_tags($content));
+                $introduce=addslashes(dsubstr($introduce, 125));
+                if(strpos($introduce,'qy_name')){$introduce=$title;}
+                $newDb = new tcdb('news');
+                $newDataDb = new tcdb('news_data');
+                if($itemid){
+                    //数据更新
+                    $newDb->where(['itemid'=>$itemid])->edit(['title'=>$title,'thumb'=>$thumb,'catid'=>$catid,
+                        'status'=>$status,'isOriginal'=>$isOriginal]);
+                    $newDataDb->where(['itemid'=>$itemid])->edit(['content'=>$content]);
+                    echo msg('信息修改成功',$title,$itemid);
+                }else{
+                    //数据添加
+                    $result = $newDb->add(['title'=>$title,'thumb'=>$thumb,'catid'=>$catid,'username'=>$username,'editor'=>$editor,
+                        'addtime'=>$addtime,'edittime'=>$edittime,'ip'=>$DT_IP,'fromurl'=>$fromurl,'introduce'=>$introduce,
+                        'keyword'=>$keyword,'status'=>$status,'author'=>$author,'isOriginal'=>$isOriginal]);
+                    if($result){
+                        $itemid = $newDb->getInsertId();
+                        $newDataDb->add(['itemid'=>$itemid,'content'=>$content]);
+                        $newDb->restart();
+                        $newDb->where(['itemid'=>$itemid])->edit(['linkurl'=>"show.php?itemid=$itemid"]);
+                        echo msg('信息添加成功',$title,$itemid);
+                    }else{
+                        echo "<br />信息添加失败！";
+                    }
+                }
 
 				//添加到资讯
 	            if (!empty($zixun)){
