@@ -116,7 +116,7 @@ if($action==''){
                 }else{
                     //数据添加
                     $result = $newDb->add(['title'=>$title,'thumb'=>$thumb,'catid'=>$catid,'username'=>$username,'editor'=>$editor,
-                        'addtime'=>$addtime,'edittime'=>$edittime,'ip'=>$DT_IP,'fromurl'=>$fromurl,'introduce'=>$introduce,
+                        'addtime'=>time(),'edittime'=>time(),'ip'=>$DT_IP,'fromurl'=>$fromurl,'introduce'=>$introduce,
                         'keyword'=>$keyword,'status'=>$status,'author'=>$author,'isOriginal'=>$isOriginal]);
                     if($result){
                         $itemid = $newDb->getInsertId();
