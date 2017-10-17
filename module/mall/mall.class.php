@@ -25,7 +25,7 @@ class mall {
 		if(!$post['catid']) return $this->_(lang('message->pass_cate'));
 		if(strlen($post['title']) < 3) return $this->_(lang('message->pass_title'));
 		if(dround($post['step']['p1']) < 0.1 && dround($post['price'])<0) return $this->_(lang('message->pass_mall_price'));
-		if(intval($post['amount']) < 1) return $this->_(lang('message->pass_mall_amount'));
+		//if(intval($post['amount']) < 1) return $this->_(lang('message->pass_mall_amount'));	//验证产品库存
 		if(!is_url($post['thumb'])) return $this->_(lang('message->pass_thumb'));
 		if(!$post['content']) return $this->_(lang('message->pass_content'));
 		if(DT_MAX_LEN && strlen($post['content']) > DT_MAX_LEN) return $this->_(lang('message->pass_max'));

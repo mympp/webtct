@@ -1,5 +1,5 @@
 <iframe src="" name="send" id="send" style="display:none;"></iframe>
-<form method="post" id="dform" action="{$DT[file_my]}" target="send" onsubmit="return check();">
+<form method="post" id="dform" action="{$DT[file_my]}" onsubmit="return check();">
     {if $_POST['qqitemid']}
     {php $title=strip_tags($_POST['title']);}
     {php $content=$_POST['content'];}
@@ -53,8 +53,39 @@
             </td>
             <td class="tr f_gray">
                 <div class="upload-area">
-                    <div class="upload-area-bd">
-                        <div class="upload-item">
+                    <div class="upload-area-bd" data-itemCount="{count($cert)}">
+                        {if $cert}
+                        <input type="hidden" id="removeID" name="certRemoveID" value="" />
+                            {loop $cert $key $item}
+
+                            <div class="upload-item" data-id="{$key}">
+                                <input type="hidden" name="cert[{$key}][itemid]" value="{$item[itemid]}" />
+                                <input class="inputtext" type="text" name="cert[{$key}][certName]" id="certName{$key}"
+                                       value="{$item['title']}" {if $item[isMust]} disabled="disabled" {/if} />
+                                <input class="inputtext" type="text" name="cert[{$key}][document]" id="document{$key}"
+                                       placeholder="请上传证件图片" value="{$item[thumb]}" readonly />
+                                <span class="upload-btn-area">
+                                    <a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('document').value, true,'document');" class="t">[上传]</a>
+                                    <a href="javascript:void(0);" onclick=" _preview(Dd('document').value);" class="t">[预览]</a>
+                                    <a href="javascript:void(0);" onclick="Dd('document').value='';" class="t">[删除]</a>
+                                </span>
+
+                                <input class="inputtext" type="text" name="cert[{$key}][validDate]"
+                                       id="validDate{$key}" placeholder="请选择证件有效期"
+                                       onfocus="ca_show('validDate{$key}', this, '-');" readonly="" ondblclick="this.value='';"
+                                       value="{date('Y-m-d',$item['expiretime'])}">
+                                {if !$item[isMust]}<a href="javascript:;" class="upload-item-remove">删除</a>{/if}
+
+                                <div class="upload-msg">
+                                    <span id="dcertName" class="f_red"></span>
+                                    <span id="ddocument" class="f_red"></span>
+                                    <span id="dvalidDate" class="f_red"></span>
+                                </div>
+                            </div>
+                            {/loop}
+                        {else}
+                        <div class="upload-item" data-id="0">
+                            <input type="hidden" name="cert[0][isMust]" value="1" />
                             <input class="inputtext" type="text" name="cert[0][certName]" id="certName" value="注册证" disabled="disabled" />
                             <input class="inputtext" type="text" name="cert[0][document]" id="document" placeholder="请上传证件图片" readonly />
                             <span class="upload-btn-area">
@@ -64,13 +95,13 @@
                             </span>
 
                             <input class="inputtext" type="text" name="cert[0][validDate]" id="validDate" placeholder="请选择证件有效期" onfocus="ca_show('validDate', this, '-');" readonly="" ondblclick="this.value='';">
-                            
                             <div class="upload-msg">
                                 <span id="dcertName" class="f_red"></span>
                                 <span id="ddocument" class="f_red"></span>
                                 <span id="dvalidDate" class="f_red"></span>
                             </div>
                         </div>
+                        {/if}
                     </div>
                     <div class="upload-area-ft">
                         <a href="javascript:;" class="upload-item-add">添加</a>
@@ -85,56 +116,61 @@
             </td>
         </tr>
         <script>
-            // 添加产品相关证件
-            $(document).ready(function() {
-                var MaxInputs       = 19; //maximum input boxes allowed
-                var InputsWrapper   = $(".upload-area-bd"); //Input boxes wrapper ID
-                var AddButton       = $(".upload-item-add"); //Add button ID
+        // 添加维修区域
+        $(document).ready(function() {
+            var MaxInputs       = 19; //maximum input boxes allowed
+            var InputsWrapper   = $(".upload-area-bd"); //Input boxes wrapper ID
+            var InputItem       = InputsWrapper.find(".upload-item");
+            var AddButton       = $(".upload-item-add"); //Add button ID
 
-                var x = InputsWrapper.length; //initlal text box count
-                var FieldCount=1; //to keep track of text box added
+            var x = InputItem.length; //initlal text box count
+            var FieldCount= $(".upload-item:last-child").attr("data-id"); //to keep track of text box added
+            var removeVal = [];
+            var removeInput  = $("#removeID");
 
-                $(AddButton).click(function (e)  //on add input button click
+            $(AddButton).click(function (e)  //on add input button click
+            {
+                if(x < MaxInputs+1) //max input box allowed
                 {
-                    if(x < MaxInputs+1) //max input box allowed
-                    {
-                        FieldCount++; //text box added increment
-                        //add input box
-                        $(InputsWrapper).append('<div class="upload-item">'+
-                            '<input class="inputtext" type="text" name="cert['+x+'][certName]" id="certName'+x+'" placeholder="请输入证件名称" />'+
-                            '<input class="inputtext" type="text" name="cert['+x+'][document]" id="document'+x+'" placeholder="请上传证件图片" readonly />'+
-                            '<span class="upload-btn-area">'+
-                            '<a href="javascript:void(0);" onclick="Dthumb(16,0,0, Dd(\'document'+x+'\').value, true,\'document'+x+'\');" class="t">[上传]</a>'+
-                            '<a href="javascript:void(0);" onclick=" _preview(Dd(\'document'+x+'\').value);" class="t">[预览]</a>'+
-                            '<a href="javascript:void(0);" onclick="Dd(\'document'+x+'\').value=\'\';" class="t">[删除]</a>'+
-                            '</span>'+
-                            '<input class="inputtext" type="text" name="cert['+x+'][validDate]" id="validDate'+x+'" placeholder="请选择证件有效期" onfocus="ca_show(\'validDate'+x+'\', this, \'-\');" readonly="" ondblclick="this.value=\'\';">'+
-                            '<a href="javascript:;" class="upload-item-remove">删除</a>'+
-                            '<div class="upload-msg">'+
-                            '<span id="dcertName'+x+'" class="f_red"></span>'+
-                            '<span id="ddocument'+x+'" class="f_red"></span>'+
-                            '<span id="dvalidDate'+x+'" class="f_red"></span>'+
-                            '</div>'+
-                            '</div>');
-                        x++;
-                    }
-                    if( x == MaxInputs+1 )
-                    {
-                        $(AddButton).hide();
-                    }
-                    return false;
-                });
-                $("body").on("click",".upload-item-remove", function(e){
-                    //user click on remove text
-                    if( x > 1 ) {
-                        $(this).parent('div').remove(); //remove text box
-                        x--; //decrement textbox
-                    }
-                    $(AddButton).show();
-                    return false;
-                });
-               
+                    FieldCount++; //text box added increment
+                    //add input box
+                    $(InputsWrapper).append('<div class="upload-item" data-id="'+FieldCount+'">'+
+                        '<input class="inputtext" type="text" name="cert['+FieldCount+'][certName]" id="certName'+FieldCount+'" placeholder="请输入证件名称" />'+
+                        '<input class="inputtext" type="text" name="cert['+FieldCount+'][document]" id="document'+FieldCount+'" placeholder="请上传证件图片" readonly />'+
+                        '<span class="upload-btn-area">'+
+                        '<a href="javascript:void(0);" onclick="Dthumb(16,0,0, Dd(\'document'+FieldCount+'\').value, true,\'document'+FieldCount+'\');" class="t">[上传]</a>'+
+                        '<a href="javascript:void(0);" onclick=" _preview(Dd(\'document'+FieldCount+'\').value);" class="t">[预览]</a>'+
+                        '<a href="javascript:void(0);" onclick="Dd(\'document'+FieldCount+'\').value=\'\';" class="t">[删除]</a>'+
+                        '</span>'+
+                        '<input class="inputtext" type="text" name="cert['+FieldCount+'][validDate]" id="validDate'+FieldCount+'" placeholder="请选择证件有效期" onfocus="ca_show(\'validDate'+FieldCount+'\', this, \'-\');" readonly="" ondblclick="this.value=\'\';">'+
+                        '<a href="javascript:;" class="upload-item-remove">删除</a>'+
+                        '<div class="upload-msg">'+
+                        '<span id="dcertName'+FieldCount+'" class="f_red"></span>'+
+                        '<span id="ddocument'+FieldCount+'" class="f_red"></span>'+
+                        '<span id="dvalidDate'+FieldCount+'" class="f_red"></span>'+
+                        '</div>'+
+                        '</div>');
+                    x++;
+                }
+                if( x == MaxInputs+1 ){
+                    $(AddButton).hide();
+                }
+                return false;
             });
+            $("body").on("click",".upload-item-remove", function(e){
+                var removeID = $(this).parent('div').find("input[name$='[itemid]']");
+                if( x > 1 ) {
+                    if( removeID.length != 0){
+                        removeVal.push(removeID.val());
+                        removeInput.val(removeVal);
+                    }
+                    $(this).parent('div').remove(); //remove text box
+                    x--; //decrement textbox
+                }
+                $(AddButton).show();
+                return false;
+            });
+        });
         </script>
 
         <tr>
@@ -314,59 +350,6 @@
             </td>
         </tr>
 
-        <tr id="mores5" class="dsn">
-            <td class="tl">运费设置</td>
-            <td class="tr">
-                <table cellpadding="4" cellspacing="1" bgcolor="#E3EEF5">
-                    <tr bgcolor="#EFF5FB" align="center">
-                        <td>快递</td>
-                        <td>默认运费</td>
-                        <td>增加一件产品增加</td>
-                        <td>选择模板 | <a href="express.php" class="t" target="_blank">管理模板</a></td>
-                    </tr>
-                    <tr bgcolor="#FFFFFF" align="center">
-                        <td><input name="post[express_name_1]" type="text" id="express_name_1" size="10" value="{$express_name_1}" /></td>
-                        <td><input name="post[fee_start_1]" type="text" id="fee_start_1" size="5" value="{$fee_start_1}" /></td>
-                        <td><input name="post[fee_step_1]" type="text" id="fee_step_1" size="5" value="{$fee_step_1}" /></td>
-                        <td>
-                            <select name="post[express_1]" id="express_1" onchange="Dexpress(1, this.options[selectedIndex].innerHTML);">
-                                <option value="0">选择模板</option>
-                                {loop $EXP $v}
-                                <option value="{$v[itemid]}"{if $express_1==$v[itemid]} selected{/if}>{$v[title]}[{$v[express]},{$v[fee_start]},{$v[fee_step]},{$v[note]}]</option>
-                                {/loop}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr bgcolor="#FFFFFF" align="center"  id="mores3">
-                        <td><input name="post[express_name_2]" type="text" id="express_name_2" size="10" value="{$express_name_2}" /></td>
-                        <td><input name="post[fee_start_2]" type="text" id="fee_start_2" size="5" value="{$fee_start_2}" /></td>
-                        <td><input name="post[fee_step_2]" type="text" id="fee_step_2" size="5" value="{$fee_step_2}" /></td>
-                        <td >
-                            <select name="post[express_2]" id="express_2" onchange="Dexpress(2, this.options[selectedIndex].innerHTML);">
-                                <option value="0">选择模板</option>
-                                {loop $EXP $v}
-                                <option value="{$v[itemid]}"{if $express_2==$v[itemid]} selected{/if}>{$v[title]}[{$v[express]},{$v[fee_start]},{$v[fee_step]},{$v[note]}]</option>
-                                {/loop}
-                            </select>
-                        </td>
-                    </tr>
-                    <tr bgcolor="#FFFFFF" align="center">
-                        <td><input name="post[express_name_3]" type="text" id="express_name_3" size="10" value="{$express_name_3}" /></td>
-                        <td><input name="post[fee_start_3]" type="text" id="fee_start_3" size="5" value="{$fee_start_3}" /></td>
-                        <td><input name="post[fee_step_3]" type="text" id="fee_step_3" size="5" value="{$fee_step_3}" /></td>
-                        <td>
-                            <select name="post[express_3]" id="express_3" onchange="Dexpress(3, this.options[selectedIndex].innerHTML);">
-                                <option value="0">选择模板</option>
-                                {loop $EXP $v}
-                                <option value="{$v[itemid]}"{if $express_3==$v[itemid]} selected{/if}>{$v[title]}[{$v[express]},{$v[fee_start]},{$v[fee_step]},{$v[note]}]</option>
-                                {/loop}
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-
-            </td>
-        </tr>
         <tr>
             <td class="tl"><span class="f_red">*</span>所在地区</td>
             <td class="tr">{ajax_area_select('post[areaid]', '请选择', $areaid)}&nbsp;<span id="dareaid_1" class="f_red"></span></td>

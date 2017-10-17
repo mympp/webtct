@@ -69,7 +69,7 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 <th>会员</th>
 <th>价格</th>
 <th>订单</th>
-<th>库存</th>
+<th>证书</th>
 <th width="70">操作</th>
 </tr>
 <?php foreach($lists as $k=>$v) {?>
@@ -89,7 +89,7 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 	<a href="javascript:void();" onclick="Dwidget('http://www.tecenet.com/file/game/bis/product-search.html?ID=<?php echo $v['manufacturer']; ?>&from=domestic', '搜索BIS库内容')">[bis]</a>
 </td>
 <td>
-	<?php echo $v['batchnum']; ?>&nbsp;
+	<?php echo $v['batchnum']; ?><br/>
 	<?php
 	 $batchnum = str_replace('（','(',$v['batchnum']);
 	 $batchnum = str_replace('）',')',$batchnum);
@@ -107,7 +107,12 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 </td>
 <td class="f_price"><?php echo $v['price'];?></td>
 <td class="px11"><a href="javascript:Dwidget('?moduleid=<?php echo $moduleid;?>&file=order&mallid=<?php echo $v['itemid'];?>', '[<?php echo $v['alt'];?>] 订单列表');"><?php echo $v['orders'];?></a></td>
-<td class="px11"><?php echo $v['amount'];?></td>
+<td class="px11">
+	<a href="javascript:Dwidget('?<?php
+            echo http_build_query(['moduleid'=>$moduleid,'file'=>'validate','mallid'=>$v['itemid']]);
+        ?>','产品证书')">
+	[<?php echo $mallValidate->getCountByMall($v['itemid']); ?>]
+    </a>
 <td>
 <a href="javascript:Dwidget('?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=relate&itemid=<?php echo $v['itemid'];?>', '[<?php echo $v['alt'];?>] 关联商品');"><img src="admin/image/child.png" width="16" height="16" title="关联商品" alt=""/></a>&nbsp;
 <a href="?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=edit&itemid=<?php echo $v['itemid'];?>"><img src="admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;

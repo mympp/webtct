@@ -17,6 +17,8 @@ abstract class BaseQuery
             } else {
                 return false;
             }
+        }else{
+            $this->dbList[$dbTableName]->restart();
         }
         return $this->dbList[$dbTableName];
     }

@@ -1,43 +1,12 @@
 <?php
 
-/*
-********************************************************************
-*time: 2014-03-24
-*who: tcdahe
-*对产品批量分配科室kcatids
-*修改：
-*	添加 case move_keshis
-*	添加 $keshi 选定 $condition
-*
-*关联文件：
-*	\module\mall\admin\template\move.tpl.php
-*	\module\mall\admin\template\index.tpl.php
-*
-*********************************************************************
-*time:2014-09-11
-*who:tcdahe
-*后台产品更改到指定会员
-*
-*添加：switch case条件=>change_member
-*
-*关联文件：
-*	module\mall\admin\template\index.tpl.php
-*
-********************************************************************
-*时间：2015-6-9 13:51:50
-*李通
-*对产品新增（进口&&国产）搜索条件
-*修改:增加
-*	if($expcate == 1) $condition .= " AND expcate = '0'";
-*	if($expcate == 2) $condition .= " AND expcate = '1'";
-*关联到：
-*		module\mall\admin\template\index.tpl.php
-*/
-
+use models\helpers\query\MallValidateQuery;
 
 defined('DT_ADMIN') or exit('Access Denied');
 require MD_ROOT.'/mall.class.php';
 $do = new mall($moduleid);
+$mallValidate = new MallValidateQuery();
+
 $menus = array (
     array('添加商品', '?moduleid='.$moduleid.'&action=add'),
     array('商品列表', '?moduleid='.$moduleid),
@@ -46,7 +15,6 @@ $menus = array (
     array('未通过商品', '?moduleid='.$moduleid.'&action=reject'),
     array('回收站', '?moduleid='.$moduleid.'&action=recycle'),
     array('移动分类', '?moduleid='.$moduleid.'&action=move'),
-    array('证书审核', '?moduleid='.$moduleid.'&file=validate'),
     );
 
 if(in_array($action, array('add', 'edit'))) {

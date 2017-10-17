@@ -79,7 +79,9 @@ include DT_ROOT.'/include/update.inc.php';
 */
 
 $mall_db = new tcdb('mall');
-$item = $mall_db->field('kcatids')->where(['itemid'=>$itemid])->one();		//补充查询产品信息
+$item = $mall_db->field('kcatids')->where(['itemid'=>$itemid,'status'=>3])->one();		//补充查询产品信息
+if(!$item) include load('404.inc');
+
 //相关科室数据
 if(!empty($item['kcatids'])){
 	$kcatids = substr($item['kcatids'],0,-1);

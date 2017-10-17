@@ -31,6 +31,7 @@ if(!$_FILES && !$remote) {
 	if($swfupload) exit(convert($errmsg, DT_CHARSET, 'utf-8'));
 	dalert($errmsg);
 }
+/*
 if($DT['uploadlog'] && $MG['uploadday']) {
 	$condition = 'addtime>'.($DT_TIME - 86400);
 	$condition .= $_username ? " AND username='$_username'" : " AND ip='$DT_IP'";
@@ -41,6 +42,7 @@ if($DT['uploadlog'] && $MG['uploadday']) {
 		dalert($errmsg);
 	}
 }
+*/
 require DT_ROOT.'/include/post.func.php';
 $uploaddir = 'file/upload/'.timetodate($DT_TIME, $DT['uploaddir']).'/';
 is_dir(DT_ROOT.'/'.$uploaddir) or dir_create(DT_ROOT.'/'.$uploaddir);

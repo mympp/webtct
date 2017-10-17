@@ -1,6 +1,7 @@
 <?php
 use models\helpers\data\tcdb;
 use models\module\baseModule;
+use models\helpers\query\MallValidateQuery;
 
 defined('IN_DESTOON') or exit('Access Denied');
 login();
@@ -55,6 +56,9 @@ switch($action) {
 		$could_color = check_group($_groupid, $MOD['group_color']) && $MOD['credit_color'] && $_userid;
 
 		if($submit) {
+            //验证是否上传证件，和注册证图片
+			if(empty($cert) || empty($cert[0]['document'])) dalert('请上传相关证件');
+
 			if($fee_add && $fee_add > ($fee_currency == 'money' ? $_money : $_credit)) dalert($L['balance_lack']);
 			if($need_password && !is_payword($_username, $password)) dalert($L['error_payword']);
 
@@ -138,7 +142,14 @@ switch($action) {
 				
 				}else{//非定制用户的产品添加
 
-					$do->add($post);
+					$mallid = $do->add($post);
+
+                    if($mallid){
+                        //产品添加成功，添加验证证书
+                        $MallValidate = new MallValidateQuery();
+                        $MallValidate->add($cert,$mallid,$_userid);
+                    }
+
 					//if($FD) fields_update($post_fields, $table, $do->itemid);
 					if($CP) property_update($post_ppt, $moduleid, $post['catid'], $do->itemid);
 					if($MOD['show_html'] && $post['status'] > 2) $do->tohtml($do->itemid);
@@ -220,6 +231,11 @@ switch($action) {
 
 		if($submit) {
 			if($do->pass($post)) {
+
+                $mallValidate = new MallValidateQuery();
+                $mallValidate->update($cert,$do->itemid,$_userid);  //修改产品证书
+                if(!empty($certRemoveID)) $mallValidate->delete($certRemoveID);     //如果有删除数据，进行删除
+
 				$CAT = get_cat($post['catid']);
 				if(!$CAT || !check_group($_groupid, $CAT['group_add'])) dalert(lang($L['group_add'], array($CAT['catname'])));
 				$post['addtime'] = timetodate($item['addtime']);
@@ -250,6 +266,10 @@ switch($action) {
 			}
 		} else {
 			extract($item);
+
+            $mallValidate = new MallValidateQuery();
+            $cert = $mallValidate->getListByMall($itemid);
+
 			if($step) {
 				extract(unserialize($step),EXTR_SKIP);
 				$a2 > 0 or $a2 = '';
