@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thirty Apples</title>
+    <!--<link rel="icon" type="image/GIF" href="res/favicon.ico"/>-->
+
+    <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1,target-densitydpi=device-dpi"/>
+
+    <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- force webkit on 360 -->
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <!-- force edge on IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- force full screen on some browser -->
+    <meta name="full-screen" content="yes"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <!-- force screen orientation on some browser -->
+    <!-- <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-orientation" content="portrait"> -->
+
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+
+<style type="text/css">
+html {
+  -ms-touch-action: none;
+}
+
+body, canvas, div {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+</style>
+    <style>
+        .adslot_1 { display:inline-block; width: 320px; height: 50px; }
+        @media (min-width:500px) { .adslot_1 { width: 468px; height: 60px; } }
+        @media (min-width:800px) { .adslot_1 { width: 728px; height: 90px; } }
+    </style>
+</head>
+
+<body style="padding:0; margin: 0; background: #ddd;" align="center">
+<div style="align:center;display: none"><img src="res/game/share.png" width="10%" /></div>
+<div id="loadingImg" style="top:35%;width: 100%;position:absolute; ">
+    <div id="logoImg" style="align:center;display: none">
+    </div>
+    <div style="margin-top:10%">
+        <img src="res/loading.gif" width="7%" height="7%"  />
+    </div>
+</div>
+
+
+<div id="canvasDiv" style="height: 500px">
+    <canvas id="gameCanvas" width="720" height="1280" ></canvas>
+</div>
+<script>
+    var IOS_FLAG = false;
+    var TwitterFlag = false;
+    var FaceBookFlag = false;
+    autodivheight();
+    function autodivheight(){
+        var winHeight=0;
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        //通过深入Document内部对body进行检测，获取浏览器窗口高度
+        if (document.documentElement && document.documentElement.clientHeight)
+            winHeight = document.documentElement.clientHeight;
+        var currHeight = winHeight * 0.87;
+        //判断是否在twitter或facebook打开
+        var agent = navigator.userAgent.toLowerCase() ;
+        if(agent.indexOf("twitter") > 0) {
+            TwitterFlag = true;
+        }
+        if(agent.indexOf("fbav") > 0) {
+            FaceBookFlag = true;
+        }
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+            IOS_FLAG = true;
+        }
+        if(IOS_FLAG && (FaceBookFlag || TwitterFlag)) {
+            if(agent.indexOf("messenger") == -1) {
+                currHeight = currHeight - 107;
+            }
+        }
+        document.getElementById("canvasDiv").style.height = currHeight+"px";
+    }
+    window.onresize=autodivheight;
+
+    function showMyAds(){
+
+    }
+</script>
+<div align="center" style="font-size: 10px;color: dimgrey">advertisement</div>
+
+
+<script src="res/sys.min.js?v=1"></script>
+
+<script cocos src="game.min.js?v=7"></script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?021a1977e78ffc35109aa1a821bb36fc";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+</body>
+</html>

@@ -21,16 +21,16 @@ show_menu($menus);
 <input type="radio" name="expcate" value="1" <?php if($expcate ==1) echo ' checked';?> />国产产品&nbsp;
 <input type="radio" name="expcate" value="2" <?php if($expcate ==2) echo ' checked';?>/>进口产品&nbsp;&nbsp;
 <input type="submit" value="搜 索" class="btn"/>&nbsp;
-<input type="button" value="重 置" class="btn" onclick="Go('?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=<?php echo $action;?>');"/>
+	<input type="button" value="重 置" class="btn" onclick="Go('?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=<?php echo $action;?>');"/>
 </td>
 </tr>
 <tr>
 <td>
 &nbsp;<select name="datetype">
 <option value="edittime" <?php if($datetype == 'edittime') echo 'selected';?>>更新日期</option>
-<option value="addtime" <?php if($datetype == 'addtime') echo 'selected';?>>发布日期</option>
-</select>&nbsp;
-<?php echo dcalendar('fromdate', $fromdate, '');?> 至 <?php echo dcalendar('todate', $todate, '');?>&nbsp;
+	<option value="addtime" <?php if($datetype == 'addtime') echo 'selected';?>>发布日期</option>
+	</select>&nbsp;
+	<?php echo dcalendar('fromdate', $fromdate, '');?> 至 <?php echo dcalendar('todate', $todate, '');?>&nbsp;
 <?php echo category_select('catid', '所属分类', $catid, $moduleid);?>&nbsp;
 <?php echo ajax_area_select('areaid', '所在地区', $areaid);?>&nbsp;
 ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&nbsp;

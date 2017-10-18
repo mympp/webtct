@@ -122,7 +122,6 @@
                 <th>价格</th>
                 <th>订单</th>
                 <th>销量</th>
-                <th>库存</th>
                 <th>评论</th>
                 <th>人气</th>
                 <th width="100">管理</th>
@@ -135,7 +134,6 @@
                 <td class="f_price">{$v[price]}</td>
                 <td class="px11 c_p{if $v[orders]>0} f_blue f_b{/if}" title="查看订单" onclick="Go('trade.php?mallid={$v[itemid]}');">{$v[orders]}</td>
                 <td class="px11">{$v[sales]}</td>
-                <td class="px11{if $v[amount]<5} f_red f_b" title="库存不足{/if}">{$v[amount]}</td>
                 <td class="px11">{$v[comments]}</td>
                 <td class="px11">{$v[hits]}</td>
                 <td>

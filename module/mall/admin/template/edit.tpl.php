@@ -329,12 +329,6 @@ function check() {
 		Dmsg('商品名称最少2字，当前已输入'+l+'字', f);
 		return false;
 	}
-	f = 'amount';
-	l = Dd(f).value;
-	if(l < 1) {
-		Dmsg('请填写库存', f);
-		return false;
-	}
 	f = 'thumb';
 	l = Dd(f).value.length;
 	if(l < 5) {
