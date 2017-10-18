@@ -1,6 +1,7 @@
 <?php
 
 use models\helpers\query\MallValidateQuery;
+use models\helpers\query\MallQuery;
 
 defined('DT_ADMIN') or exit('Access Denied');
 require MD_ROOT.'/mall.class.php';
@@ -309,6 +310,8 @@ switch($action) {
 	case 'reject':
 		if($itemid && !$psize) {
 			$do->reject($itemid,$reason);
+            //修改证书状态
+            $mallValidate->changeStatusByMall($itemid, MallValidateQuery::FORBID_STATUS);
 			dmsg('拒绝成功', $forward);
 		} else {
 			$lists = $do->get_list('status=1'.$condition, $dorder[$order]);
@@ -377,6 +380,9 @@ switch($action) {
 	case 'check':
 		if($itemid && !$psize) {
 			$do->check($itemid);
+            //修改证书状态
+            $mallValidate->changeStatusByMall($itemid, MallValidateQuery::CHECKED_STATUS);
+
 			dmsg('审核成功', $forward);
 		} else {
 			$lists = $do->get_list('status=2'.$condition, $dorder[$order]);

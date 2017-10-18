@@ -1,5 +1,5 @@
 <iframe src="" name="send" id="send" style="display:none;"></iframe>
-<form method="post" id="dform" action="{$DT[file_my]}" onsubmit="return check();">
+<form method="post" id="dform" action="{$DT[file_my]}" target="send" onsubmit="return check();">
     {if $_POST['qqitemid']}
     {php $title=strip_tags($_POST['title']);}
     {php $content=$_POST['content'];}
@@ -65,9 +65,9 @@
                                 <input class="inputtext" type="text" name="cert[{$key}][document]" id="document{$key}"
                                        placeholder="请上传证件图片" value="{$item[thumb]}" readonly />
                                 <span class="upload-btn-area">
-                                    <a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('document').value, true,'document');" class="t">[上传]</a>
-                                    <a href="javascript:void(0);" onclick=" _preview(Dd('document').value);" class="t">[预览]</a>
-                                    <a href="javascript:void(0);" onclick="Dd('document').value='';" class="t">[删除]</a>
+                                    <a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('document{$key}').value, true,'document{$key}');" class="t">[上传]</a>
+                                    <a href="javascript:void(0);" onclick=" _preview(Dd('document{$key}').value);" class="t">[预览]</a>
+                                    <a href="javascript:void(0);" onclick="Dd('document{$key}').value='';" class="t">[删除]</a>
                                 </span>
 
                                 <input class="inputtext" type="text" name="cert[{$key}][validDate]"
@@ -75,6 +75,7 @@
                                        onfocus="ca_show('validDate{$key}', this, '-');" readonly="" ondblclick="this.value='';"
                                        value="{date('Y-m-d',$item['expiretime'])}">
                                 {if !$item[isMust]}<a href="javascript:;" class="upload-item-remove">删除</a>{/if}
+                                {if $item[isMust]}<input type="hidden" name="cert[{$key}][isMust]" value="1" />{/if}
 
                                 <div class="upload-msg">
                                     <span id="dcertName" class="f_red"></span>
@@ -106,9 +107,11 @@
                     <div class="upload-area-ft">
                         <a href="javascript:;" class="upload-item-add">添加</a>
                     </div>
+                    <!--
                     <div class="upload-area-hd">
                         是否在产品详情页展示：<label><input type="radio" name="show" checked>是</label><label><input type="radio" name="show">否</label>
                     </div>
+                    -->
                     <div class="upload-area-hd">
                         请上传产品相关证件如：注册证、授权销售委托书、厂家营业执照、厂家生产许可证、品牌授权证书、进口品牌商品请上传报关单证书、正规部门提供的质检检疫报告等。
                     </div>
