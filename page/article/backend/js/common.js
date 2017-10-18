@@ -16,7 +16,11 @@ var nav = new Vue({
                 '<li><a href="list.html">文章列表</a></li>'+
                 '</ul>'+
                 '</li>'+
-                '<li><a href="#">产品管理</a></li>'+
+                '<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">产品管理<b class="caret"></b></a>' +
+                '<ul class="dropdown-menu">' +
+                '<li><a href="mall.html">产品列表</a></li>' +
+                '</ul>' +
+                '</li>'+
                 '<li><a href="#">推送设置</a></li>'+
                 '</ul>'+
                 '</div>'+

@@ -77,7 +77,7 @@
                 <div class="col-sm-10">
                     <div class="input-group" id="datetimepicker">
                         <input type="text" class="form-control">
-                        <span class="input-group-addon"></span>
+                        <span class="input-group-addon">选择时间</span>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,6 @@
         <br/><br/>
 
         <form class="form-horizontal" role="form">
-
             <table id="tableList" class="table table-bordered">
                 <caption>已关联产品</caption>
                 <thead>
@@ -127,14 +126,41 @@
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>医用下肢垫大腿抬高护理垫 腿部抬高垫</td>
+                <tbody >
+                    <tr v-for="item in selectedMall">
+                        <td>{{item.title}}</td>
                         <td>
                             <a href="#" title="查看"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;
-                            <a href="#" title="移去"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                            <a href="javascript:void(0);" @click="deleteMall(item.id)" title="移去"><span class="glyphicon glyphicon-remove-circle"></span></a>
                         </td>
                     </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <br/>
+
+        <form class="form-horizontal" role="form">
+            <table class="table table-bordered">
+                <caption>关联产品</caption>
+                <thead>
+                <tr>
+                    <td><input type="text" name="" class="form-control" value="查找内容" /></td>
+                    <td><button type="button" class="btn btn-primary" @click="pushSearchMall">查找</button></td>
+                </tr>
+                </thead>
+                <tbody v-if="searchMall.length">
+                <tr >
+                    <th>标题</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="item in searchMall">
+                    <td>{{item.title}}</td>
+                    <td>
+                        <a href="#" title="查看"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;
+                        <a href="javascript:void(0);" @click="addMall(item.id)" title="添加"><span class="glyphicon glyphicon-plus-sign"></span></a>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </form>
@@ -169,6 +195,49 @@
             },
         },
     });
+
+    var mallRela = new Vue({
+        el:'#mallRela',
+        data:{
+            selectedMall:[
+                {id:1,title:'医用下肢垫大腿抬高护理垫 腿部抬高垫'},
+                {id:2,title:'科宝全自动尿液分析仪XS型'},
+                {id:3,title:'便携式超声雾化器'},
+            ],
+            searchMall:[],
+        },
+        methods:{
+            deleteMall : function(id){
+                if(confirm('确定删除？')){
+                    for(item in mallRela.selectedMall){
+                        if(mallRela.selectedMall[item]['id'] == id){
+                            mallRela.selectedMall.splice(item,1);
+                            break;
+                        }
+                    }
+                }
+            },
+            pushSearchMall :function(element){
+                mallRela.searchMall = [
+                    {id:4,title:'投影式红外血管成像仪'},
+                    {id:5,title:'脑电（肌电）导联线 鳄鱼夹电极'},
+                    {id:6,title:'瑞安森 一次性医用防护口罩'},
+                ];
+            },
+            addMall :function(id){
+                if(confirm('确定添加？')){
+                    for( item in mallRela.searchMall){
+                        if(mallRela.searchMall[item]['id'] == id){
+                            mallRela.selectedMall.push(mallRela.searchMall[item]);
+                            mallRela.searchMall.splice(item,1);
+                            break;
+                        }
+                    }
+                }
+            },
+        },
+    });
+
 </script>
 <script src="./js/common.js"></script>
 </html>
