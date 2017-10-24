@@ -223,26 +223,28 @@
             return false;
         }
 
-        f='certName';
-        l = Dd(f).value.length;
-        if(l < 3) {
-            Dmsg('证件名称最少3字，当前已输入'+l+'字', f);
-            return false;
-        }
-
-        f = 'document';
-        l = Dd(f).value.length;
-        if(l < 1) {
-            Dmsg('请上传证件图片', f);
-            return false;
-        }
-
-        f = 'validDate';
-        l = Dd(f).value.length;
-        if(l < 8) {
-            Dmsg('请选择证件有效期', f);
-            return false;
-        }
+        $(".upload-item").each(function(){
+            var _this = $(this);
+            var _certName = _this.find(".inputtext[id*='certName']");
+            var _document = _this.find(".inputtext[id*='document']");
+            var _validDate = _this.find(".inputtext[id*='validDate']");
+            console.log(_certName,_document,_validDate)
+            if(_certName.val() == ""){
+                var _id = _certName.attr("id");
+                Dmsg('请填写证件名称',_id);
+                return false;
+            }
+            if(_document.val() == ""){
+                var _id = _document.attr("id");
+                Dmsg('请填写上传证件图片',_id);
+                return false;
+            }
+            if(_validDate.val() == ""){
+                var _id = _validDate.attr("id");
+                Dmsg('请填写证件名称',_id);
+                return false;
+            }
+        });
 
         f = 'manufacturer';
         l = Dd(f).value.length;

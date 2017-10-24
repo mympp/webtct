@@ -139,8 +139,8 @@
         <div class="footer">
             <p class="footer-links">
                 <a href="http://wap.tecenet.com" class="footer-link">天成医疗</a>
-                <a href="http://so.tecenet.com/mindex.php" class="footer-link">天成医搜</a>
-                <a href="http://so.tecenet.com/feekback.php" class="footer-link">用户反馈</a>
+                <a href="http://so.tecenet.com/" class="footer-link">天成医搜</a>
+                <a href="http://so.tecenet.com/feekback.html" class="footer-link">用户反馈</a>
             </p>
             <p class="footer-text"> CopyRight © Guangzhou TianCheng Medical Technology Co.,Ltd.</p>
         </div>
@@ -201,16 +201,18 @@
     });
 </script>
 
-
 <script>
-    function Dthumb(m, w, h, o, s, i) {
-        var s = s ? 'none' : '';
-        var i = i ? i : 'thumb';
-        var c = '<iframe name="UploadThumb" style="display:none;" src=""></iframe>';
-        c += '<form method="post" target="UploadThumb" enctype="multipart/form-data" action="' + UPPath + '" onsubmit="return isUP(\'upthumb\');"><input type="hidden" name="moduleid" value="' + m + '"/><input type="hidden" name="from" value="thumb"/><input type="hidden" name="old" value="' + o + '"/><input type="hidden" name="fid" value="' + i + '"/><table cellpadding="3"><tr><td><input id="remote_0" type="radio" name="isremote" value="0" checked onclick="ReLo(0, \'upthumb\');"/><label for="remote_0"> ' + L['up_local'] + '</label>&nbsp;&nbsp;&nbsp;<input id="remote_1" type="radio" name="isremote" value="1" onclick="ReLo(1, \'upthumb\');"/><label for="remote_1"> ' + L['up_remote'] + '</label></td></tr><tr id="remote_url" style="display:none;"><td><input id="remote" type="text" size="30" name="remote" value="http://" onclick="if(this.value==\'http://\')this.value=\'\';"/></td></tr><tr id="local_url"><td><input id="upthumb" type="file" size="20" name="upthumb" onchange="if(isImg(\'upthumb\')){this.form.submit();Dd(\'Dsubmit\').disabled=true;Dd(\'Dsubmit\').value=\'' + L['uploading'] + '\';}"/></td></tr><tr style="display:' + s + '"><td>' + L['width'] + ' <input type="text" size="3" name="width" value="' + w + '"/> px &nbsp;&nbsp;&nbsp;' + L['height'] + ' <input type="text" size="3" name="height" value="' + h + '"/> px </td></tr><tr><td><input type="submit" class="btn" value="' + L['upload'] + '" id="Dsubmit"/>&nbsp;&nbsp;<input type="button" class="btn" value="' + L['cancel'] + '" onclick="cDialog();"/></td></tr></table></form>';
-        mkDialog('', c, L['upload_img'], 250);
-    }
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2b363fb3d03ff9991c4971afddf8731d";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+})();
 </script>
+
+
+
 
 </body>
 </html>

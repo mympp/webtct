@@ -272,7 +272,7 @@ m('home');</script>
                     }
                 </script>
                 <div class="grade"><a href="javascript:void(0)"
-                                      onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);">点击立即会员升级 </a></div>
+                                      onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);">点击立即会员升级 </a></div>
                 {if $groupid&&$_REQUEST['action']!=''}
                 <script type="text/javascript">msghtml('grade', '会员升级服务', Dd('up').innerHTML, 500);</script>
                 {/if}
@@ -305,7 +305,7 @@ m('home');</script>
             <td>&nbsp;</td>
             {loop $GROUPS $k $v}{if $k > 4}
             <td>{if isset($UP[$k])}<a href="javascript:void(0)"
-                                      onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);Dd('groupid{$v[groupid]}').checked=true;fees({$v[fee]});"><img
+                                      onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);Dd('groupid{$v[groupid]}').checked=true;fees({$v[fee]});"><img
                     src="{DT_SKIN}image/btn_upgrade.gif"/></a>{else}&nbsp;{/if}
             </td>
             {/if}{/loop}
@@ -802,7 +802,7 @@ m('home');</script>
         <tr bgcolor="#FFFFFF" align="center">
             <td>&nbsp;</td>
             {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if isset($UP[$k])}<a href="?sj={$shenji}&groupid={$v[groupid]}#UP"><img
+            <td>{if isset($UP[$k])}<a href="?sj={$shenji}&groupid={$v[groupid]}#UP" onclick="_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);"><img
                     src="{DT_SKIN}image/btn_upgrade.gif"/></a>{else}&nbsp;{/if}
             </td>
             {/if}{/loop}
@@ -819,7 +819,7 @@ m('home');</script>
 
     <div class="divline">&nbsp;</div>
     <div class="grade"><a href="javascript:void(0)"
-                          onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);">点击立即会员升级 </a></div>
+                          onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);">点击立即会员升级 </a></div>
 </div>
 <script type="text/javascript" src="{DT_STATIC}file/script/marquee.js"></script>
 <script type="text/javascript">

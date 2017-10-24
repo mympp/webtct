@@ -1,6 +1,7 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
 //$itemid or dheader($MOD['linkurl']);
+
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 require_once DT_ROOT.'/module/'.$module.'/mall.class.php';
 
