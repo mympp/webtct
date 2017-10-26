@@ -1,11 +1,11 @@
 <?php
 use models\helpers\widget\redirect\pc_to_wap;
+use models\helpers\data\tcdb;
 
 defined('IN_DESTOON') or exit('Access Denied');
-require DT_ROOT . '/models/autoload.php';
-$wapurl = pc_to_wap::forword('chanpin');
 
 require DT_ROOT . '/module/' . $module . '/common.inc.php';
+$wapurl = pc_to_wap::forword('chanpin');
 
 if (!check_group($_groupid, $MOD['group_index'])) {
     include load('403.inc');

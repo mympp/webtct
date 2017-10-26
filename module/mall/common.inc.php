@@ -1,8 +1,12 @@
-<?php 
+<?php
+use models\helpers\data\tcdb;
+
 defined('IN_DESTOON') or exit('Access Denied');
 define('MD_ROOT', DT_ROOT.'/module/'.$module);
 require DT_ROOT.'/include/module.func.php';
 require MD_ROOT.'/global.func.php';
+require_once DT_ROOT.'/models/autoload.php';
+
 $table = $DT_PRE.$module;
 $table_cart = $DT_PRE.$module.'_cart';
 $table_data = $DT_PRE.$module.'_data';
@@ -12,9 +16,9 @@ $AREA or $AREA = cache_read('area.php');
 $AREA[0]['areaname'] = '全国';
 
 
+
 $logo_title = '产品';
 $logo_url = 'www.tecenet.com/chanpin/';
-require DT_ROOT.'/include/tcdb.class.php';
 $category_db = new tcdb('category');
 $keyword_db = new tcdb('keyword');
 $CAT = $category_db->field('catid,catdir,catname,parentid,arrchildid')->where(['moduleid'=>16])->order('listorder asc')->all();
@@ -44,6 +48,5 @@ if(empty($second_cat) && !empty($catid)){
 		if($cat_parentid == $v['parentid']) $second_cat[$v['catid']] = $v;
 	}
 }
-
 
 ?>

@@ -1,11 +1,12 @@
-<?php 
+<?php
+use models\helpers\data\tcdb;
+use models\helpers\widget\redirect\pc_to_wap;
+
 defined('IN_DESTOON') or exit('Access Denied');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
-//if($MOD['index_html']) {	
-//	$html_file = DT_ROOT.'/'.$MOD['moduledir'].'/'.$DT['index'].'.'.$DT['file_ext'];
-//	if(!is_file($html_file)) tohtml('index', $module);
-//	if(is_file($html_file)) exit(include($html_file));
-//}
+
+$wapurl = pc_to_wap::forword('gongxiang');
+
 if(!check_group($_groupid, $MOD['group_index'])) include load('403.inc');
 $maincat = get_maincat(0, $moduleid, 1);
 $seo_file = 'index';

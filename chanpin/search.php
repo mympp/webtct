@@ -9,6 +9,9 @@ require '../common.inc.php';
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
 if(!check_group($_groupid, $MOD['group_search'])) include load('403.inc');
 require DT_ROOT.'/include/post.func.php';
+
+if(!empty($kw)) header('Location:'.$MOD['linkurl'].'keyword.php?kw='.$kw);		//跳转到关键词页面
+
 $first_cat = $second_cat = [];	//第一级分类,第二级分类
 $cat_arrchild ;		//当前子分类
 foreach($CAT as $v){		//$CAT数据读于common.inc.php文件

@@ -1,6 +1,7 @@
 <?php
 namespace models\module;
 
+use models\helpers\data\category;
 
 //企业模块模型类，封装业务逻辑操作
 class mallModule extends baseModule
@@ -14,7 +15,7 @@ class mallModule extends baseModule
         $this->linkurl = $MODULE[$this->moduleid]['linkurl'];
     }
 
-    //企业模块伪静态地址重写
+    //产品模块伪静态地址重写
     public function searchRewrite($selector)
     {
         //存在以下参数的地址使用动态地址
@@ -28,6 +29,17 @@ class mallModule extends baseModule
             $validated = isset($selector['validated']) ? '-' . $selector['validated'] : '-0';
             $page = isset($selector['page']) ? '-' . $selector['page'] : '';
             return 'so' . $catid . $stype . $areaid . $validated . $page . '.html';
+        }
+    }
+
+    //产品分类伪静态地址重写
+    public function mallCateRewrite($selector){
+        if(count($selector) == 1 && !empty($selector['catid'])){
+            $categoryModel = new category();
+            $cateData = $categoryModel->getCate($selector['catid']);
+            return $cateData['catdir'].'/';
+        }else{
+            return $this->searchRewrite($selector);
         }
     }
 }

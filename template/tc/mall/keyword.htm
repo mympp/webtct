@@ -24,21 +24,27 @@ $zdescription = '天成医疗器械网为你找到'.$items['c'].'件'.$areaname.
             <!--keyword-wrap-->
             <div class="keyword-wrap">
                 <h2 class="keyword-val">{$keyword['word']}</h2>
-                {if $kcontent}
+                {if empty($keywordAnalysis)}
                 <p class="keyword-intro">
-                    {$kcontent['content']}
+                    {$keywordAnalysis}
                 </p>
                 {/if}
 
                 <div class="keyword-area">
                     <div class="keyword-area-hd">按地区找关键词</div>
                     <ul class="keyword-area-bd">
-                    	<li {if empty($areaid)}class="current"{/if}><a href="{keyword_rewrite(['kwid'=>$kwid])}" >全国</a></li>
+                    	<li {if empty($areaid)}class="current"{/if}>
+                            <a href="<?php echo $keywordModule->searchRewrite(['kwid'=>$kwid]); ?>" >全国</a>
+                        </li>
                     	{php $mainarea = tag("table=area&fields=areaid,areaname&condition=parentid=0&pagesize=34&template=null&debug=0")}
                     	{loop $mainarea $k $t}
                     	{php $area_selector = $selector;}
                     	{php $area_selector['areaid'] = $t['areaid'];}
-                        <li {if $areaid == $t['areaid']}class="current"{/if}><a href="{keyword_rewrite($area_selector)}" title="{$t['areaname']}{$keyowrd['word']}">{$t['areaname']}</a></li>
+                        <li {if $areaid == $t['areaid']}class="current"{/if}>
+                            <a href="<?php echo $keywordModule->searchRewrite($area_selector); ?>" title="{$t['areaname']}{$keyowrd['word']}">
+                                {$t['areaname']}
+                            </a>
+                        </li>
                         {/loop}
                     </ul>
                 </div>
@@ -50,14 +56,23 @@ $zdescription = '天成医疗器械网为你找到'.$items['c'].'件'.$areaname.
             	{loop $malls $k $t}
                 <div class="cp-card cp-kw-card clearfix">
                     <div class="cp-img pull-left">
-                        <a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['title']}"><img src="{$t['thumb']}" alt="{$t['title']}"></a>
+                        <a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['title']}">
+                            <img src="{$t['thumb']}" alt="{$t['title']}"
+                                 onerror="javascript:this.src='{DT_SKIN}/image/tip/nopic-sm-1-1.png';">
+                        </a>
                     </div>
                     <div class="cp-txt pull-left">
                         <h3 class="text-overflow"><a href="{$MODULE[16]['linkurl']}{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h3>
                         <ul class="cp-param clearfix">
                             <li><span class="cp-param-key">产品品牌：</span><em class="cp-param-val">{$t['brand']}</em></li>
                             <li><span class="cp-param-key">产品型号：</span><em class="cp-param-val">{$t['model']}</em></li>
-                            <li><span class="cp-param-key">产品分类：</span><em class="cp-param-val"><a href="{$MODULE[16]['linkurl']}{mall_cat_rewrite(['catid'=>$t['catid']])}" title="{$CATEGORY[$t['catid']]}医疗器械">{$CATEGORY[$t['catid']]}</a></em></li>
+                            <li><span class="cp-param-key">产品分类：</span>
+                                <em class="cp-param-val">
+                                    {php $cateData = $cateModel->getCate($t['catid']);}
+                                    <a href="{$MODULE[16]['linkurl']}<?php echo $mallModule->mallCateRewrite(['catid'=>$t['catid']]);?>"
+                                       title="{$cateData['catname']}医疗器械">{$cateData['catname']}</a>
+                                </em>
+                            </li>
                             <li><span class="cp-param-key">生产厂商：</span><em class="cp-param-val">{$t['company']}</em></li>
                             <li><span class="cp-param-key">所在地区：</span><em class="cp-param-val"><a href="{$MODULE[16]['linkurl']}{mall_rewrite(['areaid'=>$t['areaid']])}" title="{area_pos($t['areaid'],'')}医疗器械">{area_pos($t['areaid'],'/')}</a></em></li>
                             <li><span class="cp-param-key">相关科室：</span>
@@ -65,7 +80,7 @@ $zdescription = '天成医疗器械网为你找到'.$items['c'].'件'.$areaname.
                             {if $t['kcatids']}
                             {php $kcatid = explode(',',$t['kcatids']);}
                             {loop $kcatid $kt}
-                            <i><a href="{$MODULE[16]['linkurl']}{keshi_rewrite(['kcatid'=>$t])}" title="{$KESHI[$kt]}医疗器械">{$KESHI[$kt]}</a></i>
+                            <i><a href="{$MODULE[16]['linkurl']}{keshi_rewrite(['kcatid'=>$kt])}" title="{$KESHI[$kt]}医疗器械">{$KESHI[$kt]}</a></i>
                             {/loop}
                             {/if}
                             </em>
@@ -82,7 +97,7 @@ $zdescription = '天成医疗器械网为你找到'.$items['c'].'件'.$areaname.
             </form>
 
             <!--分页-->
-            {pagination($page,$items['c'],$pagesize,$MODULE[16]['linkurl'].$action.'.php',$selector,'keyword_rewrite')}
+            {$paginationView}
             <!--分页 end-->
             {else}
             	{template 'empty-result','chip'}

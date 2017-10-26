@@ -1,7 +1,8 @@
 <?php 
 use models\helpers\view\internalLink;
+use models\helpers\data\tcdb;
+
 defined('IN_DESTOON') or exit('Access Denied');
-require_once DT_ROOT.'/models/autoload.php';
 //if($DT_BOT || $_POST) dhttp(403);
 
 /**

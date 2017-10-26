@@ -1,11 +1,16 @@
 <?php 
 use models\helpers\view\internalLink;
+use models\helpers\data\tcdb;
+use models\helpers\widget\redirect\pc_to_wap;
+
 defined('IN_DESTOON') or exit('Access Denied');
-require_once DT_ROOT.'/models/autoload.php';
 
 $itemid or dheader($MOD['linkurl']);
 if(!check_group($_groupid, $MOD['group_show'])) include load('403.inc');
 require DT_ROOT.'/module/'.$module.'/common.inc.php';
+
+$wapurl = pc_to_wap::forword('gongxiang/show-'.$itemid.'.html');
+
 $item = $db->get_one("SELECT * FROM {$table} WHERE itemid=$itemid");
 if($item && $item['status'] > 2) {
 	if($MOD['show_html'] && is_file(DT_ROOT.'/'.$MOD['moduledir'].'/'.$item['linkurl'])) d301($MOD['linkurl'].$item['linkurl']);
@@ -51,7 +56,6 @@ if(check_group($_groupid, $MOD['group_contact'])) {
 include DT_ROOT.'/file/config/filetype.inc.php';
 include DT_ROOT.'/file/config/mirror.inc.php';
 
-require_once DT_ROOT.'/include/tcdb.class.php';
 $down_db = new tcdb('down_15');
 $owner_count = $down_db->where(['username'=>$username,'status'=>3])->count('c');
 $count = $down_db->where(['status'=>3])->count('c');		//统计用户上传的数量
