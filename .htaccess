@@ -108,10 +108,10 @@ RewriteRule ^gongying\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)-([0-9]+)\.html$
 RewriteRule ^chanpin\/search.html$ /chanpin\/search.php
 RewriteRule ^chanpin\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/search.php?catid=$1&stype=$2&areaid=$3&validated=$4&page=$5
 RewriteRule ^chanpin\/ks-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keshi.php?kcatid=$1&stype=$2&areaid=$3&validated=$4&page=$5
-RewriteRule ^chanpin\/kw-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keyword.php?kwid=$1&areaid=$2&page=$3
+RewriteRule ^chanpin\/kw-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keyword.php?itemid=$1&areaid=$2&page=$3
 RewriteRule ^chanpin\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/search.php?catid=$1&stype=$2&areaid=$3&validated=$4
 RewriteRule ^chanpin\/ks-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keshi.php?kcatid=$1&stype=$2&areaid=$3&validated=$4
-RewriteRule ^chanpin\/kw-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keyword.php?kwid=$1&areaid=$2
+RewriteRule ^chanpin\/kw-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keyword.php?itemid=$1&areaid=$2
 RewriteRule ^chanpin\/(.*)\/$ /chanpin\/category.php?u=$1
 
 ##新版资讯模块伪静态地址

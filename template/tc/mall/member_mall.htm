@@ -216,32 +216,34 @@
         var l;
         var f;
         var k;
+        var flag = true;
         f = 'title';
         l = Dd(f).value.length;
         if(l < 2) {
             Dmsg('产品名称最少2字，当前已输入'+l+'字', f);
             return false;
         }
-
         $(".upload-item").each(function(){
             var _this = $(this);
             var _certName = _this.find(".inputtext[id*='certName']");
             var _document = _this.find(".inputtext[id*='document']");
             var _validDate = _this.find(".inputtext[id*='validDate']");
-            console.log(_certName,_document,_validDate)
             if(_certName.val() == ""){
                 var _id = _certName.attr("id");
                 Dmsg('请填写证件名称',_id);
+                flag = false;
                 return false;
             }
             if(_document.val() == ""){
                 var _id = _document.attr("id");
                 Dmsg('请填写上传证件图片',_id);
+                flag = false;
                 return false;
             }
             if(_validDate.val() == ""){
                 var _id = _validDate.attr("id");
                 Dmsg('请填写证件名称',_id);
+                flag = false;
                 return false;
             }
         });
@@ -350,18 +352,18 @@
             alert('属性名称不能重复');
             return false;
         }
-        if(Dd('express_name_1').value && (Dd('express_name_1').value == Dd('express_name_2').value || Dd('express_name_1').value == Dd('express_name_3').value)) {
-            alert('快递名称不能重复');
-            return false;
-        }
-        if(Dd('express_name_2').value && (Dd('express_name_2').value == Dd('express_name_1').value || Dd('express_name_2').value == Dd('express_name_3').value)) {
-            alert('快递名称不能重复');
-            return false;
-        }
-        if(Dd('express_name_3').value && (Dd('express_name_3').value == Dd('express_name_1').value || Dd('express_name_3').value == Dd('express_name_2').value)) {
-            alert('快递名称不能重复');
-            return false;
-        }
+        // if(Dd('express_name_1').value && (Dd('express_name_1').value == Dd('express_name_2').value || Dd('express_name_1').value == Dd('express_name_3').value)) {
+        //     alert('快递名称不能重复');
+        //     return false;
+        // }
+        // if(Dd('express_name_2').value && (Dd('express_name_2').value == Dd('express_name_1').value || Dd('express_name_2').value == Dd('express_name_3').value)) {
+        //     alert('快递名称不能重复');
+        //     return false;
+        // }
+        // if(Dd('express_name_3').value && (Dd('express_name_3').value == Dd('express_name_1').value || Dd('express_name_3').value == Dd('express_name_2').value)) {
+        //     alert('快递名称不能重复');
+        //     return false;
+        // }
         {if $FD}{fields_js()}{/if}
         if(Dd('property_require') != null) {
             var ptrs = Dd('property_require').getElementsByTagName('option');
@@ -438,7 +440,10 @@
         s+='}';
         $('#sectionprice').val(s);
         {/if}
-        return true;
+
+        if(flag){
+            $("#dform").submit();
+        }
         //return false;
     }
     function Dexpress(i, s) {
