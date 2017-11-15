@@ -184,15 +184,19 @@ function weixin($content){
 			$filename = getbetween($wx_image,'mmbiz.qpic.cn/mmbiz/','/');
 			// 拼接下载地址，下载图片，并返回图片本地地址
  			$imageURL = downloadAndImage('http://mmbiz.qpic.cn/mmbiz/'.$filename.'/',$filename);
+			if(!$imageURL) $imageUrl = downloadAndImage('https://mmbiz.qpic.cn/mmbiz/'.$filename.'/',$filename);
 		} elseif ($posJpg !== false) {
 			$filenameJpg 		= getbetween($wx_image,'mmbiz.qpic.cn/mmbiz_jpg/','/');
  			$imageURL 	= downloadAndImage('http://mmbiz.qpic.cn/mmbiz_jpg/'.$filenameJpg.'/',$filenameJpg);
+			if(!$imageURL) $imageURL = downloadAndImage('https://mmbiz.qpic.cn/mmbiz_jpg/'.$filenameJpg.'/',$filenameJpg);
 		} elseif ($posGif !== false) {
 			$filenameGif 		= getbetween($wx_image,'mmbiz.qpic.cn/mmbiz_gif/','/');
  			$imageURL 	= downloadAndImage('http://mmbiz.qpic.cn/mmbiz_gif/'.$filenameGif.'/',$filenameGif);
+			if(!$imageURL) $imageURL = downloadAndImage('https://mmbiz.qpic.cn/mmbiz_gif/'.$filenameGif.'/',$filenameGif);
 		} elseif ($posPng !== false) {
 			$filenamePng 	= getbetween($wx_image,'mmbiz.qpic.cn/mmbiz_png/','/');
  			$imageURL 	= downloadAndImage('http://mmbiz.qpic.cn/mmbiz_png/'.$filenamePng.'/',$filenamePng);
+			if(!$imageURL) $imageURL = downloadAndImage('https://mmbiz.qpic.cn/mmbiz_png/'.$filenamePng.'/',$filenamePng);
 		}
 		$content = str_replace($wx_image, $imageURL, $content);
 	}

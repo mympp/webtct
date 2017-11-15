@@ -33,7 +33,7 @@ class job {
 		}
 		if(!$post['truename']) return $this->_(lang('message->pass_truename'));
 		if(!$post['telephone']) return $this->_(lang('message->pass_telephone'));
-		if(!is_email(trim($post['email']))) return $this->_(lang('message->pass_email'));
+		//if(!is_email(trim($post['email']))) return $this->_(lang('message->pass_email'));
 		if(DT_MAX_LEN && strlen($post['content']) > DT_MAX_LEN) return $this->_(lang('message->pass_max'));
 		return true;
 	}

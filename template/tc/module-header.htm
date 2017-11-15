@@ -168,4 +168,5 @@
 </div>
 <!--page-header end-->
 
-{template 'menu',$module}
+<?php if(empty($menu)) $menu = 'menu'; ?>
+{template $menu ,$module}

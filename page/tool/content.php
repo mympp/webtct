@@ -4,8 +4,8 @@ use database\db;
 
 require_once __DIR__.'/autoload.php';
 
-$article = new \database\db('tc_article_21');
-$articleData = new \database\db('tc_article_data_21');
+$article = new \database\db('tc_news');
+$articleData = new \database\db('tc_news_data');
 $urlDb = new \database\db('img_url');
 
 $maxId = $articleData->field('max(itemid) as max')->one();

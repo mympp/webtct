@@ -63,7 +63,7 @@ class member {
 	function is_email($email) {
 		global $MOD, $L;
 		$email = trim($email);
-		if(!is_email($email)) return $this->_($L['member_email_null']);
+		if(!is_email($email)) return $this->_($L['member_email_bad']);
 		if($MOD['banemail']) {
 			$domain = substr(strstr($email, '@'), 1);
 			$tmp = explode('|', $MOD['banemail']);

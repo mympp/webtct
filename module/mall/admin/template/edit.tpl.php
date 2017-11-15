@@ -292,7 +292,10 @@ if($MOD['swfu'] && DT_EDITOR == 'fckeditor') {
 </tr>
 <?php } ?>
 </table>
-<div class="sbt"><input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></div>
+<div class="sbt">
+	<input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="reset" name="reset" value=" 重 置 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
 </form>
 <?php load('clear.js'); ?>
 <?php if($action == 'add') { ?>
