@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>体检车</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <link href="http://www.tecenet.com/skin/teceskin/tecenet.base.css" rel="stylesheet">
+    <link href="/static/css/medicalCar.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!--wrap-->
+<div class="wrap">
+    <!--header-->
+    <div class="header">
+        <div class="header-inner">
+            <!--nav-btn-->
+            <a href="javascript:;"  class="nav-btn"></a>
+            <!--nav-btn end-->
+            {% autoescape false %}
+                {{ pageModel.getMenu }}
+            {% endautoescape %}
+
+            <h1 class="header-title"><img src="static/images/title.png" alt="体检车"></h1>
+            <img class="header-banner" src="static/images/banner.png" alt="体检车">
+        </div>
+    </div>
+    <!--header end-->

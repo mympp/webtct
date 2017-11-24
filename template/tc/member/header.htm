@@ -179,6 +179,12 @@ $(function(){
 	<div class="side_head" id="h_3"><div>网站管理</div></div>
 	<div class="side_body" id="b_3">
 		<ul id="leftm4">
+
+			{if $linkurl || $show_menu}
+			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='homepage'>
+				<a href="{$linkurl}" class="{if $linkurl}n{else}f{/if}">公司首页</a></li>
+			{/if}
+
 			{if $MG[homepage] || $show_menu}
 			<li class="side_a" onmouseover="v(this.id);" onmouseout="t(this.id);" ID='homepage'><span class="f_r"><a href="home.php?tab=2" class="m">栏目</a></span><a href="home.php" class="{if $MG[homepage]}n{else}f{/if}">网站设置</a></li>
 			{/if}

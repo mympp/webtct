@@ -1,0 +1,53 @@
+{% autoescape false %}
+{{ pageModel.render('header') }}
+
+    <!--product-list-->
+    <div class="layout container clearfix">
+        <div class="main pull-right">
+            <!--crumb-->
+            <div class="crumb">
+                <span>您当前的位置：</span>
+                <a href="index.html">首页</a> »
+                <a href="plist.html">所有产品</a> »
+            </div>
+            <!--crumb end-->
+
+            <!--product-area-->
+            <div class="product-area">
+                <div class="product-title">
+                    <h1>{{ mall.title }}</h1>
+                </div>
+
+                <div class="product-img">
+                    {{ content.content }}
+                </div>
+            </div>
+            <!--product-area end-->
+
+        </div>
+
+
+        {{ pageModel.getLeftNav }}
+    </div>
+    <!--product-list end-->
+
+</div>
+<!--wrap end-->
+
+
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jquery.js"></script>
+<script>
+    $(".nav-btn").click(function () {
+        $(".nav").toggle();
+    });
+    var responsiveTable = function(wrap){
+        var container = $(wrap).find("table");
+        $(container).each(function(){
+            $(this).wrapAll("<div class='table-responsive'></div>");
+        });
+    };
+    responsiveTable(".product-area");
+</script>
+
+{{ pageModel.render('footer') }}
+{% endautoescape %}

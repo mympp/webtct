@@ -43,6 +43,7 @@ if($submit) {
 	$buy = $db->count("{$DT_PRE}mall_order", "buyer='$_username'");
 	$expired = $totime && $totime < $DT_TIME ? true : false;
 	$havedays = $expired ? 0 : ceil(($totime-$DT_TIME)/86400);
+
 	include template('index', $module);
 }
 ?>

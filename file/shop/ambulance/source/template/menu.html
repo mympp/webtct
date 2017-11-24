@@ -1,0 +1,11 @@
+<!--nav-->
+<div class="nav">
+    <ul class="nav-ul pull-left">
+        <li class="nav-item"><a href="/">首页</a></li>
+        {% for item in typeItem %}
+            <li class="nav-item"><a href="/plist-{{ item.typeid }}.html" >{{ item.typename }}</a></li>
+        {% endfor %}
+    </ul>
+    <div class="tel pull-right"><i></i>400-400-4000</div>
+</div>
+<!--nav end-->

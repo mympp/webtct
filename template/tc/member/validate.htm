@@ -350,11 +350,14 @@
 <script>
 	$(document).on("click",".longTime",function(){
 		var $dateInput = $(this).parent().parent().find("input[type='text']");
+        var $checkEle = $(this).parent().parent().find("img");
 		if($(this).is(':checked')){
-			$dateInput.attr("disabled",true);
-			$dateInput.val("");
+            $dateInput.val("");
+			$dateInput.hide("");
+            $checkEle.hide();
 		}else{
-			$dateInput.attr("disabled",false);
+            $dateInput.show();
+            $checkEle.show();
 		}
 	});
 </script>
@@ -480,12 +483,15 @@
 
 <script>
 	$(document).on("click",".longTime",function(){
-		var $dateInput = $(this).parent().parent().find("input[type='text']");
+        var $dateInput = $(this).parent().parent().find("input[type='text']");
+		var $checkEle = $(this).parent().parent().find("img");
 		if($(this).is(':checked')){
-			$dateInput.attr("disabled",true);
-			$dateInput.val("");
+            $dateInput.val("");
+            $dateInput.hide();
+			$checkEle.hide();
 		}else{
-			$dateInput.attr("disabled",false);
+            $dateInput.show();
+            $checkEle.show();
 		}
 	});
 </script>

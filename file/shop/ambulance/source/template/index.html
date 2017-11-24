@@ -1,0 +1,140 @@
+{% autoescape false %}
+    {{ pageModel.render('header') }}
+
+    <!--container-->
+    <div class="container">
+        <!--关于我们-->
+        <div class="about clearfix">
+            <div class="about-txt pull-left">
+                <div class="about-txt-title clearfix">
+                    <h2 class="pull-left">关于我们</h2>
+                    <span class="pull-left">Company profile</span>
+                </div>
+                <div class="about-txt-content">
+                    {{ introduce }}
+                </div>
+            </div>
+            <div class="about-img pull-right">
+                <img src="/static/images/about-img.png" alt="">
+            </div>
+        </div>
+        <!--关于我们 end-->
+
+        <!--产品模块-->
+        <div class="module module-first">
+            <h3 class="module-top-title">
+                <strong>{{ topMall.title }}</strong>
+            </h3>
+            <div class="module-top clearfix">
+                {{ topMall.content }}
+            </div>
+
+            <div class="module-msg">
+                <i class="arrow"></i>{{ topMall.note }}
+            </div>
+
+            <div class="module-img-area clearfix">
+                {% for mall in topMallPic %}
+                    <a href="/product-{{ mall.itemid }}.html" ><img src="{{ mall.thumb }}" alt="{{ mall.title }}" /></a>
+                {% endfor %}
+            </div>
+
+        </div>
+        <!--产品模块 end-->
+
+        <!--产品模块-->
+        <div class="module module-second">
+            <h3 class="module-top-title">
+                <span></span>
+                <strong>{{ secondMall.title }}</strong>
+            </h3>
+
+            <div class="module-top clearfix">
+                {{ secondMall.content }}
+            </div>
+
+            <div class="module-img-area clearfix">
+                {% for mall in secondMallPic %}
+                <a href="/product-{{ mall.itemid }}.html" ><img src="{{ mall.thumb }}" alt="{{ mall.title }}" /></a>
+                {% endfor %}
+            </div>
+
+        </div>
+        <!--产品模块 end-->
+
+        <!--产品系列-->
+        <div class="products-series">
+            <div class="products-series-head clearfix">
+                <div class="products-series-name">
+                    <h2 class="products-series-title">江淮女神医疗产品系列</h2>
+                    <h2 class="products-series-sub">Medical products series</h2>
+                </div>
+                <div class="products-series-logo">
+                    <img src="static/images/logo-1.png" alt="">
+                    <img src="static/images/logo-2.png" alt="">
+                    <img src="static/images/logo-3.png" alt="">
+                </div>
+            </div>
+
+            <div class="products-series-body">
+                {% for mall in middleMalls %}
+                <div class="series-box">
+                    <h3 class="series-head">{{ mall.title }}</h3>
+                    <div class="series-body clearfix">
+                        {{ mall.content }}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <a href="/plist-2922.html" class="series-more-btn">了解更多</a>
+            </div>
+        </div>
+        <!--产品系列 end-->
+
+        <!--产品系列-->
+        <div class="products-series">
+            <div class="products-series-head clearfix">
+                <div class="products-series-name">
+                    <h2 class="products-series-title">福田产品系列</h2>
+                    <h2 class="products-series-sub">Medical products series</h2>
+                </div>
+                <div class="products-series-logo">
+                    <img src="static/images/logo-4.png" alt="">
+                    <img src="static/images/logo-5.png" alt="">
+                    <img src="static/images/logo-6.png" alt="">
+                </div>
+            </div>
+
+            <div class="products-series-body">
+                {% for mall in bottomMalls %}
+                <div class="series-box">
+                    <h3 class="series-head">{{ mall.title }}</h3>
+                    <div class="series-body clearfix">
+                        {{ mall.content }}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <a href="/plist-2916.html" class="series-more-btn">了解更多</a>
+            </div>
+        </div>
+        <!--产品系列 end-->
+
+        <br/>
+
+    </div>
+    <!--container end-->
+
+</div>
+<!--wrap end-->
+
+
+<script type="text/javascript" src="http://www.tecenet.com/file/script/jquery.js"></script>
+<script>
+    $(".nav-btn").click(function(){
+        $(".nav").toggle();
+    });
+</script>
+
+{{ pageModel.render('footer') }}
+{% endautoescape %}
