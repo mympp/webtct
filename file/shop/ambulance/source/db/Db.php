@@ -46,6 +46,7 @@ class Db
     public function query($str)
     {
         $this->query_str = $str;
+        mysqli_set_charset(self::$_connection,'utf8');
         $result = mysqli_query(self::$_connection,$str);
         $this->restart();
         if($result){

@@ -33,6 +33,8 @@ class IndexPage extends BasePage
     }
 
     public function test(){
+        var_dump($this->getMalls(0,14));
+        /*
         $articles = Db::Table('tc_news')->field('itemid')->where(['status' => 3])->all();
         $urls = [];
         foreach($articles as $item){
@@ -43,8 +45,15 @@ class IndexPage extends BasePage
             }
             $this->push($urls);
         }
-
+           */
     }
+
+
+    public function render($template ,$params = []){
+        $params['isIndexPage'] = true;
+        return parent::render($template,$params);
+    }
+
 
     private function push($urls){
             $api = 'http://data.zz.baidu.com/urls?appid=1582200663323739&token=DsvmRmn9zNlcRjjk&type=batch';
@@ -59,6 +68,7 @@ class IndexPage extends BasePage
             curl_setopt_array($ch, $options);
             var_dump(curl_exec($ch));
             echo '<br/>';
-        }
+    }
 
 }
+

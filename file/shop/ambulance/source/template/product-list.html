@@ -1,5 +1,6 @@
 {% autoescape false %}
-    {{ pageModel.render('header') }}
+    {% set headerParams = {'typename' : typename} %}
+    {{ pageModel.render('header',headerParams) }}
 
     <!--product-list-->
     <div class="layout container clearfix">

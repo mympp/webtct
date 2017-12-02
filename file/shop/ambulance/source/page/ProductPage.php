@@ -12,7 +12,16 @@ class ProductPage extends BasePage
 
     public function plist($request, $response, $args)
     {
+        $kw = $request->getParam('kw');
+        if(!empty($kw)){
+            return $this->render('product-list',[
+                'Malls' => Db::Table('tc_mall')->where(['username'=> $this->username])->likeWhere(['title' => $kw])->all(),
+                'typename' => '相关搜索',
+            ]);
+        }
+
         $typeid = $request->getAttribute('typeid');
+
         if(empty($typeid)){
             $typeid = 0;
             $category = $this->getType();
@@ -46,12 +55,15 @@ class ProductPage extends BasePage
             exit;
         }
 
+        $type = Db::Table('tc_type')->field('typename')->where(['typeid' => $mall['mycatid']])->one();
+
         $content = Db::Table('tc_mall_data')->where(['itemid' => $itemid])->one();
         return $this->render('product-show',[
             'mall' => $mall,
             'content' => $content,
             'category' => $this->getType(),
             'malls' => $this->getMalls(),
+            'typename' => $type['typename'],
         ]);
     }
 
@@ -63,3 +75,4 @@ class ProductPage extends BasePage
         ]);
     }
 }
+
