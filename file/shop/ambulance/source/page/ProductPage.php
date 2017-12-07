@@ -38,6 +38,9 @@ class ProductPage extends BasePage
             'Malls' => $this->getMalls($typeid),
             'typeid' => $typeid,
             'typename' => $typename,
+            'htmlTitle' => $typename .'救护车|医疗车|体检车_配置方案报价_天成医疗车',
+            'htmlKeywords' => "{$typename}救护车,{$typename}医疗车,{$typename}体检车",
+            'htmlDescription' => "天成医疗车方案，为你您提供专业的{$typename}救护车配置方案，欢迎点击询价！",
         ]);
     }
 
@@ -64,6 +67,10 @@ class ProductPage extends BasePage
             'category' => $this->getType(),
             'malls' => $this->getMalls(),
             'typename' => $type['typename'],
+            'reTypename' => str_replace('系列','',$type['typename']),
+            'htmlTitle' => "{$mall['title']}配置方案报价_天成医疗车",
+            'htmlKeywords' => "{$mall['title']}配置方案,{$mall['title']}报价",
+            'htmlDescription' => "天成医疗车方案，为你您提供专业的{$mall['title']}配置方案，欢迎点击询价！",
         ]);
     }
 

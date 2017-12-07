@@ -1,5 +1,5 @@
 {% autoescape false %}
-    {% set headerParams = {'typename' : typename} %}
+{% set headerParams = {'htmlTitle' : htmlTitle,'htmlKeywords' : htmlKeywords , 'htmlDescription' : htmlDescription,'typename' : typename} %}
     {{ pageModel.render('header',headerParams) }}
 
     <!--product-list-->
@@ -7,7 +7,6 @@
         <div class="main pull-right">
             <!--crumb-->
             <div class="crumb">
-                <span>您当前的位置：</span>
                 <a href="index.html">首页</a> »
                 <a href="plist.html">所有产品</a>
             </div>
@@ -19,14 +18,14 @@
                 {% for cate in category %}
                 <div class="col">
                     <div class="col-hd clearfix">
-                        <h2>{{ cate.typename }}</h2>
-                        <a class="more" href="/plist-{{ cate.typeid }}.html">查看更多</a>
+                        <h2><a href="/plist-{{ cate.typeid }}.html" title="{{ cate.reTypename }}救护车">{{ cate.typename }}</a></h2>
+                        <a class="more" href="/plist-{{ cate.typeid }}.html" title="{{ cate.reTypename }}救护车">查看更多</a>
                     </div>
                     <div class="col-bd clearfix">
                         {% for mall in pageModel.getMalls(cate.typeid) %}
                         <div class="item">
                             <a href="/product-{{ mall.itemid }}.html" target="_blank">
-                                <img src="{{ mall.thumb }}" alt="">
+                                <img src="{{ mall.thumb }}" alt="{{ mall.title }}">
                             </a>
                             <h3><a href="/product-{{ mall.itemid }}.html" target="_blank">{{ mall.title }}</a></h3>
                         </div>
@@ -44,7 +43,7 @@
                         {% for mall in Malls %}
                         <div class="item">
                             <a href="/product-{{ mall.itemid }}.html" target="_blank">
-                                <img src="{{ mall.thumb }}" alt="">
+                                <img src="{{ mall.thumb }}" alt="{{ mall.title }}">
                             </a>
                             <h3><a href="/product-{{ mall.itemid }}.html" target="_blank">{{ mall.title }}</a></h3>
                         </div>

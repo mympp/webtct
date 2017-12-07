@@ -1,5 +1,6 @@
 {% autoescape false %}
-    {{ pageModel.render('header') }}
+    {% set headerParams = {'htmlTitle' : htmlTitle,'htmlKeywords' : htmlKeywords , 'htmlDescription' : htmlDescription} %}
+    {{ pageModel.render('header',headerParams) }}
 
     <!--container-->
     <div class="container">
@@ -15,7 +16,7 @@
                 </div>
             </div>
             <div class="about-img pull-right">
-                <img src="/static/images/about-img.png" alt="">
+                <img src="/static/images/about-img.png" alt="关于我们">
             </div>
         </div>
         <!--关于我们 end-->
@@ -23,7 +24,7 @@
         <!--产品模块-->
         <div class="module module-first">
             <h3 class="module-top-title">
-                <strong>{{ topMall.title }}</strong>
+                <strong><a href="http://jiuhuche.tecenet.com/product-558847.html">{{ topMall.title }}</a></strong>
             </h3>
             <div class="module-top clearfix">
                 {{ topMall.content }}
@@ -45,7 +46,7 @@
         <!--产品模块-->
         <div class="module module-second">
             <h3 class="module-top-title" style="margin-top:-55px;">
-                <strong>{{ secondMall.title }}</strong>
+                <strong><a href="http://jiuhuche.tecenet.com/product-558848.html">{{ secondMall.title }}</a></strong>
             </h3>
 
             <div class="module-top clearfix">
@@ -69,16 +70,16 @@
                     <h2 class="products-series-sub">Medical products series</h2>
                 </div>
                 <div class="products-series-logo">
-                    <img src="static/images/logo-1.png" alt="">
-                    <img src="static/images/logo-2.png" alt="">
-                    <img src="static/images/logo-3.png" alt="">
+                    <img src="static/images/logo-1.png" alt="江淮女神-JAC">
+                    <img src="static/images/logo-2.png" alt="江淮女神-NK">
+                    <img src="static/images/logo-3.png" alt="江淮女神-LOGO">
                 </div>
             </div>
 
             <div class="products-series-body">
                 {% for mall in middleMalls %}
                 <div class="series-box">
-                    <h3 class="series-head">{{ mall.title }}</h3>
+                    <h3 class="series-head"><a href="/product-{{ mall.itemid }}.html" >{{ mall.title }}</a></h3>
                     <div class="series-body clearfix">
                         <div class="series-img-area">
                         {{ mall.content }}
@@ -100,16 +101,16 @@
                     <h2 class="products-series-sub">Medical products series</h2>
                 </div>
                 <div class="products-series-logo">
-                    <img src="static/images/logo-4.png" alt="">
-                    <img src="static/images/logo-5.png" alt="">
-                    <img src="static/images/logo-6.png" alt="">
+                    <img src="static/images/logo-4.png" alt="福田产品系列-福特">
+                    <img src="static/images/logo-5.png" alt="福田产品系列-奔驰">
+                    <img src="static/images/logo-6.png" alt="福田产品系列-福田">
                 </div>
             </div>
 
             <div class="products-series-body">
                 {% for mall in bottomMalls %}
                 <div class="series-box">
-                    <h3 class="series-head">{{ mall.title }}</h3>
+                    <h3 class="series-head"><a href="/product-{{ mall.itemid }}.html" >{{ mall.title }}</a></h3>
                     <div class="series-body clearfix">
                         <div class="series-img-area">
                         {{ mall.content }}

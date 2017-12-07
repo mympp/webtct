@@ -7,6 +7,7 @@ class IndexPage extends BasePage
 {
     public function index()
     {
+
         $companyDataDb = Db::Table('tc_company_data');
         $content = $companyDataDb->where(['userid' => $this->userid])->one();
 
@@ -28,7 +29,10 @@ class IndexPage extends BasePage
             'secondMall' => $secondMall,
             'secondMallPic' => $secondMallPic,
             'bottomMalls' => $this->getMalls(2916,3,'itemid desc'),
-            'middleMalls' => $this->getMalls(2922,3,'itemid desc')
+            'middleMalls' => $this->getMalls(2922,3,'itemid desc'),
+            'htmlTitle' => '天成医疗车_医疗车|体检车|救护车专业配置方案报价',
+            'htmlKeywords' => '医疗车,体检车,救护车',
+            'htmlDescription' => '天成医疗车方案，为你您提供专业的医疗车、体检车、救护车配置方案，欢迎点击询价！',
         ]);
     }
 

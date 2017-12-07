@@ -1,9 +1,11 @@
 <?php
+
 require '../../common.inc.php';
 require DT_ROOT.'/api/weixin/init.inc.php';
 if($wx->signature()) {
-	if($HTTP_RAW_POST_DATA) {
-		$x = simplexml_load_string($HTTP_RAW_POST_DATA, 'SimpleXMLElement', LIBXML_NOCDATA);
+	$POST_DATA = file_get_contents('php://input');
+	if($POST_DATA) {
+		$x = simplexml_load_string($POST_DATA, 'SimpleXMLElement', LIBXML_NOCDATA);
 		$ToUserName = $x->ToUserName;
 		$FromUserName = $x->FromUserName;
 		$CreateTime = $x->CreateTime;
@@ -233,4 +235,5 @@ if($wx->signature()) {
 } else {
 	echo DT_DEBUG ? 'Working...' : '<meta http-equiv="refresh" content="0;url=../">';
 }
+
 ?>

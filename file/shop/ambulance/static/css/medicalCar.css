@@ -151,6 +151,9 @@
     padding-left:25px;
     color: #1e5c56;
 }
+.module-top-title a{
+    color: #1e5c56;
+}
 .module-second .module-top-title{
     left:0;
 }
@@ -432,6 +435,11 @@ a.module-other-btn{
     font-size:22px;
     font-weight: bold;
     color: #1e5c56;
+}
+
+.series-head a{
+    color: #1e5c56;
+    text-decoration: none;
 }
 .series-head:before{
     content: '';
@@ -721,7 +729,7 @@ a.series-more-btn{
     outline:none;
 }
 .page-search input[type="text"]{
-    width:280px;
+    width:188px;
     text-indent:10px;
     border-right:none;
 }
@@ -1639,7 +1647,7 @@ a.series-more-btn{
         float: none;
     }
 
-    .header-case{
+    .header-case,.links{
         display: none;
     }
 }

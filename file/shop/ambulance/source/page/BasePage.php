@@ -28,7 +28,11 @@ class BasePage
     protected function getType(){
         if(empty($this->_typeCate)){
             $item = 'mall-'.$this->userid;
-            $this->_typeCate = Db::Table('tc_type')->where(['item' => $item])->all();
+            $menus = Db::Table('tc_type')->where(['item' => $item])->all();
+            foreach($menus as $type){
+                $type['reTypename'] = str_replace('系列','',$type['typename']);
+                $this->_typeCate[] = $type;
+            }
         }
 
         return $this->_typeCate;

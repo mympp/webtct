@@ -6,16 +6,17 @@ define('BaseRoot', __DIR__);
 
 require './vendor/autoload.php';
 
-/*
+
 $configuration = [
     'settings' => [
-        'displayErrorDetails' => true,
+        'displayErrorDetails' => false,
+        'addContentLengthHeader' => false,
     ],
 ];
 $c = new \Slim\Container($configuration);
 $app = new \Slim\App($c);
-*/
-$app = new \Slim\App;
+
+//$app = new \Slim\App;
 
 $app->get('/','\source\page\IndexPage:index');
 $app->get('/plist.html' , '\source\page\ProductPage:plist');
