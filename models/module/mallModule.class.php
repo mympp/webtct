@@ -2,6 +2,7 @@
 namespace models\module;
 
 use models\helpers\data\category;
+use models\helpers\query\MallQuery;
 
 //企业模块模型类，封装业务逻辑操作
 class mallModule extends baseModule
@@ -41,6 +42,18 @@ class mallModule extends baseModule
         }else{
             return $this->searchRewrite($selector);
         }
+    }
+
+    //热门产品
+    public function getHotMalls($pagesize = 10 , $catid = 0 ,  $dayLimit = 14){
+        $mallQuery = new MallQuery();
+        $malls = $mallQuery->getRecommendMalls($pagesize,$catid,$dayLimit,'itemid,title,thumb,hits,linkurl');
+        $result = [];
+        foreach($malls as $key => $mall){
+            $mall['linkurl'] = $this->linkurl . $mall['linkurl'];
+            $result[] = $mall;
+        }
+        return $result;
     }
 }
 

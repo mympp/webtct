@@ -3,12 +3,14 @@
     <div class="w1200 box-center">
         <ul class="page-nav-main clearfix">
             <li class="page-sub-nav current"><a href="#">产品资讯首页</a></li>
-            <li class="page-sub-nav"><a href="#">设备类资讯区</a></li>
-            <li class="page-sub-nav"><a href="#">服务类资讯区</a></li>
-            <li class="page-sub-nav"><a href="#">试剂类资讯区</a></li>
-            <li class="page-sub-nav"><a href="#">药品类资讯区</a></li>
-            <li class="page-sub-nav"><a href="#">耗材类资讯区</a></li>
-            <li class="page-sub-nav"><a href="#">其他类资讯区</a></li>
+            {loop $MENU $key $cate}
+            <li class="page-sub-nav">
+                <a href="{$cate['linkurl']}"
+                   title="{$cate['catname']}">
+                    {$cate['catname']}
+                </a>
+            </li>
+            {/loop}
         </ul>
     </div>
 </div>

@@ -24,7 +24,7 @@ class MallQuery extends BaseQuery
         }
         //添加时间限制
         $dayCondition = [];
-        if (!empty($dayCondition) && is_int($dayLimit)) {
+        if (is_int($dayLimit) && !empty($dayLimit)) {
             $dayCondition['addtime'] = time() - (3600 * 24 * $dayLimit);
         }
 

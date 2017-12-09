@@ -8,39 +8,20 @@
 
     <!--top-img-change-->
     <div class="slider top-img-change">
+        {loop $topSlideArticles $key $article}
         <div>
-            <a class="slider-item" href="#" target="_blank">
-                <img src="http://3.swiper.com.cn/demo/pcbanner3/images/slide01.jpg" alt="">
+            <a class="slider-item" href="{$article['linkurl']}" target="_blank">
+                <img src="{$article['thumb']}" alt="{$article['title']}">
                 <div class="slider-bg"></div>
                 <div class="slider-info">
-                    <h3 class="slider-title">人工合成钻石只需两三天,你可能戴的是“假”钻石</h3>
-                    <p class="slider-desc">中国是世界上最大的人造钻石生产国。</p>
+                    <h3 class="slider-title">{$article['title']}</h3>
+                    <p class="slider-desc">{$article['description']}</p>
                 </div>
             </a>
         </div>
-        <div>
-            <a class="slider-item" href="#" target="_blank">
-                <img src="http://3.swiper.com.cn/demo/pcbanner3/images/slide01.jpg" alt="">
-                <div class="slider-bg"></div>
-                <div class="slider-info">
-                    <h3 class="slider-title">人工合成钻石只需两三天,你可能戴的是“假”钻石</h3>
-                    <p class="slider-desc">中国是世界上最大的人造钻石生产国。</p>
-                </div>
-            </a>
-        </div>
-        <div>
-            <a class="slider-item" href="#" target="_blank">
-                <img src="http://3.swiper.com.cn/demo/pcbanner3/images/slide02.jpg" alt="">
-                <div class="slider-bg"></div>
-                <div class="slider-info">
-                    <h3 class="slider-title">人工合成钻石只需两三天,你可能戴的是“假”钻石</h3>
-                    <p class="slider-desc">中国是世界上最大的人造钻石生产国。</p>
-                </div>
-            </a>
-        </div>
+        {/loop}
     </div>
     <!--top-img-change-->
-
 
     <!--container-->
     <div class="container clearfix">
@@ -572,60 +553,20 @@
         <!--side-->
         <div class="side">
 
-            <!--最新快讯-->
+            <!--热门医械知识库-->
             <div class="module">
                 <div class="module-head clearfix">
-                    <h2 class="module-head-title"><a href="#">最新快讯</a></h2>
-                </div>
-                <ul class="newest-list">
-                    <li class="newest-item">
-                        <i class="newest-dot"></i>
-                        <p class="newest-title text-overflow"><a href="">马云：未来中国8成零售业态都是“新零售”</a></p>
-                        <p class="newest-time">14:22</p>
-                    </li>
-                    <li class="newest-item">
-                        <i class="newest-dot"></i>
-                        <p class="newest-title text-overflow"><a href="">2017双11天猫成交1682亿元 比去年多了475亿</a></p>
-                        <p class="newest-time">14:22</p>
-                    </li>
-                    <li class="newest-item">
-                        <i class="newest-dot"></i>
-                        <p class="newest-title text-overflow"><a href="">美国空军中将：中国进军太空速度是美国的五倍</a></p>
-                        <p class="newest-time">14:22</p>
-                    </li>
-                    <li class="newest-item">
-                        <i class="newest-dot"></i>
-                        <p class="newest-title text-overflow"><a href="">被“妖魔化”的趣店和罗敏，现金贷能否健康发展</a></p>
-                        <p class="newest-time">14:22</p>
-                    </li>
-                    <li class="newest-item">
-                        <i class="newest-dot"></i>
-                        <p class="newest-title text-overflow"><a href="">英伟达首席执行官：自动驾驶汽车将于2020年上路</a></p>
-                        <p class="newest-time">14:22</p>
-                    </li>
-                </ul>
-            </div>
-            <!--最新快讯 end-->
-
-            <!--热门标签-->
-            <div class="module">
-                <div class="module-head clearfix">
-                    <h2 class="module-head-title"><a href="#">热门标签</a></h2>
+                    <h2 class="module-head-title"><a href="#">热门医械知识库</a></h2>
                 </div>
                 <div class="hot-tags">
-                    <a class="hot-tags-item" href="">京东</a>
-                    <a class="hot-tags-item" href="">双11促销</a>
-                    <a class="hot-tags-item" href="">互联网</a>
-                    <a class="hot-tags-item" href="">淘宝店</a>
-                    <a class="hot-tags-item" href="">基因疗法</a>
-                    <a class="hot-tags-item" href="">京东</a>
-                    <a class="hot-tags-item" href="">双11促销</a>
-                    <a class="hot-tags-item" href="">互联网</a>
-                    <a class="hot-tags-item" href="">淘宝店</a>
-                    <a class="hot-tags-item" href="">基因疗法</a>
+                    {loop $topCategorys $key $cate}
+                    <a class="hot-tags-item" href="{$cate['linkurl']}" title="{$cate['catname']}">
+                        {$cate['catname']}
+                    </a>
+                    {/loop}
                 </div>
             </div>
-            <!--热门标签-->
+            <!--热门医械知识库-->
 
             <!--热门产品-->
             <div class="module">
@@ -633,96 +574,50 @@
                     <h2 class="module-head-title"><a href="#">热门相关产品</a></h2>
                 </div>
                 <ul class="hot-product">
+                    {php $num = 1;}
+                    {loop $hotMalls $key $mall}
                     <li class="hot-product-item clearfix">
-                        <i class="rank-num">1</i>
-                        <div class="hot-product-img"><a href="#" target="_blank" title="高效单质银妇用抗菌洗液"><img src="http://www.tecenet.com/file/upload/201709/19/1617355963023.jpg.thumb.jpg"  alt="高效单质银妇用抗菌洗液"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="高效单质银妇用抗菌洗液">高效单质银妇用抗菌洗液</a></div>
-                        <div class="hot-product-num"><i class="iconfont icon-hot"></i>255</div>
+                        <i class="rank-num">{$num++}</i>
+                        <div class="hot-product-img">
+                            <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">
+                                <img src="{$mall['thumb']}"  alt="{$mall['title']}">
+                            </a>
+                        </div>
+                        <div class="hot-product-name">
+                            <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">{$mall['title']}</a>
+                        </div>
+                        <div class="hot-product-num"><i class="iconfont icon-hot"></i>{$mall['hits']}</div>
                     </li>
-                    <li class="hot-product-item clearfix">
-                        <i class="rank-num">2</i>
-                        <div class="hot-product-img"><a href="#" target="_blank" title="司诺洁高效单质银妇用抗菌凝胶"><img src="http://www.tecenet.com/file/upload/201709/19/1601319663023.jpg.thumb.jpg"  alt="司诺洁高效单质银妇用抗菌凝胶"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="司诺洁高效单质银妇用抗菌凝胶">司诺洁高效单质银妇用抗菌凝胶</a></div>
-                        <div class="hot-product-num"><i class="iconfont icon-hot"></i>241</div>
-                    </li>
-                    <li class="hot-product-item clearfix">
-                        <i class="rank-num">3</i>
-                        <div class="hot-product-img"><a href="#" target="_blank" title="医用硅酮凝胶敷料_ 郑州和济生物科技有限公司"><img src="http://www.tecenet.com/file/upload/201708/30/140506696365.jpeg.thumb.jpeg"  alt="医用硅酮凝胶敷料_ 郑州和济生物科技有限公司"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="医用硅酮凝胶敷料_ 郑州和济生物科技有限公司">医用硅酮凝胶敷料_ 郑州和济生物科技有限公司</a></div>
-                        <div class="hot-product-num"><i class="iconfont icon-hot"></i>183</div>
-                    </li>
-                    <li class="hot-product-item clearfix">
-                        <i class="rank-num">4</i>
-                        <div class="hot-product-img"><a href="#" target="_blank" title="安信医用骨科高分子夹板"><img src="http://www.tecenet.com/file/upload/201709/19/1143062658594.jpg.thumb.jpg"  alt="安信医用骨科高分子夹板"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="安信医用骨科高分子夹板">安信医用骨科高分子夹板</a></div>
-                        <div class="hot-product-num"><i class="iconfont icon-hot"></i>176</div>
-                    </li>
-                    <li class="hot-product-item clearfix">
-                        <i class="rank-num">5</i>
-                        <div class="hot-product-img"><a href="#" target="_blank" title="医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高"><img src="http://www.tecenet.com/file/upload/201710/16/1127595261787.jpg.thumb.jpg"  alt="医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高">医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高</a></div>
-                        <div class="hot-product-num"><i class="iconfont icon-hot"></i>138</div>
-                    </li>
+                    {/loop}
                 </ul>
             </div>
             <!--热门产品 end-->
 
+            <!--热门标签-->
+            <div class="module">
+                <div class="module-head clearfix">
+                    <h2 class="module-head-title"><a href="#">热门标签</a></h2>
+                </div>
+                <div class="hot-tags">
+                    {loop $hotTags $key $tag}
+                    <a class="hot-tags-item" href="#">{$tag['word']}</a>
+                    {/loop}
+                </div>
+            </div>
+            <!--热门标签-->
 
             <div class="module">
                 <div class="module-head clearfix">
-                    <h2 class="module-head-title"><a href="#">一周新闻排行榜</a></h2>
+                    <h2 class="module-head-title"><a href="#">热门知识点</a></h2>
                 </div>
                 <ul class="news-rank">
+                    {php $num = 1}
+                    {loop $hotArticles $key $article}
                     <li class="news-rank-item">
-                        <em>1</em>
-                        <a href="#" class="text-overflow">亲戚朋友总爱来家里蹭住 女子霸气发文刷爆朋友圈</a>
-                        <span>5646</span>
+                        <em>{$num++}</em>
+                        <a href="{$article['linkurl']}" class="text-overflow">{$article['title']}</a>
                     </li>
-                    <li class="news-rank-item">
-                        <em>2</em>
-                        <a href="#" class="text-overflow">游客丽江住客栈半夜被蚊子咬醒 前台:熏死1只赔100</a>
-                        <span>5298</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>3</em>
-                        <a href="#" class="text-overflow">中国式父母，貌似最无私，其实最自私</a>
-                        <span>1920</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>4</em>
-                        <a href="#" class="text-overflow">北京"动批"天和白马市场将闭市 商家狂甩</a>
-                        <span>1343</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>5</em>
-                        <a href="#" class="text-overflow">吃过的人还不知这药有毒！10万瓶假减肥药流向全国</a>
-                        <span>1259</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>6</em>
-                        <a href="#" class="text-overflow">湖南"年度法治人物"隐瞒犯罪前科 评选结果被取消</a>
-                        <span>1042</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>7</em>
-                        <a href="#" class="text-overflow">这部美到窒息的动画,堪称日本《金瓶梅》</a>
-                        <span>943</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>8</em>
-                        <a href="#" class="text-overflow">90后海归通过直播卖琥珀 年销售额达3000万</a>
-                        <span>843</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>9</em>
-                        <a href="#" class="text-overflow">最妖娆拉面哥4万元代言小面 与东北女粉丝结婚</a>
-                        <span>819</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>10</em>
-                        <a href="#" class="text-overflow">每日轻松一刻：今天，有比剁手更重要的事</a>
-                        <span>810</span>
-                    </li>
+                    {/loop}
                 </ul>
             </div>
 

@@ -5,22 +5,22 @@ use models\helpers\data\tcdb;
 
 abstract class BaseQuery
 {
-    protected $dbList = [];
+    protected static $dbList = [];
 
     //获取数据库操作对象
     protected function getDb($dbTableName)
     {
-        if (empty($this->dbList[$dbTableName])) {
+        if (empty(self::$dbList[$dbTableName])) {
             $dbObject = new tcdb($dbTableName);
             if ($dbObject) {
-                $this->dbList[$dbTableName] = $dbObject;
+                self::$dbList[$dbTableName] = $dbObject;
             } else {
                 return false;
             }
         }else{
-            $this->dbList[$dbTableName]->restart();
+            self::$dbList[$dbTableName]->restart();
         }
-        return $this->dbList[$dbTableName];
+        return self::$dbList[$dbTableName];
     }
 }
 
