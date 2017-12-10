@@ -1,18 +1,26 @@
 <?php
-use models\helpers\query\TagsQuery;
-use models\module\baseModule;
+use models\helpers\query\MallArticleCategoryQuery;
 
 include DT_ROOT.'/module/mall/news.common.inc.php';
 
 $topSlideArticles = $newsModule->getCache('getIndexSlide',['pagesize' => 5],(3600*12));
-$topCategorys = $newsModule->getCache('getTopCategorys',['pagesize' => 10]);
-$hotTags = (new TagsQuery())->getHotTags(10);
-$hotMalls = baseModule::moduleInstance('mall')->getCache('getHotMalls',['pagesize' => 5 ,'catid' => 0 ,'dayLimit'=>0]);
-$hotArticles = $newsModule->getCache('getHotArticles',[
-    'pagesize' => 10 ,
-    'withImage' => false,
-    'dayLimit' => 14 ,
-    'field' => 'title,itemid,hits']);
+
+//分类最新文章
+$maCategoryQuery = new MallArticleCategoryQuery();
+$articleList = [];
+foreach($MENU as $key => $cate){
+    $item = [];
+    $item['linkurl'] = $cate['linkurl'];
+    $item['catname'] = $cate['catname'];
+    $childCate = $maCategoryQuery->getChildCategory($cate['catid']);
+    $childCateId = [];
+    foreach($childCate as $c){
+        $childCateId[] = $c['catid'];
+    }
+    $item['list'] = $newsModule->getNewArticles(5,false,'title,itemid,description,thumb,hits,addtime',$childCateId);
+    $articleList[] = $item;
+}
+
 
 include template('news','mall');
 ?>

@@ -27,9 +27,21 @@ class mallArticleModule extends baseModule{
         return $result;
     }
 
+    private function buildCateLinkurl($categorys , $keyName = 'linkurl'){
+        $result = [];
+        foreach($categorys as $cate){
+            if(isset($cate['catid'])){
+                $cate['linkurl'] = $this->linkurl . $this->searchRewrite(['catid' => $cate['catid']]);
+                $result[] = $cate;
+            }
+        }
+        return $result;
+    }
+
     public function searchRewrite($selector){
         $catid = isset($selector['catid']) ? '_'.$selector['catid'] : '';
-        return 'news_list'.$catid.'.html';
+        $page = isset($selector['page']) ? '_'.$selector['page']:'';
+        return 'news_list'.$catid.$page.'.html';
     }
 
     public function showLinkurl($itemid){
@@ -38,7 +50,8 @@ class mallArticleModule extends baseModule{
 
     public function getMenu(){
         $mallArticleCategoryQuery = new MallArticleCategoryQuery();
-        return $mallArticleCategoryQuery->getCategory(0);
+        $categorys = $mallArticleCategoryQuery->getCategory(0);
+        return $this->buildCateLinkurl($categorys);
     }
 
     //获取首页幻灯片数据
@@ -52,23 +65,31 @@ class mallArticleModule extends baseModule{
     public function getTopCategorys($pagesize = 0){
         $maCategoryQuery = new MallArticleCategoryQuery();
         $categorys = $maCategoryQuery->getTopCategory($pagesize);
-        $result = [];
-        foreach($categorys as $cate){
-            $cate['linkurl'] = $this->linkurl . $this->searchRewrite(['catid' => $cate['catid']]);
-            $result[] = $cate;
-        }
-        return $result;
+        return $this->buildCateLinkurl($categorys);
     }
 
     //获取热点文章
     public function getHotArticles($pagesize = 10,$withImage = false,
-                                   $dayLimit = 0 ,$field = 'itemid,title,thumb')
+                                   $dayLimit = 0 ,$field = 'itemid,title,thumb',$catid = 0)
     {
-        var_dump($withImage);
-        var_dump($field);
-        $mallArticleQuery = new MallArticleQuery();
-        $articles = $mallArticleQuery->getHotArticles($pagesize, $withImage, $dayLimit ,$field);
+        $articles = (new MallArticleQuery())->getHotArticles($pagesize, $withImage, $dayLimit ,$field,$catid);
         return $this->buildShowLinkurl($articles);
+    }
+
+    //获取最新文章
+    public function getNewArticles($pagesize = 10,$withImage = false,
+                    $field = 'itemid,title,thumb',$catid = 0 , $page = 1)
+    {
+        $articles = (new MallArticleQuery())->getNewArticles($pagesize, $withImage ,$field,$catid,$page);
+        return $this->buildShowLinkurl($articles);
+    }
+
+    //获取搜索页面数据
+    public function getLists($pagesize = 10,$field = 'itmeid,title,thumb',$catid = 0,$page =1){
+        $result =  (new MallArticleQuery())->getLists($pagesize,$field,$catid,$page);
+        $lists = $this->buildShowLinkurl($result['list']);
+        $result['list'] = $lists;
+        return $result;
     }
 }
 ?>

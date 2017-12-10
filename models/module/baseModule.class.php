@@ -1,6 +1,8 @@
 <?php
 namespace models\module;
 
+use models\helpers\query\LinkQuery;
+
 class baseModule implements moduleInterface{
 		
 	public $moduleid = 0;
@@ -60,6 +62,16 @@ class baseModule implements moduleInterface{
             return call_user_func_array([$this,$funcName],$params);
         }
 	}
+
+    //获取友情链接
+    public function getLinks($pagesize = 10 , $field = 'title,linkurl')
+    {
+        if(empty($this->moduleid)){
+            return false;
+        }else{
+            return (new LinkQuery())->getLinks($this->moduleid,$pagesize,$field);
+        }
+    }
 }
 
 interface moduleInterface{

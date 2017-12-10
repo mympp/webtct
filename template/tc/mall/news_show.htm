@@ -15,43 +15,20 @@
             <!--article-->
             <div class="article-box">
                 <div class="article-head">
-                    <h1>旧款iPhone的热卖将打击iPhoneX的销售</h1>
+                    <h1>{$article['title']}</h1>
 
                     <div class="article-info">
-                        <span class="article-author"><i class="iconfont icon-my"></i>作者：柏铭007</span>
-                        <span class="article-time"><i class="iconfont icon-time"></i>发布时间：2017-11-12 11:09</span>
-                        <span class="article-view"><i class="iconfont icon-attention"></i>阅读量：122</span>
+                        <span class="article-author"><i class="iconfont icon-my"></i>作者：{$article['author']}</span>
+                        <span class="article-time"><i class="iconfont icon-time"></i>发布时间：{date('Y-m-d H:i:s',$article['addtime'])}</span>
+                        <span class="article-view"><i class="iconfont icon-attention"></i>阅读量：{$article['hits']}</span>
                     </div>
 
                     <div class="article-lead">
-                        知名的iPhone分析师--凯基证券的分析师郭明錤再次强调iPhoneX的热销可以延续到明年，然而从近期的iPhone7、iPhone6的热销情况来看，用户显然更青睐降价后的旧款iPhone，这对于iPhoneX的销售将产生消极的影响。
+                        {$article['description']}
                     </div>
 
                     <div class="article-content">
-                        <p data-bjh-caption-id="cap-80641470"><img
-                                src="https://timg01.bdimg.com/timg?pacompress&amp;imgtype=1&amp;sec=1439619614&amp;autorotate=1&amp;di=b8fdb8d8047769f3a62b4ea5191a34d0&amp;quality=90&amp;size=b870_10000&amp;src=http%3A%2F%2Fbos.nj.bpc.baidu.com%2Fv1%2Fmediaspot%2F4383273fe7fd9e01a992498fbe13acda.jpeg"
-                                data-w="870" data-h="482"></p>
-                        <p><br></p>
-                        <p class="text">相比起往年，今年的旧款iPhone降价幅度更快更大，这主要是因为苹果今年新发布的三款新iPhone中的两款--iPhone8、iPhone8
-                            plus由于销售不佳，在上市后一个多月时间就被大规模降价促销所致。</p>
-                        <p class="text">以iPhone8 plus为例，它的定价为6688元起，然而国内的渠道商给出的iPhone8
-                            plus售价普遍已降价千元甚至更多，双十一期间在某电商平台合计优惠最高达到1300元，这是iPhone诞生以来首次出现的在上市不久就开始大幅降价销售的现象。</p>
-                        <p class="text">
-                            在iPhone8降价促销的情况下，本来苹果的“传统”就是新iPhone上市旧款iPhone就降价，在iPhone8的“压迫”下iPhone7、iPhone6s的降价幅度较往年的降价幅度更大，iPhone6s
-                            plus在双十一期间甚至一度降低到3688元的低价，发布时间更早的iPhone5s甚至已降到1399元，杀入了千元机价格段。</p>
-                        <p class="text">
-                            市调机构canalys给出的三季度的数据显示，iPhone7成为该季度全球最畅销的手机，出货量高达1300万，而同期的iPhone8出货量为1170万（iPhone8、iPhone8
-                            plus的出货量分别为540万、630万），iPhone8的表现要差于以往几年的iPhone，这证明了相当多的用户更愿意选择降价后的旧款iPhone。</p>
-                        <p class="text">影响用户购买iPhoneX的还与该款手机的售价过于昂贵有关，iPhone7 plus的售价仅为iPhoneX的四成多，iPhone8
-                            plus的售价不到iPhoneX的七成，如此巨大的价格差距当然会影响用户购买iPhoneX，苹果原来的定价iPhone8
-                            plus与iPhoneX的价格差距只有两成左右，可惜出乎它意料的是iPhone8销售实在太差导致渠道商过早对它降价促销，拉大了iPhoneX与iPhone8的价格差距。</p>
-                        <p class="text">
-                            在iPhone8上市一个多月就开始降价促销的影响下，预计会有更多的用户购买大幅降价后的旧款iPhone。此前各方预期iPhoneX四季度的出货量在2500万左右，而四季度iPhone的出货量估计超过8000万，iPhoneX占四季度的出货量比例只有三成多一点，而原来普遍预计iPhoneX在四季度的销量可以最高达到4000万，也说明机构预计有相当多的用户会选择购买旧款iPhone，当然这也与iPhoneX的上市时间过晚有一定关系。</p>
-                        <p class="text">
-                            当然旧款iPhone的热卖对苹果也有好处，这有助于提升iPhone的出货量，扫除2016年iPhone出货量下滑带来的阴霾，避免了紧随其后的华为在出货量方面超越它。iPhone降价即热销也说明了苹果的强大品牌影响力，只要降价就能获得更多用户欢迎，中国手机品牌还是要重新审视下苹果在智能手机市场的地位。</p>
-                        <p class="text">
-                            对于全球高端智能手机市场来说则不是一个好消息，如果苹果都无力领导高端智能手机市场，那么又有谁能在高端智能手机市场继续创造价值并为用户带来持续创新呢？事实上，iPhoneX上市后确实引发了一波排队购买的热潮，然而这番热潮却太短暂，在中国市场一些黄牛对iPhoneX的售价已低于官网定价！</p>
-                        <p><br></p>
+                        {$content['content']}
                     </div>
 
                     <!--喜欢/踩-->
@@ -94,144 +71,7 @@
         </div>
         <!--main end-->
 
-        <!--side-->
-        <div class="side">
-
-            <!--相关产品-->
-            <div class="module">
-                <div class="module-head clearfix">
-                    <h2 class="module-head-title"><a href="#">相关产品</a></h2>
-                </div>
-                <ul class="hot-product article-relate-product">
-                    <li class="hot-product-item clearfix">
-                        <div class="hot-product-img"><a href="#" target="_blank" title="高效单质银妇用抗菌洗液"><img
-                                src="http://www.tecenet.com/file/upload/201709/19/1617355963023.jpg.thumb.jpg"
-                                alt="高效单质银妇用抗菌洗液"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="高效单质银妇用抗菌洗液">高效单质银妇用抗菌洗液</a>
-                        </div>
-                        <div class="hot-product-num"><i class="iconfont icon-shop"></i>四川九尔药业有限公司</div>
-                    </li>
-                    <li class="hot-product-item clearfix">
-                        <div class="hot-product-img"><a href="#" target="_blank" title="司诺洁高效单质银妇用抗菌凝胶"><img
-                                src="http://www.tecenet.com/file/upload/201709/19/1601319663023.jpg.thumb.jpg"
-                                alt="司诺洁高效单质银妇用抗菌凝胶"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank"
-                                                         title="司诺洁高效单质银妇用抗菌凝胶">司诺洁高效单质银妇用抗菌凝胶</a></div>
-                        <div class="hot-product-num"><i class="iconfont icon-shop"></i>常州金麦格生物技术有限公司</div>
-                    </li>
-                    <li class="hot-product-item clearfix">
-                        <div class="hot-product-img"><a href="#" target="_blank" title="医用硅酮凝胶敷料_ 郑州和济生物科技有限公司"><img
-                                src="http://www.tecenet.com/file/upload/201708/30/140506696365.jpeg.thumb.jpeg"
-                                alt="医用硅酮凝胶敷料_ 郑州和济生物科技有限公司"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="医用硅酮凝胶敷料_ 郑州和济生物科技有限公司">医用硅酮凝胶敷料_
-                            郑州和济生物科技有限公司</a></div>
-                        <div class="hot-product-num"><i class="iconfont icon-shop"></i>广东品瑞科技有限公司</div>
-                    </li>
-                    <li class="hot-product-item clearfix">
-                        <div class="hot-product-img"><a href="#" target="_blank" title="安信医用骨科高分子夹板"><img
-                                src="http://www.tecenet.com/file/upload/201709/19/1143062658594.jpg.thumb.jpg"
-                                alt="安信医用骨科高分子夹板"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank" title="安信医用骨科高分子夹板">安信医用骨科高分子夹板</a>
-                        </div>
-                        <div class="hot-product-num"><i class="iconfont icon-shop"></i>常州金麦格生物技术有限公司</div>
-                    </li>
-                    <li class="hot-product-item clearfix">
-                        <div class="hot-product-img"><a href="#" target="_blank"
-                                                        title="医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高"><img
-                                src="http://www.tecenet.com/file/upload/201710/16/1127595261787.jpg.thumb.jpg"
-                                alt="医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高"></a></div>
-                        <div class="hot-product-name"><a href="#" target="_blank"
-                                                         title="医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高">医用高分子绷带传统石膏的替代产品无需拆卸可经X光照射适用于骨科外固定透气硬度高</a>
-                        </div>
-                        <div class="hot-product-num"><i class="iconfont icon-shop"></i>广东品瑞科技有限公司</div>
-                    </li>
-                </ul>
-            </div>
-            <!--相关产品 end-->
-
-            <!--相关标签-->
-            <div class="module">
-                <div class="module-head clearfix">
-                    <h2 class="module-head-title"><a href="#">相关标签</a></h2>
-                </div>
-                <div class="hot-tags">
-                    <a class="hot-tags-item" href="">京东</a>
-                    <a class="hot-tags-item" href="">双11促销</a>
-                    <a class="hot-tags-item" href="">互联网</a>
-                    <a class="hot-tags-item" href="">淘宝店</a>
-                    <a class="hot-tags-item" href="">基因疗法</a>
-                    <a class="hot-tags-item" href="">京东</a>
-                    <a class="hot-tags-item" href="">双11促销</a>
-                    <a class="hot-tags-item" href="">互联网</a>
-                    <a class="hot-tags-item" href="">淘宝店</a>
-                    <a class="hot-tags-item" href="">基因疗法</a>
-                </div>
-            </div>
-            <!--相关标签-->
-
-
-            <!--一周新闻排行榜-->
-            <div class="module">
-                <div class="module-head clearfix">
-                    <h2 class="module-head-title"><a href="#">一周新闻排行榜</a></h2>
-                </div>
-                <ul class="news-rank">
-                    <li class="news-rank-item">
-                        <em>1</em>
-                        <a href="#" class="text-overflow">亲戚朋友总爱来家里蹭住 女子霸气发文刷爆朋友圈</a>
-                        <span>5646</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>2</em>
-                        <a href="#" class="text-overflow">游客丽江住客栈半夜被蚊子咬醒 前台:熏死1只赔100</a>
-                        <span>5298</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>3</em>
-                        <a href="#" class="text-overflow">中国式父母，貌似最无私，其实最自私</a>
-                        <span>1920</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>4</em>
-                        <a href="#" class="text-overflow">北京"动批"天和白马市场将闭市 商家狂甩</a>
-                        <span>1343</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>5</em>
-                        <a href="#" class="text-overflow">吃过的人还不知这药有毒！10万瓶假减肥药流向全国</a>
-                        <span>1259</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>6</em>
-                        <a href="#" class="text-overflow">湖南"年度法治人物"隐瞒犯罪前科 评选结果被取消</a>
-                        <span>1042</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>7</em>
-                        <a href="#" class="text-overflow">这部美到窒息的动画,堪称日本《金瓶梅》</a>
-                        <span>943</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>8</em>
-                        <a href="#" class="text-overflow">90后海归通过直播卖琥珀 年销售额达3000万</a>
-                        <span>843</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>9</em>
-                        <a href="#" class="text-overflow">最妖娆拉面哥4万元代言小面 与东北女粉丝结婚</a>
-                        <span>819</span>
-                    </li>
-                    <li class="news-rank-item">
-                        <em>10</em>
-                        <a href="#" class="text-overflow">每日轻松一刻：今天，有比剁手更重要的事</a>
-                        <span>810</span>
-                    </li>
-                </ul>
-            </div>
-            <!--一周新闻排行榜 end-->
-
-        </div>
-        <!--side end-->
+        {template 'news_right','mall'}
     </div>
     <!--container end-->
 

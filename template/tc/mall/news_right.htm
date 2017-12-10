@@ -1,0 +1,73 @@
+<!--side-->
+<div class="side">
+
+    <!--热门医械知识库-->
+    <div class="module">
+        <div class="module-head clearfix">
+            <h2 class="module-head-title"><a href="#">热门医械知识库</a></h2>
+        </div>
+        <div class="hot-tags">
+            {loop $topCategorys $key $cate}
+            <a class="hot-tags-item" href="{$cate['linkurl']}" title="{$cate['catname']}">
+                {$cate['catname']}
+            </a>
+            {/loop}
+        </div>
+    </div>
+    <!--热门医械知识库-->
+
+    <!--热门产品-->
+    <div class="module">
+        <div class="module-head clearfix">
+            <h2 class="module-head-title"><a href="#">热门相关产品</a></h2>
+        </div>
+        <ul class="hot-product">
+            {php $num = 1;}
+            {loop $hotMalls $key $mall}
+            <li class="hot-product-item clearfix">
+                <i class="rank-num">{$num++}</i>
+                <div class="hot-product-img">
+                    <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">
+                        <img src="{$mall['thumb']}"  alt="{$mall['title']}">
+                    </a>
+                </div>
+                <div class="hot-product-name">
+                    <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">{$mall['title']}</a>
+                </div>
+                <div class="hot-product-num"><i class="iconfont icon-hot"></i>{$mall['hits']}</div>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    <!--热门产品 end-->
+
+    <!--热门标签-->
+    <div class="module">
+        <div class="module-head clearfix">
+            <h2 class="module-head-title"><a href="#">热门标签</a></h2>
+        </div>
+        <div class="hot-tags">
+            {loop $hotTags $key $tag}
+            <a class="hot-tags-item" href="#">{$tag['word']}</a>
+            {/loop}
+        </div>
+    </div>
+    <!--热门标签-->
+
+    <div class="module">
+        <div class="module-head clearfix">
+            <h2 class="module-head-title"><a href="#">热门知识点</a></h2>
+        </div>
+        <ul class="news-rank">
+            {php $num = 1}
+            {loop $hotArticles $key $article}
+            <li class="news-rank-item">
+                <em>{$num++}</em>
+                <a href="{$article['linkurl']}" class="text-overflow">{$article['title']}</a>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+
+</div>
+<!--side end-->

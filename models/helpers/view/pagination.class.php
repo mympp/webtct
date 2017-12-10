@@ -31,8 +31,6 @@ class pagination
     }
 
 
-
-
     //处理附加信息
     private function additions($additions)
     {
@@ -81,7 +79,7 @@ class pagination
     private function getEllipsisButton($additions = null)
     {
         $value = empty($additions['ellipsis']['value']) ? '...' : $additions['ellipsis']['value'];
-        return "<li ".$this->additions($additions['li']).' '.$this->additions($additions['ellipsis']['additions'])." >$value</li>";
+        return "<li " . $this->additions($additions['li']) . ' ' . $this->additions($additions['ellipsis']['additions']) . " >$value</li>";
     }
 
     //中间按钮段落

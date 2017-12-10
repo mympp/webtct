@@ -1,0 +1,25 @@
+<div class="news-item clearfix">
+    {if $article['thumb']}
+    <div class="news-item-img">
+        <a href="{$article['linkurl']}" target="_blank"><img
+                src="{$article['thumb']}"
+                alt="{$article['title']}"></a>
+    </div>
+    {/if}
+    <div class="news-item-txt">
+        <h3 class="news-item-title"><a href="{$article['linkurl']}" target="_blank">{$article['title']}</a>
+        </h3>
+        <p class="news-item-desc">{$article['description']}</p>
+
+        <div class="news-item-info clearfix">
+            <div class="news-item-tags">
+                <a href="#" target="_blank">人工智能</a>
+                <a href="#" target="_blank">科技</a>
+                <a href="#" target="_blank">们工作岗位</a>
+            </div>
+            <span class="news-item-time"><i class="iconfont icon-time"></i>{date('Y-m-d H:i:s',$article['addtime'])}</span>
+
+            <span class="news-item-view"><i class="iconfont icon-attention"></i>{$article['hits']}</span>
+        </div>
+    </div>
+</div>
