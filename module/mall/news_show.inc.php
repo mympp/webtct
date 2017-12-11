@@ -9,13 +9,17 @@ if(empty($itemid)){
     exit;
 }
 
-$article = (new MallArticleQuery())->getOne($itemid);
+$mallArticleQuery = new MallArticleQuery();
+$article = $mallArticleQuery->getOne($itemid);
 if(empty($article)){
     include load('404.inc');
     exit;
 }
 
 $content = (new MallArticleContentQuery())->getContent($itemid);
+
+//修改点击次数
+$mallArticleQuery->updateHits($itemid, ((int)$article['hits'] + 1));
 
 //seo设置
 $head_title = "{$article['title']}_天成医疗网";

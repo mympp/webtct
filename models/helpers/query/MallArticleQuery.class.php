@@ -70,5 +70,10 @@ class MallArticleQuery extends BaseQuery
         return $this->getDb(self::TABLE_NAME)
             ->where(['status'=>self::CHECKED_STATUS , 'itemid' => $itemid])->one();
     }
+
+    //修改点击次数
+    public function updateHits($itemid , $hits){
+        return $this->getDb(self::TABLE_NAME)->where(['itemid' => $itemid])->edit(['hits' => $hits]);
+    }
 }
 ?>
