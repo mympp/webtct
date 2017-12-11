@@ -48,7 +48,7 @@
         </div>
         <div class="hot-tags">
             {loop $hotTags $key $tag}
-            <a class="hot-tags-item" href="#">{$tag['word']}</a>
+            <a class="hot-tags-item" href="#" title="{$tag['word']}">{$tag['word']}</a>
             {/loop}
         </div>
     </div>
@@ -63,7 +63,7 @@
             {loop $hotArticles $key $article}
             <li class="news-rank-item">
                 <em>{$num++}</em>
-                <a href="{$article['linkurl']}" class="text-overflow">{$article['title']}</a>
+                <a href="{$article['linkurl']}" class="text-overflow" title="{$article['title']}">{$article['title']}</a>
             </li>
             {/loop}
         </ul>

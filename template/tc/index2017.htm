@@ -1,4 +1,4 @@
-{php $footer_js = [DT_PATH.'file/script/index2017.js?v2017050901'];}
+{php $footer_js = [DT_PATH.'file/script/index2017.js?v201711281551'];}
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -21,8 +21,8 @@
 	<link rel="shortcut icon" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
 	<link rel="bookmark" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
 
-	<link rel="stylesheet" href="{DT_SKIN}tecenet.base.css?v=201708241043">
-	<link rel="stylesheet" href="{DT_SKIN}tecenet.index.css?v=201708241043">
+	<link rel="stylesheet" href="{DT_SKIN}tecenet.base.css?v=201712011009">
+	<link rel="stylesheet" href="{DT_SKIN}tecenet.index.css?v=201712011009">
 	<link rel="canonical" href="{DT_PATH}" >
 
 	<script type="text/javascript" src="{DT_PATH}file/script/jquery.js"></script>
@@ -61,7 +61,7 @@
 <div class="tc-header">
 	<div class="w1200 box-center clearfix">
 		<!--logo-->
-		<h1 class="logo pull-left"><a href="{DT_PATH}" target="_self"><img src="{DT_SKIN}image/logo.gif" alt="天成医疗网"></a></h1>
+		<h1 class="logo pull-left"><a href="{DT_PATH}" target="_self"><img src="{DT_SKIN}image/logo-2017.png" alt="天成医疗网"></a></h1>
 		<!--logo end-->
 		{template 'search-tool-2017','chip'}
 		<!--tc-custom-service-->
@@ -78,11 +78,14 @@
 <!-- tc-header end -->
 
 <!-- tc-nav -->
+<style>
+.new-version{position: absolute;top: 10px;right: -26px;display: inline-block;padding: 2px 4px;line-height: 1;background-color: #ee5f03;color: #fff;font-size: 12px;font-family: simsun;font-style: normal;}
+.new-version::before{content: '';position: absolute;left: -4px;bottom: 0;border: 2px solid transparent;border-right-color: #ee5f03;border-bottom-color: #ee5f03;}
+</style>
 <div class="tc-nav">
 	<div class="w1200 box-center">
 		<div class="menu-hd pull-left">热门服务<i></i></div>
 		<ul class="tc-nav-item pull-right">
-			<li><a href="{DT_PATH}" target="_blank">首页</a></li>
 			<li class="other">
 				<a href="{$MODULE[16]['linkurl']}" target="_self">产品</a>
 				<div class="sub-nav">
@@ -92,7 +95,10 @@
                     <a href="http://so.tecenet.com/" target="_blank">产品搜索</a>
 				</div>
 			</li>
-			<li><a href="{$MODULE[9]['linkurl']}" target="_blank">维修</a></li>
+			<li>
+				<a href="http://repair.tecenet.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'indexNav', 'click', 'repair']);">维修</a>
+				<i class="new-version">新</i>
+			</li>
 			<li><a href="{$MODULE[5]['linkurl']}" target="_blank">供需</a></li>
 			<li><a href="{$MODULE[6]['linkurl']}" target="_blank">招标</a></li>
 			<li><a href="{$MODULE[7]['linkurl']}" target="_blank">资质</a></li>
@@ -102,6 +108,10 @@
 			<li><a href="{$MODULE[15]['linkurl']}" target="_blank">共享</a></li>
 			<li><a href="{$MODULE[10]['linkurl']}" target="_blank">问答</a></li>
 			<li><a href="http://image.tecenet.com/" target="_blank">图库</a></li>
+			<li>
+				<a href="http://market.tecenet.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'indexNav', 'click', 'market']);">行情中心</a>
+				<i class="new-version">新</i>
+			</li>
 		</ul>
 	</div>
 
@@ -215,34 +225,91 @@
 						<span data-action="resume">找工程师</span>
 					</div>
 
-					<form class="mod-search" action="{$MODULE[9]['linkurl']}search.php" method="get">
+					<div class="mod-search repair-form">
 						<input type="hidden" name="action" value="" id="job-action" />
 						<div class="input-group">
 							<span class="input-group-hd">服务分类</span>
 							<select name="catid" class="form-control">
-								<option value="0">全部</option>
-								{loop $job_catid $t}
-								<option value="{$t['catid']}">{$t['catname']}</option>
-								{/loop}
+								<option value="">全部</option>
+								<option value="1">外科手术器械类</option>
+								<option value="2">超声设备类</option>
+								<option value="3">心电监护除颤类</option>
+								<option value="4">医用手术及诊断用显微设备类</option>
+								<option value="5">医用光学仪器类</option>
+								<option value="6">内窥镜类</option>
+								<option value="7">医用激光仪器类</option>
+								<option value="8">放射影像类(MRI、CT)</option>
+								<option value="9">DR/CR/X射线/普放类设备类</option>
+								<option value="10">直线加速器（放疗类）</option>
+								<option value="11">血液净化类</option>
+								<option value="12">放射性核素设备（核医学类）</option>
+								<option value="13">检验类（生化与血球)</option>
+								<option value="14">检验类（尿液分析系统、电泳附件）</option>
+								<option value="15">检验类（免疫分析及配套）</option>
+								<option value="16">检验类（细菌分析系统）</option>
+								<option value="17">检验类（基因和生命科学仪器）</option>
+								<option value="18">检验类（生物安全柜）</option>
+								<option value="19">医疗设备辅助类</option>
+								<option value="20">病理分析前处理设备类</option>
+								<option value="21">呼吸类</option>
+								<option value="22">麻醉类</option>
+								<option value="23">灯塔床等手术室设备类</option>
+								<option value="24">电刀、超声刀、电凝、动力类</option>
+								<option value="25">输注泵类</option>
+								<option value="26">消毒灭菌类</option>
+								<option value="27">冷藏、冷疗、冷处理类</option>
+								<option value="28">治疗及康复设备类</option>
+								<option value="29">气相、液相、色谱(分析化学类）</option>
+								<option value="30">婴儿培养箱</option>
 							</select>
 						</div>
 						<div class="input-group">
 							<span class="input-group-hd">地区</span>
 							<select name="areaid" class="form-control">
-								<option value="0">全国</option>
-								{loop $area_first $t}
-								<option value="{$t['areaid']}">{$t['areaname']}</option>
-								{/loop}
+								<option value="">全部</option>
+								<option value="110000">北京</option>
+								<option value="120000">天津</option>
+								<option value="130000">河北</option>
+								<option value="140000">山西</option>
+								<option value="150000">内蒙古</option>
+								<option value="210000">辽宁</option>
+								<option value="220000">吉林</option>
+								<option value="230000">黑龙江</option>
+								<option value="310000">上海</option>
+								<option value="320000">江苏</option>
+								<option value="330000">浙江</option>
+								<option value="340000">安徽</option>
+								<option value="350000">福建</option>
+								<option value="360000">江西</option>
+								<option value="370000">山东</option>
+								<option value="410000">河南</option>
+								<option value="420000">湖北</option>
+								<option value="430000">湖南</option>
+								<option value="440000">广东</option>
+								<option value="450000">广西</option>
+								<option value="460000">海南</option>
+								<option value="500000">重庆</option>
+								<option value="510000">四川</option>
+								<option value="520000">贵州</option>
+								<option value="530000">云南</option>
+								<option value="540000">西藏</option>
+								<option value="610000">陕西</option>
+								<option value="620000">甘肃</option>
+								<option value="630000">青海</option>
+								<option value="640000">宁夏</option>
+								<option value="650000">新疆</option>
+								<option value="810000">香港</option>
+								<option value="820000">澳门</option>
 							</select>
 						</div>
-						<div class="input-group">
+<!-- 						<div class="input-group">
 							<span class="input-group-hd">关键字</span>
 							<input type="text" name="kw" class="form-control" />
-						</div>
-						<input type="submit" value="搜  索">
-					</form>
+						</div> -->
+						<input type="submit" value="搜  索" onclick="repairSearch()">
+					</div>
 					<div class="mod-cate-img">
-						<a href="{$MODULE[9]['linkurl']}" target="_blank"><img src="{DT_SKIN}image/mod-cate-repair-img.jpg" alt="找维修，找工程师"></a>
+						<a href="http://repair.tecenet.com/" target="_blank"><img src="{DT_SKIN}image/mod-cate-repair-img.jpg" alt="找维修，找工程师"></a>
 					</div>
 
 				</div>

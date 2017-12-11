@@ -4,11 +4,12 @@ use models\helpers\query\TagsQuery;
 
 require_once DT_ROOT.'/models/autoload.php';
 
-
 $newsModule = baseModule::moduleInstance('mallArticle');
+$logo_title = $newsModule->title;
 
 //一级分类
 $MENU = $newsModule->getCache('getMenu',[],3600);
+$IndexUrl = $newsModule->linkurl .'news.html';
 
 //右侧内容
 $topCategorys = $newsModule->getCache('getTopCategorys',['pagesize' => 10]);

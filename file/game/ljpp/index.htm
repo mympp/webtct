@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>六角拼拼</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+
+<div id="loadingImg" style="top:35%;width: 100%;position:absolute; ">
+    <div id="logoImg" style="align:center;display: none">
+        <img src="res/logo.png" width="60%" />
+    </div>
+    <div style="margin-top:10%">
+        <img src="res/loading.gif" width="7%" height="7%"  />
+    </div>
+</div>
+
+
+<canvas id="gameCanvas"></canvas>
+
+
+
+<script type="text/javascript" src="js/play_sdk.js"></script>
+<script type="text/javascript" src="js/play68.js"></script>
+<script type="text/javascript">
+        (function (){updateShare(0);})();
+ </script>
+<script cocos src="game.js"></script>
+<script>
+    var game_max_score = 11895;
+</script>
+
+
+
+</body>
+</html>

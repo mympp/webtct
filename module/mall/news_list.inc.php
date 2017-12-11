@@ -32,5 +32,10 @@ $paginationView = $pagination->show($newsModule->linkurl.'news_list.php',[
     'form' => ['id' => 'mallForm','method'=>'get'],
 ],['catid'=>$catid,'page'=>$page]);
 
+//seo设置
+$head_title = $catname.'_医械知识库_天成医疗网';
+$head_keyword = "{$catname}, {$catname}知识大全";
+$head_description = "天成为您提供详尽的{$catname}知识大全，为您列明{$catname}的使用方法与注意事项等{$catname}的知识";
+
 include template('news_list','mall');
 ?>

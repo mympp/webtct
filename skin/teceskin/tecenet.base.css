@@ -452,7 +452,7 @@ td, th, caption { padding: 0; }
     display: inline-block;
     font-size: 16px;
     line-height:50px;
-    margin:0 0 0 45px;
+    margin:0 0 0 42px;
 }
 .tc-nav-item li:hover:after{
     content: '';

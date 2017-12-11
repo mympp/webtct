@@ -94,11 +94,20 @@ ID：<input type="text" size="4" name="itemid" value="<?php echo $itemid;?>"/>&n
 </tr>
 <?php } ?>
 </table>
+
+<script>
+var selectOption = [
+    	'请选择理由',
+		'您好，这里是供应模块，您可以发布与医疗相关的产品。感谢您对天成医疗网的关注与支持。',
+		'您好，请按照供应信息发布原则发布信息，如：商品详情处请勿填写公司地址、网址、联系方式等。请不要上传附有网址，联系方式等的产品图片，感谢您对天成医疗网的关注与支持。',
+		'你好，天成医疗网新增了“维修”模块，工程师以及有维修需求请在该模块发布，如有疑问请在上班时间咨询在线客服。感谢你对天成医疗网的关注与支持。'
+	];
+</script>
+
 <?php include tpl('notice_chip');?>
 <div class="btns">
 
 <?php if($action == 'check') { ?>
-
 <input type="submit" value=" 通过审核 " class="btn" onclick="this.form.action='?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=check';"/>&nbsp;
 <input type="submit" value=" 拒 绝 " class="btn" onclick="this.form.action='?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=reject';"/>&nbsp;
 <input type="submit" value=" 移动分类 " class="btn" onclick="this.form.action='?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=move';"/>&nbsp;

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>行情中心</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <!--require css-->
+    <link rel="stylesheet" href="./static/css/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.1.1/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./static/css/mobile.market.common.css">
+    <!--require css end-->
+    <link href="http://market.tecenet.com/static/plugins/city-picker/css/city-picker.css" rel="stylesheet">
+</head>
+<body>
+
+
+<!--page-->
+<div class="page">
+
+    <!--header-nav-->
+    <header class="header-nav weui-flex">
+        <a class="header-nav__left" href="javascript:history.back(-1);"><i class="iconfont icon-xiangzuojiantou"></i></a>
+        <div class="header-nav__title weui-flex__item">地址管理</div>
+    </header>
+    <!--header-nav end-->
+
+    <div class="footer-tab weui-tabbar">
+        <a class="footer-tab-btn footer-tab-add-btn weui-flex__item" href="">确定提交</a>
+    </div>
+
+    <!--frame-->
+    <div class="frame">
+        <!--container-->
+        <div class="container">
+            <div class="weui-cells add-address_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">收件人</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="姓名">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系方式</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="手机号码">
+                    </div>
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">所在地区</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input city-picker-input" type="text" data-toggle="city-picker">
+                    </div>
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">详细地址</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="">
+                    </div>
+                </div>
+
+                <div class="weui-cell weui-cell_switch">
+                    <div class="weui-cell__bd">是否设为默认收货地址</div>
+                    <div class="weui-cell__ft">
+                        <label for="switchCP" class="weui-switch-cp">
+                            <input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked">
+                            <div class="weui-switch-cp__box"></div>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--container end-->
+
+    </div>
+    <!--frame end-->
+
+</div>
+<!--page end-->
+
+
+
+<!--require js-->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.1.1/js/jquery-weui.min.js"></script>
+<script src="./static/js/mobile.market.common.js"></script>
+<!--require js end-->
+<script src="http://market.tecenet.com/static/plugins/city-picker/js/city-picker.data.js"></script>
+<script src="http://market.tecenet.com/static/plugins/city-picker/js/city-picker.js"></script>
+</body>
+</html>

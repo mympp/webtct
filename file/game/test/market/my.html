@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>行情中心</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <!--require css-->
+    <link rel="stylesheet" href="./static/css/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.1.1/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./static/css/mobile.market.common.css">
+    <!--require css end-->
+
+</head>
+<body>
+
+
+<!--page-->
+<div class="page">
+    <!--footer-tab-->
+    <div class="footer-tab weui-tabbar">
+        <a href="index.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon iconfont icon-homefill"></i>
+            <p class="weui-tabbar__label">行情中心</p>
+        </a>
+        <a href="cart.html" class="weui-tabbar__item">
+            <i class="weui-tabbar__icon iconfont icon-cartfill"></i>
+            <p class="weui-tabbar__label">购物车</p>
+        </a>
+        <a href="my.html" class="weui-tabbar__item weui-bar__item_on">
+            <i class="weui-tabbar__icon iconfont icon-myfill"></i>
+            <p class="weui-tabbar__label">个人中心</p>
+        </a>
+    </div>
+    <!--footer-tab end-->
+
+    <!--header-nav-->
+    <header class="header-nav weui-flex">
+        <a class="header-nav__left" href="javascript:history.back(-1);"><i class="iconfont icon-xiangzuojiantou"></i></a>
+        <div class="header-nav__title weui-flex__item">个人中心</div>
+    </header>
+    <!--header-nav end-->
+
+    <!--frame-->
+    <div class="frame" style="background-color: #f1f1f1">
+        <!--container-->
+        <div class="container">
+            <div class="user-header">
+                <img class="user-avatar" src="./static/img/user-default-avatar.png" alt="">
+                <p class="user-name">Tecenet User</p>
+            </div>
+
+            <!--user-cells-->
+            <div class="user-cells weui-cells">
+                <div class="user-order-cells weui-flex">
+                    <a href="./order.html" class="weui-flex__item">
+                        <i class="iconfont icon-daishenhe"></i>
+                        <p>待审核</p>
+                    </a>
+                    <a href="./order.html" class="weui-flex__item">
+                        <i class="iconfont icon-daifahuo"></i>
+                        <p>待发货</p>
+                    </a>
+                    <a href="./order.html" class="weui-flex__item">
+                        <i class="iconfont icon-daishouhuo"></i>
+                        <p>待收货</p>
+                    </a>
+                </div>
+
+                <a class="weui-cell weui-cell_access" href="./my-order.html">
+                    <div class="weui-cell__hd iconfont icon-text"></div>
+                    <div class="weui-cell__bd">
+                        <p>全部订单</p>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </a>
+            </div>
+            <!--user-cells end-->
+
+            <!--user-cells-->
+            <div class="user-cells weui-cells">
+                <a class="weui-cell weui-cell_access" href="./my-address.html">
+                    <div class="weui-cell__hd iconfont icon-addressbook"></div>
+                    <div class="weui-cell__bd">
+                        <p>地址管理</p>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="./my-invoice.html">
+                    <div class="weui-cell__hd iconfont icon-news"></div>
+                    <div class="weui-cell__bd">
+                        <p>发票管理</p>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </a>
+            </div>
+            <!--user-cells end-->
+
+            <!--user-cells-->
+            <div class="user-cells weui-cells">
+                <a class="weui-cell weui-cell_access" href="javascript:;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136&s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);">
+                    <div class="weui-cell__hd iconfont icon-kefu2"></div>
+                    <div class="weui-cell__bd">
+                        <p>联系客服</p>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="http://www.tecenet.com/about/intro.html">
+                    <div class="weui-cell__hd iconfont icon-guanyuwomen"></div>
+                    <div class="weui-cell__bd">
+                        <p>关于我们</p>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="#">
+                    <div class="weui-cell__hd iconfont icon-tuichudenglu"></div>
+                    <div class="weui-cell__bd">
+                        <p>退出登录</p>
+                    </div>
+                    <div class="weui-cell__ft"></div>
+                </a>
+            </div>
+            <!--user-cells end-->
+        </div>
+        <!--container end-->
+
+    </div>
+    <!--frame end-->
+</div>
+<!--page end-->
+
+<!--分类-->
+<div class="weui-popup__container class-popup popup-category">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <div class="class-popup__hd">
+            <span class="class-popup__hd__text">商品分类筛选</span>
+            <i class="weui-icon-cancel close-popup"></i>
+        </div>
+        <div class="class-popup__bd weui-grids">
+            <a class="weui-grid" href=""><p class="weui-grid__label">外科手术器械类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">超声设备类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">心电监护除颤类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">医用手术及诊断用显微设备类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">医用光学仪器类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">内窥镜类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">医用激光仪器类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">放射影像类(MRI、CT)</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">DR/CR/X射线/普放类设备类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">直线加速器（放疗类）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">血液净化类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">放射性核素设备（核医学类）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">检验类（生化与血球)</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">检验类（尿液分析系统、电泳附件）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">检验类（免疫分析及配套）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">检验类（细菌分析系统）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">检验类（基因和生命科学仪器）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">检验类（生物安全柜）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">医疗设备辅助类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">病理分析前处理设备类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">呼吸类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">麻醉类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">灯塔床等手术室设备类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">电刀、超声刀、电凝、动力类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">输注泵类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">消毒灭菌类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">冷藏、冷疗、冷处理类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">治疗及康复设备类</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">气相、液相、色谱(分析化学类）</p></a>
+            <a class="weui-grid" href=""><p class="weui-grid__label">婴儿培养箱</p></a>
+        </div>
+    </div>
+</div>
+<!--分类 end-->
+
+
+
+
+<!--require js-->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.1.1/js/jquery-weui.min.js"></script>
+<script src="./static/js/mobile.market.common.js"></script>
+<!--require js end-->
+<!--scoped js-->
+
+<!--scoped js end-->
+
+</body>
+</html>

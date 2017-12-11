@@ -87,10 +87,14 @@ show_menu($menus);
     </table>
     <table>
         <tr>
-            <td>
-                &nbsp;操作原因:<textarea style="width:300px;height:16px;" name="note" id="reason" onfocus="if(this.value=='操作原因')this.value='';"/></textarea>
-            </td>
+            <td>操作原因：</td>
+            <td><textarea name="note" id="reason" onfocus="if(this.value=='操作原因')this.value='';"/></textarea></td>
         </tr>
+        <tr>
+            <td>快捷选择理由：</td>
+            <td id="reasonSelectWrap"></td>
+        </tr>
+
     </table>
     <div class="pages"><?php echo $pages;?></div>
     <div class="btns">
@@ -100,6 +104,36 @@ show_menu($menus);
                onclick="this.form.action='?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=reject';"/>&nbsp;
     </div>
 </form>
+
+<style>
+    #reason{width: 480px;height:48px;}
+    .reason-select{width: 900px;height: 24px;}
+</style>
+<script>
+var selectOption = [
+    '请选择理由',
+    '你好，公司认证需要按照要求上传相关资质。你上传的证照图片有误，请重新上传，感谢您对天成医疗网的关注与支持。如有疑问可以在上班时间咨询在线客服。',
+    '你好，公司认证需要按照要求上传相关资质。你上传的证照图片有效期于跟你填写的不一致，请核实后填写再提交，感谢您对天成医疗网的关注与支持。如有疑问可以在上班时间咨询在线客服。',
+    '你好，公司认证需要按照要求上传相关资质。你上传的证照图片名称与你填写的不一致，请核实后填写再提交，感谢您对天成医疗网的关注与支持。如有疑问可以在上班时间咨询在线客服。'
+];
+function reasonSelect(){
+    var $wrap = $("#reasonSelectWrap");
+    var $input = $("#reason");
+    var $options = "";
+
+    for(var i=0; i<selectOption.length; i++ ){
+        $options += '<option value="'+selectOption[i]+'">'+selectOption[i]+'</option>'
+    }
+
+    $wrap.html("<select class='reason-select'>"+$options+"</select>");
+
+    $(document).on("change",".reason-select",function(){
+        var $val = $(this).val();
+        $input.val($val);
+    });
+}
+reasonSelect();
+</script>
 
 <script>
     Menuon(1);

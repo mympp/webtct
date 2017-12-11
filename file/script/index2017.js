@@ -61,6 +61,19 @@ window.onscroll = function(){
     }
 }
 
+function repairSearch(){
+    var $wrap = $(".repair-form");
+    var $name = $wrap.find("select[name='catid']").val();
+    var $area = $wrap.find("select[name='areaid']").val();
+    var action_eg = "http://repair.tecenet.com/site/engineer"
+    var action_ri = "http://repair.tecenet.com/site/repair-info"
+    if( $("#job-action").val() === "resume" ){
+        window.open(action_eg+"?cat="+$name+"&province="+$area);
+    }else{
+        window.open(action_ri+"?cat="+$name+"&province="+$area);
+    }
+}
+
 $(document).ready(function(){
     $('#search-type a').click(function(){
         $('#select-btn').html($(this).data('mname')+'<span class="caret"></span>');
@@ -84,6 +97,8 @@ $(document).ready(function(){
             }
         });
     });
+
+
     $('#hr-select-tab > span').click(function(){
         $('#hr-action').val($(this).data('action'));
         $('#hr-select-tab').children('span').each(function(){

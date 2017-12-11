@@ -47,7 +47,8 @@ class MallArticleQuery extends BaseQuery
 
     //获取最新文章
     public function getNewArticles($pagesize = 10, $withImage = false,$field = 'itemid,title,thumb',$catid = 0,$page = 1){
-         return $this->buildListDb($pagesize,$withImage,$field,$catid,$page)->order('itemid desc')->select();
+         $db = $this->buildListDb($pagesize,$withImage,$field,$catid,$page);
+         return $db->order('itemid desc')->select();
     }
 
     //根据条件获取统计

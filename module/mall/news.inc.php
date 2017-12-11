@@ -10,9 +10,10 @@ $maCategoryQuery = new MallArticleCategoryQuery();
 $articleList = [];
 foreach($MENU as $key => $cate){
     $item = [];
+    $childCate = $maCategoryQuery->getChildCategory($cate['catid']);
+    if(empty($childCate)) continue;
     $item['linkurl'] = $cate['linkurl'];
     $item['catname'] = $cate['catname'];
-    $childCate = $maCategoryQuery->getChildCategory($cate['catid']);
     $childCateId = [];
     foreach($childCate as $c){
         $childCateId[] = $c['catid'];
@@ -21,6 +22,10 @@ foreach($MENU as $key => $cate){
     $articleList[] = $item;
 }
 
+//seo设置
+$head_title = '医械知识库_天成医疗网';
+$head_keyword = '医械知识库,医疗器械知识大全,医疗器械知识库';
+$head_description = '天成医疗器械知识库，是全方位的医疗器械知识大全，值得信赖的医疗器械使用指南。';
 
 include template('news','mall');
 ?>

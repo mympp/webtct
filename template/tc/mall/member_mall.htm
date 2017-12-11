@@ -236,17 +236,18 @@
             }
             if(_document.val() == ""){
                 var _id = _document.attr("id");
-                Dmsg('请填写上传证件图片',_id);
+                Dmsg('请上传证件图片',_id);
                 flag = false;
                 return false;
             }
             if(_validDate.val() == ""){
                 var _id = _validDate.attr("id");
-                Dmsg('请填写证件名称',_id);
+                Dmsg('请选择证件有效期',_id);
                 flag = false;
                 return false;
             }
         });
+
 
         f = 'manufacturer';
         l = Dd(f).value.length;
@@ -441,9 +442,12 @@
         $('#sectionprice').val(s);
         {/if}
 
-        if(flag){
-            $("#dform").submit();
+
+
+        if(!flag){
+            return false;
         }
+
         //return false;
     }
     function Dexpress(i, s) {

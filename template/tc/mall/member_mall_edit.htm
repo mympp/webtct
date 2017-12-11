@@ -1,5 +1,5 @@
 <iframe src="" name="send" id="send" style="display:none;"></iframe>
-<form method="post" id="dform" action="{$DT[file_my]}" target="send">
+<form method="post" id="dform" action="{$DT[file_my]}" target="send" onsubmit="return check();">
     {if $_POST['qqitemid']}
     {php $title=strip_tags($_POST['title']);}
     {php $content=$_POST['content'];}
@@ -419,7 +419,12 @@
 
         <tr>
             <td class="tl">&nbsp;</td>
-            <td class="tr" height="50"><a style="font-size: 14px;padding: 6px 12px;" href="javascript:;" onclick="check();" class="btn">提 交</a>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/></td>
+            <td class="tr" height="50">
+                <input type="submit" name="submit" value=" 提 交 " class="btn">
+                <!-- <a style="font-size: 14px;padding: 6px 12px;" href="javascript:;" onclick="check();" class="btn">提 交</a> -->
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" value=" 返 回 " class="btn" onclick="history.back(-1);"/>
+            </td>
         </tr>
     </table>
 </form>

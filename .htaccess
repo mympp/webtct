@@ -113,6 +113,12 @@ RewriteRule ^chanpin\/so-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\
 RewriteRule ^chanpin\/ks-([0-9]+)\-([0-9]+)\-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keshi.php?kcatid=$1&stype=$2&areaid=$3&validated=$4
 RewriteRule ^chanpin\/kw-([0-9]+)\-([0-9]+)\.html$ /chanpin\/keyword.php?itemid=$1&areaid=$2
 RewriteRule ^chanpin\/(.*)\/$ /chanpin\/category.php?u=$1
+##产品文章模块伪静态地址
+RewriteRule ^chanpin\/news.html$ /chanpin\/news.php
+RewriteRule ^chanpin\/news_list_([0-9]+)\_([0-9]+)\.html$ /chanpin\/news_list.php?catid=$1&page=$2
+RewriteRule ^chanpin\/news_list_([0-9]+)\.html$ /chanpin\/news_list.php?catid=$1
+RewriteRule ^chanpin\/news_list.html$ /chanpin\/news_list.php
+RewriteRule ^chanpin\/news_([0-9]+)\.html$ /chanpin\/news_show.php?itemid=$1
 
 ##新版资讯模块伪静态地址
 RewriteRule ^zixun\/search.html$ /zixun\/search.php

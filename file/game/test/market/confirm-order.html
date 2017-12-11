@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>行情中心</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <!--require css-->
+    <link rel="stylesheet" href="./static/css/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.1.1/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./static/css/mobile.market.common.css">
+    <!--require css end-->
+
+    <link href="http://market.tecenet.com/static/plugins/city-picker/css/city-picker.css" rel="stylesheet"></head>
+
+</head>
+<body>
+
+
+<!--page-->
+<div class="page">
+
+    <!--header-nav-->
+    <header class="header-nav weui-flex">
+        <a class="header-nav__left" href="javascript:history.back(-1);"><i class="iconfont icon-xiangzuojiantou"></i></a>
+        <div class="header-nav__title weui-flex__item">确认订单</div>
+    </header>
+    <!--header-nav end-->
+
+    <!--footer-tab-->
+    <div class="footer-tab weui-tabbar">
+        <div class="payment-bar">
+            <a href="./order-detail.html" class="settlement">提交订单</a>
+            <div class="shop-total">
+                总价：<i class="total">￥1233.22</i>
+            </div>
+            <div class="shop-total">
+                共<i class="total">6</i>件
+            </div>
+        </div>
+    </div>
+    <!--footer-tab end-->
+
+    <!--frame-->
+    <div class="frame">
+        <div class="co-wrap">
+            <!--选择收货地址-->
+            <div class="co-address open-popup" data-target=".address-popup">
+                <div class="co-address-head">何铁城  15918787231</div>
+                <div class="co-address-body">广东广州市黄埔区城区高新技术产业开发区开源大道11号科技企业加速器B8栋3楼</div>
+            </div>
+            <!--选择收货地址 end-->
+
+            <!--订单信息-->
+            <div class="shop-group-item">
+                <div class="shop-name">
+                    <h4><span class="iconfont icon-shop"></span><a href="#">广州天成医疗技术股份有限公司</a></h4>
+                </div>
+
+                <div class="shop-info">
+                    <div class="shop-info-img"><a href="#"><img src="http://market.tecenet.com/static/img/product-noimg.jpg"></a></div>
+                    <div class="shop-info-text">
+                        <h4>同型半胱氨酸检测试剂盒</h4>
+                        <div class="shop-brief">
+                            <p>品牌:凯迪泰</p>
+                            <p>型号:Drager-Savina</p>
+                        </div>
+                        <div class="shop-price">
+                            <div class="shop-pices">￥<b class="price">100.00</b></div>
+                            <div class="shop-amount">×1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-info">
+                    <div class="shop-info-img"><a href="#"><img src="http://market.tecenet.com/static/img/product-noimg.jpg"></a></div>
+                    <div class="shop-info-text">
+                        <h4>同型半胱氨酸检测试剂盒</h4>
+                        <div class="shop-brief">
+                            <p>品牌:凯迪泰</p>
+                            <p>型号:Drager-Savina</p>
+                        </div>
+                        <div class="shop-price">
+                            <div class="shop-pices">￥<b class="price">100.00</b></div>
+                            <div class="shop-amount">×1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-info">
+                    <div class="shop-info-img"><a href="#"><img src="http://market.tecenet.com/static/img/product-noimg.jpg"></a></div>
+                    <div class="shop-info-text">
+                        <h4>同型半胱氨酸检测试剂盒</h4>
+                        <div class="shop-brief">
+                            <p>品牌:凯迪泰</p>
+                            <p>型号:Drager-Savina</p>
+                        </div>
+                        <div class="shop-price">
+                            <div class="shop-pices">￥<b class="price">100.00</b></div>
+                            <div class="shop-amount">×1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shopPrice">小计：￥<span class="shop-total-amount ShopTotal">300.00</span></div>
+            </div>
+            <!--订单信息 end-->
+
+            <!--订单信息-->
+            <div class="shop-group-item">
+                <div class="shop-name">
+                    <h4><span class="iconfont icon-shop"></span><a href="#">广州天成医疗技术股份有限公司</a></h4>
+                </div>
+
+                <div class="shop-info">
+                    <div class="shop-info-img"><a href="#"><img src="http://market.tecenet.com/static/img/product-noimg.jpg"></a></div>
+                    <div class="shop-info-text">
+                        <h4>同型半胱氨酸检测试剂盒</h4>
+                        <div class="shop-brief">
+                            <p>品牌:凯迪泰</p>
+                            <p>型号:Drager-Savina</p>
+                        </div>
+                        <div class="shop-price">
+                            <div class="shop-pices">￥<b class="price">100.00</b></div>
+                            <div class="shop-amount">×1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-info">
+                    <div class="shop-info-img"><a href="#"><img src="http://market.tecenet.com/static/img/product-noimg.jpg"></a></div>
+                    <div class="shop-info-text">
+                        <h4>同型半胱氨酸检测试剂盒</h4>
+                        <div class="shop-brief">
+                            <p>品牌:凯迪泰</p>
+                            <p>型号:Drager-Savina</p>
+                        </div>
+                        <div class="shop-price">
+                            <div class="shop-pices">￥<b class="price">100.00</b></div>
+                            <div class="shop-amount">×1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-info">
+                    <div class="shop-info-img"><a href="#"><img src="http://market.tecenet.com/static/img/product-noimg.jpg"></a></div>
+                    <div class="shop-info-text">
+                        <h4>同型半胱氨酸检测试剂盒</h4>
+                        <div class="shop-brief">
+                            <p>品牌:凯迪泰</p>
+                            <p>型号:Drager-Savina</p>
+                        </div>
+                        <div class="shop-price">
+                            <div class="shop-pices">￥<b class="price">100.00</b></div>
+                            <div class="shop-amount">×1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shopPrice">小计：￥<span class="shop-total-amount ShopTotal">300.00</span></div>
+            </div>
+            <!--订单信息 end-->
+
+
+            <div class="weui-cells">
+                <!--发票信息-->
+                <div class="weui-cell weui-cell_access open-popup" data-target=".fapiao-popup">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">发票信息</label>
+                    </div>
+                    <div class="weui-cell__bd"><p>请选择发票信息</p></div>
+                    <div class="weui-cell__ft"></div>
+                </div>
+                <!--发票信息 end-->
+
+                <!--支付方式-->
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">支付方式</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="select2">
+                            <option value="1">货到付款</option>
+                        </select>
+                    </div>
+                </div>
+                <!--支付方式 end-->
+
+                <!--送货方式-->
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">送货方式</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="select2">
+                            <option value="1">快递</option>
+                            <option value="1">自提</option>
+                        </select>
+                    </div>
+                </div>
+                <!--送货方式 end-->
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--frame end-->
+</div>
+<!--page end-->
+
+
+<!--收货地址-->
+<div class="weui-popup__container address-popup">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <header class="header-nav weui-flex">
+            <a class="header-nav__left close-popup" href="javascript:void(0)"><i class="iconfont icon-xiangzuojiantou"></i></a>
+            <div class="header-nav__title weui-flex__item">收货地址</div>
+
+            <a class="header-nav__right open-popup" href="javascript:void(0)" data-target=".add-address-popup">新增</a>
+        </header>
+
+        <div class="footer-tab weui-tabbar">
+            <a class="footer-tab-btn footer-tab-add-btn weui-flex__item close-popup" href="javascript:;">确定</a>
+        </div>
+
+        <div class="poup-body">
+            <div class="weui-cells__title">选择收货地址</div>
+            <div class="weui-cells weui-cells_radio">
+                <label class="weui-cell weui-check__label" for="x11">
+                    <div class="weui-cell__bd">
+                        <p class="poup-body-name">何铁城  13800138000</p>
+                        <p class="poup-body-address">广州市高新技术产业开发区开源大道11号科技企业加速器B8栋3楼</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input type="radio" class="weui-check" name="radio1" id="x11">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x12">
+                    <div class="weui-cell__bd">
+                        <p class="poup-body-name">张三李四  13111581334</p>
+                        <p class="poup-body-address">广州市高新技术产业开发区开源大道11号科技企业加速器B8栋3楼</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<!--收货地址 end-->
+
+<!--新增收货-->
+<div class="weui-popup__container add-address-popup">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <header class="header-nav weui-flex">
+            <a class="header-nav__left open-popup" href="javascript:void(0)" data-target=".address-popup"><i class="iconfont icon-xiangzuojiantou"></i></a>
+            <div class="header-nav__title weui-flex__item">新增收货地址</div>
+        </header>
+
+        <div class="footer-tab weui-tabbar">
+            <a class="footer-tab-btn footer-tab-add-btn weui-flex__item close-popup" href="javascript:;">确认</a>
+        </div>
+
+        <div class="poup-body">
+            <div class="weui-cells add-address_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">收件人</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="姓名">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系方式</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="手机号码">
+                    </div>
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">所在地区</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" data-toggle="city-picker" >
+                    </div>
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">详细地址</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--新增收货 end-->
+
+
+<!--发票信息-->
+<div class="weui-popup__container fapiao-popup">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <header class="header-nav weui-flex">
+            <a class="header-nav__left close-popup" href="javascript:void(0)"><i class="iconfont icon-xiangzuojiantou"></i></a>
+            <div class="header-nav__title weui-flex__item">发票信息</div>
+
+            <a class="header-nav__right open-popup" href="javascript:void(0)" data-target=".add-fapiao-popup">新增</a>
+        </header>
+
+        <div class="footer-tab weui-tabbar">
+            <a class="footer-tab-btn footer-tab-add-btn weui-flex__item close-popup" href="javascript:;">确定</a>
+        </div>
+
+        <div class="poup-body">
+            <div class="weui-cells__title">选择发票信息</div>
+            <div class="weui-cells weui-cells_radio">
+                <label class="weui-cell weui-check__label" for="x21">
+                    <div class="weui-cell__bd">
+                        <p class="poup-body-name">广州天成医疗技术股份有限公司</p>
+                        <p class="poup-body-no">20485745221312X</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input type="radio" class="weui-check" name="radio1" id="x21">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x22">
+                    <div class="weui-cell__bd">
+                        <p class="poup-body-name">广州医扬电子商务有限公司</p>
+                        <p class="poup-body-address">34435687697812</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input type="radio" name="radio1" class="weui-check" id="x22" checked="checked">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<!--发票信息 end-->
+
+<!--新增发票信息-->
+<div class="weui-popup__container add-fapiao-popup">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <header class="header-nav weui-flex">
+            <a class="header-nav__left open-popup" href="javascript:void(0)" data-target=".fapiao-popup"><i class="iconfont icon-xiangzuojiantou"></i></a>
+            <div class="header-nav__title weui-flex__item">新增发票信息</div>
+        </header>
+
+        <div class="footer-tab weui-tabbar">
+            <a class="footer-tab-btn footer-tab-add-btn weui-flex__item close-popup" href="javascript:;">确认</a>
+        </div>
+
+        <div class="poup-body">
+            <div class="weui-cells add-address_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">发票抬头</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="公司全称">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">纳税人识别号</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="请填写纳税人识别号">
+                    </div>
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">地址和电话</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" >
+                    </div>
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">开户行及帐号</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="weui-cell weui-cell_switch">
+                    <div class="weui-cell__bd">是否为默认发票信息</div>
+                    <div class="weui-cell__ft">
+                        <label for="switchCP" class="weui-switch-cp">
+                            <input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked">
+                            <div class="weui-switch-cp__box"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--新增发票信息 end-->
+
+
+
+
+<!--require js-->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.1.1/js/jquery-weui.min.js"></script>
+<script src="./static/js/mobile.market.common.js"></script>
+<!--require js end-->
+
+<!--scoped js-->
+<script src="http://market.tecenet.com/static/plugins/city-picker/js/city-picker.data.js"></script>
+<script src="http://market.tecenet.com/static/plugins/city-picker/js/city-picker.js"></script>
+<!--scoped js end-->
+
+
+</body>
+</html>

@@ -90,6 +90,8 @@ a.t:hover{text-decoration:underline;}
 #Dtop .dsize div{height:11px;width:11px;background:url('resize.gif') no-repeat;cursor:se-resize;font-size:1px;float:right;}
 .perc{height:9px;line-height:9px;font-size:1px;background:#FFFFFF;border:#EA7211 1px solid;text-align:left;}
 .perc div{height:9px;line-height:9px;font-size:1px;background:url('percent.gif') repeat-x;}
+.DP_image{max-width:1024px;}
+
 /*left*/
 .bar{width:25px;background:#E3ECF7 url('bar.jpg') repeat-y;cursor:pointer;}
 .bartop{line-height:21px;background:url('bartop.gif') repeat-x 1px 0;margin-bottom:5px;}

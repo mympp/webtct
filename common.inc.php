@@ -111,6 +111,7 @@ $lazy = $DT['lazy'] ? 1 : 0;
 if(!IN_ADMIN && ($DT['close'] || $DT['defend_cc'] || $DT['defend_reload'] || $DT['defend_proxy'])) include DT_ROOT.'/include/defend.inc.php';
 //unset($CACHE, $CFG['db_host'], $CFG['db_user'], $CFG['db_pass'], $db_class, $db_file);
 $moduleid = isset($moduleid) ? intval($moduleid) : 1;
+
 if($moduleid > 1) {
 	isset($MODULE[$moduleid]) or dheader(DT_PATH);
 	$module= $MODULE[$moduleid]['module'];
@@ -120,6 +121,7 @@ if($moduleid > 1) {
 	$moduleid = 1;
 	$module = 'destoon';
 }
+
 $cityid = 0;
 $city_name = $L['allcity'];
 $city_domain = $city_template = $city_sitename = '';

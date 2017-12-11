@@ -1,30 +1,29 @@
 
 
-				<table height="120" width="100%" >
-				<tr>
-					<td  align="center"><form method="get" action="<?echo DT_PATH;?>mobile/index.php">
-					<input type="hidden" name="moduleid" value="<?echo $moduleid;?>" >
-					<input type="text" name="kw" class="input" size="20"><input type="submit" value=" 搜索 " class="sub"></form>
-					</td>
-				</tr>
-				<tr>
-					<td  align="center">
-						<a href="http://wap2.tecenet.com/index.php?moduleid=29&wap2=open" class="f18 ml10" >审核情况</a>
-						<?if($_username){?>
-						<a href="http://wap2.tecenet.com/logout.php?forward=http://www.tecenet.com/api/cj/index.php"  class="f18 ml10"  >退出</a>
-						<?}else{?>
-						<a href="http://wap2.tecenet.com/login.php?forward=http://www.tecenet.com/api/cj/index.php"  class="f18  ml10" >登录</a>
-						<?}?>
-						&nbsp;&nbsp;
-						<?if(!get_cookie('pwd')){?>
-						<a href="index.php?action=login"  class="f18 ml10"  >管理员登陆</a>
-						<?}else{?>
-						<a href="index.php?password=no"  class="f18 ml10"  >管理员退出</a>
-						<?}?>
-					</td>
-				</tr>
-				</table>
-
+	<table height="120" width="100%" >
+	<tr>
+		<td  align="center"><form method="get" action="<?echo DT_PATH;?>mobile/index.php">
+		<input type="hidden" name="moduleid" value="<?echo $moduleid;?>" >
+		<input type="text" name="kw" class="input" size="20"><input type="submit" value=" 搜索 " class="sub"></form>
+		</td>
+	</tr>
+	<tr>
+		<td  align="center">
+			<a href="http://wap2.tecenet.com/index.php?moduleid=29&wap2=open" class="f18 ml10" >审核情况</a>
+			<?if($_username){?>
+			<a href="http://www.tecenet.com/member/logout.php?forward=http://www.tecenet.com/api/cj/index.php"  class="f18 ml10"  >退出</a>
+			<?}else{?>
+			<a href="http://www.tecenet.com/member/login.php?forward=http://www.tecenet.com/api/cj/index.php"  class="f18  ml10" >登录</a>
+			<?}?>
+			&nbsp;&nbsp;
+			<?if(!get_cookie('pwd')){?>
+			<a href="index.php?action=login"  class="f18 ml10"  >管理员登陆</a>
+			<?}else{?>
+			<a href="index.php?password=no"  class="f18 ml10"  >管理员退出</a>
+			<?}?>
+		</td>
+	</tr>
+	</table>
 
 
 
