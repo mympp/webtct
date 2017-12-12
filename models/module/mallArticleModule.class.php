@@ -39,8 +39,8 @@ class mallArticleModule extends baseModule{
     }
 
     public function searchRewrite($selector){
-        $catid = isset($selector['catid']) ? '_'.$selector['catid'] : '';
-        $page = isset($selector['page']) ? '_'.$selector['page']:'';
+        $catid = isset($selector['catid']) && !empty($selector['catid']) ? '_'.$selector['catid'] : '';
+        $page = isset($selector['page']) && !empty($selector['page']) ? '_'.$selector['page']:'';
         return 'news_list'.$catid.$page.'.html';
     }
 

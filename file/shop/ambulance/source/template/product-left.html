@@ -1,18 +1,4 @@
 <div class="side pull-left">
-    <div class="side-box pro-cate">
-        <div class="side-box-hd">
-            <span>产品分类</span>
-            <a class="more" href="/plist.html">更多</a>
-        </div>
-        <div class="side-box-bd">
-            <ul>
-                <li><a href="plist.html">全部分类</a></li>
-                {% for cate in category %}
-                <li><a href="/plist-{{ cate.typeid }}.html">{{ cate.typename }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
 
     <!--
     <div class="side-box pro-search">

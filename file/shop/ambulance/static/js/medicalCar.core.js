@@ -148,7 +148,6 @@ var pageHeaderHtml = "" +
     "<div class='w1200 box-center clearfix'>" +
     "<a href='http://www.tecenet.com/' class='logo pull-left'>" +
     "<h1>天成医疗网</h1>" +
-    "<span>www.tecenet.com/</span>" +
     "</a>" +
     "<div class='tc-search pull-left'>" +
     "<form class='site-frm pull-left' action='/plist.html' method='get'>" +
@@ -167,6 +166,7 @@ function getQueryString(key){
     var result = window.location.search.substr(1).match(reg);
     return result?decodeURIComponent(result[2]):null;
 }
+
 function keywordShow(){
     var _val = document.location.href.split("?kw=")[1];
     if(_val){
@@ -174,3 +174,18 @@ function keywordShow(){
     }
 }
 keywordShow();
+
+function  dialogOpen(){
+    var dialogBox = $(".service-dialog");
+    dialogBox.show();
+}
+function  dialogClose(){
+    var dialogBox = $(".service-dialog");
+    dialogBox.hide();
+}
+
+
+
+
+
+

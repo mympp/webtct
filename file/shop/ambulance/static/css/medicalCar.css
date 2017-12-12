@@ -1138,6 +1138,205 @@ a.series-more-btn{
     }
 }
 
+.service-btn{
+    position:fixed;
+    bottom:30px;
+    right:20px;
+    width:100px;
+    height:120px;
+    background:url('../images/service-btn.png') no-repeat 0 0;
+    z-index:999;
+}
+.service-btn,.service-btn:hover{
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: tada;
+    animation-name: tada;
+}
+.service-btn span{
+    position: absolute;
+    bottom:0;
+    width:100%;
+    font-size:14px;
+    line-height:28px;
+    color: #fff;
+    text-align: center;
+    animation: blink .5s linear infinite;
+    -webkit-animation: blink .5s linear infinite;
+}
+@-webkit-keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+        -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%, 60%, 80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+        -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%, 60%, 80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+@-webkit-keyframes blink {
+    0% {
+        color: #fff;
+    }
+    50% {
+        color: #fff;
+    }
+    50.01% {
+        color: #fedd00;
+    }
+    100% {
+        color: #fedd00;
+    }
+}
+@keyframes blink {
+    0% {
+        color: #fff;
+    }
+    50% {
+        color: #fff;
+    }
+    50.01% {
+        color: #fedd00;
+    }
+    100% {
+        color: #fedd00;
+    }
+}
+
+
+.header-service{
+    position: absolute;
+    top:0;
+    right:-100px;
+    height: 42px;
+
+}
+.header-service a{
+    display: block;
+    width:100px;
+    font-size:16px;
+    line-height:42px;
+    text-align: center;
+    color: #fff;
+    background-color: #CE2C35;
+}
+.service-dialog{
+    position: fixed;
+    top:50%;
+    left:50%;
+    width:360px;
+    height:320px;
+    margin:-160px 0 0 -180px;
+    background-color: #fff;
+    border:1px solid #ccc;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.service-dialog-head{
+    background-color: #fafafa;
+    padding:0 15px 0 20px;
+    height:40px;
+    line-height:40px;
+    font-size:16px;
+    border-bottom:1px solid #ccc;
+}
+.service-dialog-head-text {
+    color: #1e5c56;
+    font-weight: bold;
+
+}
+.service-dialog-head-text em{
+    font-weight: normal;
+    font-style: normal;
+    color: #888;
+    font-size:12px;
+}
+.service-dialog-body{
+    padding:20px;
+    text-align: center;
+}
+.service-dialog-body dl{
+    margin-bottom:20px;
+}
+.service-dialog-body dt{
+    display: block;
+    text-align: center;
+    position: relative;
+
+}
+.service-dialog-body dt:before{
+    content: '';
+    position: absolute;
+    left:50%;
+    top:50%;
+    width:80%;
+    margin-left:-40%;
+    height:1px;
+    background-color: #eaeaea;
+}
+.service-dialog-body dt span{
+    position: relative;
+    display: inline-block;
+    font-size:14px;
+    color: #777;
+    padding:0 12px;
+    background-color: #fff;
+}
+.service-dialog-body dd{
+    padding-top:15px;
+}
+.service-dialog-body dd .btn{
+    display: inline-block;
+    padding:10px 20px;
+    background-color: #b79750;
+    color: #fff;
+}
+.service-dialog-body dd .qq-btn{
+    display: inline-block;
+    width:100px;
+    height:26px;
+    background:url("../images/qqkf-img.png");
+}
+.service-dialog-body dd .service-tel{
+    font-size:20px;
+    font-weight:200;
+    color: #d31d1d;
+}
 
 
 /*page-header*/
@@ -1147,27 +1346,29 @@ a.series-more-btn{
     border-bottom: 1px dotted #bbb;
 }
 .page-header .logo{
-    width: 250px;
-    height: 50px;
-    padding-left:60px;
-    background: url("http://www.tecenet.com/skin/teceskin/image/tc-header-logo.png") no-repeat left center;
+    width: 136px;
+    height: 24px;
+    padding-left:120px;
+    padding-top: 30px;
+    background: url("http://www.tecenet.com/skin/teceskin/image/tc-header-logo-2017.png") no-repeat left top;
 }
 .page-header .logo h1,.page-header .logo span{
     display: block;
 }
 .page-header .logo h1{
     margin-top:2px;
-    font-size: 24px;
-    color: #c72721;
+    font-size: 15px;
+    line-height: 24px;
+    color: #b81c24;
     margin: 0;
 }
 .page-header .logo em{
     position: relative;
     display: inline-block;
     font-style: normal;
-    color: #333;
-    padding-left:10px;
-    margin-left:10px;
+    color: #595656;
+    padding-left:6px;
+    margin-left:6px;
 }
 .page-header .logo em:before{
     content: '';
@@ -1177,7 +1378,7 @@ a.series-more-btn{
     margin-top:-1px;
     width: 3px;
     height:3px;
-    background-color: #333;
+    background-color: #595656;
     border-radius:50%;
 }
 
@@ -1220,8 +1421,6 @@ a.series-more-btn{
     top:-5px;
     left:-75px;
 }
-
-
 
 .header-case{
     position: absolute;
@@ -1653,9 +1852,11 @@ a.series-more-btn{
         float: none;
     }
 
-    .header-case{
+    .header-case,.header-service,.service-btn{
         display: none;
     }
+
+
 }
 
 

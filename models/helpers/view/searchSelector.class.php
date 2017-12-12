@@ -130,7 +130,7 @@ class searchSelector{
 	
 	//选择框选择条
 	public function option($key,$options,$second_options = null){
-		
+
 		if(!is_array($options)) return '';
 		if(!isset($options['data']) || !is_array($options['data'])) return '';
 		$back = '';
@@ -138,7 +138,7 @@ class searchSelector{
 		$addition_str = '';
 		if(isset($options['additions']))	$addition_str = $this->additions($options['additions']);
 		$back .= "<div $addition_str>";
-		
+
 		$back .= $this->ul($key,$options);
 		if(isset($second_options)) $back .= $this->ul($key,$second_options);
 		
@@ -149,7 +149,7 @@ class searchSelector{
 			$href = $options['button']['href'];
 			$additions = $options['button'][0];
 			$back .= "<a href=\"$href\" {$this->additions($additions)}>$value</a>";
-		}	
+		}
 		return $back;
 	}
 	
