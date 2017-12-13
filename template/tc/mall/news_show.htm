@@ -12,12 +12,7 @@
         <!--main-->
         <div class="main">
             <!-- pw-crumb -->
-            <div class="pw-crumb">
-                <a href="http://www.tecenet.com/">天成医疗网</a><span>&gt;</span>
-                <a href="http://www.tecenet.com/zixun/">产品知识库</a><span>&gt;</span>
-                <a href="http://www.tecenet.com/zixun/xinwen/">治疗仪</a><span>&gt;</span>
-                <a href="http://www.tecenet.com/zixun/show-26270.html">旧款iPhone的热卖将打击iPhoneX的销售</a>
-            </div>
+            {$navigationView}
             <!-- pw-crumb end-->
 
             <!--article-->
@@ -71,19 +66,19 @@
                     </script>
                     <!--评论 end-->
 
-
                     <!-- 相关文章推荐 -->
                     <div class="module">
                         <div class="module-head clearfix">
                             <h2 class="module-head-title">相关文章推荐</h2>
                         </div>
                         <ul class="relate-news clearfix">
-                            <li class="relate-news-item"><a class="text-overflow" href="#" target="_blank">阿尔法狗教学工具上线，柯洁：重新学围棋</a></li>
-                            <li class="relate-news-item"><a class="text-overflow" href="#" target="_blank">还在手工绘制图标？不如去这些网站寻找资源</a></li>
-                            <li class="relate-news-item"><a class="text-overflow" href="#" target="_blank">放下数字狂热与焦虑，基于价值判断虚拟货币的未来</a></li>
-                            <li class="relate-news-item"><a class="text-overflow" href="#" target="_blank">阿尔法狗教学工具上线，柯洁：重新学围棋</a></li>
-                            <li class="relate-news-item"><a class="text-overflow" href="#" target="_blank">微软发布量子编程语言 5年内或推工作机</a></li>
-                            <li class="relate-news-item"><a class="text-overflow" href="#" target="_blank">收购Instagram很有用：Facebook对冲青少年用户流失</a></li>
+                            {loop $recomArticles $key $article}
+                            <li class="relate-news-item">
+                                <a class="text-overflow" href="{$article['linkurl']}" title="{$article['title']}">
+                                    {$article['title']}
+                                </a>
+                            </li>
+                            {/loop}
                         </ul>
                     </div>
                     <!-- 相关文章推荐 end -->

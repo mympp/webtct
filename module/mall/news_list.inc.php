@@ -67,19 +67,36 @@ foreach($MENU as $cate){
     $firstCate[$cate['catid']] = $cate['catname'];
 }
 $secondCate = [];
-foreach($childCate as $cate){
-    $secondCate[$cate['catid']] = $cate['catname'];
+if(!empty($pageCate['parentid'])){
+    $brotherCate = $maCategory->getChildCategory($pageCate['parentid']);
+    foreach($brotherCate as $cate){
+        $secondCate[$cate['catid']] = $cate['catname'];
+    }
+}else{
+    foreach($childCate as $cate){
+        $secondCate[$cate['catid']] = $cate['catname'];
+    }
 }
 $searchSelector = new searchSelector();
 $searchSelector->setModule($newsModule);
+$searchSelector->setCurrentTip(['class' => 'current']);
+$searchSelector->setSelectedKey(['catid' => $catid]);
+$searchSelector->setLinkTitle('{catid}知识',['catid' => '产品']);
+//设置选择框显示内容
 $selectorView = $searchSelector->begin(['class' => 'selector']);
-$searchSelector .= $searchSelector->secondItem('catid',
-    '产品知识大全',
-    ['data' => $firstCate],
-    ['data' => $secondCate] ,
-    []);
+$selectorView .= $searchSelector->secondItem(
+    'catid',
+    ['产品知识分类','class' => 'sl-key pull-left'],
+    [   'data' => $firstCate ,
+        'additions' => ['class' => 'sl-value',],
+        'ul' => ['class' => 'sl-v-list sl-v-list-row2 sl-v-list-qixie']
+    ],
+    [   'data' => $secondCate ,
+        'closeUnlimitButton' => true,
+        'ul' => ['class' => 'sl-v-list sl-v-sub-list'],
+    ] ,
+    ['class' => 'sl-wrap' ]);
 $selectorView .= $searchSelector->end();
-var_dump($selectorView);
 
 
 //seo设置

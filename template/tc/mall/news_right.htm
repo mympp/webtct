@@ -1,4 +1,4 @@
-<!--side-->
+<!-- side-->
 <div class="side">
 
     <!--热门医械知识库-->
@@ -69,5 +69,21 @@
         </ul>
     </div>
 
+    <!--友情链接-->
+    <div class="module">
+        <div class="module-head clearfix">
+            <h2 class="module-head-title">友情链接</h2>
+            <a href="http://www.tecenet.com/link/index-htm-action-reg.html" class="apply-to" rel="nofollow">申请加入&gt;&gt;</a>
+        </div>
+        <ul class="links-bd">
+            {loop $links $key $link}
+            <li><a href="{$link['linkurl']}" title="{$link['title']}" target="_blank">{$link['title']}</a></li>
+            {/loop}
+
+            <li><a href="http://www.tecenet.com" >天成医疗网</a></li>
+        </ul>
+    </div>
+    <!--友情链接 end-->
+
 </div>
-<!--side end-->
+<!--side end -->
