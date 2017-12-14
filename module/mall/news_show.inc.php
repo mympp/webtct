@@ -4,6 +4,10 @@ use models\helpers\query\MallArticleContentQuery;
 use models\helpers\view\Navigation;
 use models\helpers\query\MallArticleCategoryQuery;
 use models\module\baseModule;
+use models\helpers\query\MallArticleRelateQuery;
+use models\helpers\query\MallQuery;
+use models\helpers\query\MallArticleTagsQuery;
+use models\helpers\query\TagsQuery;
 
 include DT_ROOT.'/module/mall/news.common.inc.php';
 
@@ -36,6 +40,26 @@ $navigation = new Navigation();
 $navigationView = $navigation->buildNavigation($navItem,[
     'div' => ['class' => 'pw-crumb']
 ]);
+
+//相关产品
+$maRelate = new MallArticleRelateQuery();
+$mallid = $maRelate->getMallIdByArticle($itemid);
+$mallQuery = new MallQuery();
+$mallDb = $mallQuery->getDb(MallQuery::TABLE_NAME);
+$relateMalls = $mallDb
+    ->field('itemid,title,thumb,hits')
+    ->where(['itemid' => implode(',',$mallid)],'in')
+    ->where(['status' => MallQuery::CHECKED_STATUS])->all();
+
+//相关标签
+$maTags = new MallArticleTagsQuery();
+$tagsid = $maTags->getTagIdByArticle($itemid);
+$tagsQuery = new TagsQuery();
+$tagsDb = $tagsQuery->getDb(TagsQuery::TABLE_NAME);
+$relateTags = $tagsDb
+    ->field('itemid,word')
+    ->where(['itemid' => implode(',',$tagsid)],'in')
+    ->where(['status' => TagsQuery::CHECKED_STATUS])->all();
 
 //推荐文章内容
 $articleModule = baseModule::moduleInstance('article');

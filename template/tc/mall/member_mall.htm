@@ -100,7 +100,7 @@
         <input type="hidden" name="status" value="{$status}"/>
         &nbsp;{category_select('catid', '产品分类', $catid, $moduleid)}&nbsp;
         {$mycat_select}&nbsp;
-        <input type="text" size="30" name="kw" value="{$kw}" title="关键词"/>&nbsp;
+        <input class="inputtext" type="text" size="30" name="kw" value="{$kw}" title="关键词"/>&nbsp;
         {$order_select}&nbsp;
         <input type="submit" value=" 搜 索 " class="btn"/>
         <input type="button" value=" 重 置 " class="btn" onclick="Go('{$DT[file_my]}?mid={$mid}&status={$status}');"/>

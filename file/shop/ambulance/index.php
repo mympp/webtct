@@ -23,6 +23,8 @@ $app->get('/plist.html' , '\source\page\ProductPage:plist');
 $app->get('/plist-{typeid}.html' , '\source\page\ProductPage:plist');
 $app->get('/product-{itemid}.html' ,'\source\page\ProductPage:product');
 $app->get('/test.html' , '\source\page\IndexPage:test');
+$app->get('/nlist.html' , '\source\page\NewsPage:nlist');
+$app->get('/news-{itemid}.html' , '\source\page\NewsPage:news');
 
 $app->run();
 

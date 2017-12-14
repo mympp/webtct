@@ -1,7 +1,7 @@
 <?php
 use models\helpers\widget\redirect\pc_to_wap;
 use models\helpers\view\internalLink;
-use models\helpers\widget\cdn\QiniuCdn;
+//use models\helpers\widget\cdn\QiniuCdn;
 
 defined('IN_DESTOON') or exit('Access Denied');
 
@@ -24,8 +24,10 @@ $content_table = content_table($moduleid, $itemid, $MOD['split'], $table_data);
 $t = $db->get_one("SELECT content FROM {$content_table} WHERE itemid=$itemid");
 $content = $t['content'];
 
+/*
 $qiniu = new QiniuCdn();
 $content = $qiniu->waterMark($content);
+*/
 
 if ($lazy) $content = img_lazy($content);
 $CP = $MOD['cat_property'] && $CAT['property'];

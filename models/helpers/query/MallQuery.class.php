@@ -6,6 +6,7 @@ use models\helpers\data\category;
 class MallQuery extends BaseQuery
 {
     const CHECKED_STATUS = 3;       //已通过状态
+    const TABLE_NAME = 'mall';
 
     //获取推荐产品
     /**
@@ -30,7 +31,7 @@ class MallQuery extends BaseQuery
 
         //推荐产品
         if (empty($field)) $field = 'itemid,thumb,title,kcatids,linkurl,company,username';
-        return $this->getDb('mall')->field($field)
+        return $this->getDb(self::TABLE_NAME)->field($field)
             ->where(['status' => self::CHECKED_STATUS])->where($inCondition, 'in')
             ->where($dayCondition, '>')->order('hits desc')->limit(0, $pagesize)->select();
     }
@@ -52,7 +53,7 @@ class MallQuery extends BaseQuery
 
         if (empty($field)) $field = 'thumb,title,linkurl,company,username';
 
-        return $this->getDb('mall')->field($field)->where(['status' => self::CHECKED_STATUS])
+        return $this->getDb(self::TABLE_NAME)->field($field)->where(['status' => self::CHECKED_STATUS])
             ->where($inCondition, 'in')->order('itemid desc')->limit(0, $pagesize)->select();
     }
 

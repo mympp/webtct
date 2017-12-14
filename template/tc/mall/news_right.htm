@@ -1,5 +1,44 @@
 <!-- side-->
 <div class="side">
+    {if $relateTags}
+    <!--相关标签-->
+    <div class="module">
+        <div class="module-head clearfix">
+            <h2 class="module-head-title"><a href="#">相关标签</a></h2>
+        </div>
+        <div class="hot-tags">
+            {loop $relateTags $key $tag}
+            <a class="hot-tags-item" href="#" title="{$tag['word']}">{$tag['word']}</a>
+            {/loop}
+        </div>
+    </div>
+    <!--相关标签-->
+    {/if}
+
+    {if $relateMalls}
+    <!--相关产品-->
+    <div class="module">
+        <div class="module-head clearfix">
+            <h2 class="module-head-title"><a href="#">相关产品</a></h2>
+        </div>
+        <ul class="hot-product">
+            {loop $relateMalls $key $mall}
+            <li class="hot-product-item clearfix">
+                <div class="hot-product-img">
+                    <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">
+                        <img src="{$mall['thumb']}"  alt="{$mall['title']}">
+                    </a>
+                </div>
+                <div class="hot-product-name">
+                    <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">{$mall['title']}</a>
+                </div>
+                <div class="hot-product-num"><i class="iconfont icon-hot"></i>{$mall['hits']}</div>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    <!--相关产品 end-->
+    {/if}
 
     <!--热门医械知识库-->
     <div class="module">
@@ -72,15 +111,13 @@
     <!--友情链接-->
     <div class="module">
         <div class="module-head clearfix">
-            <h2 class="module-head-title">友情链接</h2>
-            <a href="http://www.tecenet.com/link/index-htm-action-reg.html" class="apply-to" rel="nofollow">申请加入&gt;&gt;</a>
+            <h2 class="module-head-title pull-left">友情链接</h2>
+            <a href="http://www.tecenet.com/link/index-htm-action-reg.html" class="module-head-link pull-right" rel="nofollow">申请加入&gt;&gt;</a>
         </div>
-        <ul class="links-bd">
+        <ul class="links-ul">
             {loop $links $key $link}
             <li><a href="{$link['linkurl']}" title="{$link['title']}" target="_blank">{$link['title']}</a></li>
             {/loop}
-
-            <li><a href="http://www.tecenet.com" >天成医疗网</a></li>
         </ul>
     </div>
     <!--友情链接 end-->

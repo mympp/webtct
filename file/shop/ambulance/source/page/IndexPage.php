@@ -36,9 +36,9 @@ class IndexPage extends BasePage
         ]);
     }
 
+    /*
     public function test(){
-        var_dump($this->getMalls(0,14));
-        /*
+        //var_dump($this->getMalls(0,14));
         $articles = Db::Table('tc_news')->field('itemid')->where(['status' => 3])->all();
         $urls = [];
         foreach($articles as $item){
@@ -49,8 +49,8 @@ class IndexPage extends BasePage
             }
             $this->push($urls);
         }
-           */
     }
+    */
 
 
     public function render($template ,$params = []){
