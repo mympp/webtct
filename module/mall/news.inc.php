@@ -18,7 +18,7 @@ foreach($MENU as $key => $cate){
     foreach($childCate as $c){
         $childCateId[] = $c['catid'];
     }
-    $item['list'] = $newsModule->getNewArticles(5,false,'title,itemid,description,thumb,hits,addtime',$childCateId);
+    $item['list'] = $newsModule->getNewArticles(5,false,'title,itemid,description,thumb,hits,addtime,keywords',$childCateId);
     $articleList[] = $item;
 }
 

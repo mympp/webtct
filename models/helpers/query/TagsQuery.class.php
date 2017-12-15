@@ -17,5 +17,13 @@ class TagsQuery extends BaseQuery
             ->where(['status' => self::CHECKED_STATUS])
             ->order('hits desc')->limit(0,$pagesize)->select();
     }
+
+    public function getOne($tagid){
+        return $this->getDb(self::TABLE_NAME)->where(['itemid' => $tagid])->one();
+    }
+
+    public function updateHits($tagid, $hits){
+        return $this->getDb(self::TABLE_NAME)->where(['itemid' => $tagid])->edit(['hits' => $hits]);
+    }
 }
 ?>

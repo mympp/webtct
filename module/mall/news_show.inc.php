@@ -52,14 +52,8 @@ $relateMalls = $mallDb
     ->where(['status' => MallQuery::CHECKED_STATUS])->all();
 
 //相关标签
-$maTags = new MallArticleTagsQuery();
-$tagsid = $maTags->getTagIdByArticle($itemid);
-$tagsQuery = new TagsQuery();
-$tagsDb = $tagsQuery->getDb(TagsQuery::TABLE_NAME);
-$relateTags = $tagsDb
-    ->field('itemid,word')
-    ->where(['itemid' => implode(',',$tagsid)],'in')
-    ->where(['status' => TagsQuery::CHECKED_STATUS])->all();
+$tagsModule = baseModule::moduleInstance('tags');
+$relateTags = $tagsModule->getTagsByMallArticle($itemid,'word,itemid');
 
 //推荐文章内容
 $articleModule = baseModule::moduleInstance('article');

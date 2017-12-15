@@ -57,6 +57,13 @@ class MallQuery extends BaseQuery
             ->where($inCondition, 'in')->order('itemid desc')->limit(0, $pagesize)->select();
     }
 
+    //根据id获取产品
+    public function getListsById(array $itemid, $field = '*'){
+        return $this->getDb(self::TABLE_NAME)
+            ->field($field)
+            ->where(['itemid' => implode(',',$itemid)],'in')->all();
+    }
+
     //构建分类搜索条件
     /**
      * @param $catid 分类id

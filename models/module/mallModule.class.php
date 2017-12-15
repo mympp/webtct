@@ -16,6 +16,20 @@ class mallModule extends baseModule
         $this->linkurl = $MODULE[$this->moduleid]['linkurl'];
     }
 
+    //搭建数据的点击地址
+    private function buildShowLinkurl($malls){
+        $result = [];
+        foreach($malls as $key => $mall){
+            if(isset($mall['linkurl'])){
+                $mall['linkurl'] = $this->linkurl . $mall['linkurl'];
+            }elseif(isset($mall['itemid'])){
+                $mall['linkurl'] = $this->linkurl . $this->showLinkurl($mall['itemid']);
+            }
+            $result[] = $mall;
+        }
+        return $result;
+    }
+
     //产品模块伪静态地址重写
     public function searchRewrite($selector)
     {
@@ -33,6 +47,11 @@ class mallModule extends baseModule
         }
     }
 
+    //产品内容页为静态地址重写
+    public function showLinkurl($itemid){
+        return 'show-'.$itemid.'.html';
+    }
+
     //产品分类伪静态地址重写
     public function mallCateRewrite($selector){
         if(count($selector) == 1 && !empty($selector['catid'])){
@@ -46,14 +65,14 @@ class mallModule extends baseModule
 
     //热门产品
     public function getHotMalls($pagesize = 10 , $catid = 0 ,  $dayLimit = 14){
-        $mallQuery = new MallQuery();
-        $malls = $mallQuery->getRecommendMalls($pagesize,$catid,$dayLimit,'itemid,title,thumb,hits,linkurl');
-        $result = [];
-        foreach($malls as $key => $mall){
-            $mall['linkurl'] = $this->linkurl . $mall['linkurl'];
-            $result[] = $mall;
-        }
-        return $result;
+        $malls = (new MallQuery())->getRecommendMalls($pagesize,$catid,$dayLimit,'itemid,title,thumb,hits,linkurl');
+        return $this->buildShowLinkurl($malls);
+    }
+
+    //根据id获取内容
+    public function getListsById(array $itemid , $field = '*'){
+        $malls = (new MallQuery())->getListsById($itemid,$field);
+        return $this->buildShowLinkurl($malls);
     }
 }
 

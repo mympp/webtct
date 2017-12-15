@@ -30,6 +30,8 @@ if(!empty($catid)){
     $pageCate = $maCategory->getOne($catid);
     if(!empty($pageCate['catname'])) $catname = $pageCate['catname'];
 
+    $keywordLink = empty($pageCate['keywordLink']) ? '#' : $pageCate['keywordLink'];
+
     //导航数据
     if(!empty($pageCate['parentid'])){
         $parentCate = $maCategory->getOne($pageCate['parentid']);
@@ -43,7 +45,7 @@ if(!empty($catid)){
     );
 
 }
-$listsData = $newsModule->getLists($pagesize,'itemid,title,thumb,description,addtime,hits',$cateId,(int)$page);
+$listsData = $newsModule->getLists($pagesize,'itemid,title,thumb,description,addtime,hits,keywords',$cateId,(int)$page);
 $lists = $listsData['list'];
 
 //分页按钮

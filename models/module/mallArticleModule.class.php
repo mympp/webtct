@@ -10,7 +10,7 @@ class mallArticleModule extends baseModule{
     function __construct(){
         global $MODULE;
         $this->moduleid = 16;
-        $this->modulename = 'mallArticle';
+        $this->modulename = '医械知识库';
         $this->title = '医械知识库';
         $this->linkurl = $MODULE[$this->moduleid]['linkurl'];
     }
@@ -90,6 +90,12 @@ class mallArticleModule extends baseModule{
         $lists = $this->buildShowLinkurl($result['list']);
         $result['list'] = $lists;
         return $result;
+    }
+
+    //根据id获取文字内容
+    public function getListsById(array $itemid , $field = '*'){
+        $articles = (new MallArticleQuery())->getListsById($itemid,$field);
+        return $this->buildShowLinkurl($articles);
     }
 }
 ?>

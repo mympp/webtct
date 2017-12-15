@@ -2,7 +2,6 @@
 namespace models\helpers\query;
 
 use models\helpers\data\tcdb;
-use models\helpers\query\LinkQuery;
 
 abstract class BaseQuery
 {

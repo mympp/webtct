@@ -75,5 +75,13 @@ class MallArticleQuery extends BaseQuery
     public function updateHits($itemid , $hits){
         return $this->getDb(self::TABLE_NAME)->where(['itemid' => $itemid])->edit(['hits' => $hits]);
     }
+
+    //根据id获取文章
+    public function getListsById(array $itemid , $field = '*'){
+        return $this->getDb(self::TABLE_NAME)
+            ->field($field)
+            ->where(['itemid' => implode(',',$itemid)],'in')
+            ->all();
+    }
 }
 ?>

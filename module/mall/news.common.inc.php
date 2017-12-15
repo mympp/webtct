@@ -1,6 +1,5 @@
 <?php
 use models\module\baseModule;
-use models\helpers\query\TagsQuery;
 
 require_once DT_ROOT.'/models/autoload.php';
 
@@ -9,11 +8,11 @@ $logo_title = $newsModule->title;
 
 //一级分类
 $MENU = $newsModule->getCache('getMenu',[],3600);
-$IndexUrl = $newsModule->linkurl .'news.html';
+$logo_url = $IndexUrl = $newsModule->linkurl .'news.html';
 
 //右侧内容
 $topCategorys = $newsModule->getCache('getTopCategorys',['pagesize' => 10]);
-$hotTags = (new TagsQuery())->getHotTags(10);
+$hotTags = baseModule::moduleInstance('tags')->getCache('getHotTags',['pagesize' => 10]);
 $hotMalls = baseModule::moduleInstance('mall')->getCache('getHotMalls',['pagesize' => 5 ,'catid' => 0 ,'dayLimit'=>0]);
 $hotArticles = $newsModule->getCache('getHotArticles',[
     'pagesize' => 10 ,

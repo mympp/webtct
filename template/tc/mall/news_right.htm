@@ -8,7 +8,7 @@
         </div>
         <div class="hot-tags">
             {loop $relateTags $key $tag}
-            <a class="hot-tags-item" href="#" title="{$tag['word']}">{$tag['word']}</a>
+            <a class="hot-tags-item" href="{$tag['linkurl']}" title="{$tag['word']}">{$tag['word']}</a>
             {/loop}
         </div>
     </div>
@@ -23,17 +23,7 @@
         </div>
         <ul class="hot-product">
             {loop $relateMalls $key $mall}
-            <li class="hot-product-item clearfix">
-                <div class="hot-product-img">
-                    <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">
-                        <img src="{$mall['thumb']}"  alt="{$mall['title']}">
-                    </a>
-                </div>
-                <div class="hot-product-name">
-                    <a href="{$mall['linkurl']}" target="_blank" title="{$mall['title']}">{$mall['title']}</a>
-                </div>
-                <div class="hot-product-num"><i class="iconfont icon-hot"></i>{$mall['hits']}</div>
-            </li>
+                {template 'relate_mall','mall'}
             {/loop}
         </ul>
     </div>
@@ -87,7 +77,7 @@
         </div>
         <div class="hot-tags">
             {loop $hotTags $key $tag}
-            <a class="hot-tags-item" href="#" title="{$tag['word']}">{$tag['word']}</a>
+            <a class="hot-tags-item" href="{$tag['linkurl']}" title="{$tag['word']}">{$tag['word']}</a>
             {/loop}
         </div>
     </div>

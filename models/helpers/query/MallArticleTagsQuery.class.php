@@ -13,5 +13,14 @@ class MallArticleTagsQuery extends BaseQuery
         }
         return $result;
     }
+
+    public function getArticleIdByTag($tagid){
+        $articleIds = $this->getDb(self::TABLE_NAME)->field('articleid')->where(['tagsid' => $tagid])->all();
+        $result = [];
+        foreach($articleIds as $article){
+            $result[] = $article['articleid'];
+        }
+        return $result;
+    }
 }
 ?>

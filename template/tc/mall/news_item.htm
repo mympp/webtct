@@ -1,9 +1,10 @@
 <div class="news-item clearfix">
     {if $article['thumb']}
     <div class="news-item-img">
-        <a href="{$article['linkurl']}" target="_blank" title="{$article['title']}"><img
-                src="{$article['thumb']}"
-                alt="{$article['title']}"></a>
+        <a href="{$article['linkurl']}" target="_blank" title="{$article['title']}">
+            <img src="{$article['thumb']}" alt="{$article['title']}"
+                 onerror="this.src = '{DT_PATH}/skin/teceskin/image/nopic.gif'">
+        </a>
     </div>
     {/if}
     <div class="news-item-txt">
@@ -13,13 +14,15 @@
         <p class="news-item-desc">{$article['description']}</p>
 
         <div class="news-item-info clearfix">
-            <!--
             <div class="news-item-tags">
-                <a href="#" target="_blank">人工智能</a>
-                <a href="#" target="_blank">科技</a>
-                <a href="#" target="_blank">们工作岗位</a>
+                {php $keywordArr = explode(' ',$article['keywords']);}
+                {loop $keywordArr $keyworKey $keywordWord}
+                    {if !empty($keywordWord)}
+                    <a href="{DT_PATH}search.php?kw={$keywordWord}" title="{$keywordWord}">{$keywordWord}</a>
+                    {/if}
+                {/loop}
             </div>
-            -->
+
             <span class="news-item-time"><i class="iconfont icon-time"></i>{date('Y-m-d H:i:s',$article['addtime'])}</span>
 
             <span class="news-item-view"><i class="iconfont icon-attention"></i>{$article['hits']}</span>
