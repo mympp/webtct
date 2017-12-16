@@ -5,11 +5,6 @@ use source\db\Db;
 
 class ProductPage extends BasePage
 {
-    private function getRecommend(){
-        return Db::Table('tc_mall')->field('itemid,title,thumb')->where(['status' => 3 ,'username' => $this->username])
-            ->order('itemid desc')->limit(0,6)->select();
-    }
-
     public function plist($request, $response, $args)
     {
         $kw = $request->getParam('kw');
@@ -74,12 +69,5 @@ class ProductPage extends BasePage
         ]);
     }
 
-    public function getLeftNav(){
-
-        return $this->render('product-left',[
-            'category' => $this->getType(),
-            'malls' => $this->getRecommend(),
-        ]);
-    }
 }
 

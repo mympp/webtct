@@ -11,6 +11,11 @@ class BasePage
     public $userid ;
     public $username;
 
+    private function getRecommend(){
+        return Db::Table('tc_mall')->field('itemid,title,thumb')->where(['status' => 3 ,'username' => $this->username])
+            ->order('itemid desc')->limit(0,6)->select();
+    }
+
     public function __construct()
     {
         $userParams = Config::getInstance()->getParams('user');
@@ -78,9 +83,31 @@ class BasePage
         return $result;
     }
 
+    public function getNews($pagesize = 100,$page = 1,$order = 'itemid desc',$field = 'itemid,title,thumb,introduce'){
+        $newsDb = Db::Table('tc_news');
+
+        $condition['status'] = 3;
+        $condition['username'] = $this->username;
+
+        $start = ($page - 1)*$pagesize;
+        $news = $newsDb->where($condition)->limit($start,$pagesize)->order($order)->select();
+
+        return $news;
+    }
+
     public function getMenu(){
         return $this->render('menu',[
            'typeItem' => $this->getType(),
+            'newsItem' => [
+                ['title' => '新闻中心','url' => '/nlist.html']
+            ],
+        ]);
+    }
+
+    public function getLeftNav(){
+        return $this->render('product-left',[
+            'category' => $this->getType(),
+            'malls' => $this->getRecommend(),
         ]);
     }
 

@@ -7,6 +7,11 @@
                 <a href="/plist-{{ item.typeid }}.html" title="{{ item.reTypename }}救护车">{{ item.typename }}</a>
             </li>
         {% endfor %}
+        {% for item in newsItem %}
+            <li class="nav-item">
+                <a href="{{ item.url }}" title="{{ item.title }}" >{{ item.title }}</a>
+            </li>
+        {% endfor %}
     </ul>
     <div class="tel pull-right"><i></i>400-400-4000</div>
     

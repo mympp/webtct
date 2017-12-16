@@ -33,6 +33,7 @@ class IndexPage extends BasePage
             'htmlTitle' => '天成医疗车_医疗车|体检车|救护车专业配置方案报价',
             'htmlKeywords' => '医疗车,体检车,救护车',
             'htmlDescription' => '天成医疗车方案，为你您提供专业的医疗车、体检车、救护车配置方案，欢迎点击询价！',
+            'news' => $this->getNews(4,1),
         ]);
     }
 

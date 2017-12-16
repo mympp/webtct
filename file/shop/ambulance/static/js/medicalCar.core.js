@@ -157,9 +157,12 @@ var pageHeaderHtml = "" +
     "</div>" +
     "</div>" ;
 
-$(".top-bar").html(topNavHtml);
-$(".page-header").html(pageHeaderHtml);
-$(".tc-footer").html(footerHtml);
+
+jQuery(function ($) {
+    $(".top-bar").html(topNavHtml);
+    $(".page-header").html(pageHeaderHtml);
+    $(".tc-footer").html(footerHtml);
+});
 
 function getQueryString(key){
     var reg = new RegExp("(^|&)"+key+"=([^&]*)(&|$)");

@@ -812,7 +812,6 @@ a.series-more-btn{
 }
 
 .news-list{
-    margin-top:30px;
     background-color: #fff;
     padding:15px 20px;
 }
@@ -835,6 +834,7 @@ a.series-more-btn{
     content: '';
     position: absolute;
     left:0;
+    top:50%;
     margin-top:-1px;
     width: 3px;
     height:3px;

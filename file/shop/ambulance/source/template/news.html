@@ -1,0 +1,34 @@
+{% autoescape false %}
+{% set headerParams = {'htmlTitle' : htmlTitle,'htmlKeywords' : htmlKeywords , 'htmlDescription' : htmlDescription,'typename' : typename} %}
+{{ pageModel.render('header',headerParams) }}
+
+<!--product-list-->
+<div class="layout container clearfix">
+    <div class="main pull-right">
+        <!--crumb-->
+        <div class="crumb">
+            <a href="index.html">首页</a> »
+            <a href="nlist.html">新闻中心</a> »
+            <a href="#">{{ news.title }}</a>
+        </div>
+        <!--crumb end-->
+
+        <!--list-area-->
+        <div class="list-area">
+            <div class="article">
+                <h1>{{ news.title }}</h1>
+                <div class="content">
+                    {{ news.content }}
+                </div>
+            </div>
+        </div>
+        <!--list-area end-->
+    </div>
+
+    {{ pageModel.getLeftNav }}
+
+</div>
+<!--product-list end-->
+
+{{ pageModel.render('footer') }}
+{% endautoescape %}

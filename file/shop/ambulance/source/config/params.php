@@ -1,7 +1,7 @@
 <?php
 return [
     'db' => [
-        'host' => 'rm-wz9n33j6yi1265k8x.mysql.rds.aliyuncs.com',
+        'host' => 'rm-wz9n33j6yi1265k8xo.mysql.rds.aliyuncs.com',
         'username' => 'tecedb',
         'password' => 'tiAncHenGnet!213%1514',
         'dbname' => 'tecedata3',
