@@ -75,13 +75,6 @@ var property_admin = 1;
 <td class="tl"><span class="f_hid">*</span> 浏览次数</td>
 <td><input name="post[hits]" type="text" size="10" value="<?php echo $hits;?>"/></td>
 </tr>
-    <tr>
-        <td class="tl">是否原创</td>
-        <td>
-            <input type="radio" name="post[isOriginal]" value="0" <?php if(empty($isOriginal)) echo 'checked'; ?> />非原创&nbsp;&nbsp;
-            <input type="radio" name="post[isOriginal]" value="1" <?php if(!empty($isOriginal)) echo 'checked'; ?> />原创
-        </td>
-    </tr>
 </table>
 <div class="sbt"><input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></div>
 </form>

@@ -41,13 +41,21 @@
                         {$content['content']}
                     </div>
 
-                    <!--喜欢/踩-->
-                    <div class="link-area clearfix">
-                        <a href="javascript:;" onclick="send_comment(3,this)" class="link"><i class="iconfont icon-appreciate"></i><span>赞(<em>0</em>)</span></a>
-                        <a href="javascript:;" onclick="send_comment(1,this)" class="dis-link"><i class="iconfont icon-buxihuan"></i><span>踩(<em>0</em>)</span></a>
+                    {if $relateTags}
+                    <!-- 相关标签 -->
+                    <div class="relate-tags">
+                        <div class="post-share-title">
+                            <span>相关标签</span>
+                        </div>
+                        <ul class="relate-tags-body">
+                            {loop $relateTags $key $tag}
+                            <li> <a href="{$tag['linkurl']}" title="{$tag['word']}">{$tag['word']}</a></li>
+                            {/loop}
+                        </ul>
                     </div>
-                    <!--喜欢/踩 end-->
-
+                    <!-- 相关标签 end-->
+                    {/if}
+                    
                     <!--分享-->
                     <div class="post-share" id="postShare">
                         <div class="post-share-title"><span>分享给身边的朋友</span></div>
@@ -62,37 +70,53 @@
                     </div>
                     <!--分享 end-->
 
-                    <!--评论-->
-                    <div class="post-comment mt30" id="SOHUCS" sid="25872"></div>
-                    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
-                    <script type="text/javascript">
-                        window.changyan.api.config({
-                            appid: 'cysX5wRYI',
-                            conf: 'prod_5c734ecb243c7af56b81ad10f66b3139'
-                        });
-                    </script>
-                    <!--评论 end-->
-
-                    <!-- 相关文章推荐 -->
-                    <div class="module">
-                        <div class="module-head clearfix">
-                            <h2 class="module-head-title">相关文章推荐</h2>
-                        </div>
-                        <ul class="relate-news clearfix">
-                            {loop $recomArticles $key $article}
-                            <li class="relate-news-item">
-                                <a class="text-overflow" href="{$article['linkurl']}" title="{$article['title']}">
-                                    {$article['title']}
-                                </a>
-                            </li>
-                            {/loop}
-                        </ul>
+                    <!--喜欢/踩-->
+                    <div class="link-area clearfix">
+                        <a href="javascript:;" onclick="send_comment(3,this)" class="link"><i class="iconfont icon-appreciate"></i><span>赞(<em>0</em>)</span></a>
+                        <a href="javascript:;" onclick="send_comment(1,this)" class="dis-link"><i class="iconfont icon-buxihuan"></i><span>踩(<em>0</em>)</span></a>
                     </div>
-                    <!-- 相关文章推荐 end -->
+                    <!--喜欢/踩 end-->
 
-                </div>
+                    {php $sid = 'mall_article_'.$itemid;}
+                    {template 'changyan','chip'}
+
+                </div>                
+
             </div>
             <!--article end-->
+
+            {if $relateMalls}
+            <!-- 相关产品 -->
+            <div class="module">
+                <div class="module-head clearfix">
+                    <h2 class="module-head-title">相关产品</h2>
+                </div>
+                <ul class="hot-product article-relate-product">
+                    {loop $relateMalls $key $mall}
+                    {template 'relate_mall','mall'}
+                    {/loop}
+                </ul>
+            </div>
+            <!-- 相关产品 end -->
+            {/if}
+
+
+            <!-- 相关文章推荐 -->
+            <div class="module">
+                <div class="module-head clearfix">
+                    <h2 class="module-head-title">相关文章推荐</h2>
+                </div>
+                <ul class="relate-news clearfix">
+                    {loop $recomArticles $key $article}
+                    <li class="relate-news-item">
+                        <a class="text-overflow" href="{$article['linkurl']}" title="{$article['title']}">
+                            {$article['title']}
+                        </a>
+                    </li>
+                    {/loop}
+                </ul>
+            </div>
+            <!-- 相关文章推荐 end -->
 
 
         </div>

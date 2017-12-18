@@ -21,7 +21,7 @@ show_menu($menus);
 </table>
 </form>
 <form method="post">
-<div class="tt">审核新闻</div>
+<div class="tt">审核新闻1</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <th width="25"><input type="checkbox" onclick="checkall(this.form);"/></th>
@@ -43,6 +43,7 @@ show_menu($menus);
 </tr>
 <?php }?>
 </table>
+
 <div class="btns">
 <input type="submit" value=" 通过审核 " class="btn" onclick="this.form.action='?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=check';"/>&nbsp;
 <input type="submit" value=" 拒 绝 " class="btn" onclick="this.form.action='?moduleid=<?php echo $moduleid;?>&file=<?php echo $file;?>&action=reject';"/>&nbsp;

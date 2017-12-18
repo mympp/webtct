@@ -79,4 +79,12 @@ show_menu($menus);
 <div class="pages"><?php echo $pages;?></div>
 <br/>
 <script type="text/javascript">Menuon(<?php echo $menuid;?>);</script>
+<script>
+var selectOption = [
+    '请选择理由',
+    '你好，请发布跟医疗器械相关新闻，感谢你对天成医疗网的关注与支持！',
+    '你好，这里可以发布公司新闻信息，会展信息请在资讯模块发布，感谢你对天成医疗网的关注与支持！',
+    '你好，这里可以发布公司新闻信息，产品信息请在产品模块或者供求模块发布，感谢你对天成医疗网的关注与支持！'
+];
+</script>
 <?php include tpl('footer');?>

@@ -1,34 +1,5 @@
 <!-- side-->
 <div class="side">
-    {if $relateTags}
-    <!--相关标签-->
-    <div class="module">
-        <div class="module-head clearfix">
-            <h2 class="module-head-title"><a href="#">相关标签</a></h2>
-        </div>
-        <div class="hot-tags">
-            {loop $relateTags $key $tag}
-            <a class="hot-tags-item" href="{$tag['linkurl']}" title="{$tag['word']}">{$tag['word']}</a>
-            {/loop}
-        </div>
-    </div>
-    <!--相关标签-->
-    {/if}
-
-    {if $relateMalls}
-    <!--相关产品-->
-    <div class="module">
-        <div class="module-head clearfix">
-            <h2 class="module-head-title"><a href="#">相关产品</a></h2>
-        </div>
-        <ul class="hot-product">
-            {loop $relateMalls $key $mall}
-                {template 'relate_mall','mall'}
-            {/loop}
-        </ul>
-    </div>
-    <!--相关产品 end-->
-    {/if}
 
     <!--热门医械知识库-->
     <div class="module">
