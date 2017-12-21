@@ -131,16 +131,16 @@
                 <p>news</p>
             </div>
             <div class="news-body clearfix">
-                {% for item in news %}
-                <div class="news-top-item">
-                    <div class="news-top-item-img">
+                {% for key,item in news %}
+                <div class="{% if key %}news-item{% else %}news-top-item{% endif %}">
+                    <div class="news-item-img">
                         <a href="/news-{{ item.itemid }}.html" target="_blank"><img src="{{ item.thumb }}" alt="{{ item.title}}"></a>
                     </div>
-                    <div class="news-top-item-txt clearfix">
-                        <h3 class="news-top-item-title"><a href="/news-{{ item.itemid }}.html" target="_blank">{{ item.title}}</a></h3>
-                        <span class="news-top-item-date">{{ item.addtime | date('Y-m-d') }}</span>
+                    <div class="news-item-txt clearfix">
+                        <h3 class="news-item-title"><a href="/news-{{ item.itemid }}.html" target="_blank">{{ item.title}}</a></h3>
+                        <span class="news-item-date">{{ item.addtime | date('Y-m-d') }}</span>
                     </div>
-                    <div class="news-top-item-desc">
+                    <div class="news-item-desc">
                         {{ item.introduce }}
                     </div>
                 </div>
