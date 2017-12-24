@@ -3,6 +3,7 @@ namespace models\module;
 
 use models\helpers\data\category;
 use models\helpers\query\MallQuery;
+use models\helpers\query\MemberQuery;
 
 //企业模块模型类，封装业务逻辑操作
 class mallModule extends baseModule
@@ -73,6 +74,35 @@ class mallModule extends baseModule
     public function getListsById(array $itemid , $field = '*'){
         $malls = (new MallQuery())->getListsById($itemid,$field);
         return $this->buildShowLinkurl($malls);
+    }
+
+    //随机获取vip用户的产品信息
+    public function getVipMalls($pagesize = 10){
+        $vipMember = (new MemberQuery())->getVipMember('username');
+        $usernameCondition = [];
+        foreach($vipMember as $member){
+            $usernameCondition[] = $member['username'];
+        }
+        $mallQuery = new MallQuery();
+        $mallDb =  $mallQuery->getDb(MallQuery::TABLE_NAME);
+        $vipMallCount = $mallDb->where(['username' => "'". implode("','",$usernameCondition) . "'"],'in')
+            ->where(['status' => MallQuery::CHECKED_STATUS])->count('c');
+        if(!$vipMallCount){
+            return [];
+        }
+        $start = 0;
+        $limit = (int)($vipMallCount['c']) - (int)$pagesize;
+        if($limit > 0){
+            $start = rand(0,$limit);
+        }
+        $mallDb->restart();
+        $vipMalls = $mallDb->where(['username' => "'". implode("','",$usernameCondition) . "'"],'in')
+            ->field('title,itemid,thumb')
+            ->where(['status' => MallQuery::CHECKED_STATUS])
+            ->limit($start,$pagesize)
+            ->order('itemid asc')
+            ->select();
+        return $this->buildShowLinkurl($vipMalls);
     }
 }
 

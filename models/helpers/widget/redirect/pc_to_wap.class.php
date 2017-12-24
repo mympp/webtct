@@ -1,8 +1,6 @@
 <?php
 namespace models\helpers\widget\redirect;
 
-use models\helpers\widget\redirect\baseRedirect;
-
 //处理从PC端主动验证使用设备，如果符合移动设备判断，主动跳转到wap网站对应页面
 class pc_to_wap extends baseRedirect{
 	

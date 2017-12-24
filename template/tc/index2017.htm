@@ -31,7 +31,7 @@
 	<script type="text/javascript" src="{DT_PATH}file/script/jquery.lazyload.min.js"></script>
 	<script>var _hmt = _hmt || [];</script>
 </head>
-<body {if isMobile()}style="position: absolute;"{/if}>
+<body>
 <!-- top-nav -->
 <div class="tc-top-nav" id="tcTopNav">
 	<div class="w1200 box-center">
@@ -87,29 +87,29 @@
 		<div class="menu-hd pull-left">热门服务<i></i></div>
 		<ul class="tc-nav-item pull-right">
 			<li class="other">
-				<a href="{$MODULE[16]['linkurl']}" target="_self">产品</a>
+				<a href="{$MODULE[16]['linkurl']}?ref=indexNav" target="_self">产品</a>
 				<div class="sub-nav">
-                    <a href="{$MODULE[16]['linkurl']}" target="_blank">产品大全</a>
-                    <a href="http://www.sharedour.com/" target="_blank">产品服务<i>享道</i></a>
-                    <a href="http://medcha.com/" target="_blank">进出口服务<i>medcha</i></a>
-                    <a href="http://so.tecenet.com/" target="_blank">产品搜索</a>
+                    <a href="{$MODULE[16]['linkurl']}?ref=indexNav" target="_blank">产品大全</a>
+                    <a href="http://www.sharedour.com/?ref=indexNav" target="_blank">产品服务<i>享道</i></a>
+                    <a href="http://medcha.com/?ref=indexNav" target="_blank">进出口服务<i>medcha</i></a>
+                    <a href="http://so.tecenet.com/?ref=indexNav" target="_blank">产品搜索</a>
 				</div>
 			</li>
 			<li>
-				<a href="http://repair.tecenet.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'indexNav', 'click', 'repair']);">维修</a>
+				<a href="http://repair.tecenet.com/?ref=indexNav" target="_blank" onclick="_hmt.push(['_trackEvent', 'indexNav', 'click', 'repair']);">维修</a>
 				<i class="new-version">新</i>
 			</li>
-			<li><a href="{$MODULE[5]['linkurl']}" target="_blank">供需</a></li>
-			<li><a href="{$MODULE[6]['linkurl']}" target="_blank">招标</a></li>
-			<li><a href="{$MODULE[7]['linkurl']}" target="_blank">资质</a></li>
-			<li><a href="http://www.tecejob.com" target="_blank">招聘</a></li>
-			<li><a href="{$MODULE[4]['linkurl']}" target="_blank">厂商</a></li>
-			<li><a href="{$MODULE[21]['linkurl']}" target="_blank">资讯</a></li>
-			<li><a href="{$MODULE[15]['linkurl']}" target="_blank">共享</a></li>
-			<li><a href="{$MODULE[10]['linkurl']}" target="_blank">问答</a></li>
-			<li><a href="http://image.tecenet.com/" target="_blank">图库</a></li>
+			<li><a href="{$MODULE[5]['linkurl']}?ref=indexNav" target="_blank">供需</a></li>
+			<li><a href="{$MODULE[6]['linkurl']}?ref=indexNav" target="_blank">招标</a></li>
+			<li><a href="{$MODULE[7]['linkurl']}?ref=indexNav" target="_blank">资质</a></li>
+			<li><a href="http://www.tecejob.com?ref=indexNav" target="_blank">招聘</a></li>
+			<li><a href="{$MODULE[4]['linkurl']}?ref=indexNav" target="_blank">厂商</a></li>
+			<li><a href="{$MODULE[21]['linkurl']}?ref=indexNav" target="_blank">资讯</a></li>
+			<li><a href="{$MODULE[15]['linkurl']}?ref=indexNav" target="_blank">共享</a></li>
+			<li><a href="{$MODULE[10]['linkurl']}?ref=indexNav" target="_blank">问答</a></li>
+			<li><a href="http://image.tecenet.com/?ref=indexNav" target="_blank">图库</a></li>
 			<li>
-				<a href="http://market.tecenet.com/" target="_blank" onclick="_hmt.push(['_trackEvent', 'indexNav', 'click', 'market']);">行情中心</a>
+				<a href="http://market.tecenet.com/?ref=indexNav" target="_blank" onclick="_hmt.push(['_trackEvent', 'indexNav', 'click', 'market']);">行情中心</a>
 				<i class="new-version">新</i>
 			</li>
 		</ul>
@@ -795,8 +795,7 @@
 					</div>
 					<div class="col-bd pd-10 clearfix">
 						<div class="ulWrap">
-							{php $mall_tc_tags = tag("moduleid=16&table=mall&fields=linkurl,thumb,title&condition=groupid=7 and status = 3&pagesize=16&order=hits desc &template=null")}
-							{loop $mall_tc_tags $k $t}
+							{loop $vipMalls $k $t}
 							{if $k%4 == 0}<ul>{/if}
 							<li class="product-item pd-10">
 								<a href="{$t['linkurl']}" target="_blank" title="{$t['title']}"><img class="lazy-img" src="{DT_SKIN}image/blank.gif" _src="{$t['thumb']}" onerror="javascript:this.src='{DT_SKIN}image/no-pic.png';" alt="{$t['title']}" /></a>
