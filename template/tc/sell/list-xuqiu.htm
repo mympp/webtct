@@ -1,7 +1,7 @@
 {loop $lists $k $t}
 <div class="qiu-card transition">
     <div class="card-hd">
-        <h3><a href="{$MODULE[5]['linkurl']}{$t['linkurl']}">{$t['title']}</a></h3>
+        <h3><a href="{$MODULE[5]['linkurl']}{$t['linkurl']}" target="_blank">{$t['title']}</a></h3>
     </div>
     <div class="card-bd">
         <ul class="card-info">
@@ -13,7 +13,7 @@
             <li><span>截止时间:</span><em>{if $t['totime']}{date('Y-m-d H:i',$t['totime'])}{else}长期有效{/if}</em></li>
         </ul>
         <div class="card-contact">
-            <a href="{$MODULE[5]['linkurl']}{$t['linkurl']}" class="btn transition"><i class="p-i"></i>查看联系方式</a>
+            <a href="{$MODULE[5]['linkurl']}{$t['linkurl']}" target="_blank" class="btn transition"><i class="p-i"></i>查看联系方式</a>
         </div>
     </div>
 </div>

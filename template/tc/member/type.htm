@@ -67,16 +67,16 @@ var _del = 0;
 <tr onmouseover="this.className='on';" onmouseout="this.className='';">
 <td align="center"><input name="type[{$v[typeid]}][delete]" type="checkbox" value="1" onclick="if(this.checked){_del++;}else{_del--;}"/></td>
 <td align="center"><input class="inputtext" name="type[{$v[typeid]}][listorder]" type="text" size="5" value="{$v[listorder]}" maxlength="3"/></td>
-<td>&nbsp;&nbsp;<input class="inputtext" name="type[{$v[typeid]}][typename]" type="text" size="20" value="{$v[typename]}" maxlength="50" style="width:200px;color:{$v[style]}"/></td>
+<td><input class="inputtext" name="type[{$v[typeid]}][typename]" type="text" size="20" value="{$v[typename]}" maxlength="50" style="width:200px;color:{$v[style]}"/></td>
 <!--商品分类列表-->
 </tr>
 	{loop $littletypes $y $z}
 	{if $v[typeid] == $z[parentid]}
 	<tr onmouseover="this.className='on';" onmouseout="this.className='';">
 		<td align="center"><input name="type[{$z[typeid]}][delete]" type="checkbox" value="1" onclick="if(this.checked){_del++;}else{_del--;}"/></td>
-		<td align="center"><input name="type[{$z[typeid]}][listorder]" type="text" size="5" value="{$z[listorder]}" maxlength="3"/></td>
+		<td align="center"><input class="inputtext" name="type[{$z[typeid]}][listorder]" type="text" size="5" value="{$z[listorder]}" maxlength="3"/></td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;├&nbsp;
-		<input name="type[{$z[typeid]}][typename]" type="text" size="20" value="{$z[typename]}" maxlength="50" style="width:170px;"/>
+		<input class="inputtext" name="type[{$z[typeid]}][typename]" type="text" size="20" value="{$z[typename]}" maxlength="50" style="width:161px;"/>
 		<input type="hidden" name="type[{$z[typeid]}][parentid]" value="{$z[parentid]}" />
 		</td>
 		<!--商品分类列表-->
@@ -101,7 +101,7 @@ var _del = 0;
 	<option value="{$v[typeid]}">{$v[typename]}</option>
 	{/loop}
 </select>
-&nbsp;<input name="type[0][typename]" type="text" size="20" class="inputtext" value="" maxlength="50" style="width:200px;"/>
+<input name="type[0][typename]" type="text" size="20" class="inputtext" value="" maxlength="50" style="width:200px;"/>
 </tr>
 
 <tr>
@@ -126,7 +126,7 @@ function select(newAdd){
 	var index = obj.selectedIndex;
 	var value = obj.options[index].value; 
 	if(value == "newSonClass")
-	selectClass.style.display = "block";
+	selectClass.style.display = "inline-block";
 	else
 	selectClass.style.display = "none";
 }
