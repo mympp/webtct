@@ -1,0 +1,15 @@
+<form action="http://www.tecenet.com/gongsi/home.php" method="post" target="_blank">
+	<input type="hidden" name="title" value="招商" />
+	<input type="hidden" name="content" value="招商" />
+	<input type="hidden" name="username" value="guoguo-007" />
+	<input type="hidden" name="job" value="guestbook" />
+	<input type="hidden" name="action" value="send" />
+	姓名：<input type="text" name="truename" value="" /><br/>
+	联系单位：<input type="text" name="company" value="" /><br/>
+	联系方式：<input type="text" name="telephone" value="" /><br/>
+	验证码：<input type="text" name="captcha" value="" />
+	<img src="http://www.tecenet.com/api/captcha.png.php?action=image" title="验证码,看不清楚?请点击刷新
+字母不区分大小写" alt="" align="absmiddle" id="captchapng" onclick="this.src = 'http://www.tecenet.com/api/captcha.png.php?action=image&refresh='+Math.random()" style="cursor: pointer;">
+	<br/>
+	<input type="submit" value="提交" />
+</form>
