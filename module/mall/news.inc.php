@@ -4,6 +4,7 @@ use models\helpers\query\MallArticleCategoryQuery;
 include DT_ROOT.'/module/mall/news.common.inc.php';
 
 $topSlideArticles = $newsModule->getCache('getIndexSlide',['pagesize' => 5],(3600*12));
+var_dump($topSlideArticles);
 
 //分类最新文章
 $maCategoryQuery = new MallArticleCategoryQuery();

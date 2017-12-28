@@ -3,6 +3,7 @@ namespace models\module;
 
 use models\helpers\query\MallArticleCategoryQuery;
 use models\helpers\query\MallArticleQuery;
+use models\config\Config;
 
 //产品文章模块模型类，封装业务逻辑操作
 class mallArticleModule extends baseModule{
@@ -21,8 +22,11 @@ class mallArticleModule extends baseModule{
         foreach($artiles as $key => $item){
             if(isset($item['itemid'])){
                 $item[$keyName] = $this->linkurl . $this->showLinkurl($item['itemid']);
-                $result[] = $item;
             }
+            if(isset($item['thumb']) && strpos($item['thumb'],'http') == false){
+                $item['thumb'] = Config::getConfig('apiUrl') . $item['thumb'];
+            }
+            $result[] = $item;
         }
         return $result;
     }

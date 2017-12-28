@@ -13,7 +13,7 @@ $logo_url = $IndexUrl = $newsModule->linkurl .'news.html';
 //右侧内容
 $topCategorys = $newsModule->getCache('getTopCategorys',['pagesize' => 10]);
 $hotTags = baseModule::moduleInstance('tags')->getCache('getHotTags',['pagesize' => 10]);
-$hotMalls = baseModule::moduleInstance('mall')->getCache('getHotMalls',['pagesize' => 5 ,'catid' => 0 ,'dayLimit'=>0]);
+$hotMalls = baseModule::moduleInstance('mall')->getCache('getHotMalls',['pagesize' => 5 ,'catid' => 0 ,'dayLimit'=>180]);
 $hotArticles = $newsModule->getCache('getHotArticles',[
     'pagesize' => 10 ,
     'withImage' => false,

@@ -4,6 +4,7 @@ return [
     'baseUrl' => 'http://www.tecenet.com/',
     'wapUrl' => 'http://wap.tecenet.com/',
     'oldWapUrl' => 'http://wap2.tecenet.com/',  //旧版移动端地址
+    'apiUrl' => 'http://api.tecenet.com',      //接口网站地址
 
     'cdn' => [
         'watermarkPic' => 'http://www.tecenet.com/skin/teceskin/images/watermark.JPG',
