@@ -3,8 +3,11 @@ use models\helpers\query\MallArticleCategoryQuery;
 use models\helpers\view\pagination;
 use models\helpers\view\Navigation;
 use models\helpers\view\searchSelector;
+use models\helpers\widget\redirect\pc_to_wap;
 
 include DT_ROOT.'/module/mall/news.common.inc.php';
+
+$wapurl = pc_to_wap::forword('chanpin/news_list_'.$catid.'.html');
 
 $catid = isset($catid) ? $catid : 0;
 $page = isset($page)? $page : 1;
@@ -102,7 +105,7 @@ $selectorView .= $searchSelector->end();
 
 
 //seo设置
-$head_title = $catname.'_医械知识库_天成医疗网';
+$head_title = $catname.'_医械知识库';
 $head_keyword = "{$catname}, {$catname}知识大全";
 $head_description = "天成为您提供详尽的{$catname}知识大全，为您列明{$catname}的使用方法与注意事项等{$catname}的知识";
 

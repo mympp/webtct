@@ -884,6 +884,19 @@ a.module-head-link{
     background-color: #fafafa;
     color: #333;
 }
+
+.article-image{
+    margin:20px 50px;
+    padding:10px;
+    border:1px solid #EAEAEA;
+}
+.article-image img{
+    max-width:100%;
+    height: auto;
+}
+
+
+
 /*@media screen and (max-width: 768px) {*/
     /*.top-bar, .tc-search {*/
         /*display: none;*/

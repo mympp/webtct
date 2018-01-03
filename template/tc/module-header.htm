@@ -13,9 +13,11 @@
 <meta name="description" content="{if $zdescription}{$zdescription}{else}{$head_description}{/if}"/>
 {/if}
 {if $wapurl}
-<link rel="alternate" media="only screen and (max-width: 640px)" href="{$wapurl}" >
-<meta name="mobile-agent" content="format=html5;url={$wapurl}"/>
-{/if}
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="{$wapurl}" >
+    <meta http-equiv="mobile-agent" content="format=html5;url={$wapurl}"/>
+    <meta http-equiv="mobile-agent" content="format=xhtml; url={$wapurl}">
+    {/if}
+    <link rel="canonical" href="{substr(DT_PATH,0,-1)}{$_SERVER['REQUEST_URI']}" />
 <meta name="applicable-device" content="pc">
 <meta http-equiv="Cache-Control" content="no-siteapp" /> 
 <meta http-equiv="Cache-Control" content="no-transform"/>

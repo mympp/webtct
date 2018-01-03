@@ -4,6 +4,8 @@ use models\helpers\widget\nlp\scws;
 use models\helpers\widget\redirect\pc_to_wap;
 use models\extensions\opensearch\CloudSearch;
 use models\helpers\data\tcdb;
+use models\helpers\query\MallArticleRelateQuery;
+use models\module\baseModule;
 
 defined('IN_DESTOON') or exit('Access Denied');
 
@@ -98,6 +100,7 @@ $company = $company_db->field('userid,mode,linkurl,telephone,mail,company')->whe
 $company_data_db = new tcdb('company_data');
 $comany_introduce = $company_data_db->field('content')->where(['userid' => $company['userid']])->one();
 
+//开放搜索推荐内容
 $word = $title;
 $scws = new scws($title);
 if ($scws->checkScwsExist()) {
@@ -124,14 +127,25 @@ if (count($malldata) < 2) {
 $keyword_data_db = new tcdb('keyword_data');
 $simword = $keyword_data_db->field('itemid,word')->order('itemid asc')->limit(rand(0, 90), 10)->select();
 //猜你喜欢产品
-$likemall = $mall_db->field('title,thumb,linkurl,kcatids,company,username')->where(['status' => 3, 'catid' => $catid])->where(['thumb' => ''], '<>')->order('itemid desc')->limit(0, 6)->select();
+$likemall = $mall_db->field('title,thumb,linkurl,kcatids,company,username')
+    ->where(['status' => 3, 'catid' => $catid])
+    ->where(['thumb' => ''], '<>')->order('itemid desc')->limit(0, 6)->select();
 
+//关联分类页面板块
 $internalLink = new internalLink();
 $internalLink->setModule(['mall', 'keshi', 'buy']);
 $iLink = $internalLink->build($catid, $areaid, [
     'mall' => ['name' => '产品', 'titleName' => '产品'],
     'keshi' => ['name' => '医疗器械', 'titleName' => '科室']
 ]);
+
+//关联的知识库文章
+$maRelated = new MallArticleRelateQuery();
+$mallArticleIds = $maRelated->getArticleIdByMall($itemid);
+if(!empty($mallArticleIds)){
+    $mallArticleModule = baseModule::moduleInstance('mallArticle');
+    $mallArticles = $mallArticleModule->getListsById($mallArticleIds,'itemid,title,addtime,keywords');
+}
 
 $seo_file = 'show';
 include DT_ROOT . '/include/seo.inc.php';

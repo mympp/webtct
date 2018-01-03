@@ -1,10 +1,12 @@
 <?php
 use models\helpers\query\MallArticleCategoryQuery;
+use models\helpers\widget\redirect\pc_to_wap;
 
 include DT_ROOT.'/module/mall/news.common.inc.php';
 
+$wapurl = pc_to_wap::forword('chanpin/news.html');
+
 $topSlideArticles = $newsModule->getCache('getIndexSlide',['pagesize' => 5],(3600*12));
-var_dump($topSlideArticles);
 
 //分类最新文章
 $maCategoryQuery = new MallArticleCategoryQuery();
@@ -24,7 +26,7 @@ foreach($MENU as $key => $cate){
 }
 
 //seo设置
-$head_title = '医械知识库_天成医疗网';
+$head_title = '医械知识库';
 $head_keyword = '医械知识库,医疗器械知识大全,医疗器械知识库';
 $head_description = '天成医疗器械知识库，是全方位的医疗器械知识大全，值得信赖的医疗器械使用指南。';
 

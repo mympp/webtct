@@ -6,8 +6,8 @@ use models\helpers\query\MallArticleCategoryQuery;
 use models\module\baseModule;
 use models\helpers\query\MallArticleRelateQuery;
 use models\helpers\query\MallQuery;
-use models\helpers\query\MallArticleTagsQuery;
-use models\helpers\query\TagsQuery;
+use models\helpers\widget\redirect\pc_to_wap;
+use models\config\Config;
 
 include DT_ROOT.'/module/mall/news.common.inc.php';
 
@@ -16,11 +16,16 @@ if(empty($itemid)){
     exit;
 }
 
+$wapurl = pc_to_wap::forword('chanpin/news_'.$itemid.'.html');
+
 $mallArticleQuery = new MallArticleQuery();
 $article = $mallArticleQuery->getOne($itemid);
 if(empty($article)){
     include load('404.inc');
     exit;
+}
+if(!empty($article['thumb'])){
+    $article['thumb'] = Config::getConfig('apiUrl') . $article['thumb'];
 }
 $content = (new MallArticleContentQuery())->getContent($itemid);
 
@@ -47,7 +52,7 @@ $mallid = $maRelate->getMallIdByArticle($itemid);
 $mallQuery = new MallQuery();
 $mallDb = $mallQuery->getDb(MallQuery::TABLE_NAME);
 $relateMalls = $mallDb
-    ->field('itemid,title,thumb,hits')
+    ->field('itemid,title,thumb,hits,linkurl')
     ->where(['itemid' => implode(',',$mallid)],'in')
     ->where(['status' => MallQuery::CHECKED_STATUS])->all();
 
@@ -60,7 +65,7 @@ $articleModule = baseModule::moduleInstance('article');
 $recomArticles = $articleModule->getCache('getHotArticles',[6, false,14,'itemid,title,linkurl',0]);
 
 //seo设置
-$head_title = "{$article['title']}_天成医疗网";
+$head_title = "{$article['title']}";
 $head_keyword = $article['keywords'];
 $head_description = $article['description'];
 

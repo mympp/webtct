@@ -209,24 +209,33 @@
             <!--相关求购信息 end-->
             {/if}
 
-
-            <!--网友点评-->
-            <!--
-            <div class="module  mgt-20">
+            {if !empty($mallArticles)}
+            <!--相关产品知识点-->
+            <div class="module relate-article relate-purchase mgt-20">
                 <div class="module-hd">
-                    <span>网友点评</span>
+                    <span><em>{$title}</em>相关知识点</span>
                 </div>
                 <div class="module-bd clearfix">
-                    <form class="comment-form clearfix" method="post" onsubmit="return false">
-                        <textarea class="comment-area" name=""></textarea>
-                        <label class="anonymous pull-left"><input type="checkbox" name="">匿名发表</label>
-                        <p class="comment-msg pull-left">还可以输入<span id="commentNum">500</span>个字</p>
-                        <button class="btn btn-primary pull-right">评论</button>
-                    </form>
+                    {loop $mallArticles $key $article}
+                    <div class="item">
+                        <p class="title text-overflow">
+                            <a href="{$article['linkurl']}" target="_blank" title="{$article['title']}">{$article['title']}</a>
+                        </p>
+                        <div class="news-item-tags">
+                            {php $keywordArr = explode(' ',$article['keywords']);}
+                            {loop $keywordArr $wordKey $word}
+                                {if !empty($word)}
+                                    <span>{$word}</span>
+                                {/if}
+                            {/loop}
+                        </div>
+                        <div class="news-item-time"><i class="iconfont icon-time"></i>{date('Y-m-d H:i:s',$article['addtime'])}</div>
+                    </div>
+                    {/loop}
                 </div>
             </div>
-            -->
-            <!--网友点评 end-->
+            <!--相关产品知识点 end-->
+            {/if}
             
         </div>
         <!--main end-->

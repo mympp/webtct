@@ -37,6 +37,12 @@
                         {$article['description']}
                     </div>
 
+                    {if $article['thumb']}
+                    <div class="article-image">
+                        <img src="{$article['thumb']}" alt="{$article['title']}" />
+                    </div>
+                    {/if}
+
                     <div class="article-content">
                         {$content['content']}
                     </div>
@@ -69,13 +75,6 @@
                         </div>
                     </div>
                     <!--分享 end-->
-
-                    <!--喜欢/踩-->
-                    <div class="link-area clearfix">
-                        <a href="javascript:;" onclick="send_comment(3,this)" class="link"><i class="iconfont icon-appreciate"></i><span>赞(<em>0</em>)</span></a>
-                        <a href="javascript:;" onclick="send_comment(1,this)" class="dis-link"><i class="iconfont icon-buxihuan"></i><span>踩(<em>0</em>)</span></a>
-                    </div>
-                    <!--喜欢/踩 end-->
 
                     {php $sid = 'mall_article_'.$itemid;}
                     {template 'changyan','chip'}

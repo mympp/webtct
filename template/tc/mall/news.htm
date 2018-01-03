@@ -52,8 +52,24 @@
         {template 'news_right','mall'}
     </div>
     <!--container end-->
+
+
+    <!--友情链接-->
+    <div class="layout links-layout">
+        <div class="links-hd" style="width: 60px;float: left;">友情链接：</div>
+        <div class="links-bd" style="width:1100px;">
+            {loop $links $key $link}
+            <a href="{$link['linkurl']}" title="{$link['title']}" target="_blank">{$link['title']}</a>
+            {/loop}
+            <a href="http://www.tecenet.com/link/index-htm-action-reg.html" class="apply-to" rel="nofollow">申请加入&gt;&gt;</a>
+        </div>
+    </div>
+    <!--友情链接 end-->
+
+
+
+
 </div>
 
-<i class="iconfont icon-right"></i>
 
 {template 'footer2017'}
