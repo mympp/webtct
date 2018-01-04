@@ -105,7 +105,14 @@ if ($username) {
 
         //推荐vip产品
         $mallModule = baseModule::moduleInstance('mall');
+        //$vipMalls = $mallModule->getVipMalls(16);
         $vipMalls = $mallModule->getCache('getVipMalls',[16],(3600*24));
+
+        //维修资料
+        /* @var \models\module\CurlContentModule $curlContentModule */
+
+        $curlContentModule = baseModule::moduleInstance('CurlContent');
+        $repairData = $curlContentModule->getCache('getIndexRepairData', [], 3600);
 
         include template('index2017');
     }

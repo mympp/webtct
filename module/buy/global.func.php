@@ -18,7 +18,7 @@ function getNewBuyMsg(){
 	$messages = $dc->get('buy_index_new_message');
 	if(empty($messages)){
 		$buy_db = new tcdb('buy_6');
-		$messages = $buy_db->field('itemid,title,linkurl,catid,areaid,hits,addtime')->where(['status'=>3])->order('itemid desc')->limit(0,15)->select();
+		$messages = $buy_db->field('itemid,title,linkurl,catid,areaid,hits,addtime,edittime')->where(['status'=>3])->order('itemid desc')->limit(0,15)->select();
 		$dc->set('buy_index_new_message',$messages,(3600*24));
 	}
 	return $messages;
