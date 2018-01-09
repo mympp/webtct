@@ -1,6 +1,7 @@
 <?php
 use models\helpers\widget\redirect\pc_to_wap;
 use models\helpers\view\internalLink;
+use models\helpers\widget\nlp\scws;
 //use models\helpers\widget\cdn\QiniuCdn;
 
 defined('IN_DESTOON') or exit('Access Denied');
@@ -87,6 +88,12 @@ $iLink = $internalLink->build($catid, $areaid, [
     'article' => ['name' => '资讯', 'titleName' => '资讯', 'closeArea' => true],
     'company' => ['name' => '企业', 'url' => ['typeid' => 0], 'titleName' => '企业'],
 ]);
+
+//正文敏感词过滤
+$scws = new scws();
+if($scws->checkScwsExist()){
+    $content = str_replace($scws->getStopWord(),'*',$content);
+}
 
 //页面右侧内容
 $recommendArticles = getRecommendArticles();

@@ -28,7 +28,7 @@ $CAT = get_cat($catid);
 if (!check_group($_groupid, $CAT['group_show'])) include load('403.inc');
 $content_table = content_table($moduleid, $itemid, $MOD['split'], $table_data);
 $t = $db->get_one("SELECT content FROM {$content_table} WHERE itemid=$itemid");
-$content = $t['content'];
+
 if ($lazy) $content = img_lazy($content);
 if ($MOD['keylink']) $content = keylink($content, $moduleid);
 $CP = $MOD['cat_property'] && $CAT['property'];
@@ -106,6 +106,19 @@ $scws = new scws($title);
 if ($scws->checkScwsExist()) {
     $word_arr = $scws->getSegByAttr('n');
     $word = implode(' ', $word_arr);
+
+    //正文过滤敏感词
+    $stopWord = $scws->getStopWord();
+    $content = str_replace($stopWord,'*',$t['content']);
+    //标题过滤敏感词
+    $title = str_replace($stopWord,'*',$title);
+    //公司介绍
+    if(!empty($comany_introduce)){
+        $company_introduce = str_replace($stopWord,'*',$comany_introduce);
+    }
+
+}else{
+    $content = $t['content'];
 }
 
 $cSearch = new CloudSearch('tecenet');
