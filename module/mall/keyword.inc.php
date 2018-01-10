@@ -7,6 +7,7 @@ use models\helpers\query\MallQuery;
 use models\helpers\query\CompanyQuery;
 use models\helpers\view\pagination;
 use models\helpers\widget\redirect\pc_to_wap;
+use models\helpers\widget\nlp\scws;
 
 defined('IN_DESTOON') or exit('Access Denied');
 //$itemid or dheader($MOD['linkurl']);
@@ -62,6 +63,13 @@ if(!empty($mallIds)){
     }
     $mallDb = new tcdb('mall');
     $malls = $mallDb->where(['itemid'=>implode(',',$ids)],'in')->all();     //搜索指定id的产品
+
+    $scws = new scws();
+    $stopWord = $scws->getStopWord();
+    foreach($malls as $key => $value){
+        $malls[$key]['title'] = str_replace($stopWord,'*',$value['title']);
+    }
+
     $mallCount = $cSearch->getResultNum();
 
     //分页按钮

@@ -1,5 +1,11 @@
-<?php 
+<?php
 defined('IN_DESTOON') or exit('Access Denied');
+use models\helpers\widget\nlp\scws;
+require_once DT_ROOT .'/models/autoload.php';
+
+$scws = new scws();
+$stopWord = $scws->getStopWord();
+
 if($action == 'company') {//Company News
 	include DT_ROOT.'/include/seo.inc.php';
 	$seo_title = $L['news_title'].$seo_delimiter.$seo_page.$seo_modulename.$seo_delimiter.$seo_sitename;
@@ -18,6 +24,12 @@ if($itemid) {
 	$head_title = $title.$DT['seo_delimiter'].$head_title;
 	$head_keywords = $title.','.$COM['company'];
 	$head_description = get_intro($content, 200);
+
+	//过滤敏感词
+	$content = str_replace($stopWord,'*',$content);
+	$title = str_replace($stopWord,'*',$title);
+	$introduce = str_replace($stopWord,'*',$introduce);
+
 	if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].'index.php?moduleid=4&username='.$username.'&action='.$file.'&itemid='.$itemid;
 } else {
 	$typeid = isset($typeid) ? intval($typeid) : 0;
@@ -47,6 +59,8 @@ if($itemid) {
 	if($items) {
 		$result = $db->query("SELECT * FROM {$table} WHERE $condition ORDER BY addtime DESC LIMIT $offset,$pagesize");
 		while($r = $db->fetch_array($result)) {
+			//过滤敏感词
+			$r['title'] = str_replace($stopWord,'*',$r['title']);
 			$r['alt'] = $r['title'];
 			$r['title'] = set_style($r['title'], $r['style']);
 			$r['linkurl'] = userurl($username, "file=$file&itemid=$r[itemid]", $domain);

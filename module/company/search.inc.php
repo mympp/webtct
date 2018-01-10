@@ -33,7 +33,7 @@ if($DT_QST) {
 			if(($DT_TIME - $DT['search_limit']) < get_cookie('last_search')) message(lang($L['time_limit'], array($DT['search_limit'])), $MOD['linkurl'].'search.php');
 			set_cookie('last_search', $DT_TIME);
 		}
-	}
+ 	}
 }
 $showpage = 1;
 $seo_file = 'search';

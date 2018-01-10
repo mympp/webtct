@@ -29,10 +29,56 @@ show_menu($menus);
 <?php } ?>
 </table>
 
+<script>
+var selectOption = [
+    '请选择理由',
+    '你好，seo描述请勿填写公司联系方式，感谢你对天成医疗网的关注与支持！'
+    ];
+</script>
+
+<table>
+<tbody>
+<tr>
+<td style="padding:15px 10px;">反馈信息：</td>
+<td style="padding:15px 10px;">
+    <textarea name="feedback" id="reason" value="" ></textarea>
+</td>
+<td style="padding:15px 10px;">
+</td>
+</tr>
+<tr>
+	<td style="padding:15px 10px;">快捷选择理由：</td>
+	<td style="padding:15px 10px;" id="reasonSelectWrap" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<style>
+	#reason{width: 480px;height:48px;}
+	.reason-select{width: 900px;height: 24px;}
+</style>
+<script>
+function reasonSelect(){
+	var $wrap = $("#reasonSelectWrap");
+	var $input = $("#reason");
+	var $options = "";
+
+	for(var i=0; i<selectOption.length; i++ ){
+        $options += '<option value="'+selectOption[i]+'">'+selectOption[i]+'</option>'
+	}
+
+	$wrap.html("<select class='reason-select'>"+$options+"</select>");
+
+	$(document).on("change",".reason-select",function(){
+		var $val = $(this).val();
+		$input.val($val);
+	});
+}
+reasonSelect();
+</script>
+
 <div class="btns">
 <input type="submit" value=" 审核通过 " class="btn" onclick="if(confirm('确定要通过审核？')){Dd('action').value='check';}else{return false;}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="submit" value=" 拒绝申请 " class="btn" onclick="if(confirm('确定要拒绝申请？')){Dd('action').value='reject';}else{return false;}"/>&nbsp;&nbsp;&nbsp;&nbsp;
-反馈信息：<input type="text" name="feedback" value="" style="width:220px;" />
 </div>
 <div class="pages"><?php echo $pages;?></div>
 </form>

@@ -1,5 +1,11 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
+use models\helpers\widget\nlp\scws;
+require_once DT_ROOT .'/models/autoload.php';
+
+$scws = new scws();
+$stopWord = $scws->getStopWord();
+
 $moduleid = 16;
 $module = 'mall';
 $MOD = cache_read('module-'.$moduleid.'.php');
@@ -14,6 +20,7 @@ if($itemid) {
 	$content_table = content_table($moduleid, $itemid, $MOD['split'], $table_data);
 	$t = $db->get_one("SELECT content FROM {$content_table} WHERE itemid=$itemid");
 	$content = $t['content'];
+
 	$CP = $MOD['cat_property'] && $CAT['property'];
 	if($CP) {
 		require DT_ROOT.'/include/property.func.php';
@@ -47,6 +54,11 @@ if($itemid) {
 	$head_keywords = $keyword;
 	$head_description = $introduce ? $introduce : $title;
 	if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].mobileurl($moduleid, 0, $itemid, $page);;
+
+	//过滤敏感词
+	$content = str_replace($stopWord,'*',$content);		//产品内容过滤
+	$title = str_replace($stopWord,'*',$title);
+	$introduce = str_replace($stopWord,'*',$introduce);
 } else {
 	$typeid = isset($typeid) ? intval($typeid) : 0;
 	$view = isset($view) ? 1 : 0;
@@ -84,6 +96,9 @@ if($itemid) {
 			if($kw) {
 				$r['title'] = str_replace($kw, '<span class="highlight">'.$kw.'</span>', $r['title']);
 				$r['introduce'] = str_replace($kw, '<span class="highlight">'.$kw.'</span>', $r['introduce']);
+				//过滤敏感词
+				$r['title'] = str_replace($stopWord,'*',$r['title']);
+				$r['introduce'] = str_replace($stopWord,'*',$r['introduce']);
 			}
 			$lists[] = $r;
 		}

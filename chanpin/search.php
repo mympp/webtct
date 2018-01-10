@@ -51,5 +51,6 @@ $pagination_func = 'mall_rewrite';
 $template = 'search';
 $pagesize = 28;
 
+
 require DT_ROOT.'/module/'.$module.'/search.inc.php';
 ?>
