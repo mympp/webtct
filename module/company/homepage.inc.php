@@ -50,7 +50,7 @@ $db->query("update {$db->pre}company set hits = $new_hits where userid = '" . $C
 $scws = new scws();
 $stopWord = $scws->getStopWord();
 $COM['intro'] = str_replace($stopWord,'*',$COM['intro']);
-
+$COM['btitle'] = str_replace($stopWord,'*',$COM['btitle']);
 
 include template('index', $template);
 
