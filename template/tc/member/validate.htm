@@ -265,8 +265,8 @@
         <tr>
             <td class="tl"><span class="f_red">*</span> 身份证正面</td>
             <td class="tr">
-                <input name="thumb" id="thumb" type="text" size="60" readonly/>
-                &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb').value, true);" class="t">[上传]</a>
+                <input name="thumb" id="thumb" type="text" size="60" readonly />
+                &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb').value, true,'thumb');" class="t">[上传]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[预览]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[删除]</a>
                 <span id="dthumb" class="f_red"></span>
@@ -276,12 +276,13 @@
 		<tr>
             <td class="tl"><span class="f_red">*</span> 身份证反面</td>
             <td class="tr">
-                <input name="thumb1" id="thumb1" type="text" size="60" readonly/>
-                &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb1').value, true);" class="t">[上传]</a>
+                <input name="thumb1" id="thumb1" type="text" size="60" readonly />
+                &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb1').value, true, 'thumb1');" class="t">[上传]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb1').value);" class="t">[预览]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb1').value='';" class="t">[删除]</a>
                 <span id="dthumb1" class="f_red"></span>
             </td>
+
         </tr>
 
         <tr>

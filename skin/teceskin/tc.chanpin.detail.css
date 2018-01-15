@@ -564,17 +564,13 @@
 .relate-article .news-item-tags{
     margin-top:8px;
 }
-.relate-article .news-item-tags a{
+.relate-article .news-item-tags span{
     display: inline-block;
     font-size:12px;
     margin-right: 6px;
     padding: 5px 8px;
     background-color: #f1f1f1;
     color: #888;
-}
-.relate-article .news-item-tags a:hover{
-    background-color: #e53935;
-    color: #fff;
 }
 .relate-article .news-item-time{
     margin-top:8px;

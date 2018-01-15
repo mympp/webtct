@@ -62,6 +62,24 @@
 
                     <div class="weui-cell">
                         <div class="weui-cell__hd">
+                            <i class="weui-tabbar__icon iconfont icon-lock"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <input id="secondPassWord" class="weui-input" type="password" tabindex="2"
+                                   name="post[password_second]"
+                                   data-rule="required;length[6~20]"
+                                   data-tip="6-20个字符，字母、数字、英文符号，区分大小写"
+                                   placeholder="确认密码"
+                            />
+                        </div>
+                        <div class="weui-cell__ft">
+                            <i class="weui-tabbar__icon iconfont icon-attention see-password"></i>
+                        </div>
+                    </div>
+                    <div class="msg-box" for="secondPassWord"></div>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd">
                             <i class="weui-tabbar__icon iconfont icon-yanzhengma"></i>
                         </div>
                         <div class="weui-cell__bd">
@@ -110,11 +128,56 @@
                         </div>
                     </div>
                     <div class="msg-box" for="SMSCaptcha"></div>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd">
+                            <i class="weui-tabbar__icon iconfont icon-people"></i>
+                        </div>
+                        <div class="weui-cell__bd register-true-name weui-flex">
+                            <input id="frmTrueName" class="weui-input weui-flex__item" type="text" tabindex="1" name="post[truename]" data-tip="请与有效身份证件上的姓名保持一致" placeholder="真实姓名"/>
+
+                            <label class="register-true-name__label" for="genderMan">
+                                <input class="weui-check" name="post[gender]" value="1" type="radio" id="genderMan" checked="checked">
+                                <i class="weui-icon-checked"></i>
+                                <span>先生</span>
+                            </label>
+                            <label class="register-true-name__label" for="genderWoman">
+                                <input class="weui-check" name="post[gender]" value="2" type="radio" id="genderWoman">
+                                <i class="weui-icon-checked"></i>
+                                <span>女士</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="msg-box" for="frmTrueName"></div>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd">
+                            <i class="weui-tabbar__icon iconfont icon-location"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <input id="frmArea" class="weui-input" type="text" tabindex="2" data-rule="required;" readonly placeholder="所在地区" />
+                            <input type="hidden" name="post[areaid]"  value="" />
+                        </div>
+                    </div>
+                    <div class="msg-box" for="frmArea"></div>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd">
+                            <i class="weui-tabbar__icon iconfont icon-mail"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <input id="frmEmail" class="weui-input" type="email" tabindex="3" name="post[email]" placeholder="电子邮箱" />
+                        </div>
+                    </div>
+                    <div class="msg-box" for="frmEmail"></div>
                 </div>
 
                 <div class="weui_btn_area pd-20">
-                    <input type="submit" class="weui-btn tc-btn_primary" value="下一步" />
+                    <input type="submit" class="weui-btn tc-btn_primary" value="注 册"/>
                 </div>
+
+                <p class="agreement-tip mg-b-20">点击「注册」按钮，即代表你同意<a class="text-primary" href="javascript:;">《注册协议》</a>
+                </p>
             </form>
         </div>
         <!--注册 end-->
@@ -136,6 +199,7 @@
 
 <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<script src="{DT_PATH}file/script/wap/city-picker.min.js"></script>
 <script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="{DT_PATH}file/script/wap/tc.wap.core.js"></script>
 

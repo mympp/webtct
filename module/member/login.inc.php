@@ -45,10 +45,10 @@ if ($submit) {
     $cookietime = isset($cookietime) ? 86400 * 30 : 0;
     $login_success = false;
     $real_username = '';	//用于保存用户真实的用户名
-    $user;
+
     $tc_member = new tcdb('member');
     //验证是否用户名登陆
-    $check_username = $do->username_exists($username);		//判断用户名是否存在输入值
+    $check_username = $do->username_exists($username);		//判断用户名是否存在输入值;
     if($check_username){	//用户名存在输入值，验证登陆
     	$real_username = $username;
 		$user = $do->login($username,$password,$cookietime,false,false);
@@ -71,7 +71,6 @@ if ($submit) {
 	}
 	
 	if(!$login_success) errorMessage('登陆失败，请确认输入用户名/邮箱/手机和密码是否正确','login.php');
-	
 	//未提示错误表示登陆成功
 	if($user['forbid'] == '1'){
 		//用户状态为未激活，注销登陆，跳转到注册的step2页面

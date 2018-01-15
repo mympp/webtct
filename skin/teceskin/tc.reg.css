@@ -210,7 +210,7 @@ button,input,select,textarea {
 .frm-wrap{
 }
 .frm-control-group{
-    padding-bottom:25px;
+    padding-bottom:10px;
 }
 .frm-label{
     float: left;

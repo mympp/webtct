@@ -2,6 +2,7 @@
 namespace models\module;
 
 use models\helpers\query\CompanyValidateQuery;
+use models\helpers\query\CompanyQuery;
 
 //企业模块模型类，封装业务逻辑操作
 class companyModule extends baseModule
@@ -21,7 +22,7 @@ class companyModule extends baseModule
     }
 
     /**
-     * tc_company表操作对象
+     * tc_company_validate表操作对象
      */
     private function getCompanyValidate()
     {
@@ -65,6 +66,11 @@ class companyModule extends baseModule
         return $this->_validateStaus[$userid];
     }
 
+    /**
+     * 获取企业验证资料
+     * @param $userid
+     * @return string
+     */
     public function getValidateData($userid)
     {
         return $this->getCompanyValidate()->getData($userid);
@@ -125,6 +131,11 @@ class companyModule extends baseModule
     public function sendValidate($userid, $data)
     {
         return $this->getCompanyValidate()->sendValidate($userid,$data);
+    }
+
+
+    public function bindCompany($userid){
+
     }
 }
 

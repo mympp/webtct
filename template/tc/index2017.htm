@@ -942,35 +942,31 @@
 		<div class="layout-hd clearfix">
 			<h2>设备服务</h2>
 			<em class="intro">全国分地区分类，提供便捷的工程师上门服务</em>
-			<a href="{$MODULE[2][linkurl]}my.php?action=add&mid=9" target="_blank" class="btn-action">发布设备服务信息</a>
+			<a href="http://repair.tecenet.com/demander/repair-info/create" target="_blank" class="btn-action">发布设备服务信息</a>
 		</div>
+
 		<div class="layout-bd clearfix">
 			<div class="left-area w470">
 				<!--设备服务需求-->
 				<div class="col equipment-col">
 					<div class="col-hd pd-10 clearfix">
-						<h3 class="pull-left"><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?type=99')}" target="_blank">设备服务需求</a></h3>
-						<a class="more pull-right" href="{$MODULE[9]['linkurl']}{rewrite('search.php?type=99')}" target="_blank">更多</a>
+						<h3 class="pull-left"><a href="http://repair.tecenet.com/repair?ref=indexTab" target="_blank">设备维修需求</a></h3>
+						<a class="more pull-right" href="http://repair.tecenet.com/repair?ref=indexTab" target="_blank">更多</a>
 					</div>
 					<div class="col-bd">
-						{php $job_new_tags=tag("moduleid=9&fields=catid,linkurl,title,areaid,hits&condition=status=3 and step<4 &pagesize=8&order=itemid desc&debug=0&showcat=1&template=null")}
-
-						<?php foreach($job_catid as $r){
-                    		$job_category[$r['catid']] = $r['catname'];
-                    	}
-                    	?>
-						{loop $job_new_tags $k $t}
+						{if $repairData['repair_list']}
+						{loop $repairData['repair_list'] $k $t}
 						<div class="equipment-item">
 							<div class="title clearfix">
-								<a class="type" href="{$MODULE[9]['linkurl']}{rewrite('search.php?catid='.$t['catid'])}">{str_replace('服务','',$job_category[$t['catid']])}</a>
-								<h4 class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h4>
+								<a class="type" href="">维修</a>
+								<h4 class="text-overflow"><a href="{$t['link_url']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h4>
 							</div>
 							<div class="info">
-								<span class="desc"><b>地区：</b><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?areaid='.$t['areaid'])}">{area_pos($t['areaid'], '/', 2)}</a></span>
-								<span class="desc mgl-10"><b>关注：</b><i class="num">{$t['hits']}</i></span>
+								<span class="desc"><b>地区：</b><a href="{$t['region_url']}" target="_blank">{$t['region']}</a></span>
 							</div>
 						</div>
 						{/loop}
+						{/if}
 					</div>
 				</div>
 				<!--设备服务需求 end-->
@@ -979,24 +975,23 @@
 				<!--技术工程师-->
 				<div class="col engineer-col">
 					<div class="col-hd pd-10 clearfix">
-						<h3 class="pull-left"><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?action=resume')}" target="_blank">技术工程师</a></h3>
-						<a class="more pull-right" href="{$MODULE[9]['linkurl']}{rewrite('search.php?action=resume')}" target="_blank">更多</a>
+						<h3 class="pull-left"><a href="http://repair.tecenet.com/engineer?ref=indexTab" target="_blank">技术工程师</a></h3>
+						<a class="more pull-right" href="http://repair.tecenet.com/engineer?ref=indexTab" target="_blank">更多</a>
 					</div>
 					<div class="col-bd">
-						{php $resume_new_tags = tag("moduleid=9&fields=linkurl,thumb,title,truename,username,areaid&table=resume&condition=status=3 and thumb <> ''&pagesize=8&order=itemid desc&template=null&debug=0&showcat=1")}
-						{loop $resume_new_tags $k $t}
-						{php $com = $db->get_one("select thumb from {$db->pre}company where username = '".$t['username']."'")}
+						{if $repairData['engineer_list']}
+						{loop $repairData['engineer_list'] $k $t}
 						<div class="engineer-item">
-							<a href="{$t['linkurl']}" target="_blank" title="{$t['title']}"><img class="avatar pull-left lazy" src="{DT_SKIN}image/blank.gif" data-original="{useravatar($t[username],'large')}" alt="{$t['title']}"></a>
+							<a href="{$t['link_url']}" target="_blank" title="{$t['name']}"><img class="avatar pull-left lazy" src="{DT_SKIN}image/blank.gif" data-original="{useravatar($t[name],'large')}" alt="{$t['name']}"></a>
 							<div class="txt-area pull-right">
-								<h4 class="text-overflow"><a href="{$t['linkurl']}" target="_blank" title="{$t['title']}">{$t['title']}</a></h4>
+								<h4 class="text-overflow"><a href="{$t['link_url']}" target="_blank" title="{$t['name']}">{$t['name']}</a></h4>
 								<div class="info">
-									<span class="desc"><i class="user-icon"></i>{$t['truename']}</span>
-									<span class="desc mgl-10"><i class="local-icon"></i><a href="{$MODULE[9]['linkurl']}{rewrite('search.php?ation=resume&areaid='.$t['areaid'])}" title="{$t['title']}">{area_pos($t['areaid'], '/', 2)}</a></span>
+									<span class="desc"><i class="local-icon"></i><a href="{$t['region_url']}" title="{$t['name']}" target="_blank">{$t['region']}</a></span>
 								</div>
 							</div>
 						</div>
 						{/loop}
+						{/if}
 					</div>
 				</div>
 				<!--技术工程师 end-->

@@ -357,8 +357,16 @@ class member {
 	}
 
 	function get_one($username = '') {
-		$condition = $username ? "m.username='$username'" : "m.userid='$this->userid'";
-        return $this->db->get_one("SELECT * FROM {$this->table_member} m,{$this->table_company} c WHERE m.userid=c.userid AND $condition");
+		$user = array();
+		$condition = empty($username) ? "userid = {$this->userid}" : "username = '$username'";
+		$member = $this->db->get_one("select * from {$this->db->pre}member where $condition");
+		$company = $this->db->get_one("select * from {$this->db->pre}company where $condition");
+		if($company){
+			$user = array_merge($member, $company);
+		}else{
+			$user = $member;
+		}
+		return $user;
 	}
 
 	function get_list($condition, $order = 'userid DESC') {

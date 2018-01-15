@@ -1060,7 +1060,13 @@ function userinfo($username, $cache = 1) {
 		$user = $dc->get('user-'.$username);
 		if($user) return $user;
 	}
-	$user = $db->get_one("SELECT * FROM {$db->pre}member m, {$db->pre}company c WHERE m.userid=c.userid AND m.username='$username'");
+	$member = $db->get_one("select * from {$db->pre}member where username = '$username'");
+	$company = $db->get_one("select * from {$db->pre}company where username = '$username'");
+	if($company){
+		$user = array_merge($member, $company);
+	}else{
+		$user = $member;
+	}
 	if($cache && $CFG['db_expires'] && $user) $dc->set('user-'.$username, $user, $CFG['db_expires']);
 	return $user;
 }

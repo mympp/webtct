@@ -188,9 +188,9 @@
         <div class="side pull-right mgt-20">
             <div class="side-btn">
             	{if $typeid}
-            	<a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=5&typeid=1" class="go-btn">发布我的需求信息</a>
+            	<a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=5&typeid=1" target="_blank"  class="go-btn">发布我的需求信息</a>
             	{else}
-                <a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=5&typeid=0" class="go-btn">发布我的供应信息</a>
+                <a href="{$MODULE[2]['linkurl']}my.php?action=add&mid=5&typeid=0" target="_blank"  class="go-btn">发布我的供应信息</a>
                 {/if}
             </div>
 
@@ -230,7 +230,7 @@
                     <div class="rank-item clearfix">
                         <div class="num pull-left">{$k+1}</div>
                         <div class="info pull-right">
-                            <h4 class="text-overflow"><a href="{$MODULE[5]['linkurl']}{$t['linkurl']}">{$t['title']}</a></h4>
+                            <h4 class="text-overflow"><a target="_blank" href="{$MODULE[5]['linkurl']}{$t['linkurl']}">{$t['title']}</a></h4>
                             <p><span><a href="{sell_rewrite(['catid'=>$t['catid'],'typeid'=>$typeid])}" title="全国{$CATEGORY[$t['catid']]}{if $typeid}求购{else}需求{/if}">{$CATEGORY[$t['catid']]}</a></span><span><a href="{sell_rewrite(['areaid'=>$t['areaid'],'typeid'=>$typeid])}" title="{$AREA[$t['areaid']]['areaname']}医疗器械{if $typeid}求购{else}需求{/if}">{$AREA[$t['areaid']]['areaname']}</a></span></p>
                         </div>
                     </div>

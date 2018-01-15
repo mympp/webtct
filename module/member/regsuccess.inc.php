@@ -19,6 +19,7 @@ $auth = encrypt($user['userid']."\t".$user['username']."\t".$user['groupid']."\t
 $member = new tcdb('member');
 global $DT, $DT_TIME, $DT_IP;
 $member->where(['userid'=>$user['userid']])->edit(['loginip'=>$DT_IP,'logintime'=>$DT_TIME,'logintimes'=>'1']);
+
 set_cookie('auth', $auth, $cookietime);
 set_cookie('username', $user['username'], $DT_TIME + 30*86400);
 
