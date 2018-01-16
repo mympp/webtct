@@ -1,0 +1,285 @@
+{template 'module-header'}
+{template 'menu2017'}
+
+<link rel="stylesheet" href="http://www.tecenet.com/skin/teceskin/style.css?v20161216">
+<style>
+    img {
+        display: inline-block;
+    }
+
+    #topkeyword {
+        width: 310px;
+        height: 22px;
+        line-height: 22px
+    }
+</style>
+<div class="content box-center" style="width:980px;margin-top:20px;">
+    <div id="weizhi">
+        您当前的位置：
+        <a class="a05" href="{DT_PATH}">天成官网</a>
+        &gt;
+        {php $moduleLinkurl = $hotModule->linkurl;}
+        <a class="a05" href="{$moduleLinkurl}">热门关键词</a>
+        &gt;
+        <a class="a05" href="#">{$keyword['keyword']}</a>
+    </div>
+    <style>
+        .menu {
+            width: 100%;
+        }
+
+        .menu ul {
+            background: url('{DT_SKIN}image/index/sel.png');
+        }
+
+        .menu ul li {
+            float: left;
+            text-align: center;
+            width: 66px;;
+            margin: 0px;
+            border-left: 1px solid #ccc;
+            height: 28px;
+            line-height: 28px;
+            border-top: 1px solid #ccc;
+        }
+
+        .menu ul li span {
+        }
+
+        .menu ul .typey {
+            border-top: 2px solid #FF9C00;
+            background: white;
+        }
+
+        .menu ul .typey span {
+            color: #FF9C00;
+            font-weight: bold;
+        }
+
+        .menu ul .typen {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .keyword_list {
+        }
+
+        .keyword_list dt {
+            height: 28px;
+            line-height: 28px;
+            padding-left: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .keyword_list dt font {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .keyword_list dd {
+            border-width: 0px 1px 1px 1px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-style: solid;
+            border-color: #ccc;
+            padding-left: 3px;
+            overflow: hidden;
+            height: auto;
+        }
+
+        .keyword_list dd span {
+            margin: 3px 1px;
+        }
+
+        .keyword_list dd span a {
+            margin: 2px;
+            padding: 1px 3px;
+            border: 1px solid #ccc;
+        }
+
+        .keyword_list dd span a:hover {
+            margin: 2px;
+            padding: 1px 3px;
+            border: 1px solid #fd862f;
+            background: #fefeda;
+        }
+
+        .keyword_list ul {
+            width: 100%;
+        }
+
+        .keyword_content {
+            padding: 10px 0px;
+            height: auto;
+            overflow: hidden;
+            border-width: 0px 1px 1px 1px;
+            border-color: #ccc;
+            border-style: solid;
+            background: white;
+        }
+
+        .content {
+            padding: 10px 50px 10px 0px;
+        }
+
+        .contentleft {
+            width: 672px;
+        }
+
+        .showy {
+            display: block;
+        }
+
+        .shown {
+            display: none;
+        }
+
+        .more {
+            float: right;
+            margin-right: 18px;
+            margin-bottom: 30px;
+        }
+
+        .more a {
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .flw {
+            display: inline-block;
+            padding: 2px 1px;
+        }
+
+        .keyword_link {
+            width: 95%;
+            border: 1px solid #dcdcdc;
+            height: 70px;
+            margin-top: 20px;
+        }
+
+        .keylink_a {
+            padding-right: 25px;
+        }
+    </style>
+    <script>
+        function selecttype(id) {
+            var arr = new Array('16', '9', '6', '7', '5', '13', '4', '21', '15', '10');
+            var key = 0;
+            for (var k in arr) {
+                document.getElementById('menu_' + arr[k]).className = 'typen';
+                var a = parseInt(k) + 1;
+                document.getElementById('content' + a).className = 'shown';
+                if (arr[k] == id) {
+                    key = a;
+                }
+            }
+            document.getElementById('menu_' + id).className = 'typey';
+            document.getElementById('content' + key).className = 'showy';
+        }
+
+        function show_list(id){
+
+        }
+    </script>
+
+    <div class="divline"></div>
+    <div class="contentleft">
+
+        <div class="menu">
+            <ul>
+                {loop $category $key $cate}
+                    <li id="menu_{$cate['mid']}" onmouseover="selecttype({$cate['mid']})"
+                        class="{if $cate['mid'] == $keyword['moduleid']}typey{else}typen{/if}"
+                        {if $cate['mid'] == 10}style="border-right:1px solid #ccc;"{/if}>
+                        <span>{$cate['word']}</span>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+
+        <div style="clear:both;"></div>
+
+        <div class="keyword_content">
+
+            {template 'show-mall','hot'}
+
+            {template 'show-fuwu','hot'}
+
+            {template 'show-zhaobiao','hot'}
+
+            {template 'show-tech','hot'}
+
+            {template 'show-sell','hot'}
+
+            {template 'show-brand','hot'}
+
+            {template 'show-company','hot'}
+
+            {template 'show-article','hot'}
+
+            {template 'show-down','hot'}
+
+            {template 'show-know','hot'}
+        </div>
+
+    </div>
+
+    <div class="contentright">
+        <dl class="keyword_list contentright">
+            <dt style="background:#FF9C00"><font style="color:white;">最热商品</font></dt>
+            <dd>
+                {loop $recommendWord $k $v}
+                    <span class="flw">
+                        <a href="{$v['linkurl']}">{$v['keyword']}</a>
+                    </span>
+                {/loop}
+            </dd>
+        </dl>
+
+        <div class="divline"></div>
+
+        <dl class="keyword_list contentright">
+            <dt style="background:#FF9C00"><font style="color:white;">最新商品</font></dt>
+            <dd>
+                {loop $newWord $k $v}
+                    <span class="flw">
+                        <a href="{$v['linkurl']}">{$v['keyword']}</a>
+                    </span>
+                {/loop}
+            </dd>
+        </dl>
+
+        <div class="divline"></div>
+
+        <dl class="keyword_list contentright">
+            <dt style="background:#FF9C00;"><font style="color:white;">猜你喜欢</font></dt>
+            <dd>
+                {loop $relevantWord $k $v}
+                    <span class="flw">
+                        <a href="{$v['linkurl']}">{$v['keyword']}</a>
+                    </span>
+                {/loop}
+            </dd>
+        </dl>
+
+        <div class="divline"></div>
+
+        <dl>
+            <dl class="keyword_list contentright">
+                <dt style="background:#FF9C00"><font style="color:white;">关于我们</font>
+                </dt>
+                <dd style="padding:5px;">
+                    天成医疗网为您提供供应<?php echo $keyword['word']; ?>的最新产品供应商、制造商，囊括了供应<?php echo $keyword['word']; ?>
+                    产品的参数、型号、图片、价格等信息，<?php echo $keyword['word']; ?>
+                    维修，招标，相关品牌公司等全方面的信息，是供应<?php echo $keyword['word']; ?>产品的权威数据库。我们会尽全力为您提供准确、全面的信息!
+                </dd>
+            </dl>
+        </dl>
+    </div>
+
+
+</div>
+<div class="divline"></div>
+{$friendLinkView}
+
+{template 'footer2017'}

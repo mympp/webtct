@@ -556,6 +556,9 @@ show_menu($menus);
                     <a href="?moduleid=3&file=listsitemap&action=list&m=buy" class="t" onclick="this.style.color='red'">招标</a>
                     &nbsp;&nbsp;
                     <a href="?moduleid=3&file=listsitemap&action=list&m=hot" class="t" onclick="this.style.color='red'" >热词</a>
+                    &nbsp;&nbsp;
+                    <a href="?moduleid=3&file=listsitemap&action=list$m=mallArticle" class="t"
+                        onclick="this.style.color='red'">产品知识库</a>
                     <br/>
                     <iframe src="" name="send" id="send" style="display:none;" scrolling="no" frameborder="0"></iframe>
                     <?php foreach($mods as $md){?>

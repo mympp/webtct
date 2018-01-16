@@ -6,6 +6,8 @@ defined('IN_DESTOON') or exit('Access Denied');
 //scws分词处理工具，使用需要开启scws拓展
 class scws
 {
+    const STOP_WORD_CACHE_KEY = 'tc_stop_word';
+
     protected $scws;
     public $word;
 
@@ -81,16 +83,24 @@ class scws
         return $result;
     }
 
-
+    /**
+     * 获取敏感词数组
+     * @return array|bool|mixed|string
+     */
     public function getStopWord()
     {
-        if (!file_exists(__DIR__ . '/stop_word.txt')) {
-            return false;
-        }
-        $stopWord = file(__DIR__ . '/stop_word.txt');
-        $result = [];
-        foreach($stopWord as $word){
-            $result[] = trim($word);
+        global $dc;
+        $result = $dc->get(self::STOP_WORD_CACHE_KEY);
+        if(empty($result)){
+            if (!file_exists(__DIR__ . '/stop_word.txt')) {
+                return false;
+            }
+            $stopWord = file(__DIR__ . '/stop_word.txt');
+            $result = [];
+            foreach($stopWord as $word){
+                $result[] = trim($word);
+            }
+            $dc->set(self::STOP_WORD_CACHE_KEY , $result, (3600*12));
         }
         return $result;
     }

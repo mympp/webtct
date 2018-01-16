@@ -116,6 +116,9 @@ switch($m){
         $itemid = $keyword_db->field('itemid')->where(['status'=>3])->all();
         buildSoSitemap($itemid,DT_PATH.'hot/','Hot','show');
         break;
+    case 'mallArticle':
+
+        break;
 }
 
 msg('SiteMaps 更新成功', '?moduleid='.$moduleid.'&file=setting#sitemaps');

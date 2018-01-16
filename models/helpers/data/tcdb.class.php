@@ -77,12 +77,14 @@ class tcdb{
         return $this;
     }
 
+    //限制
     public function limit($start = 0,$pagesize = 10){
         $this->start = $start;
         $this->pagesize = $pagesize;
         return $this;
     }
 
+    //指定返回字段
     public function field($field)
     {
         if ($field == '') return $this;

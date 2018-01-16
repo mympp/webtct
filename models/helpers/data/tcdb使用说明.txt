@@ -1,0 +1,129 @@
+需要先引入 /models/autoload.php
+
+声明 use models\helpers\data\tcdb;
+
+1、创建表操作对象
+$mallDb = new tcdb('mall');
+
+2、直接执行sql语句 query()
+$mallDb->query("select * from tc_mall order by itemid desc limit 0,10");
+
+3、条件 where()
+$mallDb->where(['status' => 3 , 'areaid' => 1])->order('itemid desc')->select();
+//会转换为 select * from tc_mall where status = '3' and areaid = '1' order by itemid desc limit 0,10;
+
+//多条件拼接
+$mallDb->where(['status' => 3])->where(['areaid' => 1])->select();
+//会转换为 select * from tc_mall where status = '3' and areaid = '1' limit 0,10;
+
+//判断条件
+$mallDb->where(['status' => 3])->where(['addtime' => 0], '>')->select();
+//会转换为 select * from tc_mall where status = '3' and addtime > '0' limit 0,10;
+$mallDb->where(['areaid' => "1','2','3','4','5"],'in')->selct();
+//会转换为 select * from tc_mall where areaid in ('1','2','3','4','5') limit 0,10;
+
+//OR查询
+$mallDb->where(['status' => 3])->where(['addtime' => 0], '>',false)->select();
+//会转换为 select * from tc_mall where status = '3' or addtime > '0' limit 0,10;
+
+4、模糊查询条件 likeWhere()
+$mallDb->likeWhere(['title' => '测试'])->select();
+//转换为 select * from tc_mall where title like '%测试%' limit 0,10;
+$mallDb->where(['title' => '测试'],'like')->select();
+//效果一致
+
+//多条件查询
+$mallDb->likeWhere(['title' => '测试'])->likeWhere(['title' => '广东'],false)->select();
+//转换为 select * from tc_mall where title like '%测试%' or title like '%广东%' limit 0,10;
+
+//左右匹配
+$mallDb->where(['title' => '测试'],'like','left')->select();
+//转换为 select * from tc_mall where title like '%测试' limit 0,10;
+
+5、查询 返回结果都是数组
+//one() 所有sql语句都会加上 limit 0,1
+$mallDb->where(['status' => 3])->one();
+//会转换为 select * from tc_mall where status = '3' limit 0,1;
+
+//select() 所有sql语句加上数量限制，默认开始位置为0，取10条数据，修改设置需要使用limit()方法
+$mallDb->where(['status' => 3])->select();
+//会转换为 select * from tc_mall where status = '3' limit 0,10;
+
+// all() 返回搜索所有结果
+$mallDb->where(['status' => 3])->all();
+//会转换为 select * from tc_mall where status = '3';
+
+//count() 返回统计内容
+$mallDb->where(['status' => 3])->count();
+//会转换为 select count(*) as count from tc_mall where status = '3';
+//指定字符
+$mallDb->where(['status' => 3])->count('c');
+//会转换为 select count(*) as c from tc_mall where status = '3';
+
+6、排序 order()
+$mallDb->where(['status' => 3])->order('itemid desc')->limit(0,10)->select();
+//会转换为 select * from tc_mall where status = 3 order by itemid desc limit 0,10;
+$mallDb->order(['addtime desc','itemid desc'])->all();
+$mallDb->order('addtime desc , itemid desc')->all();
+//都等同为 select * from tc_mall order by addtime desc,itemid desc ;
+
+7、数量限制 limit()
+$mallDb->where(['status' => 3])->limit(0,10)->select();
+//会转换为 select * from tc_mall where status = 3 limit 0,10;
+//limit方法只能和select方法一起使用
+$mallDb->where(['status' => 3])->limit(0,10)->all();
+//会转换为 select * from tc_mall; limit方法不起作用
+
+8、指定字段 field()
+$mallDb->field('itemid,title')->where(['status' => 3])->limit(0,10)->select();
+//会转换为 select itemid,title from tc_mall where status = 3 limit 0,10;
+//field参数也可以是数组
+$mallDb->field(['itemid','title'])->where(['status' => 3])->limit(0,10)->select();
+//效果相同
+
+9、连接查询 join()
+$mallDb->join('tc_member','tc_member.username = tc_mall.username','left')->all();
+//转换为 select * from tc_member left join tc_member on tc_member.username = tc_mall.username ;
+
+10、添加内容 add()
+$mallDb->add(['title' => '测试']);
+//转换为 insert into tc_mall (title) values ('测试');
+
+11、批量添加 batchAdd()
+$mallDb->batchAdd(['title','areaid'],[
+    ['测试1','1'],
+    ['测试2','2'],
+]);
+//转换为 insert into tc_mall (title,areaid) values (('测试1','1'),('测试2','2'));
+
+12、修改 edit()
+$mallDb->edit(['title' => '测试'],['itemid' => 1]);
+//转换为 update tc_mall set title = '测试' where itemid = '1';
+$mallDb-where(['itemid' => 1])->edit(['title' => '测试']);
+//效果相同
+
+13、删除 delete()
+$mallDb->delete(['itemid' => 1]);
+//转换为 delete from tc_mall where itemid = '1';
+
+14、获取添加后新数据的id值 getInsertId()
+$mallDb->add(['title' => '测试']);
+$mallDb->getInsertId();
+
+15、获取上一次执行的sql语句 getQueryStr()
+$mallDb->getQueryStr();
+
+16、获取当前的条件设置 getCondition()
+$mallDb->getCondition();
+
+17、获取错误提示 $errmsg
+$mallDb->errmsg;
+
+18、重置设置 restart()
+$mallDb->restart();
+
+19、关闭数据库连接
+$mallDb->close();
+
+
+

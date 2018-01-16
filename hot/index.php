@@ -1,5 +1,4 @@
 <?php
-use models\helpers\data\tcdb;
 use models\helpers\widget\redirect\pc_to_wap;
 use models\helpers\view\pagination;
 use models\module\baseModule;
@@ -8,6 +7,7 @@ require_once '../common.inc.php';
 require_once '../models/autoload.php';
 require_once 'common.inc.php';
 
+//跳转到对应移动端
 $forwordModule = [
     '16' => 'mall',
     '6' => 'buy',
@@ -15,26 +15,22 @@ $forwordModule = [
     '4' => 'company',
     '21' => 'article',
 ];
-
-$module_arr=array(16=>'产品',9=>'维修',6=>'招标',7=>'科技',5=>'供求',13=>'品牌',4=>'网店',21=>'资讯',15=>'共享',10=>'问答');
-$page =isset($page)?$page:1;
-
 $mid = empty($mid) ? 16 : $mid; 	//默认mid为16
+$page =isset($page)?$page:1;
 if(in_array($mid,array_keys($forwordModule))){
-    $wapurl = pc_to_wap::forword('hot-'.$forwordModule[$mid].'.html');        //跳转到对应移动端
+    $wapurl = pc_to_wap::forword('hot-'.$forwordModule[$mid].'-'.$page.'.html');
 }
 
-$keyword_db = new tcdb('keyword');
-$count = $keyword_db->where(['moduleid'=>$mid,'status'=>3])->count('c');
 $pagesize=80;
-if($page){
-    $start=$pagesize*$page;
-}
-$start=$page==0?0:($pagesize*($page-1));
+
+//搜索列表
+$hotModule = baseModule::moduleInstance('hot');
+$keywordSearch = $hotModule->getList($mid , $page , $pagesize);
+$count = $keywordSearch['count'];
+$lists = $keywordSearch['lists'];
 
 //分页按钮
-$hotModule = baseModule::moduleInstance('hot');
-$pagination = new pagination($page,$count['c'],$pagesize);
+$pagination = new pagination($page,$count,$pagesize);
 $pagination->setModule($hotModule);
 $pagination->setCurrentTip('class="on"');
 $pages = $pagination->show($hotModule->linkurl,[
@@ -44,7 +40,6 @@ $pages = $pagination->show($hotModule->linkurl,[
 
 //分类
 $category = $hotModule->getCache('getCategory',[],(3600*24));
-$keyword_arr = $keyword_db->where(['moduleid'=>$mid,'status'=>3])->order('month_search desc,updatetime desc')->limit($start,$pagesize)->select();	//关键词列表
 
 //seo设置
 $module_word = $module_arr[$mid];

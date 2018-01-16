@@ -3,7 +3,7 @@ namespace models\module;
 
 use models\helpers\query\KeywordQuery;
 
-//科室模块模型类，封装业务逻辑操作,充当外观角色
+//产品关键词模块模型类，封装业务逻辑操作,充当外观角色
 class keywordModule extends baseModule
 {
 

@@ -78,18 +78,12 @@
 
     </div>
     <div class="keyword">
-        <?php
-	if ($keyword_arr) {
-		$i = 0;
-		foreach ($keyword_arr as $key => $value) {
-        if($i%5==0){
-        echo "<br>";
-        }
-        printf('<span><a href="/hot/show-%s.html" title="%s"> %s </a></span>',$value['itemid'],$value['keyword'],dsubstr($value['keyword'],28,'...'));
-        $i++;
-        }
-        }
-        ?>
+        {php $i = 0;}
+        {loop $lists $k $word}
+            {if $i % 5 == 0} <br/>{/if}
+            <span><a href="{$word['linkurl']}" title="{$word['keyword']}">{$word['keyword']}</a></span>
+            {php $i++}
+        {/loop}
     </div>
     <div class="pages keyword-footer">
         {$pages}
