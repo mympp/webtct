@@ -1,11 +1,20 @@
 <li class="hot-product-item clearfix">
-	<div class="hot-product-img">
-		<a href="{$MODULE[16]['linkurl']}{$mall['linkurl']}" target="_blank" title="{$mall['title']}">
-			<img src="{$mall['thumb']}"  alt="{$mall['title']}">
-		</a>
-	</div>
-	<div class="hot-product-name">
-		<a href="{$MODULE[16]['linkurl']}{$mall['linkurl']}" target="_blank" title="{$mall['title']}">{$mall['title']}</a>
-	</div>
-	<div class="hot-product-num"><i class="iconfont icon-hot"></i>{$mall['hits']}</div>
+    <div class="hot-product-img">
+		{php $find = strpos($mall['linkurl'],'http')}
+        <?php
+            if($find !== false){
+                $linkurl = $mall['linkurl'];
+            }else{
+                $linkurl = $MODULE[16]['linkurl'].$mall['linkurl'];
+            }
+        ?>
+        <a href="{$linkurl}" target="_blank" title="{$mall['title']}">
+            <img src="{$mall['thumb']}" alt="{$mall['title']}">
+        </a>
+    </div>
+    <div class="hot-product-name">
+        <a href="{$linkurl}" target="_blank"
+           title="{$mall['title']}">{$mall['title']}</a>
+    </div>
+    <div class="hot-product-num"><i class="iconfont icon-hot"></i>{$mall['hits']}</div>
 </li>

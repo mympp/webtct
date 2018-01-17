@@ -11,7 +11,7 @@ class tagsModule extends baseModule
     {
         $this->moduleid = 0;
         $this->modulename = '标签';
-        $this->linkurl = DT_PATH . 'tags';
+        $this->linkurl = DT_PATH . 'tag';
     }
 
     private function buildShowLinkurl($tags){
@@ -28,7 +28,7 @@ class tagsModule extends baseModule
     //获取展示地址伪静态改写
     public function searchRewrite($selector)
     {
-        $tagid = (isset($selector['tagid'])) ? '-'.$selector['tagid'] : '';
+        $tagid = (isset($selector['tagid'])) ? '_'.$selector['tagid'] : '';
         return 'show'.$tagid.'.html';
     }
 

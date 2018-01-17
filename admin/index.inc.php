@@ -44,6 +44,9 @@ switch($action) {
 			tohtml('index');
 			msg('全部缓存更新成功');
 		} else {
+			global $dc;
+			$dc->clear();	//清理数据缓存
+
 			cache_clear('group');
 			cache_group();
 			cache_clear('type');
