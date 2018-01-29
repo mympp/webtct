@@ -10,6 +10,7 @@ class MallValidateQuery extends BaseQuery
     const NEED_STATUS = 1;  //必填证件状态
     const UNNEED_STATUS = 0;    //非必填状态
     const NEED_TITLE = '注册证';  //必须上传的证件
+    const TABLE_NAME = 'mall_validate';
 
     /**
      * 添加产品关联证书
@@ -63,7 +64,7 @@ class MallValidateQuery extends BaseQuery
         }
 
         $addCert = [];  //保存需要新增的证书
-        $mallValidateDb = $this->getDb(mall_validate);
+        $mallValidateDb = $this->getDb(self::TABLE_NAME);
         foreach ($cert as $key => $item) {
             if (empty($item['document'])) continue;
 
@@ -107,7 +108,7 @@ class MallValidateQuery extends BaseQuery
         } else {
             $idStr = $itemid;
         }
-        return $this->getDb('mall_validate')
+        return $this->getDb(self::TABLE_NAME)
             ->where(['itemid' => $idStr], 'in')->delete();
     }
 
@@ -118,7 +119,7 @@ class MallValidateQuery extends BaseQuery
      */
     public function getListByMall($mallid)
     {
-        return $this->getDb('mall_validate')
+        return $this->getDb(self::TABLE_NAME)
             ->field('itemid,title,thumb,addtime,edittime,expiretime,isMust')
             ->where(['mallid' => $mallid])->all();
     }
@@ -129,7 +130,7 @@ class MallValidateQuery extends BaseQuery
      */
     public function getCountByMall($mallid)
     {
-        $count = $this->getDb('mall_validate')->where(['mallid' => $mallid])->count('c');
+        $count = $this->getDb(self::TABLE_NAME)->where(['mallid' => $mallid])->count('c');
         if ($count) {
             return $count['c'];
         } else {
@@ -144,7 +145,7 @@ class MallValidateQuery extends BaseQuery
      */
     public function changeStatus($itemid,$status){
         $idStr = is_array($itemid) ? implode(',',$itemid) : $itemid;
-        return $this->getDb('mall_validate')->where(['itemid'=>$idStr],'in')->edit(['status'=>$status]);
+        return $this->getDb(self::TABLE_NAME)->where(['itemid'=>$idStr],'in')->edit(['status'=>$status]);
     }
 
     /**
@@ -154,7 +155,24 @@ class MallValidateQuery extends BaseQuery
      */
     public function changeStatusByMall($mallid,$status){
         $idStr = is_array($mallid) ? implode(',',$mallid) : $mallid;
-        return $this->getDb('mall_validate')->where(['mallid'=>$idStr],'in')->edit(['status'=>$status]);
+        return $this->getDb(self::TABLE_NAME)->where(['mallid'=>$idStr],'in')->edit(['status'=>$status]);
+    }
+
+    /**
+     * 获取产品注册证图片
+     * @param $mallid
+     * @return string
+     */
+    public function getRegisterPic($mallid){
+        $result = $this->getDb(self::TABLE_NAME)
+            ->field('thumb')
+            ->where(['isMust' => 1,'mallid' => $mallid,'status' => self::CHECKED_STATUS])
+            ->one();
+        if($result){
+            return $result['thumb'];
+        }else{
+            return '';
+        }
     }
 
 

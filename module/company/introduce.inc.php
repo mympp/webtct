@@ -1,5 +1,9 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
+require_once 'new.init.inc.php';
+require_once 'new.left.inc.php';
+$memberInfo = $homepageModule->getMemberInfo();
+
 $table = $DT_PRE.'page';
 $table_data = $DT_PRE.'page_data';
 if($itemid) {
@@ -28,5 +32,7 @@ while($r = $db->fetch_array($result)) {
 	$r['linkurl'] = userurl($username, "file=$file&itemid=$r[itemid]", $domain);
 	$TYPE[] = $r;
 }
+
+
 include template('introduce', $template);
 ?>

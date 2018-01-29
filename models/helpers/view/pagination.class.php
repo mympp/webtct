@@ -140,6 +140,7 @@ class pagination
         $back = '';
         if (!empty($params)) {
             foreach ($params as $k => $v) {
+                if($k != 'page')
                 $back .= "<input type=\"hidden\" name=\"$k\" value=\"$v\" />";
             }
         }

@@ -6,11 +6,12 @@ use models\helpers\data\tcdb;
 //商家资质申请验证处理类
 class CompanyValidateQuery extends BaseQuery
 {
-    const COMPANY_VALIDATED_STATUS = 1;
-    const VALIDATED_STATUS = 3;
-    const CHECK_STATUS = 2;
-    const UNVALIDATE_STATUS = 0;
-    const FORBID_STATUS = 4;
+    const TABLE_NAME = 'company_validate';
+    const COMPANY_VALIDATED_STATUS = 1; //企业表认证状态（旧版数据信息）
+    const VALIDATED_STATUS = 3;     //企业资料已验证状态
+    const CHECK_STATUS = 2;         //企业资料待审核状态
+    const UNVALIDATE_STATUS = 0;    //企业资料不通过状态
+    const FORBID_STATUS = 4;        //企业禁止状态
     private $_companyDb;
     private $_memberDb;
     private $_companyValidateDb;
@@ -60,6 +61,7 @@ class CompanyValidateQuery extends BaseQuery
      */
     public function getValidateStatus($userid, $username = '')
     {
+        /*
         $company = $this->getDb('company')->field('validated')
             ->where(['userid' => $userid])->one();
         //原始destoon判断商家验证的条件1：判断tc_company表的validated值是否为1
@@ -85,7 +87,7 @@ class CompanyValidateQuery extends BaseQuery
                 return self::CHECK_STATUS;
             }
         }
-
+        */
         $companyValidateDb = $this->getDb('company_validate');
         $companyValidate = $companyValidateDb->field('status')->where(['userid' => $userid])->one();
         if (!empty($companyValidate)) {
@@ -182,6 +184,23 @@ class CompanyValidateQuery extends BaseQuery
      */
     public function getListDataCount(){
         return $this->_listCount;
+    }
+
+    /**
+     * 判断用户是否已上传有效的生产许可证
+     * @param $userid
+     * @return bool
+     */
+    public function hasProductLicense($userid){
+        $result = $this->getDb(self::TABLE_NAME)
+            ->field('userid')
+            ->where(['userid' => $userid , 'status' => self::VALIDATED_STATUS])
+            ->where(['product_license' => ''],'<>')->one();
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 

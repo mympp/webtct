@@ -11,4 +11,5 @@ $links = $link_db->field('title,linkurl')->where(['status'=>3,'link_moduleid'=>6
 $seo_file = 'index';
 include DT_ROOT.'/include/seo.inc.php';
 include template($MOD['template_index'] ? $MOD['template_index'] : 'index', $module);
+
 ?>

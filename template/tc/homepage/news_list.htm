@@ -1,0 +1,32 @@
+<div class="tp-main pull-right">
+    <div class="tp-main-box">
+        <div class="tp-main-box-head">
+            <p>Company News</p>
+            <h1>公司动态</h1>
+        </div>
+        <div class="tp-main-box-body">
+            <ul class="tp-news-list">
+                {loop $newsLists $key $item}
+                <li class="tp-news-item clearfix">
+                    <div class="tp-news-date">
+                        <span>{date('Y-m',$item['addtime'])}</span>
+                        <span>{date('d',$item['addtime'])}</span>
+                    </div>
+                    <div class="tp-news-text">
+                        <strong class="tp-news-title"><a href="{$item['linkurl']}" target="_self">{$item['title']}</a></strong>
+                        <div class="tp-news-desc">
+                            {$item['introduce']}
+                            <a href="{$item['linkurl']}" target="_self">[详细]</a>
+                        </div>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+
+            <!--pagination-->
+            {$pages}
+            <!--pagination end-->
+
+        </div>
+    </div>
+</div>

@@ -1,5 +1,9 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
+
+require_once 'new.init.inc.php';
+require_once 'new.left.inc.php';
+
 $comment = 0;
 if(isset($MODULE[16])) {
 	$table = $DT_PRE.'mall_comment';

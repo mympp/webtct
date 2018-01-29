@@ -1,17 +1,44 @@
-{template 'header', $template}
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a></div>
+{php $head_css = [DT_SKIN.'homepage/tc.template.other.min.css'];}
+<?php $footer_js = [DT_PATH.'file/script/homepage/jquery.fancybox-1.3.4.min.js',DT_PATH.'file/script/homepage/tc.template.credit.js']; ?>
+{template 'header2018', $template}
 
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
-	<div class="px13 lh18">
-	<table width="98%" cellpadding="3" cellspacing="3" align="center">
-	{loop $lists $k $v}
-	{if $k%3==0}<tr align="center">{/if}
-	<td width="33%"><a href="{$v[linkurl]}" target="_blank">{$v[title]}</a></td>
-	{if $k%3==2}</tr>{/if}
-	{/loop}
-	</table>
-	</div>
-	<div class="pages">{$pages}</div>
+<!--tp-crumb-->
+<div class="tp-crumb">
+    <div class="tp-container clearfix">
+        <div class="hd pull-left"><i class="iconfont icon-shouye-copy"></i>您当前的位置：</div>
+        <div class="bd pull-left">
+            <a href="<?php echo $homepageModule->linkurl; ?>">首页</a>
+            <span>&gt;</span>
+            <a href="<?php echo $homepageModule->friendLinkUrl; ?>">友情链接</a>
+        </div>
+    </div>
 </div>
-{template 'footer', $template}
+<!--tp-crumb end-->
+
+<!--tp-container-->
+<div class="tp-container clearfix">
+    <div class="tp-main pull-right">
+        <div class="tp-main-box">
+            <div class="tp-main-box-head">
+                <p>Links</p>
+                <h1>友情链接</h1>
+            </div>
+            <div class="tp-main-box-body">
+
+                <ul class="links-wrap">
+                    {loop $lists $key $item}
+                    <li class="links-item"><a href="{$item['linkurl']}" title="{$item['title']}" target="_blank">{$item['title']}</a>
+                    </li>
+                    {/loop}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    {template 'left',$template}
+</div>
+<!--tp-container end-->
+
+
+{template 'footer2018', $template}

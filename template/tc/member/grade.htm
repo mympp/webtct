@@ -1,874 +1,279 @@
-{if $_REQUEST['action']==''}
+{php $head_css = [DT_SKIN.'tc.grade.min.css','https://cdn.bootcss.com/jquery-datetimepicker/2.5.16/jquery.datetimepicker.min.css'];}
+<?php $footer_js = [DT_PATH.'lang/zh-cn/lang.js',DT_PATH.'file/script/config.js',DT_PATH.'file/script/common.js',
+    DT_PATH.'file/script/admin.js',DT_PATH.'file/script/member/modal.min.js',DT_PATH.'file/script/jquery.validator.min.js',
+    DT_PATH.'file/script/zh-CN.js','https://cdn.bootcss.com/jquery-datetimepicker/2.5.16/jquery.datetimepicker.full.min.js',
+    DT_PATH.'file/script/member/grade.js',
+]; ?>
+{php $menu = 'menu2017';}
+{php $module = '';}
 {template 'module-header'}
-<script src="http://www.tecenet.com/file/script/config.js"></script>
-<script src="http://www.tecenet.com/file/script/common.js"></script>
-<script src="http://www.tecenet.com/file/script/jsfunction.js"></script>
 
-{template 'menu2017'}
+<!--grade-wrap-->
+<div class="grade-wrap">
+    <div class="grade-container w1200 box-center clearfix">
+        <div class="con-wrap contrast pull-left">
+            <p class="tr tr-1">服务范围\会员组</p>
+            <p class="tr tr-2">收费模式</p>
+            <p class="tr tr-3">年费</p>
+            <p class="tr tr-4">允许发布信息</p>
+            <p class="tr tr-6">专门定制宣传单页</p>
+            <p class="tr tr-7">拥有VIP标识 </p>
+            <p class="tr tr-8">站内排名推荐</p>
+            <p class="tr tr-9">产品首页推荐</p>
+            <p class="tr tr-10">关键字置顶</p>
+            <p class="tr tr-11">自定义公司主页</p>
+            <p class="tr tr-12">自定义公司模板</p>
+            <p class="tr tr-13">收件箱容量</p>
+            <p class="tr tr-14">每日可发站内信</p>
+            <p class="tr tr-15">每日询盘次数</p>
+            <p class="tr tr-16">每日报价次数</p>
+            <p class="tr tr-17">商友数量数量</p>
+            <p class="tr tr-18">贸易提醒数量</p>
+            <p class="tr tr-19">商机收藏数量</p>
+            <p class="tr tr-20">发布商品数量</p>
+            <p class="tr tr-21">供应信息数量</p>
+            <p class="tr tr-22">公司相册数量</p>
+            <p class="grade-btn-area"></p>
+        </div>
+        <div class="con-wrap common pull-left">
+            <p class="tr tr-1">个人会员</p>
+            <p class="tr tr-2">免费</p>
+            <p class="tr tr-3"><i>¥</i><em>0</em>元/年</p>
+            <p class="tr tr-4">
+                <a href="http://repair.tecenet.com/" target="_blank">维修需求</a>|
+                <a href="http://www.tecenet.com/zixun/" target="_blank">信息资讯</a>|
+                <a href="http://www.tecenet.com/gongying/" target="_blank">求购信息</a>
+                <br>
+                <a href="http://www.tecenet.com/wenda/" target="_blank">行业问答</a>|
+                <a href="http://www.tecenet.com/zhaobiao/" target="_blank">招标采购</a>|
+                <a href="http://www.tecenet.com/gongxiang/" target="_blank">资料共享</a>
+            </p>
+
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr">50</p>
+            <p class="tr">10</p>
+            <p class="tr">10</p>
+            <p class="tr">0</p>
+            <p class="tr">10</p>
+            <p class="tr">1</p>
+            <p class="tr">20</p>
+            <p class="tr">0</p>
+            <p class="tr">100</p>
+            <p class="tr">3</p>
+            {if $_userid}
+            <p class="grade-btn-area">
+                <span class="grade-btn-msg">您已是天成会员</span>
+            </p>
+            {else}
+            <p class="grade-btn-area">
+                <a href="http://www.tecenet.com/member/register.php" class="grade-btn">立即注册</a>
+                <span class="grade-btn-msg">免费注册</span>
+            </p>
+            {/if}
+        </div>
+        <div class="con-wrap enterprise pull-left">
+            <p class="tr tr-1">企业会员</p>
+            <p class="tr tr-2">免费</p>
+            <p class="tr tr-3"><i>¥</i><em>0</em>元/年</p>
+            <p class="tr tr-4">
+                <a href="http://www.tecenet.com/chanpin/" target="_blank">产品中心</a>|
+                <a href="http://repair.tecenet.com/" target="_blank">维修需求</a>|
+                <a href="http://www.tecenet.com/gongying/" target="_blank">求购信息</a>|
+                <a href="http://www.tecenet.com/gongying/" target="_blank">供应信息</a>
+                <br>
+                <a href="http://www.tecenet.com/zixun/" target="_blank">信息资讯</a>|
+                <a href="http://www.tecenet.com/wenda/" target="_blank">行业问答</a>|
+                <a href="http://www.tecenet.com/zhaobiao/" target="_blank">招标采购</a>|
+                <a href="http://www.tecenet.com/gongxiang/" target="_blank">资料共享</a>
+            </p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-chacha"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr">200</p>
+            <p class="tr">500</p>
+            <p class="tr">10</p>
+            <p class="tr">3</p>
+            <p class="tr">50</p>
+            <p class="tr">1</p>
+            <p class="tr">50</p>
+            <p class="tr">50</p>
+            <p class="tr">不限</p>
+            <p class="tr">5</p>
+            {if $isCompanyGroup}
+            <p class="grade-btn-area">
+                <span class="grade-btn-msg">您已是企业会员</span>
+            </p>
+            {elseif $_userid}
+            <p class="grade-btn-area">
+                <a href="javascript:;" class="grade-btn">立即升级</a>
+                <span class="grade-btn-msg">限时免费开放</span>
+            </p>
+            {else}
+            <p class="grade-btn-area">
+                <a href="http://www.tecenet.com/member/register.php" class="grade-btn">立即注册</a>
+                <span class="grade-btn-msg">免费注册</span>
+            </p>
+            {/if}
+        </div>
+        <div class="con-wrap vip pull-left">
+            <p class="tr tr-1">VIP会员</p>
+            <p class="tr tr-2">包年</p>
+            <p class="tr tr-3"><i>¥</i><em>6800</em>元/年</p>
+            <p class="tr tr-4">
+                <a href="http://www.tecenet.com/chanpin/" target="_blank">产品中心</a>|
+                <a href="http://repair.tecenet.com/" target="_blank">维修需求</a>|
+                <a href="http://www.tecenet.com/gongying/" target="_blank">求购信息</a>|
+                <a href="http://www.tecenet.com/gongying/" target="_blank">供应信息</a>
+                <br>
+                <a href="http://www.tecenet.com/zixun/" target="_blank">信息资讯</a>|
+                <a href="http://www.tecenet.com/wenda/" target="_blank">行业问答</a>|
+                <a href="http://www.tecenet.com/zhaobiao/" target="_blank">招标采购</a>|
+                <a href="http://www.tecenet.com/gongxiang/" target="_blank">资料共享</a>
+            </p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr"><i class="iconfont icon-duigou"></i></p>
+            <p class="tr">500</p>
+            <p class="tr">100</p>
+            <p class="tr">100</p>
+            <p class="tr">100</p>
+            <p class="tr">200</p>
+            <p class="tr">8</p>
+            <p class="tr">100</p>
+            <p class="tr">不限</p>
+            <p class="tr">不限</p>
+            <p class="tr">不限</p>
+            {if $isVipGroup}
+            <p class="grade-btn-area">
+                <span class="grade-btn-msg">您已是VIP会员</span>
+            </p>
+            {else}
+            <p class="grade-btn-area">
+                <a href="javascript:;" class="grade-btn">立即购买</a>
+                <span class="grade-btn-msg">限时特惠供应</span>
+            </p>
+            {/if}
+        </div>
+    </div>
+</div>
+<!--grade-wrap end-->
 
 
-<style type="text/css">
-    .webmenulist {
-        width: 750px;
-    }
-    .ui_content input[type="text"],.ui_content textarea{padding: 5px;margin:5px;border: 1px solid #eaeaea;}
-</style>
-<script type="text/javascript">
-    // Dd('youcan').innerHTML = "<a href=\"{DT_PATH}\" class='wcolor h4'>天成网首页</a>";
-</script>
-<style type="text/css">
-    .title {
-        text-align: center;
-        background: #e9fed1;
-        border: 1px solid #33cc00;
-        line-height: 30px;
-        height: 30px;
-        font-size: 16px;
-        margin-bottom: 10px;
-        padding: 0px;
-        color: #31961f
-    }
-</style>
-{php $ztitle="会员服务一览表";}
-
-<div class="crumb w1200 box-center">{template 'lay','tag'}</div>
-
-<script type="text/javascript" src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
-{else}
-{template 'header','member'}
-<script type="text/javascript">s('update');
-m('home');</script>
-<style type="text/css">
-    .tc {
-        text-align: center
-    }
-
-    .xline {
-        border-bottom: 1px dashed #ccc;
-        padding-bottom: 10px;
-    }
-
-</style>
-{/if}
-<style type="text/css">
-    .autoheight input {
-        padding: 5px;
-        border: 1px solid #ccc;
-    }
-
-    .ocolor, .f_red {
-        color: red
-    }
-
-    .grade {
-        padding: 5px;
-        border: 1px solid #b12121;
-        background: #f7cccc;
-        font-size: 18px;
-        font-weight: bold;
-        width: 200px;
-        text-align: center;
-    }
-
-    .grade a {
-        color: #d00606;
-    }
-
-    #up td {
-        padding: 10px;
-        line-height: 35px;
-    }
-    .w1200.box-center table{
-    	border-collapse:collapse;
-    }
-    .w1200.box-center table tr td{
-    	border: 1px solid #eaeaea;
-    	padding: 10px;
-    	line-height: 1.6;
-
-    }
-    .w1200.box-center img{
-    	display: inline-block;
-    }
-    .tc-footer{
-    	margin-top: 20px;
-    }
-</style>
-<div class="autoheight pd10 whitebg w1200 box-center">
-    <h1 style="font-size:32px;text-align:center;line-height:1.5;">{$DT[sitename]}会员服务一览表</h1>
-    <div id="shenji" style="margin-bottom:10px;">
-        <div class="m">
-            <div class="m_l f_l">
-
-                <div class="box_body" name="up" id="up" style="display:none">
-                    <form method="post" action="grade.php" onsubmit="return check();">
-                        <table cellspacing="1" width="800" bgcolor="#E3EEF5">
-                            <tr>
-                                <td align="right" width="150" bgcolor="#F1F7FC" class="f14 color"><span
-                                        class="f_red">*</span>可升级为
-                                </td>
-                                <td bgcolor="#FFFFFF" height="40">
-		<span class=" f18 b">
-		<script type="text/javascript">
-            function fees(fee) {
-                if (fee > {$_money}) {
-                    Dd('ney').style.display = '';
-                    Dd('fee').style.display = '';
-                } else {
-                    Dd('ney').style.display = 'none';
-                    Dd('fee').style.display = 'none';
-                }
-            }
-        </script>
-		{if $UP}
-				{loop $GROUPS $k $v}
-				{if $k > 4&&$k>$_groupid}
-				<input type="radio" name="groupid" value="{$v[groupid]}" id="groupid{$v[groupid]}" {if
-                       $v[groupid]==$groupid} checked="checked" {/if}   onclick="if(this.checked==true){fees({$v[fee]});}">{$v[groupname]}({if $v[fee_mode]}<span
-                class="color"><b class="ocolor f16">{$v[fee]}</b> {$DT[money_unit]}/年</span>{else}<span
-                class="color">免费</span>{/if})
-				{/if}
-				{/loop}
-		{else}
-			暂时没有供您升级的会员组
-		{/if}
-		</span>
-                                    &nbsp;&nbsp;
-                                    {if $_userid}
-                                    您的当前会员组为<strong>{$GROUP[$_groupid][groupname]}</strong>
-                                    {else}
-                                    您还没有登录，建议您先 <a href="{$DT[file_login]}" class="ocolor">登录</a> 或 <a
-                                        href="{$DT[file_register]}" class="f_red">注册会员</a>
-                                    {/if}
-                                </td>
-                            </tr>
-
-                            <tr id="fee" style="display:none">
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color">优惠码</td>
-                                <td bgcolor="#FFFFFF"><input name="promo_code" type="text" id="promo_code" size="20"
-                                                             value=""
-                                                             style="border:#34a420 2px solid;padding:2px;font-size:14px;margin:0 0 5px;"
-                                                             onblur="pcode(this.value);"/> <br/><span class="f_gray"
-                                                                                                      id="code">使用优惠码可充抵部分费用或获赠一段有效期</span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color">账户余额</td>
-                                <td bgcolor="#FFFFFF" height="40"><span
-                                        class="f_blue f_b">{$_money} {$DT[money_unit]}</span> <span id="ney"
-                                                                                                    style="display:none">&nbsp;&nbsp;您的余额不足 , <a
-                                        href="charge.php?action=pay" target="_blank"
-                                        style="color:#ff3300;font-size:16px;">请充值</a></span></td>
-                            </tr>
-
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color"><span class="f_red">*</span> 网店名称
-                                </td>
-                                <td bgcolor="#FFFFFF"><input type="text" name="company" id="company" value="" size="50"
-                                                             {if !$_userid}
-                                                             onclick='msgtip("您好！登陆提示！","尊敬的天成网游客，您还未登录！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>后再选择升级的会员服务！")'
-                                                             {/if}
-                                    /><br/><span id="dcompany" class="f_red"></span>
-                                    厂商/公司请填写：营业执照上的公司名称(必须有一个以上汉字)
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color"><span class="f_red">*</span> 网店域名
-                                </td>
-                                <td bgcolor="#FFFFFF"><input type="text" name="cdomain" value="{$_username}.tecenet.com"
-                                                             size="50" disabled='disabled'/><br/><span id="dcompany"
-                                                                                                       class="f_red"></span>
-                                    根据您的会员名自动生成，一旦注册后无法修改！
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40"><span
-                                        class="f_red">*</span> 联系人
-                                </td>
-                                <td bgcolor="#FFFFFF"><input name="truename" type="text" id="truename" size="20"
-                                                             value="{$truename}"/> <br/><span id="dtruename"
-                                                                                              class="f_red"></span></td>
-                            </tr>
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40"><span
-                                        class="f_red">*</span> 电话号码
-                                </td>
-                                <td bgcolor="#FFFFFF"><input name="telephone" id="telephone" type="text" size="30"
-                                                             value="{$telephone}"/> <span id="dtelephone"
-                                                                                          class="f_red"></span></td>
-                            </tr>
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40">手机号码</td>
-                                <td bgcolor="#FFFFFF"><input name="mobile" id="mobile" type="text" size="30"
-                                                             value="{$mobile}"/> <span id="dmobile"
-                                                                                       class="f_red"></span></td>
-                            </tr>
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40">电子邮件</td>
-                                <td bgcolor="#FFFFFF"><input name="email" id="email" type="text" size="30"
-                                                             value="{$email}"/></td>
-                            </tr>
-                            {if $DT[im_qq]}
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40">QQ</td>
-                                <td bgcolor="#FFFFFF"><input name="qq" type="text" size="20" value="{$qq}"/></td>
-                            </tr>
-                            {/if}
-                            {if $DT[im_ali]}
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40">阿里旺旺</td>
-                                <td bgcolor="#FFFFFF"><input name="ali" type="text" size="20" value="{$ali}"/></td>
-                            </tr>
-                            {/if}
-                            {if $DT[im_msn]}
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40">MSN</td>
-                                <td bgcolor="#FFFFFF"><input name="msn" type="text" size="30" value="{$msn}"/></td>
-                            </tr>
-                            {/if}
-                            {if $DT[im_skype]}
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40">Skype</td>
-                                <td bgcolor="#FFFFFF"><input name="skype" type="text" size="20" value="{$skype}"/></td>
-                            </tr>
-                            {/if}
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color" height="40">附言</td>
-                                <td bgcolor="#FFFFFF">
-                                    <textarea style="width:500px;height:60px;" name="content"
-                                              id="contents"></textarea><br/>
-                                    <span id="dcontent" class="f_red"></span>- 500字内
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right" bgcolor="#F1F7FC" class="f14 color"></td>
-                                <td bgcolor="#FFFFFF">
-                                    {if $_userid}
-                                    <input type="submit" name="submit" value=" 提 交 "/>
-                                    {else}
-                                    <script type="text/javascript"
-                                            src="{DT_PATH}file/script/lhgdialog.js?skin=idialog"></script>
-                                    <input type="button" value="提交"
-                                           onclick='msgtip("您好！登陆提示！","尊敬的天成网游客，您还未登录！<br>请 <a href=/member/register.php class=\"ocolor f14\">“注册账号”</a>&nbsp;&nbsp;<a href=/member/login.php class=\"ocolor f14\">“会员登录”</a>后再选择升级的会员服务！")'>
-                                    {/if}
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+<!-- 企业会员弹框 -->
+<div class="modal fade" id="enterpriseModal" tabindex="-1" role="dialog" aria-labelledby="enterpriseModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{DT_PATH}member/grade.php" class="grade-form" id="gradeForm" method="post">
+                <input type="hidden" name="submit" value="1" />
+                <div class="modal-header clearfix">
+                    <h4 class="modal-title pull-left" id="enterpriseModalLabel">申请成为企业会员</h4>
+                    <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                 </div>
-                <script type="text/javascript">
-                    function msghtml(id, title, content, height) {
-                        $.dialog({
-                            id: id,
-                            lock: true,
-                            title: title,
-                            height: height,
-                            width: 800,
-                            content: content
-                        });
-                    }
-                </script>
-                <div class="grade"><a href="javascript:void(0)"
-                                      onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);">点击立即会员升级 </a></div>
-                {if $groupid&&$_REQUEST['action']!=''}
-                <script type="text/javascript">msghtml('grade', '会员升级服务', Dd('up').innerHTML, 500);</script>
-                {/if}
+                <div class="grade-dialog-msg">您的当前会员为 <em>个人会员</em>，申请升级为<em>企业会员</em></div>
+                <div class="modal-body">
+                    <div class="grade-form-item">
+                        <label class="grade-form-label"><i>*</i>网店名称：</label>
+                        <input id="company" class="grade-form-control" name="company" type="text" data-rule="required;"
+                               data-tip="请与营业执照名称保持一致"/>
+                    </div>
+
+                    <div class="grade-form-item">
+                        <label class="grade-form-label"><i>*</i>网店域名：</label>
+                        <div class="grade-form-domain-text">{$_username}.tecenet.com</div>
+                        <p class="msg-box">根据您的会员名自动生成，一旦注册后无法修改！</p>
+                    </div>
+
+                    <div class="grade-form-item">
+                        <label class="grade-form-label"><i>*</i>企业营业执照：</label>
+                        <input id="document_1" class="grade-form-control grade-form-upload" type="text"
+                               name="licenseInfo[business_license]" placeholder="请上传营业执照图片" readonly="" data-rule="required;"
+                        >
+                        <span class="grade-form-upload-btn">
+                            <a href="javascript:void(0);"
+                               onclick="Dthumb(16,0,0, Dd('document_1').value, true,'document_1');">[上传]</a>
+                            <a href="javascript:void(0);" onclick=" _preview(Dd('document_1').value);">[预览]</a>
+                            <a href="javascript:void(0);" onclick="Dd('document_1').value='';">[删除]</a>
+                        </span>
+                    </div>
+
+                    <div class="grade-form-item">
+                        <label class="grade-form-label"><i>*</i>社会统一信用代码：</label>
+                        <input class="grade-form-control" name="licenseInfo[business_license_code]" type="text" data-rule="required;">
+                    </div>
+
+                    <div class="grade-form-item">
+                        <label class="grade-form-label"><i>*</i>营业执照有效期：</label>
+                        <div class="pull-left grade-form-date">
+                            <input class="grade-form-control grade-form-control-date" id="certDateStart_1" type="text"
+                                   data-rule="required;" name="licenseInfo[business_license_starttime]"/>
+                            <span class="msg-box n-right" for="certDateStart_1"></span>
+                        </div>
+                        <span class="grade-form-text">至</span>
+                        <div class="pull-left grade-form-date">
+                            <input class="grade-form-control grade-form-control-date" id="certDateEnd_1" type="text"
+                                   data-rule="required;" name="licenseInfo[business_license_totime]"/>
+                            <span class="msg-box n-right" for="certDateEnd_1"></span>
+                        </div>
+                    </div>
+
+                    <div class="grade-form-item">
+                        <label class="grade-form-label"><i>*</i>电话号码：</label>
+                        <input class="grade-form-control" name="memberInfo[telephone]" type="text" value="" data-rule="required;"/>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn submit-btn" type="submit">提交</button>
+                    <button class="btn close-btn" type="button" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 企业会员弹框 end-->
+
+<!-- vip会员弹框 -->
+<div class="modal fade" id="vipModal" tabindex="-1" role="dialog" aria-labelledby="enterpriseModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header clearfix">
+                <h4 class="modal-title pull-left" id="vipModalLabel">申请成为VIP会员</h4>
+                <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="grade-dialog-msg">申请升级为<em>VIP会员</em>，请联系天成医疗网官方客服了解详细流程</div>
+            <div class="modal-body">
+                <div class="grade-vip-btn-area">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=657911476&site=qq&menu=yes" target="_blank"
+                       class="grade-vip-btn">
+                        <i class="iconfont icon-qq"></i>QQ在线客服</span>
+                    </a>
+
+                    <a href="javascript:;" class="grade-vip-btn" target="_blank"
+                       onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136&s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);">
+                        <i class="iconfont icon-zixun1"></i>人工在线客服</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <table cellpadding="8" cellspacing="1" width="100%" bgcolor="#E3EEF5">
-        <tr bgcolor="#F1F7FC" class="f14 color" align="center">
-            <td class="f_b px14" width="{$percent}">服务范围\会员组</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td class="f_b px14" width="{$percent}">{$v[groupname]}</td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>收费模式</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if $v[fee_mode]}<span class="f_red">包年</span>{else}<span class="f_green">免费</span>{/if}</td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>年 费</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if $v[fee]}<span class="f_red"><strong>{$v[fee]}</strong> {$DT[money_unit]}/年</span>{else}--{/if}</td>
-            {/if}{/loop}
-        </tr>
-        {if $UP}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>&nbsp;</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if isset($UP[$k])}<a href="javascript:void(0)"
-                                      onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);Dd('groupid{$v[groupid]}').checked=true;fees({$v[fee]});"><img
-                    src="{DT_SKIN}image/btn_upgrade.gif"/></a>{else}&nbsp;{/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>允许发布信息</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td valign="top" class="f_gray">
-                {loop $DM $m}
-                {if in_array($m[moduleid], $v[moduleids])}<a href="{$m[linkurl]}" target="_blank" class="color f_gray">{if
-                $m[name]=='报障'}技术需求{elseif $m[name]=='简历'}维修简历{else}{$m[name]}{/if}</a> | {/if}
-                {/loop}
-            </td>
-            {/if}
-            {/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>业务提醒</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if $v[fee]}<span class="f_red">· 平台交易需求提醒<br>· 微信交易需求提醒<br>· QQ群交易需求推荐</span>{else}--{/if}</td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>搜索引擎推广</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if $v[fee]}<span class="f_red">· 百度关键词竞价推广<br>· 百度收录优化<br>· 360关键词竞价推广<br>· 移动端搜索排名推广</span>{else}--{/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>业务转化提升</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if $v[fee]}<span class="f_red">· 线下业务资质服务<br>· 线下招标采购推荐<br>· 在线留言业务提醒 <br>· 需求业务介绍</span>{else}--{/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>业务功能管理</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if $v[fee]}<span class="f_red">· 在线支付宝充值<br>· 在线申请提现<br>· 子账号管理<br>· 好友管理 <br>· 在线浮动客服功能  </span>{else}·
-                在线支付宝充值<br>· 好友管理 </span>{/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>专门定制宣传单页<img src="{DT_SKIN}image/page.gif" align="absmiddle"/></td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>拥有{VIP}标识 <img src="{DT_SKIN}image/vip.gif" align="absmiddle"/></td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>站内排名推荐</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>产品首页推荐</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>移动端网站</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[vip]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>产品在线销售</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[trade_sell]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>关键字置顶</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[spread]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>拥有公司主页</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[homepage]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>自定义公司主页</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[home]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>自定义公司模板</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[style]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>高级风格模板</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if $v[fee]}<span class="f_red">超过36套</span>{else}
-                {if $k==5}
-                0
-                {else}
-                5
-                {/if}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>客户服务</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[ask]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>商机订阅</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[mail]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>邮件发送</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td><img src="{DT_SKIN}image/{if $v[sendmail]}yes{else}no{/if}.gif"/></td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>收件箱容量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[inbox_limit] == -1}
-                0
-                {elseif $v[inbox_limit] == 0}
-                不限
-                {else}
-                {$v[inbox_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>每日可发站内信</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[message_limit] == -1}
-                0
-                {elseif $v[message_limit] == 0}
-                不限
-                {else}
-                {$v[message_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>每日询盘次数</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[inquiry_limit] == -1}
-                0
-                {elseif $v[inquiry_limit] == 0}
-                不限
-                {else}
-                {$v[inquiry_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>每日报价次数</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[price_limit] == -1}
-                0
-                {elseif $v[price_limit] == 0}
-                不限
-                {else}
-                {$v[price_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>商友数量数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[friend_limit] == -1}
-                0
-                {elseif $v[friend_limit] == 0}
-                不限
-                {else}
-                {$v[friend_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>贸易提醒数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[alert_limit] == -1}
-                0
-                {elseif $v[alert_limit] == 0}
-                不限
-                {else}
-                {$v[alert_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>商机收藏数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[favorite_limit] == -1}
-                0
-                {elseif $v[favorite_limit] == 0}
-                不限
-                {else}
-                {$v[favorite_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        {if $MODULE[16]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>发布商品数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[mall_limit] == -1}
-                0
-                {elseif $v[mall_limit] == 0}
-                不限
-                {else}
-                {$v[mall_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[5]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>供应信息数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[sell_limit] == -1}
-                0
-                {elseif $v[sell_limit] == 0}
-                不限
-                {else}
-                {$v[sell_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[6]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>求购信息数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[buy_limit] == -1}
-                0
-                {elseif $v[buy_limit] == 0}
-                不限
-                {else}
-                {$v[buy_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>招商信息数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[info_limit] == -1}
-                0
-                {elseif $v[info_limit] == 0}
-                不限
-                {else}
-                {$v[info_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        {if $MODULE[8]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>展会信息数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[exhibit_limit] == -1}
-                0
-                {elseif $v[exhibit_limit] == 0}
-                不限
-                {else}
-                {$v[exhibit_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[9]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>服务需求信息数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[job_limit] == -1}
-                0
-                {elseif $v[job_limit] == 0}
-                不限
-                {else}
-                {$v[job_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>新闻稿件数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[article_limit] == -1}
-                0
-                {elseif $v[article_limit] == 0}
-                不限
-                {else}
-                {$v[article_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-
-        {if $MODULE[9]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>个人简历数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[resume_limit] == -1}
-                0
-                {elseif $v[resume_limit] == 0}
-                不限
-                {else}
-                {$v[resume_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[10]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>行业知道数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[know_limit] == -1}
-                0
-                {elseif $v[know_limit] == 0}
-                不限
-                {else}
-                {$v[know_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[13]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>公司品牌数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[brand_limit] == -1}
-                0
-                {elseif $v[brand_limit] == 0}
-                不限
-                {else}
-                {$v[brand_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[17]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>发布团购数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[group_limit] == -1}
-                0
-                {elseif $v[group_limit] == 0}
-                不限
-                {else}
-                {$v[group_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[12]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>公司相册数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[photo_limit] == -1}
-                0
-                {elseif $v[photo_limit] == 0}
-                不限
-                {else}
-                {$v[photo_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[14]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>公司视频数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[video_limit] == -1}
-                0
-                {elseif $v[video_limit] == 0}
-                不限
-                {else}
-                {$v[video_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $MODULE[15]}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>上传资料数量</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>
-                {if $v[down_limit] == -1}
-                0
-                {elseif $v[down_limit] == 0}
-                不限
-                {else}
-                {$v[down_limit]}
-                {/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        {if $UP}
-        <tr bgcolor="#FFFFFF" align="center">
-            <td>&nbsp;</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td>{if isset($UP[$k])}<a href="?sj={$shenji}&groupid={$v[groupid]}#UP" onclick="_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);"><img
-                    src="{DT_SKIN}image/btn_upgrade.gif"/></a>{else}&nbsp;{/if}
-            </td>
-            {/if}{/loop}
-        </tr>
-        {/if}
-
-        <tr bgcolor="#F1F7FC" class="f14 color" align="center">
-            <td class="f_b px14" width="{$percent}">服务范围\会员组</td>
-            {loop $GROUPS $k $v}{if $k > 4}
-            <td class="f_b px14" width="{$percent}">{$v[groupname]}</td>
-            {/if}{/loop}
-        </tr>
-    </table>
-
-    <div class="divline">&nbsp;</div>
-    <div class="grade"><a href="javascript:void(0)"
-                          onclick="msghtml('grade','会员升级服务',Dd('up').innerHTML,500);_hmt.push(['_trackEvent', 'member', 'click', 'upgrade']);">点击立即会员升级 </a></div>
 </div>
-<script type="text/javascript" src="{DT_STATIC}file/script/marquee.js"></script>
-<script type="text/javascript">
-    new dmarquee(22, 20, 2000, 'vips');
-    function pcode(s) {
-        if (s.length > 4) {
-            makeRequest('action={crypt_action('
-            promo
-            ')}&code=' + s, '?', '_pcode'
-        )
-            ;
-        }
-    }
-    function _pcode() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            if (xmlHttp.responseText) Dd('code').innerHTML = '<span class="f_red">' + xmlHttp.responseText + '</span>';
-        }
-    }
-    function check() {
-        if (Dd('company').value.length < 2) {
-            Dmsg('请填写公司全称', 'company');
-            return false;
-        }
-        if (Dd('truename').value.length < 2) {
-            Dmsg('请填写联系人', 'truename');
-            return false;
-        }
-        if (Dd('telephone').value.length < 6) {
-            Dmsg('请填写电话号码', 'telephone');
-            return false;
-        }
-        if (Dd('contents').value.length > 500) {
-            Dmsg('附言最多500字 当前已输入' + Dd('contents').value.length + ' 字', 'contents');
-            return false;
-        }
-        return confirm('确认网店名称了吗？确定后不能再修改！');
-    }
-</script>
-{if $_REQUEST['action']==''}
+<!--vip会员弹框 end-->
+
 
 {template 'footer2017'}
-
-<script type="text/javascript">
-    //var hrefValue = window.location.host;if (hrefValue!="www.tecenet.com"){window.location.href=window.location.href.replace(window.location.host,"www.tecenet.com");  }
-</script>
-{else}
-<div style="line-height:34px;font-size:18px;color:#222;padding:20px;">
-    会员客服热线：400-617-3599<br>
-<!--     会员升级客服：QQ 497319414<br>
-    会员客服邮箱：note@tecenet.com<br> -->
-</div>
-{/if}

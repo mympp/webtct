@@ -1,6 +1,293 @@
-{template 'header', $template}
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; 欢迎光临</div>
-{loop $HMAIN $HM $MAIN}
-{template 'main_'.$main_file[$HM], $template}
-{/loop}
-{template 'footer', $template}
+{php $head_css = [DT_SKIN.'homepage/tc.template.index.css'];}
+{php $footer_js = [DT_PATH.'file/script/homepage/tc.template.index.js']}
+{template 'header2018',$template}
+
+    {if !empty($companyAnnounce)}
+    <!--tp-notice-->
+    <div class="tp-notice">
+        <div class="tp-container clearfix">
+            <div class="hd pull-left"><i class="iconfont icon-gonggao"></i>公告：</div>
+            <div class="bd pull-left text-overflow">{$companyAnnounce}</div>
+        </div>
+    </div>
+    <!--tp-notice end-->
+    {/if}
+
+    {if $mallList}
+    <!--tp-product-->
+    <div class="tp-product tp-module">
+        <div class="tp-container clearfix">
+            <div class="tp-module-head pull-left">
+                <p>products</p>
+                <h2>产品中心</h2>
+                {php $mallUrl = $homepageModule->mallUrl;}
+                <a href="{$mallUrl}" class="tp-module-head-btn">查看全部</a>
+            </div>
+            <div class="tp-module-body pull-left">
+                <div class="tp-product-slider">
+                    <div class="bd">
+                        <ul class="tp-product-list">
+                            {loop $mallList $key $item}
+                            <li class="tp-product-item">
+                                <a class="tp-product-img" href="{$item['linkurl']}" target="_blank">
+                                    <img src="{$item['thumb']}" /></a>
+                                <p class="tp-product-title text-overflow">
+                                    <a href="{$item['linkurl']}" target="_blank">{$item['title']}</a>
+                                </p>
+                                <div class="tp-product-cate">
+                                    {$item['price']}
+                                </div>
+                                <a class="tp-product-btn" href="{$item['linkurl']}">查看详细</a>
+                            </li>
+                            {/loop}
+                        </ul>
+                    </div>
+
+                    <div class="hd">
+                        <a class="prev"><i class="iconfont icon-zuoyou1"></i></a>
+                        <ul></ul>
+                        <a class="next"><i class="iconfont icon-zuoyou"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--tp-product end-->
+    {/if}
+
+
+    {if $newsList}
+    <!--tp-news-->
+    <div class="tp-news tp-module bg-gray">
+        <div class="tp-container clearfix">
+            <div class="tp-module-head pull-left">
+                <p>News</p>
+                <h2>公司动态</h2>
+                {php $newsUrl = $homepageModule->newsUrl;}
+                <a href="{$newsUrl}" class="tp-module-head-btn">查看全部</a>
+            </div>
+
+            <div class="tp-module-body pull-left">
+
+                <div class="tp-top-news">
+                </div>
+
+                <ul class="tp-news-list clearfix">
+                    {loop $newsList $key $item}
+                    <li class="tp-news-item clearfix">
+                        <div class="tp-news-date">
+                            <span>{date('Y-m',$item['addtime'])}</span>
+                            <span>{date('d',$item['addtime'])}</span>
+                        </div>
+                        <div class="tp-news-text">
+                            <strong class="tp-news-title">
+                                <a href="{$item['linkurl']}" target="_self" title="{$item['title']}">{$item['title']}</a>
+                            </strong>
+                            <div class="tp-news-desc">
+                                {$item['introduce']}
+                                <a href="{$item['linkurl']}" target="_self">[详细]</a>
+                            </div>
+                        </div>
+                    </li>
+                    {/loop}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <!--tp-news end-->
+    {/if}
+
+
+    <!--tp-about-->
+    <div class="tp-about tp-module">
+        <div class="tp-container clearfix">
+            <div class="tp-module-head pull-left">
+                <p>About us</p>
+                <h2>关于我们</h2>
+                <a href="<?php echo $homepageModule->introduceUrl; ?>" class="tp-module-head-btn">查看详情</a>
+            </div>
+
+            <div class="tp-module-body pull-left">
+                <div class="tp-about-content pull-left">
+                    {$content}
+                </div>
+                <div class="tp-about-logo pull-left">
+                    <img src="{$companyInfo['logo']}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--tp-about end-->
+
+    <!--tp-contact-->
+    <div class="tp-contact tp-module">
+        <div class="tp-container clearfix">
+            <div class="tp-module-head pull-left">
+                <p>Contact us</p>
+                <h2>联系我们</h2>
+            </div>
+
+            <div class="tp-module-body pull-left">
+                <!--联系方式-->
+                <div class="tp-contact-box pull-left">
+                    <div class="tp-contact-item">
+                        <label class="tp-contact-key"><i class="tp-contact-icon pull-left iconfont icon-wo"></i>联系人：</label>
+                        <em class="tp-contact-val">{$memberInfo['truename']} {$memberInfo['gender']}
+                            {if !empty($memberInfo['department']) || !empty($memberInfo['career'])}
+                            （{$memberInfo['department']} {$memberInfo['career']}）
+                            {/if}
+                            {if $memberInfo['qq']}
+                            <a class="link-text" href="http://wpa.qq.com/msgrd?v=3&uin={$memberInfo['qq']}&site=qq&menu=yes">在线沟通</a>
+                            {/if}
+                        </em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <label class="tp-contact-key"><i class="tp-contact-icon pull-left iconfont icon-guhua"></i>固话：</label>
+                        <em class="tp-contact-val">{$companyInfo['telephone']}</em>
+                    </div>
+
+                    <div class="tp-contact-item">
+                        <label class="tp-contact-key"><i class="tp-contact-icon pull-left iconfont icon-shouji"></i>手机：</label>
+                        <em class="tp-contact-val">{$memberInfo['mobile']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <label class="tp-contact-key"><i class="tp-contact-icon pull-left iconfont icon-chuanzhen"></i>传真：</label>
+                        <em class="tp-contact-val">{$companyInfo['fax']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <label class="tp-contact-key"><i class="tp-contact-icon pull-left iconfont icon-dizhi"></i>地址：</label>
+                        <em class="tp-contact-val">{$companyInfo['address']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <label class="tp-contact-key"><i class="tp-contact-icon pull-left iconfont icon-iconfont05"></i>邮编：</label>
+                        <em class="tp-contact-val">{$companyInfo['postcode']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <label class="tp-contact-key"><i class="tp-contact-icon pull-left iconfont icon-lianjie"></i>官方网址：</label>
+                        <em class="tp-contact-val">
+                            <a href="{$companyInfo['homepage']}" target="_blank">{$companyInfo['homepage']}</a>
+                        </em>
+                    </div>
+                </div>
+                <!--联系方式 end-->
+
+                {template 'contact-form',$template}
+
+
+            </div>
+        </div>
+    </div>
+    <!--tp-contact end-->
+
+    <!--tp-archives-->
+    <div class="tp-archives tp-module">
+        <div class="tp-container clearfix">
+            <div class="tp-module-head pull-left">
+                <p>Archives</p>
+                <h2>公司档案</h2>
+                <a href="<?php echo $homepageModule->creditUrl; ?>" class="tp-module-head-btn">查看详情</a>
+            </div>
+            <div class="tp-module-body pull-left">
+                <table class="tp-archives-table">
+                    <tbody>
+                    <tr>
+                        <td width="20%" class="bg-warning">主体名称：</td>
+                        <td width="30%" >{$companyInfo['company']}</td>
+                        <td width="20%" class="bg-warning">主体类型：</td>
+                        <td width="30%" >{implode(',',$companyInfo['mode'])}</td>
+                    </tr>
+                    <tr>
+                        <td width="20%" class="bg-warning">所在地区：</td>
+                        <td width="30%" >{$companyInfo['area']}</td>
+                        <td width="20%" class="bg-warning">主体规模：</td>
+                        <td width="30%" >{$companyInfo['size']}</td>
+                    </tr>
+                    <tr>
+                        <td width="20%" class="bg-warning">注册资本：</td>
+                        <td width="30%" >
+                            {if $companyInfo['capital']}
+                                {$companyInfo['capital']} {$companyInfo['regunit']}
+                            {/if}
+                        </td>
+                        <td width="20%" class="bg-warning">注册年份：</td>
+                        <td width="30%" >{$companyInfo['regyear']}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="bg-warning">资料认证：</td>
+                        <td colspan="3">
+                            <!--
+                            <span class="text-success">通过工商认证</span>
+                            -->
+                            {if !empty($memberInfo['vemail'])}
+                            <span class="text-success">资料通过邮件认证</span>
+                            {/if}
+                            {if $companyInfo['isValidated']}
+                            <span class="text-success">企业资料通过认证</span>
+                            {/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="bg-warning">经营模式：</td>
+                        <td colspan="3">{implode(',',$companyInfo['mode'])}</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-warning">经营范围：</td>
+                        <td colspan="3">{$companyInfo['business']}</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-warning">销售产品：</td>
+                        <td colspan="3">{$companyInfo['sell']}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <!--tp-archives end-->
+
+    {if $links}
+    <!--tp-links-->
+    <div class="tp-links tp-module bg-gray">
+        <div class="tp-container clearfix">
+            <div class="tp-module-head pull-left">
+                <p>Links</p>
+                <h2>友情链接</h2>
+            </div>
+
+            <div class="tp-module-body pull-left">
+                <ul class="tp-links-list">
+                    {loop $links $key $item}
+                    <li class="tp-links-item text-overflow"><a href="{$item['linkurl']}" target="_blank">{$item['title']}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--tp-links end-->
+    {/if}
+
+    {if $recommendCompany}
+    <!--tp-recommend-->
+    <div class="tp-recommend tp-module">
+        <div class="tp-container clearfix">
+            <div class="tp-module-head pull-left">
+                <p>Recommend</p>
+                <h2>推荐厂商</h2>
+            </div>
+
+            <div class="tp-module-body pull-left">
+                <ul class="tp-links-list">
+                    {loop $recommendCompany $k $item}
+                    <li class="tp-links-item text-overflow"><a href="{$item['linkurl']}">{$item['company']}</a></li>
+                    {/loop}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--tp-recommend end-->
+    {/if}
+
+{template 'footer2018',$template}

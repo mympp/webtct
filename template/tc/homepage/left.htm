@@ -1,0 +1,38 @@
+<div class="tp-side pull-left">
+    <!--产品分类-->
+    <div class="tp-side-box">
+        <div class="tp-side-box-head">
+            <span class="tp-side-box-head-text">产品分类</span>
+        </div>
+        <div class="tp-side-box-body">
+            <ul class="tp-side-cate">
+                <li class="text-overflow">
+                    <a href="<?php echo $homepageModule->mallUrl; ?>"><i
+                        class="iconfont icon-jiantou"></i>全部分类</a>
+                </li>
+                {loop $companyMallType $key $type}
+                {if $type['parentid'] == 0}
+                <li class="text-overflow"><a href="{$type['linkurl']}"><i class="iconfont icon-jiantou"></i>{$type['typename']}</a>
+                </li>
+                {/if}
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    <!--产品分类 end-->
+
+    <!--推荐厂商-->
+    <div class="tp-side-box">
+        <div class="tp-side-box-head">
+            <span class="tp-side-box-head-text">推荐厂商</span>
+        </div>
+        <div class="tp-side-box-body">
+            <ul class="tp-side-links">
+                {loop $companyRecommend $k $company}
+                <li class="text-overflow"><a href="{$company['linkurl']}">{$company['company']}</a></li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    <!--推荐厂商 end-->
+</div>

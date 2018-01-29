@@ -34,7 +34,7 @@ class tagsModule extends baseModule
 
     //获取热搜的标签词
     public function getHotTags($pagesize = 10){
-        $hotTags = (new TagsQuery())->getHotTags(10);
+        $hotTags = (new TagsQuery())->getHotTags($pagesize);
         return $this->buildShowLinkurl($hotTags);
     }
 

@@ -1,0 +1,127 @@
+<div class="tp-main pull-right">
+    <div class="tp-main-box">
+
+        <div class="product-detail clearfix">
+            <h1 class="product-detail-title">{$title}</h1>
+            <!--产品图-->
+            <div class="product-detail-img pull-left">
+                <div class="bd">
+                    <ul>
+                        <li>
+                            <a class="fancybox" href="{$thumb}">
+                                <img src="{$thumb}"/>
+                                <i class="iconfont icon-icon-"></i>
+                            </a>
+                        </li>
+                        {if $thumb1}
+                        <li>
+                            <a class="fancybox" href="{$thumb1}">
+                                <img src="{$thumb1}"/>
+                                <i class="iconfont icon-icon-"></i>
+                            </a>
+                        </li>
+                        {/if}
+                        {if $thumb2}
+                        <li>
+                            <a class="fancybox" href="{$thumb2}">
+                                <img src="{$thum2}"/>
+                                <i class="iconfont icon-icon-"></i>
+                            </a>
+                        </li>
+                        {/if}
+                    </ul>
+                </div>
+                <div class="hd">
+                    <ul class="clearfix">
+                        <li><img src="{$thumb}"/></li>
+                        {if $thumb1}
+                        <li><img src="{$thumb1}"/></li>
+                        {/if}
+                        {if $thumb2}
+                        <li><img src="{$thumb2}"/></li>
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+            <!--产品图 end-->
+
+            <!--产品资料-->
+            <div class="product-detail-info pull-right">
+                <div class="product-detail-info-item">
+                    <label class="product-detail-info-key">参考价格：</label>
+                    <em class="product-detail-info-val text-danger">{if $price>0}￥{$price}{else}面议{/if}</em>
+                </div>
+
+                <div class="product-detail-info-item">
+                    <label class="product-detail-info-key">产品品牌：</label>
+                    <em class="product-detail-info-val">{$brand}</em>
+                </div>
+
+                <div class="product-detail-info-item">
+                    <label class="product-detail-info-key">生产厂商：</label>
+                    <em class="product-detail-info-val"><a href="<?php echo $homepageModule->linkurl; ?>">{$company}</a></em>
+                </div>
+
+                {if $mallRegisterPic}
+                <div class="product-detail-info-item">
+                    <label class="product-detail-info-key">注册证号：</label>
+                    <em class="product-detail-info-val">
+                        <a class="fancybox" href="{$mallRegisterPic}" title="点击查看注册证">{$batchnum}</a>
+                        <a class="fancybox view-btn" href="{$mallRegisterPic}" title="点击查看注册证">
+                            <i class="iconfont icon-chakan"></i>查看
+                        </a>
+                    </em>
+                </div>
+                {/if}
+
+                <div class="product-detail-info-item">
+                    <label class="product-detail-info-key">所在地区：</label>
+                    <em class="product-detail-info-val">{area_pos($areaid,'/')}</em>
+                </div>
+
+                <div class="product-detail-info-item">
+                    <label class="product-detail-info-key">更新日期：</label>
+                    <em class="product-detail-info-val">{date('Y-m-d',$edittime)}</em>
+                </div>
+
+                <div class="product-detail-info-item">
+                    <a class="product-detail-info-btn product-detail-contact-btn" href="<?php echo $homepageModule->contactUrl; ?>"><i
+                            class="iconfont icon-iconfont05"></i>联系厂商</a>
+                    <a class="product-detail-info-btn product-detail-service-btn" href="{$baiduServerUrl}"><i
+                            class="iconfont icon-kefu"></i>在线客服</a>
+                </div>
+
+            </div>
+            <!--产品资料 end-->
+
+            <div class="clear"></div>
+
+            <!--产品详情-->
+            <div class="product-detail-box ">
+                <div class="product-detail-head">
+                    <strong>产品详情</strong>
+                </div>
+                <div class="product-detail-body">
+                    {$content}
+                </div>
+            </div>
+            <!--产品详情 end-->
+
+            <!--内容声明-->
+            <div class="product-detail-box ">
+                <div class="product-detail-head">
+                    <strong>内容声明</strong>
+                </div>
+                <div class="product-detail-body">
+                    <p style="font-size:13px;color:#666;">
+                        天成医疗网为互联网信息服务提供者，天成医疗网（含网站、客户端等）所展示的商品/服务的标题、价格、详情等信息内容系由店铺经营者发布，
+                        其真实性、准确性和合法性均由店铺经营者负责。天成医疗网提醒您购买商品/服务前注意谨慎核实，如您对商品/服务的标题、价格、详情等任何信息
+                        有任何疑问的，请在购买前通过网页提供咨询方式与店铺经营者沟通确认；天成医疗网存在海量店铺，如您发现店铺内有任何违法/侵权信息，请立即向天成医疗网举报并提供有效线索。
+                    </p>
+                </div>
+            </div>
+            <!--内容声明 end-->
+
+        </div>
+    </div>
+</div>

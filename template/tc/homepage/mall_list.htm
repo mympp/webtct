@@ -1,0 +1,41 @@
+<div class="tp-main pull-right">
+	<div class="tp-main-box">
+		<div class="tp-main-box-head">
+			<p>Company products</p>
+			<h1>公司产品</h1>
+		</div>
+		<div class="tp-main-box-body">
+			{if !empty($typeid)}
+			<div class="tp-product-filter">
+				<div class="tp-product-filter-head">分类：</div>
+				<div class="tp-product-filter-body">
+					<a href="{$typeurl}" class="active">{$typename}</a>
+					<br/>
+					{if !empty($childType)}
+					{loop $childType $k $type}
+					<a href="{$type['linkurl']}">{$type['typename']}</a>
+					{/loop}
+					{/if}
+				</div>
+			</div>
+			{/if}
+			<ul class="tp-product-list clearfix">
+				{loop $mallLists $key $item}
+				<li class="tp-product-item">
+					<a class="tp-product-img" href="{$item['linkurl']}" target="_blank">
+						<img src="{$item['thumb']}" />
+					</a>
+					<p class="tp-product-title text-overflow"><a href="{$item['linkurl']}" target="_blank" >{$item['title']}</a></p>
+					<div class="tp-product-cate">
+						<a href="{$item['linkurl']}" target="_blank">{$item['price']}</a>
+					</div>
+					<a class="tp-product-btn" href="{$item['linkurl']}">查看详细</a>
+				</li>
+				{/loop}
+			</ul>
+			<!--pagination-->
+			{$pages}
+			<!--pagination end-->
+		</div>
+	</div>
+</div>

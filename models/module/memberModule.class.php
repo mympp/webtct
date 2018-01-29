@@ -2,6 +2,9 @@
 namespace models\module;
 
 use models\helpers\query\MemberQuery;
+use models\helpers\query\CompanyQuery;
+use models\helpers\query\CompanyValidateQuery;
+use models\helpers\query\UpgradeQuery;
 
 class memberModule extends baseModule
 {
@@ -104,6 +107,54 @@ class memberModule extends baseModule
         }else{
             return false;
         }
+    }
+
+    /**
+     * 处理个人会员升级成为企业会员
+     * @param $userid
+     * @param $username
+     * @param $companyName
+     * @param $memberInfo
+     * @param $licenseInfo 企业证件信息
+     * @return bool
+     */
+    public function upgradeToCompany($userid,$username,$companyName,$memberInfo,$licenseInfo){
+        $companyQuery = new CompanyQuery();
+        $result = $companyQuery->getCompanyInfo([
+            'company' => $companyName
+        ]);
+
+        if($result){
+            $this->errorMessage = '公司名已存在';
+            return false;
+        }
+
+        $result = (new CompanyQuery())->addCompany($userid,$username,$companyName,$memberInfo);
+        if(!$result){
+            $this->errorMessage = '企业添加失败';
+            return false;
+        }
+
+        $result = (new UpgradeQuery())->addUpgradeRecord($userid,$username,$companyName,$memberInfo);
+        if(!$result){
+            $this->errorMessage = '会员申请失败';
+            return false;
+        }
+
+        $result = (new CompanyValidateQuery())->sendValidate($userid,$licenseInfo);
+        if(!$result){
+            $this->errorMessage = '证件资料上传失败';
+            return false;
+        }
+
+        $result = (new MemberQuery())->getDb(MemberQuery::TABLE_NAME)
+            ->where(['userid' => $userid])->edit(['company' => $companyName]);
+        if(!$result){
+            $this->errorMessage = '用户信息修改失败';
+            return false;
+        }
+
+        return true;
     }
 
 }

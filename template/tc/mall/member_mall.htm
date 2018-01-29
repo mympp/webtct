@@ -23,11 +23,11 @@
 </div>
 
 {if $action=='add' || $action=='edit'}
-        {if $action == 'add' && $isCompanyValidated != true }
+        {if $isCompanyValidated != true || !$hasProductLicense }
             {php $authLinkUrl = DT_PATH.'member/validate.php?action=company';}
             {php $authLinkTitle = '资质材料上传';}
-            {php $authTip = "尊敬的<em>".$_username."</em>，您的商家未通过资质认证！";}
-            {php $authNote = '（通过资质认证的商家才能上传商品！）';}
+            {php $authTip = "尊敬的<em>".$_username."</em>，您的企业资料未完善！";}
+            {php $authNote = '（通过资质认证并已上传生产许可证的企业用户才能上传商品！）';}
             {template 'no-authority','chip'}
         {else}
             {template 'member_mall_edit','mall'}

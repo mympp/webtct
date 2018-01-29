@@ -1,125 +1,92 @@
-{template 'header', $template}
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a></div>
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
-	<div class="px13 lh18">
-	<table width="98%" cellpadding="3" cellspacing="3" align="center">
-{php $c = $db->get_one("select * FROM {$db->pre}friend WHERE username='".$COM[username]."' and userid=".$_userid);}
-	{if $_username&&!$c[itemid]}
-	<tr>
-	<td width="100">合作关系：</td>
-	<td>
-	<a href="{$MODULE[2][linkurl]}friend.php?action=add&username={$COM[username]}" class="sbm" style="text-decoration:none;padding:1px 5px 1px 5px;">点击加他为我的合作伙伴</a>
-	</td>
-	</tr>
-	{/if}
-	<tr>
-	<td width="100">成为商友：</td>
-	<td>
-			<a href="#fra"  onclick="Dd('fra').src='{$MODULE[4][linkurl]}home.php?action=message&job=guestbook&template={$template}&skin={$skin}&username={$username}&sign={crypt_sign($template.$skin.$username)}&title=申请成为您的合作伙伴';" class="sbm" style="text-decoration:none;padding:1px 5px 1px 5px;">申请成为他的合作伙伴</a>
-	</td>
-	</tr>
-	<tr>
-	<td width="100">主体名称：</td>
-	<td>{$COM[company]}</td>
-	</tr>
-	<tr>
-	<td>联系地址：</td>
-	<td>{$COM[address]}</td>
-	</tr>
-	{if $COM[postcode]}
-	<tr>
-	<td>邮政编码：</td>
-	<td>{$COM[postcode]}</td>
-	</tr>
-	{/if}
-	{if $_userid }
-	<tr>
-	<td>服务电话：</td>
-	<td>{if $domain}{$COM[telephone]}{else}{anti_spam($COM[telephone])}{/if}</td>
-	</tr>
-	{if $COM[fax]}
-	<tr>
-	<td>服务传真：</td>
-	<td>{if $domain}{$COM[fax]}{else}{anti_spam($COM[fax])}{/if}</td>
-	</tr>
-	{/if}
-	{if $COM[mail]}
-	<tr>
-	<td>电子邮件：</td>
-	<td>{if $domain}{$COM[mail]}{else}{anti_spam($COM[mail])}{/if}</td>
-	</tr>
-	{/if}
-	<tr>
-	<td>相关网址：</td>
-	<td>{if $COM[homepage]}<a href="{$COM[homepage]}" target="_blank">{$COM[homepage]}</a><br/>{/if}
-	<a href="{$COM[linkurl]}" target="_blank">{$COM[linkurl]}</a></td>
-	</tr>
-	{if $COM[truename]}
-	<tr>
-	<td>联 系 人：</td>
-	<td>{$COM[truename]} （{if $COM[gender]==1}先生{else}女士{/if}）</td>
-	</tr>
-	{/if}
-	{if $COM[department]}
-	<tr>
-	<td>部门(职位)：</td>
-	<td>{$COM[department]}{if $COM[career]} （{$COM[career]}）{/if}</td>
-	</tr>
-	{/if}
-	{if $COM[mobile]}
-	<tr>
-	<td>手机号码：</td>
-	<td>{if $domain}{$COM[mobile]}{else}{anti_spam($COM[mobile])}{/if}{if $DT[sms] && $COM[vmobile]}&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}sms.php?action=add&auth={encrypt($COM[mobile])}" target="_blank"><img src="{DT_SKIN}image/sendsms.gif" align="absmiddle" title="发送短信" alt=""/></a>{/if}</td>
-	</tr>
-	{/if}
-	<tr>
-	<td>即时通讯：</td>
-	<td>
-	
-	{if $COM[qq] && $DT[im_qq]}
-		{if check_dingzhi_member($COM[username],'qq_kefu')}
-			{php $qq_array=explode(';',$COM[qq]);}
-			{loop $qq_array $k $v}
-				{php $qq_message=explode('|',$v);}
-				{$qq_message[1]}&nbsp;:{im_qq($qq_message[0])}<br/>
-			{/loop}
-		{else}
-			{im_qq($COM[qq])}&nbsp;
-		{/if}
-	{/if}
-	{if $COM[ali] && $DT[im_ali]}{im_ali($COM[ali])}&nbsp;{/if}
-	{if $COM[msn] && $DT[im_msn]}{im_msn($COM[msn])}&nbsp;{/if}
-	{if $COM[skype] && $DT[im_skype]}{im_skype($COM[skype])}&nbsp;{/if}
-	</td>
-	</tr>
-	<tr>
-	<td>在线状态：</td>
-	<td>{if online($COM[userid])==1}<span class="f_red">当前在线</span>{else}<span class="f_gray">当前离线</span>{/if}
-	{if $COM[username] && $DT[im_web]}{im_web($COM[username])}&nbsp;{/if}
-	</td>
-	</tr>
-	{else}
-	<tr>
-	<td>联系方式：</td>
-	<td bgcolor="#F7F7F7">只有本站会员才能看到联系方式！<br>请 <a href="{$MODULE[2][linkurl]}{$DT[file_register]}" class="f_b" target="_top">免费注册会员</a> ，如已经是会员？请 <a href="{$MODULE[2][linkurl]}{$DT[file_login]}" class="f_b" target="_top">登录会员</a><br/>
-	或 <a href="#" style="color:red;" onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);" >在线咨询</a> 天成医疗网平台客服， &nbsp;&nbsp;<br>也可咨询天成医疗网客服热线：400 617 3599 或  <a class="f_b" href="/contact#leave_message">咨询留言</a></td>
-	</tr>
-	{/if}
-	</table>
-	</div>
+{php $head_css = [DT_SKIN.'homepage/tc.template.other.min.css'];}
+<?php $footer_js = ['http://api.map.baidu.com/api?v=2.0&ak=rqhGNYEhHp28TLRK6iYWZX50fP4rgtei',
+DT_PATH.'file/script/homepage/tc.template.contact.js']; ?>
+{template 'header2018', $template}
+
+<!--tp-crumb-->
+<div class="tp-crumb">
+    <div class="tp-container clearfix">
+        <div class="hd pull-left"><i class="iconfont icon-shouye-copy"></i>您当前的位置：</div>
+        <div class="bd pull-left">
+            <a href="<?php echo $homepageModule->linkurl;?>">首页</a>
+            <span>&gt;</span>
+            <a href="<?php echo $homepageModule->contactUrl;　?>">联系我们</a>
+        </div>
+    </div>
 </div>
-{if $api_map && $map}
-<div class="main_head"><div><strong>所在地图</strong><a name="map"></a></div></div>
-<div class="main_body">
-	{php $map_height = 300;}
-	{php @include DT_ROOT.'/api/map/'.$api_map.'/show.inc.php';}
+<!--tp-crumb end-->
+
+<!--tp-container-->
+<div class="tp-container clearfix">
+    <div class="tp-main pull-right">
+        <div class="tp-main-box">
+            <div class="tp-main-box-head">
+                <p>Contact us</p>
+                <h1>联系我们</h1>
+            </div>
+            <div class="tp-main-box-body">
+
+                <div class="tp-map">
+                    <div id="allmap" style="width: 100%;height: 300px;display: none;"></div>
+                </div>
+
+                <div class="tp-contact-wrap clearfix">
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-wo"></i></span>
+                        <label class="tp-contact-key">联系人</label>
+                        <em class="tp-contact-val">{$memberInfo['truename']} {$memberInfo['gender']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-guhua"></i></span>
+                        <label class="tp-contact-key">固话</label>
+                        <em class="tp-contact-val">{$companyInfo['telephone']}</em>
+                    </div>
+
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-shouji"></i></span>
+                        <label class="tp-contact-key">手机</label>
+                        <em class="tp-contact-val">{$memberInfo['mobile']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-chuanzhen"></i></span>
+                        <label class="tp-contact-key">传真</label>
+                        <em class="tp-contact-val">{$companyInfo['fax']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-guhua"></i></span>
+                        <label class="tp-contact-key">在线沟通</label>
+                        <em class="tp-contact-val">
+                            {if $memberInfo['qq']}
+                            <a class="link-text" href="http://wpa.qq.com/msgrd?v=3&uin={$memberInfo['qq']}&site=qq&menu=yes">在线沟通</a>
+                            {/if}
+                        </em>
+                    </div>
+
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-iconfont05"></i></span>
+                        <label class="tp-contact-key">邮编</label>
+                        <em class="tp-contact-val">{$companyInfo['postcode']}</em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-lianjie"></i></span>
+                        <label class="tp-contact-key">官方网址</label>
+                        <em class="tp-contact-val"><a href="{$companyInfo['homepage']}">{$companyInfo['homepage']}</a></em>
+                    </div>
+                    <div class="tp-contact-item">
+                        <span class="tp-contact-icon"><i class="iconfont icon-dizhi"></i></span>
+                        <label class="tp-contact-key">地址</label>
+                        <em class="tp-contact-val" id="tpContactAddress">{$companyInfo['address']}</em>
+                    </div>
+                </div>
+
+                {template 'contact-form',$template}
+
+            </div>
+        </div>
+    </div>
+
+    {template 'left',$template}
 </div>
-{/if}
-{if $could_message}
-<div class="main_head" id="leave_message"><div><strong>在线留言</strong><a name="guestbook"></a></div></div>
-<div class="main_body">
-	<iframe src="{$MODULE[4][linkurl]}home.php?action=message&job=guestbook&template={$template}&skin={$skin}&username={$username}&sign={crypt_sign($template.$skin.$username)}" name="fra" id="fra" style="width:98%;height:398px;" scrolling="auto" frameborder="0"></iframe>
-</div>
-{/if}
-{template 'footer', $template}
+<!--tp-container end-->
+
+{template 'footer2018', $template}

@@ -1,1 +1,5 @@
-document.write('<script language="JavaScript" type="text/javascript">tips44 = new Array(2);tips44[0] = \'<a href="http://www.tecenet.com/gongying/show-33326.html" target="_blank"><div style="background:url(http://www.tecenet.com/file/upload/201605/24/crzt.gif) top left;width:995px;height:75px;"><img src="http://www.tecenet.com/skin/teceskin/image/blank.gif" width="995" height="75"  style="background:url(http://www.tecenet.com/skin/teceskin/image/ads/vip.gif) bottom right no-repeat;;"/></div></a>\';tips44[1] = \'<a href="http://www.tecenet.com/gongying/show-32633.html" target="_blank"><div style="background:url(http://www.tecenet.com/file/upload/201605/24/txy.gif) top left;width:995px;height:75px;"><img src="http://www.tecenet.com/skin/teceskin/image/blank.gif" width="995" height="75"  style="background:url(http://www.tecenet.com/skin/teceskin/image/ads/vip.gif) bottom right no-repeat;;"/></div></a>\';index = Math.floor(Math.random() * tips44.length);document.write(tips44[index]);</script>');
+<script type="text/javascript">
+    /*首页主流媒体报道上部*/
+    var cpro_id = "u1722206";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>

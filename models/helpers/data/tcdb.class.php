@@ -187,6 +187,22 @@ class tcdb{
         return $this;
     }
 
+    /**
+     * in查询搜索条件拼接
+     * @param $field 字段值
+     * @param array $value 数据值
+     * @param bool $and 连接字符
+     * @return $this|tcdb
+     */
+    public function inWhere($field , array $value ,$and = true){
+        if(empty($value)){
+            return $this;
+        }
+        $valueStr = "'". implode("','",$value) . "'";
+        return $this->where([$field => $valueStr],'in',$and);
+
+    }
+
     //逻辑操作方法
     public function all(){
         $str = 'select '.$this->field.' from '.$this->table.' '.$this->join.' '.$this->condition.$this->order;

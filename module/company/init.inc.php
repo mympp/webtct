@@ -1,5 +1,15 @@
-<?php 
+<?php
+use models\module\baseModule;
+
 defined('IN_DESTOON') or exit('Access Denied');
+
+
+//æ–°ç‰ˆå¤´éƒ¨å†…å®¹
+$homepageModule = baseModule::moduleInstance('homepage');
+$homepageModule->setUser($userid,$username);
+$companyInfo = $homepageModule->getCompanyInfo();
+
+
 isset($file) or $file = 'homepage';
 if(isset($update) || isset($preview)) {
 	$db->cids = 1;
@@ -242,7 +252,7 @@ $map = isset($HOME['map']) ? $HOME['map'] : '';
 $stats = isset($HOME['stats']) ? $HOME['stats'] : '';
 $kf = isset($HOME['kf']) ? $HOME['kf'] : '';
 $comment_proxy = '';
-if($domain) {//V5.0Éý¼¶V6.0Ìí¼Ó
+if($domain) {//V5.0ï¿½ï¿½ï¿½ï¿½V6.0ï¿½ï¿½ï¿½
 	$comment_proxy = 'http://'.$domain.'/';
 } else {
 	if($CFG['com_domain']) {

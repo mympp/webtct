@@ -138,7 +138,7 @@ class member {
 		$groupid = $this->userid ? $member['groupid'] : $member['regid'];
 		if($groupid > 5) {
 			if(strlen($member['company']) < 2) return $this->_($L['member_company_null']);
-			if(preg_match("/[0-9]+/", $member['company']) || !$this->is_clean($member['company'])) return $this->_($L['member_company_bad']);
+			//if(preg_match("/[0-9]+/", $member['company']) || !$this->is_clean($member['company'])) return $this->_($L['member_company_bad']);
 			if(!$admin_user&&$_groupid!=1){if($this->company_exists($member['company'])) return $this->_($L['member_company_reg']);}
 		}
 		if($this->userid) {

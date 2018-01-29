@@ -32,5 +32,9 @@ class MallArticleCategoryQuery extends BaseQuery
     public function getOne($catid){
         return $this->getDb(self::TABLE_NAME)->where(['catid' => $catid])->one();
     }
+
+    public function getAllCatId(){
+        return $this->getDb(self::TABLE_NAME)->field('catid')->all();
+    }
 }
 ?>

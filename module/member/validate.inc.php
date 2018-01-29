@@ -120,6 +120,8 @@ switch($action) {
 	break;
     case 'vcompany':
         $validateData = $companyModule->getValidateData($_userid);
+		$isValidated = $companyModule->isValidated($_userid,$_username);
+		$isWaitValidate = $companyModule->isWaitValidated($_userid,$_username);
         $isRejectValidate = $companyModule->isRejectValidated($_userid,$_username);
         include template('validate', $module);
         exit;
@@ -131,13 +133,8 @@ switch($action) {
         $isValidated = $companyModule->isValidated($_userid,$_username);
         $isWaitValidate = $companyModule->isWaitValidated($_userid,$_username);
         $isRejectValidate = $companyModule->isRejectValidated($_userid,$_username);
+		$validateData = $companyModule->getValidateData($_userid);
 
-		if($isValidated || $isWaitValidate) {
-			$action = 'v'.$action;
-            $validateData = $companyModule->getValidateData($_userid);
-			include template('validate', $module);
-			exit;
-		}
 		if($submit) {
 			if(!$post['business_license']) message('请上传营业执照');
 			if(!$post['product_license']) message('请上传生产/经营许可证');
@@ -152,7 +149,7 @@ switch($action) {
                 $post['product_license_totime'] = strtotime($post['product_license_totime']);
 
 			if($companyModule->sendValidate($_userid,$post)){
-                dmsg($L['validate_company_success'], '?action='.$action);
+                dmsg($L['validate_company_success'], '?action=vcompany');
             }else{
                 message('证件上传失败，可联系网站客服跟进！');
             }

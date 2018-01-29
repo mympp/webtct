@@ -390,7 +390,8 @@
 {elseif $action == 'company'}
 {if $itemid==1}
 
-<div class="warn">尊敬的用户，为了保证信息的真实有效，请先<strong>认证</strong>您的<strong>公司信息</strong>，认证通过之后即可发布信息</div>{/if}
+<div class="warn">尊敬的用户，为了保证信息的真实有效，请先<strong>认证</strong>您的<strong>公司信息</strong>，认证通过之后即可发布信息</div>
+{/if}
 <div class="menu">
     <table cellpadding="0" cellspacing="0">
         <tr>
@@ -418,7 +419,7 @@
         <tr>
             <td class="tl"><span class="f_red">*</span> 营业执照</td>
             <td class="tr">
-                <input name="post[business_license]" id="thumb" type="text" size="60" readonly/>
+                <input name="post[business_license]" id="thumb" type="text" size="60" value="{$validateData['business_license']}" readonly/>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb').value, true);" class="t">[上传]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb').value);" class="t">[预览]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb').value='';" class="t">[删除]</a>
@@ -429,10 +430,15 @@
             <td class="tl"><span class="f_red">*</span>证照有效期</td>
             <td class="tr">
                 <script type="text/javascript" src="http://www.tecenet.com/file/script/calendar.js"></script>
-                <input type="text" name="post[business_license_totime]" id="validDate" value="" size="10" onfocus="ca_show('validDate', this, '-');" readonly="" ondblclick="this.value='';">
+                <input type="text" name="post[business_license_totime]" id="validDate"
+                       value="<?php echo date('Y-m-d',$validateData['business_license_totime']); ?>"
+                       size="10" onfocus="ca_show('validDate', this, '-');" readonly="" ondblclick="this.value='';">
                 <img src="http://www.tecenet.com/file/image/calendar.gif" align="absmiddle" onclick="ca_show('validDate', this, '-');" style="cursor:pointer;">
 
-                <label><input title="长期有效" type="checkbox" class="longTime" name="post[isBL_long_term]" value="1" >长期有效</label>
+                <label>
+                    <input title="长期有效" {if $validateData['isBL_long_term']} checked {/if} type="checkbox" class="longTime" name="post[isBL_long_term]" value="1" >
+                    长期有效
+                </label>
 
                 <span id="dvalidDate" class="f_red"></span>
             </td>
@@ -447,7 +453,7 @@
         <tr>
             <td class="tl"><span class="f_red">*</span>生产/经营许可证</td>
             <td class="tr">
-                <input name="post[product_license]" id="thumb1" type="text" size="60" readonly/>
+                <input name="post[product_license]" id="thumb1" type="text" value="{$validateData['product_license']}" size="60" readonly/>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dthumb({$moduleid},0,0, Dd('thumb1').value, true, 'thumb1');" class="t">[上传]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="_preview(Dd('thumb1').value);" class="t">[预览]</a>
                 &nbsp;&nbsp;<a href="javascript:void(0);" onclick="Dd('thumb1').value='';" class="t">[删除]</a>
@@ -457,7 +463,9 @@
         <tr>
             <td class="tl"><span class="f_red">*</span>证照有效期</td>
             <td class="tr">
-                <input type="text" name="post[product_license_totime]" id="validDate1" value="" size="10" onfocus="ca_show('validDate1', this, '-');" readonly="" ondblclick="this.value='';">
+                <input type="text" name="post[product_license_totime]" id="validDate1"
+                       value="<?php echo date('Y-m-d',$validateData['product_license_totime']);  ?>"
+                       size="10" onfocus="ca_show('validDate1', this, '-');" readonly="" ondblclick="this.value='';">
                 <img src="http://www.tecenet.com/file/image/calendar.gif" align="absmiddle" onclick="ca_show('validDate1', this, '-');" style="cursor:pointer;">
                 <span id="dvalidDate1" class="f_red"></span>
             </td>
@@ -469,7 +477,6 @@
                 <p>2.支持.jpg .jpeg .bmp .png格式照片，大小不超过3M。</p>
             </td>
         </tr>
-
         </tbody>
         <tr>
             <td class="tl">&nbsp;</td>
@@ -587,7 +594,12 @@
             {else}
             已通过{/if}</td>
     </tr>
-
+    <tr>
+        <td class="tl"></td>
+        <td class="tr f_red">
+            <a href="?action=company"><input type="button" class="btn" value="修改资料"></a>
+        </td>
+    </tr>
 </table>
 {elseif $action == 'bank'}
 <div class="menu">

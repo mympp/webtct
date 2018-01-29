@@ -159,7 +159,7 @@ if($wx->signature()) {
 					if(!empty($rule) && !empty($rule['content'])){
 						$reply = str_replace('<br />',"\n",$rule['content']);
 						$reply = str_replace('&nbsp;',' ',$reply);
-						$wx->response($FromUserName,$ToUserName,'text',$reply,$misc);	//回复内容
+						$wx->response($FromUserName,$ToUserName,$rule['word_type'],$reply,$misc);	//回复内容
 					}else{
 						//自动回复
 						$half_hour_age = time()-1800;

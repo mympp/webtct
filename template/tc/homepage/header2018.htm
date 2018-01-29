@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$head_title}</title>
+    <meta name="keywords" content="{$head_keywords}" />
+    <meta name="description" content="{$head_description}" />
+
+    <link rel="stylesheet" href="{DT_SKIN}tecenet.base.css">
+    <link rel="stylesheet" href="{DT_SKIN}tc.page.header.css">
+    <link rel="stylesheet" href="{DT_SKIN}homepage/tc.template.base.css">
+    {loop $head_css $k $v}
+    <link rel="stylesheet" href="{$v}">
+    {/loop}
+</head>
+<body>
+
+
+<!--top-bar-->
+<div class="top-bar">
+    <div class="top-bar-box clearfix">
+        <div class="top-bar-menu top-bar-dropdown pull-left">
+            <div class="dropdown-title"><a href="{DT_PATH}?ref=pageTopNav">天成医疗网</a><i class="arrow"></i></div>
+            <ul class="dropdown-body clearfix">
+                <li><a href="{$MODULE[16]['linkurl']}?ref=pageTopNav" target="_blank">产品</a></li>
+                <li><a href="http://repair.tecenet.com/?ref=pageTopNav" target="_blank">维修</a></li>
+                <li><a href="{$MODULE[5]['linkurl']}?ref=pageTopNav" target="_blank">供需</a></li>
+                <li><a href="{$MODULE[6]['linkurl']}?ref=pageTopNav" target="_blank">招标</a></li>
+                <li><a href="{$MODULE[7]['linkurl']}?ref=pageTopNav" target="_blank">资质</a></li>
+                <li><a href="http://www.tecejob.com/?ref=pageTopNav" target="_blank">招聘</a></li>
+                <li><a href="{$MODULE[4]['linkurl']}?ref=pageTopNav" target="_blank">厂商</a></li>
+                <li><a href="{$MODULE[21]['linkurl']}?ref=pageTopNav" target="_blank">资讯</a></li>
+                <li><a href="{$MODULE[15]['linkurl']}?ref=pageTopNav" target="_blank">共享</a></li>
+                <li><a href="{$MODULE[10]['linkurl']}?ref=pageTopNav" target="_blank">问答</a></li>
+                <li><a href="http://image.tecenet.com/?ref=pageTopNav" target="_blank">图库</a></li>
+            </ul>
+        </div>
+        <div class="top-bar-divide pull-left"></div>
+        <a class="top-bar-link pull-left" href="http://so.tecenet.com/?ref=pageTopNav" target="_blank"
+           title="医疗器械产业专业搜索引擎">天成医搜</a>
+        <a class="top-bar-link pull-left" href="http://hao.tecenet.com/?ref=pageTopNav" target="_blank"
+           title="中国最大医疗器械厂家导航">医疗厂家导航</a>
+        <div class="top-bar-divide pull-left"></div>
+        <a class="top-bar-link pull-left" href="http://market.tecenet.com/?ref=pageTopNav" target="_blank"
+           onclick="_hmt.push(['_trackEvent', 'pageTopNav', 'click', 'market']);">行情中心</a>
+        <a class="top-bar-link pull-left" href="http://repair.tecenet.com/?ref=pageTopNav" target="_blank"
+           onclick="_hmt.push(['_trackEvent', 'pageTopNav', 'click', 'repair']);">维修中心</a>
+        <div class="top-bar-link pull-right" title="天成医疗网客服"><i class="t-b-i tel"></i>400-617-3599</div>
+        <div class="top-bar-divide pull-right"></div>
+        <a class="top-bar-link pull-right" href="javascript:;"
+           onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&amp;userId=6452136&amp;s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);"><i
+                class="t-b-i service"></i>在线客服</a>
+        <div class="top-bar-divide pull-right"></div>
+        <div class="top-bar-mobile top-bar-dropdown pull-right">
+            <div class="dropdown-title">移动应用<i class="arrow"></i></div>
+            <ul class="dropdown-body clearfix">
+                <li>
+                    <a href="http://shouji.baidu.com/software/7042751.html" target="_blank"
+                       onclick="_hmt.push(['_trackEvent', 'TecenetHeader', 'click', 'TecenetApp']);">手机客户端</a>
+                </li>
+                <li><a href="http://wap.tecenet.com/">WAP站</a></li>
+                <li>
+                    <a href="javascript:;"
+                       onclick="_hmt.push(['_trackEvent', 'TecenetHeader', 'click', 'TecenetWeChatQrcode']);">微信公众号</a>
+                    <img src="http://www.tecenet.com/file/image/weixin.jpg" alt="天成医疗网微信公众平台二维码">
+                </li>
+            </ul>
+        </div>
+        <div class="top-bar-divide pull-right"></div>
+        <!--注册&登录 -->
+        {if $_username}
+        <a class="top-bar-link pull-right" href="{DT_PATH}member">{$username}</a>
+        {else}
+        <a class="top-bar-link pull-right" href="{DT_PATH}member/register.php">注册</a>
+        <div class="top-bar-login top-bar-dropdown pull-right">
+            <div class="dropdown-title">登录<i class="arrow"></i></div>
+            <ul class="dropdown-body clearfix">
+                <li class="tecenet"><a href="{DT_PATH}member/login.php" rel="nofollow"><i></i>天成账号登录</a>
+                </li>
+                <li class="wechat"><a href="{DT_PATH}api/oauth/wechat/connect.php" rel="nofollow"><i></i>微信账号登录</a>
+                </li>
+                <li class="qq">
+                    <a href="{DT_PATH}api/oauth/qq/connect.php" rel="nofollow"><i></i>QQ账号登录</a></li>
+            </ul>
+        </div>
+        {/if}
+        <!--注册&登录 end-->
+    </div>
+</div>
+<!--top-bar end-->
+
+
+<!--page-header-->
+<div class="page-header">
+    <div class="tp-container clearfix">
+        <!--logo-->
+        <a href="{$MODULE[4]['linkurl']}" class="logo pull-left">
+            <span>天成医疗<em>厂商</em></span>
+        </a>
+        <!--logo end-->
+
+        <!--company-info-->
+        <div class="company-info pull-left">
+            <div class="company-info-name"><a href="{$companyInfo['linkurl']}">{$companyInfo['company']}</a></div>
+            <p class="company-info-tag">
+                {loop $companyInfo['mode'] $k $m}
+                <i>{$m}</i>
+                {/loop}
+            </p>
+
+            <div class="company-info-dialog">
+                <ul class="company-info-dialog-content">
+                    <li><label>主体名称：</label><em>{$companyInfo['company']}</em></li>
+                    <li><label>所在地区：</label><em>{$companyInfo['area']}</em></li>
+                    <li><label>成立时间：</label><em>{$companyInfo['regyear']}</em></li>
+                    <li><label>主体规模：</label><em>{$companyInfo['size']}</em></li>
+                </ul>
+                <div class="company-info-dialog-btn clearfix">
+                    <a class="btn btn-default pull-left" href="{$companyInfo['linkurl']}">
+                        <i class="iconfont icon-wangdianwaibao"></i>进入公司</a>
+
+                    <form action="{DT_PATH}member/favorite.php" method="get">
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="title" value="{$companyInfo['company']}">
+                        <input type="hidden" name="url" value="{$companyInfo['linkurl']}">
+                        <input type="submit" value="收藏" class="mark-btn pull-right p-i">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--company-info end-->
+
+        <!--company-info-->
+        <div class="company-info pull-left">
+            <div class="company-qrcode">
+                <i class="iconfont icon-erweima1"></i>
+                <div class="company-info-dialog">
+                    <img class="company-qrcode-img"
+                         src="http://www.tecenet.com/api/ewm.php?dz={$companyInfo['linkurl']}&size=3&us=username={$companyInfo['username']}"
+                         alt="微店二维码">
+                    <p class="company-qrcode-text">扫一扫，进入手机微店</p>
+
+                </div>
+            </div>
+        </div>
+        <!--company-info end-->
+
+
+        <!--search-box-->
+        <div class="search-box pull-right">
+            <form class="search-form" action="">
+                <input type="text" class="search-keyword" placeholder="请输入关键词">
+                <button type="submit" class="search-submit">搜本店</button>
+                <button type="button" class="search-global">搜全站</button>
+            </form>
+        </div>
+        <!--search-box end-->
+
+    </div>
+</div>
+<!--page-header end-->
+
+<!--tp-wrap-->
+<div class="tp-wrap">
+    <!--tp-header-->
+    <div class="tp-header">
+        <div class="tp-container clearfix">
+            <!--logo-->
+            <div class="logo pull-left">
+                <a href="{$companyInfo['linkurl']}"><img src="{$companyInfo['thumb']}" alt=""></a>
+            </div>
+            <!--logo end-->
+
+            <!--tp-header-title-->
+            <div class="tp-header-title pull-left">
+                <h1 class="tp-header-name">{$companyInfo['company']}</h1>
+                <h4 class="tp-header-slogan">{$companyInfo['introduce']}</h4>
+            </div>
+            <!--tp-header-title end-->
+
+            <!--tp-header-grade-->
+            <div class="tp-header-grade pull-right">
+                {if $companyInfo['isValidated']}
+                <span class="tp-header-rz active"><i class="iconfont icon-renzheng1"></i>已认证</span>
+                {else}
+                <span class="tp-header-rz"><i class="iconfont icon-renzheng1"></i>未认证</span>
+                {/if}
+                {if $companyInfo['isVip']}
+                <span class="tp-header-vip active"><i class="iconfont icon-vip"></i>VIP会员</span>
+                {else}
+                <span class="tp-header-vip"><i class="iconfont icon-vip"></i>普通会员</span>
+                {/if}
+            </div>
+            <!--tp-header-grade end-->
+        </div>
+    </div>
+    <!--tp-header end-->
+
+    <!--tp-nav-->
+    <div class="tp-nav">
+        <div class="tp-container clearfix">
+            <ul class="tp-nav-list clearfix">
+                <li class="tp-nav-item"><a href="<?php echo $homepageModule->linkurl ?>" class="active">网站首页</a></li>
+                {loop $MENU $k $m}
+                <li class="tp-nav-item"><a href="{$m['linkurl']}">{$m['name']}</a></li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    <!--tp-nav end-->
+
+    <!--tp-banner-->
+    <div class="tp-banner">
+        <!-- tp-banner-slide -->
+        <div class="tp-banner-slide">
+            <div class="bd">
+                <ul>
+                    {loop $companyBanner $key $banner}
+                    <li style="background:url('{$banner}') center center no-repeat;">
+                    </li>
+                    {/loop}
+                </ul>
+            </div>
+            <div class="hd">
+                <ul></ul>
+            </div>
+        </div>
+        <!-- tp-banner-slide end-->
+    </div>
+    <!--tp-banner end-->

@@ -3,12 +3,14 @@ namespace models\module;
 
 use models\helpers\query\CompanyValidateQuery;
 use models\helpers\query\CompanyQuery;
+use models\helpers\query\UpgradeQuery;
+use models\helpers\query\MemberQuery;
 
 //企业模块模型类，封装业务逻辑操作
 class companyModule extends baseModule
 {
     private $_companyValidate;
-    private $_validateStaus ;
+    private $_validateStaus;
 
     /**
      * 构造方法
@@ -26,7 +28,7 @@ class companyModule extends baseModule
      */
     private function getCompanyValidate()
     {
-        if (empty($this->_companyValidate))    $this->_companyValidate = new CompanyValidateQuery();
+        if (empty($this->_companyValidate)) $this->_companyValidate = new CompanyValidateQuery();
         return $this->_companyValidate;
     }
 
@@ -57,10 +59,10 @@ class companyModule extends baseModule
      * @param string $username
      * @return mixed
      */
-    private function getValidateStatus($userid,$username = '')
+    private function getValidateStatus($userid, $username = '')
     {
-        if(!isset($this->_validateStaus[$userid])){
-            $status = $this->getCompanyValidate()->getValidateStatus($userid,$username);
+        if (!isset($this->_validateStaus[$userid])) {
+            $status = $this->getCompanyValidate()->getValidateStatus($userid, $username);
             $this->_validateStaus[$userid] = $status;
         }
         return $this->_validateStaus[$userid];
@@ -82,14 +84,14 @@ class companyModule extends baseModule
      * @param string $username
      * @return bool
      */
-    public function isValidated($userid,$username = '')
+    public function isValidated($userid, $username = '')
     {
-        $status = $this->getValidateStatus($userid,$username);
-        if($status == CompanyValidateQuery::VALIDATED_STATUS) {
+        $status = $this->getValidateStatus($userid, $username);
+        if ($status == CompanyValidateQuery::VALIDATED_STATUS) {
             return true;
-        }elseif($status == CompanyValidateQuery::COMPANY_VALIDATED_STATUS){
+        } elseif ($status == CompanyValidateQuery::COMPANY_VALIDATED_STATUS) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -114,12 +116,23 @@ class companyModule extends baseModule
      * @param $userid
      * @param string $username
      */
-    public function isRejectValidated($userid,$username = ''){
-        if($this->getValidateStatus($userid,$username) == CompanyValidateQuery::FORBID_STATUS){
+    public function isRejectValidated($userid, $username = '')
+    {
+        if ($this->getValidateStatus($userid, $username) == CompanyValidateQuery::FORBID_STATUS) {
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+
+
+    /**
+     * 判断用户是否已上传有效的生产许可证
+     * @param $userid
+     * @return bool
+     */
+    public function hasProductLicense($userid){
+        return $this->getCompanyValidate()->hasProductLicense($userid);
     }
 
     /**
@@ -130,12 +143,86 @@ class companyModule extends baseModule
      */
     public function sendValidate($userid, $data)
     {
-        return $this->getCompanyValidate()->sendValidate($userid,$data);
+        return $this->getCompanyValidate()->sendValidate($userid, $data);
     }
 
+    //---------------- 用户升级流程处理
 
-    public function bindCompany($userid){
+    /**
+     * 修改用户升级状态
+     * @param array $itemid upgrade表id
+     * @param $upgradeStatus upgrade表status字段需要修改状态
+     * @param $validateStatus companyValidate表status字段需要修改状态
+     * @param $companyStatus company表validate字段需要修改状态
+     * @param $shopStatus company表closeshop字段需要修改状态
+     * @param $memberStatus member表groupid字段状态
+     * @param $note 备注信息
+     * @return bool
+     */
+    private function changeUpgradeStatus(array $itemid, $upgradeStatus, $validateStatus, $companyStatus,
+                                         $shopStatus,$memberStatus ,$note = '')
+    {
+        //修改upgrade表状态
+        $upgradeQuery = new UpgradeQuery();
+        $db = $upgradeQuery->getDb(UpgradeQuery::TABLE_NAME);
+        $editData = ['status' => $upgradeStatus];
+        if(!empty($note)){
+            $editData['note'] = $note;
+        }
+        $result = $db
+            ->inWhere('itemid', $itemid)->edit($editData);
+        if ($result) {
+            $userid = $upgradeQuery->getDb(UpgradeQuery::TABLE_NAME)->field('userid')->inWhere('itemid', $itemid)->all();
+            $userCondition = [];
+            foreach ($userid as $value) {
+                $userCondition[] = $value['userid'];
+            }
+            (new CompanyValidateQuery())->getDb(CompanyValidateQuery::TABLE_NAME)
+                ->inWhere('userid', $userCondition)
+                ->edit(['status' => $validateStatus]);
+            (new CompanyQuery())->getDb(CompanyQuery::TABLE_NAME)
+                ->inWhere('userid', $userCondition)
+                ->edit(['validated' => $companyStatus, 'closeshop' => $shopStatus]);
+            (new MemberQuery())->getDb(MemberQuery::TABLE_NAME)
+                ->inWhere('userid',$userCondition)
+                ->edit(['groupid' => $memberStatus]);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    /**
+     * 通过用户升级
+     * @param array $itemid
+     * @return bool
+     */
+    public function allowUpgradeToCompany(array $itemid)
+    {
+        return $this->changeUpgradeStatus($itemid,
+            UpgradeQuery::CHECKED_STATUS,
+            CompanyValidateQuery::CHECK_STATUS,
+            CompanyQuery::VALIDATED,
+            CompanyQuery::OPENSHOP,
+            MemberQuery::COMPANY_GROUPID
+        );
+    }
+
+    /**
+     * 拒绝用户升级
+     * @param array $itemid
+     * @return bool
+     */
+    public function rejectUpgradeToCompany(array $itemid , $note = '')
+    {
+        return $this->changeUpgradeStatus($itemid,
+            UpgradeQuery::REJECT_STATUS,
+            CompanyValidateQuery::FORBID_STATUS,
+            CompanyQuery::UNVALIDATED,
+            CompanyQuery::CLOSESHOP,
+            MemberQuery::NORMAL_GROUPID,
+            $note
+        );
     }
 }
 

@@ -1,34 +1,31 @@
-{template 'header', $template}
-
-<script type="text/javascript">
-GoMobile('http://wap.tecenet.com/index.php?moduleid=29&itemid={$itemid}');
-</script>
-<div class="dsn" id="pos_show">您当前的位置：<a href="{$COM[linkurl]}">首页</a> &raquo; <a href="{$MENU[$menuid][linkurl]}">{$MENU[$menuid][name]}</a>{if $itemid} &raquo; {$title}{/if}</div>
-
-<div class="main_head"><div><strong>{$MENU[$menuid][name]}</strong></div></div>
-<div class="main_body">
+{php $head_css = [DT_SKIN.'homepage/tc.template.other.min.css',DT_SKIN.'homepage/jquery.fancybox-1.3.4.min.css'];}
 {if $itemid}
-	<div class="title">{$title}</div>
-	<div class="info">发布时间：{timetodate($addtime, 3)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：{$hits}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MENU[$menuid][linkurl]}">返回列表</a></div>
-	<div class="content" id="content">{$content}</div>
-	<script type="text/javascript">
-	var content_id = 'content';
-	var img_max_width = 600;
-	</script>
-	<script type="text/javascript" src="{DT_PATH}file/script/content.js"></script>
-{else}
-	<table cellpadding="2" cellspacing="1" width="100%" align="center">
-	{loop $lists $v}
-	<tr>
-	<td class="px13" height="25">&middot;<a href="{$v[linkurl]}">{$v[title]}</a></td>
-	<td align="center" width="80" class="f_gray px11">{timetodate($v[addtime], 3)}</td>
-	</tr>
-	{/loop}
-	</table>
-	<div class="pages">{$pages}</div>
+    {php $footer_js = [DT_PATH.'file/script/homepage/tc.template.news.detail.js'];}
 {/if}
+{template 'header2018', $template}
+
+<!--tp-crumb-->
+<div class="tp-crumb">
+    <div class="tp-container clearfix">
+        <div class="hd pull-left"><i class="iconfont icon-shouye-copy"></i>您当前的位置：</div>
+        <div class="bd pull-left">
+            <a href="<?php echo $homepageModule->linkurl;　?>">首页</a>
+            <span>&gt;</span>
+            <a href="<?php echo $homepageModule->newsUrl;　?>">公司动态</a>
+        </div>
+    </div>
 </div>
-<script type="text/javascript">
-try {Dd('type_{$typeid}').innerHTML = '<strong>'+Dd('name_{$typeid}').innerHTML+'</strong>';}catch (e){}
-</script>
-{template 'footer', $template}
+<!--tp-crumb end-->
+
+<!--tp-container-->
+<div class="tp-container clearfix">
+    {if $itemid}
+        {template 'news_detail',$template}
+    {else}
+        {template 'news_list',$template}
+    {/if}
+    {template 'left',$template}
+</div>
+<!--tp-container end-->
+
+{template 'footer2018', $template}
