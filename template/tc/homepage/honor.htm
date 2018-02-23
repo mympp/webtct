@@ -14,6 +14,7 @@
 </div>
 <!--tp-crumb end-->
 
+<div class="tp-wrap bg-gray">
 <!--tp-container-->
 <div class="tp-container clearfix">
     <div class="tp-main pull-right">
@@ -28,12 +29,12 @@
                 <div class="tp-credit-content">
                     {if $license['business_license']}
                     <a class="fancybox" href="{$license['business_license']}">
-                        <img src="{$license['business_license']}" alt="营业执照">
+                        <img src="{$license['business_license']}" alt="营业执照" onerror="javascript:this.src='http://www.tecenet.com/skin/teceskin/image/no-pic.png';">
                     </a>
                     {/if}
                     {if $license['product_license']}
                     <a class="fancybox" href="{$license['product_license']}">
-                        <img src="{$license['product_license']}" alt="生产经营许可证">
+                        <img src="{$license['product_license']}" alt="生产经营许可证" onerror="javascript:this.src='http://www.tecenet.com/skin/teceskin/image/no-pic.png';">
                     </a>
                     {/if}
                 </div>
@@ -44,7 +45,7 @@
                 <div class="tp-credit-content">
                     {loop $lists $key $item}
                     <a class="fancybox" href="{$item['thumb']}">
-                        <img src="{$item['thumb']}" alt="{$item['title']}">
+                        <img src="{$item['thumb']}" alt="{$item['title']}" onerror="javascript:this.src='http://www.tecenet.com/skin/teceskin/image/no-pic.png';">
                     </a>
                     {/loop}
                 </div>
@@ -59,5 +60,6 @@
     {template 'left',$template}
 </div>
 <!--tp-container end-->
+</div>
 
 {template 'footer2018', $template}

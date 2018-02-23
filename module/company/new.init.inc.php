@@ -11,4 +11,5 @@ $companyLogo = $homepageModule->getLogo();
 if(empty($companyLogo)){
     $companyLogo = $companyInfo['thumb'];
 }
+
 ?>

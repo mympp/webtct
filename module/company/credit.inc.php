@@ -1,7 +1,10 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
+use models\helpers\widget\redirect\pc_to_wap;
 
 require_once 'new.init.inc.php';
+
+$wapurl = pc_to_wap::forword('gongsi/shop-'.$homepage.'/credit.html');
 require_once 'new.left.inc.php';
 
 $comment = 0;
@@ -31,5 +34,7 @@ if(isset($MODULE[16])) {
 	}
 }
 if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].'index.php?moduleid=4&username='.$username.'&action='.$file;
+
+$head_title = $companyInfo['company'].'_'.$head_title;
 include template('credit', $template);
 ?>

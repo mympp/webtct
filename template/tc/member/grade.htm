@@ -15,6 +15,7 @@
             <p class="tr tr-1">服务范围\会员组</p>
             <p class="tr tr-2">收费模式</p>
             <p class="tr tr-3">年费</p>
+            <p class="grade-btn-area"></p>
             <p class="tr tr-4">允许发布信息</p>
             <p class="tr tr-6">专门定制宣传单页</p>
             <p class="tr tr-7">拥有VIP标识 </p>
@@ -39,6 +40,16 @@
             <p class="tr tr-1">个人会员</p>
             <p class="tr tr-2">免费</p>
             <p class="tr tr-3"><i>¥</i><em>0</em>元/年</p>
+            {if $_userid}
+            <p class="grade-btn-area">
+                <span class="grade-btn-msg">您已是天成会员</span>
+            </p>
+            {else}
+            <p class="grade-btn-area">
+                <a href="http://www.tecenet.com/member/register.php" class="grade-btn">立即注册</a>
+                <span class="grade-btn-msg">免费注册</span>
+            </p>
+            {/if}
             <p class="tr tr-4">
                 <a href="http://repair.tecenet.com/" target="_blank">维修需求</a>|
                 <a href="http://www.tecenet.com/zixun/" target="_blank">信息资讯</a>|
@@ -81,6 +92,21 @@
             <p class="tr tr-1">企业会员</p>
             <p class="tr tr-2">免费</p>
             <p class="tr tr-3"><i>¥</i><em>0</em>元/年</p>
+            {if $isCompanyGroup}
+            <p class="grade-btn-area">
+                <span class="grade-btn-msg">您已是企业会员</span>
+            </p>
+            {elseif $_userid}
+            <p class="grade-btn-area">
+                <a href="javascript:;" class="grade-btn">立即升级</a>
+                <span class="grade-btn-msg">限时免费开放</span>
+            </p>
+            {else}
+            <p class="grade-btn-area">
+                <a href="http://www.tecenet.com/member/register.php" class="grade-btn">立即注册</a>
+                <span class="grade-btn-msg">免费注册</span>
+            </p>
+            {/if}
             <p class="tr tr-4">
                 <a href="http://www.tecenet.com/chanpin/" target="_blank">产品中心</a>|
                 <a href="http://repair.tecenet.com/" target="_blank">维修需求</a>|
@@ -129,6 +155,16 @@
             <p class="tr tr-1">VIP会员</p>
             <p class="tr tr-2">包年</p>
             <p class="tr tr-3"><i>¥</i><em>6800</em>元/年</p>
+            {if $isVipGroup}
+            <p class="grade-btn-area">
+                <span class="grade-btn-msg">您已是VIP会员</span>
+            </p>
+            {else}
+            <p class="grade-btn-area">
+                <a href="javascript:;" class="grade-btn">立即购买</a>
+                <span class="grade-btn-msg">限时特惠供应</span>
+            </p>
+            {/if}
             <p class="tr tr-4">
                 <a href="http://www.tecenet.com/chanpin/" target="_blank">产品中心</a>|
                 <a href="http://repair.tecenet.com/" target="_blank">维修需求</a>|

@@ -1,6 +1,9 @@
 <?php
 defined('IN_DESTOON') or exit('Access Denied');
 use models\helpers\widget\nlp\scws;
+use models\helpers\widget\redirect\pc_to_wap;
+
+$wapurl = pc_to_wap::forword('gongsi/shop-'.$homepage.'.html');
 
 require_once DT_ROOT .'/models/autoload.php';
 

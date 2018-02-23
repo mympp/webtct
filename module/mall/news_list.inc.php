@@ -27,7 +27,7 @@ $childCate = [];
 if(!empty($catid)){
     $childCate = $maCategory->getChildCategory($catid);
     foreach($childCate as $cate){
-        $cateId['catid'] = $cate['catid'];
+        $cateId[] = $cate['catid'];
     }
     $cateId[] = $catid;
     $pageCate = $maCategory->getOne($catid);
@@ -48,7 +48,8 @@ if(!empty($catid)){
     );
 
 }
-$listsData = $newsModule->getLists($pagesize,'itemid,title,thumb,description,addtime,hits,keywords',$cateId,(int)$page);
+
+$listsData = $newsModule->getLists($pagesize,'itemid,title,thumb,description,addtime,hits,keywords,pushtime',$cateId,(int)$page);
 $lists = $listsData['list'];
 
 //分页按钮

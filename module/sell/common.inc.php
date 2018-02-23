@@ -14,6 +14,6 @@ $AREA or $AREA = cache_read('area.php');
 $AREA[0]['areaname'] = '全国';
 
 $logo_title = '供需';
-$logo_url = 'www.tecenet.com/gongying/';
+$logo_url = $MODULE[5]['linkurl'];
 
 ?>

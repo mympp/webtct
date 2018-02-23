@@ -17,15 +17,17 @@
 </div>
 <!--tp-crumb end-->
 
-<!--tp-container-->
-<div class="tp-container clearfix">
-    {if $itemid}
-        {template 'news_detail',$template}
-    {else}
-        {template 'news_list',$template}
-    {/if}
-    {template 'left',$template}
+<div class="tp-wrap bg-gray">
+    <!--tp-container-->
+    <div class="tp-container clearfix">
+        {if $itemid}
+            {template 'news_detail',$template}
+        {else}
+            {template 'news_list',$template}
+        {/if}
+        {template 'left',$template}
+    </div>
+    <!--tp-container end-->
 </div>
-<!--tp-container end-->
 
 {template 'footer2018', $template}

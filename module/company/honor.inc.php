@@ -1,7 +1,10 @@
 <?php
 defined('IN_DESTOON') or exit('Access Denied');
+use models\helpers\widget\redirect\pc_to_wap;
 
 require_once 'new.init.inc.php';
+
+$wapurl = pc_to_wap::forword('gongsi/shop-'.$homepage.'.html');
 require_once 'new.left.inc.php';
 
 if($companyInfo['isValidated']){

@@ -9,5 +9,5 @@ $table_data = $DT_PRE.$module.'_data';
 
 
 $logo_title = '问答';
-$logo_url = 'www.tecenet.com/wenda/';
+$logo_url = $MODULE[10]['linkurl'];
 ?>

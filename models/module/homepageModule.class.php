@@ -13,12 +13,14 @@ use models\helpers\query\LinkQuery;
 use models\helpers\query\TypeQuery;
 use models\helpers\query\HonorQuery;
 
-use models\config\config;
+use models\config\Config;
 
 //厂商独立网站处理模型
 class homepageModule extends baseModule
 {
     const default_banner = 'skin/teceskin/homepage/images/tp-banner-ex.jpg';
+    const gender_man = 1;
+    const gender_women = 2;
 
     public $userid = '';
     public $username = '';
@@ -70,7 +72,7 @@ class homepageModule extends baseModule
         $this->userid = $userid;
         $this->username = $username;
 
-        $this->linkurl = str_replace('www',$this->username,config::getConfig('baseUrl'));
+        $this->linkurl = str_replace('www',$this->username,Config::getConfig('baseUrl'));
         $this->mallUrl = $this->linkurl .'mall/';
         $this->newsUrl = $this->linkurl . 'news/';
         $this->introduceUrl = $this->linkurl .'introduce/';
@@ -87,7 +89,7 @@ class homepageModule extends baseModule
         $banner = $companySettingQuery->getCompanyBanner($this->userid);
         if(!$banner){
             //没有数据返回默认横幅图片
-            $baseUrl = config::getConfig('baseUrl');
+            $baseUrl = Config::getConfig('baseUrl');
             return [$baseUrl . self::default_banner];
         }else{
             return $banner;
@@ -212,10 +214,12 @@ class homepageModule extends baseModule
         if(!$this->isSetUser()) return [];
 
         $member = (new MemberQuery())->getMemberInfo(['userid' => $this->userid]);
-        if(empty($member['gender'])){
+        if($member['gender'] == self::gender_women){
             $member['gender'] = '女士';
-        }else{
+        }elseif($member['gender'] == self::gender_man){
             $member['gender'] = '男士';
+        }else{
+            $member['gender'] = '';
         }
         return $member;
     }
@@ -232,7 +236,9 @@ class homepageModule extends baseModule
         $companyQuery = new CompanyQuery();
         $companyDb = $companyQuery->getDb(CompanyQuery::TABLE_NAME);
         return $companyDb->field('company,linkurl')
-            ->where(['userid' => $this->userid],'<')->where(['company'=>''],'<>')
+            ->where(['userid' => $this->userid],'<')
+            ->where(['groupid' => MemberQuery::COMPANY_GROUPID] )
+            ->where(['company'=>''],'<>')
             ->limit(0,9)->order('userid desc')->select();
     }
 

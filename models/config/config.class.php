@@ -10,7 +10,7 @@ class Config
 
     }
 
-    private function getParams(){
+    private static function getParams(){
 
         if(empty(self::$_params)){
             self::$_params = require __DIR__.'/config.php';
@@ -20,6 +20,7 @@ class Config
 
     //获取基础参数,可接受不定参数
     public static function getConfig(){
+//        echo 'config';exit;
         $args = func_get_args();
         if(empty($args)) return [];
 

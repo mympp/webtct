@@ -16,6 +16,7 @@ class CompanySettingQuery extends BaseQuery
         $result = $this->getDb(self::TABLE_NAME)
             ->field('item_value')
             ->where(['userid' => $userid])
+            ->where(['item_value' => ''],'<>')
             ->inWhere('item_key',$bannerCondition)
             ->all();
         if($result){

@@ -1,5 +1,5 @@
 <!--在线留言-->
-<form method="post" action="{$MODULE[4]['linkurl']}home.php" class="tp-message-form pull-right" id="messageForm" >
+<form method="post" action="{$MODULE[4]['linkurl']}home.php" class="tp-message-form" id="messageForm" data-validator-option="{timely:2}">
 	<input type="hidden" name="job" value="guestbook">
 	<input type="hidden" name="username" value="{$username}">
 	<input type="hidden" name="action" value="send">
@@ -9,14 +9,14 @@
 	<div class="tp-form-item is-required">
 		<label class="tp-form-item__label">主题：</label>
 		<div class="tp-form-item__content">
-			<input class="tp-form-input" type="text" name="title">
+			<input class="tp-form-input" type="text" name="title" data-rule="required;length(2~50)">
 		</div>
 	</div>
 
 	<div class="tp-form-item is-required">
 		<label class="tp-form-item__label">内容：</label>
 		<div class="tp-form-item__content">
-			<textarea class="tp-form-textarea" name="content">您好，我从天成医疗网上看到您的信息，很感兴趣</textarea>
+			<textarea class="tp-form-textarea" name="content" data-rule="required;length(10~2000)">您好，我从天成医疗网上看到您的信息，很感兴趣</textarea>
 		</div>
 	</div>
 
@@ -32,14 +32,14 @@
 	<div class="tp-form-item is-required">
 		<label class="tp-form-item__label">联系姓名：</label>
 		<div class="tp-form-item__content">
-			<input class="tp-form-input" type="text" name="truename">
+			<input class="tp-form-input" type="text" name="truename" data-rule="required;length(2~)">
 		</div>
 	</div>
 
 	<div class="tp-form-item is-required">
 		<label class="tp-form-item__label">联系电话：</label>
 		<div class="tp-form-item__content">
-			<input class="tp-form-input" type="text" name="telephone">
+			<input class="tp-form-input" type="text" name="telephone" data-rule="required;length(7~)">
 		</div>
 	</div>
 
@@ -55,14 +55,16 @@
 	<div class="tp-form-item is-required">
 		<label class="tp-form-item__label is-required">验证码：</label>
 		<div class="tp-form-item__content">
-			<input class="tp-form-input tp-form-input-sm" type="text" name="captcha">
-			<img class="tp-form-captcha" src="http://www.tecenet.com/api/captcha.png.php?action=image" alt="验证码">
+			<input class="tp-form-input tp-form-input-sm" type="text" name="captcha" data-rule="required;length(4~)">
+			<img class="tp-form-captcha" src="{DT_PATH}api/captcha.png.php?action=image" alt="验证码" onclick="changeCaptcha();" />
 			<a href="javascript:void(0);" class="tp-form-captcha-tips" onclick="changeCaptcha();">看不清 <br> 换一张</a>
+
+			<span class="msg-box n-right" for="captcha"></span>
 		</div>
 	</div>
 
 	<div class="tp-form-foot">
-		<button type="button" class="tp-form-submit">立即发布</button>
+		<button type="submit" class="tp-form-submit">立即发布</button>
 	</div>
 </form>
 <!--在线留言 end-->

@@ -50,7 +50,8 @@ class MallArticleQuery extends BaseQuery
     public function getNewArticles($pagesize = 10, $withImage = false, $field = 'itemid,title,thumb', $catid = 0, $page = 1)
     {
         $db = $this->buildListDb($pagesize, $withImage, $field, $catid, $page);
-        return $db->order('itemid desc')->select();
+        $result =  $db->order('itemid desc')->select();
+        return $result;
     }
 
     //根据条件获取统计
@@ -95,8 +96,6 @@ class MallArticleQuery extends BaseQuery
      * 获取各种条件的特定字段
      * @param $params
      * @return mixed
-     *
-     *
      */
     public function mallArticleIds($params)
     {

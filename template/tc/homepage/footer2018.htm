@@ -1,40 +1,42 @@
-
 <!--tp-footer-->
 <div class="tp-footer bg-gray">
-	<div class="tp-container">
-		<div class="tp-footer-links">
-			<a href="{$COM[linkurl]}">网站首页</a>
-			{loop $MENU $k $m}
-			<a href="{$m['linkurl']}">{$m['name']}</a>
-			{/loop}
-			<a href="{$MODULE[2][linkurl]}">管理入口</a>
-			<a href="{$MODULE[1][linkurl]}page/getbackcompany.php?userid={$userid}">取回管理权</a>
-		</div>
-		<div class="tp-footer-copyright">
-			<span>©2018 广州天成医疗技术股份有限公司版权所有</span>
-			<span>技术支持：<a href="{DT_PATH}" target="_blank">天成医疗网</a></span>
-			<span>访问量：{$COM[hits]}</span>
-		</div>
-	</div>
+    <div class="tp-container">
+        <div class="tp-footer-links">
+            <a href="{$COM[linkurl]}">网站首页</a>
+            {loop $MENU $k $m}
+            {if !strpos($m['linkurl'],'/job/')}
+            <a href="{$m['linkurl']}">{$m['name']}</a>
+            {/if}
+            {/loop}
+            <a href="{$MODULE[2][linkurl]}">管理入口</a>
+            <a href="{$MODULE[1][linkurl]}page/getbackcompany.php?userid={$userid}">取回管理权</a>
+        </div>
+        <div class="tp-footer-copyright">
+            <span>©2018 广州天成医疗技术股份有限公司版权所有</span>
+            <span>技术支持：<a href="{DT_PATH}" target="_blank">天成医疗网</a></span>
+            <span>访问量：{$COM[hits]}</span>
+        </div>
+    </div>
 </div>
 <!--tp-footer end-->
 
 <!--tp-tools-->
 <div class="tp-tools">
-	<a class="tp-tools-item tp-tools-top" href="javascript:;" style="display: none;"><i class="iconfont icon-huidaodingbu1"></i></a>
-	<a class="tp-tools-item tp-tools-service" href=""><i class="iconfont icon-kefu"></i></a>
-	<a class="tp-tools-item tp-tools-qrcode" href="javascript:;">
-		<i class="iconfont icon-erweima1"></i>
-	</a>
-	<div class="tp-tools-qrcode-box">
-		<img src="http://www.tecenet.com/api/ewm.php?dz={$COM[linkurl]}&size=3&us=username={$username}" alt="">
-	</div>
+    <a class="tp-tools-item tp-tools-top" href="javascript:;" style="display: none;"><i
+            class="iconfont icon-huidaodingbu1"></i></a>
+    <a class="tp-tools-item tp-tools-service" href="javascript:;"
+       onclick="javascript:window.open('http://p.qiao.baidu.com/cps/chat?siteId=3215492&userId=6452136&s=tecenet.com','newwindow','height=530,width=600,top=100,left=200,toolbar=no,menubar=no,scrollbars=no,resizeable=no,lacation=no,status=no');_hmt.push(['_trackPageview', '/im/qiao']);"><i
+            class="iconfont icon-kefu"></i></a>
+    <a class="tp-tools-item tp-tools-qrcode" href="javascript:;">
+        <i class="iconfont icon-erweima1"></i>
+    </a>
+    <div class="tp-tools-qrcode-box">
+        <img src="{DT_PATH}api/ewm.php?dz={$COM[linkurl]}&size=3&us=" alt="">
+    </div>
 </div>
 <!--tp-tools end-->
 </div>
 <!--tp-wrap end-->
-
-
 
 
 <script type="text/javascript" src="{DT_PATH}file/script/jquery.js"></script>

@@ -10,9 +10,10 @@ use models\module\baseModule;
 require 'common.inc.php';
 require_once __DIR__ . '/models/autoload.php';
 
-//判断是否移动端需要跳转到wap网站
-pc_to_wap::forword('');
-
+if(!isset($homepage)){
+    //判断是否移动端需要跳转到wap网站
+    pc_to_wap::forword('');
+}
 
 $username = $domain = '';
 if (isset($homepage) && check_name($homepage)) {

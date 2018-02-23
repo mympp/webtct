@@ -1631,6 +1631,7 @@ canvas {
         font-size:0.3rem;
     }
     .about img {
+        display: block !important;
         width: 31%;
         margin: 1%
     }

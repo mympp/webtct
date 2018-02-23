@@ -133,7 +133,7 @@ class mallArticleModule extends baseModule
             $url = [];
             if(!empty($res)){
                 foreach($res as $id){
-                    $url = $this->linkurl . $this->showLinkurl($id['itemid']);
+                    $url[] = $this->linkurl . $this->showLinkurl($id['itemid']);
                 }
                 $siteMap->buildSiteMap($url,'mallArticle','item',$i+1,'Daily');  //生成每天的
             }
@@ -141,10 +141,9 @@ class mallArticleModule extends baseModule
         $url =[];
         $catQuery = new MallArticleCategoryQuery();
         $catRes = $catQuery->getAllCatId();  //查出所有分类
-
         if(!empty($catRes)){
             foreach($catRes as $cat){
-                $url[] = $this->linkurl . $this->searchRewrite(['caitd' => $cat['catid']]);
+                $url[] = $this->linkurl . $this->searchRewrite(['catid' => $cat['catid']]);
             }
         }
         $siteMap->buildSiteMap($url,'mallArticle','cate',1,'Daily');  //生成分类sitemap

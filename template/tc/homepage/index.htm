@@ -1,5 +1,5 @@
 {php $head_css = [DT_SKIN.'homepage/tc.template.index.css'];}
-{php $footer_js = [DT_PATH.'file/script/homepage/tc.template.index.js']}
+{php $footer_js = [DT_PATH.'file/script/homepage/tc.template.index.js', DT_PATH.'file/script/jquery.validator.min.js',DT_PATH.'file/script/zh-CN.js']}
 {template 'header2018',$template}
 
     {if !empty($companyAnnounce)}
@@ -113,7 +113,7 @@
                     {$content}
                 </div>
                 <div class="tp-about-logo pull-left">
-                    <img src="{$companyInfo['logo']}" alt="">
+                    <img src="{$companyLogo}" alt="">
                 </div>
             </div>
         </div>
@@ -171,8 +171,10 @@
                     </div>
                 </div>
                 <!--联系方式 end-->
-
-                {template 'contact-form',$template}
+                
+                <div class="pull-right">    
+                    {template 'contact-form',$template}
+                </div>
 
 
             </div>

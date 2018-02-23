@@ -201,7 +201,7 @@ class companyModule extends baseModule
     {
         return $this->changeUpgradeStatus($itemid,
             UpgradeQuery::CHECKED_STATUS,
-            CompanyValidateQuery::CHECK_STATUS,
+            CompanyValidateQuery::VALIDATED_STATUS,
             CompanyQuery::VALIDATED,
             CompanyQuery::OPENSHOP,
             MemberQuery::COMPANY_GROUPID

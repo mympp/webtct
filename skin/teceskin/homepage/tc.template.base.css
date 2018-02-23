@@ -304,6 +304,7 @@ a:hover, a:active{
     height:auto;
 }
 .tp-header-title{
+    width:800px;
     margin:12px 0 0 20px;
 }
 .tp-header-name{
@@ -357,7 +358,7 @@ a:hover, a:active{
 
 .tp-nav{
     height:48px;
-    background-color: #000;
+    background-color: #333;
 }
 .tp-nav-list{
 
@@ -602,3 +603,32 @@ a:hover, a:active{
 .tp-crumb .bd span{
     color: #888;
 }
+
+
+.tp-empty-default{
+    width:400px;
+    margin:100px auto 50px;
+    padding-top:260px;
+    background: url('./images/emtry-default-bg.png') no-repeat center top;
+    font-size:20px;
+    font-weight: 200;
+    color: #888;
+    text-align: center;
+}
+
+
+.tp-message-form .msg-box{
+    display: block;
+    text-indent:20px;
+}
+.tp-message-form .msg-box .n-error{
+    color: #da1427;
+}
+
+
+
+
+
+
+
+

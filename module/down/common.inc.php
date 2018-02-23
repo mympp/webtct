@@ -10,7 +10,7 @@ $table = $DT_PRE . $module . '_' . $moduleid;
 $table_data = $DT_PRE . $module . '_data_' . $moduleid;
 
 $logo_title = '共享';
-$logo_url = 'www.tecenet.com/gongxiang/';
+$logo_url = $MODULE[15]['linkurl'];
 
 $CATEGORY = getDownCategory();
 $CAT = [];

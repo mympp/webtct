@@ -199,7 +199,8 @@
     background-color: #ca1616;
 }
 .grade-btn-area{
-
+    height:112px;
+    overflow: hidden;
 }
 .grade-btn-area .grade-btn{
     display: inline-block;

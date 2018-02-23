@@ -9,5 +9,5 @@ $table_product = $DT_PRE.$module.'_product';
 $table_price = $DT_PRE.$module.'_price';
 
 $logo_title = '科技';
-$logo_url = 'tech.tecenet.com';
+$logo_url = $MODULE[7]['linkurl'];
 ?>

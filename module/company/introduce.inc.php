@@ -1,6 +1,10 @@
 <?php 
 defined('IN_DESTOON') or exit('Access Denied');
+use models\helpers\widget\redirect\pc_to_wap;
+
 require_once 'new.init.inc.php';
+
+$wapurl = pc_to_wap::forword('gongsi/shop-'.$homepage.'/introduce.html');
 require_once 'new.left.inc.php';
 $memberInfo = $homepageModule->getMemberInfo();
 
@@ -23,6 +27,8 @@ if($itemid) {
 	$content = $t['content'];
 	$COM['thumb'] = $COM['thumb'] ? $COM['thumb'] : DT_SKIN.'image/company.jpg';
 	if($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'].'index.php?moduleid=4&username='.$username.'&action='.$file;
+
+	$head_title = $companyInfo['company'].'_'.$head_title;
 }
 $TYPE = array();
 $result = $db->query("SELECT itemid,title,style FROM {$table} WHERE status=3 AND username='$username' ORDER BY listorder DESC,addtime DESC");
@@ -32,7 +38,6 @@ while($r = $db->fetch_array($result)) {
 	$r['linkurl'] = userurl($username, "file=$file&itemid=$r[itemid]", $domain);
 	$TYPE[] = $r;
 }
-
 
 include template('introduce', $template);
 ?>

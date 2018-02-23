@@ -1,8 +1,9 @@
 <?php
 namespace models\helpers\widget\sitemap;
 
+use models\config\Config;
 use models\module\baseModule;
-use models\config\config;
+
 
 class siteMap
 {
@@ -19,7 +20,8 @@ class siteMap
     {
         global $DT_ROOT;
         global $DT_PATH;
-        config::getConfig('baseRoot');
+            Config::getConfig('baseRoot');
+
         $data = '<?xml version="1.0" encoding="UTF-8"?>';
         $data .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
         $today = date('Y-m-d', time());

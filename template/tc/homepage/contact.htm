@@ -1,6 +1,9 @@
 {php $head_css = [DT_SKIN.'homepage/tc.template.other.min.css'];}
 <?php $footer_js = ['http://api.map.baidu.com/api?v=2.0&ak=rqhGNYEhHp28TLRK6iYWZX50fP4rgtei',
-DT_PATH.'file/script/homepage/tc.template.contact.js']; ?>
+DT_PATH.'file/script/homepage/tc.template.contact.js',
+DT_PATH.'file/script/jquery.validator.min.js',
+DT_PATH.'file/script/zh-CN.js'
+]; ?>
 {template 'header2018', $template}
 
 <!--tp-crumb-->
@@ -16,6 +19,8 @@ DT_PATH.'file/script/homepage/tc.template.contact.js']; ?>
 </div>
 <!--tp-crumb end-->
 
+
+<div class="tp-wrap bg-gray">
 <!--tp-container-->
 <div class="tp-container clearfix">
     <div class="tp-main pull-right">
@@ -88,5 +93,6 @@ DT_PATH.'file/script/homepage/tc.template.contact.js']; ?>
     {template 'left',$template}
 </div>
 <!--tp-container end-->
+</div>
 
 {template 'footer2018', $template}

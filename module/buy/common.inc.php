@@ -22,6 +22,6 @@ foreach($AREA as $k=>$v){
 }
 
 $logo_title = '招标';
-$logo_url = 'www.tecenet.com/zhaobiao/';
+$logo_url = $MODULE[6]['linkurl'];
 
 ?>

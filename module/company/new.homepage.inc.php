@@ -13,4 +13,7 @@ $memberInfo = $homepageModule->getMemberInfo();
 $links = $homepageModule->getLinks();
 $recommendCompany = $homepageModule->getRecommendCompany();
 
+//seo设置
+$head_title = $companyInfo['company'];
+
 ?>

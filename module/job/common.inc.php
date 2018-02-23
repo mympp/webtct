@@ -14,5 +14,5 @@ $EDUCATION = explode('|', trim($MOD['education']));
 $SITUATION = explode('|', trim($MOD['situation']));
 
 $logo_title = '维修';
-$logo_url = 'www.tecenet.com/fuwu/';
+$logo_url = $MODULE[9]['linkurl'];
 ?>

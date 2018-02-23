@@ -18,7 +18,7 @@ $AREA[0]['areaname'] = '全国';
 
 
 $logo_title = '产品';
-$logo_url = 'www.tecenet.com/chanpin/';
+$logo_url = $MODULE[16]['linkurl'];
 $category_db = new tcdb('category');
 $keyword_db = new tcdb('keyword');
 $CAT = $category_db->field('catid,catdir,catname,parentid,arrchildid')->where(['moduleid'=>16])->order('listorder asc')->all();

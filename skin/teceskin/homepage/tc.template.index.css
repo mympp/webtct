@@ -108,7 +108,11 @@ a.tp-module-head-btn:active{
 .tp-product-slider .tempWrap{
     margin:0 auto;
 }
-
+.tp-product-list{
+    width: 846px;
+    margin:0 auto;
+    height:360px;
+}
 .tp-product-item{
     position: relative;
     float: left;
@@ -320,7 +324,7 @@ a.tp-product-btn:active{
 
 /*tp-contact*/
 .tp-contact{
-    background: url("../images/tp-contact-bg.jpg") no-repeat center top;
+    background: url("images/tp-contact-bg.jpg") no-repeat center top;
 }
 
 .tp-contact-box{

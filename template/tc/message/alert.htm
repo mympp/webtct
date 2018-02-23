@@ -15,6 +15,9 @@
 	{else}
 		window.location='{$dforward}';
 	{/if}
+
+{else}
+	window.history.back();
 {/if}
 {$extend}
 </script>

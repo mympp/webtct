@@ -123,7 +123,7 @@
                         <input type="hidden" name="action" value="add">
                         <input type="hidden" name="title" value="{$companyInfo['company']}">
                         <input type="hidden" name="url" value="{$companyInfo['linkurl']}">
-                        <input type="submit" value="收藏" class="mark-btn pull-right p-i">
+                        <input type="submit" value="收藏公司" class="btn btn-primary pull-right" style="cursor: pointer;">
                     </form>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                 <i class="iconfont icon-erweima1"></i>
                 <div class="company-info-dialog">
                     <img class="company-qrcode-img"
-                         src="http://www.tecenet.com/api/ewm.php?dz={$companyInfo['linkurl']}&size=3&us=username={$companyInfo['username']}"
+                         src="{DT_PATH}api/ewm.php?dz={$companyInfo['linkurl']}&size=3&us="
                          alt="微店二维码">
                     <p class="company-qrcode-text">扫一扫，进入手机微店</p>
 
@@ -202,7 +202,9 @@
             <ul class="tp-nav-list clearfix">
                 <li class="tp-nav-item"><a href="<?php echo $homepageModule->linkurl ?>" class="active">网站首页</a></li>
                 {loop $MENU $k $m}
-                <li class="tp-nav-item"><a href="{$m['linkurl']}">{$m['name']}</a></li>
+                    {if !strpos($m['linkurl'],'/job/')}
+                        <li class="tp-nav-item"><a href="{$m['linkurl']}">{$m['name']}</a></li>
+                    {/if}
                 {/loop}
             </ul>
         </div>

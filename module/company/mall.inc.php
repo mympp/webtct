@@ -5,7 +5,15 @@ use models\helpers\query\MallValidateQuery;
 use models\config\config;
 
 defined('IN_DESTOON') or exit('Access Denied');
+use models\helpers\widget\redirect\pc_to_wap;
+
 require_once 'new.init.inc.php';
+
+if($itemid){
+    $wapurl = pc_to_wap::forword('chanpin/itemid-'.$itemid.'.html');
+}else{
+    $wapurl = pc_to_wap::forword('gongsi/shop-'.$homepage.'/mall.html');
+}
 require_once 'new.left.inc.php';
 
 $scws = new scws();
@@ -55,7 +63,8 @@ if ($itemid) {
     $update = '';
     include DT_ROOT . '/include/update.inc.php';
     $head_canonical = $linkurl;
-    $head_title = $title . $DT['seo_delimiter'] . $head_title;
+    //$head_title = $title . $DT['seo_delimiter'] . $head_title;
+    $head_title = $title . '_'. $companyInfo['company'];
     $head_keywords = $keyword;
     $head_description = $introduce ? $introduce : $title;
     if ($EXT['mobile_enable']) $head_mobile = $EXT['mobile_url'] . mobileurl($moduleid, 0, $itemid, $page);;
@@ -139,6 +148,8 @@ if ($itemid) {
             'div' => ['class' => 'pagination'],
             'form' => ['id' => 'hotForm','method'=>'get'],
         ],['typeid'=>$typeid,'page'=>$page,'homepage' => $username,'file'=>$file]);
+
+        $head_title = $companyInfo['company'].'_'.$head_title;
     }
 
 }

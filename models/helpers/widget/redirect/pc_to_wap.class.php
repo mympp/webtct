@@ -7,14 +7,14 @@ class pc_to_wap extends baseRedirect{
 	//指定地址直接跳转
 	public static function forword($url){
 		$self = new self();
-		
+
 		$forword = '';
 		if(strpos($url,'http://')!== false || strpos($url,'https://')!== false ){
 			$forword = $url;
 		}else{
 			$forword = $self->wap_host.$url;
 		}
-		
+
 		if(!$self->isMobile()){
 			return $forword;
 		}else{

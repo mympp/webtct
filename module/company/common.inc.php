@@ -10,5 +10,5 @@ global $AREA;
 $AREA or $AREA = cache_read('area.php');
 
 $logo_title = '厂商';
-$logo_url = 'www.tecenet.com/gongsi/';
+$logo_url = $MODULE[4]['linkurl'];
 ?>

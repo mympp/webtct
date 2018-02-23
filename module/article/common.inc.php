@@ -10,7 +10,7 @@ $table_data = $DT_PRE.$module.'_data_'.$moduleid;
 
 
 $logo_title = '资讯';
-$logo_url = 'www.tecenet.com/zixun/';
+$logo_url = $MODULE[21]['linkurl'];
 
 
 ?>

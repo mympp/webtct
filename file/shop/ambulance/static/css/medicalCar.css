@@ -545,21 +545,21 @@ a.series-more-btn{
 .news-top-item-img{
 
 }
-.news-top-item-img img{
+.news-top-item .news-item-img img{
     width:474px;
     height:323px;
 }
-.news-top-item-txt{
-    padding:20px 15px 15px 12px;
+.news-top-item .news-item-txt{
+    padding:0px 15px 8px 12px;
 }
-.news-top-item-title{
+.news-top-item .news-item-title{
     float: left;
     position: relative;
     padding-left:15px;
     font-size:22px;
     font-weight: bold;
 }
-.news-top-item-title:before{
+.news-top-item .news-item-title:before{
     content: '';
     position: absolute;
     left:0;
@@ -570,13 +570,13 @@ a.series-more-btn{
     border:6px solid transparent;
     border-left-color: #b39451;
 }
-.news-top-item-date{
+.news-top-item .news-item-date{
     float: right;
     font-size:16px;
     color: #a7a7a7;
 
 }
-.news-top-item-desc{
+.news-top-item .news-item-desc{
     margin:0 10px 10px 26px;
     font-size:16px;
     line-height:1.65;
@@ -590,21 +590,21 @@ a.series-more-btn{
     background-color: #fff;
     margin-bottom:15px;
 }
-.news-item-img{
+.news-item .news-item-img{
     float: left;
 }
-.news-item-img img{
+.news-item .news-item-img img{
     width:196px;
     height:147px;
 }
 
-.news-item-title{
+.news-item .news-item-title{
     position: relative;
-    padding-left:15px;
+    padding-left: 14px;
     font-size:16px;
     font-weight: bold;
 }
-.news-item-title:before{
+.news-item .news-item-title:before{
     content: '';
     position: absolute;
     left:0;
@@ -616,22 +616,25 @@ a.series-more-btn{
     border-left-color: #b39451;
 }
 
-.news-item-txt{
+.news-item .news-item-txt{
     width:255px;
     float: left;
     margin:15px 0 0 10px;
 }
-.news-item-desc{
+.news-item .news-item-desc{
     height:54px;
     overflow: hidden;
-    margin-top:10px;
-    font-size:16px;
+    margin-top: 5px;
+    width: 253px;
+    float: left;
+    font-size: 15px;
     line-height:1.65;
-    margin-left:15px;
+    margin-left: 25px;
     color: #555;
 }
-.news-item-date{
-    margin-top:14px;
+.news-item .news-item-date{
+    margin-top: 8px;
+    display: block;
     font-size:16px;
     color: #a8a8a8;
     margin-left:15px;

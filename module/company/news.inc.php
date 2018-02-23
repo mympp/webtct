@@ -3,8 +3,16 @@ defined('IN_DESTOON') or exit('Access Denied');
 
 use models\helpers\widget\nlp\scws;
 use models\helpers\view\pagination;
+use models\helpers\widget\redirect\pc_to_wap;
 
 require_once 'new.init.inc.php';
+
+if($itemid){
+    $wapurl = pc_to_wap::forword('share/show-'.$itemid.'.html');
+}else{
+    $wapurl = pc_to_wap::forword('gongsi/shop-'.$homepage.'/news.html');
+}
+
 require_once 'new.left.inc.php';
 
 $scws = new scws();
@@ -25,7 +33,8 @@ if ($itemid) {
     $t = $db->get_one("SELECT content FROM {$table_data} WHERE itemid=$itemid");
     $content = $t['content'];
     $db->query("UPDATE LOW_PRIORITY {$table} SET hits=hits+1 WHERE itemid=$itemid", 'UNBUFFERED');
-    $head_title = $title . $DT['seo_delimiter'] . $head_title;
+    //$head_title = $title . $DT['seo_delimiter'] . $head_title;
+    $head_title = $title . '_' . $companyInfo['company'];
     $head_keywords = $title . ',' . $COM['company'];
     $head_description = get_intro($content, 200);
 
@@ -87,6 +96,8 @@ if ($itemid) {
             'div' => ['class' => 'pagination'],
             'form' => ['id' => 'hotForm','method'=>'get'],
         ],['typeid'=>$typeid,'page'=>$page,'homepage' => $username,'file'=>$file]);
+
+        $head_title = $companyInfo['company'].'_'.$head_title;
     }
 }
 include template('news', $template);

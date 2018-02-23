@@ -2,12 +2,23 @@
 
 <link rel="stylesheet" href="{DT_PATH}skin/teceskin/tc.lib.min.css">
 <link rel="stylesheet" href="{DT_PATH}skin/teceskin/member-index.min.css">
-<link rel="stylesheet" href="//at.alicdn.com/t/font_410104_374fnnfaya54s4i.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_410104_uw9el1w6mv7k3xr.css">
 <style>.product-img {height:160px;}</style>
 
 
 	<!--index-content-->
 	<div class="index-content">
+		{if $isCompany && !$isCompanyValidated}
+		<!--tip-->
+		<div class="module-tip" id="moduleTip">
+			<p class="module-tip-content">
+				尊敬的{$_username}用户，您当前的企业用户并未进行认证，<a href="validate.php?action=company">点击认证</a>获得更多权益。
+			</p>
+			<button class="module-tip-close" onclick="javascript:document.getElementById('moduleTip').style.display='none';">×</button>
+		</div>
+		<!--tip end-->
+		{/if}
+
 		<!--index-main-->
 		<div class="index-main">
 			<div class="index-main-inner">
@@ -32,6 +43,9 @@
 								   title="{if $vmobile}已通过{else}未通过{/if}手机认证"><i class="iconfont icon-shouji"></i>手机认证</a>
 								<a href="validate.php?action=truename" class="authenticate-item {if !$vbank}disable{/if}"
 								   title="{if $vbank}已通过{else}未通过{/if}银行帐号认证"><i class="iconfont icon-shenfengzheng4"></i>实名认证</a>
+
+							    <a href="validate.php?action=company" class="authenticate-item {if !$vbank}disable{/if}"
+								   title="{if $vbank}已通过{else}未通过{/if}企业认证"><i class="iconfont icon-gongsi"></i>企业认证</a>
 								{/if}
 							</div>
 
@@ -61,6 +75,87 @@
 					</div>
 				</div>
 				<!--个人信息 end-->
+
+				{if $isCompany}
+				<!--资质证件审核-->
+				<div class="module index-credit">
+					<div class="module-head clearfix">
+						<h3 class="module-head-title pull-left">资质证件审核</h3>
+					</div>
+					<div class="module-body">
+						<table cellpadding="0" cellspacing="0" class="tb">
+							<tbody>
+							<tr class="">
+								<th>流程名称</th>
+								<th>证件名称</th>
+								<th>证件号</th>
+								<th>有效期时间</th>
+								<th>证件图片</th>
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+							<tr align="center" class="graybg">
+								<td>企业认证</td>
+								<td>营业执照</td>
+								<td>{$companyLicense['business_license_code']}</td>
+								<td>
+									{date('Y-m',$companyLicense['business_license_starttime'])}
+									至
+									{date('Y-m',$companyLicense['business_license_totime'])}
+								</td>
+								<td>
+									<a href="{$companyLicense['business_license']}" target="_blank">查看</a>
+								</td>
+								<td class="index-credit-status">
+									{if $companyLicense['status'] == 4}
+									<span class="text-danger">未通过 <i class="iconfont icon-xinxi"></i><em>{$companyLicense['note']}</em></span>
+									{elseif $companyLicense['status'] == 3}
+									<span class="text-success">通过</span>
+									{else}
+									<span class="text-warning">待审核</span>
+									{/if}
+								</td>
+								<td>
+									<a href="validate.php?action=company" target="_blank">修改</a>
+								</td>
+							</tr>
+							<tr align="center" class="graybg">
+								<td>企业认证</td>
+								<td>生产经营许可证</td>
+								<td></td>
+								<td></td>
+								<td>
+									{if $companyLicense['product_license']}
+									<a href="{$companyLicense['product_license']}" target="_blank">查看</a>
+									{else}
+									暂无
+									{/if}
+								</td>
+								<td class="index-credit-status">
+									{if !$companyLicense['product_license']}
+									<span class="text-warning">待提交</span>
+									{elseif $companyLicense['status'] == 4}
+									<span class="text-danger">未通过 <i class="iconfont icon-xinxi"></i><em>{$companyLicense['note']}</em></span>
+									{elseif $companyLicense['status'] == 3}
+									<span class="text-success">通过</span>
+									{else}
+									<span class="text-warning">待审核</span>
+									{/if}
+								</td>
+								<td>
+									{if !$companyLicense['product_license']}
+									<a href="validate.php?action=company" target="_blank">上传</a>
+									{else}
+									<a href="validate.php?action=company" target="_blank">修改</a>
+									{/if}
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!--资质证件审核 end-->
+				{/if}
 
 				<!--快捷搜索-->
 				<div class="module index-search">

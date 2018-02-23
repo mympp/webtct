@@ -3,6 +3,8 @@ use models\module\baseModule;
 
 defined('IN_DESTOON') or exit('Access Denied');
 
+require_once DT_ROOT.'/models/autoload.php';
+
 
 //新版头部内容
 $homepageModule = baseModule::moduleInstance('homepage');
@@ -150,7 +152,7 @@ $menu_num = explode(',', isset($HOME['menu_num']) ? $HOME['menu_num'] : $_menu_n
 $menu_file = explode(',', isset($HOME['menu_file']) ? $HOME['menu_file'] : $_menu_file);
 $menu_name = explode(',', isset($HOME['menu_name']) ? $HOME['menu_name'] : $_menu_name);
 $_HMENU = array();
-asort($menu_order);
+asort($HMENU);
 foreach($menu_order as $k=>$v) {
 	$_HMENU[$k] = $HMENU[$k];
 }
@@ -167,6 +169,7 @@ foreach($HMENU as $k=>$v) {
 	if($file == $menu_file[$k]) $menuid = $k;
 	if($menu_num[$k] < 1 || $menu_num[$k] > 50) $menu_num[$k] = 10;
 }
+
 $side_show = explode(',', isset($HOME['side_show']) ? $HOME['side_show'] : $_side_show);
 $side_order = explode(',', isset($HOME['side_order']) ? $HOME['side_order'] : $_side_order);
 $side_num = explode(',', isset($HOME['side_num']) ? $HOME['side_num'] : $_side_num);

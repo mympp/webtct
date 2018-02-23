@@ -14,34 +14,35 @@
 </div>
 <!--tp-crumb end-->
 
-<!--tp-container-->
-<div class="tp-container clearfix">
-    <div class="tp-main pull-right">
-        <div class="tp-main-box">
-            <div class="tp-main-box-head">
-                <p>Company introduction</p>
-                <h1>公司介绍</h1>
-            </div>
-            <div class="tp-main-box-body">
-                <div class="introduce">
-                    <div class="logo">
-                        <img src="{$companyLogo}" alt="">
-                    </div>
-                    <div class="content">
-                        {$content}
-                    </div>
-                    <div class="update-date">
-                        最后更新时间：{date('Y-m-d H:i',$memberInfo['edittime'])}
-                    </div>
+<div class="tp-wrap bg-gray">
+    <!--tp-container-->
+    <div class="tp-container clearfix">
+        <div class="tp-main pull-right">
+            <div class="tp-main-box">
+                <div class="tp-main-box-head">
+                    <p>Company introduction</p>
+                    <h1>公司介绍</h1>
                 </div>
+                <div class="tp-main-box-body">
+                    <div class="introduce">
+                        <div class="logo">
+                            <img src="{$companyLogo}" alt="">
+                        </div>
+                        <div class="content">
+                            {$content}
+                        </div>
+                        <div class="update-date">
+                            最后更新时间：{date('Y-m-d H:i',$memberInfo['edittime'])}
+                        </div>
+                    </div>
 
+                </div>
             </div>
         </div>
+
+        {template 'left',$template}
     </div>
-
-    {template 'left',$template}
+    <!--tp-container end-->
 </div>
-<!--tp-container end-->
-
 
 {template 'footer2018', $template}

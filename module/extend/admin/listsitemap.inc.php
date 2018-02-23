@@ -1,10 +1,12 @@
 <?php
 use models\helpers\data\tcdb;
 use models\helpers\adt\cartesianProduct;
+use models\helpers\widget\sitemap\siteMap;
+use models\module\baseModule;
 
 defined('DT_ADMIN') or exit('Access Denied');
 require_once DT_ROOT.'/models/autoload.php';
-
+//echo DT_ROOT.'/models/autoload.php';exit;
 $category = new tcdb('category');
 $area = new tcdb('area');
 $areaid = $area->field('areaid')->all();
@@ -116,9 +118,17 @@ switch($m){
         $itemid = $keyword_db->field('itemid')->where(['status'=>3])->all();
         buildSoSitemap($itemid,DT_PATH.'hot/','Hot','show');
         break;
+<<<<<<< .mine
     case 'mallArticle':
 
         break;
+=======
+    case 'mallArticle':
+        $siteMap = new sitemap();
+        $siteMap->start('mallArticle');
+        break;
+
+>>>>>>> .r3010
 }
 
 msg('SiteMaps 更新成功', '?moduleid='.$moduleid.'&file=setting#sitemaps');
